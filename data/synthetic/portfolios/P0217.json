@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0217",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0217",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Bhageria Industries Limited",
+   "isin": "INE354C01027",
+   "quantity": 2274,
+   "value_inr": 21638012.42
+  },
+  {
+   "instrument_name": "FSN E-Commerce Ventures Limited",
+   "isin": "INE388Y01029",
+   "quantity": 816,
+   "value_inr": 725680.23
+  },
+  {
+   "instrument_name": "B. L. Kashyap and Sons Limited",
+   "isin": "INE350H01032",
+   "quantity": 14805,
+   "value_inr": 6746224.45
+  },
+  {
+   "instrument_name": "Taal Tech Limited",
+   "isin": "INE524T01029",
+   "quantity": 2707,
+   "value_inr": 6912521.4
+  },
+  {
+   "instrument_name": "Tera Software Limited",
+   "isin": "INE482B01010",
+   "quantity": 2258,
+   "value_inr": 1800258.32
+  }
+ ],
+ "portfolio_total_inr": 37822696.82,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0217",
+      "maskedDematId": "XXXXXXXXXXXXX3760",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0217",
+          "dob": "1993-03-16",
+          "mobile": 1000000217,
+          "nominee": "REGISTERED",
+          "dematId": "12086654500153760",
+          "email": "synthetic0217@example.invalid",
+          "pan": "ZZZPZ0217Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8431741.86,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Bhageria Industries Limited",
+           "isin": "INE354C01027",
+           "isinDescription": "BHAGERIA INDUSTRIES LIMITED EQ",
+           "units": 2274,
+           "lastTradedPrice": "3707.89"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0217",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0217",
+          "dob": "1991-04-17",
+          "mobile": 1000000217,
+          "nominee": "REGISTERED",
+          "dematId": "IN3019774421870000",
+          "email": "synthetic0217@example.invalid",
+          "pan": "ZZZPZ0217Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3136607.64,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "FSN E-Commerce Ventures Limited",
+           "isin": "INE388Y01029",
+           "isinDescription": "FSN E-COMMERCE VENTURES LIMITED EQ",
+           "units": 816,
+           "lastTradedPrice": "491.98"
+          },
+          {
+           "issuerName": "B. L. Kashyap and Sons Limited",
+           "isin": "INE350H01032",
+           "isinDescription": "B. L. KASHYAP AND SONS LIMITED EQ",
+           "units": 2961,
+           "lastTradedPrice": "172.36"
+          },
+          {
+           "issuerName": "Lincoln Pharmaceuticals Limited",
+           "isin": "INE405C01035",
+           "isinDescription": "LINCOLN PHARMACEUTICALS LIMITED EQ",
+           "units": 1650,
+           "lastTradedPrice": "1348.36"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE354C01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE388Y01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE350H01032",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE524T01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE482B01010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

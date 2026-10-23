@@ -1,0 +1,140 @@
+{
+ "mock": true,
+ "case_id": "P0155",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0155",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "UFO Moviez India Limited",
+   "isin": "INE527H01019",
+   "quantity": 107,
+   "value_inr": 240516.91
+  },
+  {
+   "instrument_name": "Sonata Software Limited",
+   "isin": "INE269A01021",
+   "quantity": 4355,
+   "value_inr": 35661992.53
+  },
+  {
+   "instrument_name": "Ind-Swift Laboratories Limited",
+   "isin": "INE915B01019",
+   "quantity": 3686,
+   "value_inr": 8423610.01
+  },
+  {
+   "instrument_name": "Peninsula Land Limited",
+   "isin": "INE138A01028",
+   "quantity": 2596,
+   "value_inr": 23411876.55
+  },
+  {
+   "instrument_name": "Polycab India Limited",
+   "isin": "INE455K01017",
+   "quantity": 346,
+   "value_inr": 358276.32
+  },
+  {
+   "instrument_name": "Solex Energy Limited",
+   "isin": "INE880Y01017",
+   "quantity": 4362,
+   "value_inr": 22751904.89
+  }
+ ],
+ "portfolio_total_inr": 90848177.21,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0155",
+      "maskedDematId": "XXXXXXXXXXXXX4310",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0155",
+          "dob": "1956-06-18",
+          "mobile": 1000000155,
+          "nominee": "REGISTERED",
+          "dematId": "12088588250214310",
+          "email": "synthetic0155@example.invalid",
+          "pan": "ZZZPZ0155Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 125124.73,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "UFO Moviez India Limited",
+           "isin": "INE527H01019",
+           "isinDescription": "UFO MOVIEZ INDIA LIMITED EQ",
+           "units": 107,
+           "lastTradedPrice": "1169.39"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE527H01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE269A01021",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE915B01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE138A01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE455K01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE880Y01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

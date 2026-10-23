@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0131",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0131",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "IDBI Bank Limited",
+   "isin": "INE008A01015",
+   "quantity": 487,
+   "value_inr": 2226541.84
+  },
+  {
+   "instrument_name": "BCPL Railway Infrastructure Limited",
+   "isin": "INE00SW01015",
+   "quantity": 2187,
+   "value_inr": 10755408.06
+  }
+ ],
+ "portfolio_total_inr": 12981949.9,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0131",
+      "maskedDematId": "XXXXXXXXXXXXX5460",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0131",
+          "dob": "1956-09-18",
+          "mobile": 1000000131,
+          "nominee": "REGISTERED",
+          "dematId": "12087896430175460",
+          "email": "synthetic0131@example.invalid",
+          "pan": "ZZZPZ0131Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16980782.38,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Transindia Real Estate Limited",
+           "isin": "INE0O3901029",
+           "isinDescription": "TRANSINDIA REAL ESTATE LIMITED EQ",
+           "units": 4035,
+           "lastTradedPrice": "3715.05"
+          },
+          {
+           "issuerName": "Jindal Poly Investment and Finance Company Limited",
+           "isin": "INE147P01019",
+           "isinDescription": "JINDAL POLY INVESTMENT AND FINANCE COMPANY LIMITED EQ",
+           "units": 665,
+           "lastTradedPrice": "1882.88"
+          },
+          {
+           "issuerName": "Astral Limited",
+           "isin": "INE006I01046",
+           "isinDescription": "ASTRAL LIMITED EQ",
+           "units": 507,
+           "lastTradedPrice": "1456.49"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0131",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0131",
+          "dob": "1951-03-12",
+          "mobile": 1000000131,
+          "nominee": "REGISTERED",
+          "dematId": "IN3081521614480000",
+          "email": "synthetic0131@example.invalid",
+          "pan": "ZZZPZ0131Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11247636.39,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Oricon Enterprises Limited",
+           "isin": "INE730A01022",
+           "isinDescription": "ORICON ENTERPRISES LIMITED EQ",
+           "units": 3417,
+           "lastTradedPrice": "3291.67"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE008A01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE00SW01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

@@ -1,0 +1,150 @@
+{
+ "mock": true,
+ "case_id": "P0122",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0122",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Dhruv Consultancy Services Limited",
+   "isin": "INE506Z01015",
+   "quantity": 3130,
+   "value_inr": 6582314.98
+  },
+  {
+   "instrument_name": "Zydus Wellness Limited",
+   "isin": "INE768C01028",
+   "quantity": 1235,
+   "value_inr": 4588905.53
+  },
+  {
+   "instrument_name": "Indian Card Clothing Company Limited",
+   "isin": "INE061A01014",
+   "quantity": 890,
+   "value_inr": 767298.61
+  },
+  {
+   "instrument_name": "Keynote Financial Services Limited",
+   "isin": "INE681C01015",
+   "quantity": 4245,
+   "value_inr": 22667991.02
+  },
+  {
+   "instrument_name": "Innova Captab Limited",
+   "isin": "INE0DUT01020",
+   "quantity": 2596,
+   "value_inr": 12408633.6
+  }
+ ],
+ "portfolio_total_inr": 47015143.74,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0122",
+      "maskedDematId": "XXXXXXXXXXXXX3190",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0122",
+          "dob": "1980-05-15",
+          "mobile": 1000000122,
+          "nominee": "REGISTERED",
+          "dematId": "12087157278283190",
+          "email": "synthetic0122@example.invalid",
+          "pan": "ZZZPZ0122Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 7196376.55,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Dhruv Consultancy Services Limited",
+           "isin": "INE506Z01015",
+           "isinDescription": "DHRUV CONSULTANCY SERVICES LIMITED EQ",
+           "units": 3130,
+           "lastTradedPrice": "800.33"
+          },
+          {
+           "issuerName": "Zydus Wellness Limited",
+           "isin": "INE768C01028",
+           "isinDescription": "ZYDUS WELLNESS LIMITED EQ",
+           "units": 1235,
+           "lastTradedPrice": "1902.49"
+          },
+          {
+           "issuerName": "Indian Card Clothing Company Limited",
+           "isin": "INE061A01014",
+           "isinDescription": "INDIAN CARD CLOTHING COMPANY LIMITED EQ",
+           "units": 89,
+           "lastTradedPrice": "722.90"
+          },
+          {
+           "issuerName": "Central Bank of India",
+           "isin": "INE483A01010",
+           "isinDescription": "CENTRAL BANK OF INDIA EQ",
+           "units": 4102,
+           "lastTradedPrice": "555.20"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE506Z01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE768C01028",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE061A01014",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE681C01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0DUT01020",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

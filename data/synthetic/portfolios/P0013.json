@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0013",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0013",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Ellenbarrie Industrial Gases Limited",
+   "isin": "INE236E01022",
+   "quantity": 421,
+   "value_inr": 2525373.79
+  },
+  {
+   "instrument_name": "ABB India Limited",
+   "isin": "INE117A01022",
+   "quantity": 1004,
+   "value_inr": 2866828.24
+  },
+  {
+   "instrument_name": "Cipla Limited",
+   "isin": "INE059A01026",
+   "quantity": 3816,
+   "value_inr": 26103610.75
+  },
+  {
+   "instrument_name": "RDB Real Estate Constructions Limited",
+   "isin": "INE0AK901016",
+   "quantity": 4588,
+   "value_inr": 21591939.26
+  }
+ ],
+ "portfolio_total_inr": 53087752.04,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0013",
+      "maskedDematId": "XXXXXXXXXXXXX8970",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0013",
+          "dob": "1973-02-14",
+          "mobile": 1000000013,
+          "nominee": "REGISTERED",
+          "dematId": "12084016752638970",
+          "email": "synthetic0013@example.invalid",
+          "pan": "ZZZPZ0013Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10964861.2,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "RDB Real Estate Constructions Limited",
+           "isin": "INE0AK901016",
+           "isinDescription": "RDB REAL ESTATE CONSTRUCTIONS LIMITED EQ",
+           "units": 4588,
+           "lastTradedPrice": "2389.90"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0013",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0013",
+          "dob": "1966-06-18",
+          "mobile": 1000000013,
+          "nominee": "REGISTERED",
+          "dematId": "IN3063021095560000",
+          "email": "synthetic0013@example.invalid",
+          "pan": "ZZZPZ0013Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13001746.32,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Ellenbarrie Industrial Gases Limited",
+           "isin": "INE236E01022",
+           "isinDescription": "ELLENBARRIE INDUSTRIAL GASES LIMITED EQ",
+           "units": 421,
+           "lastTradedPrice": "2238.48"
+          },
+          {
+           "issuerName": "ABB India Limited",
+           "isin": "INE117A01022",
+           "isinDescription": "ABB INDIA LIMITED EQ",
+           "units": 1004,
+           "lastTradedPrice": "1836.72"
+          },
+          {
+           "issuerName": "Cipla Limited",
+           "isin": "INE059A01026",
+           "isinDescription": "CIPLA LIMITED EQ",
+           "units": 3816,
+           "lastTradedPrice": "2676.96"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE236E01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE117A01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE059A01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0AK901016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

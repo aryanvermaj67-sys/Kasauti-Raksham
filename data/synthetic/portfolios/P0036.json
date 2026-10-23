@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0036",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0036",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Madhya Bharat Agro Products Limited",
+   "isin": "INE900L01028",
+   "quantity": 3792,
+   "value_inr": 15886619.13
+  },
+  {
+   "instrument_name": "Endurance Technologies Limited",
+   "isin": "INE913H01037",
+   "quantity": 476,
+   "value_inr": 1163426.62
+  },
+  {
+   "instrument_name": "Sansera Engineering Limited",
+   "isin": "INE953O01021",
+   "quantity": 2361,
+   "value_inr": 1499045.79
+  },
+  {
+   "instrument_name": "Bannari Amman Spinning Mills Limited",
+   "isin": "INE186H01022",
+   "quantity": 749,
+   "value_inr": 2406011.81
+  }
+ ],
+ "portfolio_total_inr": 20955103.35,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0036",
+      "maskedDematId": "XXXXXXXXXXXXX5740",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0036",
+          "dob": "1951-06-11",
+          "mobile": 1000000036,
+          "nominee": "REGISTERED",
+          "dematId": "12085941869845740",
+          "email": "synthetic0036@example.invalid",
+          "pan": "ZZZPZ0036Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1182288.78,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "WE WIN LIMITED",
+           "isin": "INE082W01014",
+           "isinDescription": "WE WIN LIMITED EQ",
+           "units": 4854,
+           "lastTradedPrice": "243.57"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0036",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0036",
+          "dob": "1960-08-17",
+          "mobile": 1000000036,
+          "nominee": "REGISTERED",
+          "dematId": "IN3017411348910000",
+          "email": "synthetic0036@example.invalid",
+          "pan": "ZZZPZ0036Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16109779.07,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Welspun Living Limited",
+           "isin": "INE192B01031",
+           "isinDescription": "WELSPUN LIVING LIMITED EQ",
+           "units": 3851,
+           "lastTradedPrice": "1779.99"
+          },
+          {
+           "issuerName": "Senco Gold Limited",
+           "isin": "INE602W01027",
+           "isinDescription": "SENCO GOLD LIMITED EQ",
+           "units": 2490,
+           "lastTradedPrice": "3189.39"
+          },
+          {
+           "issuerName": "Minda Corporation Limited",
+           "isin": "INE842C01021",
+           "isinDescription": "MINDA CORPORATION LIMITED EQ",
+           "units": 4166,
+           "lastTradedPrice": "315.28"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE900L01028",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE913H01037",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE953O01021",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE186H01022",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

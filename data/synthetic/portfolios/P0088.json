@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0088",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0088",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Piramal Pharma Limited",
+   "isin": "INE0DK501011",
+   "quantity": 3512,
+   "value_inr": 2251898.32
+  },
+  {
+   "instrument_name": "Zee Learn Limited",
+   "isin": "INE565L01011",
+   "quantity": 4926,
+   "value_inr": 17999244.88
+  },
+  {
+   "instrument_name": "Vikran Engineering Limited",
+   "isin": "INE01R501028",
+   "quantity": 804,
+   "value_inr": 150268.12
+  },
+  {
+   "instrument_name": "Sundram Fasteners Limited",
+   "isin": "INE387A01021",
+   "quantity": 1409,
+   "value_inr": 6962005.3
+  }
+ ],
+ "portfolio_total_inr": 27363416.62,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0088",
+      "maskedDematId": "XXXXXXXXXXXXX6100",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0088",
+          "dob": "1948-03-11",
+          "mobile": 1000000088,
+          "nominee": "REGISTERED",
+          "dematId": "12087196287556100",
+          "email": "synthetic0088@example.invalid",
+          "pan": "ZZZPZ0088Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9515603.46,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Zee Learn Limited",
+           "isin": "INE565L01011",
+           "isinDescription": "ZEE LEARN LIMITED EQ",
+           "units": 4926,
+           "lastTradedPrice": "1931.71"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0088",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0088",
+          "dob": "1967-09-16",
+          "mobile": 1000000088,
+          "nominee": "REGISTERED",
+          "dematId": "IN3099580446970000",
+          "email": "synthetic0088@example.invalid",
+          "pan": "ZZZPZ0088Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5000558.84,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Piramal Pharma Limited",
+           "isin": "INE0DK501011",
+           "isinDescription": "PIRAMAL PHARMA LIMITED EQ",
+           "units": 3512,
+           "lastTradedPrice": "368.76"
+          },
+          {
+           "issuerName": "Vikran Engineering Limited",
+           "isin": "INE01R501028",
+           "isinDescription": "VIKRAN ENGINEERING LIMITED EQ",
+           "units": 804,
+           "lastTradedPrice": "122.43"
+          },
+          {
+           "issuerName": "Sundram Fasteners Limited",
+           "isin": "INE387A01021",
+           "isinDescription": "SUNDRAM FASTENERS LIMITED EQ",
+           "units": 1409,
+           "lastTradedPrice": "2560.00"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0DK501011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE565L01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE01R501028",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE387A01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

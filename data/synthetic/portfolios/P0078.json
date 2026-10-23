@@ -1,0 +1,139 @@
+{
+ "mock": true,
+ "case_id": "P0078",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0078",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "KEI Industries Limited",
+   "isin": "INE878B01027",
+   "quantity": 2164,
+   "value_inr": 6746506.17
+  },
+  {
+   "instrument_name": "Cummins India Limited",
+   "isin": "INE298A01020",
+   "quantity": 4733,
+   "value_inr": 20589780.08
+  },
+  {
+   "instrument_name": "Ambika Cotton Mills Limited",
+   "isin": "INE540G01014",
+   "quantity": 4074,
+   "value_inr": 21196327.47
+  },
+  {
+   "instrument_name": "Munjal Auto Industries Limited",
+   "isin": "INE672B01032",
+   "quantity": 2960,
+   "value_inr": 967280.34
+  }
+ ],
+ "portfolio_total_inr": 49499894.06,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0078",
+      "maskedDematId": "XXXXXXXXXXXXX1330",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0078",
+          "dob": "1996-07-13",
+          "mobile": 1000000078,
+          "nominee": "REGISTERED",
+          "dematId": "12087057422741330",
+          "email": "synthetic0078@example.invalid",
+          "pan": "ZZZPZ0078Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 26268663.4,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "KEI Industries Limited",
+           "isin": "INE878B01027",
+           "isinDescription": "KEI INDUSTRIES LIMITED EQ",
+           "units": 2164,
+           "lastTradedPrice": "2855.05"
+          },
+          {
+           "issuerName": "Cummins India Limited",
+           "isin": "INE298A01020",
+           "isinDescription": "CUMMINS INDIA LIMITED EQ",
+           "units": 4733,
+           "lastTradedPrice": "2517.58"
+          },
+          {
+           "issuerName": "Ambika Cotton Mills Limited",
+           "isin": "INE540G01014",
+           "isinDescription": "AMBIKA COTTON MILLS LIMITED EQ",
+           "units": 4074,
+           "lastTradedPrice": "1831.69"
+          },
+          {
+           "issuerName": "Munjal Auto Industries Limited",
+           "isin": "INE672B01032",
+           "isinDescription": "MUNJAL AUTO INDUSTRIES LIMITED EQ",
+           "units": 2960,
+           "lastTradedPrice": "240.65"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE878B01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE298A01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE540G01014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE672B01032",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

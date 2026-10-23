@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0224",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0224",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Hyundai Motor India Limited",
+   "isin": "INE0V6F01027",
+   "quantity": 1098,
+   "value_inr": 2158289.08
+  },
+  {
+   "instrument_name": "Rane Holdings Limited",
+   "isin": "INE384A01010",
+   "quantity": 2614,
+   "value_inr": 22834584.87
+  },
+  {
+   "instrument_name": "Macpower CNC Machines Limited",
+   "isin": "INE155Z01011",
+   "quantity": 3959,
+   "value_inr": 3192935.25
+  }
+ ],
+ "portfolio_total_inr": 28185809.2,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0V6F01027",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE384A01010",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE155Z01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

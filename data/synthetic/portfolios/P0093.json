@@ -1,0 +1,139 @@
+{
+ "mock": true,
+ "case_id": "P0093",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0093",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Jain Irrigation Systems Limited",
+   "isin": "IN9175A01010",
+   "quantity": 1797,
+   "value_inr": 7801022.52
+  },
+  {
+   "instrument_name": "Maithan Alloys Limited",
+   "isin": "INE683C01011",
+   "quantity": 4275,
+   "value_inr": 40982915.04
+  },
+  {
+   "instrument_name": "K M C Speciality Hospitals (India) Limited",
+   "isin": "INE879K01018",
+   "quantity": 3263,
+   "value_inr": 17630900.79
+  },
+  {
+   "instrument_name": "Raghav Productivity Enhancers Limited",
+   "isin": "INE912T01018",
+   "quantity": 70,
+   "value_inr": 198120.22
+  }
+ ],
+ "portfolio_total_inr": 66612958.57,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0093",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0093",
+          "dob": "1976-05-14",
+          "mobile": 1000000093,
+          "nominee": "REGISTERED",
+          "dematId": "IN3096992641340000",
+          "email": "synthetic0093@example.invalid",
+          "pan": "ZZZPZ0093Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 25284298.4,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Jain Irrigation Systems Limited",
+           "isin": "IN9175A01010",
+           "isinDescription": "JAIN IRRIGATION SYSTEMS LIMITED EQ",
+           "units": 1797,
+           "lastTradedPrice": "1877.46"
+          },
+          {
+           "issuerName": "Maithan Alloys Limited",
+           "isin": "INE683C01011",
+           "isinDescription": "MAITHAN ALLOYS LIMITED EQ",
+           "units": 4275,
+           "lastTradedPrice": "3300.76"
+          },
+          {
+           "issuerName": "K M C Speciality Hospitals (India) Limited",
+           "isin": "INE879K01018",
+           "isinDescription": "K M C SPECIALITY HOSPITALS (INDIA) LIMITED EQ",
+           "units": 3263,
+           "lastTradedPrice": "2346.26"
+          },
+          {
+           "issuerName": "Raghav Productivity Enhancers Limited",
+           "isin": "INE912T01018",
+           "isinDescription": "RAGHAV PRODUCTIVITY ENHANCERS LIMITED EQ",
+           "units": 70,
+           "lastTradedPrice": "2055.82"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "IN9175A01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE683C01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE879K01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE912T01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

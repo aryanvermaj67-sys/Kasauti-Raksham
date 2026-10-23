@@ -1,0 +1,140 @@
+{
+ "mock": true,
+ "case_id": "P0085",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0085",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Manika Plastech Limited",
+   "isin": "INE0KWF01020",
+   "quantity": 4322,
+   "value_inr": 18046583.9
+  },
+  {
+   "instrument_name": "Vedanta Aluminium Metal Limited",
+   "isin": "INE1CDF01017",
+   "quantity": 4938,
+   "value_inr": 7360175.87
+  },
+  {
+   "instrument_name": "GFL Limited",
+   "isin": "INE538A01037",
+   "quantity": 2727,
+   "value_inr": 16479865.13
+  },
+  {
+   "instrument_name": "Sundaram Finance Limited",
+   "isin": "INE660A01013",
+   "quantity": 1660,
+   "value_inr": 15824824.55
+  },
+  {
+   "instrument_name": "Aqylon Nexus Limited",
+   "isin": "INE416A01051",
+   "quantity": 2801,
+   "value_inr": 19836976.85
+  },
+  {
+   "instrument_name": "BSE Limited",
+   "isin": "INE118H01025",
+   "quantity": 2660,
+   "value_inr": 1281073.45
+  }
+ ],
+ "portfolio_total_inr": 78829499.75,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0085",
+      "maskedDematId": "XXXXXXXXXXXXX2850",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0085",
+          "dob": "1965-03-18",
+          "mobile": 1000000085,
+          "nominee": "REGISTERED",
+          "dematId": "12088150570792850",
+          "email": "synthetic0085@example.invalid",
+          "pan": "ZZZPZ0085Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8308612.8,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Manika Plastech Limited",
+           "isin": "INE0KWF01020",
+           "isinDescription": "MANIKA PLASTECH LIMITED EQ",
+           "units": 4322,
+           "lastTradedPrice": "1922.40"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0KWF01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE1CDF01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE538A01037",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE660A01013",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE416A01051",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE118H01025",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

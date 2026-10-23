@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0062",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0062",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Aeroflex Enterprises Limited",
+   "isin": "INE065D01027",
+   "quantity": 2260,
+   "value_inr": 9329249.75
+  },
+  {
+   "instrument_name": "Aditya Birla Fashion and Retail Limited",
+   "isin": "INE647O01011",
+   "quantity": 2358,
+   "value_inr": 309243.36
+  },
+  {
+   "instrument_name": "Ujaas Energy Limited",
+   "isin": "INE899L01030",
+   "quantity": 35370,
+   "value_inr": 165776815.47
+  },
+  {
+   "instrument_name": "Rategain Travel Technologies Limited",
+   "isin": "INE0CLI01024",
+   "quantity": 799,
+   "value_inr": 3986746.18
+  },
+  {
+   "instrument_name": "Addi Industries Limited",
+   "isin": "INE757C01021",
+   "quantity": 1984,
+   "value_inr": 4192507.63
+  }
+ ],
+ "portfolio_total_inr": 183594562.39,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0062",
+      "maskedDematId": "XXXXXXXXXXXXX3370",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0062",
+          "dob": "1993-01-11",
+          "mobile": 1000000062,
+          "nominee": "REGISTERED",
+          "dematId": "12088166505943370",
+          "email": "synthetic0062@example.invalid",
+          "pan": "ZZZPZ0062Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 208046.34,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Aditya Birla Fashion and Retail Limited",
+           "isin": "INE647O01011",
+           "isinDescription": "ADITYA BIRLA FASHION AND RETAIL LIMITED EQ",
+           "units": 2358,
+           "lastTradedPrice": "88.23"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0062",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0062",
+          "dob": "1969-09-17",
+          "mobile": 1000000062,
+          "nominee": "REGISTERED",
+          "dematId": "IN3070356243310000",
+          "email": "synthetic0062@example.invalid",
+          "pan": "ZZZPZ0062Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16942528.29,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Aeroflex Enterprises Limited",
+           "isin": "INE065D01027",
+           "isinDescription": "AEROFLEX ENTERPRISES LIMITED EQ",
+           "units": 2260,
+           "lastTradedPrice": "2152.24"
+          },
+          {
+           "issuerName": "Ujaas Energy Limited",
+           "isin": "INE899L01030",
+           "isinDescription": "UJAAS ENERGY LIMITED EQ",
+           "units": 3537,
+           "lastTradedPrice": "3228.55"
+          },
+          {
+           "issuerName": "VIP Clothing Limited",
+           "isin": "INE450G01024",
+           "isinDescription": "VIP CLOTHING LIMITED EQ",
+           "units": 1478,
+           "lastTradedPrice": "445.93"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE065D01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE647O01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE899L01030",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE0CLI01024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE757C01021",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

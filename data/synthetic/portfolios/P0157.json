@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0157",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0157",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Indef Manufacturing Limited",
+   "isin": "INE0O9T01021",
+   "quantity": 3619,
+   "value_inr": 1391122.79
+  },
+  {
+   "instrument_name": "Pearl Global Industries Limited",
+   "isin": "INE940H01022",
+   "quantity": 1653,
+   "value_inr": 9232603.63
+  },
+  {
+   "instrument_name": "PNGS Reva Diamond Jewellery Limited",
+   "isin": "INE1RDG01013",
+   "quantity": 2942,
+   "value_inr": 17741365.03
+  },
+  {
+   "instrument_name": "Baid Finserv Limited",
+   "isin": "INE020D01022",
+   "quantity": 3542,
+   "value_inr": 4827745.93
+  },
+  {
+   "instrument_name": "JSW Infrastructure Limited",
+   "isin": "INE880J01026",
+   "quantity": 880,
+   "value_inr": 7713758.97
+  }
+ ],
+ "portfolio_total_inr": 40906596.35,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0157",
+      "maskedDematId": "XXXXXXXXXXXXX3790",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0157",
+          "dob": "1981-01-18",
+          "mobile": 1000000157,
+          "nominee": "REGISTERED",
+          "dematId": "12085333820323790",
+          "email": "synthetic0157@example.invalid",
+          "pan": "ZZZPZ0157Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3808448.42,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "PNGS Reva Diamond Jewellery Limited",
+           "isin": "INE1RDG01013",
+           "isinDescription": "PNGS REVA DIAMOND JEWELLERY LIMITED EQ",
+           "units": 1471,
+           "lastTradedPrice": "2589.02"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0157",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0157",
+          "dob": "1975-07-16",
+          "mobile": 1000000157,
+          "nominee": "REGISTERED",
+          "dematId": "IN3086063468210000",
+          "email": "synthetic0157@example.invalid",
+          "pan": "ZZZPZ0157Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5652344.77,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Indef Manufacturing Limited",
+           "isin": "INE0O9T01021",
+           "isinDescription": "INDEF MANUFACTURING LIMITED EQ",
+           "units": 3619,
+           "lastTradedPrice": "296.21"
+          },
+          {
+           "issuerName": "Pearl Global Industries Limited",
+           "isin": "INE940H01022",
+           "isinDescription": "PEARL GLOBAL INDUSTRIES LIMITED EQ",
+           "units": 1653,
+           "lastTradedPrice": "2449.00"
+          },
+          {
+           "issuerName": "MSP Steel & Power Limited",
+           "isin": "INE752G01015",
+           "isinDescription": "MSP STEEL & POWER LIMITED EQ",
+           "units": 898,
+           "lastTradedPrice": "592.61"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0O9T01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE940H01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE1RDG01013",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE020D01022",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE880J01026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

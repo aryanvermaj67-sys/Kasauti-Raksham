@@ -1,0 +1,139 @@
+{
+ "mock": true,
+ "case_id": "P0173",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0173",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "UMIYA BUILDCON LIMITED",
+   "isin": "INE398B01018",
+   "quantity": 3982,
+   "value_inr": 12947437.85
+  },
+  {
+   "instrument_name": "NINtec Systems Limited",
+   "isin": "INE395U01014",
+   "quantity": 1345,
+   "value_inr": 933551.17
+  },
+  {
+   "instrument_name": "Enviro Infra Engineers Limited",
+   "isin": "INE0LLY01014",
+   "quantity": 1276,
+   "value_inr": 4454191.87
+  },
+  {
+   "instrument_name": "Adroit Industries (India) Limited",
+   "isin": "INE505M01015",
+   "quantity": 1553,
+   "value_inr": 13026986.7
+  }
+ ],
+ "portfolio_total_inr": 31362167.59,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0173",
+      "maskedDematId": "XXXXXXXXXXXXX7400",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0173",
+          "dob": "1993-06-12",
+          "mobile": 1000000173,
+          "nominee": "REGISTERED",
+          "dematId": "12086737975317400",
+          "email": "synthetic0173@example.invalid",
+          "pan": "ZZZPZ0173Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 14711728.1,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "UMIYA BUILDCON LIMITED",
+           "isin": "INE398B01018",
+           "isinDescription": "UMIYA BUILDCON LIMITED EQ",
+           "units": 3982,
+           "lastTradedPrice": "1659.74"
+          },
+          {
+           "issuerName": "NINtec Systems Limited",
+           "isin": "INE395U01014",
+           "isinDescription": "NINTEC SYSTEMS LIMITED EQ",
+           "units": 1345,
+           "lastTradedPrice": "427.62"
+          },
+          {
+           "issuerName": "Enviro Infra Engineers Limited",
+           "isin": "INE0LLY01014",
+           "isinDescription": "ENVIRO INFRA ENGINEERS LIMITED EQ",
+           "units": 1276,
+           "lastTradedPrice": "2023.46"
+          },
+          {
+           "issuerName": "Adroit Industries (India) Limited",
+           "isin": "INE505M01015",
+           "isinDescription": "ADROIT INDUSTRIES (INDIA) LIMITED EQ",
+           "units": 1553,
+           "lastTradedPrice": "3184.52"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE398B01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE395U01014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0LLY01014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE505M01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

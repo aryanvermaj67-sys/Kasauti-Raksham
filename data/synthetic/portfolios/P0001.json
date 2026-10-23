@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0001",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0001",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Indogulf Cropsciences Limited",
+   "isin": "INE05J901018",
+   "quantity": 1638,
+   "value_inr": 6724903.42
+  },
+  {
+   "instrument_name": "Dynacons Systems & Solutions Limited",
+   "isin": "INE417B01040",
+   "quantity": 4474,
+   "value_inr": 19103205.06
+  }
+ ],
+ "portfolio_total_inr": 25828108.48,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0001",
+      "maskedDematId": "XXXXXXXXXXXXX6130",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0001",
+          "dob": "1969-02-15",
+          "mobile": 1000000001,
+          "nominee": "REGISTERED",
+          "dematId": "12081992232376130",
+          "email": "synthetic0001@example.invalid",
+          "pan": "ZZZPZ0001Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1711255.52,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Commercial Syn Bags Limited",
+           "isin": "INE073V01015",
+           "isinDescription": "COMMERCIAL SYN BAGS LIMITED EQ",
+           "units": 722,
+           "lastTradedPrice": "2370.16"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0001",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0001",
+          "dob": "1983-05-10",
+          "mobile": 1000000001,
+          "nominee": "REGISTERED",
+          "dematId": "IN3089349278910000",
+          "email": "synthetic0001@example.invalid",
+          "pan": "ZZZPZ0001Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 2361786.3,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Alfred Herbert India Limited",
+           "isin": "INE782D01027",
+           "isinDescription": "ALFRED HERBERT INDIA LIMITED EQ",
+           "units": 270,
+           "lastTradedPrice": "138.59"
+          },
+          {
+           "issuerName": "Kilburn Engineering Limited",
+           "isin": "INE338F01015",
+           "isinDescription": "KILBURN ENGINEERING LIMITED EQ",
+           "units": 1801,
+           "lastTradedPrice": "945.99"
+          },
+          {
+           "issuerName": "IVP Limited",
+           "isin": "INE043C01018",
+           "isinDescription": "IVP LIMITED EQ",
+           "units": 4941,
+           "lastTradedPrice": "125.61"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE05J901018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE417B01040",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

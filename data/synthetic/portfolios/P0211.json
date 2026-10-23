@@ -1,0 +1,169 @@
+{
+ "mock": true,
+ "case_id": "P0211",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0211",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Antarctica Limited",
+   "isin": "INE414B01021",
+   "quantity": 2425,
+   "value_inr": 22773384.53
+  },
+  {
+   "instrument_name": "Paushak Limited",
+   "isin": "INE111F01024",
+   "quantity": 3300,
+   "value_inr": 2965110.35
+  },
+  {
+   "instrument_name": "MAS Financial Services Limited",
+   "isin": "INE348L01012",
+   "quantity": 3377,
+   "value_inr": 5374698.79
+  }
+ ],
+ "portfolio_total_inr": 31113193.67,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0211",
+      "maskedDematId": "XXXXXXXXXXXXX1940",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0211",
+          "dob": "1995-01-17",
+          "mobile": 1000000211,
+          "nominee": "REGISTERED",
+          "dematId": "12088427612711940",
+          "email": "synthetic0211@example.invalid",
+          "pan": "ZZZPZ0211Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 281175.58,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Scoda Tubes Limited",
+           "isin": "INE090501011",
+           "isinDescription": "SCODA TUBES LIMITED EQ",
+           "units": 1054,
+           "lastTradedPrice": "266.77"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0211",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0211",
+          "dob": "1982-04-11",
+          "mobile": 1000000211,
+          "nominee": "REGISTERED",
+          "dematId": "IN3075163797440000",
+          "email": "synthetic0211@example.invalid",
+          "pan": "ZZZPZ0211Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 2912691.7,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "DCW Limited",
+           "isin": "INE500A01029",
+           "isinDescription": "DCW LIMITED EQ",
+           "units": 3630,
+           "lastTradedPrice": "238.06"
+          },
+          {
+           "issuerName": "Bombay Dyeing & Mfg Company Limited",
+           "isin": "INE032A01023",
+           "isinDescription": "BOMBAY DYEING & MFG COMPANY LIMITED EQ",
+           "units": 3547,
+           "lastTradedPrice": "281.85"
+          },
+          {
+           "issuerName": "Bajaj Consumer Care Limited",
+           "isin": "INE933K01021",
+           "isinDescription": "BAJAJ CONSUMER CARE LIMITED EQ",
+           "units": 467,
+           "lastTradedPrice": "2245.85"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE414B01021",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE111F01024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE348L01012",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

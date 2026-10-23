@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0133",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0133",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Eureka Forbes Limited",
+   "isin": "INE0KCE01017",
+   "quantity": 762,
+   "value_inr": 3199378.38
+  },
+  {
+   "instrument_name": "Dr Agarwals Eye Hospital Limited",
+   "isin": "INE934C01018",
+   "quantity": 4671,
+   "value_inr": 46936787.8
+  },
+  {
+   "instrument_name": "Kanohar Electricals Limited",
+   "isin": "INE877D01025",
+   "quantity": 642,
+   "value_inr": 5100273.24
+  },
+  {
+   "instrument_name": "Orient Cables (India) Limited",
+   "isin": "INE0J1N01028",
+   "quantity": 3962,
+   "value_inr": 4077889.44
+  }
+ ],
+ "portfolio_total_inr": 59314328.86,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0133",
+      "maskedDematId": "XXXXXXXXXXXXX2450",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0133",
+          "dob": "1994-07-10",
+          "mobile": 1000000133,
+          "nominee": "REGISTERED",
+          "dematId": "12087958338122450",
+          "email": "synthetic0133@example.invalid",
+          "pan": "ZZZPZ0133Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1745391.48,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Eureka Forbes Limited",
+           "isin": "INE0KCE01017",
+           "isinDescription": "EUREKA FORBES LIMITED EQ",
+           "units": 762,
+           "lastTradedPrice": "2290.54"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0133",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0133",
+          "dob": "1979-03-15",
+          "mobile": 1000000133,
+          "nominee": "REGISTERED",
+          "dematId": "IN3054718437320000",
+          "email": "synthetic0133@example.invalid",
+          "pan": "ZZZPZ0133Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 21824771.07,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Dr Agarwals Eye Hospital Limited",
+           "isin": "INE934C01018",
+           "isinDescription": "DR AGARWALS EYE HOSPITAL LIMITED EQ",
+           "units": 4671,
+           "lastTradedPrice": "3673.17"
+          },
+          {
+           "issuerName": "Kanohar Electricals Limited",
+           "isin": "INE877D01025",
+           "isinDescription": "KANOHAR ELECTRICALS LIMITED EQ",
+           "units": 642,
+           "lastTradedPrice": "2899.85"
+          },
+          {
+           "issuerName": "Orient Cables (India) Limited",
+           "isin": "INE0J1N01028",
+           "isinDescription": "ORIENT CABLES (INDIA) LIMITED EQ",
+           "units": 3962,
+           "lastTradedPrice": "708.15"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0KCE01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE934C01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE877D01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0J1N01028",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

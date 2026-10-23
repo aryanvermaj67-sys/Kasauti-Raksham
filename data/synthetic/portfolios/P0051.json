@@ -1,0 +1,139 @@
+{
+ "mock": true,
+ "case_id": "P0051",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0051",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Patel Retail Limited",
+   "isin": "INE0R8B01010",
+   "quantity": 2295,
+   "value_inr": 14748498.98
+  },
+  {
+   "instrument_name": "Mastek Limited",
+   "isin": "INE759A01021",
+   "quantity": 1852,
+   "value_inr": 18075277.28
+  },
+  {
+   "instrument_name": "GeeCee Ventures Limited",
+   "isin": "INE916G01016",
+   "quantity": 2448,
+   "value_inr": 11698596.23
+  },
+  {
+   "instrument_name": "Shoppers Stop Limited",
+   "isin": "INE498B01024",
+   "quantity": 1708,
+   "value_inr": 5878317.47
+  }
+ ],
+ "portfolio_total_inr": 50400689.96,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0051",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0051",
+          "dob": "1997-06-12",
+          "mobile": 1000000051,
+          "nominee": "REGISTERED",
+          "dematId": "IN3095047247610000",
+          "email": "synthetic0051@example.invalid",
+          "pan": "ZZZPZ0051Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 25337915.44,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Wakefit Innovations Limited",
+           "isin": "INE0E7301029",
+           "isinDescription": "WAKEFIT INNOVATIONS LIMITED EQ",
+           "units": 4377,
+           "lastTradedPrice": "1382.46"
+          },
+          {
+           "issuerName": "MM Forgings Limited",
+           "isin": "INE227C01017",
+           "isinDescription": "MM FORGINGS LIMITED EQ",
+           "units": 2912,
+           "lastTradedPrice": "2709.96"
+          },
+          {
+           "issuerName": "Southern Petrochemicals Industries Corporation  Limited",
+           "isin": "INE147A01011",
+           "isinDescription": "SOUTHERN PETROCHEMICALS INDUSTRIES CORPORATION  LIMITED EQ",
+           "units": 2175,
+           "lastTradedPrice": "2448.10"
+          },
+          {
+           "issuerName": "TREJHARA SOLUTIONS LIMITED",
+           "isin": "INE00CA01015",
+           "isinDescription": "TREJHARA SOLUTIONS LIMITED EQ",
+           "units": 1585,
+           "lastTradedPrice": "3830.20"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0R8B01010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE759A01021",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE916G01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE498B01024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0096",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0096",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Steel Authority of India Limited",
+   "isin": "INE114A01011",
+   "quantity": 4360,
+   "value_inr": 8986940.31
+  },
+  {
+   "instrument_name": "Rushil Decor Limited",
+   "isin": "INE573K01025",
+   "quantity": 43,
+   "value_inr": 172588.94
+  }
+ ],
+ "portfolio_total_inr": 9159529.25,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0096",
+      "maskedDematId": "XXXXXXXXXXXXX2070",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0096",
+          "dob": "1991-09-19",
+          "mobile": 1000000096,
+          "nominee": "REGISTERED",
+          "dematId": "12085994653022070",
+          "email": "synthetic0096@example.invalid",
+          "pan": "ZZZPZ0096Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 14091182.25,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Expleo Solutions Limited",
+           "isin": "INE201K01015",
+           "isinDescription": "EXPLEO SOLUTIONS LIMITED EQ",
+           "units": 3920,
+           "lastTradedPrice": "1545.60"
+          },
+          {
+           "issuerName": "Digicontent Limited",
+           "isin": "INE03JI01017",
+           "isinDescription": "DIGICONTENT LIMITED EQ",
+           "units": 2649,
+           "lastTradedPrice": "3032.25"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0096",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0096",
+          "dob": "1972-03-15",
+          "mobile": 1000000096,
+          "nominee": "REGISTERED",
+          "dematId": "IN3075460354530000",
+          "email": "synthetic0096@example.invalid",
+          "pan": "ZZZPZ0096Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12338773.37,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Summit Securities Limited",
+           "isin": "INE519C01017",
+           "isinDescription": "SUMMIT SECURITIES LIMITED EQ",
+           "units": 319,
+           "lastTradedPrice": "2144.45"
+          },
+          {
+           "issuerName": "BPL Limited",
+           "isin": "INE110A01019",
+           "isinDescription": "BPL LIMITED EQ",
+           "units": 3066,
+           "lastTradedPrice": "3801.27"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE114A01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE573K01025",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

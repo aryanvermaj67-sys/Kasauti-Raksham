@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0276",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0276",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Adroit Industries (India) Limited",
+   "isin": "INE505M01015",
+   "quantity": 3891,
+   "value_inr": 10930319.83
+  },
+  {
+   "instrument_name": "Solex Energy Limited",
+   "isin": "INE880Y01017",
+   "quantity": 4010,
+   "value_inr": 36552267.15
+  }
+ ],
+ "portfolio_total_inr": 47482586.98,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0276",
+      "maskedDematId": "XXXXXXXXXXXXX2780",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0276",
+          "dob": "1976-06-18",
+          "mobile": 1000000276,
+          "nominee": "REGISTERED",
+          "dematId": "12085953629622780",
+          "email": "synthetic0276@example.invalid",
+          "pan": "ZZZPZ0276Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11704481.7,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Mangalore Refinery and Petrochemicals Limited",
+           "isin": "INE103A01014",
+           "isinDescription": "MANGALORE REFINERY AND PETROCHEMICALS LIMITED EQ",
+           "units": 2171,
+           "lastTradedPrice": "3527.40"
+          },
+          {
+           "issuerName": "Sharda Motor Industries Limited",
+           "isin": "INE597I01028",
+           "isinDescription": "SHARDA MOTOR INDUSTRIES LIMITED EQ",
+           "units": 1408,
+           "lastTradedPrice": "2723.23"
+          },
+          {
+           "issuerName": "GNG Electronics Limited",
+           "isin": "INE18JU01028",
+           "isinDescription": "GNG ELECTRONICS LIMITED EQ",
+           "units": 89,
+           "lastTradedPrice": "2384.14"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0276",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0276",
+          "dob": "1968-08-10",
+          "mobile": 1000000276,
+          "nominee": "REGISTERED",
+          "dematId": "IN3073844401860000",
+          "email": "synthetic0276@example.invalid",
+          "pan": "ZZZPZ0276Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 130771.8,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Goodluck India Limited",
+           "isin": "INE127I01024",
+           "isinDescription": "GOODLUCK INDIA LIMITED EQ",
+           "units": 180,
+           "lastTradedPrice": "726.51"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE505M01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE880Y01017",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

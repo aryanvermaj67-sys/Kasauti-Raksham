@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0196",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0196",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "G R Infraprojects Limited",
+   "isin": "INE201P01022",
+   "quantity": 2413,
+   "value_inr": 9781189.73
+  },
+  {
+   "instrument_name": "S.J.S. Enterprises Limited",
+   "isin": "INE284S01014",
+   "quantity": 3207,
+   "value_inr": 27234474.51
+  }
+ ],
+ "portfolio_total_inr": 37015664.24,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0196",
+      "maskedDematId": "XXXXXXXXXXXXX2900",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0196",
+          "dob": "1971-08-14",
+          "mobile": 1000000196,
+          "nominee": "REGISTERED",
+          "dematId": "12089723117392900",
+          "email": "synthetic0196@example.invalid",
+          "pan": "ZZZPZ0196Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 19635306.87,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Ahluwalia Contracts (India) Limited",
+           "isin": "INE758C01029",
+           "isinDescription": "AHLUWALIA CONTRACTS (INDIA) LIMITED EQ",
+           "units": 4824,
+           "lastTradedPrice": "3638.10"
+          },
+          {
+           "issuerName": "Lancer Container Lines Limited",
+           "isin": "INE359U01028",
+           "isinDescription": "LANCER CONTAINER LINES LIMITED EQ",
+           "units": 3847,
+           "lastTradedPrice": "542.01"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0196",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0196",
+          "dob": "1980-01-10",
+          "mobile": 1000000196,
+          "nominee": "REGISTERED",
+          "dematId": "IN3020081100180000",
+          "email": "synthetic0196@example.invalid",
+          "pan": "ZZZPZ0196Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 14182751.17,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Salzer Electronics Limited",
+           "isin": "INE457F01013",
+           "isinDescription": "SALZER ELECTRONICS LIMITED EQ",
+           "units": 1911,
+           "lastTradedPrice": "2040.39"
+          },
+          {
+           "issuerName": "Fermenta Biotech Limited",
+           "isin": "INE225B01021",
+           "isinDescription": "FERMENTA BIOTECH LIMITED EQ",
+           "units": 2788,
+           "lastTradedPrice": "3688.51"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE201P01022",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE284S01014",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

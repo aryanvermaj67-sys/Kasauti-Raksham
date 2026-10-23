@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0213",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0213",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Navkar Urbanstructure Limited",
+   "isin": "INE268H01044",
+   "quantity": 3439,
+   "value_inr": 5240056.59
+  },
+  {
+   "instrument_name": "Grand Oak Canyons Distillery Limited",
+   "isin": "INE926B01016",
+   "quantity": 868,
+   "value_inr": 1682072.47
+  },
+  {
+   "instrument_name": "Sona BLW Precision Forgings Limited",
+   "isin": "INE073K01018",
+   "quantity": 355,
+   "value_inr": 870860.73
+  },
+  {
+   "instrument_name": "Simplex Realty Limited",
+   "isin": "INE167H01014",
+   "quantity": 40,
+   "value_inr": 162054.84
+  }
+ ],
+ "portfolio_total_inr": 7955044.63,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0213",
+      "maskedDematId": "XXXXXXXXXXXXX1020",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0213",
+          "dob": "1982-06-10",
+          "mobile": 1000000213,
+          "nominee": "REGISTERED",
+          "dematId": "12087923246911020",
+          "email": "synthetic0213@example.invalid",
+          "pan": "ZZZPZ0213Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6255947.86,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Navkar Urbanstructure Limited",
+           "isin": "INE268H01044",
+           "isinDescription": "NAVKAR URBANSTRUCTURE LIMITED EQ",
+           "units": 3439,
+           "lastTradedPrice": "1327.90"
+          },
+          {
+           "issuerName": "Grand Oak Canyons Distillery Limited",
+           "isin": "INE926B01016",
+           "isinDescription": "GRAND OAK CANYONS DISTILLERY LIMITED EQ",
+           "units": 868,
+           "lastTradedPrice": "1828.12"
+          },
+          {
+           "issuerName": "Simplex Realty Limited",
+           "isin": "INE167H01014",
+           "isinDescription": "SIMPLEX REALTY LIMITED EQ",
+           "units": 40,
+           "lastTradedPrice": "2562.29"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0213",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0213",
+          "dob": "1957-04-14",
+          "mobile": 1000000213,
+          "nominee": "REGISTERED",
+          "dematId": "IN3051889214690000",
+          "email": "synthetic0213@example.invalid",
+          "pan": "ZZZPZ0213Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 707799.0,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Sona BLW Precision Forgings Limited",
+           "isin": "INE073K01018",
+           "isinDescription": "SONA BLW PRECISION FORGINGS LIMITED EQ",
+           "units": 355,
+           "lastTradedPrice": "1993.80"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE268H01044",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE926B01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE073K01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE167H01014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

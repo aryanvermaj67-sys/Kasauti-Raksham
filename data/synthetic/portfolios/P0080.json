@@ -1,0 +1,140 @@
+{
+ "mock": true,
+ "case_id": "P0080",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0080",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Vesuvius India Limited",
+   "isin": "INE386A01023",
+   "quantity": 88,
+   "value_inr": 951784.03
+  },
+  {
+   "instrument_name": "GTL Infrastructure Limited",
+   "isin": "INE221H01019",
+   "quantity": 4446,
+   "value_inr": 17379269.92
+  },
+  {
+   "instrument_name": "The Indian Wood Products Company Limited",
+   "isin": "INE586E01020",
+   "quantity": 21,
+   "value_inr": 130225.99
+  },
+  {
+   "instrument_name": "EMS Limited",
+   "isin": "INE0OV601013",
+   "quantity": 3092,
+   "value_inr": 25241397.79
+  },
+  {
+   "instrument_name": "Allied Blenders and Distillers Limited",
+   "isin": "INE552Z01027",
+   "quantity": 2529,
+   "value_inr": 1914034.29
+  },
+  {
+   "instrument_name": "Ramco Systems Limited",
+   "isin": "INE246B01019",
+   "quantity": 4350,
+   "value_inr": 50452422.99
+  }
+ ],
+ "portfolio_total_inr": 96069135.01,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0080",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0080",
+          "dob": "1951-09-12",
+          "mobile": 1000000080,
+          "nominee": "REGISTERED",
+          "dematId": "IN3099545877100000",
+          "email": "synthetic0080@example.invalid",
+          "pan": "ZZZPZ0080Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 334834.72,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Vesuvius India Limited",
+           "isin": "INE386A01023",
+           "isinDescription": "VESUVIUS INDIA LIMITED EQ",
+           "units": 88,
+           "lastTradedPrice": "3804.94"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE386A01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE221H01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE586E01020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0OV601013",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE552Z01027",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE246B01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

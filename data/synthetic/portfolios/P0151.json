@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0151",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0151",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Vikas EcoTech Limited",
+   "isin": "INE806A01020",
+   "quantity": 2616,
+   "value_inr": 11768845.16
+  },
+  {
+   "instrument_name": "Aurobindo Pharma Limited",
+   "isin": "INE406A01037",
+   "quantity": 3336,
+   "value_inr": 14092146.82
+  }
+ ],
+ "portfolio_total_inr": 25860991.98,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0151",
+      "maskedDematId": "XXXXXXXXXXXXX5790",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0151",
+          "dob": "1945-02-10",
+          "mobile": 1000000151,
+          "nominee": "REGISTERED",
+          "dematId": "12082465681175790",
+          "email": "synthetic0151@example.invalid",
+          "pan": "ZZZPZ0151Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1347883.2,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Delta Corp Limited",
+           "isin": "INE124G01033",
+           "isinDescription": "DELTA CORP LIMITED EQ",
+           "units": 2952,
+           "lastTradedPrice": "456.60"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0151",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0151",
+          "dob": "1987-07-12",
+          "mobile": 1000000151,
+          "nominee": "REGISTERED",
+          "dematId": "IN3090955352610000",
+          "email": "synthetic0151@example.invalid",
+          "pan": "ZZZPZ0151Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 19108181.27,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Likhitha Infrastructure Limited",
+           "isin": "INE060901027",
+           "isinDescription": "LIKHITHA INFRASTRUCTURE LIMITED EQ",
+           "units": 2321,
+           "lastTradedPrice": "3465.40"
+          },
+          {
+           "issuerName": "Indef Manufacturing Limited",
+           "isin": "INE0O9T01021",
+           "isinDescription": "INDEF MANUFACTURING LIMITED EQ",
+           "units": 1937,
+           "lastTradedPrice": "1738.23"
+          },
+          {
+           "issuerName": "Orkla India Limited",
+           "isin": "INE16NZ01023",
+           "isinDescription": "ORKLA INDIA LIMITED EQ",
+           "units": 4844,
+           "lastTradedPrice": "1589.19"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE806A01020",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE406A01037",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

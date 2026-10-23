@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0207",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0207",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Hindustan Zinc Limited",
+   "isin": "INE267A01025",
+   "quantity": 2472,
+   "value_inr": 2719903.88
+  },
+  {
+   "instrument_name": "Technocraft Ventures Limited",
+   "isin": "INE1D0W01018",
+   "quantity": 1017,
+   "value_inr": 5603538.09
+  },
+  {
+   "instrument_name": "Krishana Phoschem Limited",
+   "isin": "INE506W01020",
+   "quantity": 45680,
+   "value_inr": 231317198.4
+  },
+  {
+   "instrument_name": "Fiberweb (India) Limited",
+   "isin": "INE296C01020",
+   "quantity": 4145,
+   "value_inr": 45163811.2
+  },
+  {
+   "instrument_name": "Usha Martin Education & Solutions Limited",
+   "isin": "INE240C01028",
+   "quantity": 2617,
+   "value_inr": 20532683.46
+  }
+ ],
+ "portfolio_total_inr": 305337135.03,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0207",
+      "maskedDematId": "XXXXXXXXXXXXX7280",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0207",
+          "dob": "1956-07-18",
+          "mobile": 1000000207,
+          "nominee": "REGISTERED",
+          "dematId": "12088387755147280",
+          "email": "synthetic0207@example.invalid",
+          "pan": "ZZZPZ0207Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 18250576.08,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Krishana Phoschem Limited",
+           "isin": "INE506W01020",
+           "isinDescription": "KRISHANA PHOSCHEM LIMITED EQ",
+           "units": 4568,
+           "lastTradedPrice": "3995.31"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0207",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0207",
+          "dob": "1993-07-18",
+          "mobile": 1000000207,
+          "nominee": "REGISTERED",
+          "dematId": "IN3083156163920000",
+          "email": "synthetic0207@example.invalid",
+          "pan": "ZZZPZ0207Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 7362399.14,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Hindustan Zinc Limited",
+           "isin": "INE267A01025",
+           "isinDescription": "HINDUSTAN ZINC LIMITED EQ",
+           "units": 2472,
+           "lastTradedPrice": "377.07"
+          },
+          {
+           "issuerName": "Technocraft Ventures Limited",
+           "isin": "INE1D0W01018",
+           "isinDescription": "TECHNOCRAFT VENTURES LIMITED EQ",
+           "units": 1017,
+           "lastTradedPrice": "3325.38"
+          },
+          {
+           "issuerName": "Ashoka Buildcon Limited",
+           "isin": "INE442H01029",
+           "isinDescription": "ASHOKA BUILDCON LIMITED EQ",
+           "units": 3548,
+           "lastTradedPrice": "859.18"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE267A01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE1D0W01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE506W01020",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE296C01020",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE240C01028",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0102",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0102",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "One Point One Solutions Limited",
+   "isin": "INE840Y01029",
+   "quantity": 944,
+   "value_inr": 550951.25
+  },
+  {
+   "instrument_name": "Automotive Axles Limited",
+   "isin": "INE449A01011",
+   "quantity": 1826,
+   "value_inr": 139023.19
+  },
+  {
+   "instrument_name": "Igarashi Motors India Limited",
+   "isin": "INE188B01013",
+   "quantity": 5838,
+   "value_inr": 47209725.3
+  },
+  {
+   "instrument_name": "MRF Limited",
+   "isin": "INE883A01011",
+   "quantity": 3072,
+   "value_inr": 10509062.88
+  },
+  {
+   "instrument_name": "Indosolar Limited",
+   "isin": "INE866K01023",
+   "quantity": 385,
+   "value_inr": 2527567.59
+  }
+ ],
+ "portfolio_total_inr": 60936330.21,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0102",
+      "maskedDematId": "XXXXXXXXXXXXX5830",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0102",
+          "dob": "1998-02-17",
+          "mobile": 1000000102,
+          "nominee": "REGISTERED",
+          "dematId": "12087997645325830",
+          "email": "synthetic0102@example.invalid",
+          "pan": "ZZZPZ0102Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10137104.3,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "One Point One Solutions Limited",
+           "isin": "INE840Y01029",
+           "isinDescription": "ONE POINT ONE SOLUTIONS LIMITED EQ",
+           "units": 944,
+           "lastTradedPrice": "407.80"
+          },
+          {
+           "issuerName": "Automotive Axles Limited",
+           "isin": "INE449A01011",
+           "isinDescription": "AUTOMOTIVE AXLES LIMITED EQ",
+           "units": 1826,
+           "lastTradedPrice": "28.74"
+          },
+          {
+           "issuerName": "Igarashi Motors India Limited",
+           "isin": "INE188B01013",
+           "isinDescription": "IGARASHI MOTORS INDIA LIMITED EQ",
+           "units": 2919,
+           "lastTradedPrice": "3322.94"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0102",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0102",
+          "dob": "1976-01-18",
+          "mobile": 1000000102,
+          "nominee": "REGISTERED",
+          "dematId": "IN3031655121040000",
+          "email": "synthetic0102@example.invalid",
+          "pan": "ZZZPZ0102Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5281743.81,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Shanthi Gears Limited",
+           "isin": "INE631A01022",
+           "isinDescription": "SHANTHI GEARS LIMITED EQ",
+           "units": 2401,
+           "lastTradedPrice": "2199.81"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE840Y01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE449A01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE188B01013",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE883A01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE866K01023",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

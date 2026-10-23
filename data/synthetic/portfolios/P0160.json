@@ -1,0 +1,140 @@
+{
+ "mock": true,
+ "case_id": "P0160",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0160",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Atal Realtech Limited",
+   "isin": "INE0ALR01029",
+   "quantity": 1816,
+   "value_inr": 554731.75
+  },
+  {
+   "instrument_name": "Dharmaj Crop Guard Limited",
+   "isin": "INE00OQ01016",
+   "quantity": 4851,
+   "value_inr": 2061407.43
+  },
+  {
+   "instrument_name": "Advanced Enzyme Technologies Limited",
+   "isin": "INE837H01020",
+   "quantity": 881,
+   "value_inr": 1051265.69
+  },
+  {
+   "instrument_name": "Gaudium IVF and Women Health Limited",
+   "isin": "INE0P8B01020",
+   "quantity": 4884,
+   "value_inr": 20886364.72
+  },
+  {
+   "instrument_name": "Manaksia Limited",
+   "isin": "INE015D01022",
+   "quantity": 1670,
+   "value_inr": 4986866.15
+  },
+  {
+   "instrument_name": "Country Club Hospitality & Holidays Limited",
+   "isin": "INE652F01027",
+   "quantity": 3303,
+   "value_inr": 5756890.71
+  }
+ ],
+ "portfolio_total_inr": 35297526.45,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0160",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0160",
+          "dob": "1953-02-19",
+          "mobile": 1000000160,
+          "nominee": "REGISTERED",
+          "dematId": "IN3034996100040000",
+          "email": "synthetic0160@example.invalid",
+          "pan": "ZZZPZ0160Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 492462.88,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Atal Realtech Limited",
+           "isin": "INE0ALR01029",
+           "isinDescription": "ATAL REALTECH LIMITED EQ",
+           "units": 1816,
+           "lastTradedPrice": "271.18"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0ALR01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE00OQ01016",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE837H01020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0P8B01020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE015D01022",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE652F01027",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

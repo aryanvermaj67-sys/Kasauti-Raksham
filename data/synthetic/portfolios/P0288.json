@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0288",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0288",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Acme Solar Holdings Limited",
+   "isin": "INE622W01025",
+   "quantity": 475,
+   "value_inr": 291237.87
+  },
+  {
+   "instrument_name": "Indegene Limited",
+   "isin": "INE065X01017",
+   "quantity": 1048,
+   "value_inr": 2970367.59
+  },
+  {
+   "instrument_name": "RBL Bank Limited",
+   "isin": "INE976G01028",
+   "quantity": 2325,
+   "value_inr": 782060.83
+  },
+  {
+   "instrument_name": "Uniparts India Limited",
+   "isin": "INE244O01017",
+   "quantity": 2874,
+   "value_inr": 14610840.0
+  }
+ ],
+ "portfolio_total_inr": 18654506.29,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0288",
+      "maskedDematId": "XXXXXXXXXXXXX1940",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0288",
+          "dob": "1960-09-14",
+          "mobile": 1000000288,
+          "nominee": "REGISTERED",
+          "dematId": "12088209917401940",
+          "email": "synthetic0288@example.invalid",
+          "pan": "ZZZPZ0288Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 7102572.13,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Acme Solar Holdings Limited",
+           "isin": "INE622W01025",
+           "isinDescription": "ACME SOLAR HOLDINGS LIMITED EQ",
+           "units": 475,
+           "lastTradedPrice": "324.91"
+          },
+          {
+           "issuerName": "Uniparts India Limited",
+           "isin": "INE244O01017",
+           "isinDescription": "UNIPARTS INDIA LIMITED EQ",
+           "units": 2874,
+           "lastTradedPrice": "2417.62"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0288",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0288",
+          "dob": "1967-07-19",
+          "mobile": 1000000288,
+          "nominee": "REGISTERED",
+          "dematId": "IN3014483008510000",
+          "email": "synthetic0288@example.invalid",
+          "pan": "ZZZPZ0288Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 2301241.6,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Indegene Limited",
+           "isin": "INE065X01017",
+           "isinDescription": "INDEGENE LIMITED EQ",
+           "units": 1048,
+           "lastTradedPrice": "1765.45"
+          },
+          {
+           "issuerName": "RBL Bank Limited",
+           "isin": "INE976G01028",
+           "isinDescription": "RBL BANK LIMITED EQ",
+           "units": 2325,
+           "lastTradedPrice": "194.00"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE622W01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE065X01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE976G01028",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE244O01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

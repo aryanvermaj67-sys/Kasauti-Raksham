@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0183",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0183",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Anand Rathi Share and Stock Brokers Limited",
+   "isin": "INE549H01021",
+   "quantity": 3344,
+   "value_inr": 31345816.43
+  },
+  {
+   "instrument_name": "Seshaasai Technologies Limited",
+   "isin": "INE04VU01023",
+   "quantity": 749,
+   "value_inr": 2980850.03
+  },
+  {
+   "instrument_name": "Agro Phos India Limited",
+   "isin": "INE740V01019",
+   "quantity": 1161,
+   "value_inr": 3198035.36
+  },
+  {
+   "instrument_name": "Avance Technologies Limited",
+   "isin": "INE758A01072",
+   "quantity": 4687,
+   "value_inr": 19809735.04
+  }
+ ],
+ "portfolio_total_inr": 57334436.86,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0183",
+      "maskedDematId": "XXXXXXXXXXXXX7210",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0183",
+          "dob": "1958-05-17",
+          "mobile": 1000000183,
+          "nominee": "REGISTERED",
+          "dematId": "12082894373237210",
+          "email": "synthetic0183@example.invalid",
+          "pan": "ZZZPZ0183Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12002151.04,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Anand Rathi Share and Stock Brokers Limited",
+           "isin": "INE549H01021",
+           "isinDescription": "ANAND RATHI SHARE AND STOCK BROKERS LIMITED EQ",
+           "units": 3344,
+           "lastTradedPrice": "3589.16"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0183",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0183",
+          "dob": "1982-01-17",
+          "mobile": 1000000183,
+          "nominee": "REGISTERED",
+          "dematId": "IN3070489269710000",
+          "email": "synthetic0183@example.invalid",
+          "pan": "ZZZPZ0183Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16106959.21,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Seshaasai Technologies Limited",
+           "isin": "INE04VU01023",
+           "isinDescription": "SESHAASAI TECHNOLOGIES LIMITED EQ",
+           "units": 749,
+           "lastTradedPrice": "1599.64"
+          },
+          {
+           "issuerName": "Agro Phos India Limited",
+           "isin": "INE740V01019",
+           "isinDescription": "AGRO PHOS INDIA LIMITED EQ",
+           "units": 1161,
+           "lastTradedPrice": "959.44"
+          },
+          {
+           "issuerName": "Avance Technologies Limited",
+           "isin": "INE758A01072",
+           "isinDescription": "AVANCE TECHNOLOGIES LIMITED EQ",
+           "units": 4687,
+           "lastTradedPrice": "2943.23"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE549H01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE04VU01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE740V01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE758A01072",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

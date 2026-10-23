@@ -1,0 +1,169 @@
+{
+ "mock": true,
+ "case_id": "P0266",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0266",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "PVR INOX Limited",
+   "isin": "INE191H01014",
+   "quantity": 1312,
+   "value_inr": 11299545.59
+  },
+  {
+   "instrument_name": "Medi Assist Healthcare Services Limited",
+   "isin": "INE456Z01021",
+   "quantity": 1679,
+   "value_inr": 1678090.75
+  },
+  {
+   "instrument_name": "Thyrocare Technologies Limited",
+   "isin": "INE594H01019",
+   "quantity": 220,
+   "value_inr": 531952.28
+  }
+ ],
+ "portfolio_total_inr": 13509588.62,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0266",
+      "maskedDematId": "XXXXXXXXXXXXX9260",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0266",
+          "dob": "1957-09-13",
+          "mobile": 1000000266,
+          "nominee": "REGISTERED",
+          "dematId": "12084273699459260",
+          "email": "synthetic0266@example.invalid",
+          "pan": "ZZZPZ0266Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 25430537.62,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Rupa & Company Limited",
+           "isin": "INE895B01021",
+           "isinDescription": "RUPA & COMPANY LIMITED EQ",
+           "units": 3593,
+           "lastTradedPrice": "939.26"
+          },
+          {
+           "issuerName": "Polyplex Corporation Limited",
+           "isin": "INE633B01018",
+           "isinDescription": "POLYPLEX CORPORATION LIMITED EQ",
+           "units": 4736,
+           "lastTradedPrice": "3141.44"
+          },
+          {
+           "issuerName": "Gem Aromatics Limited",
+           "isin": "INE06XZ01023",
+           "isinDescription": "GEM AROMATICS LIMITED EQ",
+           "units": 2141,
+           "lastTradedPrice": "3352.60"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0266",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0266",
+          "dob": "1950-03-10",
+          "mobile": 1000000266,
+          "nominee": "REGISTERED",
+          "dematId": "IN3055172269890000",
+          "email": "synthetic0266@example.invalid",
+          "pan": "ZZZPZ0266Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 2116125.36,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Dev Information Technology Limited",
+           "isin": "INE060X01034",
+           "isinDescription": "DEV INFORMATION TECHNOLOGY LIMITED EQ",
+           "units": 1044,
+           "lastTradedPrice": "2026.94"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE191H01014",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE456Z01021",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE594H01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

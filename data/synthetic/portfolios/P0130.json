@@ -1,0 +1,92 @@
+{
+ "mock": true,
+ "case_id": "P0130",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0130",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "360 ONE WAM LIMITED",
+   "isin": "INE466L01038",
+   "quantity": 528,
+   "value_inr": 1957276.59
+  },
+  {
+   "instrument_name": "TATA CONSUMER PRODUCTS LIMITED",
+   "isin": "INE192A01025",
+   "quantity": 4425,
+   "value_inr": 28601759.0
+  },
+  {
+   "instrument_name": "PDS Limited",
+   "isin": "INE111Q01021",
+   "quantity": 1565,
+   "value_inr": 3946477.1
+  },
+  {
+   "instrument_name": "Godrej Agrovet Limited",
+   "isin": "INE850D01014",
+   "quantity": 4085,
+   "value_inr": 26842195.03
+  },
+  {
+   "instrument_name": "AGI Greenpac Limited",
+   "isin": "INE415A01038",
+   "quantity": 1272,
+   "value_inr": 8362543.19
+  },
+  {
+   "instrument_name": "Onida Electronics Limited",
+   "isin": "INE831A01028",
+   "quantity": 2652,
+   "value_inr": 10139928.13
+  }
+ ],
+ "portfolio_total_inr": 79850179.04,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE466L01038",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE192A01025",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE111Q01021",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE850D01014",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE415A01038",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE831A01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

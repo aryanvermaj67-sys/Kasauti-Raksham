@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0293",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0293",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Rajratan Global Wire Limited",
+   "isin": "INE451D01029",
+   "quantity": 2392,
+   "value_inr": 25976745.92
+  },
+  {
+   "instrument_name": "Paras Petrofils Limited",
+   "isin": "INE162C01024",
+   "quantity": 4853,
+   "value_inr": 1761743.93
+  },
+  {
+   "instrument_name": "SKM Egg Products Export (India) Limited",
+   "isin": "INE411D01023",
+   "quantity": 4999,
+   "value_inr": 9178629.72
+  },
+  {
+   "instrument_name": "Likhitha Infrastructure Limited",
+   "isin": "INE060901027",
+   "quantity": 2574,
+   "value_inr": 15829920.28
+  }
+ ],
+ "portfolio_total_inr": 52747039.85,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0293",
+      "maskedDematId": "XXXXXXXXXXXXX0180",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0293",
+          "dob": "1991-07-18",
+          "mobile": 1000000293,
+          "nominee": "REGISTERED",
+          "dematId": "12087040026440180",
+          "email": "synthetic0293@example.invalid",
+          "pan": "ZZZPZ0293Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 18496464.05,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Rajratan Global Wire Limited",
+           "isin": "INE451D01029",
+           "isinDescription": "RAJRATAN GLOBAL WIRE LIMITED EQ",
+           "units": 2392,
+           "lastTradedPrice": "3722.63"
+          },
+          {
+           "issuerName": "SKM Egg Products Export (India) Limited",
+           "isin": "INE411D01023",
+           "isinDescription": "SKM EGG PRODUCTS EXPORT (INDIA) LIMITED EQ",
+           "units": 4999,
+           "lastTradedPrice": "861.69"
+          },
+          {
+           "issuerName": "Likhitha Infrastructure Limited",
+           "isin": "INE060901027",
+           "isinDescription": "LIKHITHA INFRASTRUCTURE LIMITED EQ",
+           "units": 2574,
+           "lastTradedPrice": "2052.97"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0293",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0293",
+          "dob": "1978-01-19",
+          "mobile": 1000000293,
+          "nominee": "REGISTERED",
+          "dematId": "IN3041484071420000",
+          "email": "synthetic0293@example.invalid",
+          "pan": "ZZZPZ0293Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 590270.39,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Paras Petrofils Limited",
+           "isin": "INE162C01024",
+           "isinDescription": "PARAS PETROFILS LIMITED EQ",
+           "units": 4853,
+           "lastTradedPrice": "121.63"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE451D01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE162C01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE411D01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE060901027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

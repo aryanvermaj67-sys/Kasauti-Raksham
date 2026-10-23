@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0099",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0099",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Ashoka Metcast Limited",
+   "isin": "INE760Y01011",
+   "quantity": 2817,
+   "value_inr": 2664909.08
+  },
+  {
+   "instrument_name": "Archean Chemical Industries Limited",
+   "isin": "INE128X01021",
+   "quantity": 3293,
+   "value_inr": 13028432.6
+  },
+  {
+   "instrument_name": "Dr Agarwals Eye Hospital Limited",
+   "isin": "INE934C01018",
+   "quantity": 3749,
+   "value_inr": 12240792.94
+  }
+ ],
+ "portfolio_total_inr": 27934134.62,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE760Y01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE128X01021",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE934C01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

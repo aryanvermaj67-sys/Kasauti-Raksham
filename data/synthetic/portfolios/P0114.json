@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0114",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0114",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Arvind Limited",
+   "isin": "INE034A01011",
+   "quantity": 4242,
+   "value_inr": 21810770.97
+  },
+  {
+   "instrument_name": "Delta Manufacturing Limited",
+   "isin": "INE393A01011",
+   "quantity": 4919,
+   "value_inr": 50750351.01
+  },
+  {
+   "instrument_name": "ZF Steering Gear (India) Limited",
+   "isin": "INE116C01012",
+   "quantity": 162,
+   "value_inr": 1254225.49
+  }
+ ],
+ "portfolio_total_inr": 73815347.47,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE034A01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE393A01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE116C01012",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

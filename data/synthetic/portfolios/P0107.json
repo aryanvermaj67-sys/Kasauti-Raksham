@@ -1,0 +1,150 @@
+{
+ "mock": true,
+ "case_id": "P0107",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0107",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "India Tourism Development Corporation Limited",
+   "isin": "INE353K01014",
+   "quantity": 2326,
+   "value_inr": 751366.08
+  },
+  {
+   "instrument_name": "Arihant Foundations & Housing Limited",
+   "isin": "INE413D01011",
+   "quantity": 4244,
+   "value_inr": 25824640.47
+  },
+  {
+   "instrument_name": "Metropolis Healthcare Limited",
+   "isin": "INE112L01020",
+   "quantity": 6162,
+   "value_inr": 17973293.11
+  },
+  {
+   "instrument_name": "CORONA Remedies Limited",
+   "isin": "INE02ZQ01018",
+   "quantity": 369,
+   "value_inr": 1176553.51
+  },
+  {
+   "instrument_name": "Pix Transmissions Limited",
+   "isin": "INE751B01018",
+   "quantity": 1587,
+   "value_inr": 5665953.85
+  }
+ ],
+ "portfolio_total_inr": 51391807.02,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0107",
+      "maskedDematId": "XXXXXXXXXXXXX1270",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0107",
+          "dob": "1972-02-12",
+          "mobile": 1000000107,
+          "nominee": "REGISTERED",
+          "dematId": "12089535877061270",
+          "email": "synthetic0107@example.invalid",
+          "pan": "ZZZPZ0107Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 28105411.73,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "India Tourism Development Corporation Limited",
+           "isin": "INE353K01014",
+           "isinDescription": "INDIA TOURISM DEVELOPMENT CORPORATION LIMITED EQ",
+           "units": 2326,
+           "lastTradedPrice": "118.33"
+          },
+          {
+           "issuerName": "Arihant Foundations & Housing Limited",
+           "isin": "INE413D01011",
+           "isinDescription": "ARIHANT FOUNDATIONS & HOUSING LIMITED EQ",
+           "units": 4244,
+           "lastTradedPrice": "3291.99"
+          },
+          {
+           "issuerName": "Metropolis Healthcare Limited",
+           "isin": "INE112L01020",
+           "isinDescription": "METROPOLIS HEALTHCARE LIMITED EQ",
+           "units": 3081,
+           "lastTradedPrice": "2066.95"
+          },
+          {
+           "issuerName": "Prime Focus Limited",
+           "isin": "INE367G01038",
+           "isinDescription": "PRIME FOCUS LIMITED EQ",
+           "units": 4177,
+           "lastTradedPrice": "1793.32"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE353K01014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE413D01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE112L01020",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE02ZQ01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE751B01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

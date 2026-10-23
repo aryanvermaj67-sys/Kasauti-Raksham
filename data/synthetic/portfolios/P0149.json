@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0149",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0149",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "GANESH HOUSING LIMITED",
+   "isin": "INE460C01014",
+   "quantity": 4374,
+   "value_inr": 17315224.83
+  },
+  {
+   "instrument_name": "Kritika Wires Limited",
+   "isin": "INE00Z501029",
+   "quantity": 4847,
+   "value_inr": 13597633.14
+  },
+  {
+   "instrument_name": "Narayana Hrudayalaya Ltd.",
+   "isin": "INE410P01011",
+   "quantity": 2006,
+   "value_inr": 10543921.22
+  }
+ ],
+ "portfolio_total_inr": 41456779.19,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE460C01014",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE00Z501029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE410P01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

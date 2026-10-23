@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0201",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0201",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Ind-Swift Laboratories Limited",
+   "isin": "INE915B01019",
+   "quantity": 2969,
+   "value_inr": 9436670.92
+  },
+  {
+   "instrument_name": "NIIT Learning Systems Limited",
+   "isin": "INE342G01023",
+   "quantity": 1210,
+   "value_inr": 7083871.54
+  }
+ ],
+ "portfolio_total_inr": 16520542.46,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0201",
+      "maskedDematId": "XXXXXXXXXXXXX5560",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0201",
+          "dob": "1978-07-14",
+          "mobile": 1000000201,
+          "nominee": "REGISTERED",
+          "dematId": "12087167067925560",
+          "email": "synthetic0201@example.invalid",
+          "pan": "ZZZPZ0201Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13572229.98,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Nippon Life India Asset Management Limited",
+           "isin": "INE298J01013",
+           "isinDescription": "NIPPON LIFE INDIA ASSET MANAGEMENT LIMITED EQ",
+           "units": 4702,
+           "lastTradedPrice": "2696.29"
+          },
+          {
+           "issuerName": "Whirlpool of India Limited",
+           "isin": "INE716A01013",
+           "isinDescription": "WHIRLPOOL OF INDIA LIMITED EQ",
+           "units": 2038,
+           "lastTradedPrice": "438.80"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0201",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0201",
+          "dob": "1985-07-17",
+          "mobile": 1000000201,
+          "nominee": "REGISTERED",
+          "dematId": "IN3078045329040000",
+          "email": "synthetic0201@example.invalid",
+          "pan": "ZZZPZ0201Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16392301.01,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Innovision Limited",
+           "isin": "INE0ADB01012",
+           "isinDescription": "INNOVISION LIMITED EQ",
+           "units": 3103,
+           "lastTradedPrice": "2088.27"
+          },
+          {
+           "issuerName": "UltraTech Cement Limited",
+           "isin": "INE481G01011",
+           "isinDescription": "ULTRATECH CEMENT LIMITED EQ",
+           "units": 4240,
+           "lastTradedPrice": "2337.83"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE915B01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE342G01023",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

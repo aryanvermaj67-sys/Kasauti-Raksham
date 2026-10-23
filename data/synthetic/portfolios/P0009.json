@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0009",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0009",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Jindal Saw Limited",
+   "isin": "INE324A01032",
+   "quantity": 3513,
+   "value_inr": 12791038.09
+  },
+  {
+   "instrument_name": "Allcargo Terminals Limited",
+   "isin": "INE0NN701020",
+   "quantity": 926,
+   "value_inr": 827719.21
+  },
+  {
+   "instrument_name": "The Byke Hospitality Ltd",
+   "isin": "INE319B01014",
+   "quantity": 1231,
+   "value_inr": 6993033.35
+  }
+ ],
+ "portfolio_total_inr": 20611790.65,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE324A01032",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE0NN701020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE319B01014",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

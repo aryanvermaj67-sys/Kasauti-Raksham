@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0068",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0068",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Time Technoplast Limited",
+   "isin": "INE508G01029",
+   "quantity": 4831,
+   "value_inr": 32680805.95
+  },
+  {
+   "instrument_name": "Vishnu Prakash R Punglia Limited",
+   "isin": "INE0AE001013",
+   "quantity": 1244,
+   "value_inr": 3300905.15
+  },
+  {
+   "instrument_name": "ZUARI INDUSTRIES LIMITED",
+   "isin": "INE217A01012",
+   "quantity": 211,
+   "value_inr": 464676.56
+  },
+  {
+   "instrument_name": "Vodafone Idea Limited",
+   "isin": "INE669E01016",
+   "quantity": 2430,
+   "value_inr": 4435527.74
+  }
+ ],
+ "portfolio_total_inr": 40881915.4,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0068",
+      "maskedDematId": "XXXXXXXXXXXXX1120",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0068",
+          "dob": "1946-06-11",
+          "mobile": 1000000068,
+          "nominee": "REGISTERED",
+          "dematId": "12082276068241120",
+          "email": "synthetic0068@example.invalid",
+          "pan": "ZZZPZ0068Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 409641.73,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "ZUARI INDUSTRIES LIMITED",
+           "isin": "INE217A01012",
+           "isinDescription": "ZUARI INDUSTRIES LIMITED EQ",
+           "units": 211,
+           "lastTradedPrice": "1941.43"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0068",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0068",
+          "dob": "1980-07-17",
+          "mobile": 1000000068,
+          "nominee": "REGISTERED",
+          "dematId": "IN3059827449290000",
+          "email": "synthetic0068@example.invalid",
+          "pan": "ZZZPZ0068Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 19176432.22,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Time Technoplast Limited",
+           "isin": "INE508G01029",
+           "isinDescription": "TIME TECHNOPLAST LIMITED EQ",
+           "units": 4831,
+           "lastTradedPrice": "2767.94"
+          },
+          {
+           "issuerName": "Vishnu Prakash R Punglia Limited",
+           "isin": "INE0AE001013",
+           "isinDescription": "VISHNU PRAKASH R PUNGLIA LIMITED EQ",
+           "units": 1244,
+           "lastTradedPrice": "1392.97"
+          },
+          {
+           "issuerName": "Vodafone Idea Limited",
+           "isin": "INE669E01016",
+           "isinDescription": "VODAFONE IDEA LIMITED EQ",
+           "units": 2430,
+           "lastTradedPrice": "1675.58"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE508G01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0AE001013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE217A01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE669E01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

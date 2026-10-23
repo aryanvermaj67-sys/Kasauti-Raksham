@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0176",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0176",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Sika Interplant Systems Limited",
+   "isin": "INE438E01032",
+   "quantity": 2333,
+   "value_inr": 7441861.47
+  },
+  {
+   "instrument_name": "Coforge Limited",
+   "isin": "INE591G01025",
+   "quantity": 2565,
+   "value_inr": 7245832.43
+  },
+  {
+   "instrument_name": "Tips Films Limited",
+   "isin": "INE0LQS01015",
+   "quantity": 3646,
+   "value_inr": 7868276.24
+  },
+  {
+   "instrument_name": "Diligent Media Corporation Limited",
+   "isin": "INE016M01021",
+   "quantity": 3346,
+   "value_inr": 9228461.63
+  }
+ ],
+ "portfolio_total_inr": 31784431.77,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0176",
+      "maskedDematId": "XXXXXXXXXXXXX3000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0176",
+          "dob": "1978-02-11",
+          "mobile": 1000000176,
+          "nominee": "REGISTERED",
+          "dematId": "12085827387323000",
+          "email": "synthetic0176@example.invalid",
+          "pan": "ZZZPZ0176Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5423645.39,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Waterways Leisure Tourism Limited",
+           "isin": "INE0LZF01039",
+           "isinDescription": "WATERWAYS LEISURE TOURISM LIMITED EQ",
+           "units": 2371,
+           "lastTradedPrice": "2237.39"
+          },
+          {
+           "issuerName": "Matrimony.Com Limited",
+           "isin": "INE866R01028",
+           "isinDescription": "MATRIMONY.COM LIMITED EQ",
+           "units": 342,
+           "lastTradedPrice": "347.35"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0176",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0176",
+          "dob": "1970-02-12",
+          "mobile": 1000000176,
+          "nominee": "REGISTERED",
+          "dematId": "IN3059107262860000",
+          "email": "synthetic0176@example.invalid",
+          "pan": "ZZZPZ0176Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 14380494.67,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Rajoo Engineers Limited",
+           "isin": "INE535F01024",
+           "isinDescription": "RAJOO ENGINEERS LIMITED EQ",
+           "units": 4071,
+           "lastTradedPrice": "3053.85"
+          },
+          {
+           "issuerName": "DCM  Limited",
+           "isin": "INE498A01018",
+           "isinDescription": "DCM  LIMITED EQ",
+           "units": 4054,
+           "lastTradedPrice": "480.58"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE438E01032",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE591G01025",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0LQS01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE016M01021",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0161",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0161",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "BirlaNu Limited",
+   "isin": "INE557A01011",
+   "quantity": 1698,
+   "value_inr": 2655498.18
+  },
+  {
+   "instrument_name": "Allied Blenders and Distillers Limited",
+   "isin": "INE552Z01027",
+   "quantity": 2229,
+   "value_inr": 7507422.58
+  },
+  {
+   "instrument_name": "ABM Knowledgeware Limited",
+   "isin": "INE850B01026",
+   "quantity": 3385,
+   "value_inr": 6047445.93
+  },
+  {
+   "instrument_name": "GlaxoSmithKline Pharmaceuticals Limited",
+   "isin": "INE159A01016",
+   "quantity": 1439,
+   "value_inr": 7457839.18
+  }
+ ],
+ "portfolio_total_inr": 23668205.87,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0161",
+      "maskedDematId": "XXXXXXXXXXXXX4220",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0161",
+          "dob": "1978-02-19",
+          "mobile": 1000000161,
+          "nominee": "REGISTERED",
+          "dematId": "12082296732354220",
+          "email": "synthetic0161@example.invalid",
+          "pan": "ZZZPZ0161Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 30244835.67,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Pasupati Acrylon Limited",
+           "isin": "INE818B01023",
+           "isinDescription": "PASUPATI ACRYLON LIMITED EQ",
+           "units": 740,
+           "lastTradedPrice": "2832.83"
+          },
+          {
+           "issuerName": "Exicom Tele-Systems Limited",
+           "isin": "INE777F01014",
+           "isinDescription": "EXICOM TELE-SYSTEMS LIMITED EQ",
+           "units": 4873,
+           "lastTradedPrice": "3549.92"
+          },
+          {
+           "issuerName": "Subex Limited",
+           "isin": "INE754A01055",
+           "isinDescription": "SUBEX LIMITED EQ",
+           "units": 3909,
+           "lastTradedPrice": "2775.59"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0161",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0161",
+          "dob": "1994-04-14",
+          "mobile": 1000000161,
+          "nominee": "REGISTERED",
+          "dematId": "IN3062367511170000",
+          "email": "synthetic0161@example.invalid",
+          "pan": "ZZZPZ0161Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9505298.66,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Aeroflex Enterprises Limited",
+           "isin": "INE065D01027",
+           "isinDescription": "AEROFLEX ENTERPRISES LIMITED EQ",
+           "units": 3419,
+           "lastTradedPrice": "2780.14"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE557A01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE552Z01027",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE850B01026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE159A01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

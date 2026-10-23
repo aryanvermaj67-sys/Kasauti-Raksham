@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0158",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0158",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Brightcom Group Limited",
+   "isin": "INE425B01027",
+   "quantity": 4395,
+   "value_inr": 45926130.95
+  },
+  {
+   "instrument_name": "Uttam Sugar Mills Limited",
+   "isin": "INE786F01031",
+   "quantity": 2950,
+   "value_inr": 8985953.3
+  },
+  {
+   "instrument_name": "Indian Metals & Ferro Alloys Limited",
+   "isin": "INE919H01018",
+   "quantity": 2490,
+   "value_inr": 6908425.91
+  },
+  {
+   "instrument_name": "Aaron Industries Limited",
+   "isin": "INE721Z01010",
+   "quantity": 752,
+   "value_inr": 1296676.06
+  }
+ ],
+ "portfolio_total_inr": 63117186.22,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0158",
+      "maskedDematId": "XXXXXXXXXXXXX9500",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0158",
+          "dob": "1992-04-12",
+          "mobile": 1000000158,
+          "nominee": "REGISTERED",
+          "dematId": "12085837541549500",
+          "email": "synthetic0158@example.invalid",
+          "pan": "ZZZPZ0158Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3973915.5,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Uttam Sugar Mills Limited",
+           "isin": "INE786F01031",
+           "isinDescription": "UTTAM SUGAR MILLS LIMITED EQ",
+           "units": 2950,
+           "lastTradedPrice": "1347.09"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0158",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0158",
+          "dob": "1946-04-17",
+          "mobile": 1000000158,
+          "nominee": "REGISTERED",
+          "dematId": "IN3011533230060000",
+          "email": "synthetic0158@example.invalid",
+          "pan": "ZZZPZ0158Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 21572271.87,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Brightcom Group Limited",
+           "isin": "INE425B01027",
+           "isinDescription": "BRIGHTCOM GROUP LIMITED EQ",
+           "units": 4395,
+           "lastTradedPrice": "3741.47"
+          },
+          {
+           "issuerName": "Indian Metals & Ferro Alloys Limited",
+           "isin": "INE919H01018",
+           "isinDescription": "INDIAN METALS & FERRO ALLOYS LIMITED EQ",
+           "units": 2490,
+           "lastTradedPrice": "1614.45"
+          },
+          {
+           "issuerName": "Aaron Industries Limited",
+           "isin": "INE721Z01010",
+           "isinDescription": "AARON INDUSTRIES LIMITED EQ",
+           "units": 752,
+           "lastTradedPrice": "1474.11"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE425B01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE786F01031",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE919H01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE721Z01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

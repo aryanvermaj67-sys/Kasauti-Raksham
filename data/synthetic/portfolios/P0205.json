@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0205",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0205",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "BIRLASOFT LIMITED",
+   "isin": "INE836A01035",
+   "quantity": 3346,
+   "value_inr": 12792199.18
+  },
+  {
+   "instrument_name": "Craftsman Automation Limited",
+   "isin": "INE00LO01017",
+   "quantity": 492,
+   "value_inr": 3037877.09
+  },
+  {
+   "instrument_name": "PG Electroplast Limited",
+   "isin": "INE457L01029",
+   "quantity": 1189,
+   "value_inr": 1929236.78
+  },
+  {
+   "instrument_name": "JSW Cement Limited",
+   "isin": "INE718I01012",
+   "quantity": 744,
+   "value_inr": 936502.9
+  },
+  {
+   "instrument_name": "Cemindia Projects Limited",
+   "isin": "INE686A01026",
+   "quantity": 2674,
+   "value_inr": 4971093.51
+  },
+  {
+   "instrument_name": "Valiant Organics Limited",
+   "isin": "INE565V01010",
+   "quantity": 489,
+   "value_inr": 1044007.78
+  }
+ ],
+ "portfolio_total_inr": 24710917.24,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0205",
+      "maskedDematId": "XXXXXXXXXXXXX8490",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0205",
+          "dob": "1948-06-17",
+          "mobile": 1000000205,
+          "nominee": "REGISTERED",
+          "dematId": "12083925520468490",
+          "email": "synthetic0205@example.invalid",
+          "pan": "ZZZPZ0205Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10317077.68,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "BIRLASOFT LIMITED",
+           "isin": "INE836A01035",
+           "isinDescription": "BIRLASOFT LIMITED EQ",
+           "units": 3346,
+           "lastTradedPrice": "2720.86"
+          },
+          {
+           "issuerName": "Craftsman Automation Limited",
+           "isin": "INE00LO01017",
+           "isinDescription": "CRAFTSMAN AUTOMATION LIMITED EQ",
+           "units": 492,
+           "lastTradedPrice": "2465.61"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE836A01035",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE00LO01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE457L01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE718I01012",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE686A01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE565V01010",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

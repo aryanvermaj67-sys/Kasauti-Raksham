@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0289",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0289",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Dolphin Offshore Enterprises (India) Limited",
+   "isin": "INE920A01037",
+   "quantity": 3727,
+   "value_inr": 28291042.68
+  },
+  {
+   "instrument_name": "Tamilnad Mercantile Bank Limited",
+   "isin": "INE668A01016",
+   "quantity": 184,
+   "value_inr": 1005834.27
+  },
+  {
+   "instrument_name": "Indo Borax & Chemicals Limited",
+   "isin": "INE803D01021",
+   "quantity": 286,
+   "value_inr": 554499.74
+  }
+ ],
+ "portfolio_total_inr": 29851376.69,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE920A01037",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE668A01016",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE803D01021",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

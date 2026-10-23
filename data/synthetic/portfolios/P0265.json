@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0265",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0265",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "VIP Clothing Limited",
+   "isin": "INE450G01024",
+   "quantity": 3392,
+   "value_inr": 20586442.61
+  },
+  {
+   "instrument_name": "Power Finance Corporation Limited",
+   "isin": "INE134E01011",
+   "quantity": 3252,
+   "value_inr": 477081.43
+  },
+  {
+   "instrument_name": "Aditya Infotech Limited",
+   "isin": "INE819V01029",
+   "quantity": 3079,
+   "value_inr": 28802460.2
+  },
+  {
+   "instrument_name": "GTPL Hathway Limited",
+   "isin": "INE869I01013",
+   "quantity": 4167,
+   "value_inr": 7102055.55
+  },
+  {
+   "instrument_name": "SJVN Limited",
+   "isin": "INE002L01015",
+   "quantity": 2176,
+   "value_inr": 7973720.51
+  },
+  {
+   "instrument_name": "DCM Shriram International Limited",
+   "isin": "INE0OU201013",
+   "quantity": 3407,
+   "value_inr": 12742200.42
+  }
+ ],
+ "portfolio_total_inr": 77683960.72,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0265",
+      "maskedDematId": "XXXXXXXXXXXXX1110",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0265",
+          "dob": "1998-01-19",
+          "mobile": 1000000265,
+          "nominee": "REGISTERED",
+          "dematId": "12085322645541110",
+          "email": "synthetic0265@example.invalid",
+          "pan": "ZZZPZ0265Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12489361.56,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "VIP Clothing Limited",
+           "isin": "INE450G01024",
+           "isinDescription": "VIP CLOTHING LIMITED EQ",
+           "units": 3392,
+           "lastTradedPrice": "3633.81"
+          },
+          {
+           "issuerName": "Power Finance Corporation Limited",
+           "isin": "INE134E01011",
+           "isinDescription": "POWER FINANCE CORPORATION LIMITED EQ",
+           "units": 3252,
+           "lastTradedPrice": "50.27"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE450G01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE134E01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE819V01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE869I01013",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE002L01015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0OU201013",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

@@ -1,0 +1,140 @@
+{
+ "mock": true,
+ "case_id": "P0030",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0030",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Heritage Foods Limited",
+   "isin": "INE978A01027",
+   "quantity": 4435,
+   "value_inr": 11243514.29
+  },
+  {
+   "instrument_name": "Batliboi Limited",
+   "isin": "INE177C01022",
+   "quantity": 2281,
+   "value_inr": 15304735.42
+  },
+  {
+   "instrument_name": "Viviana Power Tech Limited",
+   "isin": "INE0MEG01014",
+   "quantity": 1195,
+   "value_inr": 12066219.47
+  },
+  {
+   "instrument_name": "HP Adhesives Limited",
+   "isin": "INE0GSL01024",
+   "quantity": 1439,
+   "value_inr": 1334144.38
+  },
+  {
+   "instrument_name": "Indowind Energy Limited",
+   "isin": "INE227G01018",
+   "quantity": 221,
+   "value_inr": 146601.96
+  },
+  {
+   "instrument_name": "Molbio Diagnostics Limited",
+   "isin": "INE869T01028",
+   "quantity": 2944,
+   "value_inr": 18701972.86
+  }
+ ],
+ "portfolio_total_inr": 58797188.38,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0030",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0030",
+          "dob": "1995-09-14",
+          "mobile": 1000000030,
+          "nominee": "REGISTERED",
+          "dematId": "IN3097761859980000",
+          "email": "synthetic0030@example.invalid",
+          "pan": "ZZZPZ0030Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4513056.0,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Heritage Foods Limited",
+           "isin": "INE978A01027",
+           "isinDescription": "HERITAGE FOODS LIMITED EQ",
+           "units": 4435,
+           "lastTradedPrice": "1017.60"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE978A01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE177C01022",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0MEG01014",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0GSL01024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE227G01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE869T01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

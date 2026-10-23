@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0246",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0246",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Kamat Hotels (I) Limited",
+   "isin": "INE967C01018",
+   "quantity": 4853,
+   "value_inr": 33411192.34
+  },
+  {
+   "instrument_name": "Nandani Creation Limited",
+   "isin": "INE696V01013",
+   "quantity": 1228,
+   "value_inr": 2017174.21
+  }
+ ],
+ "portfolio_total_inr": 35428366.55,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0246",
+      "maskedDematId": "XXXXXXXXXXXXX1500",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0246",
+          "dob": "1989-04-13",
+          "mobile": 1000000246,
+          "nominee": "REGISTERED",
+          "dematId": "12084372621831500",
+          "email": "synthetic0246@example.invalid",
+          "pan": "ZZZPZ0246Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 27310167.62,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Gokul Agro Resources Limited",
+           "isin": "INE314T01033",
+           "isinDescription": "GOKUL AGRO RESOURCES LIMITED EQ",
+           "units": 3892,
+           "lastTradedPrice": "2831.71"
+          },
+          {
+           "issuerName": "Kridhan Infra Limited",
+           "isin": "INE524L01026",
+           "isinDescription": "KRIDHAN INFRA LIMITED EQ",
+           "units": 4125,
+           "lastTradedPrice": "2452.18"
+          },
+          {
+           "issuerName": "Cravatex Limited",
+           "isin": "INE145E01017",
+           "isinDescription": "CRAVATEX LIMITED EQ",
+           "units": 1555,
+           "lastTradedPrice": "3970.36"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0246",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0246",
+          "dob": "1975-01-18",
+          "mobile": 1000000246,
+          "nominee": "REGISTERED",
+          "dematId": "IN3067388401770000",
+          "email": "synthetic0246@example.invalid",
+          "pan": "ZZZPZ0246Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 2400218.24,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Jayshree Tea & Industries Limited",
+           "isin": "INE364A01020",
+           "isinDescription": "JAYSHREE TEA & INDUSTRIES LIMITED EQ",
+           "units": 854,
+           "lastTradedPrice": "2810.56"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE967C01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE696V01013",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

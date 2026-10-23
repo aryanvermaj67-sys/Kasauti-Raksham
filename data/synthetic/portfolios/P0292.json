@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0292",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0292",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Suraj Limited",
+   "isin": "INE713C01016",
+   "quantity": 325,
+   "value_inr": 282774.79
+  },
+  {
+   "instrument_name": "Delhivery Limited",
+   "isin": "INE148O01028",
+   "quantity": 4161,
+   "value_inr": 27058989.35
+  },
+  {
+   "instrument_name": "The Indian Hotels Company Limited",
+   "isin": "INE053A01029",
+   "quantity": 47600,
+   "value_inr": 70530144.67
+  },
+  {
+   "instrument_name": "Elgi Rubber Company Limited",
+   "isin": "INE819L01012",
+   "quantity": 508,
+   "value_inr": 2723730.11
+  },
+  {
+   "instrument_name": "AstraZeneca Pharma India Limited",
+   "isin": "INE203A01020",
+   "quantity": 2132,
+   "value_inr": 17807150.41
+  }
+ ],
+ "portfolio_total_inr": 118402789.33,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0292",
+      "maskedDematId": "XXXXXXXXXXXXX9440",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0292",
+          "dob": "1949-07-14",
+          "mobile": 1000000292,
+          "nominee": "REGISTERED",
+          "dematId": "12085581914759440",
+          "email": "synthetic0292@example.invalid",
+          "pan": "ZZZPZ0292Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 27641260.21,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Suraj Limited",
+           "isin": "INE713C01016",
+           "isinDescription": "SURAJ LIMITED EQ",
+           "units": 325,
+           "lastTradedPrice": "753.34"
+          },
+          {
+           "issuerName": "Delhivery Limited",
+           "isin": "INE148O01028",
+           "isinDescription": "DELHIVERY LIMITED EQ",
+           "units": 4161,
+           "lastTradedPrice": "3445.07"
+          },
+          {
+           "issuerName": "Genus Paper & Boards Limited",
+           "isin": "INE949P01018",
+           "isinDescription": "GENUS PAPER & BOARDS LIMITED EQ",
+           "units": 4543,
+           "lastTradedPrice": "2875.08"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0292",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0292",
+          "dob": "1965-06-15",
+          "mobile": 1000000292,
+          "nominee": "REGISTERED",
+          "dematId": "IN3016145217100000",
+          "email": "synthetic0292@example.invalid",
+          "pan": "ZZZPZ0292Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6107032.4,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "The Indian Hotels Company Limited",
+           "isin": "INE053A01029",
+           "isinDescription": "THE INDIAN HOTELS COMPANY LIMITED EQ",
+           "units": 4760,
+           "lastTradedPrice": "1282.99"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE713C01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE148O01028",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE053A01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE819L01012",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE203A01020",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

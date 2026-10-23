@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0082",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0082",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Premco Global Limited",
+   "isin": "INE001E01012",
+   "quantity": 3714,
+   "value_inr": 11571837.39
+  },
+  {
+   "instrument_name": "Texmaco Rail & Engineering Limited",
+   "isin": "INE621L01012",
+   "quantity": 4516,
+   "value_inr": 10499705.12
+  },
+  {
+   "instrument_name": "Aster DM Quality Care Limited",
+   "isin": "INE914M01019",
+   "quantity": 7590,
+   "value_inr": 3824452.07
+  },
+  {
+   "instrument_name": "Juniper Hotels Limited",
+   "isin": "INE696F01016",
+   "quantity": 515,
+   "value_inr": 4613915.02
+  },
+  {
+   "instrument_name": "Generic Engineering Construction and Projects Limited",
+   "isin": "INE854S01022",
+   "quantity": 1830,
+   "value_inr": 2588082.31
+  }
+ ],
+ "portfolio_total_inr": 33097991.91,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0082",
+      "maskedDematId": "XXXXXXXXXXXXX2660",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0082",
+          "dob": "1974-01-12",
+          "mobile": 1000000082,
+          "nominee": "REGISTERED",
+          "dematId": "12081434759252660",
+          "email": "synthetic0082@example.invalid",
+          "pan": "ZZZPZ0082Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6777593.51,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Texmaco Rail & Engineering Limited",
+           "isin": "INE621L01012",
+           "isinDescription": "TEXMACO RAIL & ENGINEERING LIMITED EQ",
+           "units": 4516,
+           "lastTradedPrice": "1014.41"
+          },
+          {
+           "issuerName": "Aster DM Quality Care Limited",
+           "isin": "INE914M01019",
+           "isinDescription": "ASTER DM QUALITY CARE LIMITED EQ",
+           "units": 3795,
+           "lastTradedPrice": "425.59"
+          },
+          {
+           "issuerName": "LTM Limited",
+           "isin": "INE214T01019",
+           "isinDescription": "LTM LIMITED EQ",
+           "units": 1155,
+           "lastTradedPrice": "503.38"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0082",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0082",
+          "dob": "1976-01-16",
+          "mobile": 1000000082,
+          "nominee": "REGISTERED",
+          "dematId": "IN3084063741100000",
+          "email": "synthetic0082@example.invalid",
+          "pan": "ZZZPZ0082Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8292247.8,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Premco Global Limited",
+           "isin": "INE001E01012",
+           "isinDescription": "PREMCO GLOBAL LIMITED EQ",
+           "units": 3714,
+           "lastTradedPrice": "2232.70"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE001E01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE621L01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE914M01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE696F01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE854S01022",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

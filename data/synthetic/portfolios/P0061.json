@@ -1,0 +1,117 @@
+{
+ "mock": true,
+ "case_id": "P0061",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0061",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Vindhya Telelinks Limited",
+   "isin": "INE707A01012",
+   "quantity": 491,
+   "value_inr": 2079256.86
+  },
+  {
+   "instrument_name": "Nagreeka Capital & Infrastructure Limited",
+   "isin": "INE245I01016",
+   "quantity": 618,
+   "value_inr": 4081660.15
+  }
+ ],
+ "portfolio_total_inr": 6160917.01,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0061",
+      "maskedDematId": "XXXXXXXXXXXXX3640",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0061",
+          "dob": "1987-08-17",
+          "mobile": 1000000061,
+          "nominee": "REGISTERED",
+          "dematId": "12088027332513640",
+          "email": "synthetic0061@example.invalid",
+          "pan": "ZZZPZ0061Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 35919334.89,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Peninsula Land Limited",
+           "isin": "INE138A01028",
+           "isinDescription": "PENINSULA LAND LIMITED EQ",
+           "units": 4028,
+           "lastTradedPrice": "1854.10"
+          },
+          {
+           "issuerName": "Yasho Industries Limited",
+           "isin": "INE616Z01012",
+           "isinDescription": "YASHO INDUSTRIES LIMITED EQ",
+           "units": 2895,
+           "lastTradedPrice": "693.68"
+          },
+          {
+           "issuerName": "IZMO Limited",
+           "isin": "INE848A01014",
+           "isinDescription": "IZMO LIMITED EQ",
+           "units": 4487,
+           "lastTradedPrice": "1963.50"
+          },
+          {
+           "issuerName": "Swarnsarita Jewels India Limited",
+           "isin": "INE967A01012",
+           "isinDescription": "SWARNSARITA JEWELS INDIA LIMITED EQ",
+           "units": 4451,
+           "lastTradedPrice": "3961.49"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE707A01012",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE245I01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

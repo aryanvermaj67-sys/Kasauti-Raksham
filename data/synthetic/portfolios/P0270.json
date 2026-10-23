@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0270",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0270",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Matrimony.Com Limited",
+   "isin": "INE866R01028",
+   "quantity": 4658,
+   "value_inr": 20684989.41
+  },
+  {
+   "instrument_name": "Dhampur Bio Organics Limited",
+   "isin": "INE0I3401014",
+   "quantity": 1915,
+   "value_inr": 11252828.04
+  },
+  {
+   "instrument_name": "Archean Chemical Industries Limited",
+   "isin": "INE128X01021",
+   "quantity": 3168,
+   "value_inr": 7268850.92
+  },
+  {
+   "instrument_name": "Medico Remedies Limited",
+   "isin": "INE630Y01024",
+   "quantity": 1748,
+   "value_inr": 11037274.77
+  },
+  {
+   "instrument_name": "Adani Enterprises Limited",
+   "isin": "INE423A01024",
+   "quantity": 853,
+   "value_inr": 3540286.84
+  },
+  {
+   "instrument_name": "Rays of Belief Limited",
+   "isin": "INE1FCO01014",
+   "quantity": 4989,
+   "value_inr": 23577163.26
+  }
+ ],
+ "portfolio_total_inr": 77361393.24,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0270",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0270",
+          "dob": "1981-01-14",
+          "mobile": 1000000270,
+          "nominee": "REGISTERED",
+          "dematId": "IN3026443605410000",
+          "email": "synthetic0270@example.invalid",
+          "pan": "ZZZPZ0270Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 22794254.89,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Matrimony.Com Limited",
+           "isin": "INE866R01028",
+           "isinDescription": "MATRIMONY.COM LIMITED EQ",
+           "units": 4658,
+           "lastTradedPrice": "3185.05"
+          },
+          {
+           "issuerName": "Dhampur Bio Organics Limited",
+           "isin": "INE0I3401014",
+           "isinDescription": "DHAMPUR BIO ORGANICS LIMITED EQ",
+           "units": 1915,
+           "lastTradedPrice": "2255.33"
+          },
+          {
+           "issuerName": "Archean Chemical Industries Limited",
+           "isin": "INE128X01021",
+           "isinDescription": "ARCHEAN CHEMICAL INDUSTRIES LIMITED EQ",
+           "units": 3168,
+           "lastTradedPrice": "1148.78"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE866R01028",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0I3401014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE128X01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE630Y01024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE423A01024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE1FCO01014",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

@@ -1,0 +1,139 @@
+{
+ "mock": true,
+ "case_id": "P0218",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0218",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Ind-Swift Laboratories Limited",
+   "isin": "INE915B01019",
+   "quantity": 1548,
+   "value_inr": 4415852.32
+  },
+  {
+   "instrument_name": "Thejo Engineering Limited",
+   "isin": "INE121N01019",
+   "quantity": 3431,
+   "value_inr": 3066801.47
+  },
+  {
+   "instrument_name": "Virinchi Limited",
+   "isin": "INE539B01017",
+   "quantity": 3696,
+   "value_inr": 32444500.88
+  },
+  {
+   "instrument_name": "Sirca Paints India Limited",
+   "isin": "INE792Z01011",
+   "quantity": 256,
+   "value_inr": 1100441.98
+  }
+ ],
+ "portfolio_total_inr": 41027596.65,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0218",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0218",
+          "dob": "1969-04-16",
+          "mobile": 1000000218,
+          "nominee": "REGISTERED",
+          "dematId": "IN3090184666730000",
+          "email": "synthetic0218@example.invalid",
+          "pan": "ZZZPZ0218Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 18611065.93,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Ind-Swift Laboratories Limited",
+           "isin": "INE915B01019",
+           "isinDescription": "IND-SWIFT LABORATORIES LIMITED EQ",
+           "units": 1548,
+           "lastTradedPrice": "1726.60"
+          },
+          {
+           "issuerName": "Thejo Engineering Limited",
+           "isin": "INE121N01019",
+           "isinDescription": "THEJO ENGINEERING LIMITED EQ",
+           "units": 3431,
+           "lastTradedPrice": "854.15"
+          },
+          {
+           "issuerName": "Virinchi Limited",
+           "isin": "INE539B01017",
+           "isinDescription": "VIRINCHI LIMITED EQ",
+           "units": 3696,
+           "lastTradedPrice": "3414.72"
+          },
+          {
+           "issuerName": "Sirca Paints India Limited",
+           "isin": "INE792Z01011",
+           "isinDescription": "SIRCA PAINTS INDIA LIMITED EQ",
+           "units": 256,
+           "lastTradedPrice": "1511.31"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE915B01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE121N01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE539B01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE792Z01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

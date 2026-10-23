@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0175",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0175",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Heads UP Ventures Limited",
+   "isin": "INE759V01019",
+   "quantity": 4759,
+   "value_inr": 11581997.42
+  },
+  {
+   "instrument_name": "Hariom Pipe Industries Limited",
+   "isin": "INE00EV01017",
+   "quantity": 1325,
+   "value_inr": 9883015.78
+  },
+  {
+   "instrument_name": "Godavari Biorefineries Limited",
+   "isin": "INE497S01012",
+   "quantity": 1991,
+   "value_inr": 7594029.94
+  },
+  {
+   "instrument_name": "Nimbus Projects Limited",
+   "isin": "INE875B01015",
+   "quantity": 569,
+   "value_inr": 687521.53
+  },
+  {
+   "instrument_name": "Ambica Agarbathies & Aroma industries Limited",
+   "isin": "INE792B01012",
+   "quantity": 4746,
+   "value_inr": 19760800.43
+  },
+  {
+   "instrument_name": "BSL Limited",
+   "isin": "INE594B01012",
+   "quantity": 4342,
+   "value_inr": 6559578.94
+  }
+ ],
+ "portfolio_total_inr": 56066944.04,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0175",
+      "maskedDematId": "XXXXXXXXXXXXX2150",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0175",
+          "dob": "1958-09-13",
+          "mobile": 1000000175,
+          "nominee": "REGISTERED",
+          "dematId": "12085654869022150",
+          "email": "synthetic0175@example.invalid",
+          "pan": "ZZZPZ0175Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 15260377.4,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Heads UP Ventures Limited",
+           "isin": "INE759V01019",
+           "isinDescription": "HEADS UP VENTURES LIMITED EQ",
+           "units": 4759,
+           "lastTradedPrice": "1404.39"
+          },
+          {
+           "issuerName": "Hariom Pipe Industries Limited",
+           "isin": "INE00EV01017",
+           "isinDescription": "HARIOM PIPE INDUSTRIES LIMITED EQ",
+           "units": 1325,
+           "lastTradedPrice": "3423.45"
+          },
+          {
+           "issuerName": "Godavari Biorefineries Limited",
+           "isin": "INE497S01012",
+           "isinDescription": "GODAVARI BIOREFINERIES LIMITED EQ",
+           "units": 1991,
+           "lastTradedPrice": "2029.54"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE759V01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE00EV01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE497S01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE875B01015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE792B01012",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE594B01012",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

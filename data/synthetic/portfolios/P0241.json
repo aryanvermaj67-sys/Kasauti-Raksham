@@ -1,0 +1,128 @@
+{
+ "mock": true,
+ "case_id": "P0241",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0241",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "South West Pinnacle Exploration Limited",
+   "isin": "INE980Y01015",
+   "quantity": 3042,
+   "value_inr": 17608699.64
+  },
+  {
+   "instrument_name": "Delta Corp Limited",
+   "isin": "INE124G01033",
+   "quantity": 2050,
+   "value_inr": 13584844.87
+  },
+  {
+   "instrument_name": "Jubilant Agri and Consumer Products Limited",
+   "isin": "INE03CC01015",
+   "quantity": 3436,
+   "value_inr": 27719404.35
+  }
+ ],
+ "portfolio_total_inr": 58912948.86,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0241",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0241",
+          "dob": "1985-02-14",
+          "mobile": 1000000241,
+          "nominee": "REGISTERED",
+          "dematId": "IN3062775016440000",
+          "email": "synthetic0241@example.invalid",
+          "pan": "ZZZPZ0241Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 28027307.08,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Nelcast Limited",
+           "isin": "INE189I01024",
+           "isinDescription": "NELCAST LIMITED EQ",
+           "units": 4217,
+           "lastTradedPrice": "2858.63"
+          },
+          {
+           "issuerName": "UCO Bank",
+           "isin": "INE691A01018",
+           "isinDescription": "UCO BANK EQ",
+           "units": 1045,
+           "lastTradedPrice": "587.83"
+          },
+          {
+           "issuerName": "VIP Clothing Limited",
+           "isin": "INE450G01024",
+           "isinDescription": "VIP CLOTHING LIMITED EQ",
+           "units": 4659,
+           "lastTradedPrice": "2946.98"
+          },
+          {
+           "issuerName": "Puravankara Limited",
+           "isin": "INE323I01011",
+           "isinDescription": "PURAVANKARA LIMITED EQ",
+           "units": 443,
+           "lastTradedPrice": "3675.40"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE980Y01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE124G01033",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE03CC01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0071",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0071",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Wheels India Limited",
+   "isin": "INE715A01015",
+   "quantity": 937,
+   "value_inr": 5731375.27
+  },
+  {
+   "instrument_name": "Anant Raj Limited",
+   "isin": "INE242C01024",
+   "quantity": 2204,
+   "value_inr": 17126689.77
+  },
+  {
+   "instrument_name": "ICRA Limited",
+   "isin": "INE725G01011",
+   "quantity": 3015,
+   "value_inr": 10473359.84
+  },
+  {
+   "instrument_name": "Lakshmi Finance & Industrial Corporation Limited",
+   "isin": "INE850E01012",
+   "quantity": 350,
+   "value_inr": 3195596.04
+  }
+ ],
+ "portfolio_total_inr": 36527020.92,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0071",
+      "maskedDematId": "XXXXXXXXXXXXX5460",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0071",
+          "dob": "1967-02-17",
+          "mobile": 1000000071,
+          "nominee": "REGISTERED",
+          "dematId": "12083896943945460",
+          "email": "synthetic0071@example.invalid",
+          "pan": "ZZZPZ0071Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 14139138.71,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Sumedha Fiscal Services Limited",
+           "isin": "INE886B01012",
+           "isinDescription": "SUMEDHA FISCAL SERVICES LIMITED EQ",
+           "units": 4414,
+           "lastTradedPrice": "1168.91"
+          },
+          {
+           "issuerName": "BLS International Services Limited",
+           "isin": "INE153T01027",
+           "isinDescription": "BLS INTERNATIONAL SERVICES LIMITED EQ",
+           "units": 4067,
+           "lastTradedPrice": "2207.91"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0071",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0071",
+          "dob": "1958-06-19",
+          "mobile": 1000000071,
+          "nominee": "REGISTERED",
+          "dematId": "IN3044870363450000",
+          "email": "synthetic0071@example.invalid",
+          "pan": "ZZZPZ0071Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8839518.31,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Suratwwala Business Group Limited",
+           "isin": "INE05ST01028",
+           "isinDescription": "SURATWWALA BUSINESS GROUP LIMITED EQ",
+           "units": 277,
+           "lastTradedPrice": "1113.91"
+          },
+          {
+           "issuerName": "Firstsource Solutions Limited",
+           "isin": "INE684F01012",
+           "isinDescription": "FIRSTSOURCE SOLUTIONS LIMITED EQ",
+           "units": 3756,
+           "lastTradedPrice": "2271.29"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE715A01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE242C01024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE725G01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE850E01012",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

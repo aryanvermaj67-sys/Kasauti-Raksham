@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0063",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0063",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "AVG Logistics Limited",
+   "isin": "INE680Z01018",
+   "quantity": 791,
+   "value_inr": 4528358.48
+  },
+  {
+   "instrument_name": "Automobile Corporation of Goa Limited",
+   "isin": "INE451C01013",
+   "quantity": 358,
+   "value_inr": 711873.71
+  },
+  {
+   "instrument_name": "Ganges Securities Limited",
+   "isin": "INE335W01016",
+   "quantity": 4653,
+   "value_inr": 18984661.37
+  },
+  {
+   "instrument_name": "BLS International Services Limited",
+   "isin": "INE153T01027",
+   "quantity": 391,
+   "value_inr": 3902524.47
+  }
+ ],
+ "portfolio_total_inr": 28127418.03,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0063",
+      "maskedDematId": "XXXXXXXXXXXXX8450",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0063",
+          "dob": "1969-03-11",
+          "mobile": 1000000063,
+          "nominee": "REGISTERED",
+          "dematId": "12084630989508450",
+          "email": "synthetic0063@example.invalid",
+          "pan": "ZZZPZ0063Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4613301.48,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "AVG Logistics Limited",
+           "isin": "INE680Z01018",
+           "isinDescription": "AVG LOGISTICS LIMITED EQ",
+           "units": 791,
+           "lastTradedPrice": "3581.27"
+          },
+          {
+           "issuerName": "Automobile Corporation of Goa Limited",
+           "isin": "INE451C01013",
+           "isinDescription": "AUTOMOBILE CORPORATION OF GOA LIMITED EQ",
+           "units": 358,
+           "lastTradedPrice": "934.47"
+          },
+          {
+           "issuerName": "BLS International Services Limited",
+           "isin": "INE153T01027",
+           "isinDescription": "BLS INTERNATIONAL SERVICES LIMITED EQ",
+           "units": 391,
+           "lastTradedPrice": "3698.15"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0063",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0063",
+          "dob": "1948-02-16",
+          "mobile": 1000000063,
+          "nominee": "REGISTERED",
+          "dematId": "IN3094796541360000",
+          "email": "synthetic0063@example.invalid",
+          "pan": "ZZZPZ0063Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8898815.97,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Ganges Securities Limited",
+           "isin": "INE335W01016",
+           "isinDescription": "GANGES SECURITIES LIMITED EQ",
+           "units": 4653,
+           "lastTradedPrice": "1912.49"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE680Z01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE451C01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE335W01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE153T01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

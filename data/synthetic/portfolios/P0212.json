@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0212",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0212",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Chambal Fertilizers & Chemicals Limited",
+   "isin": "INE085A01013",
+   "quantity": 2921,
+   "value_inr": 10080893.19
+  },
+  {
+   "instrument_name": "Archidply Decor Limited",
+   "isin": "INE0CHO01012",
+   "quantity": 3652,
+   "value_inr": 6426141.14
+  },
+  {
+   "instrument_name": "Bansal Wire Industries Limited",
+   "isin": "INE0B9K01033",
+   "quantity": 2274,
+   "value_inr": 8091106.2
+  },
+  {
+   "instrument_name": "Zetwerk Manufacturing Businesses Limited",
+   "isin": "INE09PO01019",
+   "quantity": 4798,
+   "value_inr": 16957590.91
+  },
+  {
+   "instrument_name": "DEE Development Engineers Limited",
+   "isin": "INE841L01016",
+   "quantity": 2940,
+   "value_inr": 9880503.3
+  }
+ ],
+ "portfolio_total_inr": 51436234.74,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0212",
+      "maskedDematId": "XXXXXXXXXXXXX7410",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0212",
+          "dob": "1972-06-13",
+          "mobile": 1000000212,
+          "nominee": "REGISTERED",
+          "dematId": "12081595226727410",
+          "email": "synthetic0212@example.invalid",
+          "pan": "ZZZPZ0212Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 266725.85,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Garware Hi-Tech Films Limited",
+           "isin": "INE291A01017",
+           "isinDescription": "GARWARE HI-TECH FILMS LIMITED EQ",
+           "units": 505,
+           "lastTradedPrice": "528.17"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0212",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0212",
+          "dob": "1985-04-11",
+          "mobile": 1000000212,
+          "nominee": "REGISTERED",
+          "dematId": "IN3051940818550000",
+          "email": "synthetic0212@example.invalid",
+          "pan": "ZZZPZ0212Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11357809.69,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Chambal Fertilizers & Chemicals Limited",
+           "isin": "INE085A01013",
+           "isinDescription": "CHAMBAL FERTILIZERS & CHEMICALS LIMITED EQ",
+           "units": 2921,
+           "lastTradedPrice": "1695.61"
+          },
+          {
+           "issuerName": "Archidply Decor Limited",
+           "isin": "INE0CHO01012",
+           "isinDescription": "ARCHIDPLY DECOR LIMITED EQ",
+           "units": 3652,
+           "lastTradedPrice": "759.98"
+          },
+          {
+           "issuerName": "Bansal Wire Industries Limited",
+           "isin": "INE0B9K01033",
+           "isinDescription": "BANSAL WIRE INDUSTRIES LIMITED EQ",
+           "units": 1137,
+           "lastTradedPrice": "3192.16"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE085A01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0CHO01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0B9K01033",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE09PO01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE841L01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

@@ -1,0 +1,140 @@
+{
+ "mock": true,
+ "case_id": "P0120",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0120",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Bhandari Hosiery Exports Limited",
+   "isin": "INE474E01029",
+   "quantity": 1567,
+   "value_inr": 8474762.9
+  },
+  {
+   "instrument_name": "Nazara Technologies Limited",
+   "isin": "INE418L01047",
+   "quantity": 4709,
+   "value_inr": 8950921.11
+  },
+  {
+   "instrument_name": "Visagar Polytex Limited",
+   "isin": "INE370E01029",
+   "quantity": 1645,
+   "value_inr": 2561328.47
+  },
+  {
+   "instrument_name": "GKW Limited",
+   "isin": "INE528A01020",
+   "quantity": 1992,
+   "value_inr": 19459307.67
+  },
+  {
+   "instrument_name": "Savita Oil Technologies Limited",
+   "isin": "INE035D01020",
+   "quantity": 1703,
+   "value_inr": 4384970.78
+  },
+  {
+   "instrument_name": "Mastek Limited",
+   "isin": "INE759A01021",
+   "quantity": 2055,
+   "value_inr": 14788381.46
+  }
+ ],
+ "portfolio_total_inr": 58619672.39,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0120",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0120",
+          "dob": "1956-09-14",
+          "mobile": 1000000120,
+          "nominee": "REGISTERED",
+          "dematId": "IN3064749367010000",
+          "email": "synthetic0120@example.invalid",
+          "pan": "ZZZPZ0120Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3143433.34,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Bhandari Hosiery Exports Limited",
+           "isin": "INE474E01029",
+           "isinDescription": "BHANDARI HOSIERY EXPORTS LIMITED EQ",
+           "units": 1567,
+           "lastTradedPrice": "2006.02"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE474E01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE418L01047",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE370E01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE528A01020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE035D01020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE759A01021",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

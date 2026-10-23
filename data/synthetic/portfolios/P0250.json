@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0250",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0250",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Emami Limited",
+   "isin": "INE548C01032",
+   "quantity": 2856,
+   "value_inr": 21334608.28
+  },
+  {
+   "instrument_name": "DiGiSPICE Technologies Limited",
+   "isin": "INE927C01020",
+   "quantity": 4509,
+   "value_inr": 10018172.24
+  },
+  {
+   "instrument_name": "Ardee Industries Limited",
+   "isin": "INE0XNF01022",
+   "quantity": 4389,
+   "value_inr": 6262089.59
+  },
+  {
+   "instrument_name": "Kotak Mahindra Bank Limited",
+   "isin": "INE237A01036",
+   "quantity": 3033,
+   "value_inr": 10170699.98
+  },
+  {
+   "instrument_name": "Khaitan Chemicals & Fertilizers Limited",
+   "isin": "INE745B01028",
+   "quantity": 1104,
+   "value_inr": 4651594.25
+  },
+  {
+   "instrument_name": "Atlas Cycles (Haryana) Limited",
+   "isin": "INE446A01025",
+   "quantity": 2425,
+   "value_inr": 3859063.46
+  }
+ ],
+ "portfolio_total_inr": 56296227.8,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0250",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0250",
+          "dob": "1985-09-13",
+          "mobile": 1000000250,
+          "nominee": "REGISTERED",
+          "dematId": "IN3081031230720000",
+          "email": "synthetic0250@example.invalid",
+          "pan": "ZZZPZ0250Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12077309.31,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Emami Limited",
+           "isin": "INE548C01032",
+           "isinDescription": "EMAMI LIMITED EQ",
+           "units": 2856,
+           "lastTradedPrice": "2538.08"
+          },
+          {
+           "issuerName": "DiGiSPICE Technologies Limited",
+           "isin": "INE927C01020",
+           "isinDescription": "DIGISPICE TECHNOLOGIES LIMITED EQ",
+           "units": 4509,
+           "lastTradedPrice": "1070.87"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE548C01032",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE927C01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0XNF01022",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE237A01036",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE745B01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE446A01025",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

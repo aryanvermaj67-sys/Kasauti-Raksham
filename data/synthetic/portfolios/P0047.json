@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0047",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0047",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Kanco Tea & Industries Limited",
+   "isin": "INE398L01017",
+   "quantity": 2484,
+   "value_inr": 9792987.27
+  },
+  {
+   "instrument_name": "Hindalco Industries Limited",
+   "isin": "INE038A01020",
+   "quantity": 3336,
+   "value_inr": 4868679.55
+  },
+  {
+   "instrument_name": "Zenith Exports Limited",
+   "isin": "INE058B01018",
+   "quantity": 1214,
+   "value_inr": 6478198.97
+  },
+  {
+   "instrument_name": "Amrutanjan Health Care Limited",
+   "isin": "INE098F01031",
+   "quantity": 3976,
+   "value_inr": 11403211.53
+  },
+  {
+   "instrument_name": "Suzlon Energy Limited",
+   "isin": "INE040H01021",
+   "quantity": 2796,
+   "value_inr": 10182003.06
+  }
+ ],
+ "portfolio_total_inr": 42725080.38,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0047",
+      "maskedDematId": "XXXXXXXXXXXXX4540",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0047",
+          "dob": "1963-07-19",
+          "mobile": 1000000047,
+          "nominee": "REGISTERED",
+          "dematId": "12081519554104540",
+          "email": "synthetic0047@example.invalid",
+          "pan": "ZZZPZ0047Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1675732.76,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Zenith Exports Limited",
+           "isin": "INE058B01018",
+           "isinDescription": "ZENITH EXPORTS LIMITED EQ",
+           "units": 607,
+           "lastTradedPrice": "2760.68"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0047",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0047",
+          "dob": "1955-06-19",
+          "mobile": 1000000047,
+          "nominee": "REGISTERED",
+          "dematId": "IN3027958750430000",
+          "email": "synthetic0047@example.invalid",
+          "pan": "ZZZPZ0047Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11147667.04,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Kanco Tea & Industries Limited",
+           "isin": "INE398L01017",
+           "isinDescription": "KANCO TEA & INDUSTRIES LIMITED EQ",
+           "units": 2484,
+           "lastTradedPrice": "1942.12"
+          },
+          {
+           "issuerName": "Hindalco Industries Limited",
+           "isin": "INE038A01020",
+           "isinDescription": "HINDALCO INDUSTRIES LIMITED EQ",
+           "units": 3336,
+           "lastTradedPrice": "1203.79"
+          },
+          {
+           "issuerName": "Rentomojo Limited",
+           "isin": "INE08T701025",
+           "isinDescription": "RENTOMOJO LIMITED EQ",
+           "units": 1304,
+           "lastTradedPrice": "1769.63"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE398L01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE038A01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE058B01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE098F01031",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE040H01021",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

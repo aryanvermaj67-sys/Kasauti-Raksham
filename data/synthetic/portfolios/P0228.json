@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0228",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0228",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Narayana Hrudayalaya Ltd.",
+   "isin": "INE410P01011",
+   "quantity": 1995,
+   "value_inr": 7808294.94
+  },
+  {
+   "instrument_name": "Team India Guaranty Limited",
+   "isin": "INE289C01025",
+   "quantity": 2970,
+   "value_inr": 10356642.61
+  },
+  {
+   "instrument_name": "Sumedha Fiscal Services Limited",
+   "isin": "INE886B01012",
+   "quantity": 241,
+   "value_inr": 1243800.25
+  },
+  {
+   "instrument_name": "Orient Paper & Industries Limited",
+   "isin": "INE592A01026",
+   "quantity": 1221,
+   "value_inr": 3442408.07
+  }
+ ],
+ "portfolio_total_inr": 22851145.87,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0228",
+      "maskedDematId": "XXXXXXXXXXXXX0780",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0228",
+          "dob": "1964-09-18",
+          "mobile": 1000000228,
+          "nominee": "REGISTERED",
+          "dematId": "12088612952850780",
+          "email": "synthetic0228@example.invalid",
+          "pan": "ZZZPZ0228Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5127475.35,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Narayana Hrudayalaya Ltd.",
+           "isin": "INE410P01011",
+           "isinDescription": "NARAYANA HRUDAYALAYA LTD. EQ",
+           "units": 1995,
+           "lastTradedPrice": "1921.35"
+          },
+          {
+           "issuerName": "Orient Paper & Industries Limited",
+           "isin": "INE592A01026",
+           "isinDescription": "ORIENT PAPER & INDUSTRIES LIMITED EQ",
+           "units": 1221,
+           "lastTradedPrice": "1060.10"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0228",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0228",
+          "dob": "1985-06-12",
+          "mobile": 1000000228,
+          "nominee": "REGISTERED",
+          "dematId": "IN3013817085200000",
+          "email": "synthetic0228@example.invalid",
+          "pan": "ZZZPZ0228Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8191455.84,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Team India Guaranty Limited",
+           "isin": "INE289C01025",
+           "isinDescription": "TEAM INDIA GUARANTY LIMITED EQ",
+           "units": 2970,
+           "lastTradedPrice": "2531.19"
+          },
+          {
+           "issuerName": "Sumedha Fiscal Services Limited",
+           "isin": "INE886B01012",
+           "isinDescription": "SUMEDHA FISCAL SERVICES LIMITED EQ",
+           "units": 241,
+           "lastTradedPrice": "2795.94"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE410P01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE289C01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE886B01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE592A01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

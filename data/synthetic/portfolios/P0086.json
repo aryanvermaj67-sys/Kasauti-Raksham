@@ -1,0 +1,169 @@
+{
+ "mock": true,
+ "case_id": "P0086",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0086",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Manaksia Aluminium Company Limited",
+   "isin": "INE859Q01017",
+   "quantity": 1819,
+   "value_inr": 4773542.65
+  },
+  {
+   "instrument_name": "Lincoln Pharmaceuticals Limited",
+   "isin": "INE405C01035",
+   "quantity": 862,
+   "value_inr": 4585686.38
+  },
+  {
+   "instrument_name": "Delhivery Limited",
+   "isin": "INE148O01028",
+   "quantity": 1162,
+   "value_inr": 3710333.97
+  }
+ ],
+ "portfolio_total_inr": 13069563.0,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0086",
+      "maskedDematId": "XXXXXXXXXXXXX3720",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0086",
+          "dob": "1995-02-10",
+          "mobile": 1000000086,
+          "nominee": "REGISTERED",
+          "dematId": "12083806781793720",
+          "email": "synthetic0086@example.invalid",
+          "pan": "ZZZPZ0086Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8115919.18,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Indogulf Cropsciences Limited",
+           "isin": "INE05J901018",
+           "isinDescription": "INDOGULF CROPSCIENCES LIMITED EQ",
+           "units": 4702,
+           "lastTradedPrice": "1578.57"
+          },
+          {
+           "issuerName": "The Great Eastern Shipping Company Limited",
+           "isin": "INE017A01032",
+           "isinDescription": "THE GREAT EASTERN SHIPPING COMPANY LIMITED EQ",
+           "units": 4658,
+           "lastTradedPrice": "148.88"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0086",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0086",
+          "dob": "1973-07-12",
+          "mobile": 1000000086,
+          "nominee": "REGISTERED",
+          "dematId": "IN3055017590510000",
+          "email": "synthetic0086@example.invalid",
+          "pan": "ZZZPZ0086Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6451564.32,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "NRB Bearing Limited",
+           "isin": "INE349A01021",
+           "isinDescription": "NRB BEARING LIMITED EQ",
+           "units": 24,
+           "lastTradedPrice": "3796.18"
+          },
+          {
+           "issuerName": "PCBL Chemical Limited",
+           "isin": "INE602A01031",
+           "isinDescription": "PCBL CHEMICAL LIMITED EQ",
+           "units": 4944,
+           "lastTradedPrice": "1286.50"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE859Q01017",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE405C01035",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE148O01028",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

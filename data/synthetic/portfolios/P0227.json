@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0227",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0227",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Tata Capital Limited",
+   "isin": "INE976I01016",
+   "quantity": 2469,
+   "value_inr": 11695230.23
+  },
+  {
+   "instrument_name": "Sai Capital Limited",
+   "isin": "INE531X01018",
+   "quantity": 1261,
+   "value_inr": 7983474.65
+  },
+  {
+   "instrument_name": "Ethos Limited",
+   "isin": "INE04TZ01018",
+   "quantity": 7245,
+   "value_inr": 22245391.74
+  },
+  {
+   "instrument_name": "Agro Phos India Limited",
+   "isin": "INE740V01019",
+   "quantity": 2330,
+   "value_inr": 6156503.46
+  },
+  {
+   "instrument_name": "Prime Focus Limited",
+   "isin": "INE367G01038",
+   "quantity": 4974,
+   "value_inr": 19036038.8
+  }
+ ],
+ "portfolio_total_inr": 67116638.88,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0227",
+      "maskedDematId": "XXXXXXXXXXXXX2750",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0227",
+          "dob": "1971-01-11",
+          "mobile": 1000000227,
+          "nominee": "REGISTERED",
+          "dematId": "12081798361792750",
+          "email": "synthetic0227@example.invalid",
+          "pan": "ZZZPZ0227Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10210667.6,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Tata Capital Limited",
+           "isin": "INE976I01016",
+           "isinDescription": "TATA CAPITAL LIMITED EQ",
+           "units": 2469,
+           "lastTradedPrice": "2388.83"
+          },
+          {
+           "issuerName": "Sai Capital Limited",
+           "isin": "INE531X01018",
+           "isinDescription": "SAI CAPITAL LIMITED EQ",
+           "units": 1261,
+           "lastTradedPrice": "2220.35"
+          },
+          {
+           "issuerName": "Ethos Limited",
+           "isin": "INE04TZ01018",
+           "isinDescription": "ETHOS LIMITED EQ",
+           "units": 1449,
+           "lastTradedPrice": "1044.02"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0227",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0227",
+          "dob": "1957-07-14",
+          "mobile": 1000000227,
+          "nominee": "REGISTERED",
+          "dematId": "IN3034292704020000",
+          "email": "synthetic0227@example.invalid",
+          "pan": "ZZZPZ0227Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4711524.16,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Stanley Lifestyles Limited",
+           "isin": "INE01A001028",
+           "isinDescription": "STANLEY LIFESTYLES LIMITED EQ",
+           "units": 3808,
+           "lastTradedPrice": "1237.27"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE976I01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE531X01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE04TZ01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE740V01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE367G01038",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

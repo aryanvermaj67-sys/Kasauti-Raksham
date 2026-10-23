@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0117",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0117",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Vivo Bio Tech Limited",
+   "isin": "INE380K01017",
+   "quantity": 1892,
+   "value_inr": 3945169.74
+  },
+  {
+   "instrument_name": "Steamhouse India Limited",
+   "isin": "INE0FRO01022",
+   "quantity": 1335,
+   "value_inr": 601760.97
+  },
+  {
+   "instrument_name": "JK Lakshmi Cement Limited",
+   "isin": "INE786A01032",
+   "quantity": 20870,
+   "value_inr": 96396636.39
+  },
+  {
+   "instrument_name": "Neelamalai Agro Industries Limited",
+   "isin": "INE605D01012",
+   "quantity": 436,
+   "value_inr": 518134.93
+  },
+  {
+   "instrument_name": "Primo Chemicals Limited",
+   "isin": "INE607A01022",
+   "quantity": 53,
+   "value_inr": 394796.08
+  }
+ ],
+ "portfolio_total_inr": 101856498.11,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0117",
+      "maskedDematId": "XXXXXXXXXXXXX8620",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0117",
+          "dob": "1983-01-12",
+          "mobile": 1000000117,
+          "nominee": "REGISTERED",
+          "dematId": "12088829144238620",
+          "email": "synthetic0117@example.invalid",
+          "pan": "ZZZPZ0117Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10138571.42,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Vivo Bio Tech Limited",
+           "isin": "INE380K01017",
+           "isinDescription": "VIVO BIO TECH LIMITED EQ",
+           "units": 1892,
+           "lastTradedPrice": "1797.45"
+          },
+          {
+           "issuerName": "JK Lakshmi Cement Limited",
+           "isin": "INE786A01032",
+           "isinDescription": "JK LAKSHMI CEMENT LIMITED EQ",
+           "units": 4174,
+           "lastTradedPrice": "1614.23"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0117",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0117",
+          "dob": "1973-01-13",
+          "mobile": 1000000117,
+          "nominee": "REGISTERED",
+          "dematId": "IN3080449975380000",
+          "email": "synthetic0117@example.invalid",
+          "pan": "ZZZPZ0117Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9482498.65,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Steamhouse India Limited",
+           "isin": "INE0FRO01022",
+           "isinDescription": "STEAMHOUSE INDIA LIMITED EQ",
+           "units": 1335,
+           "lastTradedPrice": "419.11"
+          },
+          {
+           "issuerName": "Manaksia Aluminium Company Limited",
+           "isin": "INE859Q01017",
+           "isinDescription": "MANAKSIA ALUMINIUM COMPANY LIMITED EQ",
+           "units": 2782,
+           "lastTradedPrice": "3207.40"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE380K01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0FRO01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE786A01032",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE605D01012",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE607A01022",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0277",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0277",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Nitco Limited",
+   "isin": "INE858F01012",
+   "quantity": 179,
+   "value_inr": 302434.54
+  },
+  {
+   "instrument_name": "Mahindra & Mahindra Financial Services Limited",
+   "isin": "INE774D01024",
+   "quantity": 3371,
+   "value_inr": 20592659.89
+  },
+  {
+   "instrument_name": "Mahanagar Telephone Nigam Limited",
+   "isin": "INE153A01019",
+   "quantity": 5850,
+   "value_inr": 24377412.67
+  },
+  {
+   "instrument_name": "Steel City Securities Limited",
+   "isin": "INE395H01011",
+   "quantity": 3538,
+   "value_inr": 7967142.25
+  },
+  {
+   "instrument_name": "Coral India Finance & Housing Limited",
+   "isin": "INE558D01021",
+   "quantity": 741,
+   "value_inr": 810033.57
+  }
+ ],
+ "portfolio_total_inr": 54049682.92,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0277",
+      "maskedDematId": "XXXXXXXXXXXXX2090",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0277",
+          "dob": "1989-06-19",
+          "mobile": 1000000277,
+          "nominee": "REGISTERED",
+          "dematId": "12086737196562090",
+          "email": "synthetic0277@example.invalid",
+          "pan": "ZZZPZ0277Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11555585.74,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Mahindra & Mahindra Financial Services Limited",
+           "isin": "INE774D01024",
+           "isinDescription": "MAHINDRA & MAHINDRA FINANCIAL SERVICES LIMITED EQ",
+           "units": 3371,
+           "lastTradedPrice": "3427.94"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0277",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0277",
+          "dob": "1995-08-19",
+          "mobile": 1000000277,
+          "nominee": "REGISTERED",
+          "dematId": "IN3058230819030000",
+          "email": "synthetic0277@example.invalid",
+          "pan": "ZZZPZ0277Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 2056702.2,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Nitco Limited",
+           "isin": "INE858F01012",
+           "isinDescription": "NITCO LIMITED EQ",
+           "units": 179,
+           "lastTradedPrice": "608.64"
+          },
+          {
+           "issuerName": "Mahanagar Telephone Nigam Limited",
+           "isin": "INE153A01019",
+           "isinDescription": "MAHANAGAR TELEPHONE NIGAM LIMITED EQ",
+           "units": 1170,
+           "lastTradedPrice": "1441.63"
+          },
+          {
+           "issuerName": "Tiger Logistics (India) Limited",
+           "isin": "INE906O01029",
+           "isinDescription": "TIGER LOGISTICS (INDIA) LIMITED EQ",
+           "units": 263,
+           "lastTradedPrice": "992.58"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE858F01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE774D01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE153A01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE395H01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE558D01021",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

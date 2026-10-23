@@ -1,0 +1,139 @@
+{
+ "mock": true,
+ "case_id": "P0238",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0238",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Bluspring Enterprises Limited",
+   "isin": "INE0U4101014",
+   "quantity": 10,
+   "value_inr": 10824.64
+  },
+  {
+   "instrument_name": "DCM Shriram Industries Limited",
+   "isin": "INE843D01027",
+   "quantity": 388,
+   "value_inr": 1885142.7
+  },
+  {
+   "instrument_name": "Tata Elxsi Limited",
+   "isin": "INE670A01012",
+   "quantity": 4265,
+   "value_inr": 41878522.9
+  },
+  {
+   "instrument_name": "L&T Finance Limited",
+   "isin": "INE498L01015",
+   "quantity": 2413,
+   "value_inr": 9124178.68
+  }
+ ],
+ "portfolio_total_inr": 52898668.92,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0238",
+      "maskedDematId": "XXXXXXXXXXXXX5730",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0238",
+          "dob": "1980-04-19",
+          "mobile": 1000000238,
+          "nominee": "REGISTERED",
+          "dematId": "12087620013825730",
+          "email": "synthetic0238@example.invalid",
+          "pan": "ZZZPZ0238Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 23298632.84,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Bluspring Enterprises Limited",
+           "isin": "INE0U4101014",
+           "isinDescription": "BLUSPRING ENTERPRISES LIMITED EQ",
+           "units": 10,
+           "lastTradedPrice": "1008.38"
+          },
+          {
+           "issuerName": "DCM Shriram Industries Limited",
+           "isin": "INE843D01027",
+           "isinDescription": "DCM SHRIRAM INDUSTRIES LIMITED EQ",
+           "units": 388,
+           "lastTradedPrice": "3785.93"
+          },
+          {
+           "issuerName": "Tata Elxsi Limited",
+           "isin": "INE670A01012",
+           "isinDescription": "TATA ELXSI LIMITED EQ",
+           "units": 4265,
+           "lastTradedPrice": "3620.39"
+          },
+          {
+           "issuerName": "L&T Finance Limited",
+           "isin": "INE498L01015",
+           "isinDescription": "L&T FINANCE LIMITED EQ",
+           "units": 2413,
+           "lastTradedPrice": "2643.45"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0U4101014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE843D01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE670A01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE498L01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

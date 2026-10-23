@@ -1,0 +1,150 @@
+{
+ "mock": true,
+ "case_id": "P0112",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0112",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Indian Overseas Bank",
+   "isin": "INE565A01014",
+   "quantity": 4645,
+   "value_inr": 33940633.67
+  },
+  {
+   "instrument_name": "FORCE MOTORS LTD",
+   "isin": "INE451A01017",
+   "quantity": 1207,
+   "value_inr": 3843467.87
+  },
+  {
+   "instrument_name": "Transwarranty Finance Limited",
+   "isin": "INE804H01012",
+   "quantity": 39700,
+   "value_inr": 245885388.49
+  },
+  {
+   "instrument_name": "Shipping Corporation of India Land and Assets Limited",
+   "isin": "INE0PB301013",
+   "quantity": 4004,
+   "value_inr": 9083897.99
+  },
+  {
+   "instrument_name": "Fairchem Organics Limited",
+   "isin": "INE0DNW01011",
+   "quantity": 2175,
+   "value_inr": 6621583.52
+  }
+ ],
+ "portfolio_total_inr": 299374971.54,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0112",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0112",
+          "dob": "1998-05-19",
+          "mobile": 1000000112,
+          "nominee": "REGISTERED",
+          "dematId": "IN3088582746910000",
+          "email": "synthetic0112@example.invalid",
+          "pan": "ZZZPZ0112Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 31065650.72,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Indian Overseas Bank",
+           "isin": "INE565A01014",
+           "isinDescription": "INDIAN OVERSEAS BANK EQ",
+           "units": 4645,
+           "lastTradedPrice": "2644.46"
+          },
+          {
+           "issuerName": "FORCE MOTORS LTD",
+           "isin": "INE451A01017",
+           "isinDescription": "FORCE MOTORS LTD EQ",
+           "units": 1207,
+           "lastTradedPrice": "2948.96"
+          },
+          {
+           "issuerName": "Transwarranty Finance Limited",
+           "isin": "INE804H01012",
+           "isinDescription": "TRANSWARRANTY FINANCE LIMITED EQ",
+           "units": 3970,
+           "lastTradedPrice": "3757.92"
+          },
+          {
+           "issuerName": "Dwarikesh Sugar Industries Limited",
+           "isin": "INE366A01041",
+           "isinDescription": "DWARIKESH SUGAR INDUSTRIES LIMITED EQ",
+           "units": 341,
+           "lastTradedPrice": "890.90"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE565A01014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE451A01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE804H01012",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE0PB301013",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0DNW01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

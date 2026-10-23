@@ -1,0 +1,150 @@
+{
+ "mock": true,
+ "case_id": "P0182",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0182",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Harsha Engineers International Limited",
+   "isin": "INE0JUS01029",
+   "quantity": 3370,
+   "value_inr": 8005650.16
+  },
+  {
+   "instrument_name": "Onix Solar Energy Limited",
+   "isin": "INE173M01012",
+   "quantity": 537,
+   "value_inr": 3839146.63
+  },
+  {
+   "instrument_name": "Shriram Finance Limited",
+   "isin": "INE721A01047",
+   "quantity": 6776,
+   "value_inr": 9671921.84
+  },
+  {
+   "instrument_name": "IP Rings Limited",
+   "isin": "INE558A01019",
+   "quantity": 2110,
+   "value_inr": 7395660.96
+  },
+  {
+   "instrument_name": "EMS Limited",
+   "isin": "INE0OV601013",
+   "quantity": 1944,
+   "value_inr": 4822069.78
+  }
+ ],
+ "portfolio_total_inr": 33734449.37,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0182",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0182",
+          "dob": "1987-09-12",
+          "mobile": 1000000182,
+          "nominee": "REGISTERED",
+          "dematId": "IN3087461375150000",
+          "email": "synthetic0182@example.invalid",
+          "pan": "ZZZPZ0182Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 15492088.36,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Harsha Engineers International Limited",
+           "isin": "INE0JUS01029",
+           "isinDescription": "HARSHA ENGINEERS INTERNATIONAL LIMITED EQ",
+           "units": 3370,
+           "lastTradedPrice": "1288.24"
+          },
+          {
+           "issuerName": "Onix Solar Energy Limited",
+           "isin": "INE173M01012",
+           "isinDescription": "ONIX SOLAR ENERGY LIMITED EQ",
+           "units": 537,
+           "lastTradedPrice": "2543.03"
+          },
+          {
+           "issuerName": "Shriram Finance Limited",
+           "isin": "INE721A01047",
+           "isinDescription": "SHRIRAM FINANCE LIMITED EQ",
+           "units": 3388,
+           "lastTradedPrice": "1082.40"
+          },
+          {
+           "issuerName": "Elpro International Limited",
+           "isin": "INE579B01039",
+           "isinDescription": "ELPRO INTERNATIONAL LIMITED EQ",
+           "units": 2361,
+           "lastTradedPrice": "2591.25"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0JUS01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE173M01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE721A01047",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE558A01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0OV601013",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

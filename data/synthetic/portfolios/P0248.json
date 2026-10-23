@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0248",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0248",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Cinevista Limited",
+   "isin": "INE039B01026",
+   "quantity": 623,
+   "value_inr": 2665661.75
+  },
+  {
+   "instrument_name": "Dharmaj Crop Guard Limited",
+   "isin": "INE00OQ01016",
+   "quantity": 2819,
+   "value_inr": 6320619.7
+  },
+  {
+   "instrument_name": "Damodar Industries Limited",
+   "isin": "INE497D01022",
+   "quantity": 3894,
+   "value_inr": 44129487.87
+  },
+  {
+   "instrument_name": "Arman Financial Services Limited",
+   "isin": "INE109C01017",
+   "quantity": 1664,
+   "value_inr": 7161371.28
+  }
+ ],
+ "portfolio_total_inr": 60277140.6,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0248",
+      "maskedDematId": "XXXXXXXXXXXXX4220",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0248",
+          "dob": "1983-05-12",
+          "mobile": 1000000248,
+          "nominee": "REGISTERED",
+          "dematId": "12082804825784220",
+          "email": "synthetic0248@example.invalid",
+          "pan": "ZZZPZ0248Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 15415528.26,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Damodar Industries Limited",
+           "isin": "INE497D01022",
+           "isinDescription": "DAMODAR INDUSTRIES LIMITED EQ",
+           "units": 3894,
+           "lastTradedPrice": "3958.79"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0248",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0248",
+          "dob": "1981-01-13",
+          "mobile": 1000000248,
+          "nominee": "REGISTERED",
+          "dematId": "IN3022440646010000",
+          "email": "synthetic0248@example.invalid",
+          "pan": "ZZZPZ0248Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9353463.68,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Cinevista Limited",
+           "isin": "INE039B01026",
+           "isinDescription": "CINEVISTA LIMITED EQ",
+           "units": 623,
+           "lastTradedPrice": "3768.44"
+          },
+          {
+           "issuerName": "Dharmaj Crop Guard Limited",
+           "isin": "INE00OQ01016",
+           "isinDescription": "DHARMAJ CROP GUARD LIMITED EQ",
+           "units": 2819,
+           "lastTradedPrice": "1219.88"
+          },
+          {
+           "issuerName": "Arman Financial Services Limited",
+           "isin": "INE109C01017",
+           "isinDescription": "ARMAN FINANCIAL SERVICES LIMITED EQ",
+           "units": 1664,
+           "lastTradedPrice": "2143.56"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE039B01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE00OQ01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE497D01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE109C01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

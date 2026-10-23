@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0280",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0280",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Trident Limited",
+   "isin": "INE064C01022",
+   "quantity": 3831,
+   "value_inr": 11716974.16
+  },
+  {
+   "instrument_name": "MAS Financial Services Limited",
+   "isin": "INE348L01012",
+   "quantity": 4588,
+   "value_inr": 581070.73
+  },
+  {
+   "instrument_name": "Satia Industries Limited",
+   "isin": "INE170E01023",
+   "quantity": 3370,
+   "value_inr": 16355062.33
+  },
+  {
+   "instrument_name": "Tara Chand InfraLogistic Solutions Limited",
+   "isin": "INE555Z01020",
+   "quantity": 3458,
+   "value_inr": 3536829.25
+  },
+  {
+   "instrument_name": "NTC Industries Limited",
+   "isin": "INE920C01017",
+   "quantity": 1161,
+   "value_inr": 5503914.93
+  },
+  {
+   "instrument_name": "Sintercom India Limited",
+   "isin": "INE129Z01016",
+   "quantity": 2487,
+   "value_inr": 8687758.09
+  }
+ ],
+ "portfolio_total_inr": 46381609.49,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0280",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0280",
+          "dob": "1998-02-15",
+          "mobile": 1000000280,
+          "nominee": "REGISTERED",
+          "dematId": "IN3055298709090000",
+          "email": "synthetic0280@example.invalid",
+          "pan": "ZZZPZ0280Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 7062453.99,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Trident Limited",
+           "isin": "INE064C01022",
+           "isinDescription": "TRIDENT LIMITED EQ",
+           "units": 3831,
+           "lastTradedPrice": "1693.61"
+          },
+          {
+           "issuerName": "MAS Financial Services Limited",
+           "isin": "INE348L01012",
+           "isinDescription": "MAS FINANCIAL SERVICES LIMITED EQ",
+           "units": 4588,
+           "lastTradedPrice": "125.16"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE064C01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE348L01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE170E01023",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE555Z01020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE920C01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE129Z01016",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

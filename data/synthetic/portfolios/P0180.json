@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0180",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0180",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Nagreeka Capital & Infrastructure Limited",
+   "isin": "INE245I01016",
+   "quantity": 4663,
+   "value_inr": 28349771.38
+  },
+  {
+   "instrument_name": "Agri-Tech (India) Limited",
+   "isin": "INE449G01018",
+   "quantity": 3857,
+   "value_inr": 12776626.54
+  },
+  {
+   "instrument_name": "Urban Company Limited",
+   "isin": "INE0CAZ01013",
+   "quantity": 2602,
+   "value_inr": 9001544.56
+  },
+  {
+   "instrument_name": "Gandhar Oil Refinery (India) Limited",
+   "isin": "INE717W01049",
+   "quantity": 3460,
+   "value_inr": 11028516.98
+  },
+  {
+   "instrument_name": "One Mobikwik Systems Limited",
+   "isin": "INE0HLU01028",
+   "quantity": 3207,
+   "value_inr": 4809099.03
+  },
+  {
+   "instrument_name": "Aptech Limited",
+   "isin": "INE266F01018",
+   "quantity": 810,
+   "value_inr": 7081378.3
+  }
+ ],
+ "portfolio_total_inr": 73046936.79,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0180",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0180",
+          "dob": "1961-01-14",
+          "mobile": 1000000180,
+          "nominee": "REGISTERED",
+          "dematId": "IN3062144343510000",
+          "email": "synthetic0180@example.invalid",
+          "pan": "ZZZPZ0180Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 22713712.82,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Nagreeka Capital & Infrastructure Limited",
+           "isin": "INE245I01016",
+           "isinDescription": "NAGREEKA CAPITAL & INFRASTRUCTURE LIMITED EQ",
+           "units": 4663,
+           "lastTradedPrice": "2068.74"
+          },
+          {
+           "issuerName": "Agri-Tech (India) Limited",
+           "isin": "INE449G01018",
+           "isinDescription": "AGRI-TECH (INDIA) LIMITED EQ",
+           "units": 3857,
+           "lastTradedPrice": "2360.20"
+          },
+          {
+           "issuerName": "Urban Company Limited",
+           "isin": "INE0CAZ01013",
+           "isinDescription": "URBAN COMPANY LIMITED EQ",
+           "units": 2602,
+           "lastTradedPrice": "1523.40"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE245I01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE449G01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0CAZ01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE717W01049",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0HLU01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE266F01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

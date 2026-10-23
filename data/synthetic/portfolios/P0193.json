@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0193",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0193",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Texmo Pipes and Products Limited",
+   "isin": "INE141K01013",
+   "quantity": 2085,
+   "value_inr": 4254167.33
+  },
+  {
+   "instrument_name": "Chaman Lal Setia Exports Limited",
+   "isin": "INE419D01026",
+   "quantity": 4806,
+   "value_inr": 1919905.68
+  },
+  {
+   "instrument_name": "Techno Electric & Engineering Company Limited",
+   "isin": "INE285K01026",
+   "quantity": 4134,
+   "value_inr": 1038587.13
+  },
+  {
+   "instrument_name": "Rashi Peripherals Limited",
+   "isin": "INE0J1F01024",
+   "quantity": 3801,
+   "value_inr": 4240471.23
+  }
+ ],
+ "portfolio_total_inr": 11453131.37,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0193",
+      "maskedDematId": "XXXXXXXXXXXXX6250",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0193",
+          "dob": "1972-09-10",
+          "mobile": 1000000193,
+          "nominee": "REGISTERED",
+          "dematId": "12082188563856250",
+          "email": "synthetic0193@example.invalid",
+          "pan": "ZZZPZ0193Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 2792290.62,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Rashi Peripherals Limited",
+           "isin": "INE0J1F01024",
+           "isinDescription": "RASHI PERIPHERALS LIMITED EQ",
+           "units": 3801,
+           "lastTradedPrice": "734.62"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0193",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0193",
+          "dob": "1952-01-12",
+          "mobile": 1000000193,
+          "nominee": "REGISTERED",
+          "dematId": "IN3053200802870000",
+          "email": "synthetic0193@example.invalid",
+          "pan": "ZZZPZ0193Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5001932.34,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Texmo Pipes and Products Limited",
+           "isin": "INE141K01013",
+           "isinDescription": "TEXMO PIPES AND PRODUCTS LIMITED EQ",
+           "units": 2085,
+           "lastTradedPrice": "1434.72"
+          },
+          {
+           "issuerName": "Chaman Lal Setia Exports Limited",
+           "isin": "INE419D01026",
+           "isinDescription": "CHAMAN LAL SETIA EXPORTS LIMITED EQ",
+           "units": 4806,
+           "lastTradedPrice": "345.44"
+          },
+          {
+           "issuerName": "Techno Electric & Engineering Company Limited",
+           "isin": "INE285K01026",
+           "isinDescription": "TECHNO ELECTRIC & ENGINEERING COMPANY LIMITED EQ",
+           "units": 4134,
+           "lastTradedPrice": "84.75"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE141K01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE419D01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE285K01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0J1F01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

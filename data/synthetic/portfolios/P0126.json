@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0126",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0126",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Gujarat Pipavav Port Limited",
+   "isin": "INE517F01014",
+   "quantity": 4242,
+   "value_inr": 29542502.95
+  },
+  {
+   "instrument_name": "Ratnaveer Precision Engineering Limited",
+   "isin": "INE05CZ01011",
+   "quantity": 2237,
+   "value_inr": 5765881.78
+  }
+ ],
+ "portfolio_total_inr": 35308384.73,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0126",
+      "maskedDematId": "XXXXXXXXXXXXX1550",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0126",
+          "dob": "1984-08-13",
+          "mobile": 1000000126,
+          "nominee": "REGISTERED",
+          "dematId": "12088699679531550",
+          "email": "synthetic0126@example.invalid",
+          "pan": "ZZZPZ0126Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 15849918.87,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Indokem Limited",
+           "isin": "INE716F01012",
+           "isinDescription": "INDOKEM LIMITED EQ",
+           "units": 3243,
+           "lastTradedPrice": "1014.59"
+          },
+          {
+           "issuerName": "ABM Knowledgeware Limited",
+           "isin": "INE850B01026",
+           "isinDescription": "ABM KNOWLEDGEWARE LIMITED EQ",
+           "units": 3202,
+           "lastTradedPrice": "3317.14"
+          },
+          {
+           "issuerName": "Vidya Wires Limited",
+           "isin": "INE14UN01029",
+           "isinDescription": "VIDYA WIRES LIMITED EQ",
+           "units": 1817,
+           "lastTradedPrice": "1066.66"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0126",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0126",
+          "dob": "1954-01-18",
+          "mobile": 1000000126,
+          "nominee": "REGISTERED",
+          "dematId": "IN3023771543070000",
+          "email": "synthetic0126@example.invalid",
+          "pan": "ZZZPZ0126Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8700483.72,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Paramount Communications Limited",
+           "isin": "INE074B01023",
+           "isinDescription": "PARAMOUNT COMMUNICATIONS LIMITED EQ",
+           "units": 3468,
+           "lastTradedPrice": "2508.79"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE517F01014",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE05CZ01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0052",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0052",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "LCC Projects Limited",
+   "isin": "INE1FPN01026",
+   "quantity": 1762,
+   "value_inr": 3430874.32
+  },
+  {
+   "instrument_name": "Anand Rathi Share and Stock Brokers Limited",
+   "isin": "INE549H01021",
+   "quantity": 4422,
+   "value_inr": 6196516.69
+  },
+  {
+   "instrument_name": "Lambodhara Textiles Limited",
+   "isin": "INE112F01022",
+   "quantity": 46140,
+   "value_inr": 380608315.38
+  },
+  {
+   "instrument_name": "Nestle India Limited",
+   "isin": "INE239A01024",
+   "quantity": 4817,
+   "value_inr": 6163278.53
+  },
+  {
+   "instrument_name": "Satin Creditcare Network Limited",
+   "isin": "INE836B01017",
+   "quantity": 425,
+   "value_inr": 2632110.75
+  }
+ ],
+ "portfolio_total_inr": 399031095.67,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0052",
+      "maskedDematId": "XXXXXXXXXXXXX5120",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0052",
+          "dob": "1986-04-14",
+          "mobile": 1000000052,
+          "nominee": "REGISTERED",
+          "dematId": "12086260291245120",
+          "email": "synthetic0052@example.invalid",
+          "pan": "ZZZPZ0052Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 515652.48,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Bhartiya International Limited",
+           "isin": "INE828A01016",
+           "isinDescription": "BHARTIYA INTERNATIONAL LIMITED EQ",
+           "units": 1134,
+           "lastTradedPrice": "454.72"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0052",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0052",
+          "dob": "1986-01-11",
+          "mobile": 1000000052,
+          "nominee": "REGISTERED",
+          "dematId": "IN3066743720820000",
+          "email": "synthetic0052@example.invalid",
+          "pan": "ZZZPZ0052Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 19189124.32,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "LCC Projects Limited",
+           "isin": "INE1FPN01026",
+           "isinDescription": "LCC PROJECTS LIMITED EQ",
+           "units": 1762,
+           "lastTradedPrice": "824.23"
+          },
+          {
+           "issuerName": "Anand Rathi Share and Stock Brokers Limited",
+           "isin": "INE549H01021",
+           "isinDescription": "ANAND RATHI SHARE AND STOCK BROKERS LIMITED EQ",
+           "units": 4422,
+           "lastTradedPrice": "1099.11"
+          },
+          {
+           "issuerName": "Lambodhara Textiles Limited",
+           "isin": "INE112F01022",
+           "isinDescription": "LAMBODHARA TEXTILES LIMITED EQ",
+           "units": 4614,
+           "lastTradedPrice": "2790.76"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE1FPN01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE549H01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE112F01022",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE239A01024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE836B01017",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

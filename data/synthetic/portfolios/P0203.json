@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0203",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0203",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Valor Estate Limited",
+   "isin": "INE879I01012",
+   "quantity": 2547,
+   "value_inr": 9709087.84
+  },
+  {
+   "instrument_name": "V-Guard Industries Limited",
+   "isin": "INE951I01027",
+   "quantity": 2777,
+   "value_inr": 9487843.59
+  },
+  {
+   "instrument_name": "NHPC Limited",
+   "isin": "INE848E01016",
+   "quantity": 3903,
+   "value_inr": 30526365.56
+  },
+  {
+   "instrument_name": "Bansal Wire Industries Limited",
+   "isin": "INE0B9K01033",
+   "quantity": 4971,
+   "value_inr": 5143630.06
+  }
+ ],
+ "portfolio_total_inr": 54866927.05,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0203",
+      "maskedDematId": "XXXXXXXXXXXXX8000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0203",
+          "dob": "1950-03-10",
+          "mobile": 1000000203,
+          "nominee": "REGISTERED",
+          "dematId": "12088098609208000",
+          "email": "synthetic0203@example.invalid",
+          "pan": "ZZZPZ0203Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13040508.45,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "NHPC Limited",
+           "isin": "INE848E01016",
+           "isinDescription": "NHPC LIMITED EQ",
+           "units": 3903,
+           "lastTradedPrice": "3341.15"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0203",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0203",
+          "dob": "1980-02-18",
+          "mobile": 1000000203,
+          "nominee": "REGISTERED",
+          "dematId": "IN3083332222230000",
+          "email": "synthetic0203@example.invalid",
+          "pan": "ZZZPZ0203Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 17204484.25,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Valor Estate Limited",
+           "isin": "INE879I01012",
+           "isinDescription": "VALOR ESTATE LIMITED EQ",
+           "units": 2547,
+           "lastTradedPrice": "2271.74"
+          },
+          {
+           "issuerName": "V-Guard Industries Limited",
+           "isin": "INE951I01027",
+           "isinDescription": "V-GUARD INDUSTRIES LIMITED EQ",
+           "units": 2777,
+           "lastTradedPrice": "3129.77"
+          },
+          {
+           "issuerName": "Bansal Wire Industries Limited",
+           "isin": "INE0B9K01033",
+           "isinDescription": "BANSAL WIRE INDUSTRIES LIMITED EQ",
+           "units": 4971,
+           "lastTradedPrice": "548.58"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE879I01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE951I01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE848E01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0B9K01033",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

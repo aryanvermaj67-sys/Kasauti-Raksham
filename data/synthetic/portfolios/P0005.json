@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0005",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0005",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Bharat Bijlee Limited",
+   "isin": "INE464A01036",
+   "quantity": 4979,
+   "value_inr": 8606687.82
+  },
+  {
+   "instrument_name": "UFO Moviez India Limited",
+   "isin": "INE527H01019",
+   "quantity": 1745,
+   "value_inr": 15668848.58
+  },
+  {
+   "instrument_name": "Deccan Gold Mines Limited",
+   "isin": "INE945F01025",
+   "quantity": 1657,
+   "value_inr": 5292471.73
+  },
+  {
+   "instrument_name": "Seshaasai Technologies Limited",
+   "isin": "INE04VU01023",
+   "quantity": 2181,
+   "value_inr": 5247346.99
+  },
+  {
+   "instrument_name": "De Nora India Limited",
+   "isin": "INE244A01016",
+   "quantity": 3278,
+   "value_inr": 13868498.47
+  },
+  {
+   "instrument_name": "Somi Conveyor Beltings Limited",
+   "isin": "INE323J01019",
+   "quantity": 3069,
+   "value_inr": 8989573.02
+  }
+ ],
+ "portfolio_total_inr": 57673426.61,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0005",
+      "maskedDematId": "XXXXXXXXXXXXX4880",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0005",
+          "dob": "1962-08-13",
+          "mobile": 1000000005,
+          "nominee": "REGISTERED",
+          "dematId": "12083599063214880",
+          "email": "synthetic0005@example.invalid",
+          "pan": "ZZZPZ0005Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 19705912.49,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Bharat Bijlee Limited",
+           "isin": "INE464A01036",
+           "isinDescription": "BHARAT BIJLEE LIMITED EQ",
+           "units": 4979,
+           "lastTradedPrice": "1704.09"
+          },
+          {
+           "issuerName": "UFO Moviez India Limited",
+           "isin": "INE527H01019",
+           "isinDescription": "UFO MOVIEZ INDIA LIMITED EQ",
+           "units": 1745,
+           "lastTradedPrice": "3717.08"
+          },
+          {
+           "issuerName": "Deccan Gold Mines Limited",
+           "isin": "INE945F01025",
+           "isinDescription": "DECCAN GOLD MINES LIMITED EQ",
+           "units": 1657,
+           "lastTradedPrice": "2857.54"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE464A01036",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE527H01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE945F01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE04VU01023",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE244A01016",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE323J01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

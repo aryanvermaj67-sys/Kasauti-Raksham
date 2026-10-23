@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0123",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0123",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Agro Phos India Limited",
+   "isin": "INE740V01019",
+   "quantity": 2341,
+   "value_inr": 4886962.13
+  },
+  {
+   "instrument_name": "Ratnaveer Precision Engineering Limited",
+   "isin": "INE05CZ01011",
+   "quantity": 4191,
+   "value_inr": 13421838.73
+  },
+  {
+   "instrument_name": "Davangere Sugar Company Limited",
+   "isin": "INE179G01029",
+   "quantity": 3671,
+   "value_inr": 20688392.0
+  },
+  {
+   "instrument_name": "Nilkamal Limited",
+   "isin": "INE310A01015",
+   "quantity": 3131,
+   "value_inr": 11833981.87
+  }
+ ],
+ "portfolio_total_inr": 50831174.73,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0123",
+      "maskedDematId": "XXXXXXXXXXXXX0630",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0123",
+          "dob": "1962-08-15",
+          "mobile": 1000000123,
+          "nominee": "REGISTERED",
+          "dematId": "12085365604230630",
+          "email": "synthetic0123@example.invalid",
+          "pan": "ZZZPZ0123Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 24642226.0,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Agro Phos India Limited",
+           "isin": "INE740V01019",
+           "isinDescription": "AGRO PHOS INDIA LIMITED EQ",
+           "units": 2341,
+           "lastTradedPrice": "1433.33"
+          },
+          {
+           "issuerName": "Ratnaveer Precision Engineering Limited",
+           "isin": "INE05CZ01011",
+           "isinDescription": "RATNAVEER PRECISION ENGINEERING LIMITED EQ",
+           "units": 4191,
+           "lastTradedPrice": "1960.23"
+          },
+          {
+           "issuerName": "Davangere Sugar Company Limited",
+           "isin": "INE179G01029",
+           "isinDescription": "DAVANGERE SUGAR COMPANY LIMITED EQ",
+           "units": 3671,
+           "lastTradedPrice": "3560.74"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0123",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0123",
+          "dob": "1955-03-10",
+          "mobile": 1000000123,
+          "nominee": "REGISTERED",
+          "dematId": "IN3072289423430000",
+          "email": "synthetic0123@example.invalid",
+          "pan": "ZZZPZ0123Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 7709711.78,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Nilkamal Limited",
+           "isin": "INE310A01015",
+           "isinDescription": "NILKAMAL LIMITED EQ",
+           "units": 3131,
+           "lastTradedPrice": "2462.38"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE740V01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE05CZ01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE179G01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE310A01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

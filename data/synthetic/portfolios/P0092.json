@@ -1,0 +1,150 @@
+{
+ "mock": true,
+ "case_id": "P0092",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0092",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Ather Energy Limited",
+   "isin": "INE0LEZ01016",
+   "quantity": 1024,
+   "value_inr": 4301662.39
+  },
+  {
+   "instrument_name": "Odyssey Corporation Limited",
+   "isin": "INE839E01023",
+   "quantity": 1991,
+   "value_inr": 5441250.9
+  },
+  {
+   "instrument_name": "HALEOS LABS LIMITED",
+   "isin": "INE320X01016",
+   "quantity": 9752,
+   "value_inr": 47788298.89
+  },
+  {
+   "instrument_name": "Orient Paper & Industries Limited",
+   "isin": "INE592A01026",
+   "quantity": 2875,
+   "value_inr": 11727031.27
+  },
+  {
+   "instrument_name": "Sicagen India Limited",
+   "isin": "INE176J01011",
+   "quantity": 2128,
+   "value_inr": 15098703.53
+  }
+ ],
+ "portfolio_total_inr": 84356946.98,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0092",
+      "maskedDematId": "XXXXXXXXXXXXX5210",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0092",
+          "dob": "1956-01-13",
+          "mobile": 1000000092,
+          "nominee": "REGISTERED",
+          "dematId": "12088092378885210",
+          "email": "synthetic0092@example.invalid",
+          "pan": "ZZZPZ0092Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 23723217.8,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Ather Energy Limited",
+           "isin": "INE0LEZ01016",
+           "isinDescription": "ATHER ENERGY LIMITED EQ",
+           "units": 1024,
+           "lastTradedPrice": "2731.07"
+          },
+          {
+           "issuerName": "Odyssey Corporation Limited",
+           "isin": "INE839E01023",
+           "isinDescription": "ODYSSEY CORPORATION LIMITED EQ",
+           "units": 1991,
+           "lastTradedPrice": "1502.42"
+          },
+          {
+           "issuerName": "HALEOS LABS LIMITED",
+           "isin": "INE320X01016",
+           "isinDescription": "HALEOS LABS LIMITED EQ",
+           "units": 4876,
+           "lastTradedPrice": "1795.49"
+          },
+          {
+           "issuerName": "OnEMI Technology Solutions Limited",
+           "isin": "INE12F801023",
+           "isinDescription": "ONEMI TECHNOLOGY SOLUTIONS LIMITED EQ",
+           "units": 3897,
+           "lastTradedPrice": "2355.78"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0LEZ01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE839E01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE320X01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE592A01026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE176J01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0247",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0247",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "RattanIndia Power Limited",
+   "isin": "INE399K01017",
+   "quantity": 3434,
+   "value_inr": 8148465.93
+  },
+  {
+   "instrument_name": "Atlas Cycles (Haryana) Limited",
+   "isin": "INE446A01025",
+   "quantity": 399,
+   "value_inr": 753650.8
+  },
+  {
+   "instrument_name": "Maheshwari Logistics Limited",
+   "isin": "INE263W01010",
+   "quantity": 28,
+   "value_inr": 10588.71
+  },
+  {
+   "instrument_name": "Kennametal India Limited",
+   "isin": "INE717A01029",
+   "quantity": 3877,
+   "value_inr": 10924639.87
+  },
+  {
+   "instrument_name": "Onesource Specialty Pharma Limited",
+   "isin": "INE013P01021",
+   "quantity": 4978,
+   "value_inr": 3610731.68
+  }
+ ],
+ "portfolio_total_inr": 23448076.99,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0247",
+      "maskedDematId": "XXXXXXXXXXXXX6140",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0247",
+          "dob": "1978-06-13",
+          "mobile": 1000000247,
+          "nominee": "REGISTERED",
+          "dematId": "12087475900506140",
+          "email": "synthetic0247@example.invalid",
+          "pan": "ZZZPZ0247Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 2583332.83,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Atlas Cycles (Haryana) Limited",
+           "isin": "INE446A01025",
+           "isinDescription": "ATLAS CYCLES (HARYANA) LIMITED EQ",
+           "units": 399,
+           "lastTradedPrice": "743.37"
+          },
+          {
+           "issuerName": "Maheshwari Logistics Limited",
+           "isin": "INE263W01010",
+           "isinDescription": "MAHESHWARI LOGISTICS LIMITED EQ",
+           "units": 14,
+           "lastTradedPrice": "227.48"
+          },
+          {
+           "issuerName": "Coffee Day Enterprises Limited",
+           "isin": "INE335K01011",
+           "isinDescription": "COFFEE DAY ENTERPRISES LIMITED EQ",
+           "units": 2644,
+           "lastTradedPrice": "863.67"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0247",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0247",
+          "dob": "1958-07-11",
+          "mobile": 1000000247,
+          "nominee": "REGISTERED",
+          "dematId": "IN3080877626570000",
+          "email": "synthetic0247@example.invalid",
+          "pan": "ZZZPZ0247Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3444095.96,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "RattanIndia Power Limited",
+           "isin": "INE399K01017",
+           "isinDescription": "RATTANINDIA POWER LIMITED EQ",
+           "units": 3434,
+           "lastTradedPrice": "1002.94"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE399K01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE446A01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE263W01010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE717A01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE013P01021",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

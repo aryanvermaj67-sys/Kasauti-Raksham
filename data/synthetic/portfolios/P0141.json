@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0141",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0141",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Gujarat Lease Financing Limited",
+   "isin": "INE540A01017",
+   "quantity": 748,
+   "value_inr": 1337583.65
+  },
+  {
+   "instrument_name": "Vesuvius India Limited",
+   "isin": "INE386A01023",
+   "quantity": 1353,
+   "value_inr": 9880922.05
+  },
+  {
+   "instrument_name": "Avenue Supermarts Limited",
+   "isin": "INE192R01011",
+   "quantity": 1022,
+   "value_inr": 1105411.71
+  },
+  {
+   "instrument_name": "Prabha Energy Limited",
+   "isin": "INE0I0M01023",
+   "quantity": 3691,
+   "value_inr": 20006659.74
+  }
+ ],
+ "portfolio_total_inr": 32330577.15,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0141",
+      "maskedDematId": "XXXXXXXXXXXXX6590",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0141",
+          "dob": "1954-03-10",
+          "mobile": 1000000141,
+          "nominee": "REGISTERED",
+          "dematId": "12082767382896590",
+          "email": "synthetic0141@example.invalid",
+          "pan": "ZZZPZ0141Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 21827612.19,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "SG Mart Limited",
+           "isin": "INE385F01024",
+           "isinDescription": "SG MART LIMITED EQ",
+           "units": 3397,
+           "lastTradedPrice": "1307.37"
+          },
+          {
+           "issuerName": "Symbiotec Pharmalab Limited",
+           "isin": "INE899I01028",
+           "isinDescription": "SYMBIOTEC PHARMALAB LIMITED EQ",
+           "units": 4845,
+           "lastTradedPrice": "3588.54"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0141",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0141",
+          "dob": "1964-08-14",
+          "mobile": 1000000141,
+          "nominee": "REGISTERED",
+          "dematId": "IN3070970569420000",
+          "email": "synthetic0141@example.invalid",
+          "pan": "ZZZPZ0141Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6034781.72,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Bombay Super Hybrid Seeds Limited",
+           "isin": "INE032Z01020",
+           "isinDescription": "BOMBAY SUPER HYBRID SEEDS LIMITED EQ",
+           "units": 214,
+           "lastTradedPrice": "731.94"
+          },
+          {
+           "issuerName": "Coromandel International Limited",
+           "isin": "INE169A01031",
+           "isinDescription": "COROMANDEL INTERNATIONAL LIMITED EQ",
+           "units": 1664,
+           "lastTradedPrice": "3532.54"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE540A01017",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE386A01023",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE192R01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0I0M01023",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

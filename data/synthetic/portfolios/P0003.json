@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0003",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0003",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Hind Aluminium Industries Limited",
+   "isin": "INE227B01019",
+   "quantity": 2179,
+   "value_inr": 2212010.42
+  },
+  {
+   "instrument_name": "Wonderla Holidays Limited",
+   "isin": "INE066O01014",
+   "quantity": 4608,
+   "value_inr": 29853363.77
+  },
+  {
+   "instrument_name": "Max Estates Limited",
+   "isin": "INE03EI01018",
+   "quantity": 4798,
+   "value_inr": 17036711.48
+  },
+  {
+   "instrument_name": "Hindware Home Innovation Limited",
+   "isin": "INE05AN01011",
+   "quantity": 4790,
+   "value_inr": 22684122.44
+  }
+ ],
+ "portfolio_total_inr": 71786208.11,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0003",
+      "maskedDematId": "XXXXXXXXXXXXX1120",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0003",
+          "dob": "1991-02-18",
+          "mobile": 1000000003,
+          "nominee": "REGISTERED",
+          "dematId": "12088473736201120",
+          "email": "synthetic0003@example.invalid",
+          "pan": "ZZZPZ0003Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9531881.33,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Hind Aluminium Industries Limited",
+           "isin": "INE227B01019",
+           "isinDescription": "HIND ALUMINIUM INDUSTRIES LIMITED EQ",
+           "units": 2179,
+           "lastTradedPrice": "575.73"
+          },
+          {
+           "issuerName": "Max Estates Limited",
+           "isin": "INE03EI01018",
+           "isinDescription": "MAX ESTATES LIMITED EQ",
+           "units": 4798,
+           "lastTradedPrice": "1725.17"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0003",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0003",
+          "dob": "1994-06-11",
+          "mobile": 1000000003,
+          "nominee": "REGISTERED",
+          "dematId": "IN3085199628960000",
+          "email": "synthetic0003@example.invalid",
+          "pan": "ZZZPZ0003Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 17686950.94,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Wonderla Holidays Limited",
+           "isin": "INE066O01014",
+           "isinDescription": "WONDERLA HOLIDAYS LIMITED EQ",
+           "units": 4608,
+           "lastTradedPrice": "2165.13"
+          },
+          {
+           "issuerName": "Hindware Home Innovation Limited",
+           "isin": "INE05AN01011",
+           "isinDescription": "HINDWARE HOME INNOVATION LIMITED EQ",
+           "units": 4790,
+           "lastTradedPrice": "1609.61"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE227B01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE066O01014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE03EI01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE05AN01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

@@ -1,0 +1,140 @@
+{
+ "mock": true,
+ "case_id": "P0015",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0015",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Quadrant Future Tek Limited",
+   "isin": "INE0LRY01011",
+   "quantity": 3521,
+   "value_inr": 2048490.98
+  },
+  {
+   "instrument_name": "Pondy Oxides & Chemicals Limited",
+   "isin": "INE063E01061",
+   "quantity": 3237,
+   "value_inr": 15986759.74
+  },
+  {
+   "instrument_name": "Muthoot Finance Limited",
+   "isin": "INE414G01012",
+   "quantity": 232,
+   "value_inr": 246445.42
+  },
+  {
+   "instrument_name": "Future Market Networks Limited",
+   "isin": "INE360L01017",
+   "quantity": 3792,
+   "value_inr": 4791256.65
+  },
+  {
+   "instrument_name": "Simplex Realty Limited",
+   "isin": "INE167H01014",
+   "quantity": 2141,
+   "value_inr": 7529360.87
+  },
+  {
+   "instrument_name": "Delta Corp Limited",
+   "isin": "INE124G01033",
+   "quantity": 1743,
+   "value_inr": 8172132.58
+  }
+ ],
+ "portfolio_total_inr": 38774446.24,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0015",
+      "maskedDematId": "XXXXXXXXXXXXX8910",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0015",
+          "dob": "1993-01-13",
+          "mobile": 1000000015,
+          "nominee": "REGISTERED",
+          "dematId": "12081457489378910",
+          "email": "synthetic0015@example.invalid",
+          "pan": "ZZZPZ0015Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1972041.68,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Quadrant Future Tek Limited",
+           "isin": "INE0LRY01011",
+           "isinDescription": "QUADRANT FUTURE TEK LIMITED EQ",
+           "units": 3521,
+           "lastTradedPrice": "560.08"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0LRY01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE063E01061",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE414G01012",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE360L01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE167H01014",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE124G01033",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

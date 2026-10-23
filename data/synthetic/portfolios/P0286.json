@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0286",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0286",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Polyplex Corporation Limited",
+   "isin": "INE633B01018",
+   "quantity": 474,
+   "value_inr": 1463975.55
+  },
+  {
+   "instrument_name": "NTPC Limited",
+   "isin": "INE733E01010",
+   "quantity": 918,
+   "value_inr": 5655749.18
+  }
+ ],
+ "portfolio_total_inr": 7119724.73,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0286",
+      "maskedDematId": "XXXXXXXXXXXXX0100",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0286",
+          "dob": "1948-04-17",
+          "mobile": 1000000286,
+          "nominee": "REGISTERED",
+          "dematId": "12088291022440100",
+          "email": "synthetic0286@example.invalid",
+          "pan": "ZZZPZ0286Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9816863.97,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "IG Petrochemicals Limited",
+           "isin": "INE204A01010",
+           "isinDescription": "IG PETROCHEMICALS LIMITED EQ",
+           "units": 4723,
+           "lastTradedPrice": "980.77"
+          },
+          {
+           "issuerName": "JINDAL STEEL LIMITED",
+           "isin": "INE749A01030",
+           "isinDescription": "JINDAL STEEL LIMITED EQ",
+           "units": 4106,
+           "lastTradedPrice": "1262.71"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0286",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0286",
+          "dob": "1949-07-19",
+          "mobile": 1000000286,
+          "nominee": "REGISTERED",
+          "dematId": "IN3054468462550000",
+          "email": "synthetic0286@example.invalid",
+          "pan": "ZZZPZ0286Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16602696.69,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Ajmera Realty & Infra India Limited",
+           "isin": "INE298G01035",
+           "isinDescription": "AJMERA REALTY & INFRA INDIA LIMITED EQ",
+           "units": 2369,
+           "lastTradedPrice": "317.61"
+          },
+          {
+           "issuerName": "Laxmi Dental Limited",
+           "isin": "INE0WO601020",
+           "isinDescription": "LAXMI DENTAL LIMITED EQ",
+           "units": 4251,
+           "lastTradedPrice": "3728.60"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE633B01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE733E01010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

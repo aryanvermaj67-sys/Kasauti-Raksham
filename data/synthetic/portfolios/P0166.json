@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0166",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0166",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Mukta Arts Limited",
+   "isin": "INE374B01019",
+   "quantity": 2200,
+   "value_inr": 7732085.47
+  },
+  {
+   "instrument_name": "Inventure Growth & Securities Limited",
+   "isin": "INE878H01024",
+   "quantity": 3474,
+   "value_inr": 9155171.92
+  },
+  {
+   "instrument_name": "Utkarsh Small Finance Bank Limited",
+   "isin": "INE735W01017",
+   "quantity": 529,
+   "value_inr": 1898442.27
+  },
+  {
+   "instrument_name": "COSMO FIRST LIMITED",
+   "isin": "INE757A01017",
+   "quantity": 3716,
+   "value_inr": 21477893.94
+  }
+ ],
+ "portfolio_total_inr": 40263593.6,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0166",
+      "maskedDematId": "XXXXXXXXXXXXX6320",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0166",
+          "dob": "1957-08-11",
+          "mobile": 1000000166,
+          "nominee": "REGISTERED",
+          "dematId": "12081725124926320",
+          "email": "synthetic0166@example.invalid",
+          "pan": "ZZZPZ0166Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11609291.33,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Bank of Baroda",
+           "isin": "INE028A01039",
+           "isinDescription": "BANK OF BARODA EQ",
+           "units": 3929,
+           "lastTradedPrice": "2954.77"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0166",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0166",
+          "dob": "1956-05-11",
+          "mobile": 1000000166,
+          "nominee": "REGISTERED",
+          "dematId": "IN3056392965570000",
+          "email": "synthetic0166@example.invalid",
+          "pan": "ZZZPZ0166Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 24224390.04,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "VA Tech Wabag Limited",
+           "isin": "INE956G01038",
+           "isinDescription": "VA TECH WABAG LIMITED EQ",
+           "units": 4762,
+           "lastTradedPrice": "3487.10"
+          },
+          {
+           "issuerName": "HDFC Bank Limited",
+           "isin": "INE040A01034",
+           "isinDescription": "HDFC BANK LIMITED EQ",
+           "units": 1728,
+           "lastTradedPrice": "3017.63"
+          },
+          {
+           "issuerName": "Dr Agarwals Eye Hospital Limited",
+           "isin": "INE934C01018",
+           "isinDescription": "DR AGARWALS EYE HOSPITAL LIMITED EQ",
+           "units": 1856,
+           "lastTradedPrice": "1295.45"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE374B01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE878H01024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE735W01017",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE757A01017",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

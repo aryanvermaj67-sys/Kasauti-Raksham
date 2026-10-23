@@ -1,0 +1,140 @@
+{
+ "mock": true,
+ "case_id": "P0150",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0150",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Styrenix Performance Materials Limited",
+   "isin": "INE189B01011",
+   "quantity": 900,
+   "value_inr": 5101597.8
+  },
+  {
+   "instrument_name": "Gretex Corporate Services Limited",
+   "isin": "INE199P01028",
+   "quantity": 809,
+   "value_inr": 4739949.48
+  },
+  {
+   "instrument_name": "Bharti Hexacom Limited",
+   "isin": "INE343G01021",
+   "quantity": 1453,
+   "value_inr": 3902993.34
+  },
+  {
+   "instrument_name": "Zodiac Energy Limited",
+   "isin": "INE761Y01019",
+   "quantity": 3334,
+   "value_inr": 1377880.94
+  },
+  {
+   "instrument_name": "Aditya Infotech Limited",
+   "isin": "INE819V01029",
+   "quantity": 4895,
+   "value_inr": 35741604.15
+  },
+  {
+   "instrument_name": "Shri Jagdamba Polymers Limited",
+   "isin": "INE564J01026",
+   "quantity": 3114,
+   "value_inr": 6728881.34
+  }
+ ],
+ "portfolio_total_inr": 57592907.05,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0150",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0150",
+          "dob": "1945-09-16",
+          "mobile": 1000000150,
+          "nominee": "REGISTERED",
+          "dematId": "IN3099734210800000",
+          "email": "synthetic0150@example.invalid",
+          "pan": "ZZZPZ0150Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 2473488.0,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Styrenix Performance Materials Limited",
+           "isin": "INE189B01011",
+           "isinDescription": "STYRENIX PERFORMANCE MATERIALS LIMITED EQ",
+           "units": 900,
+           "lastTradedPrice": "2748.32"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE189B01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE199P01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE343G01021",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE761Y01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE819V01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE564J01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

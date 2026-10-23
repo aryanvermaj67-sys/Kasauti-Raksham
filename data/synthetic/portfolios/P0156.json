@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0156",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0156",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Rategain Travel Technologies Limited",
+   "isin": "INE0CLI01024",
+   "quantity": 4877,
+   "value_inr": 17575370.69
+  },
+  {
+   "instrument_name": "Central Depository Services (India) Limited",
+   "isin": "INE736A01011",
+   "quantity": 1786,
+   "value_inr": 10793529.26
+  },
+  {
+   "instrument_name": "Tree House Education & Accessories Limited",
+   "isin": "INE040M01013",
+   "quantity": 1007,
+   "value_inr": 6633307.57
+  },
+  {
+   "instrument_name": "Chemfab Alkalis Limited",
+   "isin": "INE783X01023",
+   "quantity": 992,
+   "value_inr": 415561.36
+  }
+ ],
+ "portfolio_total_inr": 35417768.88,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0156",
+      "maskedDematId": "XXXXXXXXXXXXX6570",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0156",
+          "dob": "1994-07-15",
+          "mobile": 1000000156,
+          "nominee": "REGISTERED",
+          "dematId": "12084049222656570",
+          "email": "synthetic0156@example.invalid",
+          "pan": "ZZZPZ0156Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5418866.13,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Adani Energy Solutions Limited",
+           "isin": "INE931S01010",
+           "isinDescription": "ADANI ENERGY SOLUTIONS LIMITED EQ",
+           "units": 3663,
+           "lastTradedPrice": "1419.04"
+          },
+          {
+           "issuerName": "BASF India Limited",
+           "isin": "INE373A01013",
+           "isinDescription": "BASF INDIA LIMITED EQ",
+           "units": 288,
+           "lastTradedPrice": "114.33"
+          },
+          {
+           "issuerName": "Addi Industries Limited",
+           "isin": "INE757C01021",
+           "isinDescription": "ADDI INDUSTRIES LIMITED EQ",
+           "units": 763,
+           "lastTradedPrice": "246.39"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0156",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0156",
+          "dob": "1994-02-14",
+          "mobile": 1000000156,
+          "nominee": "REGISTERED",
+          "dematId": "IN3021052522710000",
+          "email": "synthetic0156@example.invalid",
+          "pan": "ZZZPZ0156Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 2382541.5,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Accuracy Shipping Limited",
+           "isin": "INE648Z01023",
+           "isinDescription": "ACCURACY SHIPPING LIMITED EQ",
+           "units": 2330,
+           "lastTradedPrice": "1022.55"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0CLI01024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE736A01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE040M01013",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE783X01023",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

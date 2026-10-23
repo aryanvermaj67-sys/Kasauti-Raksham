@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0098",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0098",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "City Union Bank Limited",
+   "isin": "INE491A01021",
+   "quantity": 4295,
+   "value_inr": 40917242.06
+  },
+  {
+   "instrument_name": "Kriti Nutrients Limited",
+   "isin": "INE798K01010",
+   "quantity": 2942,
+   "value_inr": 9976008.6
+  },
+  {
+   "instrument_name": "Career Point Edutech Limited",
+   "isin": "INE0P6P01016",
+   "quantity": 2429,
+   "value_inr": 2417322.4
+  },
+  {
+   "instrument_name": "Cinevista Limited",
+   "isin": "INE039B01026",
+   "quantity": 4500,
+   "value_inr": 13131207.36
+  }
+ ],
+ "portfolio_total_inr": 66441780.42,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0098",
+      "maskedDematId": "XXXXXXXXXXXXX4220",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0098",
+          "dob": "1974-01-11",
+          "mobile": 1000000098,
+          "nominee": "REGISTERED",
+          "dematId": "12083890342144220",
+          "email": "synthetic0098@example.invalid",
+          "pan": "ZZZPZ0098Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 18874189.97,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Kriti Nutrients Limited",
+           "isin": "INE798K01010",
+           "isinDescription": "KRITI NUTRIENTS LIMITED EQ",
+           "units": 2942,
+           "lastTradedPrice": "2819.68"
+          },
+          {
+           "issuerName": "Career Point Edutech Limited",
+           "isin": "INE0P6P01016",
+           "isinDescription": "CAREER POINT EDUTECH LIMITED EQ",
+           "units": 2429,
+           "lastTradedPrice": "658.29"
+          },
+          {
+           "issuerName": "Cinevista Limited",
+           "isin": "INE039B01026",
+           "isinDescription": "CINEVISTA LIMITED EQ",
+           "units": 4500,
+           "lastTradedPrice": "1995.49"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0098",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0098",
+          "dob": "1947-05-15",
+          "mobile": 1000000098,
+          "nominee": "REGISTERED",
+          "dematId": "IN3044925747130000",
+          "email": "synthetic0098@example.invalid",
+          "pan": "ZZZPZ0098Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16720520.9,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "City Union Bank Limited",
+           "isin": "INE491A01021",
+           "isinDescription": "CITY UNION BANK LIMITED EQ",
+           "units": 4295,
+           "lastTradedPrice": "3893.02"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE491A01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE798K01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0P6P01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE039B01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

@@ -1,0 +1,150 @@
+{
+ "mock": true,
+ "case_id": "P0072",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0072",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Ruchi Infrastructure Limited",
+   "isin": "INE413B01023",
+   "quantity": 4370,
+   "value_inr": 12056301.6
+  },
+  {
+   "instrument_name": "FORCE MOTORS LTD",
+   "isin": "INE451A01017",
+   "quantity": 4423,
+   "value_inr": 8110352.76
+  },
+  {
+   "instrument_name": "Dr. Reddy's Laboratories Limited",
+   "isin": "INE089A01031",
+   "quantity": 24070,
+   "value_inr": 50346909.17
+  },
+  {
+   "instrument_name": "Heranba Industries Limited",
+   "isin": "INE694N01015",
+   "quantity": 4224,
+   "value_inr": 21386912.02
+  },
+  {
+   "instrument_name": "Azad Engineering Limited",
+   "isin": "INE02IJ01035",
+   "quantity": 790,
+   "value_inr": 1001305.16
+  }
+ ],
+ "portfolio_total_inr": 92901780.71,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0072",
+      "maskedDematId": "XXXXXXXXXXXXX9170",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0072",
+          "dob": "1969-08-11",
+          "mobile": 1000000072,
+          "nominee": "REGISTERED",
+          "dematId": "12085579629689170",
+          "email": "synthetic0072@example.invalid",
+          "pan": "ZZZPZ0072Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 19231804.47,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Ruchi Infrastructure Limited",
+           "isin": "INE413B01023",
+           "isinDescription": "RUCHI INFRASTRUCTURE LIMITED EQ",
+           "units": 4370,
+           "lastTradedPrice": "1138.72"
+          },
+          {
+           "issuerName": "FORCE MOTORS LTD",
+           "isin": "INE451A01017",
+           "isinDescription": "FORCE MOTORS LTD EQ",
+           "units": 4423,
+           "lastTradedPrice": "690.14"
+          },
+          {
+           "issuerName": "Dr. Reddy's Laboratories Limited",
+           "isin": "INE089A01031",
+           "isinDescription": "DR. REDDY'S LABORATORIES LIMITED EQ",
+           "units": 2407,
+           "lastTradedPrice": "1171.55"
+          },
+          {
+           "issuerName": "Hemisphere Properties India Limited",
+           "isin": "INE0AJG01018",
+           "isinDescription": "HEMISPHERE PROPERTIES INDIA LIMITED EQ",
+           "units": 2200,
+           "lastTradedPrice": "3810.54"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE413B01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE451A01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE089A01031",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE694N01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE02IJ01035",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

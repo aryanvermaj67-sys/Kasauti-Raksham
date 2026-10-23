@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0103",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0103",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Asian Star Company Limited",
+   "isin": "INE194D01017",
+   "quantity": 858,
+   "value_inr": 3248027.98
+  },
+  {
+   "instrument_name": "Vishnu Chemicals Limited",
+   "isin": "INE270I01022",
+   "quantity": 4929,
+   "value_inr": 34423266.91
+  },
+  {
+   "instrument_name": "SAGILITY LIMITED",
+   "isin": "INE0W2G01015",
+   "quantity": 2646,
+   "value_inr": 12145253.59
+  },
+  {
+   "instrument_name": "Star Paper Mills Limited",
+   "isin": "INE733A01018",
+   "quantity": 3161,
+   "value_inr": 7471986.03
+  }
+ ],
+ "portfolio_total_inr": 57288534.51,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0103",
+      "maskedDematId": "XXXXXXXXXXXXX2360",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0103",
+          "dob": "1963-06-12",
+          "mobile": 1000000103,
+          "nominee": "REGISTERED",
+          "dematId": "12088843648272360",
+          "email": "synthetic0103@example.invalid",
+          "pan": "ZZZPZ0103Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1340084.46,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Asian Star Company Limited",
+           "isin": "INE194D01017",
+           "isinDescription": "ASIAN STAR COMPANY LIMITED EQ",
+           "units": 858,
+           "lastTradedPrice": "1561.87"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0103",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0103",
+          "dob": "1977-09-15",
+          "mobile": 1000000103,
+          "nominee": "REGISTERED",
+          "dematId": "IN3051159807920000",
+          "email": "synthetic0103@example.invalid",
+          "pan": "ZZZPZ0103Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 22682002.33,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Vishnu Chemicals Limited",
+           "isin": "INE270I01022",
+           "isinDescription": "VISHNU CHEMICALS LIMITED EQ",
+           "units": 4929,
+           "lastTradedPrice": "2432.52"
+          },
+          {
+           "issuerName": "SAGILITY LIMITED",
+           "isin": "INE0W2G01015",
+           "isinDescription": "SAGILITY LIMITED EQ",
+           "units": 2646,
+           "lastTradedPrice": "2026.36"
+          },
+          {
+           "issuerName": "Star Paper Mills Limited",
+           "isin": "INE733A01018",
+           "isinDescription": "STAR PAPER MILLS LIMITED EQ",
+           "units": 3161,
+           "lastTradedPrice": "1686.29"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE194D01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE270I01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0W2G01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE733A01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

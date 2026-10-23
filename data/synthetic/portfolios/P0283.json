@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0283",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0283",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "AceVector Limited",
+   "isin": "INE580P01029",
+   "quantity": 3209,
+   "value_inr": 15850555.45
+  },
+  {
+   "instrument_name": "Expleo Solutions Limited",
+   "isin": "INE201K01015",
+   "quantity": 1439,
+   "value_inr": 8243428.86
+  },
+  {
+   "instrument_name": "NTPC Limited",
+   "isin": "INE733E01010",
+   "quantity": 2892,
+   "value_inr": 16443711.02
+  },
+  {
+   "instrument_name": "Symbiotec Pharmalab Limited",
+   "isin": "INE899I01028",
+   "quantity": 4623,
+   "value_inr": 13741107.71
+  }
+ ],
+ "portfolio_total_inr": 54278803.04,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0283",
+      "maskedDematId": "XXXXXXXXXXXXX8790",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0283",
+          "dob": "1949-01-10",
+          "mobile": 1000000283,
+          "nominee": "REGISTERED",
+          "dematId": "12085459459658790",
+          "email": "synthetic0283@example.invalid",
+          "pan": "ZZZPZ0283Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10120642.58,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Expleo Solutions Limited",
+           "isin": "INE201K01015",
+           "isinDescription": "EXPLEO SOLUTIONS LIMITED EQ",
+           "units": 1439,
+           "lastTradedPrice": "2630.56"
+          },
+          {
+           "issuerName": "Symbiotec Pharmalab Limited",
+           "isin": "INE899I01028",
+           "isinDescription": "SYMBIOTEC PHARMALAB LIMITED EQ",
+           "units": 4623,
+           "lastTradedPrice": "1370.38"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0283",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0283",
+          "dob": "1951-02-17",
+          "mobile": 1000000283,
+          "nominee": "REGISTERED",
+          "dematId": "IN3016836715170000",
+          "email": "synthetic0283@example.invalid",
+          "pan": "ZZZPZ0283Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 14224425.4,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "AceVector Limited",
+           "isin": "INE580P01029",
+           "isinDescription": "ACEVECTOR LIMITED EQ",
+           "units": 3209,
+           "lastTradedPrice": "2061.92"
+          },
+          {
+           "issuerName": "NTPC Limited",
+           "isin": "INE733E01010",
+           "isinDescription": "NTPC LIMITED EQ",
+           "units": 2892,
+           "lastTradedPrice": "2630.61"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE580P01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE201K01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE733E01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE899I01028",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

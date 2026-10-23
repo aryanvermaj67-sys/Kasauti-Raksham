@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0204",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0204",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Yatra Online Limited",
+   "isin": "INE0JR601024",
+   "quantity": 1695,
+   "value_inr": 2298248.11
+  },
+  {
+   "instrument_name": "Tamil Nadu Newsprint & Papers Limited",
+   "isin": "INE107A01015",
+   "quantity": 4757,
+   "value_inr": 8914898.96
+  },
+  {
+   "instrument_name": "Grand Oak Canyons Distillery Limited",
+   "isin": "INE926B01016",
+   "quantity": 4380,
+   "value_inr": 21928282.44
+  }
+ ],
+ "portfolio_total_inr": 33141429.51,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0JR601024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE107A01015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE926B01016",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

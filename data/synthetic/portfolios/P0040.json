@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0040",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0040",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Plastiblends India Limited",
+   "isin": "INE083C01022",
+   "quantity": 1206,
+   "value_inr": 1096913.62
+  },
+  {
+   "instrument_name": "Parin Enterprises Limited",
+   "isin": "INE00U801010",
+   "quantity": 3880,
+   "value_inr": 11860567.32
+  },
+  {
+   "instrument_name": "BLB Limited",
+   "isin": "INE791A01024",
+   "quantity": 2360,
+   "value_inr": 15938969.55
+  },
+  {
+   "instrument_name": "IIFL Capital Services Limited",
+   "isin": "INE489L01022",
+   "quantity": 1146,
+   "value_inr": 9016038.41
+  },
+  {
+   "instrument_name": "Amal Limited",
+   "isin": "INE841D01013",
+   "quantity": 3852,
+   "value_inr": 13312524.61
+  },
+  {
+   "instrument_name": "Medplus Health Services Limited",
+   "isin": "INE804L01022",
+   "quantity": 53,
+   "value_inr": 234742.22
+  }
+ ],
+ "portfolio_total_inr": 51459755.73,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0040",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0040",
+          "dob": "1983-09-10",
+          "mobile": 1000000040,
+          "nominee": "REGISTERED",
+          "dematId": "IN3091825435580000",
+          "email": "synthetic0040@example.invalid",
+          "pan": "ZZZPZ0040Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11511221.5,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Plastiblends India Limited",
+           "isin": "INE083C01022",
+           "isinDescription": "PLASTIBLENDS INDIA LIMITED EQ",
+           "units": 1206,
+           "lastTradedPrice": "567.65"
+          },
+          {
+           "issuerName": "Parin Enterprises Limited",
+           "isin": "INE00U801010",
+           "isinDescription": "PARIN ENTERPRISES LIMITED EQ",
+           "units": 3880,
+           "lastTradedPrice": "2790.37"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE083C01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE00U801010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE791A01024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE489L01022",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE841D01013",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE804L01022",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

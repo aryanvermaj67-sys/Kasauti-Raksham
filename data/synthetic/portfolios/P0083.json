@@ -1,0 +1,139 @@
+{
+ "mock": true,
+ "case_id": "P0083",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0083",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "R Systems International Limited",
+   "isin": "INE411H01032",
+   "quantity": 1227,
+   "value_inr": 327051.91
+  },
+  {
+   "instrument_name": "Gayatri Projects Limited",
+   "isin": "INE336H01023",
+   "quantity": 2023,
+   "value_inr": 11193709.95
+  },
+  {
+   "instrument_name": "Niva Bupa Health Insurance Company Limited",
+   "isin": "INE995S01015",
+   "quantity": 4096,
+   "value_inr": 11170951.18
+  },
+  {
+   "instrument_name": "Home First Finance Company India Limited",
+   "isin": "INE481N01025",
+   "quantity": 4521,
+   "value_inr": 13420816.03
+  }
+ ],
+ "portfolio_total_inr": 36112529.07,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0083",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0083",
+          "dob": "1983-04-10",
+          "mobile": 1000000083,
+          "nominee": "REGISTERED",
+          "dematId": "IN3054069068960000",
+          "email": "synthetic0083@example.invalid",
+          "pan": "ZZZPZ0083Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 20953936.63,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "R Systems International Limited",
+           "isin": "INE411H01032",
+           "isinDescription": "R SYSTEMS INTERNATIONAL LIMITED EQ",
+           "units": 1227,
+           "lastTradedPrice": "157.90"
+          },
+          {
+           "issuerName": "Gayatri Projects Limited",
+           "isin": "INE336H01023",
+           "isinDescription": "GAYATRI PROJECTS LIMITED EQ",
+           "units": 2023,
+           "lastTradedPrice": "2596.17"
+          },
+          {
+           "issuerName": "Niva Bupa Health Insurance Company Limited",
+           "isin": "INE995S01015",
+           "isinDescription": "NIVA BUPA HEALTH INSURANCE COMPANY LIMITED EQ",
+           "units": 4096,
+           "lastTradedPrice": "1659.73"
+          },
+          {
+           "issuerName": "Home First Finance Company India Limited",
+           "isin": "INE481N01025",
+           "isinDescription": "HOME FIRST FINANCE COMPANY INDIA LIMITED EQ",
+           "units": 4521,
+           "lastTradedPrice": "1926.54"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE411H01032",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE336H01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE995S01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE481N01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

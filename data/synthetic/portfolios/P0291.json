@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0291",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0291",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Jenburkt Pharmaceuticals Limited",
+   "isin": "INE354A01013",
+   "quantity": 2524,
+   "value_inr": 15488718.5
+  },
+  {
+   "instrument_name": "Varmora Granito Limited",
+   "isin": "INE0M5301040",
+   "quantity": 2639,
+   "value_inr": 12682083.13
+  },
+  {
+   "instrument_name": "Lloyds Metals And Energy Limited",
+   "isin": "INE281B01032",
+   "quantity": 1474,
+   "value_inr": 2941613.48
+  },
+  {
+   "instrument_name": "Nagreeka Capital & Infrastructure Limited",
+   "isin": "INE245I01016",
+   "quantity": 151,
+   "value_inr": 769479.47
+  }
+ ],
+ "portfolio_total_inr": 31881894.58,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0291",
+      "maskedDematId": "XXXXXXXXXXXXX7850",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0291",
+          "dob": "1965-02-17",
+          "mobile": 1000000291,
+          "nominee": "REGISTERED",
+          "dematId": "12087082117297850",
+          "email": "synthetic0291@example.invalid",
+          "pan": "ZZZPZ0291Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3292744.8,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "KRBL Limited",
+           "isin": "INE001B01026",
+           "isinDescription": "KRBL LIMITED EQ",
+           "units": 2256,
+           "lastTradedPrice": "1459.55"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0291",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0291",
+          "dob": "1994-05-14",
+          "mobile": 1000000291,
+          "nominee": "REGISTERED",
+          "dematId": "IN3060672192310000",
+          "email": "synthetic0291@example.invalid",
+          "pan": "ZZZPZ0291Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 14263601.5,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Artemis Electricals and Projects Limited",
+           "isin": "INE757T01025",
+           "isinDescription": "ARTEMIS ELECTRICALS AND PROJECTS LIMITED EQ",
+           "units": 4688,
+           "lastTradedPrice": "1590.51"
+          },
+          {
+           "issuerName": "Kitex Garments Limited",
+           "isin": "INE602G01020",
+           "isinDescription": "KITEX GARMENTS LIMITED EQ",
+           "units": 2062,
+           "lastTradedPrice": "3134.06"
+          },
+          {
+           "issuerName": "Bombay Dyeing & Mfg Company Limited",
+           "isin": "INE032A01023",
+           "isinDescription": "BOMBAY DYEING & MFG COMPANY LIMITED EQ",
+           "units": 4990,
+           "lastTradedPrice": "69.11"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE354A01013",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0M5301040",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE281B01032",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE245I01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

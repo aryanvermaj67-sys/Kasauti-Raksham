@@ -1,0 +1,150 @@
+{
+ "mock": true,
+ "case_id": "P0142",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0142",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "GLOBE ENTERPRISES (INDIA) LIMITED",
+   "isin": "INE581X01021",
+   "quantity": 4086,
+   "value_inr": 15533653.52
+  },
+  {
+   "instrument_name": "CSM Technologies Limited",
+   "isin": "INE0ZK601013",
+   "quantity": 4462,
+   "value_inr": 24500395.48
+  },
+  {
+   "instrument_name": "Dhunseri Investments Limited",
+   "isin": "INE320L01011",
+   "quantity": 9980,
+   "value_inr": 95474577.87
+  },
+  {
+   "instrument_name": "Aartech Solonics Limited",
+   "isin": "INE01C001026",
+   "quantity": 3907,
+   "value_inr": 16650037.19
+  },
+  {
+   "instrument_name": "JK Cement Limited",
+   "isin": "INE823G01014",
+   "quantity": 3629,
+   "value_inr": 3263291.09
+  }
+ ],
+ "portfolio_total_inr": 155421955.15,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0142",
+      "maskedDematId": "XXXXXXXXXXXXX5490",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0142",
+          "dob": "1950-01-11",
+          "mobile": 1000000142,
+          "nominee": "REGISTERED",
+          "dematId": "12084620590495490",
+          "email": "synthetic0142@example.invalid",
+          "pan": "ZZZPZ0142Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 47781001.66,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "GLOBE ENTERPRISES (INDIA) LIMITED",
+           "isin": "INE581X01021",
+           "isinDescription": "GLOBE ENTERPRISES (INDIA) LIMITED EQ",
+           "units": 4086,
+           "lastTradedPrice": "3424.54"
+          },
+          {
+           "issuerName": "CSM Technologies Limited",
+           "isin": "INE0ZK601013",
+           "isinDescription": "CSM TECHNOLOGIES LIMITED EQ",
+           "units": 4462,
+           "lastTradedPrice": "3233.67"
+          },
+          {
+           "issuerName": "Dhunseri Investments Limited",
+           "isin": "INE320L01011",
+           "isinDescription": "DHUNSERI INVESTMENTS LIMITED EQ",
+           "units": 4990,
+           "lastTradedPrice": "3533.16"
+          },
+          {
+           "issuerName": "HB Portfolio Limited",
+           "isin": "INE638B01025",
+           "isinDescription": "HB PORTFOLIO LIMITED EQ",
+           "units": 1958,
+           "lastTradedPrice": "883.16"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE581X01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0ZK601013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE320L01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE01C001026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE823G01014",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

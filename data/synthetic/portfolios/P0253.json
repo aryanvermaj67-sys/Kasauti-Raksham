@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0253",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0253",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "INCREDIBLE INDUSTRIES LIMITED",
+   "isin": "INE452L01012",
+   "quantity": 930,
+   "value_inr": 3120410.9
+  },
+  {
+   "instrument_name": "RattanIndia Power Limited",
+   "isin": "INE399K01017",
+   "quantity": 912,
+   "value_inr": 1006380.42
+  },
+  {
+   "instrument_name": "Piramal Finance Limited",
+   "isin": "INE202B01038",
+   "quantity": 2318,
+   "value_inr": 9468276.19
+  },
+  {
+   "instrument_name": "Elitecon International Limited",
+   "isin": "INE669R01026",
+   "quantity": 2743,
+   "value_inr": 3129525.68
+  }
+ ],
+ "portfolio_total_inr": 16724593.19,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0253",
+      "maskedDematId": "XXXXXXXXXXXXX8010",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0253",
+          "dob": "1996-02-10",
+          "mobile": 1000000253,
+          "nominee": "REGISTERED",
+          "dematId": "12083917695058010",
+          "email": "synthetic0253@example.invalid",
+          "pan": "ZZZPZ0253Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 833203.2,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "RattanIndia Power Limited",
+           "isin": "INE399K01017",
+           "isinDescription": "RATTANINDIA POWER LIMITED EQ",
+           "units": 912,
+           "lastTradedPrice": "913.60"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0253",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0253",
+          "dob": "1994-03-15",
+          "mobile": 1000000253,
+          "nominee": "REGISTERED",
+          "dematId": "IN3052006902820000",
+          "email": "synthetic0253@example.invalid",
+          "pan": "ZZZPZ0253Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6528715.84,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "INCREDIBLE INDUSTRIES LIMITED",
+           "isin": "INE452L01012",
+           "isinDescription": "INCREDIBLE INDUSTRIES LIMITED EQ",
+           "units": 930,
+           "lastTradedPrice": "1977.45"
+          },
+          {
+           "issuerName": "Piramal Finance Limited",
+           "isin": "INE202B01038",
+           "isinDescription": "PIRAMAL FINANCE LIMITED EQ",
+           "units": 2318,
+           "lastTradedPrice": "1442.09"
+          },
+          {
+           "issuerName": "Elitecon International Limited",
+           "isin": "INE669R01026",
+           "isinDescription": "ELITECON INTERNATIONAL LIMITED EQ",
+           "units": 2743,
+           "lastTradedPrice": "491.04"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE452L01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE399K01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE202B01038",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE669R01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

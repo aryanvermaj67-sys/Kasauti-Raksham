@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0021",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0021",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Landmark Cars Limited",
+   "isin": "INE559R01029",
+   "quantity": 1230,
+   "value_inr": 7191213.31
+  },
+  {
+   "instrument_name": "KRN Heat Exchanger and Refrigeration Limited",
+   "isin": "INE0Q3J01015",
+   "quantity": 1175,
+   "value_inr": 645197.47
+  },
+  {
+   "instrument_name": "Shankesh Jewellers Limited",
+   "isin": "INE1WFC01025",
+   "quantity": 1369,
+   "value_inr": 6712533.09
+  },
+  {
+   "instrument_name": "Bharat Dynamics Limited",
+   "isin": "INE171Z01026",
+   "quantity": 4884,
+   "value_inr": 30484254.47
+  }
+ ],
+ "portfolio_total_inr": 45033198.34,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0021",
+      "maskedDematId": "XXXXXXXXXXXXX9450",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0021",
+          "dob": "1983-01-16",
+          "mobile": 1000000021,
+          "nominee": "REGISTERED",
+          "dematId": "12081877795059450",
+          "email": "synthetic0021@example.invalid",
+          "pan": "ZZZPZ0021Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 2790641.5,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Annu Projects Limited",
+           "isin": "INE103001017",
+           "isinDescription": "ANNU PROJECTS LIMITED EQ",
+           "units": 1630,
+           "lastTradedPrice": "1712.05"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0021",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0021",
+          "dob": "1983-05-10",
+          "mobile": 1000000021,
+          "nominee": "REGISTERED",
+          "dematId": "IN3084497664930000",
+          "email": "synthetic0021@example.invalid",
+          "pan": "ZZZPZ0021Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 24031723.19,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "SKF India Limited",
+           "isin": "INE640A01023",
+           "isinDescription": "SKF INDIA LIMITED EQ",
+           "units": 1922,
+           "lastTradedPrice": "3697.17"
+          },
+          {
+           "issuerName": "Le Merite Exports Limited",
+           "isin": "INE0G1L01025",
+           "isinDescription": "LE MERITE EXPORTS LIMITED EQ",
+           "units": 4841,
+           "lastTradedPrice": "2651.51"
+          },
+          {
+           "issuerName": "INDO-MIM Limited",
+           "isin": "INE084101034",
+           "isinDescription": "INDO-MIM LIMITED EQ",
+           "units": 4471,
+           "lastTradedPrice": "914.74"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE559R01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0Q3J01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE1WFC01025",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE171Z01026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

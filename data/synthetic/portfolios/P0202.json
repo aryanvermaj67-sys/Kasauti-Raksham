@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0202",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0202",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Summit Securities Limited",
+   "isin": "INE519C01017",
+   "quantity": 1069,
+   "value_inr": 5114894.57
+  },
+  {
+   "instrument_name": "Shree Renuka Sugars Limited",
+   "isin": "INE087H01022",
+   "quantity": 4214,
+   "value_inr": 23443952.72
+  },
+  {
+   "instrument_name": "Finkurve Financial Services Limited",
+   "isin": "INE734I01027",
+   "quantity": 4885,
+   "value_inr": 21848338.73
+  },
+  {
+   "instrument_name": "Tata Communications Limited",
+   "isin": "INE151A01013",
+   "quantity": 1294,
+   "value_inr": 9638320.53
+  },
+  {
+   "instrument_name": "Deep Industries Limited",
+   "isin": "INE0FHS01024",
+   "quantity": 3035,
+   "value_inr": 28907914.18
+  }
+ ],
+ "portfolio_total_inr": 88953420.73,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0202",
+      "maskedDematId": "XXXXXXXXXXXXX0200",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0202",
+          "dob": "1982-07-10",
+          "mobile": 1000000202,
+          "nominee": "REGISTERED",
+          "dematId": "12089596039450200",
+          "email": "synthetic0202@example.invalid",
+          "pan": "ZZZPZ0202Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9840768.63,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Finkurve Financial Services Limited",
+           "isin": "INE734I01027",
+           "isinDescription": "FINKURVE FINANCIAL SERVICES LIMITED EQ",
+           "units": 977,
+           "lastTradedPrice": "2783.99"
+          },
+          {
+           "issuerName": "Eimco Elecon (India) Limited",
+           "isin": "INE158B01016",
+           "isinDescription": "EIMCO ELECON (INDIA) LIMITED EQ",
+           "units": 3740,
+           "lastTradedPrice": "1903.96"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0202",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0202",
+          "dob": "1956-08-10",
+          "mobile": 1000000202,
+          "nominee": "REGISTERED",
+          "dematId": "IN3022175472220000",
+          "email": "synthetic0202@example.invalid",
+          "pan": "ZZZPZ0202Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 18702816.61,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Summit Securities Limited",
+           "isin": "INE519C01017",
+           "isinDescription": "SUMMIT SECURITIES LIMITED EQ",
+           "units": 1069,
+           "lastTradedPrice": "3872.77"
+          },
+          {
+           "issuerName": "Shree Renuka Sugars Limited",
+           "isin": "INE087H01022",
+           "isinDescription": "SHREE RENUKA SUGARS LIMITED EQ",
+           "units": 4214,
+           "lastTradedPrice": "3455.82"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE519C01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE087H01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE734I01027",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE151A01013",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0FHS01024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

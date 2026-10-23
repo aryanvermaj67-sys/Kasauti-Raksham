@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0101",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0101",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Sunil Healthcare Limited",
+   "isin": "INE671C01016",
+   "quantity": 3648,
+   "value_inr": 24750618.86
+  },
+  {
+   "instrument_name": "Metroglobal Limited",
+   "isin": "INE085D01033",
+   "quantity": 3680,
+   "value_inr": 1363240.17
+  }
+ ],
+ "portfolio_total_inr": 26113859.03,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0101",
+      "maskedDematId": "XXXXXXXXXXXXX1990",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0101",
+          "dob": "1983-05-18",
+          "mobile": 1000000101,
+          "nominee": "REGISTERED",
+          "dematId": "12089679737871990",
+          "email": "synthetic0101@example.invalid",
+          "pan": "ZZZPZ0101Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4559194.18,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "S.J.S. Enterprises Limited",
+           "isin": "INE284S01014",
+           "isinDescription": "S.J.S. ENTERPRISES LIMITED EQ",
+           "units": 2288,
+           "lastTradedPrice": "220.40"
+          },
+          {
+           "issuerName": "Surana Telecom and Power Limited",
+           "isin": "INE130B01031",
+           "isinDescription": "SURANA TELECOM AND POWER LIMITED EQ",
+           "units": 1834,
+           "lastTradedPrice": "2210.97"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0101",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0101",
+          "dob": "1986-08-15",
+          "mobile": 1000000101,
+          "nominee": "REGISTERED",
+          "dematId": "IN3034152000010000",
+          "email": "synthetic0101@example.invalid",
+          "pan": "ZZZPZ0101Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5701305.69,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Focus Lighting and Fixtures Limited",
+           "isin": "INE593W01028",
+           "isinDescription": "FOCUS LIGHTING AND FIXTURES LIMITED EQ",
+           "units": 3111,
+           "lastTradedPrice": "1625.04"
+          },
+          {
+           "issuerName": "Beta Drugs Limited",
+           "isin": "INE351Y01019",
+           "isinDescription": "BETA DRUGS LIMITED EQ",
+           "units": 1935,
+           "lastTradedPrice": "333.75"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE671C01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE085D01033",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

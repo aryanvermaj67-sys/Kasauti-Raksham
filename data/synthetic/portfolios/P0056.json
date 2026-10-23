@@ -1,0 +1,169 @@
+{
+ "mock": true,
+ "case_id": "P0056",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0056",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Reliable Data Services Limited",
+   "isin": "INE375Y01018",
+   "quantity": 4747,
+   "value_inr": 2005541.03
+  },
+  {
+   "instrument_name": "Shilpa Medicare Limited",
+   "isin": "INE790G01031",
+   "quantity": 3480,
+   "value_inr": 6152788.58
+  },
+  {
+   "instrument_name": "Welspun Living Limited",
+   "isin": "INE192B01031",
+   "quantity": 532,
+   "value_inr": 2640296.09
+  }
+ ],
+ "portfolio_total_inr": 10798625.7,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0056",
+      "maskedDematId": "XXXXXXXXXXXXX3970",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0056",
+          "dob": "1971-06-16",
+          "mobile": 1000000056,
+          "nominee": "REGISTERED",
+          "dematId": "12088118018783970",
+          "email": "synthetic0056@example.invalid",
+          "pan": "ZZZPZ0056Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11892561.71,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Avantel Limited",
+           "isin": "INE005B01027",
+           "isinDescription": "AVANTEL LIMITED EQ",
+           "units": 4587,
+           "lastTradedPrice": "1860.27"
+          },
+          {
+           "issuerName": "Prataap Snacks Limited",
+           "isin": "INE393P01035",
+           "isinDescription": "PRATAAP SNACKS LIMITED EQ",
+           "units": 3253,
+           "lastTradedPrice": "1032.74"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0056",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0056",
+          "dob": "1950-09-12",
+          "mobile": 1000000056,
+          "nominee": "REGISTERED",
+          "dematId": "IN3069163017800000",
+          "email": "synthetic0056@example.invalid",
+          "pan": "ZZZPZ0056Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 7446781.3,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Shalby Limited",
+           "isin": "INE597J01018",
+           "isinDescription": "SHALBY LIMITED EQ",
+           "units": 2534,
+           "lastTradedPrice": "2898.65"
+          },
+          {
+           "issuerName": "Texmo Pipes and Products Limited",
+           "isin": "INE141K01013",
+           "isinDescription": "TEXMO PIPES AND PRODUCTS LIMITED EQ",
+           "units": 34,
+           "lastTradedPrice": "2988.30"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE375Y01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE790G01031",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE192B01031",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

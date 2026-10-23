@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0278",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0278",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Neuland Laboratories Limited",
+   "isin": "INE794A01010",
+   "quantity": 4295,
+   "value_inr": 24963022.78
+  },
+  {
+   "instrument_name": "La Opala RG Limited",
+   "isin": "INE059D01020",
+   "quantity": 4582,
+   "value_inr": 20756211.45
+  },
+  {
+   "instrument_name": "Coforge Limited",
+   "isin": "INE591G01025",
+   "quantity": 2497,
+   "value_inr": 7657246.69
+  },
+  {
+   "instrument_name": "Accuracy Shipping Limited",
+   "isin": "INE648Z01023",
+   "quantity": 539,
+   "value_inr": 4692642.91
+  }
+ ],
+ "portfolio_total_inr": 58069123.83,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0278",
+      "maskedDematId": "XXXXXXXXXXXXX8830",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0278",
+          "dob": "1954-02-14",
+          "mobile": 1000000278,
+          "nominee": "REGISTERED",
+          "dematId": "12087174826608830",
+          "email": "synthetic0278@example.invalid",
+          "pan": "ZZZPZ0278Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6614519.78,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Coforge Limited",
+           "isin": "INE591G01025",
+           "isinDescription": "COFORGE LIMITED EQ",
+           "units": 2497,
+           "lastTradedPrice": "1957.56"
+          },
+          {
+           "issuerName": "Accuracy Shipping Limited",
+           "isin": "INE648Z01023",
+           "isinDescription": "ACCURACY SHIPPING LIMITED EQ",
+           "units": 539,
+           "lastTradedPrice": "3203.14"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0278",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0278",
+          "dob": "1972-02-14",
+          "mobile": 1000000278,
+          "nominee": "REGISTERED",
+          "dematId": "IN3041484392360000",
+          "email": "synthetic0278@example.invalid",
+          "pan": "ZZZPZ0278Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 28816670.43,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Neuland Laboratories Limited",
+           "isin": "INE794A01010",
+           "isinDescription": "NEULAND LABORATORIES LIMITED EQ",
+           "units": 4295,
+           "lastTradedPrice": "3867.35"
+          },
+          {
+           "issuerName": "La Opala RG Limited",
+           "isin": "INE059D01020",
+           "isinDescription": "LA OPALA RG LIMITED EQ",
+           "units": 4582,
+           "lastTradedPrice": "2663.99"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE794A01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE059D01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE591G01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE648Z01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0014",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0014",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "The Phoenix Mills Limited",
+   "isin": "INE211B01039",
+   "quantity": 4794,
+   "value_inr": 35866547.71
+  },
+  {
+   "instrument_name": "EPACK Durable Limited",
+   "isin": "INE0G5901015",
+   "quantity": 170,
+   "value_inr": 901341.97
+  },
+  {
+   "instrument_name": "HLV LIMITED",
+   "isin": "INE102A01024",
+   "quantity": 4726,
+   "value_inr": 14290440.68
+  }
+ ],
+ "portfolio_total_inr": 51058330.36,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE211B01039",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE0G5901015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE102A01024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0138",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0138",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Monarch Networth Capital Limited",
+   "isin": "INE903D01011",
+   "quantity": 1141,
+   "value_inr": 4167428.58
+  },
+  {
+   "instrument_name": "Senores Pharmaceuticals Limited",
+   "isin": "INE0RB801010",
+   "quantity": 4301,
+   "value_inr": 25154272.08
+  },
+  {
+   "instrument_name": "Vedanta Aluminium Metal Limited",
+   "isin": "INE1CDF01017",
+   "quantity": 3533,
+   "value_inr": 35054792.03
+  },
+  {
+   "instrument_name": "Diamines & Chemicals Limited",
+   "isin": "INE591D01014",
+   "quantity": 1199,
+   "value_inr": 8341313.88
+  }
+ ],
+ "portfolio_total_inr": 72717806.57,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0138",
+      "maskedDematId": "XXXXXXXXXXXXX2270",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0138",
+          "dob": "1954-04-11",
+          "mobile": 1000000138,
+          "nominee": "REGISTERED",
+          "dematId": "12084038188552270",
+          "email": "synthetic0138@example.invalid",
+          "pan": "ZZZPZ0138Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 17081931.27,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Monarch Networth Capital Limited",
+           "isin": "INE903D01011",
+           "isinDescription": "MONARCH NETWORTH CAPITAL LIMITED EQ",
+           "units": 1141,
+           "lastTradedPrice": "1249.81"
+          },
+          {
+           "issuerName": "Senores Pharmaceuticals Limited",
+           "isin": "INE0RB801010",
+           "isinDescription": "SENORES PHARMACEUTICALS LIMITED EQ",
+           "units": 4301,
+           "lastTradedPrice": "3640.06"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0138",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0138",
+          "dob": "1946-05-19",
+          "mobile": 1000000138,
+          "nominee": "REGISTERED",
+          "dematId": "IN3015649852690000",
+          "email": "synthetic0138@example.invalid",
+          "pan": "ZZZPZ0138Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 17226866.59,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Vedanta Aluminium Metal Limited",
+           "isin": "INE1CDF01017",
+           "isinDescription": "VEDANTA ALUMINIUM METAL LIMITED EQ",
+           "units": 3533,
+           "lastTradedPrice": "3982.83"
+          },
+          {
+           "issuerName": "Diamines & Chemicals Limited",
+           "isin": "INE591D01014",
+           "isinDescription": "DIAMINES & CHEMICALS LIMITED EQ",
+           "units": 1199,
+           "lastTradedPrice": "2631.80"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE903D01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0RB801010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE1CDF01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE591D01014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

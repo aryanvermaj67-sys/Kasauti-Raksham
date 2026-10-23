@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0007",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0007",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Music Broadcast Limited",
+   "isin": "INE919I01024",
+   "quantity": 27,
+   "value_inr": 213449.3
+  },
+  {
+   "instrument_name": "Studds Accessories Limited",
+   "isin": "INE00Q601028",
+   "quantity": 2182,
+   "value_inr": 21886608.21
+  },
+  {
+   "instrument_name": "Saraswati Saree Depot Limited",
+   "isin": "INE0PQ101010",
+   "quantity": 7474,
+   "value_inr": 9616906.56
+  },
+  {
+   "instrument_name": "Prudential Sugar Corporation Limited",
+   "isin": "INE024D01016",
+   "quantity": 3996,
+   "value_inr": 5123428.47
+  },
+  {
+   "instrument_name": "Axtel Industries Limited",
+   "isin": "INE767C01012",
+   "quantity": 2440,
+   "value_inr": 5845740.28
+  }
+ ],
+ "portfolio_total_inr": 42686132.82,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0007",
+      "maskedDematId": "XXXXXXXXXXXXX8650",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0007",
+          "dob": "1949-04-16",
+          "mobile": 1000000007,
+          "nominee": "REGISTERED",
+          "dematId": "12087531293258650",
+          "email": "synthetic0007@example.invalid",
+          "pan": "ZZZPZ0007Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12407171.01,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Studds Accessories Limited",
+           "isin": "INE00Q601028",
+           "isinDescription": "STUDDS ACCESSORIES LIMITED EQ",
+           "units": 2182,
+           "lastTradedPrice": "3707.54"
+          },
+          {
+           "issuerName": "Saraswati Saree Depot Limited",
+           "isin": "INE0PQ101010",
+           "isinDescription": "SARASWATI SAREE DEPOT LIMITED EQ",
+           "units": 3737,
+           "lastTradedPrice": "1155.29"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0007",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0007",
+          "dob": "1984-02-16",
+          "mobile": 1000000007,
+          "nominee": "REGISTERED",
+          "dematId": "IN3035534403420000",
+          "email": "synthetic0007@example.invalid",
+          "pan": "ZZZPZ0007Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12215109.81,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Music Broadcast Limited",
+           "isin": "INE919I01024",
+           "isinDescription": "MUSIC BROADCAST LIMITED EQ",
+           "units": 27,
+           "lastTradedPrice": "3941.53"
+          },
+          {
+           "issuerName": "HLE Glascoat Limited",
+           "isin": "INE461D01028",
+           "isinDescription": "HLE GLASCOAT LIMITED EQ",
+           "units": 4562,
+           "lastTradedPrice": "2654.25"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE919I01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE00Q601028",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0PQ101010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE024D01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE767C01012",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

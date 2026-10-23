@@ -1,0 +1,139 @@
+{
+ "mock": true,
+ "case_id": "P0048",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0048",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Marksans Pharma Limited",
+   "isin": "INE750C01026",
+   "quantity": 4084,
+   "value_inr": 499865.32
+  },
+  {
+   "instrument_name": "Graphite India Limited",
+   "isin": "INE371A01025",
+   "quantity": 3231,
+   "value_inr": 7235957.22
+  },
+  {
+   "instrument_name": "Fairchem Organics Limited",
+   "isin": "INE0DNW01011",
+   "quantity": 1982,
+   "value_inr": 3688257.28
+  },
+  {
+   "instrument_name": "S V Global Mill Limited",
+   "isin": "INE159L01013",
+   "quantity": 2900,
+   "value_inr": 1068863.61
+  }
+ ],
+ "portfolio_total_inr": 12492943.43,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0048",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0048",
+          "dob": "1969-09-17",
+          "mobile": 1000000048,
+          "nominee": "REGISTERED",
+          "dematId": "IN3022395348670000",
+          "email": "synthetic0048@example.invalid",
+          "pan": "ZZZPZ0048Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9379095.07,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Marksans Pharma Limited",
+           "isin": "INE750C01026",
+           "isinDescription": "MARKSANS PHARMA LIMITED EQ",
+           "units": 4084,
+           "lastTradedPrice": "112.24"
+          },
+          {
+           "issuerName": "Graphite India Limited",
+           "isin": "INE371A01025",
+           "isinDescription": "GRAPHITE INDIA LIMITED EQ",
+           "units": 3231,
+           "lastTradedPrice": "2031.67"
+          },
+          {
+           "issuerName": "Fairchem Organics Limited",
+           "isin": "INE0DNW01011",
+           "isinDescription": "FAIRCHEM ORGANICS LIMITED EQ",
+           "units": 1982,
+           "lastTradedPrice": "876.27"
+          },
+          {
+           "issuerName": "S V Global Mill Limited",
+           "isin": "INE159L01013",
+           "isinDescription": "S V GLOBAL MILL LIMITED EQ",
+           "units": 2900,
+           "lastTradedPrice": "213.66"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE750C01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE371A01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0DNW01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE159L01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

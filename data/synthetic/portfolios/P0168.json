@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0168",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0168",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Steel City Securities Limited",
+   "isin": "INE395H01011",
+   "quantity": 1372,
+   "value_inr": 10066840.65
+  },
+  {
+   "instrument_name": "Palash Securities Limited",
+   "isin": "INE471W01019",
+   "quantity": 1327,
+   "value_inr": 4906161.37
+  },
+  {
+   "instrument_name": "Landmark Cars Limited",
+   "isin": "INE559R01029",
+   "quantity": 2346,
+   "value_inr": 3317407.86
+  },
+  {
+   "instrument_name": "Asian Tea & Exports Limited",
+   "isin": "INE822B01017",
+   "quantity": 1446,
+   "value_inr": 14339581.26
+  }
+ ],
+ "portfolio_total_inr": 32629991.14,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0168",
+      "maskedDematId": "XXXXXXXXXXXXX8610",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0168",
+          "dob": "1952-01-16",
+          "mobile": 1000000168,
+          "nominee": "REGISTERED",
+          "dematId": "12084330044608610",
+          "email": "synthetic0168@example.invalid",
+          "pan": "ZZZPZ0168Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8940350.15,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Steel City Securities Limited",
+           "isin": "INE395H01011",
+           "isinDescription": "STEEL CITY SECURITIES LIMITED EQ",
+           "units": 1372,
+           "lastTradedPrice": "2482.15"
+          },
+          {
+           "issuerName": "Palash Securities Limited",
+           "isin": "INE471W01019",
+           "isinDescription": "PALASH SECURITIES LIMITED EQ",
+           "units": 1327,
+           "lastTradedPrice": "2853.01"
+          },
+          {
+           "issuerName": "Landmark Cars Limited",
+           "isin": "INE559R01029",
+           "isinDescription": "LANDMARK CARS LIMITED EQ",
+           "units": 2346,
+           "lastTradedPrice": "745.48"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0168",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0168",
+          "dob": "1994-03-17",
+          "mobile": 1000000168,
+          "nominee": "REGISTERED",
+          "dematId": "IN3092938778460000",
+          "email": "synthetic0168@example.invalid",
+          "pan": "ZZZPZ0168Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4859340.84,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Asian Tea & Exports Limited",
+           "isin": "INE822B01017",
+           "isinDescription": "ASIAN TEA & EXPORTS LIMITED EQ",
+           "units": 1446,
+           "lastTradedPrice": "3360.54"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE395H01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE471W01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE559R01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE822B01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

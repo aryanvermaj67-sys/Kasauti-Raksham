@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0210",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0210",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Arvind SmartSpaces Limited",
+   "isin": "INE034S01021",
+   "quantity": 680,
+   "value_inr": 6266903.7
+  },
+  {
+   "instrument_name": "IIFL Capital Services Limited",
+   "isin": "INE489L01022",
+   "quantity": 217,
+   "value_inr": 1878259.78
+  },
+  {
+   "instrument_name": "Olectra Greentech Limited",
+   "isin": "INE260D01016",
+   "quantity": 3687,
+   "value_inr": 10619507.81
+  },
+  {
+   "instrument_name": "Thyrocare Technologies Limited",
+   "isin": "INE594H01019",
+   "quantity": 3220,
+   "value_inr": 4268990.59
+  },
+  {
+   "instrument_name": "Asian Granito India Limited",
+   "isin": "INE022I01019",
+   "quantity": 1858,
+   "value_inr": 10910983.06
+  },
+  {
+   "instrument_name": "Kothari Petrochemicals Limited",
+   "isin": "INE720A01015",
+   "quantity": 3481,
+   "value_inr": 16215994.77
+  }
+ ],
+ "portfolio_total_inr": 50160639.71,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0210",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0210",
+          "dob": "1949-08-11",
+          "mobile": 1000000210,
+          "nominee": "REGISTERED",
+          "dematId": "IN3044106812860000",
+          "email": "synthetic0210@example.invalid",
+          "pan": "ZZZPZ0210Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3255088.45,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Arvind SmartSpaces Limited",
+           "isin": "INE034S01021",
+           "isinDescription": "ARVIND SMARTSPACES LIMITED EQ",
+           "units": 680,
+           "lastTradedPrice": "3522.79"
+          },
+          {
+           "issuerName": "IIFL Capital Services Limited",
+           "isin": "INE489L01022",
+           "isinDescription": "IIFL CAPITAL SERVICES LIMITED EQ",
+           "units": 217,
+           "lastTradedPrice": "3961.25"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE034S01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE489L01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE260D01016",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE594H01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE022I01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE720A01015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

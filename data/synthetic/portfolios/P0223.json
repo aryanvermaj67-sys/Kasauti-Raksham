@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0223",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0223",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Aastha Spintex Limited",
+   "isin": "INE2FMX01012",
+   "quantity": 758,
+   "value_inr": 182867.4
+  },
+  {
+   "instrument_name": "Astec LifeSciences Limited",
+   "isin": "INE563J01010",
+   "quantity": 238,
+   "value_inr": 1169416.42
+  },
+  {
+   "instrument_name": "Paushak Limited",
+   "isin": "INE111F01024",
+   "quantity": 2771,
+   "value_inr": 12997469.17
+  },
+  {
+   "instrument_name": "Hawkins Cookers Limited",
+   "isin": "INE979B01015",
+   "quantity": 527,
+   "value_inr": 810616.24
+  }
+ ],
+ "portfolio_total_inr": 15160369.23,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0223",
+      "maskedDematId": "XXXXXXXXXXXXX8210",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0223",
+          "dob": "1970-06-10",
+          "mobile": 1000000223,
+          "nominee": "REGISTERED",
+          "dematId": "12081136306008210",
+          "email": "synthetic0223@example.invalid",
+          "pan": "ZZZPZ0223Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10046531.14,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Astec LifeSciences Limited",
+           "isin": "INE563J01010",
+           "isinDescription": "ASTEC LIFESCIENCES LIMITED EQ",
+           "units": 238,
+           "lastTradedPrice": "3957.38"
+          },
+          {
+           "issuerName": "Paushak Limited",
+           "isin": "INE111F01024",
+           "isinDescription": "PAUSHAK LIMITED EQ",
+           "units": 2771,
+           "lastTradedPrice": "3285.70"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0223",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0223",
+          "dob": "1974-04-11",
+          "mobile": 1000000223,
+          "nominee": "REGISTERED",
+          "dematId": "IN3026715439780000",
+          "email": "synthetic0223@example.invalid",
+          "pan": "ZZZPZ0223Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 536715.36,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Aastha Spintex Limited",
+           "isin": "INE2FMX01012",
+           "isinDescription": "AASTHA SPINTEX LIMITED EQ",
+           "units": 758,
+           "lastTradedPrice": "83.83"
+          },
+          {
+           "issuerName": "Hawkins Cookers Limited",
+           "isin": "INE979B01015",
+           "isinDescription": "HAWKINS COOKERS LIMITED EQ",
+           "units": 527,
+           "lastTradedPrice": "897.86"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE2FMX01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE563J01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE111F01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE979B01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

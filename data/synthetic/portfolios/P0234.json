@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0234",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0234",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Horizon Industrial Parks Limited",
+   "isin": "INE685T01010",
+   "quantity": 440,
+   "value_inr": 4844817.45
+  },
+  {
+   "instrument_name": "Suraj Limited",
+   "isin": "INE713C01016",
+   "quantity": 1476,
+   "value_inr": 12734734.65
+  },
+  {
+   "instrument_name": "Lemon Tree Hotels Limited",
+   "isin": "INE970X01018",
+   "quantity": 3219,
+   "value_inr": 6943830.45
+  }
+ ],
+ "portfolio_total_inr": 24523382.55,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE685T01010",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE713C01016",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE970X01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

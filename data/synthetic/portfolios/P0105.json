@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0105",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0105",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "IIFL Finance Limited",
+   "isin": "INE530B01024",
+   "quantity": 3184,
+   "value_inr": 15850785.16
+  },
+  {
+   "instrument_name": "Intellect Design Arena Limited",
+   "isin": "INE306R01017",
+   "quantity": 2068,
+   "value_inr": 1968020.15
+  },
+  {
+   "instrument_name": "Walchandnagar Industries Limited",
+   "isin": "INE711A01022",
+   "quantity": 2571,
+   "value_inr": 29057614.83
+  },
+  {
+   "instrument_name": "Pondy Oxides & Chemicals Limited",
+   "isin": "INE063E01061",
+   "quantity": 450,
+   "value_inr": 79588.52
+  },
+  {
+   "instrument_name": "TechNVision Ventures Limited",
+   "isin": "INE314H01012",
+   "quantity": 3639,
+   "value_inr": 14980431.87
+  },
+  {
+   "instrument_name": "Lambodhara Textiles Limited",
+   "isin": "INE112F01022",
+   "quantity": 3022,
+   "value_inr": 9885548.05
+  }
+ ],
+ "portfolio_total_inr": 71821988.58,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0105",
+      "maskedDematId": "XXXXXXXXXXXXX9940",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0105",
+          "dob": "1961-03-12",
+          "mobile": 1000000105,
+          "nominee": "REGISTERED",
+          "dematId": "12087110841339940",
+          "email": "synthetic0105@example.invalid",
+          "pan": "ZZZPZ0105Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 7055432.84,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "IIFL Finance Limited",
+           "isin": "INE530B01024",
+           "isinDescription": "IIFL FINANCE LIMITED EQ",
+           "units": 3184,
+           "lastTradedPrice": "1677.93"
+          },
+          {
+           "issuerName": "Intellect Design Arena Limited",
+           "isin": "INE306R01017",
+           "isinDescription": "INTELLECT DESIGN ARENA LIMITED EQ",
+           "units": 2068,
+           "lastTradedPrice": "828.29"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE530B01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE306R01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE711A01022",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE063E01061",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE314H01012",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE112F01022",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

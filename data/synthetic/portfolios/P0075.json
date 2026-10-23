@@ -1,0 +1,140 @@
+{
+ "mock": true,
+ "case_id": "P0075",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0075",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Pearl Global Industries Limited",
+   "isin": "INE940H01022",
+   "quantity": 1250,
+   "value_inr": 6881840.62
+  },
+  {
+   "instrument_name": "ORIENT CERATECH LIMITED",
+   "isin": "INE569C01020",
+   "quantity": 4624,
+   "value_inr": 568756.28
+  },
+  {
+   "instrument_name": "L&T Technology Services Limited",
+   "isin": "INE010V01017",
+   "quantity": 1354,
+   "value_inr": 3589325.93
+  },
+  {
+   "instrument_name": "Dolphin Offshore Enterprises (India) Limited",
+   "isin": "INE920A01037",
+   "quantity": 1755,
+   "value_inr": 9737629.42
+  },
+  {
+   "instrument_name": "Digitide Solutions Limited",
+   "isin": "INE0U4701011",
+   "quantity": 3634,
+   "value_inr": 30555355.8
+  },
+  {
+   "instrument_name": "EFC (I) Limited",
+   "isin": "INE886D01026",
+   "quantity": 720,
+   "value_inr": 4055963.37
+  }
+ ],
+ "portfolio_total_inr": 55388871.42,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0075",
+      "maskedDematId": "XXXXXXXXXXXXX6500",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0075",
+          "dob": "1946-05-13",
+          "mobile": 1000000075,
+          "nominee": "REGISTERED",
+          "dematId": "12088599570076500",
+          "email": "synthetic0075@example.invalid",
+          "pan": "ZZZPZ0075Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4601475.0,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Pearl Global Industries Limited",
+           "isin": "INE940H01022",
+           "isinDescription": "PEARL GLOBAL INDUSTRIES LIMITED EQ",
+           "units": 1250,
+           "lastTradedPrice": "3681.18"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE940H01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE569C01020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE010V01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE920A01037",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0U4701011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE886D01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

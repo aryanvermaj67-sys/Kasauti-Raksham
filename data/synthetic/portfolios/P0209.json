@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0209",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0209",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "WH Brady & Company Limited",
+   "isin": "INE855A01019",
+   "quantity": 199,
+   "value_inr": 1222397.31
+  },
+  {
+   "instrument_name": "The Great Eastern Shipping Company Limited",
+   "isin": "INE017A01032",
+   "quantity": 4375,
+   "value_inr": 25460442.97
+  },
+  {
+   "instrument_name": "Balu Forge Industries Limited",
+   "isin": "INE011E01029",
+   "quantity": 4598,
+   "value_inr": 31419443.84
+  }
+ ],
+ "portfolio_total_inr": 58102284.12,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE855A01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE017A01032",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE011E01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

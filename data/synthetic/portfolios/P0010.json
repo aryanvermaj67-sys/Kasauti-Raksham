@@ -1,0 +1,140 @@
+{
+ "mock": true,
+ "case_id": "P0010",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0010",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "NTPC Limited",
+   "isin": "INE733E01010",
+   "quantity": 1949,
+   "value_inr": 17762708.1
+  },
+  {
+   "instrument_name": "Arihant Foundations & Housing Limited",
+   "isin": "INE413D01011",
+   "quantity": 1276,
+   "value_inr": 9078693.41
+  },
+  {
+   "instrument_name": "Hilton Metal Forging Limited",
+   "isin": "INE788H01017",
+   "quantity": 1460,
+   "value_inr": 8294977.12
+  },
+  {
+   "instrument_name": "JBM Auto Limited",
+   "isin": "INE927D01051",
+   "quantity": 213,
+   "value_inr": 404956.56
+  },
+  {
+   "instrument_name": "Chembond Material Technologies Limited",
+   "isin": "INE995D01025",
+   "quantity": 2731,
+   "value_inr": 12454515.2
+  },
+  {
+   "instrument_name": "Nityas Gems and Jewellery Limited",
+   "isin": "INE211501023",
+   "quantity": 3382,
+   "value_inr": 11380304.61
+  }
+ ],
+ "portfolio_total_inr": 59376155.0,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0010",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0010",
+          "dob": "1966-05-11",
+          "mobile": 1000000010,
+          "nominee": "REGISTERED",
+          "dematId": "IN3061244534310000",
+          "email": "synthetic0010@example.invalid",
+          "pan": "ZZZPZ0010Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6745742.37,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "NTPC Limited",
+           "isin": "INE733E01010",
+           "isinDescription": "NTPC LIMITED EQ",
+           "units": 1949,
+           "lastTradedPrice": "3461.13"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE733E01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE413D01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE788H01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE927D01051",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE995D01025",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE211501023",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

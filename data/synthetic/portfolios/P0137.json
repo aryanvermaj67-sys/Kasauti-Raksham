@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0137",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0137",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Gokaldas Exports Limited",
+   "isin": "INE887G01027",
+   "quantity": 4346,
+   "value_inr": 9026084.11
+  },
+  {
+   "instrument_name": "Haldyn Glass Limited",
+   "isin": "INE506D01020",
+   "quantity": 4023,
+   "value_inr": 11391636.5
+  },
+  {
+   "instrument_name": "Symbiotec Pharmalab Limited",
+   "isin": "INE899I01028",
+   "quantity": 2592,
+   "value_inr": 283748.69
+  },
+  {
+   "instrument_name": "VA Tech Wabag Limited",
+   "isin": "INE956G01038",
+   "quantity": 2486,
+   "value_inr": 4211275.23
+  },
+  {
+   "instrument_name": "Airan Limited",
+   "isin": "INE645W01026",
+   "quantity": 4116,
+   "value_inr": 13442503.38
+  }
+ ],
+ "portfolio_total_inr": 38355247.91,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0137",
+      "maskedDematId": "XXXXXXXXXXXXX5010",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0137",
+          "dob": "1959-07-13",
+          "mobile": 1000000137,
+          "nominee": "REGISTERED",
+          "dematId": "12088543058845010",
+          "email": "synthetic0137@example.invalid",
+          "pan": "ZZZPZ0137Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9630237.38,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Gokaldas Exports Limited",
+           "isin": "INE887G01027",
+           "isinDescription": "GOKALDAS EXPORTS LIMITED EQ",
+           "units": 4346,
+           "lastTradedPrice": "1233.61"
+          },
+          {
+           "issuerName": "Symbiotec Pharmalab Limited",
+           "isin": "INE899I01028",
+           "isinDescription": "SYMBIOTEC PHARMALAB LIMITED EQ",
+           "units": 1296,
+           "lastTradedPrice": "93.12"
+          },
+          {
+           "issuerName": "Shiva Cement Limited",
+           "isin": "INE555C01029",
+           "isinDescription": "SHIVA CEMENT LIMITED EQ",
+           "units": 2892,
+           "lastTradedPrice": "1434.40"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0137",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0137",
+          "dob": "1972-05-19",
+          "mobile": 1000000137,
+          "nominee": "REGISTERED",
+          "dematId": "IN3034605805570000",
+          "email": "synthetic0137@example.invalid",
+          "pan": "ZZZPZ0137Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6379391.79,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Haldyn Glass Limited",
+           "isin": "INE506D01020",
+           "isinDescription": "HALDYN GLASS LIMITED EQ",
+           "units": 4023,
+           "lastTradedPrice": "1585.73"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE887G01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE506D01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE899I01028",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE956G01038",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE645W01026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

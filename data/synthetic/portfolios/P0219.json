@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0219",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0219",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Somany Ceramics Limited",
+   "isin": "INE355A01028",
+   "quantity": 4952,
+   "value_inr": 19818783.69
+  },
+  {
+   "instrument_name": "CMS Info Systems Limited",
+   "isin": "INE925R01014",
+   "quantity": 1539,
+   "value_inr": 1679138.88
+  },
+  {
+   "instrument_name": "Mold-Tek Packaging Limited",
+   "isin": "INE893J01029",
+   "quantity": 3171,
+   "value_inr": 9913218.06
+  }
+ ],
+ "portfolio_total_inr": 31411140.63,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE355A01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE925R01014",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE893J01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

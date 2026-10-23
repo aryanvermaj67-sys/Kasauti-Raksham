@@ -1,0 +1,128 @@
+{
+ "mock": true,
+ "case_id": "P0256",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0256",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Easy Trip Planners Limited",
+   "isin": "INE07O001026",
+   "quantity": 2463,
+   "value_inr": 12416169.41
+  },
+  {
+   "instrument_name": "Bhartiya International Limited",
+   "isin": "INE828A01016",
+   "quantity": 2773,
+   "value_inr": 11693803.29
+  },
+  {
+   "instrument_name": "IVP Limited",
+   "isin": "INE043C01018",
+   "quantity": 118,
+   "value_inr": 377122.47
+  }
+ ],
+ "portfolio_total_inr": 24487095.17,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0256",
+      "maskedDematId": "XXXXXXXXXXXXX4280",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0256",
+          "dob": "1998-05-19",
+          "mobile": 1000000256,
+          "nominee": "REGISTERED",
+          "dematId": "12088840641294280",
+          "email": "synthetic0256@example.invalid",
+          "pan": "ZZZPZ0256Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8672971.9,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Exide Industries Limited",
+           "isin": "INE302A01020",
+           "isinDescription": "EXIDE INDUSTRIES LIMITED EQ",
+           "units": 112,
+           "lastTradedPrice": "2285.35"
+          },
+          {
+           "issuerName": "Amines & Plasticizers Limited",
+           "isin": "INE275D01022",
+           "isinDescription": "AMINES & PLASTICIZERS LIMITED EQ",
+           "units": 3421,
+           "lastTradedPrice": "615.87"
+          },
+          {
+           "issuerName": "Elgi Rubber Company Limited",
+           "isin": "INE819L01012",
+           "isinDescription": "ELGI RUBBER COMPANY LIMITED EQ",
+           "units": 1504,
+           "lastTradedPrice": "1889.66"
+          },
+          {
+           "issuerName": "Optimus Finance Limited",
+           "isin": "INE031G01022",
+           "isinDescription": "OPTIMUS FINANCE LIMITED EQ",
+           "units": 1157,
+           "lastTradedPrice": "2997.47"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE07O001026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE828A01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE043C01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

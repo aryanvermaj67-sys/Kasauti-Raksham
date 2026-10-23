@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0282",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0282",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Quess Corp Limited",
+   "isin": "INE615P01015",
+   "quantity": 3551,
+   "value_inr": 2771449.97
+  },
+  {
+   "instrument_name": "Steamhouse India Limited",
+   "isin": "INE0FRO01022",
+   "quantity": 187,
+   "value_inr": 221373.15
+  },
+  {
+   "instrument_name": "Goa Carbon Limited",
+   "isin": "INE426D01013",
+   "quantity": 3962,
+   "value_inr": 5900340.78
+  },
+  {
+   "instrument_name": "Veto Switchgears And Cables Limited",
+   "isin": "INE918N01018",
+   "quantity": 3945,
+   "value_inr": 4734874.28
+  },
+  {
+   "instrument_name": "Just Dial Limited",
+   "isin": "INE599M01018",
+   "quantity": 829,
+   "value_inr": 5107204.78
+  }
+ ],
+ "portfolio_total_inr": 18735242.96,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0282",
+      "maskedDematId": "XXXXXXXXXXXXX1360",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0282",
+          "dob": "1987-08-10",
+          "mobile": 1000000282,
+          "nominee": "REGISTERED",
+          "dematId": "12088157352931360",
+          "email": "synthetic0282@example.invalid",
+          "pan": "ZZZPZ0282Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 2137915.06,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Quess Corp Limited",
+           "isin": "INE615P01015",
+           "isinDescription": "QUESS CORP LIMITED EQ",
+           "units": 3551,
+           "lastTradedPrice": "602.06"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0282",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0282",
+          "dob": "1991-08-14",
+          "mobile": 1000000282,
+          "nominee": "REGISTERED",
+          "dematId": "IN3058932713730000",
+          "email": "synthetic0282@example.invalid",
+          "pan": "ZZZPZ0282Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5195863.07,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Steamhouse India Limited",
+           "isin": "INE0FRO01022",
+           "isinDescription": "STEAMHOUSE INDIA LIMITED EQ",
+           "units": 187,
+           "lastTradedPrice": "755.54"
+          },
+          {
+           "issuerName": "Goa Carbon Limited",
+           "isin": "INE426D01013",
+           "isinDescription": "GOA CARBON LIMITED EQ",
+           "units": 1981,
+           "lastTradedPrice": "699.69"
+          },
+          {
+           "issuerName": "Infomedia Press Limited",
+           "isin": "INE669A01022",
+           "isinDescription": "INFOMEDIA PRESS LIMITED EQ",
+           "units": 4488,
+           "lastTradedPrice": "817.40"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE615P01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0FRO01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE426D01013",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE918N01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE599M01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

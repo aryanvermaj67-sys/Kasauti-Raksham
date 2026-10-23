@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0170",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0170",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Trident Limited",
+   "isin": "INE064C01022",
+   "quantity": 725,
+   "value_inr": 7027751.84
+  },
+  {
+   "instrument_name": "GTPL Hathway Limited",
+   "isin": "INE869I01013",
+   "quantity": 4200,
+   "value_inr": 29031986.29
+  },
+  {
+   "instrument_name": "IFB Agro Industries Limited",
+   "isin": "INE076C01018",
+   "quantity": 3241,
+   "value_inr": 4850244.91
+  },
+  {
+   "instrument_name": "Kothari Petrochemicals Limited",
+   "isin": "INE720A01015",
+   "quantity": 2613,
+   "value_inr": 8397054.13
+  },
+  {
+   "instrument_name": "Ajmera Realty & Infra India Limited",
+   "isin": "INE298G01035",
+   "quantity": 2967,
+   "value_inr": 11675743.83
+  },
+  {
+   "instrument_name": "Blue Dart Express Limited",
+   "isin": "INE233B01017",
+   "quantity": 3513,
+   "value_inr": 14643502.13
+  }
+ ],
+ "portfolio_total_inr": 75626283.13,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0170",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0170",
+          "dob": "1998-02-12",
+          "mobile": 1000000170,
+          "nominee": "REGISTERED",
+          "dematId": "IN3027789487680000",
+          "email": "synthetic0170@example.invalid",
+          "pan": "ZZZPZ0170Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 18684192.0,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Trident Limited",
+           "isin": "INE064C01022",
+           "isinDescription": "TRIDENT LIMITED EQ",
+           "units": 725,
+           "lastTradedPrice": "3903.84"
+          },
+          {
+           "issuerName": "GTPL Hathway Limited",
+           "isin": "INE869I01013",
+           "isinDescription": "GTPL HATHWAY LIMITED EQ",
+           "units": 4200,
+           "lastTradedPrice": "3774.74"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE064C01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE869I01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE076C01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE720A01015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE298G01035",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE233B01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

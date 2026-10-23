@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0043",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0043",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Global Vectra Helicorp Limited",
+   "isin": "INE792H01019",
+   "quantity": 2520,
+   "value_inr": 4837518.48
+  },
+  {
+   "instrument_name": "Venky's (India) Limited",
+   "isin": "INE398A01010",
+   "quantity": 3500,
+   "value_inr": 2712935.37
+  },
+  {
+   "instrument_name": "Life Insurance Corporation Of India",
+   "isin": "INE0J1Y01017",
+   "quantity": 3646,
+   "value_inr": 13230735.16
+  },
+  {
+   "instrument_name": "Mahalaxmi Fabric Mills Limited",
+   "isin": "INE0US801024",
+   "quantity": 356,
+   "value_inr": 1796641.06
+  }
+ ],
+ "portfolio_total_inr": 22577830.07,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0043",
+      "maskedDematId": "XXXXXXXXXXXXX5760",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0043",
+          "dob": "1983-03-17",
+          "mobile": 1000000043,
+          "nominee": "REGISTERED",
+          "dematId": "12081367960355760",
+          "email": "synthetic0043@example.invalid",
+          "pan": "ZZZPZ0043Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12088377.16,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Global Vectra Helicorp Limited",
+           "isin": "INE792H01019",
+           "isinDescription": "GLOBAL VECTRA HELICORP LIMITED EQ",
+           "units": 2520,
+           "lastTradedPrice": "1794.74"
+          },
+          {
+           "issuerName": "Venky's (India) Limited",
+           "isin": "INE398A01010",
+           "isinDescription": "VENKY'S (INDIA) LIMITED EQ",
+           "units": 3500,
+           "lastTradedPrice": "683.25"
+          },
+          {
+           "issuerName": "Life Insurance Corporation Of India",
+           "isin": "INE0J1Y01017",
+           "isinDescription": "LIFE INSURANCE CORPORATION OF INDIA EQ",
+           "units": 3646,
+           "lastTradedPrice": "1419.16"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0043",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0043",
+          "dob": "1968-08-11",
+          "mobile": 1000000043,
+          "nominee": "REGISTERED",
+          "dematId": "IN3093701333430000",
+          "email": "synthetic0043@example.invalid",
+          "pan": "ZZZPZ0043Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1036928.32,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Mahalaxmi Fabric Mills Limited",
+           "isin": "INE0US801024",
+           "isinDescription": "MAHALAXMI FABRIC MILLS LIMITED EQ",
+           "units": 356,
+           "lastTradedPrice": "2912.72"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE792H01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE398A01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0J1Y01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0US801024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

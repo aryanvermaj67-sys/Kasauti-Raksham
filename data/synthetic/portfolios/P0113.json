@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0113",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0113",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "VEDAVAAG Systems Limited",
+   "isin": "INE359B01010",
+   "quantity": 2070,
+   "value_inr": 4130603.92
+  },
+  {
+   "instrument_name": "Yatra Online Limited",
+   "isin": "INE0JR601024",
+   "quantity": 1835,
+   "value_inr": 8392807.02
+  },
+  {
+   "instrument_name": "Generic Engineering Construction and Projects Limited",
+   "isin": "INE854S01022",
+   "quantity": 2900,
+   "value_inr": 24997229.65
+  },
+  {
+   "instrument_name": "Patel Engineering Limited",
+   "isin": "INE244B01030",
+   "quantity": 2836,
+   "value_inr": 12893113.72
+  }
+ ],
+ "portfolio_total_inr": 50413754.31,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0113",
+      "maskedDematId": "XXXXXXXXXXXXX4700",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0113",
+          "dob": "1966-02-17",
+          "mobile": 1000000113,
+          "nominee": "REGISTERED",
+          "dematId": "12089908389824700",
+          "email": "synthetic0113@example.invalid",
+          "pan": "ZZZPZ0113Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 18850524.16,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Yatra Online Limited",
+           "isin": "INE0JR601024",
+           "isinDescription": "YATRA ONLINE LIMITED EQ",
+           "units": 1835,
+           "lastTradedPrice": "2075.16"
+          },
+          {
+           "issuerName": "Generic Engineering Construction and Projects Limited",
+           "isin": "INE854S01022",
+           "isinDescription": "GENERIC ENGINEERING CONSTRUCTION AND PROJECTS LIMITED EQ",
+           "units": 2900,
+           "lastTradedPrice": "3272.60"
+          },
+          {
+           "issuerName": "Patel Engineering Limited",
+           "isin": "INE244B01030",
+           "isinDescription": "PATEL ENGINEERING LIMITED EQ",
+           "units": 2836,
+           "lastTradedPrice": "1957.71"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0113",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0113",
+          "dob": "1975-04-19",
+          "mobile": 1000000113,
+          "nominee": "REGISTERED",
+          "dematId": "IN3081950556020000",
+          "email": "synthetic0113@example.invalid",
+          "pan": "ZZZPZ0113Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3141825.3,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "VEDAVAAG Systems Limited",
+           "isin": "INE359B01010",
+           "isinDescription": "VEDAVAAG SYSTEMS LIMITED EQ",
+           "units": 2070,
+           "lastTradedPrice": "1517.79"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE359B01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0JR601024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE854S01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE244B01030",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

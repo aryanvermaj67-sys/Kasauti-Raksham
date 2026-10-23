@@ -1,0 +1,128 @@
+{
+ "mock": true,
+ "case_id": "P0076",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0076",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Lloyds Enterprises Limited",
+   "isin": "INE080I01025",
+   "quantity": 2602,
+   "value_inr": 2031055.98
+  },
+  {
+   "instrument_name": "Autoline Industries Limited",
+   "isin": "INE718H01014",
+   "quantity": 4666,
+   "value_inr": 22502520.34
+  },
+  {
+   "instrument_name": "IOL Chemicals and Pharmaceuticals Limited",
+   "isin": "INE485C01029",
+   "quantity": 4485,
+   "value_inr": 35580807.32
+  }
+ ],
+ "portfolio_total_inr": 60114383.64,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0076",
+      "maskedDematId": "XXXXXXXXXXXXX9010",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0076",
+          "dob": "1963-09-16",
+          "mobile": 1000000076,
+          "nominee": "REGISTERED",
+          "dematId": "12086557600709010",
+          "email": "synthetic0076@example.invalid",
+          "pan": "ZZZPZ0076Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13666473.36,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Twamev Construction and Infrastructure Limited",
+           "isin": "INE388G01026",
+           "isinDescription": "TWAMEV CONSTRUCTION AND INFRASTRUCTURE LIMITED EQ",
+           "units": 3171,
+           "lastTradedPrice": "468.72"
+          },
+          {
+           "issuerName": "Team India Guaranty Limited",
+           "isin": "INE289C01025",
+           "isinDescription": "TEAM INDIA GUARANTY LIMITED EQ",
+           "units": 4102,
+           "lastTradedPrice": "2559.57"
+          },
+          {
+           "issuerName": "Gujarat Pipavav Port Limited",
+           "isin": "INE517F01014",
+           "isinDescription": "GUJARAT PIPAVAV PORT LIMITED EQ",
+           "units": 591,
+           "lastTradedPrice": "2122.58"
+          },
+          {
+           "issuerName": "Powerica Limited",
+           "isin": "INE921L01032",
+           "isinDescription": "POWERICA LIMITED EQ",
+           "units": 108,
+           "lastTradedPrice": "3947.79"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE080I01025",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE718H01014",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE485C01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

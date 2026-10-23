@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0197",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0197",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Nuvoco Vistas Corporation Limited",
+   "isin": "INE118D01016",
+   "quantity": 2776,
+   "value_inr": 14080093.76
+  },
+  {
+   "instrument_name": "Jyothy Labs Limited",
+   "isin": "INE668F01031",
+   "quantity": 1867,
+   "value_inr": 2346106.28
+  },
+  {
+   "instrument_name": "Nalwa Sons Investments Limited",
+   "isin": "INE023A01030",
+   "quantity": 3690,
+   "value_inr": 18498457.37
+  },
+  {
+   "instrument_name": "Genus Power Infrastructures Limited",
+   "isin": "INE955D01029",
+   "quantity": 392,
+   "value_inr": 2683840.62
+  },
+  {
+   "instrument_name": "Tanla Platforms Limited",
+   "isin": "INE483C01032",
+   "quantity": 4573,
+   "value_inr": 13475114.16
+  }
+ ],
+ "portfolio_total_inr": 51083612.19,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0197",
+      "maskedDematId": "XXXXXXXXXXXXX5290",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0197",
+          "dob": "1977-02-12",
+          "mobile": 1000000197,
+          "nominee": "REGISTERED",
+          "dematId": "12081453654755290",
+          "email": "synthetic0197@example.invalid",
+          "pan": "ZZZPZ0197Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5747357.9,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Nuvoco Vistas Corporation Limited",
+           "isin": "INE118D01016",
+           "isinDescription": "NUVOCO VISTAS CORPORATION LIMITED EQ",
+           "units": 2776,
+           "lastTradedPrice": "1733.87"
+          },
+          {
+           "issuerName": "Jyothy Labs Limited",
+           "isin": "INE668F01031",
+           "isinDescription": "JYOTHY LABS LIMITED EQ",
+           "units": 1867,
+           "lastTradedPrice": "500.34"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0197",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0197",
+          "dob": "1958-06-12",
+          "mobile": 1000000197,
+          "nominee": "REGISTERED",
+          "dematId": "IN3037055120790000",
+          "email": "synthetic0197@example.invalid",
+          "pan": "ZZZPZ0197Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12401670.3,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Nalwa Sons Investments Limited",
+           "isin": "INE023A01030",
+           "isinDescription": "NALWA SONS INVESTMENTS LIMITED EQ",
+           "units": 1845,
+           "lastTradedPrice": "1955.73"
+          },
+          {
+           "issuerName": "Exxaro Tiles Limited",
+           "isin": "INE0GFE01026",
+           "isinDescription": "EXXARO TILES LIMITED EQ",
+           "units": 2797,
+           "lastTradedPrice": "3143.85"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE118D01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE668F01031",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE023A01030",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE955D01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE483C01032",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

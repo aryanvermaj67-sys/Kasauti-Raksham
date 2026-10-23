@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0087",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0087",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Redtape Limited",
+   "isin": "INE0LXT01019",
+   "quantity": 4745,
+   "value_inr": 23075455.43
+  },
+  {
+   "instrument_name": "Sun TV Network Limited",
+   "isin": "INE424H01027",
+   "quantity": 1857,
+   "value_inr": 2859414.2
+  },
+  {
+   "instrument_name": "Pudumjee Paper Products Limited",
+   "isin": "INE865T01018",
+   "quantity": 6130,
+   "value_inr": 54536260.62
+  },
+  {
+   "instrument_name": "Venus Pipes & Tubes Limited",
+   "isin": "INE0JA001018",
+   "quantity": 2620,
+   "value_inr": 3647372.53
+  },
+  {
+   "instrument_name": "Apeejay Surrendra Park Hotels Limited",
+   "isin": "INE988S01028",
+   "quantity": 867,
+   "value_inr": 328746.65
+  }
+ ],
+ "portfolio_total_inr": 84447249.43,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0087",
+      "maskedDematId": "XXXXXXXXXXXXX9520",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0087",
+          "dob": "1989-09-18",
+          "mobile": 1000000087,
+          "nominee": "REGISTERED",
+          "dematId": "12085474925749520",
+          "email": "synthetic0087@example.invalid",
+          "pan": "ZZZPZ0087Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12726359.12,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Redtape Limited",
+           "isin": "INE0LXT01019",
+           "isinDescription": "REDTAPE LIMITED EQ",
+           "units": 4745,
+           "lastTradedPrice": "2610.86"
+          },
+          {
+           "issuerName": "Nilkamal Limited",
+           "isin": "INE310A01015",
+           "isinDescription": "NILKAMAL LIMITED EQ",
+           "units": 283,
+           "lastTradedPrice": "1193.74"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0087",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0087",
+          "dob": "1960-02-10",
+          "mobile": 1000000087,
+          "nominee": "REGISTERED",
+          "dematId": "IN3065040996820000",
+          "email": "synthetic0087@example.invalid",
+          "pan": "ZZZPZ0087Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3201390.36,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Sun TV Network Limited",
+           "isin": "INE424H01027",
+           "isinDescription": "SUN TV NETWORK LIMITED EQ",
+           "units": 1857,
+           "lastTradedPrice": "667.37"
+          },
+          {
+           "issuerName": "Pudumjee Paper Products Limited",
+           "isin": "INE865T01018",
+           "isinDescription": "PUDUMJEE PAPER PRODUCTS LIMITED EQ",
+           "units": 613,
+           "lastTradedPrice": "3200.79"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0LXT01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE424H01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE865T01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE0JA001018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE988S01028",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

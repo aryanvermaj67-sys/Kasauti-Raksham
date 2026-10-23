@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0172",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0172",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Dabur India Limited",
+   "isin": "INE016A01026",
+   "quantity": 2122,
+   "value_inr": 12149229.86
+  },
+  {
+   "instrument_name": "Kolte - Patil Developers Limited",
+   "isin": "INE094I01018",
+   "quantity": 3909,
+   "value_inr": 44340136.2
+  },
+  {
+   "instrument_name": "Sun TV Network Limited",
+   "isin": "INE424H01027",
+   "quantity": 1978,
+   "value_inr": 4703692.42
+  },
+  {
+   "instrument_name": "Omax Autos Limited",
+   "isin": "INE090B01011",
+   "quantity": 2136,
+   "value_inr": 2938772.39
+  },
+  {
+   "instrument_name": "SRIT India Limited",
+   "isin": "INE307K01028",
+   "quantity": 489,
+   "value_inr": 845120.52
+  }
+ ],
+ "portfolio_total_inr": 64976951.39,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0172",
+      "maskedDematId": "XXXXXXXXXXXXX3030",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0172",
+          "dob": "1994-03-11",
+          "mobile": 1000000172,
+          "nominee": "REGISTERED",
+          "dematId": "12083126604373030",
+          "email": "synthetic0172@example.invalid",
+          "pan": "ZZZPZ0172Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5346209.24,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Dabur India Limited",
+           "isin": "INE016A01026",
+           "isinDescription": "DABUR INDIA LIMITED EQ",
+           "units": 2122,
+           "lastTradedPrice": "2519.42"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0172",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0172",
+          "dob": "1962-06-11",
+          "mobile": 1000000172,
+          "nominee": "REGISTERED",
+          "dematId": "IN3087304137370000",
+          "email": "synthetic0172@example.invalid",
+          "pan": "ZZZPZ0172Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 17148481.47,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Kolte - Patil Developers Limited",
+           "isin": "INE094I01018",
+           "isinDescription": "KOLTE - PATIL DEVELOPERS LIMITED EQ",
+           "units": 3909,
+           "lastTradedPrice": "3897.55"
+          },
+          {
+           "issuerName": "Sun TV Network Limited",
+           "isin": "INE424H01027",
+           "isinDescription": "SUN TV NETWORK LIMITED EQ",
+           "units": 989,
+           "lastTradedPrice": "1505.34"
+          },
+          {
+           "issuerName": "Banka BioLoo Limited",
+           "isin": "INE862Y01015",
+           "isinDescription": "BANKA BIOLOO LIMITED EQ",
+           "units": 4722,
+           "lastTradedPrice": "89.83"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE016A01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE094I01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE424H01027",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE090B01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE307K01028",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

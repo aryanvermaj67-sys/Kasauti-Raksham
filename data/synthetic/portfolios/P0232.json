@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0232",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0232",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Vijay Solvex Limited",
+   "isin": "INE362D01010",
+   "quantity": 2003,
+   "value_inr": 4946075.24
+  },
+  {
+   "instrument_name": "Silver Touch Technologies Limited",
+   "isin": "INE625X01026",
+   "quantity": 742,
+   "value_inr": 826435.43
+  },
+  {
+   "instrument_name": "Gabriel India Limited",
+   "isin": "INE524A01029",
+   "quantity": 2490,
+   "value_inr": 1849592.37
+  },
+  {
+   "instrument_name": "CREDITACCESS GRAMEEN LIMITED",
+   "isin": "INE741K01010",
+   "quantity": 2306,
+   "value_inr": 3488783.59
+  },
+  {
+   "instrument_name": "Stanley Lifestyles Limited",
+   "isin": "INE01A001028",
+   "quantity": 2120,
+   "value_inr": 15966671.43
+  }
+ ],
+ "portfolio_total_inr": 27077558.06,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0232",
+      "maskedDematId": "XXXXXXXXXXXXX1120",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0232",
+          "dob": "1991-07-18",
+          "mobile": 1000000232,
+          "nominee": "REGISTERED",
+          "dematId": "12089106448741120",
+          "email": "synthetic0232@example.invalid",
+          "pan": "ZZZPZ0232Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10022366.7,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Silver Touch Technologies Limited",
+           "isin": "INE625X01026",
+           "isinDescription": "SILVER TOUCH TECHNOLOGIES LIMITED EQ",
+           "units": 742,
+           "lastTradedPrice": "439.77"
+          },
+          {
+           "issuerName": "Shipping Corporation of India Land and Assets Limited",
+           "isin": "INE0PB301013",
+           "isinDescription": "SHIPPING CORPORATION OF INDIA LAND AND ASSETS LIMITED EQ",
+           "units": 2684,
+           "lastTradedPrice": "3612.54"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0232",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0232",
+          "dob": "1961-02-14",
+          "mobile": 1000000232,
+          "nominee": "REGISTERED",
+          "dematId": "IN3020023055480000",
+          "email": "synthetic0232@example.invalid",
+          "pan": "ZZZPZ0232Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1891024.25,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Vijay Solvex Limited",
+           "isin": "INE362D01010",
+           "isinDescription": "VIJAY SOLVEX LIMITED EQ",
+           "units": 2003,
+           "lastTradedPrice": "862.33"
+          },
+          {
+           "issuerName": "Gabriel India Limited",
+           "isin": "INE524A01029",
+           "isinDescription": "GABRIEL INDIA LIMITED EQ",
+           "units": 249,
+           "lastTradedPrice": "657.74"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE362D01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE625X01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE524A01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE741K01010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE01A001028",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

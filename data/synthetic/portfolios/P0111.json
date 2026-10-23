@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0111",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0111",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Subex Limited",
+   "isin": "INE754A01055",
+   "quantity": 636,
+   "value_inr": 4728521.65
+  },
+  {
+   "instrument_name": "VIP Clothing Limited",
+   "isin": "INE450G01024",
+   "quantity": 162,
+   "value_inr": 954167.32
+  },
+  {
+   "instrument_name": "Creative Newtech Limited",
+   "isin": "INE985W01018",
+   "quantity": 265,
+   "value_inr": 1247551.78
+  },
+  {
+   "instrument_name": "GFL Limited",
+   "isin": "INE538A01037",
+   "quantity": 4752,
+   "value_inr": 19736958.02
+  }
+ ],
+ "portfolio_total_inr": 26667198.77,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0111",
+      "maskedDematId": "XXXXXXXXXXXXX9380",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0111",
+          "dob": "1974-09-18",
+          "mobile": 1000000111,
+          "nominee": "REGISTERED",
+          "dematId": "12082472787199380",
+          "email": "synthetic0111@example.invalid",
+          "pan": "ZZZPZ0111Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9658193.98,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Shriram Properties Limited",
+           "isin": "INE217L01019",
+           "isinDescription": "SHRIRAM PROPERTIES LIMITED EQ",
+           "units": 4979,
+           "lastTradedPrice": "346.26"
+          },
+          {
+           "issuerName": "S Chand And Company Limited",
+           "isin": "INE807K01035",
+           "isinDescription": "S CHAND AND COMPANY LIMITED EQ",
+           "units": 2308,
+           "lastTradedPrice": "3437.68"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0111",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0111",
+          "dob": "1968-09-10",
+          "mobile": 1000000111,
+          "nominee": "REGISTERED",
+          "dematId": "IN3056838938640000",
+          "email": "synthetic0111@example.invalid",
+          "pan": "ZZZPZ0111Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5852425.89,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Nuvoco Vistas Corporation Limited",
+           "isin": "INE118D01016",
+           "isinDescription": "NUVOCO VISTAS CORPORATION LIMITED EQ",
+           "units": 1156,
+           "lastTradedPrice": "3567.36"
+          },
+          {
+           "issuerName": "Maithan Alloys Limited",
+           "isin": "INE683C01011",
+           "isinDescription": "MAITHAN ALLOYS LIMITED EQ",
+           "units": 1619,
+           "lastTradedPrice": "1067.67"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE754A01055",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE450G01024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE985W01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE538A01037",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

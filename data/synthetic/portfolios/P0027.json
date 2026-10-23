@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0027",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0027",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Insecticides (India) Limited",
+   "isin": "INE070I01018",
+   "quantity": 3252,
+   "value_inr": 9323412.2
+  },
+  {
+   "instrument_name": "Prime Focus Limited",
+   "isin": "INE367G01038",
+   "quantity": 4646,
+   "value_inr": 17162559.75
+  },
+  {
+   "instrument_name": "Zee Media Corporation Limited",
+   "isin": "INE966H01019",
+   "quantity": 2055,
+   "value_inr": 18458171.97
+  },
+  {
+   "instrument_name": "Saraswati Commercial India Limited",
+   "isin": "INE967G01019",
+   "quantity": 2354,
+   "value_inr": 8633577.28
+  },
+  {
+   "instrument_name": "Lloyds Metals And Energy Limited",
+   "isin": "INE281B01032",
+   "quantity": 1895,
+   "value_inr": 7341171.15
+  }
+ ],
+ "portfolio_total_inr": 60918892.35,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0027",
+      "maskedDematId": "XXXXXXXXXXXXX2380",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0027",
+          "dob": "1956-04-12",
+          "mobile": 1000000027,
+          "nominee": "REGISTERED",
+          "dematId": "12085584769392380",
+          "email": "synthetic0027@example.invalid",
+          "pan": "ZZZPZ0027Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 21204371.84,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Insecticides (India) Limited",
+           "isin": "INE070I01018",
+           "isinDescription": "INSECTICIDES (INDIA) LIMITED EQ",
+           "units": 3252,
+           "lastTradedPrice": "1112.43"
+          },
+          {
+           "issuerName": "Prime Focus Limited",
+           "isin": "INE367G01038",
+           "isinDescription": "PRIME FOCUS LIMITED EQ",
+           "units": 4646,
+           "lastTradedPrice": "3462.97"
+          },
+          {
+           "issuerName": "Zee Media Corporation Limited",
+           "isin": "INE966H01019",
+           "isinDescription": "ZEE MEDIA CORPORATION LIMITED EQ",
+           "units": 411,
+           "lastTradedPrice": "3644.26"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0027",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0027",
+          "dob": "1997-08-14",
+          "mobile": 1000000027,
+          "nominee": "REGISTERED",
+          "dematId": "IN3060016802180000",
+          "email": "synthetic0027@example.invalid",
+          "pan": "ZZZPZ0027Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13602241.3,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "FSN E-Commerce Ventures Limited",
+           "isin": "INE388Y01029",
+           "isinDescription": "FSN E-COMMERCE VENTURES LIMITED EQ",
+           "units": 4079,
+           "lastTradedPrice": "3334.70"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE070I01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE367G01038",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE966H01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE967G01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE281B01032",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

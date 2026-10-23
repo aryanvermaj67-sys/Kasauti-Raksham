@@ -1,0 +1,140 @@
+{
+ "mock": true,
+ "case_id": "P0050",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0050",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Soma Textiles & Industries Limited",
+   "isin": "INE314C01013",
+   "quantity": 4748,
+   "value_inr": 17918349.91
+  },
+  {
+   "instrument_name": "Sundaram Clayton Limited",
+   "isin": "INE0Q3R01026",
+   "quantity": 3422,
+   "value_inr": 10446600.32
+  },
+  {
+   "instrument_name": "Wonder Electricals Limited",
+   "isin": "INE02WG01024",
+   "quantity": 228,
+   "value_inr": 1300549.15
+  },
+  {
+   "instrument_name": "Lumax Auto Technologies Limited",
+   "isin": "INE872H01027",
+   "quantity": 2185,
+   "value_inr": 15391994.66
+  },
+  {
+   "instrument_name": "Aether Industries Limited",
+   "isin": "INE0BWX01014",
+   "quantity": 430,
+   "value_inr": 2568407.73
+  },
+  {
+   "instrument_name": "Orient Paper & Industries Limited",
+   "isin": "INE592A01026",
+   "quantity": 1406,
+   "value_inr": 8414184.92
+  }
+ ],
+ "portfolio_total_inr": 56040086.69,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0050",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0050",
+          "dob": "1953-09-13",
+          "mobile": 1000000050,
+          "nominee": "REGISTERED",
+          "dematId": "IN3098574306870000",
+          "email": "synthetic0050@example.invalid",
+          "pan": "ZZZPZ0050Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11010517.04,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Soma Textiles & Industries Limited",
+           "isin": "INE314C01013",
+           "isinDescription": "SOMA TEXTILES & INDUSTRIES LIMITED EQ",
+           "units": 4748,
+           "lastTradedPrice": "2318.98"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE314C01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0Q3R01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE02WG01024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE872H01027",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0BWX01014",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE592A01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

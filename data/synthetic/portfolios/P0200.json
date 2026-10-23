@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0200",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0200",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Satin Creditcare Network Limited",
+   "isin": "INE836B01017",
+   "quantity": 2750,
+   "value_inr": 11600584.81
+  },
+  {
+   "instrument_name": "NELCO Limited",
+   "isin": "INE045B01015",
+   "quantity": 1042,
+   "value_inr": 3311492.34
+  },
+  {
+   "instrument_name": "Quadrant Future Tek Limited",
+   "isin": "INE0LRY01011",
+   "quantity": 4440,
+   "value_inr": 10288852.04
+  },
+  {
+   "instrument_name": "Gulshan Polyols Limited",
+   "isin": "INE255D01024",
+   "quantity": 770,
+   "value_inr": 1975574.03
+  },
+  {
+   "instrument_name": "Macpower CNC Machines Limited",
+   "isin": "INE155Z01011",
+   "quantity": 2567,
+   "value_inr": 13514703.38
+  },
+  {
+   "instrument_name": "BlueStone Jewellery and Lifestyle Limited",
+   "isin": "INE304W01038",
+   "quantity": 1320,
+   "value_inr": 430818.59
+  }
+ ],
+ "portfolio_total_inr": 41122025.19,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0200",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0200",
+          "dob": "1981-01-17",
+          "mobile": 1000000200,
+          "nominee": "REGISTERED",
+          "dematId": "IN3072222775560000",
+          "email": "synthetic0200@example.invalid",
+          "pan": "ZZZPZ0200Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6502779.24,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Satin Creditcare Network Limited",
+           "isin": "INE836B01017",
+           "isinDescription": "SATIN CREDITCARE NETWORK LIMITED EQ",
+           "units": 2750,
+           "lastTradedPrice": "1572.17"
+          },
+          {
+           "issuerName": "NELCO Limited",
+           "isin": "INE045B01015",
+           "isinDescription": "NELCO LIMITED EQ",
+           "units": 1042,
+           "lastTradedPrice": "2091.47"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE836B01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE045B01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0LRY01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE255D01024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE155Z01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE304W01038",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

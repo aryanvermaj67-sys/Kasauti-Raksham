@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0245",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0245",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Kalyani Steels Limited",
+   "isin": "INE907A01026",
+   "quantity": 1640,
+   "value_inr": 11570696.01
+  },
+  {
+   "instrument_name": "Arihant Capital Markets Limited",
+   "isin": "INE420B01036",
+   "quantity": 2187,
+   "value_inr": 2364730.56
+  },
+  {
+   "instrument_name": "Dish TV India Limited",
+   "isin": "INE836F01026",
+   "quantity": 4016,
+   "value_inr": 9015797.54
+  },
+  {
+   "instrument_name": "Pranav Constructions Limited",
+   "isin": "INE0H4201019",
+   "quantity": 1053,
+   "value_inr": 2710511.37
+  },
+  {
+   "instrument_name": "R K Swamy Limited",
+   "isin": "INE0NQ801033",
+   "quantity": 3285,
+   "value_inr": 10367837.29
+  },
+  {
+   "instrument_name": "MphasiS Limited",
+   "isin": "INE356A01018",
+   "quantity": 3195,
+   "value_inr": 2021688.61
+  }
+ ],
+ "portfolio_total_inr": 38051261.38,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0245",
+      "maskedDematId": "XXXXXXXXXXXXX2000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0245",
+          "dob": "1984-03-18",
+          "mobile": 1000000245,
+          "nominee": "REGISTERED",
+          "dematId": "12083724252742000",
+          "email": "synthetic0245@example.invalid",
+          "pan": "ZZZPZ0245Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16174089.17,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Kalyani Steels Limited",
+           "isin": "INE907A01026",
+           "isinDescription": "KALYANI STEELS LIMITED EQ",
+           "units": 1640,
+           "lastTradedPrice": "3794.54"
+          },
+          {
+           "issuerName": "Arihant Capital Markets Limited",
+           "isin": "INE420B01036",
+           "isinDescription": "ARIHANT CAPITAL MARKETS LIMITED EQ",
+           "units": 2187,
+           "lastTradedPrice": "492.79"
+          },
+          {
+           "issuerName": "Dish TV India Limited",
+           "isin": "INE836F01026",
+           "isinDescription": "DISH TV INDIA LIMITED EQ",
+           "units": 4016,
+           "lastTradedPrice": "2209.49"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE907A01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE420B01036",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE836F01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0H4201019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0NQ801033",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE356A01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0192",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0192",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Terai Tea Company Limited",
+   "isin": "INE390D01011",
+   "quantity": 4927,
+   "value_inr": 9724161.74
+  },
+  {
+   "instrument_name": "Hardwyn India Limited",
+   "isin": "INE626Z01029",
+   "quantity": 3471,
+   "value_inr": 29344561.45
+  },
+  {
+   "instrument_name": "Summit Securities Limited",
+   "isin": "INE519C01017",
+   "quantity": 7680,
+   "value_inr": 17412028.29
+  },
+  {
+   "instrument_name": "PNC Infratech Limited",
+   "isin": "INE195J01029",
+   "quantity": 4215,
+   "value_inr": 7304070.18
+  },
+  {
+   "instrument_name": "Savita Oil Technologies Limited",
+   "isin": "INE035D01020",
+   "quantity": 3807,
+   "value_inr": 28971249.3
+  }
+ ],
+ "portfolio_total_inr": 92756070.96,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0192",
+      "maskedDematId": "XXXXXXXXXXXXX6510",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0192",
+          "dob": "1978-07-14",
+          "mobile": 1000000192,
+          "nominee": "REGISTERED",
+          "dematId": "12083741973176510",
+          "email": "synthetic0192@example.invalid",
+          "pan": "ZZZPZ0192Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8394721.14,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Terai Tea Company Limited",
+           "isin": "INE390D01011",
+           "isinDescription": "TERAI TEA COMPANY LIMITED EQ",
+           "units": 4927,
+           "lastTradedPrice": "1703.82"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0192",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0192",
+          "dob": "1980-02-10",
+          "mobile": 1000000192,
+          "nominee": "REGISTERED",
+          "dematId": "IN3034418422000000",
+          "email": "synthetic0192@example.invalid",
+          "pan": "ZZZPZ0192Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 15321868.67,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Hardwyn India Limited",
+           "isin": "INE626Z01029",
+           "isinDescription": "HARDWYN INDIA LIMITED EQ",
+           "units": 3471,
+           "lastTradedPrice": "3247.76"
+          },
+          {
+           "issuerName": "Summit Securities Limited",
+           "isin": "INE519C01017",
+           "isinDescription": "SUMMIT SECURITIES LIMITED EQ",
+           "units": 1536,
+           "lastTradedPrice": "1747.74"
+          },
+          {
+           "issuerName": "S Chand And Company Limited",
+           "isin": "INE807K01035",
+           "isinDescription": "S CHAND AND COMPANY LIMITED EQ",
+           "units": 3499,
+           "lastTradedPrice": "389.93"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE390D01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE626Z01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE519C01017",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE195J01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE035D01020",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

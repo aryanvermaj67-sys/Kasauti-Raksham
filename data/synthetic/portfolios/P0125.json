@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0125",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0125",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Sonata Software Limited",
+   "isin": "INE269A01021",
+   "quantity": 4905,
+   "value_inr": 15207955.92
+  },
+  {
+   "instrument_name": "Simplex Infrastructures Limited",
+   "isin": "INE059B01024",
+   "quantity": 4630,
+   "value_inr": 15716712.34
+  },
+  {
+   "instrument_name": "Vadilal Industries Limited",
+   "isin": "INE694D01016",
+   "quantity": 4382,
+   "value_inr": 5579528.43
+  },
+  {
+   "instrument_name": "MMP Industries Limited",
+   "isin": "INE511Y01018",
+   "quantity": 4427,
+   "value_inr": 9123688.17
+  },
+  {
+   "instrument_name": "Kiran Vyapar Limited",
+   "isin": "INE555P01013",
+   "quantity": 2854,
+   "value_inr": 15997887.47
+  },
+  {
+   "instrument_name": "Vijaya Diagnostic Centre Limited",
+   "isin": "INE043W01024",
+   "quantity": 1870,
+   "value_inr": 11776635.91
+  }
+ ],
+ "portfolio_total_inr": 73402408.24,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0125",
+      "maskedDematId": "XXXXXXXXXXXXX2170",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0125",
+          "dob": "1972-05-19",
+          "mobile": 1000000125,
+          "nominee": "REGISTERED",
+          "dematId": "12089418528142170",
+          "email": "synthetic0125@example.invalid",
+          "pan": "ZZZPZ0125Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 22607019.4,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Sonata Software Limited",
+           "isin": "INE269A01021",
+           "isinDescription": "SONATA SOFTWARE LIMITED EQ",
+           "units": 4905,
+           "lastTradedPrice": "1837.04"
+          },
+          {
+           "issuerName": "Simplex Infrastructures Limited",
+           "isin": "INE059B01024",
+           "isinDescription": "SIMPLEX INFRASTRUCTURES LIMITED EQ",
+           "units": 4630,
+           "lastTradedPrice": "1751.21"
+          },
+          {
+           "issuerName": "Vadilal Industries Limited",
+           "isin": "INE694D01016",
+           "isinDescription": "VADILAL INDUSTRIES LIMITED EQ",
+           "units": 4382,
+           "lastTradedPrice": "1252.45"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE269A01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE059B01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE694D01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE511Y01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE555P01013",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE043W01024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

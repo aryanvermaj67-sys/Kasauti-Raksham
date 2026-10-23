@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0290",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0290",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Health X Platform Limited",
+   "isin": "INE019J01013",
+   "quantity": 4996,
+   "value_inr": 41032583.35
+  },
+  {
+   "instrument_name": "Pearl Polymers Limited",
+   "isin": "INE844A01013",
+   "quantity": 2764,
+   "value_inr": 29350897.07
+  },
+  {
+   "instrument_name": "Automotive Stampings and Assemblies Limited",
+   "isin": "INE900C01027",
+   "quantity": 2509,
+   "value_inr": 699120.14
+  },
+  {
+   "instrument_name": "IIFL Capital Services Limited",
+   "isin": "INE489L01022",
+   "quantity": 2859,
+   "value_inr": 23000200.22
+  },
+  {
+   "instrument_name": "Go Fashion (India) Limited",
+   "isin": "INE0BJS01011",
+   "quantity": 2160,
+   "value_inr": 14974838.07
+  },
+  {
+   "instrument_name": "SAB Industries Limited",
+   "isin": "INE137M01017",
+   "quantity": 4851,
+   "value_inr": 8717521.63
+  }
+ ],
+ "portfolio_total_inr": 117775160.48,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0290",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0290",
+          "dob": "1992-04-12",
+          "mobile": 1000000290,
+          "nominee": "REGISTERED",
+          "dematId": "IN3069325998140000",
+          "email": "synthetic0290@example.invalid",
+          "pan": "ZZZPZ0290Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 25307636.48,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Health X Platform Limited",
+           "isin": "INE019J01013",
+           "isinDescription": "HEALTH X PLATFORM LIMITED EQ",
+           "units": 4996,
+           "lastTradedPrice": "3022.82"
+          },
+          {
+           "issuerName": "Pearl Polymers Limited",
+           "isin": "INE844A01013",
+           "isinDescription": "PEARL POLYMERS LIMITED EQ",
+           "units": 2764,
+           "lastTradedPrice": "3692.34"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE019J01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE844A01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE900C01027",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE489L01022",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0BJS01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE137M01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

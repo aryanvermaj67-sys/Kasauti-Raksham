@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0257",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0257",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Taal Tech Limited",
+   "isin": "INE524T01029",
+   "quantity": 3102,
+   "value_inr": 16861791.27
+  },
+  {
+   "instrument_name": "Mallcom (India) Limited",
+   "isin": "INE389C01015",
+   "quantity": 1035,
+   "value_inr": 3750059.9
+  },
+  {
+   "instrument_name": "The Indian Hotels Company Limited",
+   "isin": "INE053A01029",
+   "quantity": 6580,
+   "value_inr": 28198848.98
+  },
+  {
+   "instrument_name": "Eveready Industries India Limited",
+   "isin": "INE128A01029",
+   "quantity": 4591,
+   "value_inr": 28512073.77
+  },
+  {
+   "instrument_name": "Kingfa Science & Technology (India) Limited",
+   "isin": "INE473D01015",
+   "quantity": 642,
+   "value_inr": 3507770.88
+  }
+ ],
+ "portfolio_total_inr": 80830544.8,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0257",
+      "maskedDematId": "XXXXXXXXXXXXX4720",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0257",
+          "dob": "1955-09-11",
+          "mobile": 1000000257,
+          "nominee": "REGISTERED",
+          "dematId": "12084102664184720",
+          "email": "synthetic0257@example.invalid",
+          "pan": "ZZZPZ0257Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 15217388.1,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Taal Tech Limited",
+           "isin": "INE524T01029",
+           "isinDescription": "TAAL TECH LIMITED EQ",
+           "units": 3102,
+           "lastTradedPrice": "3912.15"
+          },
+          {
+           "issuerName": "Mallcom (India) Limited",
+           "isin": "INE389C01015",
+           "isinDescription": "MALLCOM (INDIA) LIMITED EQ",
+           "units": 1035,
+           "lastTradedPrice": "2977.68"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0257",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0257",
+          "dob": "1983-01-14",
+          "mobile": 1000000257,
+          "nominee": "REGISTERED",
+          "dematId": "IN3012805436850000",
+          "email": "synthetic0257@example.invalid",
+          "pan": "ZZZPZ0257Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11022789.06,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "The Indian Hotels Company Limited",
+           "isin": "INE053A01029",
+           "isinDescription": "THE INDIAN HOTELS COMPANY LIMITED EQ",
+           "units": 3290,
+           "lastTradedPrice": "2483.79"
+          },
+          {
+           "issuerName": "Raghav Productivity Enhancers Limited",
+           "isin": "INE912T01018",
+           "isinDescription": "RAGHAV PRODUCTIVITY ENHANCERS LIMITED EQ",
+           "units": 1803,
+           "lastTradedPrice": "1581.32"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE524T01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE389C01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE053A01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE128A01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE473D01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

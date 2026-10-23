@@ -1,0 +1,169 @@
+{
+ "mock": true,
+ "case_id": "P0031",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0031",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "PTC India Limited",
+   "isin": "INE877F01012",
+   "quantity": 4805,
+   "value_inr": 20140269.36
+  },
+  {
+   "instrument_name": "RSWM Limited",
+   "isin": "INE611A01016",
+   "quantity": 2673,
+   "value_inr": 5981992.93
+  },
+  {
+   "instrument_name": "Central Mine Planning & Design Institute Limited",
+   "isin": "INE05HV01027",
+   "quantity": 4903,
+   "value_inr": 17535907.19
+  }
+ ],
+ "portfolio_total_inr": 43658169.48,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0031",
+      "maskedDematId": "XXXXXXXXXXXXX1450",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0031",
+          "dob": "1971-02-15",
+          "mobile": 1000000031,
+          "nominee": "REGISTERED",
+          "dematId": "12085400344271450",
+          "email": "synthetic0031@example.invalid",
+          "pan": "ZZZPZ0031Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6884200.57,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "ANDHRA PAPER LIMITED",
+           "isin": "INE435A01051",
+           "isinDescription": "ANDHRA PAPER LIMITED EQ",
+           "units": 671,
+           "lastTradedPrice": "1302.01"
+          },
+          {
+           "issuerName": "Bajaj Electricals Limited",
+           "isin": "INE193E01025",
+           "isinDescription": "BAJAJ ELECTRICALS LIMITED EQ",
+           "units": 1225,
+           "lastTradedPrice": "281.42"
+          },
+          {
+           "issuerName": "Supreme Petrochem Limited",
+           "isin": "INE663A01033",
+           "isinDescription": "SUPREME PETROCHEM LIMITED EQ",
+           "units": 2262,
+           "lastTradedPrice": "2504.78"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0031",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0031",
+          "dob": "1987-05-15",
+          "mobile": 1000000031,
+          "nominee": "REGISTERED",
+          "dematId": "IN3071279047560000",
+          "email": "synthetic0031@example.invalid",
+          "pan": "ZZZPZ0031Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1138401.07,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Shivalik Rasayan Limited",
+           "isin": "INE788J01021",
+           "isinDescription": "SHIVALIK RASAYAN LIMITED EQ",
+           "units": 3643,
+           "lastTradedPrice": "312.49"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE877F01012",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE611A01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE05HV01027",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

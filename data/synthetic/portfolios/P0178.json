@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0178",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0178",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Sika Interplant Systems Limited",
+   "isin": "INE438E01032",
+   "quantity": 2824,
+   "value_inr": 14875606.54
+  },
+  {
+   "instrument_name": "Hazoor Multi Projects Limited",
+   "isin": "INE550F01049",
+   "quantity": 4438,
+   "value_inr": 17326135.48
+  },
+  {
+   "instrument_name": "LIC Housing Finance Limited",
+   "isin": "INE115A01026",
+   "quantity": 268,
+   "value_inr": 2684992.34
+  },
+  {
+   "instrument_name": "Suzlon Energy Limited",
+   "isin": "INE040H01021",
+   "quantity": 985,
+   "value_inr": 3257116.64
+  }
+ ],
+ "portfolio_total_inr": 38143851.0,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0178",
+      "maskedDematId": "XXXXXXXXXXXXX8870",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0178",
+          "dob": "1980-09-19",
+          "mobile": 1000000178,
+          "nominee": "REGISTERED",
+          "dematId": "12088236614178870",
+          "email": "synthetic0178@example.invalid",
+          "pan": "ZZZPZ0178Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10678321.01,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Sika Interplant Systems Limited",
+           "isin": "INE438E01032",
+           "isinDescription": "SIKA INTERPLANT SYSTEMS LIMITED EQ",
+           "units": 2824,
+           "lastTradedPrice": "3241.74"
+          },
+          {
+           "issuerName": "Suzlon Energy Limited",
+           "isin": "INE040H01021",
+           "isinDescription": "SUZLON ENERGY LIMITED EQ",
+           "units": 985,
+           "lastTradedPrice": "1546.85"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0178",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0178",
+          "dob": "1980-03-18",
+          "mobile": 1000000178,
+          "nominee": "REGISTERED",
+          "dematId": "IN3073128218760000",
+          "email": "synthetic0178@example.invalid",
+          "pan": "ZZZPZ0178Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10805942.94,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Hazoor Multi Projects Limited",
+           "isin": "INE550F01049",
+           "isinDescription": "HAZOOR MULTI PROJECTS LIMITED EQ",
+           "units": 4438,
+           "lastTradedPrice": "2195.55"
+          },
+          {
+           "issuerName": "LIC Housing Finance Limited",
+           "isin": "INE115A01026",
+           "isinDescription": "LIC HOUSING FINANCE LIMITED EQ",
+           "units": 268,
+           "lastTradedPrice": "3963.03"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE438E01032",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE550F01049",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE115A01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE040H01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

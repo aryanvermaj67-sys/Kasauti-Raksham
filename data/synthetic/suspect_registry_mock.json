@@ -1,0 +1,559 @@
+{
+ "mock": true,
+ "note": "MOCK of the I4C Suspect Registry (the real one is shared with banks, not public).",
+ "entries": [
+  {
+   "identifier": "trade0278.desk@mockupi",
+   "type": "upi",
+   "reported_count": 11,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade0381.desk@mockupi",
+   "type": "upi",
+   "reported_count": 9,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade0417.desk@mockupi",
+   "type": "upi",
+   "reported_count": 3,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade0497.desk@mockupi",
+   "type": "upi",
+   "reported_count": 3,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade0500.desk@mockupi",
+   "type": "upi",
+   "reported_count": 2,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade0702.desk@mockupi",
+   "type": "upi",
+   "reported_count": 1,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade0755.desk@mockupi",
+   "type": "upi",
+   "reported_count": 3,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade0897.desk@mockupi",
+   "type": "upi",
+   "reported_count": 11,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade0942.desk@mockupi",
+   "type": "upi",
+   "reported_count": 2,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade1198.desk@mockupi",
+   "type": "upi",
+   "reported_count": 8,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade1255.desk@mockupi",
+   "type": "upi",
+   "reported_count": 10,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade1369.desk@mockupi",
+   "type": "upi",
+   "reported_count": 9,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade1374.desk@mockupi",
+   "type": "upi",
+   "reported_count": 3,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade1453.desk@mockupi",
+   "type": "upi",
+   "reported_count": 2,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade1913.desk@mockupi",
+   "type": "upi",
+   "reported_count": 11,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade2005.desk@mockupi",
+   "type": "upi",
+   "reported_count": 4,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade2027.desk@mockupi",
+   "type": "upi",
+   "reported_count": 5,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade2033.desk@mockupi",
+   "type": "upi",
+   "reported_count": 9,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade2035.desk@mockupi",
+   "type": "upi",
+   "reported_count": 7,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade2289.desk@mockupi",
+   "type": "upi",
+   "reported_count": 3,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade2334.desk@mockupi",
+   "type": "upi",
+   "reported_count": 10,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade2336.desk@mockupi",
+   "type": "upi",
+   "reported_count": 9,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade2387.desk@mockupi",
+   "type": "upi",
+   "reported_count": 6,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade2423.desk@mockupi",
+   "type": "upi",
+   "reported_count": 8,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade2440.desk@mockupi",
+   "type": "upi",
+   "reported_count": 11,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade2445.desk@mockupi",
+   "type": "upi",
+   "reported_count": 10,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade2583.desk@mockupi",
+   "type": "upi",
+   "reported_count": 8,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade2903.desk@mockupi",
+   "type": "upi",
+   "reported_count": 4,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade3215.desk@mockupi",
+   "type": "upi",
+   "reported_count": 7,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade3363.desk@mockupi",
+   "type": "upi",
+   "reported_count": 4,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade3753.desk@mockupi",
+   "type": "upi",
+   "reported_count": 9,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade3938.desk@mockupi",
+   "type": "upi",
+   "reported_count": 4,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade3976.desk@mockupi",
+   "type": "upi",
+   "reported_count": 2,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade4024.desk@mockupi",
+   "type": "upi",
+   "reported_count": 9,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade4254.desk@mockupi",
+   "type": "upi",
+   "reported_count": 3,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade4317.desk@mockupi",
+   "type": "upi",
+   "reported_count": 9,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade4321.desk@mockupi",
+   "type": "upi",
+   "reported_count": 11,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade4387.desk@mockupi",
+   "type": "upi",
+   "reported_count": 6,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade4575.desk@mockupi",
+   "type": "upi",
+   "reported_count": 7,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade4816.desk@mockupi",
+   "type": "upi",
+   "reported_count": 1,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade5038.desk@mockupi",
+   "type": "upi",
+   "reported_count": 6,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade5070.desk@mockupi",
+   "type": "upi",
+   "reported_count": 4,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade5081.desk@mockupi",
+   "type": "upi",
+   "reported_count": 10,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade5269.desk@mockupi",
+   "type": "upi",
+   "reported_count": 8,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade5364.desk@mockupi",
+   "type": "upi",
+   "reported_count": 1,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade5518.desk@mockupi",
+   "type": "upi",
+   "reported_count": 8,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade5647.desk@mockupi",
+   "type": "upi",
+   "reported_count": 10,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade5789.desk@mockupi",
+   "type": "upi",
+   "reported_count": 9,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade5919.desk@mockupi",
+   "type": "upi",
+   "reported_count": 11,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade6122.desk@mockupi",
+   "type": "upi",
+   "reported_count": 7,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade6600.desk@mockupi",
+   "type": "upi",
+   "reported_count": 7,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade7192.desk@mockupi",
+   "type": "upi",
+   "reported_count": 11,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade7423.desk@mockupi",
+   "type": "upi",
+   "reported_count": 2,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade7551.desk@mockupi",
+   "type": "upi",
+   "reported_count": 8,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade7768.desk@mockupi",
+   "type": "upi",
+   "reported_count": 8,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade7811.desk@mockupi",
+   "type": "upi",
+   "reported_count": 1,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade8148.desk@mockupi",
+   "type": "upi",
+   "reported_count": 7,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade8309.desk@mockupi",
+   "type": "upi",
+   "reported_count": 8,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade8419.desk@mockupi",
+   "type": "upi",
+   "reported_count": 4,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade8615.desk@mockupi",
+   "type": "upi",
+   "reported_count": 7,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade8621.desk@mockupi",
+   "type": "upi",
+   "reported_count": 9,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade8656.desk@mockupi",
+   "type": "upi",
+   "reported_count": 3,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade8689.desk@mockupi",
+   "type": "upi",
+   "reported_count": 1,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade8741.desk@mockupi",
+   "type": "upi",
+   "reported_count": 6,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade8769.desk@mockupi",
+   "type": "upi",
+   "reported_count": 1,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade8772.desk@mockupi",
+   "type": "upi",
+   "reported_count": 7,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade9052.desk@mockupi",
+   "type": "upi",
+   "reported_count": 9,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade9093.desk@mockupi",
+   "type": "upi",
+   "reported_count": 3,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade9110.desk@mockupi",
+   "type": "upi",
+   "reported_count": 2,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade9318.desk@mockupi",
+   "type": "upi",
+   "reported_count": 11,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade9372.desk@mockupi",
+   "type": "upi",
+   "reported_count": 3,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade9421.desk@mockupi",
+   "type": "upi",
+   "reported_count": 3,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade9513.desk@mockupi",
+   "type": "upi",
+   "reported_count": 4,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade9598.desk@mockupi",
+   "type": "upi",
+   "reported_count": 11,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade9610.desk@mockupi",
+   "type": "upi",
+   "reported_count": 6,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade9736.desk@mockupi",
+   "type": "upi",
+   "reported_count": 6,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade9766.desk@mockupi",
+   "type": "upi",
+   "reported_count": 11,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade9869.desk@mockupi",
+   "type": "upi",
+   "reported_count": 3,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  },
+  {
+   "identifier": "trade9906.desk@mockupi",
+   "type": "upi",
+   "reported_count": 2,
+   "added_on": "2026-10-01",
+   "source": "mock"
+  }
+ ]
+}

@@ -1,0 +1,92 @@
+{
+ "mock": true,
+ "case_id": "P0060",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0060",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Grasim Industries Limited",
+   "isin": "INE047A01021",
+   "quantity": 2644,
+   "value_inr": 12497568.31
+  },
+  {
+   "instrument_name": "CSL Finance Limited",
+   "isin": "INE718F01018",
+   "quantity": 3128,
+   "value_inr": 16835817.85
+  },
+  {
+   "instrument_name": "Supreme Petrochem Limited",
+   "isin": "INE663A01033",
+   "quantity": 2953,
+   "value_inr": 7950966.57
+  },
+  {
+   "instrument_name": "Isgec Heavy Engineering Limited",
+   "isin": "INE858B01029",
+   "quantity": 2956,
+   "value_inr": 11180405.4
+  },
+  {
+   "instrument_name": "HDFC Asset Management Company Limited",
+   "isin": "INE127D01025",
+   "quantity": 4083,
+   "value_inr": 9987635.93
+  },
+  {
+   "instrument_name": "Premier Explosives Limited",
+   "isin": "INE863B01029",
+   "quantity": 3856,
+   "value_inr": 19527951.21
+  }
+ ],
+ "portfolio_total_inr": 77980345.27,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE047A01021",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE718F01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE663A01033",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE858B01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE127D01025",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE863B01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

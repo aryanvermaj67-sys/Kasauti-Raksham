@@ -1,0 +1,92 @@
+{
+ "mock": true,
+ "case_id": "P0045",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0045",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Menon Bearings Limited",
+   "isin": "INE071D01033",
+   "quantity": 1436,
+   "value_inr": 12081863.11
+  },
+  {
+   "instrument_name": "Next Mediaworks Limited",
+   "isin": "INE747B01016",
+   "quantity": 4177,
+   "value_inr": 4373620.17
+  },
+  {
+   "instrument_name": "Balmer Lawrie & Company Limited",
+   "isin": "INE164A01016",
+   "quantity": 1656,
+   "value_inr": 15470374.88
+  },
+  {
+   "instrument_name": "Vimta Labs Limited",
+   "isin": "INE579C01029",
+   "quantity": 1949,
+   "value_inr": 14096253.3
+  },
+  {
+   "instrument_name": "Vedanta Aluminium Metal Limited",
+   "isin": "INE1CDF01017",
+   "quantity": 225,
+   "value_inr": 622581.46
+  },
+  {
+   "instrument_name": "LCC Projects Limited",
+   "isin": "INE1FPN01026",
+   "quantity": 4698,
+   "value_inr": 16502390.31
+  }
+ ],
+ "portfolio_total_inr": 63147083.23,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE071D01033",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE747B01016",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE164A01016",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE579C01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE1CDF01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE1FPN01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

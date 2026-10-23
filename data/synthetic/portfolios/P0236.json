@@ -1,0 +1,128 @@
+{
+ "mock": true,
+ "case_id": "P0236",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0236",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Nahar Poly Films Limited",
+   "isin": "INE308A01027",
+   "quantity": 3085,
+   "value_inr": 21887231.07
+  },
+  {
+   "instrument_name": "Steel Authority of India Limited",
+   "isin": "INE114A01011",
+   "quantity": 744,
+   "value_inr": 6529242.09
+  },
+  {
+   "instrument_name": "Embassy Developments Limited",
+   "isin": "INE069I01010",
+   "quantity": 3140,
+   "value_inr": 5077779.07
+  }
+ ],
+ "portfolio_total_inr": 33494252.23,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0236",
+      "maskedDematId": "XXXXXXXXXXXXX8680",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0236",
+          "dob": "1981-08-14",
+          "mobile": 1000000236,
+          "nominee": "REGISTERED",
+          "dematId": "12087295857288680",
+          "email": "synthetic0236@example.invalid",
+          "pan": "ZZZPZ0236Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 14074051.89,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Glenmark Pharmaceuticals Limited",
+           "isin": "INE935A01035",
+           "isinDescription": "GLENMARK PHARMACEUTICALS LIMITED EQ",
+           "units": 2017,
+           "lastTradedPrice": "155.29"
+          },
+          {
+           "issuerName": "AU Small Finance Bank Limited",
+           "isin": "INE949L01017",
+           "isinDescription": "AU SMALL FINANCE BANK LIMITED EQ",
+           "units": 1983,
+           "lastTradedPrice": "1598.65"
+          },
+          {
+           "issuerName": "CSL Finance Limited",
+           "isin": "INE718F01018",
+           "isinDescription": "CSL FINANCE LIMITED EQ",
+           "units": 2489,
+           "lastTradedPrice": "2758.18"
+          },
+          {
+           "issuerName": "The Investment Trust Of India Limited",
+           "isin": "INE924D01017",
+           "isinDescription": "THE INVESTMENT TRUST OF INDIA LIMITED EQ",
+           "units": 1423,
+           "lastTradedPrice": "2618.13"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE308A01027",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE114A01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE069I01010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

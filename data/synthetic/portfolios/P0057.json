@@ -1,0 +1,150 @@
+{
+ "mock": true,
+ "case_id": "P0057",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0057",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "National Fertilizers Limited",
+   "isin": "INE870D01012",
+   "quantity": 38,
+   "value_inr": 138355.77
+  },
+  {
+   "instrument_name": "Cybertech Systems And Software Limited",
+   "isin": "INE214A01019",
+   "quantity": 2454,
+   "value_inr": 4878181.66
+  },
+  {
+   "instrument_name": "GKW Limited",
+   "isin": "INE528A01020",
+   "quantity": 44700,
+   "value_inr": 178965527.0
+  },
+  {
+   "instrument_name": "Piramal Pharma Limited",
+   "isin": "INE0DK501011",
+   "quantity": 2037,
+   "value_inr": 10360620.17
+  },
+  {
+   "instrument_name": "T T Limited",
+   "isin": "INE592B01024",
+   "quantity": 1280,
+   "value_inr": 2129753.79
+  }
+ ],
+ "portfolio_total_inr": 196472438.39,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0057",
+      "maskedDematId": "XXXXXXXXXXXXX5060",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0057",
+          "dob": "1973-04-18",
+          "mobile": 1000000057,
+          "nominee": "REGISTERED",
+          "dematId": "12085382766595060",
+          "email": "synthetic0057@example.invalid",
+          "pan": "ZZZPZ0057Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 22597887.05,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "National Fertilizers Limited",
+           "isin": "INE870D01012",
+           "isinDescription": "NATIONAL FERTILIZERS LIMITED EQ",
+           "units": 38,
+           "lastTradedPrice": "3029.59"
+          },
+          {
+           "issuerName": "Cybertech Systems And Software Limited",
+           "isin": "INE214A01019",
+           "isinDescription": "CYBERTECH SYSTEMS AND SOFTWARE LIMITED EQ",
+           "units": 2454,
+           "lastTradedPrice": "1862.76"
+          },
+          {
+           "issuerName": "GKW Limited",
+           "isin": "INE528A01020",
+           "isinDescription": "GKW LIMITED EQ",
+           "units": 4470,
+           "lastTradedPrice": "1708.03"
+          },
+          {
+           "issuerName": "The United Nilgiri Tea Estates Company Limited",
+           "isin": "INE458F01011",
+           "isinDescription": "THE UNITED NILGIRI TEA ESTATES COMPANY LIMITED EQ",
+           "units": 3117,
+           "lastTradedPrice": "3296.97"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE870D01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE214A01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE528A01020",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE0DK501011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE592B01024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

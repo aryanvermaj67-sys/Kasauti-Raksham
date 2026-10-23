@@ -1,0 +1,161 @@
+{
+ "mock": true,
+ "case_id": "P0255",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0255",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "ICICI Prudential Asset Management Company Limited",
+   "isin": "INE346A01027",
+   "quantity": 4584,
+   "value_inr": 25551283.44
+  },
+  {
+   "instrument_name": "BOSCH HOME COMFORT INDIA LIMITED",
+   "isin": "INE782A01015",
+   "quantity": 1104,
+   "value_inr": 9796551.37
+  },
+  {
+   "instrument_name": "Infosys Limited",
+   "isin": "INE009A01021",
+   "quantity": 498,
+   "value_inr": 3187491.35
+  },
+  {
+   "instrument_name": "Omax Autos Limited",
+   "isin": "INE090B01011",
+   "quantity": 2966,
+   "value_inr": 10609634.09
+  },
+  {
+   "instrument_name": "Aakash Exploration Services Limited",
+   "isin": "INE087Z01024",
+   "quantity": 1151,
+   "value_inr": 4022733.37
+  },
+  {
+   "instrument_name": "Hindustan Construction Company Limited",
+   "isin": "INE549A01026",
+   "quantity": 1190,
+   "value_inr": 6938113.11
+  }
+ ],
+ "portfolio_total_inr": 60105806.73,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0255",
+      "maskedDematId": "XXXXXXXXXXXXX6420",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0255",
+          "dob": "1987-02-17",
+          "mobile": 1000000255,
+          "nominee": "REGISTERED",
+          "dematId": "12082189766146420",
+          "email": "synthetic0255@example.invalid",
+          "pan": "ZZZPZ0255Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 24701491.66,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "ICICI Prudential Asset Management Company Limited",
+           "isin": "INE346A01027",
+           "isinDescription": "ICICI PRUDENTIAL ASSET MANAGEMENT COMPANY LIMITED EQ",
+           "units": 4584,
+           "lastTradedPrice": "1906.23"
+          },
+          {
+           "issuerName": "BOSCH HOME COMFORT INDIA LIMITED",
+           "isin": "INE782A01015",
+           "isinDescription": "BOSCH HOME COMFORT INDIA LIMITED EQ",
+           "units": 1104,
+           "lastTradedPrice": "3685.20"
+          },
+          {
+           "issuerName": "Infosys Limited",
+           "isin": "INE009A01021",
+           "isinDescription": "INFOSYS LIMITED EQ",
+           "units": 498,
+           "lastTradedPrice": "3647.22"
+          },
+          {
+           "issuerName": "Omax Autos Limited",
+           "isin": "INE090B01011",
+           "isinDescription": "OMAX AUTOS LIMITED EQ",
+           "units": 2966,
+           "lastTradedPrice": "3398.03"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE346A01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE782A01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE009A01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE090B01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE087Z01024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE549A01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

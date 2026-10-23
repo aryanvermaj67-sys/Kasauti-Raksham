@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0032",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0032",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "EPACK Durable Limited",
+   "isin": "INE0G5901015",
+   "quantity": 3062,
+   "value_inr": 26821741.9
+  },
+  {
+   "instrument_name": "Solarworld Energy Solutions Limited",
+   "isin": "INE0TY101024",
+   "quantity": 4567,
+   "value_inr": 2008945.59
+  },
+  {
+   "instrument_name": "Bank of Baroda",
+   "isin": "INE028A01039",
+   "quantity": 46100,
+   "value_inr": 180415480.16
+  },
+  {
+   "instrument_name": "Bohra Industries Limited",
+   "isin": "INE802W01023",
+   "quantity": 3474,
+   "value_inr": 30484816.89
+  },
+  {
+   "instrument_name": "Computer Age Management Services Limited",
+   "isin": "INE596I01020",
+   "quantity": 431,
+   "value_inr": 3587049.62
+  }
+ ],
+ "portfolio_total_inr": 243318034.16,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0032",
+      "maskedDematId": "XXXXXXXXXXXXX6520",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0032",
+          "dob": "1980-09-10",
+          "mobile": 1000000032,
+          "nominee": "REGISTERED",
+          "dematId": "12085716184246520",
+          "email": "synthetic0032@example.invalid",
+          "pan": "ZZZPZ0032Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12808871.54,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "EPACK Durable Limited",
+           "isin": "INE0G5901015",
+           "isinDescription": "EPACK DURABLE LIMITED EQ",
+           "units": 3062,
+           "lastTradedPrice": "3250.84"
+          },
+          {
+           "issuerName": "Solarworld Energy Solutions Limited",
+           "isin": "INE0TY101024",
+           "isinDescription": "SOLARWORLD ENERGY SOLUTIONS LIMITED EQ",
+           "units": 4567,
+           "lastTradedPrice": "258.72"
+          },
+          {
+           "issuerName": "Bodhi Tree Multimedia Limited",
+           "isin": "INE0EEJ01023",
+           "isinDescription": "BODHI TREE MULTIMEDIA LIMITED EQ",
+           "units": 1011,
+           "lastTradedPrice": "1655.02"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0032",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0032",
+          "dob": "1946-03-14",
+          "mobile": 1000000032,
+          "nominee": "REGISTERED",
+          "dematId": "IN3082734033660000",
+          "email": "synthetic0032@example.invalid",
+          "pan": "ZZZPZ0032Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10397855.0,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Bank of Baroda",
+           "isin": "INE028A01039",
+           "isinDescription": "BANK OF BARODA EQ",
+           "units": 4610,
+           "lastTradedPrice": "2255.50"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0G5901015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0TY101024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE028A01039",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE802W01023",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE596I01020",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

@@ -1,0 +1,161 @@
+{
+ "mock": true,
+ "case_id": "P0230",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0230",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Shree Rama Newsprint Limited",
+   "isin": "INE278B01020",
+   "quantity": 1031,
+   "value_inr": 2906675.56
+  },
+  {
+   "instrument_name": "Sarda Energy & Minerals Limited",
+   "isin": "INE385C01021",
+   "quantity": 2812,
+   "value_inr": 857550.78
+  },
+  {
+   "instrument_name": "Coastal Corporation Limited",
+   "isin": "INE377E01024",
+   "quantity": 1933,
+   "value_inr": 6216043.14
+  },
+  {
+   "instrument_name": "Fortis Healthcare Limited",
+   "isin": "INE061F01013",
+   "quantity": 835,
+   "value_inr": 114159.17
+  },
+  {
+   "instrument_name": "Biofil Chemicals & Pharmaceuticals Limited",
+   "isin": "INE829A01014",
+   "quantity": 2189,
+   "value_inr": 11117861.72
+  },
+  {
+   "instrument_name": "Libas Consumer Products Limited",
+   "isin": "INE908V01012",
+   "quantity": 69,
+   "value_inr": 300150.11
+  }
+ ],
+ "portfolio_total_inr": 21512440.48,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0230",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0230",
+          "dob": "1984-01-15",
+          "mobile": 1000000230,
+          "nominee": "REGISTERED",
+          "dematId": "IN3070063887170000",
+          "email": "synthetic0230@example.invalid",
+          "pan": "ZZZPZ0230Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5308110.04,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Shree Rama Newsprint Limited",
+           "isin": "INE278B01020",
+           "isinDescription": "SHREE RAMA NEWSPRINT LIMITED EQ",
+           "units": 1031,
+           "lastTradedPrice": "1121.51"
+          },
+          {
+           "issuerName": "Sarda Energy & Minerals Limited",
+           "isin": "INE385C01021",
+           "isinDescription": "SARDA ENERGY & MINERALS LIMITED EQ",
+           "units": 2812,
+           "lastTradedPrice": "138.07"
+          },
+          {
+           "issuerName": "Coastal Corporation Limited",
+           "isin": "INE377E01024",
+           "isinDescription": "COASTAL CORPORATION LIMITED EQ",
+           "units": 1933,
+           "lastTradedPrice": "1922.03"
+          },
+          {
+           "issuerName": "Fortis Healthcare Limited",
+           "isin": "INE061F01013",
+           "isinDescription": "FORTIS HEALTHCARE LIMITED EQ",
+           "units": 835,
+           "lastTradedPrice": "57.84"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE278B01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE385C01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE377E01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE061F01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE829A01014",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE908V01012",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

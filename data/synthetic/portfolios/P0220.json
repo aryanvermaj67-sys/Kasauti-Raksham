@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0220",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0220",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Rana Sugars Limited",
+   "isin": "INE625B01014",
+   "quantity": 573,
+   "value_inr": 1843613.65
+  },
+  {
+   "instrument_name": "Everest Industries Limited",
+   "isin": "INE295A01018",
+   "quantity": 1694,
+   "value_inr": 5986153.29
+  },
+  {
+   "instrument_name": "Ponni Sugars (Erode) Limited",
+   "isin": "INE838E01017",
+   "quantity": 1701,
+   "value_inr": 2520306.57
+  },
+  {
+   "instrument_name": "Colgate Palmolive (India) Limited",
+   "isin": "INE259A01022",
+   "quantity": 3899,
+   "value_inr": 4881589.82
+  },
+  {
+   "instrument_name": "Dev Accelerator Limited",
+   "isin": "INE0VOV01021",
+   "quantity": 4721,
+   "value_inr": 38182729.85
+  },
+  {
+   "instrument_name": "United Spirits Limited",
+   "isin": "INE854D01024",
+   "quantity": 4822,
+   "value_inr": 9878024.86
+  }
+ ],
+ "portfolio_total_inr": 63292418.04,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0220",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0220",
+          "dob": "1989-05-16",
+          "mobile": 1000000220,
+          "nominee": "REGISTERED",
+          "dematId": "IN3072547893170000",
+          "email": "synthetic0220@example.invalid",
+          "pan": "ZZZPZ0220Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3020866.89,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Rana Sugars Limited",
+           "isin": "INE625B01014",
+           "isinDescription": "RANA SUGARS LIMITED EQ",
+           "units": 573,
+           "lastTradedPrice": "1568.19"
+          },
+          {
+           "issuerName": "Everest Industries Limited",
+           "isin": "INE295A01018",
+           "isinDescription": "EVEREST INDUSTRIES LIMITED EQ",
+           "units": 1694,
+           "lastTradedPrice": "1252.83"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE625B01014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE295A01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE838E01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE259A01022",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0VOV01021",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE854D01024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

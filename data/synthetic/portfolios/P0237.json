@@ -1,0 +1,150 @@
+{
+ "mock": true,
+ "case_id": "P0237",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0237",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Capillary Technologies India Limited",
+   "isin": "INE0ILV01024",
+   "quantity": 824,
+   "value_inr": 1094606.42
+  },
+  {
+   "instrument_name": "Globe Civil Projects Limited",
+   "isin": "INE0V3U01015",
+   "quantity": 4413,
+   "value_inr": 6319199.26
+  },
+  {
+   "instrument_name": "Power & Instrumentation (Gujarat) Limited",
+   "isin": "INE557Z01018",
+   "quantity": 855,
+   "value_inr": 1691131.93
+  },
+  {
+   "instrument_name": "Steel Authority of India Limited",
+   "isin": "INE114A01011",
+   "quantity": 4352,
+   "value_inr": 10752020.19
+  },
+  {
+   "instrument_name": "L&T Finance Limited",
+   "isin": "INE498L01015",
+   "quantity": 4260,
+   "value_inr": 20168225.07
+  }
+ ],
+ "portfolio_total_inr": 40025182.87,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0237",
+      "maskedDematId": "XXXXXXXXXXXXX3280",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0237",
+          "dob": "1980-05-10",
+          "mobile": 1000000237,
+          "nominee": "REGISTERED",
+          "dematId": "12081951816733280",
+          "email": "synthetic0237@example.invalid",
+          "pan": "ZZZPZ0237Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 18510878.95,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Capillary Technologies India Limited",
+           "isin": "INE0ILV01024",
+           "isinDescription": "CAPILLARY TECHNOLOGIES INDIA LIMITED EQ",
+           "units": 824,
+           "lastTradedPrice": "1314.41"
+          },
+          {
+           "issuerName": "Globe Civil Projects Limited",
+           "isin": "INE0V3U01015",
+           "isinDescription": "GLOBE CIVIL PROJECTS LIMITED EQ",
+           "units": 4413,
+           "lastTradedPrice": "755.86"
+          },
+          {
+           "issuerName": "Power & Instrumentation (Gujarat) Limited",
+           "isin": "INE557Z01018",
+           "isinDescription": "POWER & INSTRUMENTATION (GUJARAT) LIMITED EQ",
+           "units": 171,
+           "lastTradedPrice": "1587.31"
+          },
+          {
+           "issuerName": "Steel City Securities Limited",
+           "isin": "INE395H01011",
+           "isinDescription": "STEEL CITY SECURITIES LIMITED EQ",
+           "units": 4404,
+           "lastTradedPrice": "3138.23"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0ILV01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0V3U01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE557Z01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE114A01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE498L01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

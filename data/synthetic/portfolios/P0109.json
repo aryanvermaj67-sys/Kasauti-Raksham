@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0109",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0109",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Landmark Property Development Company Limited",
+   "isin": "INE197J01017",
+   "quantity": 2506,
+   "value_inr": 5023872.44
+  },
+  {
+   "instrument_name": "Panorama Studios International Limited",
+   "isin": "INE258R01028",
+   "quantity": 2826,
+   "value_inr": 5204158.34
+  },
+  {
+   "instrument_name": "Adani Green Energy Limited",
+   "isin": "INE364U01010",
+   "quantity": 4208,
+   "value_inr": 2738644.7
+  }
+ ],
+ "portfolio_total_inr": 12966675.48,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE197J01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE258R01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE364U01010",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

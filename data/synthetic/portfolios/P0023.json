@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0023",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0023",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Shree Vasu Logistics Limited",
+   "isin": "INE00CE01017",
+   "quantity": 3599,
+   "value_inr": 23233764.77
+  },
+  {
+   "instrument_name": "Satia Industries Limited",
+   "isin": "INE170E01023",
+   "quantity": 3980,
+   "value_inr": 3936000.2
+  },
+  {
+   "instrument_name": "Atlas Cycles (Haryana) Limited",
+   "isin": "INE446A01025",
+   "quantity": 4997,
+   "value_inr": 31104706.18
+  },
+  {
+   "instrument_name": "Healthcare Global Enterprises Limited",
+   "isin": "INE075I01017",
+   "quantity": 1307,
+   "value_inr": 3143281.86
+  }
+ ],
+ "portfolio_total_inr": 61417753.01,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0023",
+      "maskedDematId": "XXXXXXXXXXXXX5210",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0023",
+          "dob": "1957-09-12",
+          "mobile": 1000000023,
+          "nominee": "REGISTERED",
+          "dematId": "12085215280275210",
+          "email": "synthetic0023@example.invalid",
+          "pan": "ZZZPZ0023Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12689246.23,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Shree Vasu Logistics Limited",
+           "isin": "INE00CE01017",
+           "isinDescription": "SHREE VASU LOGISTICS LIMITED EQ",
+           "units": 3599,
+           "lastTradedPrice": "3525.77"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0023",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0023",
+          "dob": "1962-07-15",
+          "mobile": 1000000023,
+          "nominee": "REGISTERED",
+          "dematId": "IN3047109674330000",
+          "email": "synthetic0023@example.invalid",
+          "pan": "ZZZPZ0023Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 19642425.12,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Satia Industries Limited",
+           "isin": "INE170E01023",
+           "isinDescription": "SATIA INDUSTRIES LIMITED EQ",
+           "units": 3980,
+           "lastTradedPrice": "503.28"
+          },
+          {
+           "issuerName": "Atlas Cycles (Haryana) Limited",
+           "isin": "INE446A01025",
+           "isinDescription": "ATLAS CYCLES (HARYANA) LIMITED EQ",
+           "units": 4997,
+           "lastTradedPrice": "3201.27"
+          },
+          {
+           "issuerName": "Healthcare Global Enterprises Limited",
+           "isin": "INE075I01017",
+           "isinDescription": "HEALTHCARE GLOBAL ENTERPRISES LIMITED EQ",
+           "units": 1307,
+           "lastTradedPrice": "1256.79"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE00CE01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE170E01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE446A01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE075I01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

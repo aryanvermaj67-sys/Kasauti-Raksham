@@ -1,0 +1,169 @@
+{
+ "mock": true,
+ "case_id": "P0206",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0206",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Amber Enterprises India Limited",
+   "isin": "INE371P01015",
+   "quantity": 3342,
+   "value_inr": 17530227.3
+  },
+  {
+   "instrument_name": "Rajoo Engineers Limited",
+   "isin": "INE535F01024",
+   "quantity": 4109,
+   "value_inr": 7642221.09
+  },
+  {
+   "instrument_name": "Ind-Swift Laboratories Limited",
+   "isin": "INE915B01019",
+   "quantity": 1176,
+   "value_inr": 4083585.59
+  }
+ ],
+ "portfolio_total_inr": 29256033.98,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0206",
+      "maskedDematId": "XXXXXXXXXXXXX8180",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0206",
+          "dob": "1948-08-14",
+          "mobile": 1000000206,
+          "nominee": "REGISTERED",
+          "dematId": "12081007188988180",
+          "email": "synthetic0206@example.invalid",
+          "pan": "ZZZPZ0206Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 7475019.23,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Banaras Beads Limited",
+           "isin": "INE655B01011",
+           "isinDescription": "BANARAS BEADS LIMITED EQ",
+           "units": 2027,
+           "lastTradedPrice": "3056.65"
+          },
+          {
+           "issuerName": "Steel City Securities Limited",
+           "isin": "INE395H01011",
+           "isinDescription": "STEEL CITY SECURITIES LIMITED EQ",
+           "units": 1038,
+           "lastTradedPrice": "1232.36"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0206",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0206",
+          "dob": "1998-07-15",
+          "mobile": 1000000206,
+          "nominee": "REGISTERED",
+          "dematId": "IN3078627897470000",
+          "email": "synthetic0206@example.invalid",
+          "pan": "ZZZPZ0206Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 17949484.87,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Vishal Fabrics Limited",
+           "isin": "INE755Q01025",
+           "isinDescription": "VISHAL FABRICS LIMITED EQ",
+           "units": 2214,
+           "lastTradedPrice": "2225.22"
+          },
+          {
+           "issuerName": "Rainbow Childrens Medicare Limited",
+           "isin": "INE961O01016",
+           "isinDescription": "RAINBOW CHILDRENS MEDICARE LIMITED EQ",
+           "units": 4811,
+           "lastTradedPrice": "2706.89"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE371P01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE535F01024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE915B01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

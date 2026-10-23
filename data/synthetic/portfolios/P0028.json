@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0028",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0028",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Nahar Spinning Mills Limited",
+   "isin": "INE290A01027",
+   "quantity": 3006,
+   "value_inr": 2621430.03
+  },
+  {
+   "instrument_name": "Cravatex Limited",
+   "isin": "INE145E01017",
+   "quantity": 3242,
+   "value_inr": 301488.92
+  },
+  {
+   "instrument_name": "Sintercom India Limited",
+   "isin": "INE129Z01016",
+   "quantity": 4405,
+   "value_inr": 2459330.23
+  },
+  {
+   "instrument_name": "BF Utilities Limited",
+   "isin": "INE243D01012",
+   "quantity": 3029,
+   "value_inr": 8779999.41
+  }
+ ],
+ "portfolio_total_inr": 14162248.59,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0028",
+      "maskedDematId": "XXXXXXXXXXXXX7900",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0028",
+          "dob": "1952-02-13",
+          "mobile": 1000000028,
+          "nominee": "REGISTERED",
+          "dematId": "12086454433547900",
+          "email": "synthetic0028@example.invalid",
+          "pan": "ZZZPZ0028Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1384953.26,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Nahar Spinning Mills Limited",
+           "isin": "INE290A01027",
+           "isinDescription": "NAHAR SPINNING MILLS LIMITED EQ",
+           "units": 3006,
+           "lastTradedPrice": "379.41"
+          },
+          {
+           "issuerName": "Cravatex Limited",
+           "isin": "INE145E01017",
+           "isinDescription": "CRAVATEX LIMITED EQ",
+           "units": 3242,
+           "lastTradedPrice": "75.40"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0028",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0028",
+          "dob": "1974-06-18",
+          "mobile": 1000000028,
+          "nominee": "REGISTERED",
+          "dematId": "IN3058776399500000",
+          "email": "synthetic0028@example.invalid",
+          "pan": "ZZZPZ0028Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10426649.34,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Sintercom India Limited",
+           "isin": "INE129Z01016",
+           "isinDescription": "SINTERCOM INDIA LIMITED EQ",
+           "units": 4405,
+           "lastTradedPrice": "511.88"
+          },
+          {
+           "issuerName": "BF Utilities Limited",
+           "isin": "INE243D01012",
+           "isinDescription": "BF UTILITIES LIMITED EQ",
+           "units": 3029,
+           "lastTradedPrice": "2697.86"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE290A01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE145E01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE129Z01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE243D01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

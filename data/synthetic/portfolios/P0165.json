@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0165",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0165",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Mahindra Logistics Limited",
+   "isin": "INE766P01016",
+   "quantity": 3330,
+   "value_inr": 5109698.24
+  },
+  {
+   "instrument_name": "Fiem Industries Limited",
+   "isin": "INE737H01014",
+   "quantity": 3044,
+   "value_inr": 21586534.8
+  },
+  {
+   "instrument_name": "Yes Bank Limited",
+   "isin": "INE528G01035",
+   "quantity": 589,
+   "value_inr": 1579412.66
+  },
+  {
+   "instrument_name": "S H Kelkar and Company Limited",
+   "isin": "INE500L01026",
+   "quantity": 21,
+   "value_inr": 79789.84
+  },
+  {
+   "instrument_name": "Alankit Limited",
+   "isin": "INE914E01040",
+   "quantity": 2737,
+   "value_inr": 10309709.6
+  },
+  {
+   "instrument_name": "Sharda Cropchem Limited",
+   "isin": "INE221J01015",
+   "quantity": 2439,
+   "value_inr": 8076343.93
+  }
+ ],
+ "portfolio_total_inr": 46741489.07,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0165",
+      "maskedDematId": "XXXXXXXXXXXXX4650",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0165",
+          "dob": "1968-03-18",
+          "mobile": 1000000165,
+          "nominee": "REGISTERED",
+          "dematId": "12084996075124650",
+          "email": "synthetic0165@example.invalid",
+          "pan": "ZZZPZ0165Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11086545.62,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Mahindra Logistics Limited",
+           "isin": "INE766P01016",
+           "isinDescription": "MAHINDRA LOGISTICS LIMITED EQ",
+           "units": 3330,
+           "lastTradedPrice": "756.08"
+          },
+          {
+           "issuerName": "Fiem Industries Limited",
+           "isin": "INE737H01014",
+           "isinDescription": "FIEM INDUSTRIES LIMITED EQ",
+           "units": 3044,
+           "lastTradedPrice": "2514.71"
+          },
+          {
+           "issuerName": "Yes Bank Limited",
+           "isin": "INE528G01035",
+           "isinDescription": "YES BANK LIMITED EQ",
+           "units": 589,
+           "lastTradedPrice": "1551.82"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE766P01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE737H01014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE528G01035",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE500L01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE914E01040",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE221J01015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

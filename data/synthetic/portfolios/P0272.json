@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0272",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0272",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Cholamandalam Investment and Finance Company Limited",
+   "isin": "INE121A01024",
+   "quantity": 4413,
+   "value_inr": 39720521.39
+  },
+  {
+   "instrument_name": "Meghna Infracon Infrastructure Limited",
+   "isin": "INE898Q01015",
+   "quantity": 440,
+   "value_inr": 1083109.22
+  },
+  {
+   "instrument_name": "Salona Cotspin Limited",
+   "isin": "INE498E01010",
+   "quantity": 3620,
+   "value_inr": 3429721.91
+  },
+  {
+   "instrument_name": "Ganesha Ecosphere Limited",
+   "isin": "INE845D01014",
+   "quantity": 2707,
+   "value_inr": 16094363.53
+  },
+  {
+   "instrument_name": "BPL Limited",
+   "isin": "INE110A01019",
+   "quantity": 3119,
+   "value_inr": 7926742.48
+  }
+ ],
+ "portfolio_total_inr": 68254458.53,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0272",
+      "maskedDematId": "XXXXXXXXXXXXX9870",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0272",
+          "dob": "1965-08-13",
+          "mobile": 1000000272,
+          "nominee": "REGISTERED",
+          "dematId": "12084091360669870",
+          "email": "synthetic0272@example.invalid",
+          "pan": "ZZZPZ0272Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 17635610.11,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Cholamandalam Investment and Finance Company Limited",
+           "isin": "INE121A01024",
+           "isinDescription": "CHOLAMANDALAM INVESTMENT AND FINANCE COMPANY LIMITED EQ",
+           "units": 4413,
+           "lastTradedPrice": "3958.47"
+          },
+          {
+           "issuerName": "Salona Cotspin Limited",
+           "isin": "INE498E01010",
+           "isinDescription": "SALONA COTSPIN LIMITED EQ",
+           "units": 362,
+           "lastTradedPrice": "461.00"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0272",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0272",
+          "dob": "1994-05-11",
+          "mobile": 1000000272,
+          "nominee": "REGISTERED",
+          "dematId": "IN3056892426010000",
+          "email": "synthetic0272@example.invalid",
+          "pan": "ZZZPZ0272Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1260878.74,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Meghna Infracon Infrastructure Limited",
+           "isin": "INE898Q01015",
+           "isinDescription": "MEGHNA INFRACON INFRASTRUCTURE LIMITED EQ",
+           "units": 440,
+           "lastTradedPrice": "1053.56"
+          },
+          {
+           "issuerName": "Insolation Energy Limited",
+           "isin": "INE0LGX01024",
+           "isinDescription": "INSOLATION ENERGY LIMITED EQ",
+           "units": 2502,
+           "lastTradedPrice": "318.67"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE121A01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE898Q01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE498E01010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE845D01014",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE110A01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

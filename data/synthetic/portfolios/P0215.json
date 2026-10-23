@@ -1,0 +1,92 @@
+{
+ "mock": true,
+ "case_id": "P0215",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0215",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "UFO Moviez India Limited",
+   "isin": "INE527H01019",
+   "quantity": 4396,
+   "value_inr": 7109082.7
+  },
+  {
+   "instrument_name": "PCBL Chemical Limited",
+   "isin": "INE602A01031",
+   "quantity": 1227,
+   "value_inr": 3939992.08
+  },
+  {
+   "instrument_name": "Parag Milk Foods Limited",
+   "isin": "INE883N01014",
+   "quantity": 446,
+   "value_inr": 2309907.54
+  },
+  {
+   "instrument_name": "Global Health Limited",
+   "isin": "INE474Q01031",
+   "quantity": 2304,
+   "value_inr": 15831202.16
+  },
+  {
+   "instrument_name": "Keystone Realtors Limited",
+   "isin": "INE263M01029",
+   "quantity": 4173,
+   "value_inr": 47070023.75
+  },
+  {
+   "instrument_name": "Ivalue Infosolutions Limited",
+   "isin": "INE056801025",
+   "quantity": 4015,
+   "value_inr": 6668045.69
+  }
+ ],
+ "portfolio_total_inr": 82928253.92,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE527H01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE602A01031",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE883N01014",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE474Q01031",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE263M01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE056801025",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

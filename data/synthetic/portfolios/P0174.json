@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0174",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0174",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Dev Information Technology Limited",
+   "isin": "INE060X01034",
+   "quantity": 358,
+   "value_inr": 670030.77
+  },
+  {
+   "instrument_name": "Ecos (India) Mobility & Hospitality Limited",
+   "isin": "INE06HJ01020",
+   "quantity": 278,
+   "value_inr": 2215606.23
+  },
+  {
+   "instrument_name": "INCREDIBLE INDUSTRIES LIMITED",
+   "isin": "INE452L01012",
+   "quantity": 4216,
+   "value_inr": 25743905.56
+  }
+ ],
+ "portfolio_total_inr": 28629542.56,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE060X01034",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE06HJ01020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE452L01012",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

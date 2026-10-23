@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0262",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0262",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Softtech Engineers Limited",
+   "isin": "INE728Z01015",
+   "quantity": 1452,
+   "value_inr": 1476853.59
+  },
+  {
+   "instrument_name": "Hi-Tech Pipes Limited",
+   "isin": "INE106T01025",
+   "quantity": 577,
+   "value_inr": 1257561.65
+  },
+  {
+   "instrument_name": "Austin Engineering Company  Limited",
+   "isin": "INE759F01012",
+   "quantity": 6790,
+   "value_inr": 19492326.79
+  },
+  {
+   "instrument_name": "Ajooni Biotech Limited",
+   "isin": "INE820Y01021",
+   "quantity": 4308,
+   "value_inr": 4964655.03
+  },
+  {
+   "instrument_name": "Rossell Techsys Limited",
+   "isin": "INE0OJW01016",
+   "quantity": 2135,
+   "value_inr": 3845838.95
+  }
+ ],
+ "portfolio_total_inr": 31037236.01,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0262",
+      "maskedDematId": "XXXXXXXXXXXXX2300",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0262",
+          "dob": "1969-01-18",
+          "mobile": 1000000262,
+          "nominee": "REGISTERED",
+          "dematId": "12087300412142300",
+          "email": "synthetic0262@example.invalid",
+          "pan": "ZZZPZ0262Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1460361.8,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Hi-Tech Pipes Limited",
+           "isin": "INE106T01025",
+           "isinDescription": "HI-TECH PIPES LIMITED EQ",
+           "units": 577,
+           "lastTradedPrice": "1110.14"
+          },
+          {
+           "issuerName": "Austin Engineering Company  Limited",
+           "isin": "INE759F01012",
+           "isinDescription": "AUSTIN ENGINEERING COMPANY  LIMITED EQ",
+           "units": 679,
+           "lastTradedPrice": "1207.38"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0262",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0262",
+          "dob": "1949-03-15",
+          "mobile": 1000000262,
+          "nominee": "REGISTERED",
+          "dematId": "IN3035646479960000",
+          "email": "synthetic0262@example.invalid",
+          "pan": "ZZZPZ0262Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13444608.72,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Softtech Engineers Limited",
+           "isin": "INE728Z01015",
+           "isinDescription": "SOFTTECH ENGINEERS LIMITED EQ",
+           "units": 1452,
+           "lastTradedPrice": "352.69"
+          },
+          {
+           "issuerName": "Hindustan Copper Limited",
+           "isin": "INE531E01026",
+           "isinDescription": "HINDUSTAN COPPER LIMITED EQ",
+           "units": 3708,
+           "lastTradedPrice": "3487.73"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE728Z01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE106T01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE759F01012",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE820Y01021",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0OJW01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

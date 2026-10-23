@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0163",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0163",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "STEEL EXCHANGE INDIA LIMITED",
+   "isin": "INE503B01021",
+   "quantity": 3069,
+   "value_inr": 3724929.89
+  },
+  {
+   "instrument_name": "Automotive Axles Limited",
+   "isin": "INE449A01011",
+   "quantity": 1600,
+   "value_inr": 8541436.01
+  },
+  {
+   "instrument_name": "S.A.L. Steel Limited",
+   "isin": "INE658G01014",
+   "quantity": 2219,
+   "value_inr": 2671047.81
+  },
+  {
+   "instrument_name": "Elantas Beck India Limited",
+   "isin": "INE280B01018",
+   "quantity": 1052,
+   "value_inr": 283396.15
+  }
+ ],
+ "portfolio_total_inr": 15220809.86,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0163",
+      "maskedDematId": "XXXXXXXXXXXXX8550",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0163",
+          "dob": "1958-08-17",
+          "mobile": 1000000163,
+          "nominee": "REGISTERED",
+          "dematId": "12086391118918550",
+          "email": "synthetic0163@example.invalid",
+          "pan": "ZZZPZ0163Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3713163.09,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "STEEL EXCHANGE INDIA LIMITED",
+           "isin": "INE503B01021",
+           "isinDescription": "STEEL EXCHANGE INDIA LIMITED EQ",
+           "units": 3069,
+           "lastTradedPrice": "562.89"
+          },
+          {
+           "issuerName": "S.A.L. Steel Limited",
+           "isin": "INE658G01014",
+           "isinDescription": "S.A.L. STEEL LIMITED EQ",
+           "units": 2219,
+           "lastTradedPrice": "824.80"
+          },
+          {
+           "issuerName": "Elantas Beck India Limited",
+           "isin": "INE280B01018",
+           "isinDescription": "ELANTAS BECK INDIA LIMITED EQ",
+           "units": 1052,
+           "lastTradedPrice": "147.74"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0163",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0163",
+          "dob": "1991-07-13",
+          "mobile": 1000000163,
+          "nominee": "REGISTERED",
+          "dematId": "IN3021990297930000",
+          "email": "synthetic0163@example.invalid",
+          "pan": "ZZZPZ0163Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4056704.0,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Automotive Axles Limited",
+           "isin": "INE449A01011",
+           "isinDescription": "AUTOMOTIVE AXLES LIMITED EQ",
+           "units": 1600,
+           "lastTradedPrice": "2535.44"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE503B01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE449A01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE658G01014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE280B01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

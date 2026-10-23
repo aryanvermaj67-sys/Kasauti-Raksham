@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0258",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0258",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Goodyear India Limited",
+   "isin": "INE533A01012",
+   "quantity": 4636,
+   "value_inr": 1845428.19
+  },
+  {
+   "instrument_name": "VIP Clothing Limited",
+   "isin": "INE450G01024",
+   "quantity": 3973,
+   "value_inr": 2044663.89
+  },
+  {
+   "instrument_name": "Hawkins Cookers Limited",
+   "isin": "INE979B01015",
+   "quantity": 2587,
+   "value_inr": 1059379.0
+  },
+  {
+   "instrument_name": "Annapurna Swadisht Limited",
+   "isin": "INE0MGM01017",
+   "quantity": 2538,
+   "value_inr": 353613.07
+  }
+ ],
+ "portfolio_total_inr": 5303084.15,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0258",
+      "maskedDematId": "XXXXXXXXXXXXX0710",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0258",
+          "dob": "1947-05-12",
+          "mobile": 1000000258,
+          "nominee": "REGISTERED",
+          "dematId": "12087462935920710",
+          "email": "synthetic0258@example.invalid",
+          "pan": "ZZZPZ0258Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1057127.1,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Goodyear India Limited",
+           "isin": "INE533A01012",
+           "isinDescription": "GOODYEAR INDIA LIMITED EQ",
+           "units": 4636,
+           "lastTradedPrice": "198.60"
+          },
+          {
+           "issuerName": "Annapurna Swadisht Limited",
+           "isin": "INE0MGM01017",
+           "isinDescription": "ANNAPURNA SWADISHT LIMITED EQ",
+           "units": 2538,
+           "lastTradedPrice": "53.75"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0258",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0258",
+          "dob": "1985-02-13",
+          "mobile": 1000000258,
+          "nominee": "REGISTERED",
+          "dematId": "IN3029890260930000",
+          "email": "synthetic0258@example.invalid",
+          "pan": "ZZZPZ0258Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1813256.39,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "VIP Clothing Limited",
+           "isin": "INE450G01024",
+           "isinDescription": "VIP CLOTHING LIMITED EQ",
+           "units": 3973,
+           "lastTradedPrice": "201.81"
+          },
+          {
+           "issuerName": "Hawkins Cookers Limited",
+           "isin": "INE979B01015",
+           "isinDescription": "HAWKINS COOKERS LIMITED EQ",
+           "units": 2587,
+           "lastTradedPrice": "390.98"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE533A01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE450G01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE979B01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0MGM01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

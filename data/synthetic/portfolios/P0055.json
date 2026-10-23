@@ -1,0 +1,161 @@
+{
+ "mock": true,
+ "case_id": "P0055",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0055",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Vedant Fashions Limited",
+   "isin": "INE825V01034",
+   "quantity": 1264,
+   "value_inr": 4964799.06
+  },
+  {
+   "instrument_name": "CSL Finance Limited",
+   "isin": "INE718F01018",
+   "quantity": 4972,
+   "value_inr": 9738626.91
+  },
+  {
+   "instrument_name": "LKP Securities Limited",
+   "isin": "INE341H01023",
+   "quantity": 4509,
+   "value_inr": 27279952.87
+  },
+  {
+   "instrument_name": "ORIENT CERATECH LIMITED",
+   "isin": "INE569C01020",
+   "quantity": 4413,
+   "value_inr": 28925236.3
+  },
+  {
+   "instrument_name": "IDBI Bank Limited",
+   "isin": "INE008A01015",
+   "quantity": 1799,
+   "value_inr": 6767434.29
+  },
+  {
+   "instrument_name": "Ice Make Refrigeration Limited",
+   "isin": "INE520Y01019",
+   "quantity": 4890,
+   "value_inr": 24111950.62
+  }
+ ],
+ "portfolio_total_inr": 101788000.05,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0055",
+      "maskedDematId": "XXXXXXXXXXXXX1940",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0055",
+          "dob": "1950-09-17",
+          "mobile": 1000000055,
+          "nominee": "REGISTERED",
+          "dematId": "12086393755121940",
+          "email": "synthetic0055@example.invalid",
+          "pan": "ZZZPZ0055Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 40452462.23,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Vedant Fashions Limited",
+           "isin": "INE825V01034",
+           "isinDescription": "VEDANT FASHIONS LIMITED EQ",
+           "units": 1264,
+           "lastTradedPrice": "1830.82"
+          },
+          {
+           "issuerName": "CSL Finance Limited",
+           "isin": "INE718F01018",
+           "isinDescription": "CSL FINANCE LIMITED EQ",
+           "units": 4972,
+           "lastTradedPrice": "1507.03"
+          },
+          {
+           "issuerName": "LKP Securities Limited",
+           "isin": "INE341H01023",
+           "isinDescription": "LKP SECURITIES LIMITED EQ",
+           "units": 4509,
+           "lastTradedPrice": "3652.93"
+          },
+          {
+           "issuerName": "ORIENT CERATECH LIMITED",
+           "isin": "INE569C01020",
+           "isinDescription": "ORIENT CERATECH LIMITED EQ",
+           "units": 4413,
+           "lastTradedPrice": "3211.94"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE825V01034",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE718F01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE341H01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE569C01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE008A01015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE520Y01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

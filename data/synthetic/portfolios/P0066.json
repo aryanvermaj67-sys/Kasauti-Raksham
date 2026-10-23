@@ -1,0 +1,169 @@
+{
+ "mock": true,
+ "case_id": "P0066",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0066",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Clean Max Enviro Energy Solutions Limited",
+   "isin": "INE647U01026",
+   "quantity": 4879,
+   "value_inr": 4802403.09
+  },
+  {
+   "instrument_name": "Avenue Supermarts Limited",
+   "isin": "INE192R01011",
+   "quantity": 2636,
+   "value_inr": 16801566.62
+  },
+  {
+   "instrument_name": "Mahindra Lifespace Developers Limited",
+   "isin": "INE813A01018",
+   "quantity": 1655,
+   "value_inr": 5693874.61
+  }
+ ],
+ "portfolio_total_inr": 27297844.32,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0066",
+      "maskedDematId": "XXXXXXXXXXXXX6150",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0066",
+          "dob": "1982-09-12",
+          "mobile": 1000000066,
+          "nominee": "REGISTERED",
+          "dematId": "12083214650516150",
+          "email": "synthetic0066@example.invalid",
+          "pan": "ZZZPZ0066Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11550391.83,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Shiva Cement Limited",
+           "isin": "INE555C01029",
+           "isinDescription": "SHIVA CEMENT LIMITED EQ",
+           "units": 3537,
+           "lastTradedPrice": "3265.59"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0066",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0066",
+          "dob": "1991-08-13",
+          "mobile": 1000000066,
+          "nominee": "REGISTERED",
+          "dematId": "IN3033626578900000",
+          "email": "synthetic0066@example.invalid",
+          "pan": "ZZZPZ0066Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 19217675.87,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Jai Balaji Industries Limited",
+           "isin": "INE091G01026",
+           "isinDescription": "JAI BALAJI INDUSTRIES LIMITED EQ",
+           "units": 3251,
+           "lastTradedPrice": "1342.22"
+          },
+          {
+           "issuerName": "Surana Telecom and Power Limited",
+           "isin": "INE130B01031",
+           "isinDescription": "SURANA TELECOM AND POWER LIMITED EQ",
+           "units": 3122,
+           "lastTradedPrice": "3220.22"
+          },
+          {
+           "issuerName": "GTL Infrastructure Limited",
+           "isin": "INE221H01019",
+           "isinDescription": "GTL INFRASTRUCTURE LIMITED EQ",
+           "units": 2709,
+           "lastTradedPrice": "1772.09"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE647U01026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE192R01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE813A01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

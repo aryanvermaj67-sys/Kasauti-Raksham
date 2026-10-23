@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0300",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0300",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "TVS Motor Company Limited",
+   "isin": "INE494B01023",
+   "quantity": 4907,
+   "value_inr": 15575142.95
+  },
+  {
+   "instrument_name": "Lupin Limited",
+   "isin": "INE326A01037",
+   "quantity": 1803,
+   "value_inr": 2000225.95
+  },
+  {
+   "instrument_name": "Indo Rama Synthetics (India) Limited",
+   "isin": "INE156A01020",
+   "quantity": 2363,
+   "value_inr": 4224742.13
+  },
+  {
+   "instrument_name": "Global Education Limited",
+   "isin": "INE291W01037",
+   "quantity": 3950,
+   "value_inr": 7254195.87
+  },
+  {
+   "instrument_name": "Lakshmi Finance & Industrial Corporation Limited",
+   "isin": "INE850E01012",
+   "quantity": 3673,
+   "value_inr": 6908338.74
+  },
+  {
+   "instrument_name": "Sterling Tools Limited",
+   "isin": "INE334A01023",
+   "quantity": 3490,
+   "value_inr": 4535404.07
+  }
+ ],
+ "portfolio_total_inr": 40498049.71,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0300",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0300",
+          "dob": "1980-06-14",
+          "mobile": 1000000300,
+          "nominee": "REGISTERED",
+          "dematId": "IN3027566666240000",
+          "email": "synthetic0300@example.invalid",
+          "pan": "ZZZPZ0300Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11908622.99,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "TVS Motor Company Limited",
+           "isin": "INE494B01023",
+           "isinDescription": "TVS MOTOR COMPANY LIMITED EQ",
+           "units": 4907,
+           "lastTradedPrice": "1441.37"
+          },
+          {
+           "issuerName": "Lupin Limited",
+           "isin": "INE326A01037",
+           "isinDescription": "LUPIN LIMITED EQ",
+           "units": 1803,
+           "lastTradedPrice": "467.22"
+          },
+          {
+           "issuerName": "Indo Rama Synthetics (India) Limited",
+           "isin": "INE156A01020",
+           "isinDescription": "INDO RAMA SYNTHETICS (INDIA) LIMITED EQ",
+           "units": 2363,
+           "lastTradedPrice": "1689.98"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE494B01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE326A01037",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE156A01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE291W01037",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE850E01012",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE334A01023",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

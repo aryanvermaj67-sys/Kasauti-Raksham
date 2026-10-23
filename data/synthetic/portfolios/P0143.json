@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0143",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0143",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Shree Renuka Sugars Limited",
+   "isin": "INE087H01022",
+   "quantity": 4752,
+   "value_inr": 8417229.6
+  },
+  {
+   "instrument_name": "Gujarat Kidney And Super Speciality Limited",
+   "isin": "INE0V0W01025",
+   "quantity": 303,
+   "value_inr": 291110.98
+  },
+  {
+   "instrument_name": "Fermenta Biotech Limited",
+   "isin": "INE225B01021",
+   "quantity": 2461,
+   "value_inr": 7250721.97
+  },
+  {
+   "instrument_name": "KSE Limited",
+   "isin": "INE953E01022",
+   "quantity": 3114,
+   "value_inr": 30423133.63
+  }
+ ],
+ "portfolio_total_inr": 46382196.18,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0143",
+      "maskedDematId": "XXXXXXXXXXXXX4530",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0143",
+          "dob": "1989-05-16",
+          "mobile": 1000000143,
+          "nominee": "REGISTERED",
+          "dematId": "12088966462664530",
+          "email": "synthetic0143@example.invalid",
+          "pan": "ZZZPZ0143Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13557950.65,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Gujarat Kidney And Super Speciality Limited",
+           "isin": "INE0V0W01025",
+           "isinDescription": "GUJARAT KIDNEY AND SUPER SPECIALITY LIMITED EQ",
+           "units": 303,
+           "lastTradedPrice": "390.64"
+          },
+          {
+           "issuerName": "Fermenta Biotech Limited",
+           "isin": "INE225B01021",
+           "isinDescription": "FERMENTA BIOTECH LIMITED EQ",
+           "units": 2461,
+           "lastTradedPrice": "1304.83"
+          },
+          {
+           "issuerName": "KSE Limited",
+           "isin": "INE953E01022",
+           "isinDescription": "KSE LIMITED EQ",
+           "units": 3114,
+           "lastTradedPrice": "3284.65"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0143",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0143",
+          "dob": "1978-06-12",
+          "mobile": 1000000143,
+          "nominee": "REGISTERED",
+          "dematId": "IN3066542753210000",
+          "email": "synthetic0143@example.invalid",
+          "pan": "ZZZPZ0143Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6907269.6,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Shree Renuka Sugars Limited",
+           "isin": "INE087H01022",
+           "isinDescription": "SHREE RENUKA SUGARS LIMITED EQ",
+           "units": 4752,
+           "lastTradedPrice": "1453.55"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE087H01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0V0W01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE225B01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE953E01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

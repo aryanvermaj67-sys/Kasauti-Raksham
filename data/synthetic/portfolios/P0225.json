@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0225",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0225",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Rudra Global Infra Products Limited",
+   "isin": "INE027T01023",
+   "quantity": 320,
+   "value_inr": 834013.44
+  },
+  {
+   "instrument_name": "ITC Hotels Limited",
+   "isin": "INE379A01028",
+   "quantity": 4909,
+   "value_inr": 32273730.62
+  },
+  {
+   "instrument_name": "Manika Plastech Limited",
+   "isin": "INE0KWF01020",
+   "quantity": 4095,
+   "value_inr": 7298044.89
+  },
+  {
+   "instrument_name": "Inox Green Energy Services Limited",
+   "isin": "INE510W01014",
+   "quantity": 1252,
+   "value_inr": 3943940.66
+  },
+  {
+   "instrument_name": "Biocon Limited",
+   "isin": "INE376G01013",
+   "quantity": 3645,
+   "value_inr": 30375838.93
+  },
+  {
+   "instrument_name": "B.A.G Films and Media Limited",
+   "isin": "INE116D01028",
+   "quantity": 2702,
+   "value_inr": 3490206.02
+  }
+ ],
+ "portfolio_total_inr": 78215774.56,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0225",
+      "maskedDematId": "XXXXXXXXXXXXX4630",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0225",
+          "dob": "1988-04-19",
+          "mobile": 1000000225,
+          "nominee": "REGISTERED",
+          "dematId": "12089815348994630",
+          "email": "synthetic0225@example.invalid",
+          "pan": "ZZZPZ0225Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 19721893.67,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Rudra Global Infra Products Limited",
+           "isin": "INE027T01023",
+           "isinDescription": "RUDRA GLOBAL INFRA PRODUCTS LIMITED EQ",
+           "units": 320,
+           "lastTradedPrice": "967.49"
+          },
+          {
+           "issuerName": "ITC Hotels Limited",
+           "isin": "INE379A01028",
+           "isinDescription": "ITC HOTELS LIMITED EQ",
+           "units": 4909,
+           "lastTradedPrice": "3954.43"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE027T01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE379A01028",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0KWF01020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE510W01014",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE376G01013",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE116D01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

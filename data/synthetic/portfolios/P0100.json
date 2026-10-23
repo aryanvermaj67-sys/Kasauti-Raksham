@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0100",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0100",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Chemcrux Enterprises Limited",
+   "isin": "INE298W01016",
+   "quantity": 1080,
+   "value_inr": 4874718.0
+  },
+  {
+   "instrument_name": "Star Health and Allied Insurance Company Limited",
+   "isin": "INE575P01011",
+   "quantity": 3379,
+   "value_inr": 8974155.5
+  },
+  {
+   "instrument_name": "Fairchem Organics Limited",
+   "isin": "INE0DNW01011",
+   "quantity": 2947,
+   "value_inr": 12228877.68
+  },
+  {
+   "instrument_name": "Ravindra Energy Limited",
+   "isin": "INE206N01018",
+   "quantity": 4008,
+   "value_inr": 4426908.2
+  },
+  {
+   "instrument_name": "Xpro India Limited",
+   "isin": "INE445C01015",
+   "quantity": 528,
+   "value_inr": 991635.49
+  },
+  {
+   "instrument_name": "The Sandesh Limited",
+   "isin": "INE583B01015",
+   "quantity": 2584,
+   "value_inr": 478803.29
+  }
+ ],
+ "portfolio_total_inr": 31975098.16,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0100",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0100",
+          "dob": "1986-03-18",
+          "mobile": 1000000100,
+          "nominee": "REGISTERED",
+          "dematId": "IN3012343596890000",
+          "email": "synthetic0100@example.invalid",
+          "pan": "ZZZPZ0100Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8092216.06,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Chemcrux Enterprises Limited",
+           "isin": "INE298W01016",
+           "isinDescription": "CHEMCRUX ENTERPRISES LIMITED EQ",
+           "units": 1080,
+           "lastTradedPrice": "1942.66"
+          },
+          {
+           "issuerName": "Star Health and Allied Insurance Company Limited",
+           "isin": "INE575P01011",
+           "isinDescription": "STAR HEALTH AND ALLIED INSURANCE COMPANY LIMITED EQ",
+           "units": 3379,
+           "lastTradedPrice": "1773.94"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE298W01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE575P01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0DNW01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE206N01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE445C01015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE583B01015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

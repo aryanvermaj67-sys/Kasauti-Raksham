@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0260",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0260",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Bannari Amman Spinning Mills Limited",
+   "isin": "INE186H01022",
+   "quantity": 2123,
+   "value_inr": 16849367.81
+  },
+  {
+   "instrument_name": "Kwality Pharmaceuticals Limited",
+   "isin": "INE552U01010",
+   "quantity": 2107,
+   "value_inr": 9827922.69
+  },
+  {
+   "instrument_name": "Nitta Gelatin India Limited",
+   "isin": "INE265B01019",
+   "quantity": 1160,
+   "value_inr": 12000739.07
+  },
+  {
+   "instrument_name": "One Point One Solutions Limited",
+   "isin": "INE840Y01029",
+   "quantity": 3631,
+   "value_inr": 22398144.32
+  },
+  {
+   "instrument_name": "Bright Brothers Limited",
+   "isin": "INE630D01010",
+   "quantity": 4669,
+   "value_inr": 20544228.5
+  },
+  {
+   "instrument_name": "Bharat Dynamics Limited",
+   "isin": "INE171Z01026",
+   "quantity": 2987,
+   "value_inr": 23499107.85
+  }
+ ],
+ "portfolio_total_inr": 105119510.24,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0260",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0260",
+          "dob": "1951-05-16",
+          "mobile": 1000000260,
+          "nominee": "REGISTERED",
+          "dematId": "IN3010341147050000",
+          "email": "synthetic0260@example.invalid",
+          "pan": "ZZZPZ0260Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 19178892.99,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Bannari Amman Spinning Mills Limited",
+           "isin": "INE186H01022",
+           "isinDescription": "BANNARI AMMAN SPINNING MILLS LIMITED EQ",
+           "units": 2123,
+           "lastTradedPrice": "3944.85"
+          },
+          {
+           "issuerName": "Kwality Pharmaceuticals Limited",
+           "isin": "INE552U01010",
+           "isinDescription": "KWALITY PHARMACEUTICALS LIMITED EQ",
+           "units": 2107,
+           "lastTradedPrice": "3057.32"
+          },
+          {
+           "issuerName": "Nitta Gelatin India Limited",
+           "isin": "INE265B01019",
+           "isinDescription": "NITTA GELATIN INDIA LIMITED EQ",
+           "units": 1160,
+           "lastTradedPrice": "3760.52"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE186H01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE552U01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE265B01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE840Y01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE630D01010",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE171Z01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0108",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0108",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Akshar Spintex Limited",
+   "isin": "INE256Z01025",
+   "quantity": 2073,
+   "value_inr": 7339108.19
+  },
+  {
+   "instrument_name": "Shiv Aum Steels Limited",
+   "isin": "INE719F01016",
+   "quantity": 4720,
+   "value_inr": 36830992.83
+  },
+  {
+   "instrument_name": "MPS Limited",
+   "isin": "INE943D01017",
+   "quantity": 2128,
+   "value_inr": 7734861.24
+  },
+  {
+   "instrument_name": "Aqylon Nexus Limited",
+   "isin": "INE416A01051",
+   "quantity": 3705,
+   "value_inr": 14641265.57
+  }
+ ],
+ "portfolio_total_inr": 66546227.83,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0108",
+      "maskedDematId": "XXXXXXXXXXXXX1790",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0108",
+          "dob": "1969-07-10",
+          "mobile": 1000000108,
+          "nominee": "REGISTERED",
+          "dematId": "12085850164441790",
+          "email": "synthetic0108@example.invalid",
+          "pan": "ZZZPZ0108Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 29542158.24,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Akshar Spintex Limited",
+           "isin": "INE256Z01025",
+           "isinDescription": "AKSHAR SPINTEX LIMITED EQ",
+           "units": 2073,
+           "lastTradedPrice": "2241.18"
+          },
+          {
+           "issuerName": "Shiv Aum Steels Limited",
+           "isin": "INE719F01016",
+           "isinDescription": "SHIV AUM STEELS LIMITED EQ",
+           "units": 4720,
+           "lastTradedPrice": "3290.04"
+          },
+          {
+           "issuerName": "Aqylon Nexus Limited",
+           "isin": "INE416A01051",
+           "isinDescription": "AQYLON NEXUS LIMITED EQ",
+           "units": 3705,
+           "lastTradedPrice": "2528.26"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0108",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0108",
+          "dob": "1979-04-12",
+          "mobile": 1000000108,
+          "nominee": "REGISTERED",
+          "dematId": "IN3030357615950000",
+          "email": "synthetic0108@example.invalid",
+          "pan": "ZZZPZ0108Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3494984.64,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "MPS Limited",
+           "isin": "INE943D01017",
+           "isinDescription": "MPS LIMITED EQ",
+           "units": 2128,
+           "lastTradedPrice": "1642.38"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE256Z01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE719F01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE943D01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE416A01051",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

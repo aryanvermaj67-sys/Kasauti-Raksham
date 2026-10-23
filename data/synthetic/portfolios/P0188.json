@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0188",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0188",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Hindustan Unilever Limited",
+   "isin": "INE030A01027",
+   "quantity": 436,
+   "value_inr": 1177050.5
+  },
+  {
+   "instrument_name": "Piccadily Agro Industries Limited",
+   "isin": "INE546C01010",
+   "quantity": 1933,
+   "value_inr": 10474859.84
+  },
+  {
+   "instrument_name": "Roto Pumps Limited",
+   "isin": "INE535D01037",
+   "quantity": 2912,
+   "value_inr": 31995319.91
+  },
+  {
+   "instrument_name": "Jaiprakash Power Ventures Limited",
+   "isin": "INE351F01018",
+   "quantity": 4910,
+   "value_inr": 17648733.67
+  }
+ ],
+ "portfolio_total_inr": 61295963.92,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0188",
+      "maskedDematId": "XXXXXXXXXXXXX3800",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0188",
+          "dob": "1978-07-12",
+          "mobile": 1000000188,
+          "nominee": "REGISTERED",
+          "dematId": "12088787519483800",
+          "email": "synthetic0188@example.invalid",
+          "pan": "ZZZPZ0188Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 18212413.37,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Hindustan Unilever Limited",
+           "isin": "INE030A01027",
+           "isinDescription": "HINDUSTAN UNILEVER LIMITED EQ",
+           "units": 436,
+           "lastTradedPrice": "1344.79"
+          },
+          {
+           "issuerName": "Piccadily Agro Industries Limited",
+           "isin": "INE546C01010",
+           "isinDescription": "PICCADILY AGRO INDUSTRIES LIMITED EQ",
+           "units": 1933,
+           "lastTradedPrice": "1894.31"
+          },
+          {
+           "issuerName": "Jaiprakash Power Ventures Limited",
+           "isin": "INE351F01018",
+           "isinDescription": "JAIPRAKASH POWER VENTURES LIMITED EQ",
+           "units": 4910,
+           "lastTradedPrice": "2844.07"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0188",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0188",
+          "dob": "1965-01-12",
+          "mobile": 1000000188,
+          "nominee": "REGISTERED",
+          "dematId": "IN3021184353010000",
+          "email": "synthetic0188@example.invalid",
+          "pan": "ZZZPZ0188Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11610202.24,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Roto Pumps Limited",
+           "isin": "INE535D01037",
+           "isinDescription": "ROTO PUMPS LIMITED EQ",
+           "units": 2912,
+           "lastTradedPrice": "3987.02"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE030A01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE546C01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE535D01037",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE351F01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

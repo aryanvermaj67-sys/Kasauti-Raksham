@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0132",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0132",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Vimta Labs Limited",
+   "isin": "INE579C01029",
+   "quantity": 2591,
+   "value_inr": 14039688.22
+  },
+  {
+   "instrument_name": "PSP Projects Limited",
+   "isin": "INE488V01015",
+   "quantity": 2669,
+   "value_inr": 26776101.53
+  },
+  {
+   "instrument_name": "Tarsons Products Limited",
+   "isin": "INE144Z01023",
+   "quantity": 33870,
+   "value_inr": 107072155.91
+  },
+  {
+   "instrument_name": "Exide Industries Limited",
+   "isin": "INE302A01020",
+   "quantity": 2659,
+   "value_inr": 8245853.66
+  },
+  {
+   "instrument_name": "Uma Exports Limited",
+   "isin": "INE0GIU01018",
+   "quantity": 4623,
+   "value_inr": 28172759.84
+  }
+ ],
+ "portfolio_total_inr": 184306559.16,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0132",
+      "maskedDematId": "XXXXXXXXXXXXX4090",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0132",
+          "dob": "1959-04-15",
+          "mobile": 1000000132,
+          "nominee": "REGISTERED",
+          "dematId": "12084264457274090",
+          "email": "synthetic0132@example.invalid",
+          "pan": "ZZZPZ0132Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11700749.7,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Nagreeka Capital & Infrastructure Limited",
+           "isin": "INE245I01016",
+           "isinDescription": "NAGREEKA CAPITAL & INFRASTRUCTURE LIMITED EQ",
+           "units": 3537,
+           "lastTradedPrice": "3308.10"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0132",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0132",
+          "dob": "1947-08-15",
+          "mobile": 1000000132,
+          "nominee": "REGISTERED",
+          "dematId": "IN3016644949720000",
+          "email": "synthetic0132@example.invalid",
+          "pan": "ZZZPZ0132Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 25121425.15,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Vimta Labs Limited",
+           "isin": "INE579C01029",
+           "isinDescription": "VIMTA LABS LIMITED EQ",
+           "units": 2591,
+           "lastTradedPrice": "2209.32"
+          },
+          {
+           "issuerName": "PSP Projects Limited",
+           "isin": "INE488V01015",
+           "isinDescription": "PSP PROJECTS LIMITED EQ",
+           "units": 2669,
+           "lastTradedPrice": "3382.52"
+          },
+          {
+           "issuerName": "Tarsons Products Limited",
+           "isin": "INE144Z01023",
+           "isinDescription": "TARSONS PRODUCTS LIMITED EQ",
+           "units": 3387,
+           "lastTradedPrice": "3061.45"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE579C01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE488V01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE144Z01023",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE302A01020",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0GIU01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

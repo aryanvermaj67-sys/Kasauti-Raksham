@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0095",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0095",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "PAKKA LIMITED",
+   "isin": "INE551D01018",
+   "quantity": 593,
+   "value_inr": 2881101.46
+  },
+  {
+   "instrument_name": "Likhitha Infrastructure Limited",
+   "isin": "INE060901027",
+   "quantity": 3136,
+   "value_inr": 13185767.35
+  },
+  {
+   "instrument_name": "Manipal Payment and Identity Solutions Limited",
+   "isin": "INE241U01028",
+   "quantity": 4790,
+   "value_inr": 25242442.57
+  },
+  {
+   "instrument_name": "Jupiter Wagons Limited",
+   "isin": "INE209L01016",
+   "quantity": 1603,
+   "value_inr": 4365618.99
+  },
+  {
+   "instrument_name": "Shyam Metalics and Energy Limited",
+   "isin": "INE810G01011",
+   "quantity": 3394,
+   "value_inr": 1811039.23
+  },
+  {
+   "instrument_name": "City Union Bank Limited",
+   "isin": "INE491A01021",
+   "quantity": 1245,
+   "value_inr": 712205.21
+  }
+ ],
+ "portfolio_total_inr": 48198174.81,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0095",
+      "maskedDematId": "XXXXXXXXXXXXX9180",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0095",
+          "dob": "1993-03-19",
+          "mobile": 1000000095,
+          "nominee": "REGISTERED",
+          "dematId": "12083288080599180",
+          "email": "synthetic0095@example.invalid",
+          "pan": "ZZZPZ0095Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 7802153.35,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "PAKKA LIMITED",
+           "isin": "INE551D01018",
+           "isinDescription": "PAKKA LIMITED EQ",
+           "units": 593,
+           "lastTradedPrice": "1899.43"
+          },
+          {
+           "issuerName": "Likhitha Infrastructure Limited",
+           "isin": "INE060901027",
+           "isinDescription": "LIKHITHA INFRASTRUCTURE LIMITED EQ",
+           "units": 3136,
+           "lastTradedPrice": "2128.76"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE551D01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE060901027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE241U01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE209L01016",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE810G01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE491A01021",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

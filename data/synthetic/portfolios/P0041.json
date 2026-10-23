@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0041",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0041",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Lemon Tree Hotels Limited",
+   "isin": "INE970X01018",
+   "quantity": 4319,
+   "value_inr": 15948111.43
+  },
+  {
+   "instrument_name": "Rushil Decor Limited",
+   "isin": "INE573K01025",
+   "quantity": 4168,
+   "value_inr": 22873441.34
+  }
+ ],
+ "portfolio_total_inr": 38821552.77,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0041",
+      "maskedDematId": "XXXXXXXXXXXXX8080",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0041",
+          "dob": "1994-06-12",
+          "mobile": 1000000041,
+          "nominee": "REGISTERED",
+          "dematId": "12082143674928080",
+          "email": "synthetic0041@example.invalid",
+          "pan": "ZZZPZ0041Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1495567.17,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "IRIS RegTech Solutions Limited",
+           "isin": "INE864K01010",
+           "isinDescription": "IRIS REGTECH SOLUTIONS LIMITED EQ",
+           "units": 711,
+           "lastTradedPrice": "2103.47"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0041",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0041",
+          "dob": "1979-06-12",
+          "mobile": 1000000041,
+          "nominee": "REGISTERED",
+          "dematId": "IN3054853876180000",
+          "email": "synthetic0041@example.invalid",
+          "pan": "ZZZPZ0041Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9507843.04,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Thangamayil Jewellery Limited",
+           "isin": "INE085J01014",
+           "isinDescription": "THANGAMAYIL JEWELLERY LIMITED EQ",
+           "units": 1980,
+           "lastTradedPrice": "2291.24"
+          },
+          {
+           "issuerName": "Zuari Agro Chemicals Limited",
+           "isin": "INE840M01016",
+           "isinDescription": "ZUARI AGRO CHEMICALS LIMITED EQ",
+           "units": 1544,
+           "lastTradedPrice": "2664.20"
+          },
+          {
+           "issuerName": "Enviro Infra Engineers Limited",
+           "isin": "INE0LLY01014",
+           "isinDescription": "ENVIRO INFRA ENGINEERS LIMITED EQ",
+           "units": 2964,
+           "lastTradedPrice": "289.36"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE970X01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE573K01025",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

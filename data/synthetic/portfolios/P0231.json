@@ -1,0 +1,169 @@
+{
+ "mock": true,
+ "case_id": "P0231",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0231",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "PTC India Limited",
+   "isin": "INE877F01012",
+   "quantity": 2649,
+   "value_inr": 678956.99
+  },
+  {
+   "instrument_name": "Dreamfolks Services Limited",
+   "isin": "INE0JS101016",
+   "quantity": 2960,
+   "value_inr": 28089145.07
+  },
+  {
+   "instrument_name": "Alivus Life Sciences Limited",
+   "isin": "INE03Q201024",
+   "quantity": 2676,
+   "value_inr": 20442316.91
+  }
+ ],
+ "portfolio_total_inr": 49210418.97,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0231",
+      "maskedDematId": "XXXXXXXXXXXXX8990",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0231",
+          "dob": "1963-04-12",
+          "mobile": 1000000231,
+          "nominee": "REGISTERED",
+          "dematId": "12085240604938990",
+          "email": "synthetic0231@example.invalid",
+          "pan": "ZZZPZ0231Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3041072.1,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Centrum Capital Limited",
+           "isin": "INE660C01027",
+           "isinDescription": "CENTRUM CAPITAL LIMITED EQ",
+           "units": 2046,
+           "lastTradedPrice": "1486.35"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0231",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0231",
+          "dob": "1976-02-14",
+          "mobile": 1000000231,
+          "nominee": "REGISTERED",
+          "dematId": "IN3011363469580000",
+          "email": "synthetic0231@example.invalid",
+          "pan": "ZZZPZ0231Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13057119.45,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Samvardhana Motherson International Limited",
+           "isin": "INE775A01035",
+           "isinDescription": "SAMVARDHANA MOTHERSON INTERNATIONAL LIMITED EQ",
+           "units": 4356,
+           "lastTradedPrice": "1132.28"
+          },
+          {
+           "issuerName": "Aarey Drugs & Pharmaceuticals Limited",
+           "isin": "INE198H01019",
+           "isinDescription": "AAREY DRUGS & PHARMACEUTICALS LIMITED EQ",
+           "units": 3902,
+           "lastTradedPrice": "2069.36"
+          },
+          {
+           "issuerName": "Shilpa Medicare Limited",
+           "isin": "INE790G01031",
+           "isinDescription": "SHILPA MEDICARE LIMITED EQ",
+           "units": 1549,
+           "lastTradedPrice": "32.45"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE877F01012",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0JS101016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE03Q201024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

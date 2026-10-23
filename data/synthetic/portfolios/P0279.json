@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0279",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0279",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Jay Bharat Maruti Limited",
+   "isin": "INE571B01036",
+   "quantity": 1150,
+   "value_inr": 8080600.11
+  },
+  {
+   "instrument_name": "Platinum Industries Limited",
+   "isin": "INE0PT501018",
+   "quantity": 1644,
+   "value_inr": 4451842.97
+  },
+  {
+   "instrument_name": "Rossari Biotech Limited",
+   "isin": "INE02A801020",
+   "quantity": 3420,
+   "value_inr": 9075448.52
+  }
+ ],
+ "portfolio_total_inr": 21607891.6,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE571B01036",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE0PT501018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE02A801020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

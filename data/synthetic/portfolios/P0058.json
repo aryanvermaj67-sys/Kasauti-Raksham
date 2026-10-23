@@ -1,0 +1,139 @@
+{
+ "mock": true,
+ "case_id": "P0058",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0058",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Hy-Tech Engineers Limited",
+   "isin": "INE0LEG01024",
+   "quantity": 1950,
+   "value_inr": 3091559.97
+  },
+  {
+   "instrument_name": "Avonmore Capital & Management Services Limited",
+   "isin": "INE323B01024",
+   "quantity": 1183,
+   "value_inr": 8176763.21
+  },
+  {
+   "instrument_name": "Dhunseri Ventures Limited",
+   "isin": "INE477B01010",
+   "quantity": 4280,
+   "value_inr": 9661337.16
+  },
+  {
+   "instrument_name": "Tara Chand InfraLogistic Solutions Limited",
+   "isin": "INE555Z01020",
+   "quantity": 2471,
+   "value_inr": 5364939.19
+  }
+ ],
+ "portfolio_total_inr": 26294599.53,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0058",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0058",
+          "dob": "1964-03-17",
+          "mobile": 1000000058,
+          "nominee": "REGISTERED",
+          "dematId": "IN3046478915350000",
+          "email": "synthetic0058@example.invalid",
+          "pan": "ZZZPZ0058Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13652007.62,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Hy-Tech Engineers Limited",
+           "isin": "INE0LEG01024",
+           "isinDescription": "HY-TECH ENGINEERS LIMITED EQ",
+           "units": 1950,
+           "lastTradedPrice": "1221.02"
+          },
+          {
+           "issuerName": "Avonmore Capital & Management Services Limited",
+           "isin": "INE323B01024",
+           "isinDescription": "AVONMORE CAPITAL & MANAGEMENT SERVICES LIMITED EQ",
+           "units": 1183,
+           "lastTradedPrice": "3943.07"
+          },
+          {
+           "issuerName": "Dhunseri Ventures Limited",
+           "isin": "INE477B01010",
+           "isinDescription": "DHUNSERI VENTURES LIMITED EQ",
+           "units": 4280,
+           "lastTradedPrice": "899.75"
+          },
+          {
+           "issuerName": "Tara Chand InfraLogistic Solutions Limited",
+           "isin": "INE555Z01020",
+           "isinDescription": "TARA CHAND INFRALOGISTIC SOLUTIONS LIMITED EQ",
+           "units": 2471,
+           "lastTradedPrice": "1115.11"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0LEG01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE323B01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE477B01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE555Z01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

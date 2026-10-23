@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0295",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0295",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Ddev Plastiks Industries Limited",
+   "isin": "INE0HR601026",
+   "quantity": 2581,
+   "value_inr": 3007008.47
+  },
+  {
+   "instrument_name": "UNO Minda Limited",
+   "isin": "INE405E01023",
+   "quantity": 3356,
+   "value_inr": 16957435.15
+  },
+  {
+   "instrument_name": "Rajoo Engineers Limited",
+   "isin": "INE535F01024",
+   "quantity": 1632,
+   "value_inr": 7433767.05
+  },
+  {
+   "instrument_name": "IVP Limited",
+   "isin": "INE043C01018",
+   "quantity": 1225,
+   "value_inr": 7744329.9
+  },
+  {
+   "instrument_name": "D P Wires Limited",
+   "isin": "INE864X01013",
+   "quantity": 3729,
+   "value_inr": 864816.59
+  },
+  {
+   "instrument_name": "Just Dial Limited",
+   "isin": "INE599M01018",
+   "quantity": 999,
+   "value_inr": 4730795.62
+  }
+ ],
+ "portfolio_total_inr": 40738152.78,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0295",
+      "maskedDematId": "XXXXXXXXXXXXX4740",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0295",
+          "dob": "1970-09-13",
+          "mobile": 1000000295,
+          "nominee": "REGISTERED",
+          "dematId": "12082389609514740",
+          "email": "synthetic0295@example.invalid",
+          "pan": "ZZZPZ0295Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12831699.7,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Ddev Plastiks Industries Limited",
+           "isin": "INE0HR601026",
+           "isinDescription": "DDEV PLASTIKS INDUSTRIES LIMITED EQ",
+           "units": 2581,
+           "lastTradedPrice": "489.50"
+          },
+          {
+           "issuerName": "UNO Minda Limited",
+           "isin": "INE405E01023",
+           "isinDescription": "UNO MINDA LIMITED EQ",
+           "units": 3356,
+           "lastTradedPrice": "1695.67"
+          },
+          {
+           "issuerName": "Rajoo Engineers Limited",
+           "isin": "INE535F01024",
+           "isinDescription": "RAJOO ENGINEERS LIMITED EQ",
+           "units": 1632,
+           "lastTradedPrice": "3601.49"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0HR601026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE405E01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE535F01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE043C01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE864X01013",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE599M01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

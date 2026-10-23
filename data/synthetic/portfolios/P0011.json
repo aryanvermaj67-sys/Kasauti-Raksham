@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0011",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0011",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Uniparts India Limited",
+   "isin": "INE244O01017",
+   "quantity": 4199,
+   "value_inr": 5730405.69
+  },
+  {
+   "instrument_name": "MphasiS Limited",
+   "isin": "INE356A01018",
+   "quantity": 4733,
+   "value_inr": 8255690.56
+  },
+  {
+   "instrument_name": "Alpine Texworld Limited",
+   "isin": "INE1JCQ01037",
+   "quantity": 373,
+   "value_inr": 2465641.09
+  },
+  {
+   "instrument_name": "Creative Eye Limited",
+   "isin": "INE230B01021",
+   "quantity": 23,
+   "value_inr": 60030.79
+  }
+ ],
+ "portfolio_total_inr": 16511768.13,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0011",
+      "maskedDematId": "XXXXXXXXXXXXX2270",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0011",
+          "dob": "1977-05-16",
+          "mobile": 1000000011,
+          "nominee": "REGISTERED",
+          "dematId": "12084302831862270",
+          "email": "synthetic0011@example.invalid",
+          "pan": "ZZZPZ0011Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6101190.45,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "K.P. Energy Limited",
+           "isin": "INE127T01021",
+           "isinDescription": "K.P. ENERGY LIMITED EQ",
+           "units": 2149,
+           "lastTradedPrice": "730.70"
+          },
+          {
+           "issuerName": "Prostarm Info Systems Limited",
+           "isin": "INE0BX301013",
+           "isinDescription": "PROSTARM INFO SYSTEMS LIMITED EQ",
+           "units": 2579,
+           "lastTradedPrice": "1756.85"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0011",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0011",
+          "dob": "1989-05-18",
+          "mobile": 1000000011,
+          "nominee": "REGISTERED",
+          "dematId": "IN3066959121960000",
+          "email": "synthetic0011@example.invalid",
+          "pan": "ZZZPZ0011Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8943811.16,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Nilkamal Limited",
+           "isin": "INE310A01015",
+           "isinDescription": "NILKAMAL LIMITED EQ",
+           "units": 2184,
+           "lastTradedPrice": "172.26"
+          },
+          {
+           "issuerName": "TD Power Systems Limited",
+           "isin": "INE419M01035",
+           "isinDescription": "TD POWER SYSTEMS LIMITED EQ",
+           "units": 4897,
+           "lastTradedPrice": "1749.56"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE244O01017",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE356A01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE1JCQ01037",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE230B01021",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

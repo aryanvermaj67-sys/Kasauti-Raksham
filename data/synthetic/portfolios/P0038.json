@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0038",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0038",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "HMA Agro Industries Limited",
+   "isin": "INE0ECP01024",
+   "quantity": 2433,
+   "value_inr": 24176305.16
+  },
+  {
+   "instrument_name": "Navneet Education Limited",
+   "isin": "INE060A01024",
+   "quantity": 838,
+   "value_inr": 3798305.6
+  },
+  {
+   "instrument_name": "Stylam Industries Limited",
+   "isin": "INE239C01020",
+   "quantity": 4431,
+   "value_inr": 37111579.34
+  },
+  {
+   "instrument_name": "Grindwell Norton Limited",
+   "isin": "INE536A01023",
+   "quantity": 4323,
+   "value_inr": 1889619.38
+  }
+ ],
+ "portfolio_total_inr": 66975809.48,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0038",
+      "maskedDematId": "XXXXXXXXXXXXX2520",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0038",
+          "dob": "1960-05-17",
+          "mobile": 1000000038,
+          "nominee": "REGISTERED",
+          "dematId": "12086851205872520",
+          "email": "synthetic0038@example.invalid",
+          "pan": "ZZZPZ0038Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8961482.58,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "HMA Agro Industries Limited",
+           "isin": "INE0ECP01024",
+           "isinDescription": "HMA AGRO INDUSTRIES LIMITED EQ",
+           "units": 2433,
+           "lastTradedPrice": "3380.82"
+          },
+          {
+           "issuerName": "Grindwell Norton Limited",
+           "isin": "INE536A01023",
+           "isinDescription": "GRINDWELL NORTON LIMITED EQ",
+           "units": 4323,
+           "lastTradedPrice": "170.24"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0038",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0038",
+          "dob": "1988-08-17",
+          "mobile": 1000000038,
+          "nominee": "REGISTERED",
+          "dematId": "IN3061282604380000",
+          "email": "synthetic0038@example.invalid",
+          "pan": "ZZZPZ0038Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16526320.36,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Navneet Education Limited",
+           "isin": "INE060A01024",
+           "isinDescription": "NAVNEET EDUCATION LIMITED EQ",
+           "units": 838,
+           "lastTradedPrice": "2040.61"
+          },
+          {
+           "issuerName": "Stylam Industries Limited",
+           "isin": "INE239C01020",
+           "isinDescription": "STYLAM INDUSTRIES LIMITED EQ",
+           "units": 4431,
+           "lastTradedPrice": "3343.78"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0ECP01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE060A01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE239C01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE536A01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

@@ -1,0 +1,92 @@
+{
+ "mock": true,
+ "case_id": "P0185",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0185",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Juniper Green Energy Limited",
+   "isin": "INE05C901015",
+   "quantity": 2608,
+   "value_inr": 21946185.47
+  },
+  {
+   "instrument_name": "Mahindra & Mahindra Limited",
+   "isin": "INE101A01026",
+   "quantity": 3338,
+   "value_inr": 26635304.83
+  },
+  {
+   "instrument_name": "BSE Limited",
+   "isin": "INE118H01025",
+   "quantity": 2254,
+   "value_inr": 17846245.51
+  },
+  {
+   "instrument_name": "Ingersoll Rand (India) Limited",
+   "isin": "INE177A01018",
+   "quantity": 4037,
+   "value_inr": 10461042.25
+  },
+  {
+   "instrument_name": "Lovable Lingerie Limited",
+   "isin": "INE597L01014",
+   "quantity": 3392,
+   "value_inr": 23727963.94
+  },
+  {
+   "instrument_name": "Himatsingka Seide Limited",
+   "isin": "INE049A01027",
+   "quantity": 2735,
+   "value_inr": 17946453.46
+  }
+ ],
+ "portfolio_total_inr": 118563195.46,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE05C901015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE101A01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE118H01025",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE177A01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE597L01014",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE049A01027",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

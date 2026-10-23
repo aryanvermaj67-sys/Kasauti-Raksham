@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0240",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0240",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Kfin Technologies Limited",
+   "isin": "INE138Y01010",
+   "quantity": 2742,
+   "value_inr": 10179034.28
+  },
+  {
+   "instrument_name": "DCM Shriram Industries Limited",
+   "isin": "INE843D01027",
+   "quantity": 1208,
+   "value_inr": 7133261.48
+  },
+  {
+   "instrument_name": "Nandani Creation Limited",
+   "isin": "INE696V01013",
+   "quantity": 550,
+   "value_inr": 1569557.94
+  },
+  {
+   "instrument_name": "Bharat Wire Ropes Limited",
+   "isin": "INE316L01019",
+   "quantity": 738,
+   "value_inr": 1689811.65
+  },
+  {
+   "instrument_name": "United Breweries Limited",
+   "isin": "INE686F01025",
+   "quantity": 1859,
+   "value_inr": 3179572.87
+  },
+  {
+   "instrument_name": "Coffee Day Enterprises Limited",
+   "isin": "INE335K01011",
+   "quantity": 812,
+   "value_inr": 1479833.53
+  }
+ ],
+ "portfolio_total_inr": 25231071.75,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0240",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0240",
+          "dob": "1965-07-12",
+          "mobile": 1000000240,
+          "nominee": "REGISTERED",
+          "dematId": "IN3012060007370000",
+          "email": "synthetic0240@example.invalid",
+          "pan": "ZZZPZ0240Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12747518.56,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Kfin Technologies Limited",
+           "isin": "INE138Y01010",
+           "isinDescription": "KFIN TECHNOLOGIES LIMITED EQ",
+           "units": 2742,
+           "lastTradedPrice": "3116.72"
+          },
+          {
+           "issuerName": "DCM Shriram Industries Limited",
+           "isin": "INE843D01027",
+           "isinDescription": "DCM SHRIRAM INDUSTRIES LIMITED EQ",
+           "units": 1208,
+           "lastTradedPrice": "3478.04"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE138Y01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE843D01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE696V01013",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE316L01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE686F01025",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE335K01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

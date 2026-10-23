@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0077",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0077",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "ROUTE MOBILE LIMITED",
+   "isin": "INE450U01017",
+   "quantity": 2548,
+   "value_inr": 1987772.67
+  },
+  {
+   "instrument_name": "PTL Enterprises Limited",
+   "isin": "INE034D01049",
+   "quantity": 1674,
+   "value_inr": 15112275.22
+  },
+  {
+   "instrument_name": "B. L. Kashyap and Sons Limited",
+   "isin": "INE350H01032",
+   "quantity": 2564,
+   "value_inr": 6844825.55
+  },
+  {
+   "instrument_name": "UNO Minda Limited",
+   "isin": "INE405E01023",
+   "quantity": 551,
+   "value_inr": 1669833.13
+  },
+  {
+   "instrument_name": "EPACK Durable Limited",
+   "isin": "INE0G5901015",
+   "quantity": 3593,
+   "value_inr": 25256366.22
+  }
+ ],
+ "portfolio_total_inr": 50871072.79,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0077",
+      "maskedDematId": "XXXXXXXXXXXXX3960",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0077",
+          "dob": "1967-09-18",
+          "mobile": 1000000077,
+          "nominee": "REGISTERED",
+          "dematId": "12086461645023960",
+          "email": "synthetic0077@example.invalid",
+          "pan": "ZZZPZ0077Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3614823.54,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "ROUTE MOBILE LIMITED",
+           "isin": "INE450U01017",
+           "isinDescription": "ROUTE MOBILE LIMITED EQ",
+           "units": 2548,
+           "lastTradedPrice": "334.51"
+          },
+          {
+           "issuerName": "B. L. Kashyap and Sons Limited",
+           "isin": "INE350H01032",
+           "isinDescription": "B. L. KASHYAP AND SONS LIMITED EQ",
+           "units": 1282,
+           "lastTradedPrice": "2154.83"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0077",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0077",
+          "dob": "1955-06-12",
+          "mobile": 1000000077,
+          "nominee": "REGISTERED",
+          "dematId": "IN3083906316340000",
+          "email": "synthetic0077@example.invalid",
+          "pan": "ZZZPZ0077Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 14081271.18,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "PTL Enterprises Limited",
+           "isin": "INE034D01049",
+           "isinDescription": "PTL ENTERPRISES LIMITED EQ",
+           "units": 1674,
+           "lastTradedPrice": "3897.77"
+          },
+          {
+           "issuerName": "United Spirits Limited",
+           "isin": "INE854D01024",
+           "isinDescription": "UNITED SPIRITS LIMITED EQ",
+           "units": 3210,
+           "lastTradedPrice": "2354.02"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE450U01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE034D01049",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE350H01032",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE405E01023",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0G5901015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0025",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0025",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "MRF Limited",
+   "isin": "INE883A01011",
+   "quantity": 3368,
+   "value_inr": 35165227.17
+  },
+  {
+   "instrument_name": "Centum Electronics Limited",
+   "isin": "INE320B01020",
+   "quantity": 1274,
+   "value_inr": 1009638.09
+  },
+  {
+   "instrument_name": "Sapphire Foods India Limited",
+   "isin": "INE806T01020",
+   "quantity": 2181,
+   "value_inr": 5571050.3
+  },
+  {
+   "instrument_name": "Century Extrusions Limited",
+   "isin": "INE281A01026",
+   "quantity": 3266,
+   "value_inr": 10188301.65
+  },
+  {
+   "instrument_name": "Trent Limited",
+   "isin": "INE849A01020",
+   "quantity": 2701,
+   "value_inr": 20898773.53
+  },
+  {
+   "instrument_name": "Shilpa Medicare Limited",
+   "isin": "INE790G01031",
+   "quantity": 4381,
+   "value_inr": 18429949.79
+  }
+ ],
+ "portfolio_total_inr": 91262940.53,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0025",
+      "maskedDematId": "XXXXXXXXXXXXX2980",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0025",
+          "dob": "1989-05-10",
+          "mobile": 1000000025,
+          "nominee": "REGISTERED",
+          "dematId": "12082822942112980",
+          "email": "synthetic0025@example.invalid",
+          "pan": "ZZZPZ0025Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 15129246.83,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "MRF Limited",
+           "isin": "INE883A01011",
+           "isinDescription": "MRF LIMITED EQ",
+           "units": 3368,
+           "lastTradedPrice": "3486.31"
+          },
+          {
+           "issuerName": "Centum Electronics Limited",
+           "isin": "INE320B01020",
+           "isinDescription": "CENTUM ELECTRONICS LIMITED EQ",
+           "units": 1274,
+           "lastTradedPrice": "317.82"
+          },
+          {
+           "issuerName": "Sapphire Foods India Limited",
+           "isin": "INE806T01020",
+           "isinDescription": "SAPPHIRE FOODS INDIA LIMITED EQ",
+           "units": 2181,
+           "lastTradedPrice": "1367.47"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE883A01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE320B01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE806T01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE281A01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE849A01020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE790G01031",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

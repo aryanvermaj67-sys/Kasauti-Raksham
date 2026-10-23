@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0037",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0037",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Tracxn Technologies Limited",
+   "isin": "INE0HMF01019",
+   "quantity": 2781,
+   "value_inr": 12256923.74
+  },
+  {
+   "instrument_name": "Torrent Pharmaceuticals Limited",
+   "isin": "INE685A01028",
+   "quantity": 438,
+   "value_inr": 2427648.72
+  },
+  {
+   "instrument_name": "Fabtech Technologies Limited",
+   "isin": "INE0HF201011",
+   "quantity": 13755,
+   "value_inr": 10199372.66
+  },
+  {
+   "instrument_name": "Panchmahal Steel Limited",
+   "isin": "INE798F01010",
+   "quantity": 3176,
+   "value_inr": 8554155.6
+  },
+  {
+   "instrument_name": "KRN Heat Exchanger and Refrigeration Limited",
+   "isin": "INE0Q3J01015",
+   "quantity": 4947,
+   "value_inr": 45963323.34
+  }
+ ],
+ "portfolio_total_inr": 79401424.06,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0037",
+      "maskedDematId": "XXXXXXXXXXXXX9950",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0037",
+          "dob": "1986-07-18",
+          "mobile": 1000000037,
+          "nominee": "REGISTERED",
+          "dematId": "12082010450899950",
+          "email": "synthetic0037@example.invalid",
+          "pan": "ZZZPZ0037Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 2533390.79,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Fabtech Technologies Limited",
+           "isin": "INE0HF201011",
+           "isinDescription": "FABTECH TECHNOLOGIES LIMITED EQ",
+           "units": 2751,
+           "lastTradedPrice": "282.33"
+          },
+          {
+           "issuerName": "Oil & Natural Gas Corporation Limited",
+           "isin": "INE213A01029",
+           "isinDescription": "OIL & NATURAL GAS CORPORATION LIMITED EQ",
+           "units": 784,
+           "lastTradedPrice": "2240.69"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0037",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0037",
+          "dob": "1968-05-12",
+          "mobile": 1000000037,
+          "nominee": "REGISTERED",
+          "dematId": "IN3025540398480000",
+          "email": "synthetic0037@example.invalid",
+          "pan": "ZZZPZ0037Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8954480.37,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Tracxn Technologies Limited",
+           "isin": "INE0HMF01019",
+           "isinDescription": "TRACXN TECHNOLOGIES LIMITED EQ",
+           "units": 2781,
+           "lastTradedPrice": "2722.01"
+          },
+          {
+           "issuerName": "Torrent Pharmaceuticals Limited",
+           "isin": "INE685A01028",
+           "isinDescription": "TORRENT PHARMACEUTICALS LIMITED EQ",
+           "units": 438,
+           "lastTradedPrice": "3161.12"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0HMF01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE685A01028",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0HF201011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE798F01010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0Q3J01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

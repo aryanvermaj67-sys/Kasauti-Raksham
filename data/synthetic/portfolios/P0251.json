@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0251",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0251",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "HCL Technologies Limited",
+   "isin": "INE860A01027",
+   "quantity": 1452,
+   "value_inr": 1281904.27
+  },
+  {
+   "instrument_name": "Praxis Home Retail Limited",
+   "isin": "INE546Y01022",
+   "quantity": 4028,
+   "value_inr": 22661510.77
+  }
+ ],
+ "portfolio_total_inr": 23943415.04,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0251",
+      "maskedDematId": "XXXXXXXXXXXXX9750",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0251",
+          "dob": "1970-02-18",
+          "mobile": 1000000251,
+          "nominee": "REGISTERED",
+          "dematId": "12088125742919750",
+          "email": "synthetic0251@example.invalid",
+          "pan": "ZZZPZ0251Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9891022.98,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Satin Creditcare Network Limited",
+           "isin": "INE836B01017",
+           "isinDescription": "SATIN CREDITCARE NETWORK LIMITED EQ",
+           "units": 1908,
+           "lastTradedPrice": "2924.65"
+          },
+          {
+           "issuerName": "M.K. Exim (India) Limited",
+           "isin": "INE227F01010",
+           "isinDescription": "M.K. EXIM (INDIA) LIMITED EQ",
+           "units": 3934,
+           "lastTradedPrice": "392.89"
+          },
+          {
+           "issuerName": "KEI Industries Limited",
+           "isin": "INE878B01027",
+           "isinDescription": "KEI INDUSTRIES LIMITED EQ",
+           "units": 1496,
+           "lastTradedPrice": "1848.37"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0251",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0251",
+          "dob": "1951-07-16",
+          "mobile": 1000000251,
+          "nominee": "REGISTERED",
+          "dematId": "IN3096405659390000",
+          "email": "synthetic0251@example.invalid",
+          "pan": "ZZZPZ0251Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5300345.16,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "ICRA Limited",
+           "isin": "INE725G01011",
+           "isinDescription": "ICRA LIMITED EQ",
+           "units": 3564,
+           "lastTradedPrice": "1487.19"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE860A01027",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE546Y01022",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

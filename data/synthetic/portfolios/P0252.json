@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0252",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0252",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Asian Hotels (East) Limited",
+   "isin": "INE926K01017",
+   "quantity": 1178,
+   "value_inr": 6581399.83
+  },
+  {
+   "instrument_name": "Coffee Day Enterprises Limited",
+   "isin": "INE335K01011",
+   "quantity": 4922,
+   "value_inr": 757286.8
+  },
+  {
+   "instrument_name": "Advance Agrolife Limited",
+   "isin": "INE1B0W01010",
+   "quantity": 430,
+   "value_inr": 3714992.82
+  },
+  {
+   "instrument_name": "DIC India Limited",
+   "isin": "INE303A01010",
+   "quantity": 2782,
+   "value_inr": 11835039.1
+  },
+  {
+   "instrument_name": "Jayant Agro Organics Limited",
+   "isin": "INE785A01026",
+   "quantity": 706,
+   "value_inr": 1543854.01
+  }
+ ],
+ "portfolio_total_inr": 24432572.56,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0252",
+      "maskedDematId": "XXXXXXXXXXXXX5300",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0252",
+          "dob": "1963-02-18",
+          "mobile": 1000000252,
+          "nominee": "REGISTERED",
+          "dematId": "12086974420425300",
+          "email": "synthetic0252@example.invalid",
+          "pan": "ZZZPZ0252Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1919373.03,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Aryaman Financial Services Limited",
+           "isin": "INE032E01017",
+           "isinDescription": "ARYAMAN FINANCIAL SERVICES LIMITED EQ",
+           "units": 881,
+           "lastTradedPrice": "2178.63"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0252",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0252",
+          "dob": "1945-04-10",
+          "mobile": 1000000252,
+          "nominee": "REGISTERED",
+          "dematId": "IN3027836341010000",
+          "email": "synthetic0252@example.invalid",
+          "pan": "ZZZPZ0252Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5116463.72,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Asian Hotels (East) Limited",
+           "isin": "INE926K01017",
+           "isinDescription": "ASIAN HOTELS (EAST) LIMITED EQ",
+           "units": 1178,
+           "lastTradedPrice": "3755.62"
+          },
+          {
+           "issuerName": "Coffee Day Enterprises Limited",
+           "isin": "INE335K01011",
+           "isinDescription": "COFFEE DAY ENTERPRISES LIMITED EQ",
+           "units": 4922,
+           "lastTradedPrice": "73.72"
+          },
+          {
+           "issuerName": "Advance Agrolife Limited",
+           "isin": "INE1B0W01010",
+           "isinDescription": "ADVANCE AGROLIFE LIMITED EQ",
+           "units": 86,
+           "lastTradedPrice": "3831.32"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE926K01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE335K01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE1B0W01010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE303A01010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE785A01026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

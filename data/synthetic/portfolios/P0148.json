@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0148",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0148",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Adani Total Gas Limited",
+   "isin": "INE399L01023",
+   "quantity": 4893,
+   "value_inr": 50529553.65
+  },
+  {
+   "instrument_name": "Capital India Finance Limited",
+   "isin": "INE345H01024",
+   "quantity": 3662,
+   "value_inr": 11658966.48
+  },
+  {
+   "instrument_name": "Pidilite Industries Limited",
+   "isin": "INE318A01026",
+   "quantity": 2569,
+   "value_inr": 9628507.35
+  },
+  {
+   "instrument_name": "Ausom Enterprise Limited",
+   "isin": "INE218C01016",
+   "quantity": 1633,
+   "value_inr": 7074203.32
+  }
+ ],
+ "portfolio_total_inr": 78891230.8,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0148",
+      "maskedDematId": "XXXXXXXXXXXXX6530",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0148",
+          "dob": "1956-06-15",
+          "mobile": 1000000148,
+          "nominee": "REGISTERED",
+          "dematId": "12085310577326530",
+          "email": "synthetic0148@example.invalid",
+          "pan": "ZZZPZ0148Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4666036.22,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Ausom Enterprise Limited",
+           "isin": "INE218C01016",
+           "isinDescription": "AUSOM ENTERPRISE LIMITED EQ",
+           "units": 1633,
+           "lastTradedPrice": "2857.34"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0148",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0148",
+          "dob": "1946-02-17",
+          "mobile": 1000000148,
+          "nominee": "REGISTERED",
+          "dematId": "IN3072418032450000",
+          "email": "synthetic0148@example.invalid",
+          "pan": "ZZZPZ0148Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 29959952.24,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Adani Total Gas Limited",
+           "isin": "INE399L01023",
+           "isinDescription": "ADANI TOTAL GAS LIMITED EQ",
+           "units": 4893,
+           "lastTradedPrice": "3567.28"
+          },
+          {
+           "issuerName": "Capital India Finance Limited",
+           "isin": "INE345H01024",
+           "isinDescription": "CAPITAL INDIA FINANCE LIMITED EQ",
+           "units": 3662,
+           "lastTradedPrice": "2472.94"
+          },
+          {
+           "issuerName": "Pidilite Industries Limited",
+           "isin": "INE318A01026",
+           "isinDescription": "PIDILITE INDUSTRIES LIMITED EQ",
+           "units": 2569,
+           "lastTradedPrice": "1342.68"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE399L01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE345H01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE318A01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE218C01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0074",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0074",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Focus Lighting and Fixtures Limited",
+   "isin": "INE593W01028",
+   "quantity": 1862,
+   "value_inr": 4581130.01
+  },
+  {
+   "instrument_name": "Atul Limited",
+   "isin": "INE100A01010",
+   "quantity": 3655,
+   "value_inr": 543771.17
+  },
+  {
+   "instrument_name": "Premco Global Limited",
+   "isin": "INE001E01012",
+   "quantity": 2824,
+   "value_inr": 11147625.37
+  }
+ ],
+ "portfolio_total_inr": 16272526.55,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE593W01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE100A01010",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE001E01012",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

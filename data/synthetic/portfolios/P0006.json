@@ -1,0 +1,169 @@
+{
+ "mock": true,
+ "case_id": "P0006",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0006",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "I S T Limited",
+   "isin": "INE684B01029",
+   "quantity": 816,
+   "value_inr": 319675.24
+  },
+  {
+   "instrument_name": "Snowman Logistics Limited",
+   "isin": "INE734N01019",
+   "quantity": 2789,
+   "value_inr": 25455213.53
+  },
+  {
+   "instrument_name": "Rainbow Childrens Medicare Limited",
+   "isin": "INE961O01016",
+   "quantity": 905,
+   "value_inr": 1723539.84
+  }
+ ],
+ "portfolio_total_inr": 27498428.61,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0006",
+      "maskedDematId": "XXXXXXXXXXXXX6190",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0006",
+          "dob": "1948-09-10",
+          "mobile": 1000000006,
+          "nominee": "REGISTERED",
+          "dematId": "12082097378116190",
+          "email": "synthetic0006@example.invalid",
+          "pan": "ZZZPZ0006Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6661892.48,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Udayshivakumar Infra Limited",
+           "isin": "INE0N0Y01013",
+           "isinDescription": "UDAYSHIVAKUMAR INFRA LIMITED EQ",
+           "units": 782,
+           "lastTradedPrice": "405.78"
+          },
+          {
+           "issuerName": "Yuken India Limited",
+           "isin": "INE384C01016",
+           "isinDescription": "YUKEN INDIA LIMITED EQ",
+           "units": 3377,
+           "lastTradedPrice": "1878.76"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0006",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0006",
+          "dob": "1993-04-12",
+          "mobile": 1000000006,
+          "nominee": "REGISTERED",
+          "dematId": "IN3051618072350000",
+          "email": "synthetic0006@example.invalid",
+          "pan": "ZZZPZ0006Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 6287079.57,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "DIC India Limited",
+           "isin": "INE303A01010",
+           "isinDescription": "DIC INDIA LIMITED EQ",
+           "units": 3541,
+           "lastTradedPrice": "1430.10"
+          },
+          {
+           "issuerName": "Sahajanand Medical Technologies Limited",
+           "isin": "INE356Y01018",
+           "isinDescription": "SAHAJANAND MEDICAL TECHNOLOGIES LIMITED EQ",
+           "units": 453,
+           "lastTradedPrice": "2699.99"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE684B01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE734N01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE961O01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

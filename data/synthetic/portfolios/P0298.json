@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0298",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0298",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "U P Hotels Limited",
+   "isin": "INE726E01014",
+   "quantity": 4688,
+   "value_inr": 19764317.19
+  },
+  {
+   "instrument_name": "GTL Limited",
+   "isin": "INE043A01012",
+   "quantity": 3654,
+   "value_inr": 12652234.66
+  },
+  {
+   "instrument_name": "Aditya Birla Fashion and Retail Limited",
+   "isin": "INE647O01011",
+   "quantity": 3727,
+   "value_inr": 8961936.21
+  },
+  {
+   "instrument_name": "Sula Vineyards Limited",
+   "isin": "INE142Q01026",
+   "quantity": 907,
+   "value_inr": 4041515.45
+  }
+ ],
+ "portfolio_total_inr": 45420003.51,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0298",
+      "maskedDematId": "XXXXXXXXXXXXX8440",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0298",
+          "dob": "1977-02-15",
+          "mobile": 1000000298,
+          "nominee": "REGISTERED",
+          "dematId": "12089101623608440",
+          "email": "synthetic0298@example.invalid",
+          "pan": "ZZZPZ0298Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 15104806.49,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "U P Hotels Limited",
+           "isin": "INE726E01014",
+           "isinDescription": "U P HOTELS LIMITED EQ",
+           "units": 4688,
+           "lastTradedPrice": "1717.48"
+          },
+          {
+           "issuerName": "Aditya Birla Fashion and Retail Limited",
+           "isin": "INE647O01011",
+           "isinDescription": "ADITYA BIRLA FASHION AND RETAIL LIMITED EQ",
+           "units": 3727,
+           "lastTradedPrice": "1193.87"
+          },
+          {
+           "issuerName": "Sula Vineyards Limited",
+           "isin": "INE142Q01026",
+           "isinDescription": "SULA VINEYARDS LIMITED EQ",
+           "units": 907,
+           "lastTradedPrice": "2870.68"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0298",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0298",
+          "dob": "1951-09-15",
+          "mobile": 1000000298,
+          "nominee": "REGISTERED",
+          "dematId": "IN3054597087030000",
+          "email": "synthetic0298@example.invalid",
+          "pan": "ZZZPZ0298Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 7648406.64,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "GTL Limited",
+           "isin": "INE043A01012",
+           "isinDescription": "GTL LIMITED EQ",
+           "units": 3654,
+           "lastTradedPrice": "2093.16"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE726E01014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE043A01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE647O01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE142Q01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

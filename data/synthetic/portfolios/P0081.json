@@ -1,0 +1,169 @@
+{
+ "mock": true,
+ "case_id": "P0081",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0081",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Saksoft Limited",
+   "isin": "INE667G01023",
+   "quantity": 1670,
+   "value_inr": 1807409.88
+  },
+  {
+   "instrument_name": "Dhatre Udyog Limited",
+   "isin": "INE715T01031",
+   "quantity": 4799,
+   "value_inr": 5889665.78
+  },
+  {
+   "instrument_name": "INOX India Limited",
+   "isin": "INE616N01034",
+   "quantity": 875,
+   "value_inr": 696618.42
+  }
+ ],
+ "portfolio_total_inr": 8393694.08,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0081",
+      "maskedDematId": "XXXXXXXXXXXXX0820",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0081",
+          "dob": "1964-01-13",
+          "mobile": 1000000081,
+          "nominee": "REGISTERED",
+          "dematId": "12088550878790820",
+          "email": "synthetic0081@example.invalid",
+          "pan": "ZZZPZ0081Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10766166.06,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Prakash Steelage Limited",
+           "isin": "INE696K01024",
+           "isinDescription": "PRAKASH STEELAGE LIMITED EQ",
+           "units": 2148,
+           "lastTradedPrice": "3406.64"
+          },
+          {
+           "issuerName": "WPIL Limited",
+           "isin": "INE765D01022",
+           "isinDescription": "WPIL LIMITED EQ",
+           "units": 2682,
+           "lastTradedPrice": "1285.87"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0081",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0081",
+          "dob": "1950-04-15",
+          "mobile": 1000000081,
+          "nominee": "REGISTERED",
+          "dematId": "IN3024078630650000",
+          "email": "synthetic0081@example.invalid",
+          "pan": "ZZZPZ0081Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11194541.3,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Beta Drugs Limited",
+           "isin": "INE351Y01019",
+           "isinDescription": "BETA DRUGS LIMITED EQ",
+           "units": 3229,
+           "lastTradedPrice": "2808.89"
+          },
+          {
+           "issuerName": "Indef Manufacturing Limited",
+           "isin": "INE0O9T01021",
+           "isinDescription": "INDEF MANUFACTURING LIMITED EQ",
+           "units": 2237,
+           "lastTradedPrice": "949.77"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE667G01023",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE715T01031",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE616N01034",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

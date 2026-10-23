@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0285",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0285",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Sai Life Sciences Limited",
+   "isin": "INE570L01029",
+   "quantity": 1161,
+   "value_inr": 9343485.11
+  },
+  {
+   "instrument_name": "TTK Healthcare Limited",
+   "isin": "INE910C01018",
+   "quantity": 2955,
+   "value_inr": 25189277.23
+  },
+  {
+   "instrument_name": "G R Infraprojects Limited",
+   "isin": "INE201P01022",
+   "quantity": 4665,
+   "value_inr": 21899437.0
+  },
+  {
+   "instrument_name": "Bonlon Industries Limited",
+   "isin": "INE0B9A01018",
+   "quantity": 599,
+   "value_inr": 1033916.57
+  },
+  {
+   "instrument_name": "Alankit Limited",
+   "isin": "INE914E01040",
+   "quantity": 4336,
+   "value_inr": 17597081.09
+  },
+  {
+   "instrument_name": "CARYSIL LIMITED",
+   "isin": "INE482D01024",
+   "quantity": 1709,
+   "value_inr": 4703622.06
+  }
+ ],
+ "portfolio_total_inr": 79766819.06,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0285",
+      "maskedDematId": "XXXXXXXXXXXXX2390",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0285",
+          "dob": "1948-09-15",
+          "mobile": 1000000285,
+          "nominee": "REGISTERED",
+          "dematId": "12083555450232390",
+          "email": "synthetic0285@example.invalid",
+          "pan": "ZZZPZ0285Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13317481.05,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Sai Life Sciences Limited",
+           "isin": "INE570L01029",
+           "isinDescription": "SAI LIFE SCIENCES LIMITED EQ",
+           "units": 1161,
+           "lastTradedPrice": "3575.30"
+          },
+          {
+           "issuerName": "TTK Healthcare Limited",
+           "isin": "INE910C01018",
+           "isinDescription": "TTK HEALTHCARE LIMITED EQ",
+           "units": 2955,
+           "lastTradedPrice": "3102.05"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE570L01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE910C01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE201P01022",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0B9A01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE914E01040",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE482D01024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

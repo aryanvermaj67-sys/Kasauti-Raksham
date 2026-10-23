@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0135",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0135",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Transcorp International Limited",
+   "isin": "INE330E01023",
+   "quantity": 931,
+   "value_inr": 6308048.98
+  },
+  {
+   "instrument_name": "Jagran Prakashan Limited",
+   "isin": "INE199G01027",
+   "quantity": 3479,
+   "value_inr": 13871908.64
+  },
+  {
+   "instrument_name": "Mrs. Bectors Food Specialities Limited",
+   "isin": "INE495P01020",
+   "quantity": 4875,
+   "value_inr": 15693965.55
+  },
+  {
+   "instrument_name": "IRM Energy Limited",
+   "isin": "INE07U701015",
+   "quantity": 1570,
+   "value_inr": 2257599.45
+  },
+  {
+   "instrument_name": "Karma Energy Limited",
+   "isin": "INE725L01011",
+   "quantity": 2507,
+   "value_inr": 5039287.49
+  },
+  {
+   "instrument_name": "Rail Vikas Nigam Limited",
+   "isin": "INE415G01027",
+   "quantity": 2874,
+   "value_inr": 20277074.61
+  }
+ ],
+ "portfolio_total_inr": 63447884.72,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0135",
+      "maskedDematId": "XXXXXXXXXXXXX1330",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0135",
+          "dob": "1945-06-11",
+          "mobile": 1000000135,
+          "nominee": "REGISTERED",
+          "dematId": "12084170550611330",
+          "email": "synthetic0135@example.invalid",
+          "pan": "ZZZPZ0135Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 20449033.94,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Transcorp International Limited",
+           "isin": "INE330E01023",
+           "isinDescription": "TRANSCORP INTERNATIONAL LIMITED EQ",
+           "units": 931,
+           "lastTradedPrice": "2693.56"
+          },
+          {
+           "issuerName": "Jagran Prakashan Limited",
+           "isin": "INE199G01027",
+           "isinDescription": "JAGRAN PRAKASHAN LIMITED EQ",
+           "units": 3479,
+           "lastTradedPrice": "1473.77"
+          },
+          {
+           "issuerName": "Mrs. Bectors Food Specialities Limited",
+           "isin": "INE495P01020",
+           "isinDescription": "MRS. BECTORS FOOD SPECIALITIES LIMITED EQ",
+           "units": 4875,
+           "lastTradedPrice": "2628.53"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE330E01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE199G01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE495P01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE07U701015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE725L01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE415G01027",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

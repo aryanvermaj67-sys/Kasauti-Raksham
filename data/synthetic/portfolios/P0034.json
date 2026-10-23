@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0034",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0034",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Avadh Sugar & Energy Limited",
+   "isin": "INE349W01017",
+   "quantity": 3124,
+   "value_inr": 14349980.47
+  },
+  {
+   "instrument_name": "Aditya Birla Sun Life AMC Limited",
+   "isin": "INE404A01024",
+   "quantity": 1895,
+   "value_inr": 9218609.5
+  },
+  {
+   "instrument_name": "HDFC Asset Management Company Limited",
+   "isin": "INE127D01025",
+   "quantity": 2911,
+   "value_inr": 1639495.98
+  }
+ ],
+ "portfolio_total_inr": 25208085.95,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE349W01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE404A01024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE127D01025",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

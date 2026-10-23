@@ -1,0 +1,140 @@
+{
+ "mock": true,
+ "case_id": "P0140",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0140",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Milkfood Limited",
+   "isin": "INE588G01021",
+   "quantity": 4695,
+   "value_inr": 17706322.36
+  },
+  {
+   "instrument_name": "Sundaram Clayton Limited",
+   "isin": "INE0Q3R01026",
+   "quantity": 2573,
+   "value_inr": 7341972.84
+  },
+  {
+   "instrument_name": "Shiva Global Agro Industries Limited",
+   "isin": "INE960E01019",
+   "quantity": 4312,
+   "value_inr": 17850961.48
+  },
+  {
+   "instrument_name": "Jai Balaji Industries Limited",
+   "isin": "INE091G01026",
+   "quantity": 325,
+   "value_inr": 1805454.38
+  },
+  {
+   "instrument_name": "Rubicon Research Limited",
+   "isin": "INE506V01022",
+   "quantity": 3709,
+   "value_inr": 13110560.64
+  },
+  {
+   "instrument_name": "Quick Heal Technologies Limited",
+   "isin": "INE306L01010",
+   "quantity": 357,
+   "value_inr": 2314164.13
+  }
+ ],
+ "portfolio_total_inr": 60129435.83,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0140",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0140",
+          "dob": "1978-03-17",
+          "mobile": 1000000140,
+          "nominee": "REGISTERED",
+          "dematId": "IN3098242107270000",
+          "email": "synthetic0140@example.invalid",
+          "pan": "ZZZPZ0140Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11189828.25,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Milkfood Limited",
+           "isin": "INE588G01021",
+           "isinDescription": "MILKFOOD LIMITED EQ",
+           "units": 4695,
+           "lastTradedPrice": "2383.35"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE588G01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0Q3R01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE960E01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE091G01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE506V01022",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE306L01010",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0287",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0287",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "BirlaNu Limited",
+   "isin": "INE557A01011",
+   "quantity": 4078,
+   "value_inr": 15470853.53
+  },
+  {
+   "instrument_name": "Vinyl Chemicals (India) Limited",
+   "isin": "INE250B01029",
+   "quantity": 2879,
+   "value_inr": 9272156.17
+  },
+  {
+   "instrument_name": "Supreme Petrochem Limited",
+   "isin": "INE663A01033",
+   "quantity": 4990,
+   "value_inr": 19232536.14
+  },
+  {
+   "instrument_name": "Khaitan (India) Limited",
+   "isin": "INE731C01018",
+   "quantity": 463,
+   "value_inr": 71469.69
+  },
+  {
+   "instrument_name": "Aro Granite Industries Limited",
+   "isin": "INE210C01013",
+   "quantity": 1617,
+   "value_inr": 7743032.67
+  }
+ ],
+ "portfolio_total_inr": 51790048.2,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0287",
+      "maskedDematId": "XXXXXXXXXXXXX0670",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0287",
+          "dob": "1967-04-15",
+          "mobile": 1000000287,
+          "nominee": "REGISTERED",
+          "dematId": "12085076076490670",
+          "email": "synthetic0287@example.invalid",
+          "pan": "ZZZPZ0287Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8517692.78,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "BirlaNu Limited",
+           "isin": "INE557A01011",
+           "isinDescription": "BIRLANU LIMITED EQ",
+           "units": 4078,
+           "lastTradedPrice": "2040.26"
+          },
+          {
+           "issuerName": "Digicontent Limited",
+           "isin": "INE03JI01017",
+           "isinDescription": "DIGICONTENT LIMITED EQ",
+           "units": 1875,
+           "lastTradedPrice": "105.34"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0287",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0287",
+          "dob": "1959-02-19",
+          "mobile": 1000000287,
+          "nominee": "REGISTERED",
+          "dematId": "IN3012487752680000",
+          "email": "synthetic0287@example.invalid",
+          "pan": "ZZZPZ0287Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12812758.27,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Vinyl Chemicals (India) Limited",
+           "isin": "INE250B01029",
+           "isinDescription": "VINYL CHEMICALS (INDIA) LIMITED EQ",
+           "units": 2879,
+           "lastTradedPrice": "1737.43"
+          },
+          {
+           "issuerName": "Supreme Petrochem Limited",
+           "isin": "INE663A01033",
+           "isinDescription": "SUPREME PETROCHEM LIMITED EQ",
+           "units": 2495,
+           "lastTradedPrice": "3130.54"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE557A01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE250B01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE663A01033",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE731C01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE210C01013",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

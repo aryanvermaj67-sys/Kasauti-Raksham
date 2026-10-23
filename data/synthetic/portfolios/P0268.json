@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0268",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0268",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Ambuja Cements Limited",
+   "isin": "INE079A01024",
+   "quantity": 950,
+   "value_inr": 5125392.48
+  },
+  {
+   "instrument_name": "Union Bank of India",
+   "isin": "INE692A01016",
+   "quantity": 251,
+   "value_inr": 463705.55
+  },
+  {
+   "instrument_name": "Akash Infra-Projects Limited",
+   "isin": "INE737W01013",
+   "quantity": 1810,
+   "value_inr": 1715659.89
+  },
+  {
+   "instrument_name": "Tiger Logistics (India) Limited",
+   "isin": "INE906O01029",
+   "quantity": 1046,
+   "value_inr": 2763295.56
+  }
+ ],
+ "portfolio_total_inr": 10068053.48,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0268",
+      "maskedDematId": "XXXXXXXXXXXXX3810",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0268",
+          "dob": "1951-05-12",
+          "mobile": 1000000268,
+          "nominee": "REGISTERED",
+          "dematId": "12085336279353810",
+          "email": "synthetic0268@example.invalid",
+          "pan": "ZZZPZ0268Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1134920.46,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Tiger Logistics (India) Limited",
+           "isin": "INE906O01029",
+           "isinDescription": "TIGER LOGISTICS (INDIA) LIMITED EQ",
+           "units": 1046,
+           "lastTradedPrice": "1085.01"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0268",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0268",
+          "dob": "1991-08-16",
+          "mobile": 1000000268,
+          "nominee": "REGISTERED",
+          "dematId": "IN3044106314990000",
+          "email": "synthetic0268@example.invalid",
+          "pan": "ZZZPZ0268Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4386031.11,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Ambuja Cements Limited",
+           "isin": "INE079A01024",
+           "isinDescription": "AMBUJA CEMENTS LIMITED EQ",
+           "units": 950,
+           "lastTradedPrice": "3596.32"
+          },
+          {
+           "issuerName": "Union Bank of India",
+           "isin": "INE692A01016",
+           "isinDescription": "UNION BANK OF INDIA EQ",
+           "units": 251,
+           "lastTradedPrice": "1323.61"
+          },
+          {
+           "issuerName": "Akash Infra-Projects Limited",
+           "isin": "INE737W01013",
+           "isinDescription": "AKASH INFRA-PROJECTS LIMITED EQ",
+           "units": 1810,
+           "lastTradedPrice": "352.10"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE079A01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE692A01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE737W01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE906O01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

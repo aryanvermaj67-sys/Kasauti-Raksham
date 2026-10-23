@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0263",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0263",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "MBL Infrastructure Limited",
+   "isin": "INE912H01013",
+   "quantity": 2162,
+   "value_inr": 7873489.49
+  },
+  {
+   "instrument_name": "Advanced Enzyme Technologies Limited",
+   "isin": "INE837H01020",
+   "quantity": 40,
+   "value_inr": 273179.49
+  },
+  {
+   "instrument_name": "EMS Limited",
+   "isin": "INE0OV601013",
+   "quantity": 1039,
+   "value_inr": 4240241.47
+  },
+  {
+   "instrument_name": "Shiva Mills Limited",
+   "isin": "INE644Y01017",
+   "quantity": 4748,
+   "value_inr": 3125254.94
+  }
+ ],
+ "portfolio_total_inr": 15512165.39,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0263",
+      "maskedDematId": "XXXXXXXXXXXXX1840",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0263",
+          "dob": "1976-08-16",
+          "mobile": 1000000263,
+          "nominee": "REGISTERED",
+          "dematId": "12088693349231840",
+          "email": "synthetic0263@example.invalid",
+          "pan": "ZZZPZ0263Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4738277.03,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Advanced Enzyme Technologies Limited",
+           "isin": "INE837H01020",
+           "isinDescription": "ADVANCED ENZYME TECHNOLOGIES LIMITED EQ",
+           "units": 40,
+           "lastTradedPrice": "3953.19"
+          },
+          {
+           "issuerName": "EMS Limited",
+           "isin": "INE0OV601013",
+           "isinDescription": "EMS LIMITED EQ",
+           "units": 1039,
+           "lastTradedPrice": "2544.49"
+          },
+          {
+           "issuerName": "Shiva Mills Limited",
+           "isin": "INE644Y01017",
+           "isinDescription": "SHIVA MILLS LIMITED EQ",
+           "units": 4748,
+           "lastTradedPrice": "407.84"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0263",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0263",
+          "dob": "1967-09-16",
+          "mobile": 1000000263,
+          "nominee": "REGISTERED",
+          "dematId": "IN3070575652440000",
+          "email": "synthetic0263@example.invalid",
+          "pan": "ZZZPZ0263Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4523660.7,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "MBL Infrastructure Limited",
+           "isin": "INE912H01013",
+           "isinDescription": "MBL INFRASTRUCTURE LIMITED EQ",
+           "units": 2162,
+           "lastTradedPrice": "2092.35"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE912H01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE837H01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0OV601013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE644Y01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

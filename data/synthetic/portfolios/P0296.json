@@ -1,0 +1,128 @@
+{
+ "mock": true,
+ "case_id": "P0296",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0296",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Caliber Mining and Logistics Limited",
+   "isin": "INE11XY01018",
+   "quantity": 1512,
+   "value_inr": 5935320.26
+  },
+  {
+   "instrument_name": "Ashima Limited",
+   "isin": "INE440A01010",
+   "quantity": 4839,
+   "value_inr": 43387229.79
+  },
+  {
+   "instrument_name": "Bengal & Assam Company Limited",
+   "isin": "INE083K01017",
+   "quantity": 4182,
+   "value_inr": 2304004.46
+  }
+ ],
+ "portfolio_total_inr": 51626554.51,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0296",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0296",
+          "dob": "1959-05-17",
+          "mobile": 1000000296,
+          "nominee": "REGISTERED",
+          "dematId": "IN3043200368850000",
+          "email": "synthetic0296@example.invalid",
+          "pan": "ZZZPZ0296Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 39588956.0,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Liberty Shoes Limited",
+           "isin": "INE557B01019",
+           "isinDescription": "LIBERTY SHOES LIMITED EQ",
+           "units": 3687,
+           "lastTradedPrice": "3644.48"
+          },
+          {
+           "issuerName": "Cyient DLM Limited",
+           "isin": "INE055S01018",
+           "isinDescription": "CYIENT DLM LIMITED EQ",
+           "units": 3694,
+           "lastTradedPrice": "2967.98"
+          },
+          {
+           "issuerName": "Manoj Vaibhav Gems N Jewellers Limited",
+           "isin": "INE0KNT01012",
+           "isinDescription": "MANOJ VAIBHAV GEMS N JEWELLERS LIMITED EQ",
+           "units": 3579,
+           "lastTradedPrice": "1171.38"
+          },
+          {
+           "issuerName": "MV Electrosystems Limited",
+           "isin": "INE0OWZ01020",
+           "isinDescription": "MV ELECTROSYSTEMS LIMITED EQ",
+           "units": 3918,
+           "lastTradedPrice": "2806.45"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE11XY01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE440A01010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE083K01017",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

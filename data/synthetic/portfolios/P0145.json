@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0145",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0145",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Mtar Technologies Limited",
+   "isin": "INE864I01014",
+   "quantity": 2778,
+   "value_inr": 14523178.71
+  },
+  {
+   "instrument_name": "Xpro India Limited",
+   "isin": "INE445C01015",
+   "quantity": 3954,
+   "value_inr": 5985299.04
+  },
+  {
+   "instrument_name": "Navkar Urbanstructure Limited",
+   "isin": "INE268H01044",
+   "quantity": 3934,
+   "value_inr": 37487285.68
+  },
+  {
+   "instrument_name": "Precision Wires India Limited",
+   "isin": "INE372C01037",
+   "quantity": 301,
+   "value_inr": 2163937.11
+  },
+  {
+   "instrument_name": "Ambica Agarbathies & Aroma industries Limited",
+   "isin": "INE792B01012",
+   "quantity": 3783,
+   "value_inr": 23058663.51
+  },
+  {
+   "instrument_name": "GFL Limited",
+   "isin": "INE538A01037",
+   "quantity": 4408,
+   "value_inr": 46458022.06
+  }
+ ],
+ "portfolio_total_inr": 129676386.11,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0145",
+      "maskedDematId": "XXXXXXXXXXXXX1910",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0145",
+          "dob": "1969-09-12",
+          "mobile": 1000000145,
+          "nominee": "REGISTERED",
+          "dematId": "12084695010751910",
+          "email": "synthetic0145@example.invalid",
+          "pan": "ZZZPZ0145Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12777073.02,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Mtar Technologies Limited",
+           "isin": "INE864I01014",
+           "isinDescription": "MTAR TECHNOLOGIES LIMITED EQ",
+           "units": 2778,
+           "lastTradedPrice": "3690.67"
+          },
+          {
+           "issuerName": "Xpro India Limited",
+           "isin": "INE445C01015",
+           "isinDescription": "XPRO INDIA LIMITED EQ",
+           "units": 3954,
+           "lastTradedPrice": "638.44"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE864I01014",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE445C01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE268H01044",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE372C01037",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE792B01012",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE538A01037",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

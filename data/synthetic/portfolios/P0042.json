@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0042",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0042",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Siemens Limited",
+   "isin": "INE003A01024",
+   "quantity": 1661,
+   "value_inr": 604924.58
+  },
+  {
+   "instrument_name": "SPL Industries Limited",
+   "isin": "INE978G01016",
+   "quantity": 1644,
+   "value_inr": 10491949.48
+  },
+  {
+   "instrument_name": "Gujarat Mineral Development Corporation Limited",
+   "isin": "INE131A01031",
+   "quantity": 12975,
+   "value_inr": 135166284.23
+  },
+  {
+   "instrument_name": "Bajaj Finance Limited",
+   "isin": "INE296A01032",
+   "quantity": 4458,
+   "value_inr": 15052766.02
+  },
+  {
+   "instrument_name": "Shiva Global Agro Industries Limited",
+   "isin": "INE960E01019",
+   "quantity": 309,
+   "value_inr": 2748768.3
+  }
+ ],
+ "portfolio_total_inr": 164064692.61,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0042",
+      "maskedDematId": "XXXXXXXXXXXXX0250",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0042",
+          "dob": "1976-06-18",
+          "mobile": 1000000042,
+          "nominee": "REGISTERED",
+          "dematId": "12088623403880250",
+          "email": "synthetic0042@example.invalid",
+          "pan": "ZZZPZ0042Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9691857.9,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Gujarat Mineral Development Corporation Limited",
+           "isin": "INE131A01031",
+           "isinDescription": "GUJARAT MINERAL DEVELOPMENT CORPORATION LIMITED EQ",
+           "units": 2595,
+           "lastTradedPrice": "3734.82"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0042",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0042",
+          "dob": "1972-02-16",
+          "mobile": 1000000042,
+          "nominee": "REGISTERED",
+          "dematId": "IN3099447483120000",
+          "email": "synthetic0042@example.invalid",
+          "pan": "ZZZPZ0042Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12943598.91,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Siemens Limited",
+           "isin": "INE003A01024",
+           "isinDescription": "SIEMENS LIMITED EQ",
+           "units": 1661,
+           "lastTradedPrice": "194.35"
+          },
+          {
+           "issuerName": "SPL Industries Limited",
+           "isin": "INE978G01016",
+           "isinDescription": "SPL INDUSTRIES LIMITED EQ",
+           "units": 1644,
+           "lastTradedPrice": "3545.45"
+          },
+          {
+           "issuerName": "DLF Limited",
+           "isin": "INE271C01023",
+           "isinDescription": "DLF LIMITED EQ",
+           "units": 4232,
+           "lastTradedPrice": "1604.93"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE003A01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE978G01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE131A01031",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE296A01032",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE960E01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

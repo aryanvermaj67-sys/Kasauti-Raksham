@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0097",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0097",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Sundaram Multi Pap Limited",
+   "isin": "INE108E01023",
+   "quantity": 1084,
+   "value_inr": 1163410.58
+  },
+  {
+   "instrument_name": "Oriental Aromatics Limited",
+   "isin": "INE959C01023",
+   "quantity": 189,
+   "value_inr": 673488.83
+  },
+  {
+   "instrument_name": "Godawari Power And Ispat limited",
+   "isin": "INE177H01039",
+   "quantity": 13940,
+   "value_inr": 9289961.24
+  },
+  {
+   "instrument_name": "Popular Vehicles and Services Limited",
+   "isin": "INE772T01024",
+   "quantity": 2105,
+   "value_inr": 15545969.93
+  },
+  {
+   "instrument_name": "Allcargo Global Limited",
+   "isin": "INE1YPB01014",
+   "quantity": 408,
+   "value_inr": 2198678.36
+  }
+ ],
+ "portfolio_total_inr": 28871508.94,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0097",
+      "maskedDematId": "XXXXXXXXXXXXX0080",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0097",
+          "dob": "1987-02-18",
+          "mobile": 1000000097,
+          "nominee": "REGISTERED",
+          "dematId": "12085608547860080",
+          "email": "synthetic0097@example.invalid",
+          "pan": "ZZZPZ0097Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 932825.36,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Sundaram Multi Pap Limited",
+           "isin": "INE108E01023",
+           "isinDescription": "SUNDARAM MULTI PAP LIMITED EQ",
+           "units": 1084,
+           "lastTradedPrice": "860.54"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0097",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0097",
+          "dob": "1998-02-18",
+          "mobile": 1000000097,
+          "nominee": "REGISTERED",
+          "dematId": "IN3058840801390000",
+          "email": "synthetic0097@example.invalid",
+          "pan": "ZZZPZ0097Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1636743.46,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Oriental Aromatics Limited",
+           "isin": "INE959C01023",
+           "isinDescription": "ORIENTAL AROMATICS LIMITED EQ",
+           "units": 189,
+           "lastTradedPrice": "2366.98"
+          },
+          {
+           "issuerName": "Godawari Power And Ispat limited",
+           "isin": "INE177H01039",
+           "isinDescription": "GODAWARI POWER AND ISPAT LIMITED EQ",
+           "units": 1394,
+           "lastTradedPrice": "510.18"
+          },
+          {
+           "issuerName": "Federal-Mogul Goetze (India) Limited.",
+           "isin": "INE529A01010",
+           "isinDescription": "FEDERAL-MOGUL GOETZE (INDIA) LIMITED. EQ",
+           "units": 316,
+           "lastTradedPrice": "1513.27"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE108E01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE959C01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE177H01039",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE772T01024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE1YPB01014",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

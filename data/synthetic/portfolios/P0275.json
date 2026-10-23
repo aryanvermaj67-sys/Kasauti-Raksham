@@ -1,0 +1,140 @@
+{
+ "mock": true,
+ "case_id": "P0275",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0275",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Coastal Corporation Limited",
+   "isin": "INE377E01024",
+   "quantity": 837,
+   "value_inr": 1110482.73
+  },
+  {
+   "instrument_name": "Suprajit Engineering Limited",
+   "isin": "INE399C01030",
+   "quantity": 953,
+   "value_inr": 442649.56
+  },
+  {
+   "instrument_name": "Time Technoplast Limited",
+   "isin": "INE508G01029",
+   "quantity": 302,
+   "value_inr": 1674524.93
+  },
+  {
+   "instrument_name": "Sai Capital Limited",
+   "isin": "INE531X01018",
+   "quantity": 1965,
+   "value_inr": 1082770.89
+  },
+  {
+   "instrument_name": "Atal Realtech Limited",
+   "isin": "INE0ALR01029",
+   "quantity": 3324,
+   "value_inr": 8457872.12
+  },
+  {
+   "instrument_name": "Jaykay Enterprises Limited",
+   "isin": "INE903A01025",
+   "quantity": 839,
+   "value_inr": 2112925.38
+  }
+ ],
+ "portfolio_total_inr": 14881225.61,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0275",
+      "maskedDematId": "XXXXXXXXXXXXX6330",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0275",
+          "dob": "1965-02-12",
+          "mobile": 1000000275,
+          "nominee": "REGISTERED",
+          "dematId": "12082857084566330",
+          "email": "synthetic0275@example.invalid",
+          "pan": "ZZZPZ0275Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 934368.21,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Coastal Corporation Limited",
+           "isin": "INE377E01024",
+           "isinDescription": "COASTAL CORPORATION LIMITED EQ",
+           "units": 837,
+           "lastTradedPrice": "1116.33"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE377E01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE399C01030",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE508G01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE531X01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0ALR01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE903A01025",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

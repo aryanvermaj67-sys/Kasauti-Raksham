@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0187",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0187",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Runwal Enterprises Limited",
+   "isin": "INE804W01029",
+   "quantity": 125,
+   "value_inr": 489859.5
+  },
+  {
+   "instrument_name": "Juniper Hotels Limited",
+   "isin": "INE696F01016",
+   "quantity": 3574,
+   "value_inr": 28620686.76
+  },
+  {
+   "instrument_name": "Emkay Global Financial Services Limited",
+   "isin": "INE296H01011",
+   "quantity": 7452,
+   "value_inr": 39011195.87
+  },
+  {
+   "instrument_name": "Oriental Hotels Limited",
+   "isin": "INE750A01020",
+   "quantity": 1674,
+   "value_inr": 1985236.27
+  },
+  {
+   "instrument_name": "Gandhi Special Tubes Limited",
+   "isin": "INE524B01027",
+   "quantity": 2190,
+   "value_inr": 5708522.99
+  }
+ ],
+ "portfolio_total_inr": 75815501.39,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0187",
+      "maskedDematId": "XXXXXXXXXXXXX7670",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0187",
+          "dob": "1968-08-11",
+          "mobile": 1000000187,
+          "nominee": "REGISTERED",
+          "dematId": "12083744798847670",
+          "email": "synthetic0187@example.invalid",
+          "pan": "ZZZPZ0187Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12702295.48,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Runwal Enterprises Limited",
+           "isin": "INE804W01029",
+           "isinDescription": "RUNWAL ENTERPRISES LIMITED EQ",
+           "units": 125,
+           "lastTradedPrice": "2879.96"
+          },
+          {
+           "issuerName": "Emkay Global Financial Services Limited",
+           "isin": "INE296H01011",
+           "isinDescription": "EMKAY GLOBAL FINANCIAL SERVICES LIMITED EQ",
+           "units": 3726,
+           "lastTradedPrice": "3312.48"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0187",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0187",
+          "dob": "1953-06-16",
+          "mobile": 1000000187,
+          "nominee": "REGISTERED",
+          "dematId": "IN3053392923850000",
+          "email": "synthetic0187@example.invalid",
+          "pan": "ZZZPZ0187Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13067382.22,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Juniper Hotels Limited",
+           "isin": "INE696F01016",
+           "isinDescription": "JUNIPER HOTELS LIMITED EQ",
+           "units": 3574,
+           "lastTradedPrice": "3097.97"
+          },
+          {
+           "issuerName": "Brigade Hotel Ventures Limited",
+           "isin": "INE03NU01014",
+           "isinDescription": "BRIGADE HOTEL VENTURES LIMITED EQ",
+           "units": 4058,
+           "lastTradedPrice": "491.68"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE804W01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE696F01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE296H01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE750A01020",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE524B01027",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

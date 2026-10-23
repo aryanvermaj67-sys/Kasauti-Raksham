@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0147",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0147",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Aarti Industries Limited",
+   "isin": "INE769A01020",
+   "quantity": 4274,
+   "value_inr": 18538634.07
+  },
+  {
+   "instrument_name": "Vedant Fashions Limited",
+   "isin": "INE825V01034",
+   "quantity": 2569,
+   "value_inr": 478267.27
+  },
+  {
+   "instrument_name": "Asahi India Glass Limited",
+   "isin": "INE439A01020",
+   "quantity": 12835,
+   "value_inr": 50721898.36
+  },
+  {
+   "instrument_name": "Mtar Technologies Limited",
+   "isin": "INE864I01014",
+   "quantity": 1587,
+   "value_inr": 5316391.72
+  },
+  {
+   "instrument_name": "Silver Touch Technologies Limited",
+   "isin": "INE625X01026",
+   "quantity": 4370,
+   "value_inr": 14704617.74
+  }
+ ],
+ "portfolio_total_inr": 89759809.16,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0147",
+      "maskedDematId": "XXXXXXXXXXXXX8270",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0147",
+          "dob": "1955-02-14",
+          "mobile": 1000000147,
+          "nominee": "REGISTERED",
+          "dematId": "12083687536398270",
+          "email": "synthetic0147@example.invalid",
+          "pan": "ZZZPZ0147Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9102185.54,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Vedant Fashions Limited",
+           "isin": "INE825V01034",
+           "isinDescription": "VEDANT FASHIONS LIMITED EQ",
+           "units": 2569,
+           "lastTradedPrice": "109.47"
+          },
+          {
+           "issuerName": "Asahi India Glass Limited",
+           "isin": "INE439A01020",
+           "isinDescription": "ASAHI INDIA GLASS LIMITED EQ",
+           "units": 2567,
+           "lastTradedPrice": "2562.63"
+          },
+          {
+           "issuerName": "Borosil Scientific Limited",
+           "isin": "INE02L001032",
+           "isinDescription": "BOROSIL SCIENTIFIC LIMITED EQ",
+           "units": 1729,
+           "lastTradedPrice": "1297.10"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0147",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0147",
+          "dob": "1953-01-17",
+          "mobile": 1000000147,
+          "nominee": "REGISTERED",
+          "dematId": "IN3029054520990000",
+          "email": "synthetic0147@example.invalid",
+          "pan": "ZZZPZ0147Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13118615.6,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Aarti Industries Limited",
+           "isin": "INE769A01020",
+           "isinDescription": "AARTI INDUSTRIES LIMITED EQ",
+           "units": 4274,
+           "lastTradedPrice": "3069.40"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE769A01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE825V01034",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE439A01020",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE864I01014",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE625X01026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0169",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0169",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Tatva Chintan Pharma Chem Limited",
+   "isin": "INE0GK401011",
+   "quantity": 930,
+   "value_inr": 4506498.48
+  },
+  {
+   "instrument_name": "MphasiS Limited",
+   "isin": "INE356A01018",
+   "quantity": 338,
+   "value_inr": 430663.46
+  },
+  {
+   "instrument_name": "Lloyds Enterprises Limited",
+   "isin": "INE080I01025",
+   "quantity": 4523,
+   "value_inr": 3050906.45
+  }
+ ],
+ "portfolio_total_inr": 7988068.39,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0GK401011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE356A01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE080I01025",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

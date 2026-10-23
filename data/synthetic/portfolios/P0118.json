@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0118",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0118",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Technocraft Industries (India) Limited",
+   "isin": "INE545H01011",
+   "quantity": 305,
+   "value_inr": 979772.97
+  },
+  {
+   "instrument_name": "Kwality Wall's (India) Limited",
+   "isin": "INE2KCE01013",
+   "quantity": 12,
+   "value_inr": 65058.73
+  },
+  {
+   "instrument_name": "GSPL Transmission Limited",
+   "isin": "INE1TUG01013",
+   "quantity": 721,
+   "value_inr": 8220468.36
+  },
+  {
+   "instrument_name": "Anthem Biosciences Limited",
+   "isin": "INE0CZ201020",
+   "quantity": 3282,
+   "value_inr": 10057530.06
+  }
+ ],
+ "portfolio_total_inr": 19322830.12,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0118",
+      "maskedDematId": "XXXXXXXXXXXXX2340",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0118",
+          "dob": "1971-09-11",
+          "mobile": 1000000118,
+          "nominee": "REGISTERED",
+          "dematId": "12082901000092340",
+          "email": "synthetic0118@example.invalid",
+          "pan": "ZZZPZ0118Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4678326.9,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Anthem Biosciences Limited",
+           "isin": "INE0CZ201020",
+           "isinDescription": "ANTHEM BIOSCIENCES LIMITED EQ",
+           "units": 3282,
+           "lastTradedPrice": "1425.45"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0118",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0118",
+          "dob": "1977-05-15",
+          "mobile": 1000000118,
+          "nominee": "REGISTERED",
+          "dematId": "IN3033993006520000",
+          "email": "synthetic0118@example.invalid",
+          "pan": "ZZZPZ0118Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3364491.62,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Technocraft Industries (India) Limited",
+           "isin": "INE545H01011",
+           "isinDescription": "TECHNOCRAFT INDUSTRIES (INDIA) LIMITED EQ",
+           "units": 305,
+           "lastTradedPrice": "1451.77"
+          },
+          {
+           "issuerName": "Kwality Wall's (India) Limited",
+           "isin": "INE2KCE01013",
+           "isinDescription": "KWALITY WALL'S (INDIA) LIMITED EQ",
+           "units": 12,
+           "lastTradedPrice": "3903.07"
+          },
+          {
+           "issuerName": "GSPL Transmission Limited",
+           "isin": "INE1TUG01013",
+           "isinDescription": "GSPL TRANSMISSION LIMITED EQ",
+           "units": 721,
+           "lastTradedPrice": "3987.33"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE545H01011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE2KCE01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE1TUG01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0CZ201020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

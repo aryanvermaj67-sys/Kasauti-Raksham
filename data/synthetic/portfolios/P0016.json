@@ -1,0 +1,139 @@
+{
+ "mock": true,
+ "case_id": "P0016",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0016",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Deepa Jewellers Limited",
+   "isin": "INE1M2N01020",
+   "quantity": 1351,
+   "value_inr": 13270209.66
+  },
+  {
+   "instrument_name": "Softtech Engineers Limited",
+   "isin": "INE728Z01015",
+   "quantity": 895,
+   "value_inr": 5615159.73
+  },
+  {
+   "instrument_name": "Aditya Infotech Limited",
+   "isin": "INE819V01029",
+   "quantity": 2565,
+   "value_inr": 13049635.1
+  },
+  {
+   "instrument_name": "Wendt (India) Limited",
+   "isin": "INE274C01019",
+   "quantity": 3084,
+   "value_inr": 6124011.74
+  }
+ ],
+ "portfolio_total_inr": 38059016.23,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0016",
+      "maskedDematId": "XXXXXXXXXXXXX9390",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0016",
+          "dob": "1995-01-15",
+          "mobile": 1000000016,
+          "nominee": "REGISTERED",
+          "dematId": "12087227008699390",
+          "email": "synthetic0016@example.invalid",
+          "pan": "ZZZPZ0016Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16156258.13,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Happiest Minds Technologies Limited",
+           "isin": "INE419U01012",
+           "isinDescription": "HAPPIEST MINDS TECHNOLOGIES LIMITED EQ",
+           "units": 1795,
+           "lastTradedPrice": "1870.84"
+          },
+          {
+           "issuerName": "Ahlada Engineers Limited",
+           "isin": "INE00PV01013",
+           "isinDescription": "AHLADA ENGINEERS LIMITED EQ",
+           "units": 2109,
+           "lastTradedPrice": "3072.25"
+          },
+          {
+           "issuerName": "Entero Healthcare Solutions Limited",
+           "isin": "INE010601016",
+           "isinDescription": "ENTERO HEALTHCARE SOLUTIONS LIMITED EQ",
+           "units": 1384,
+           "lastTradedPrice": "2431.45"
+          },
+          {
+           "issuerName": "Inventure Growth & Securities Limited",
+           "isin": "INE878H01024",
+           "isinDescription": "INVENTURE GROWTH & SECURITIES LIMITED EQ",
+           "units": 948,
+           "lastTradedPrice": "3115.61"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE1M2N01020",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE728Z01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE819V01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE274C01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

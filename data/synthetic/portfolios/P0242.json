@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0242",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0242",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Railtel Corporation Of India Limited",
+   "isin": "INE0DD101019",
+   "quantity": 4722,
+   "value_inr": 2849432.14
+  },
+  {
+   "instrument_name": "Marksans Pharma Limited",
+   "isin": "INE750C01026",
+   "quantity": 2351,
+   "value_inr": 12584620.95
+  },
+  {
+   "instrument_name": "BSE Limited",
+   "isin": "INE118H01025",
+   "quantity": 40470,
+   "value_inr": 221423281.11
+  },
+  {
+   "instrument_name": "Bharat Gears Limited",
+   "isin": "INE561C01019",
+   "quantity": 3483,
+   "value_inr": 28255488.87
+  },
+  {
+   "instrument_name": "India Pesticides Limited",
+   "isin": "INE0D6701023",
+   "quantity": 1127,
+   "value_inr": 5048824.07
+  }
+ ],
+ "portfolio_total_inr": 270161647.14,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0242",
+      "maskedDematId": "XXXXXXXXXXXXX2800",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0242",
+          "dob": "1988-01-19",
+          "mobile": 1000000242,
+          "nominee": "REGISTERED",
+          "dematId": "12086838790772800",
+          "email": "synthetic0242@example.invalid",
+          "pan": "ZZZPZ0242Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 18706714.64,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Marksans Pharma Limited",
+           "isin": "INE750C01026",
+           "isinDescription": "MARKSANS PHARMA LIMITED EQ",
+           "units": 2351,
+           "lastTradedPrice": "2225.56"
+          },
+          {
+           "issuerName": "BSE Limited",
+           "isin": "INE118H01025",
+           "isinDescription": "BSE LIMITED EQ",
+           "units": 4047,
+           "lastTradedPrice": "3237.22"
+          },
+          {
+           "issuerName": "Biocon Limited",
+           "isin": "INE376G01013",
+           "isinDescription": "BIOCON LIMITED EQ",
+           "units": 97,
+           "lastTradedPrice": "3849.42"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0242",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0242",
+          "dob": "1956-02-15",
+          "mobile": 1000000242,
+          "nominee": "REGISTERED",
+          "dematId": "IN3048817855300000",
+          "email": "synthetic0242@example.invalid",
+          "pan": "ZZZPZ0242Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1173417.0,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Railtel Corporation Of India Limited",
+           "isin": "INE0DD101019",
+           "isinDescription": "RAILTEL CORPORATION OF INDIA LIMITED EQ",
+           "units": 4722,
+           "lastTradedPrice": "248.50"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0DD101019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE750C01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE118H01025",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE561C01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0D6701023",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

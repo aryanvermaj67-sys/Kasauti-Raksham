@@ -1,0 +1,150 @@
+{
+ "mock": true,
+ "case_id": "P0167",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0167",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Coastal Corporation Limited",
+   "isin": "INE377E01024",
+   "quantity": 4275,
+   "value_inr": 32119049.36
+  },
+  {
+   "instrument_name": "Gujarat Fluorochemicals Limited",
+   "isin": "INE09N301011",
+   "quantity": 195,
+   "value_inr": 539623.03
+  },
+  {
+   "instrument_name": "Knack Packaging Limited",
+   "isin": "INE17QZ01016",
+   "quantity": 44450,
+   "value_inr": 444763856.78
+  },
+  {
+   "instrument_name": "Emami Limited",
+   "isin": "INE548C01032",
+   "quantity": 3646,
+   "value_inr": 20375694.73
+  },
+  {
+   "instrument_name": "Suryalakshmi Cotton Mills Limited",
+   "isin": "INE713B01026",
+   "quantity": 185,
+   "value_inr": 351133.75
+  }
+ ],
+ "portfolio_total_inr": 498149357.65,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0167",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0167",
+          "dob": "1955-05-13",
+          "mobile": 1000000167,
+          "nominee": "REGISTERED",
+          "dematId": "IN3086851922650000",
+          "email": "synthetic0167@example.invalid",
+          "pan": "ZZZPZ0167Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 38536892.74,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Coastal Corporation Limited",
+           "isin": "INE377E01024",
+           "isinDescription": "COASTAL CORPORATION LIMITED EQ",
+           "units": 4275,
+           "lastTradedPrice": "3809.38"
+          },
+          {
+           "issuerName": "Gujarat Fluorochemicals Limited",
+           "isin": "INE09N301011",
+           "isinDescription": "GUJARAT FLUOROCHEMICALS LIMITED EQ",
+           "units": 195,
+           "lastTradedPrice": "1186.81"
+          },
+          {
+           "issuerName": "Knack Packaging Limited",
+           "isin": "INE17QZ01016",
+           "isinDescription": "KNACK PACKAGING LIMITED EQ",
+           "units": 4445,
+           "lastTradedPrice": "3728.25"
+          },
+          {
+           "issuerName": "Concord Biotech Limited",
+           "isin": "INE338H01029",
+           "isinDescription": "CONCORD BIOTECH LIMITED EQ",
+           "units": 3892,
+           "lastTradedPrice": "1399.87"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE377E01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE09N301011",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE17QZ01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE548C01032",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE713B01026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

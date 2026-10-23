@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0153",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0153",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "SMS Pharmaceuticals Limited",
+   "isin": "INE812G01025",
+   "quantity": 3850,
+   "value_inr": 13853962.81
+  },
+  {
+   "instrument_name": "Bharti Hexacom Limited",
+   "isin": "INE343G01021",
+   "quantity": 3853,
+   "value_inr": 11130812.63
+  },
+  {
+   "instrument_name": "Udayshivakumar Infra Limited",
+   "isin": "INE0N0Y01013",
+   "quantity": 2725,
+   "value_inr": 5330921.43
+  },
+  {
+   "instrument_name": "Markolines Pavement Technologies Limited",
+   "isin": "INE0FW001016",
+   "quantity": 2423,
+   "value_inr": 7285236.29
+  }
+ ],
+ "portfolio_total_inr": 37600933.16,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0153",
+      "maskedDematId": "XXXXXXXXXXXXX4830",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0153",
+          "dob": "1984-05-14",
+          "mobile": 1000000153,
+          "nominee": "REGISTERED",
+          "dematId": "12082428164714830",
+          "email": "synthetic0153@example.invalid",
+          "pan": "ZZZPZ0153Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11654800.0,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "SMS Pharmaceuticals Limited",
+           "isin": "INE812G01025",
+           "isinDescription": "SMS PHARMACEUTICALS LIMITED EQ",
+           "units": 3850,
+           "lastTradedPrice": "1827.06"
+          },
+          {
+           "issuerName": "Udayshivakumar Infra Limited",
+           "isin": "INE0N0Y01013",
+           "isinDescription": "UDAYSHIVAKUMAR INFRA LIMITED EQ",
+           "units": 2725,
+           "lastTradedPrice": "1695.64"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0153",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0153",
+          "dob": "1945-02-19",
+          "mobile": 1000000153,
+          "nominee": "REGISTERED",
+          "dematId": "IN3089794410200000",
+          "email": "synthetic0153@example.invalid",
+          "pan": "ZZZPZ0153Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11716230.29,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Bharti Hexacom Limited",
+           "isin": "INE343G01021",
+           "isinDescription": "BHARTI HEXACOM LIMITED EQ",
+           "units": 3853,
+           "lastTradedPrice": "2304.38"
+          },
+          {
+           "issuerName": "Markolines Pavement Technologies Limited",
+           "isin": "INE0FW001016",
+           "isinDescription": "MARKOLINES PAVEMENT TECHNOLOGIES LIMITED EQ",
+           "units": 2423,
+           "lastTradedPrice": "1171.05"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE812G01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE343G01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0N0Y01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0FW001016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

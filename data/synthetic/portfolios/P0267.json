@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0267",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0267",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Chemcon Speciality Chemicals Limited",
+   "isin": "INE03YM01018",
+   "quantity": 1489,
+   "value_inr": 591347.74
+  },
+  {
+   "instrument_name": "Competent Automobiles Company Limited",
+   "isin": "INE823B01015",
+   "quantity": 4058,
+   "value_inr": 18626336.76
+  },
+  {
+   "instrument_name": "Shiv Aum Steels Limited",
+   "isin": "INE719F01016",
+   "quantity": 17130,
+   "value_inr": 61054436.57
+  },
+  {
+   "instrument_name": "Clean Max Enviro Energy Solutions Limited",
+   "isin": "INE647U01026",
+   "quantity": 3399,
+   "value_inr": 2881161.51
+  },
+  {
+   "instrument_name": "GNG Electronics Limited",
+   "isin": "INE18JU01028",
+   "quantity": 635,
+   "value_inr": 671746.4
+  }
+ ],
+ "portfolio_total_inr": 83825028.98,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0267",
+      "maskedDematId": "XXXXXXXXXXXXX1500",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0267",
+          "dob": "1984-09-10",
+          "mobile": 1000000267,
+          "nominee": "REGISTERED",
+          "dematId": "12086297704021500",
+          "email": "synthetic0267@example.invalid",
+          "pan": "ZZZPZ0267Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16421158.74,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Competent Automobiles Company Limited",
+           "isin": "INE823B01015",
+           "isinDescription": "COMPETENT AUTOMOBILES COMPANY LIMITED EQ",
+           "units": 4058,
+           "lastTradedPrice": "3381.60"
+          },
+          {
+           "issuerName": "Shiv Aum Steels Limited",
+           "isin": "INE719F01016",
+           "isinDescription": "SHIV AUM STEELS LIMITED EQ",
+           "units": 1713,
+           "lastTradedPrice": "1575.38"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0267",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0267",
+          "dob": "1952-04-19",
+          "mobile": 1000000267,
+          "nominee": "REGISTERED",
+          "dematId": "IN3084805309230000",
+          "email": "synthetic0267@example.invalid",
+          "pan": "ZZZPZ0267Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13424980.77,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Chemcon Speciality Chemicals Limited",
+           "isin": "INE03YM01018",
+           "isinDescription": "CHEMCON SPECIALITY CHEMICALS LIMITED EQ",
+           "units": 1489,
+           "lastTradedPrice": "389.25"
+          },
+          {
+           "issuerName": "DB (International) Stock Brokers Limited",
+           "isin": "INE921B01025",
+           "isinDescription": "DB (INTERNATIONAL) STOCK BROKERS LIMITED EQ",
+           "units": 4032,
+           "lastTradedPrice": "3185.86"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE03YM01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE823B01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE719F01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE647U01026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE18JU01028",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

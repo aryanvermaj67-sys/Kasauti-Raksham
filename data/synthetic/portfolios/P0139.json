@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0139",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0139",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Oriental Aromatics Limited",
+   "isin": "INE959C01023",
+   "quantity": 1136,
+   "value_inr": 2178456.83
+  },
+  {
+   "instrument_name": "Biocon Limited",
+   "isin": "INE376G01013",
+   "quantity": 1863,
+   "value_inr": 820740.96
+  },
+  {
+   "instrument_name": "The South Indian Bank Limited",
+   "isin": "INE683A01023",
+   "quantity": 132,
+   "value_inr": 1336577.39
+  }
+ ],
+ "portfolio_total_inr": 4335775.18,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE959C01023",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE376G01013",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE683A01023",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

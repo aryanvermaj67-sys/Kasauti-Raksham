@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0208",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0208",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Black Rose Inds. Limited",
+   "isin": "INE761G01016",
+   "quantity": 4935,
+   "value_inr": 7654276.23
+  },
+  {
+   "instrument_name": "Bharat Wire Ropes Limited",
+   "isin": "INE316L01019",
+   "quantity": 1461,
+   "value_inr": 9747022.62
+  },
+  {
+   "instrument_name": "Urja Global Limited",
+   "isin": "INE550C01020",
+   "quantity": 79,
+   "value_inr": 98270.14
+  },
+  {
+   "instrument_name": "Anant Raj Limited",
+   "isin": "INE242C01024",
+   "quantity": 3044,
+   "value_inr": 25225479.66
+  }
+ ],
+ "portfolio_total_inr": 42725048.65,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0208",
+      "maskedDematId": "XXXXXXXXXXXXX1230",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0208",
+          "dob": "1997-07-11",
+          "mobile": 1000000208,
+          "nominee": "REGISTERED",
+          "dematId": "12083147790111230",
+          "email": "synthetic0208@example.invalid",
+          "pan": "ZZZPZ0208Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 12038262.3,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Black Rose Inds. Limited",
+           "isin": "INE761G01016",
+           "isinDescription": "BLACK ROSE INDS. LIMITED EQ",
+           "units": 4935,
+           "lastTradedPrice": "1444.70"
+          },
+          {
+           "issuerName": "Bharat Wire Ropes Limited",
+           "isin": "INE316L01019",
+           "isinDescription": "BHARAT WIRE ROPES LIMITED EQ",
+           "units": 1461,
+           "lastTradedPrice": "3359.80"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0208",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0208",
+          "dob": "1981-09-17",
+          "mobile": 1000000208,
+          "nominee": "REGISTERED",
+          "dematId": "IN3090312290720000",
+          "email": "synthetic0208@example.invalid",
+          "pan": "ZZZPZ0208Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11444454.12,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Urja Global Limited",
+           "isin": "INE550C01020",
+           "isinDescription": "URJA GLOBAL LIMITED EQ",
+           "units": 79,
+           "lastTradedPrice": "516.56"
+          },
+          {
+           "issuerName": "Anant Raj Limited",
+           "isin": "INE242C01024",
+           "isinDescription": "ANANT RAJ LIMITED EQ",
+           "units": 3044,
+           "lastTradedPrice": "3746.27"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE761G01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE316L01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE550C01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE242C01024",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0195",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0195",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Sterling Tools Limited",
+   "isin": "INE334A01023",
+   "quantity": 3219,
+   "value_inr": 1321739.12
+  },
+  {
+   "instrument_name": "Smartworks Coworking Spaces Limited",
+   "isin": "INE0NAZ01010",
+   "quantity": 74,
+   "value_inr": 51751.66
+  },
+  {
+   "instrument_name": "Agri-Tech (India) Limited",
+   "isin": "INE449G01018",
+   "quantity": 3547,
+   "value_inr": 15663816.41
+  },
+  {
+   "instrument_name": "Schaeffler India Limited",
+   "isin": "INE513A01022",
+   "quantity": 4674,
+   "value_inr": 43244200.16
+  },
+  {
+   "instrument_name": "Servotech Renewable Power System Limited",
+   "isin": "INE782X01033",
+   "quantity": 4070,
+   "value_inr": 22049873.61
+  },
+  {
+   "instrument_name": "Isgec Heavy Engineering Limited",
+   "isin": "INE858B01029",
+   "quantity": 4891,
+   "value_inr": 27894141.1
+  }
+ ],
+ "portfolio_total_inr": 110225522.06,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0195",
+      "maskedDematId": "XXXXXXXXXXXXX7770",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0195",
+          "dob": "1986-06-17",
+          "mobile": 1000000195,
+          "nominee": "REGISTERED",
+          "dematId": "12087850249017770",
+          "email": "synthetic0195@example.invalid",
+          "pan": "ZZZPZ0195Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 14646914.05,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Sterling Tools Limited",
+           "isin": "INE334A01023",
+           "isinDescription": "STERLING TOOLS LIMITED EQ",
+           "units": 3219,
+           "lastTradedPrice": "222.67"
+          },
+          {
+           "issuerName": "Smartworks Coworking Spaces Limited",
+           "isin": "INE0NAZ01010",
+           "isinDescription": "SMARTWORKS COWORKING SPACES LIMITED EQ",
+           "units": 74,
+           "lastTradedPrice": "428.60"
+          },
+          {
+           "issuerName": "Agri-Tech (India) Limited",
+           "isin": "INE449G01018",
+           "isinDescription": "AGRI-TECH (INDIA) LIMITED EQ",
+           "units": 3547,
+           "lastTradedPrice": "3918.36"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE334A01023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE0NAZ01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE449G01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE513A01022",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE782X01033",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE858B01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

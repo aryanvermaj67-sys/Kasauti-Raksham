@@ -1,0 +1,169 @@
+{
+ "mock": true,
+ "case_id": "P0026",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0026",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Nuvama Wealth Management Limited",
+   "isin": "INE531F01023",
+   "quantity": 3143,
+   "value_inr": 18405851.71
+  },
+  {
+   "instrument_name": "Parin Enterprises Limited",
+   "isin": "INE00U801010",
+   "quantity": 1982,
+   "value_inr": 5218308.65
+  },
+  {
+   "instrument_name": "Saatvik Green Energy Limited",
+   "isin": "INE13B501022",
+   "quantity": 4787,
+   "value_inr": 5315995.07
+  }
+ ],
+ "portfolio_total_inr": 28940155.43,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0026",
+      "maskedDematId": "XXXXXXXXXXXXX7480",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0026",
+          "dob": "1985-07-14",
+          "mobile": 1000000026,
+          "nominee": "REGISTERED",
+          "dematId": "12084289411157480",
+          "email": "synthetic0026@example.invalid",
+          "pan": "ZZZPZ0026Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 1034347.05,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "AVG Logistics Limited",
+           "isin": "INE680Z01018",
+           "isinDescription": "AVG LOGISTICS LIMITED EQ",
+           "units": 1485,
+           "lastTradedPrice": "696.53"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0026",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0026",
+          "dob": "1969-08-11",
+          "mobile": 1000000026,
+          "nominee": "REGISTERED",
+          "dematId": "IN3022976026880000",
+          "email": "synthetic0026@example.invalid",
+          "pan": "ZZZPZ0026Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 18594018.3,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Ashok Leyland Limited",
+           "isin": "INE208A01029",
+           "isinDescription": "ASHOK LEYLAND LIMITED EQ",
+           "units": 2010,
+           "lastTradedPrice": "2134.04"
+          },
+          {
+           "issuerName": "M.K. Exim (India) Limited",
+           "isin": "INE227F01010",
+           "isinDescription": "M.K. EXIM (INDIA) LIMITED EQ",
+           "units": 4646,
+           "lastTradedPrice": "2733.57"
+          },
+          {
+           "issuerName": "Liberty Shoes Limited",
+           "isin": "INE557B01019",
+           "isinDescription": "LIBERTY SHOES LIMITED EQ",
+           "units": 656,
+           "lastTradedPrice": "2445.78"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE531F01023",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE00U801010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE13B501022",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

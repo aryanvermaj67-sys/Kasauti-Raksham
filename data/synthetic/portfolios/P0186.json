@@ -1,0 +1,158 @@
+{
+ "mock": true,
+ "case_id": "P0186",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0186",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Mastek Limited",
+   "isin": "INE759A01021",
+   "quantity": 1103,
+   "value_inr": 3319931.93
+  },
+  {
+   "instrument_name": "Zydus Wellness Limited",
+   "isin": "INE768C01028",
+   "quantity": 4868,
+   "value_inr": 36972874.55
+  }
+ ],
+ "portfolio_total_inr": 40292806.48,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0186",
+      "maskedDematId": "XXXXXXXXXXXXX1780",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0186",
+          "dob": "1950-08-13",
+          "mobile": 1000000186,
+          "nominee": "REGISTERED",
+          "dematId": "12083517994471780",
+          "email": "synthetic0186@example.invalid",
+          "pan": "ZZZPZ0186Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 15473239.3,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Hariom Pipe Industries Limited",
+           "isin": "INE00EV01017",
+           "isinDescription": "HARIOM PIPE INDUSTRIES LIMITED EQ",
+           "units": 3371,
+           "lastTradedPrice": "3174.72"
+          },
+          {
+           "issuerName": "Maithan Alloys Limited",
+           "isin": "INE683C01011",
+           "isinDescription": "MAITHAN ALLOYS LIMITED EQ",
+           "units": 2626,
+           "lastTradedPrice": "1816.93"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0186",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0186",
+          "dob": "1948-07-19",
+          "mobile": 1000000186,
+          "nominee": "REGISTERED",
+          "dematId": "IN3046585857320000",
+          "email": "synthetic0186@example.invalid",
+          "pan": "ZZZPZ0186Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4964690.34,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Aarey Drugs & Pharmaceuticals Limited",
+           "isin": "INE198H01019",
+           "isinDescription": "AAREY DRUGS & PHARMACEUTICALS LIMITED EQ",
+           "units": 1302,
+           "lastTradedPrice": "1013.42"
+          },
+          {
+           "issuerName": "Prudent Corporate Advisory Services Limited",
+           "isin": "INE00F201020",
+           "isinDescription": "PRUDENT CORPORATE ADVISORY SERVICES LIMITED EQ",
+           "units": 1075,
+           "lastTradedPrice": "3390.90"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE759A01021",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE768C01028",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

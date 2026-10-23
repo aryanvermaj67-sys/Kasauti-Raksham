@@ -1,0 +1,117 @@
+{
+ "mock": true,
+ "case_id": "P0281",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0281",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Manipal Payment and Identity Solutions Limited",
+   "isin": "INE241U01028",
+   "quantity": 2556,
+   "value_inr": 14346882.28
+  },
+  {
+   "instrument_name": "Bajaj Electricals Limited",
+   "isin": "INE193E01025",
+   "quantity": 62,
+   "value_inr": 533182.06
+  }
+ ],
+ "portfolio_total_inr": 14880064.34,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0281",
+      "maskedDematId": "XXXXXXXXXXXXX2850",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0281",
+          "dob": "1948-02-14",
+          "mobile": 1000000281,
+          "nominee": "REGISTERED",
+          "dematId": "12085314029042850",
+          "email": "synthetic0281@example.invalid",
+          "pan": "ZZZPZ0281Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 7609466.83,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Country Club Hospitality & Holidays Limited",
+           "isin": "INE652F01027",
+           "isinDescription": "COUNTRY CLUB HOSPITALITY & HOLIDAYS LIMITED EQ",
+           "units": 444,
+           "lastTradedPrice": "2812.26"
+          },
+          {
+           "issuerName": "Lohia Corp Limited",
+           "isin": "INE0QJW01029",
+           "isinDescription": "LOHIA CORP LIMITED EQ",
+           "units": 4239,
+           "lastTradedPrice": "593.72"
+          },
+          {
+           "issuerName": "Whirlpool of India Limited",
+           "isin": "INE716A01013",
+           "isinDescription": "WHIRLPOOL OF INDIA LIMITED EQ",
+           "units": 4067,
+           "lastTradedPrice": "562.88"
+          },
+          {
+           "issuerName": "SS Retail Limited",
+           "isin": "INE1EQW01028",
+           "isinDescription": "SS RETAIL LIMITED EQ",
+           "units": 1277,
+           "lastTradedPrice": "1217.55"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE241U01028",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE193E01025",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

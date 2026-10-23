@@ -1,0 +1,92 @@
+{
+ "mock": true,
+ "case_id": "P0020",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0020",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Prudent Corporate Advisory Services Limited",
+   "isin": "INE00F201020",
+   "quantity": 707,
+   "value_inr": 4298662.4
+  },
+  {
+   "instrument_name": "Sun Pharmaceutical Industries Limited",
+   "isin": "INE044A01036",
+   "quantity": 980,
+   "value_inr": 2552932.66
+  },
+  {
+   "instrument_name": "Bhansali Engineering Polymers Limited",
+   "isin": "INE922A01025",
+   "quantity": 3419,
+   "value_inr": 12309737.23
+  },
+  {
+   "instrument_name": "AURUS GEM CORPORATION LIMITED",
+   "isin": "INE142K01011",
+   "quantity": 1858,
+   "value_inr": 12146910.69
+  },
+  {
+   "instrument_name": "Entertainment Network (India) Limited",
+   "isin": "INE265F01028",
+   "quantity": 3126,
+   "value_inr": 7441921.02
+  },
+  {
+   "instrument_name": "Emkay Global Financial Services Limited",
+   "isin": "INE296H01011",
+   "quantity": 3636,
+   "value_inr": 7951013.13
+  }
+ ],
+ "portfolio_total_inr": 46701177.13,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE00F201020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE044A01036",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE922A01025",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE142K01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE265F01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE296H01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

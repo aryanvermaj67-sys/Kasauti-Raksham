@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0106",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0106",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Essar Shipping Limited",
+   "isin": "INE122M01019",
+   "quantity": 2613,
+   "value_inr": 9177714.8
+  },
+  {
+   "instrument_name": "Arihant Foundations & Housing Limited",
+   "isin": "INE413D01011",
+   "quantity": 1516,
+   "value_inr": 5460018.5
+  },
+  {
+   "instrument_name": "Equitas Small Finance Bank Limited",
+   "isin": "INE063P01018",
+   "quantity": 4148,
+   "value_inr": 3899713.71
+  },
+  {
+   "instrument_name": "Midwest Limited",
+   "isin": "INE0XAD01024",
+   "quantity": 4458,
+   "value_inr": 24095306.19
+  }
+ ],
+ "portfolio_total_inr": 42632753.2,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0106",
+      "maskedDematId": "XXXXXXXXXXXXX2370",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0106",
+          "dob": "1980-01-11",
+          "mobile": 1000000106,
+          "nominee": "REGISTERED",
+          "dematId": "12086219695182370",
+          "email": "synthetic0106@example.invalid",
+          "pan": "ZZZPZ0106Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13383308.39,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "JM Financial Limited",
+           "isin": "INE780C01023",
+           "isinDescription": "JM FINANCIAL LIMITED EQ",
+           "units": 4899,
+           "lastTradedPrice": "222.40"
+          },
+          {
+           "issuerName": "Motilal Oswal Financial Services Limited",
+           "isin": "INE338I01027",
+           "isinDescription": "MOTILAL OSWAL FINANCIAL SERVICES LIMITED EQ",
+           "units": 4701,
+           "lastTradedPrice": "2209.64"
+          },
+          {
+           "issuerName": "Silgo Retail Limited",
+           "isin": "INE01II01013",
+           "isinDescription": "SILGO RETAIL LIMITED EQ",
+           "units": 607,
+           "lastTradedPrice": "3140.45"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0106",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0106",
+          "dob": "1973-04-19",
+          "mobile": 1000000106,
+          "nominee": "REGISTERED",
+          "dematId": "IN3081680361300000",
+          "email": "synthetic0106@example.invalid",
+          "pan": "ZZZPZ0106Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4885610.03,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Abbott India Limited",
+           "isin": "INE358A01014",
+           "isinDescription": "ABBOTT INDIA LIMITED EQ",
+           "units": 2477,
+           "lastTradedPrice": "1972.39"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE122M01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE413D01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE063P01018",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0XAD01024",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

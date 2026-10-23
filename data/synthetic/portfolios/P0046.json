@@ -1,0 +1,139 @@
+{
+ "mock": true,
+ "case_id": "P0046",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0046",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Dev Accelerator Limited",
+   "isin": "INE0VOV01021",
+   "quantity": 4260,
+   "value_inr": 34315755.2
+  },
+  {
+   "instrument_name": "SAGILITY LIMITED",
+   "isin": "INE0W2G01015",
+   "quantity": 656,
+   "value_inr": 1871449.56
+  },
+  {
+   "instrument_name": "Talbros Automotive Components Limited",
+   "isin": "INE187D01029",
+   "quantity": 4522,
+   "value_inr": 8426304.01
+  },
+  {
+   "instrument_name": "Avance Technologies Limited",
+   "isin": "INE758A01072",
+   "quantity": 2490,
+   "value_inr": 17482712.42
+  }
+ ],
+ "portfolio_total_inr": 62096221.19,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0046",
+      "maskedDematId": "XXXXXXXXXXXXX0710",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0046",
+          "dob": "1950-01-19",
+          "mobile": 1000000046,
+          "nominee": "REGISTERED",
+          "dematId": "12081337746830710",
+          "email": "synthetic0046@example.invalid",
+          "pan": "ZZZPZ0046Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16344745.16,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "North Eastern Carrying Corporation Limited",
+           "isin": "INE553C01016",
+           "isinDescription": "NORTH EASTERN CARRYING CORPORATION LIMITED EQ",
+           "units": 1027,
+           "lastTradedPrice": "2082.05"
+          },
+          {
+           "issuerName": "De Nora India Limited",
+           "isin": "INE244A01016",
+           "isinDescription": "DE NORA INDIA LIMITED EQ",
+           "units": 2501,
+           "lastTradedPrice": "675.34"
+          },
+          {
+           "issuerName": "Vinyl Chemicals (India) Limited",
+           "isin": "INE250B01029",
+           "isinDescription": "VINYL CHEMICALS (INDIA) LIMITED EQ",
+           "units": 2653,
+           "lastTradedPrice": "3740.26"
+          },
+          {
+           "issuerName": "GM Breweries Limited",
+           "isin": "INE075D01018",
+           "isinDescription": "GM BREWERIES LIMITED EQ",
+           "units": 1857,
+           "lastTradedPrice": "1397.17"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0VOV01021",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0W2G01015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE187D01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE758A01072",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

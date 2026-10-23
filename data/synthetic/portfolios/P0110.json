@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0110",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0110",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Shree Rama Multi-Tech Limited",
+   "isin": "INE879A01019",
+   "quantity": 4001,
+   "value_inr": 20369871.52
+  },
+  {
+   "instrument_name": "Vikran Engineering Limited",
+   "isin": "INE01R501028",
+   "quantity": 2935,
+   "value_inr": 2531424.58
+  },
+  {
+   "instrument_name": "Belrise Industries Limited",
+   "isin": "INE894V01022",
+   "quantity": 1931,
+   "value_inr": 2076355.43
+  },
+  {
+   "instrument_name": "Vikas EcoTech Limited",
+   "isin": "INE806A01020",
+   "quantity": 1627,
+   "value_inr": 11470002.58
+  },
+  {
+   "instrument_name": "Lohia Corp Limited",
+   "isin": "INE0QJW01029",
+   "quantity": 581,
+   "value_inr": 4775630.17
+  },
+  {
+   "instrument_name": "Bank of India",
+   "isin": "INE084A01016",
+   "quantity": 2613,
+   "value_inr": 7930051.0
+  }
+ ],
+ "portfolio_total_inr": 49153335.28,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0110",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0110",
+          "dob": "1988-06-17",
+          "mobile": 1000000110,
+          "nominee": "REGISTERED",
+          "dematId": "IN3025439806270000",
+          "email": "synthetic0110@example.invalid",
+          "pan": "ZZZPZ0110Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 17596263.21,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Shree Rama Multi-Tech Limited",
+           "isin": "INE879A01019",
+           "isinDescription": "SHREE RAMA MULTI-TECH LIMITED EQ",
+           "units": 4001,
+           "lastTradedPrice": "3807.13"
+          },
+          {
+           "issuerName": "Vikran Engineering Limited",
+           "isin": "INE01R501028",
+           "isinDescription": "VIKRAN ENGINEERING LIMITED EQ",
+           "units": 2935,
+           "lastTradedPrice": "530.30"
+          },
+          {
+           "issuerName": "Belrise Industries Limited",
+           "isin": "INE894V01022",
+           "isinDescription": "BELRISE INDUSTRIES LIMITED EQ",
+           "units": 1931,
+           "lastTradedPrice": "418.18"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE879A01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE01R501028",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE894V01022",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE806A01020",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0QJW01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE084A01016",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

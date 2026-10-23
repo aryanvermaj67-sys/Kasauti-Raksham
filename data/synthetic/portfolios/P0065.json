@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0065",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0065",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "OCCL Limited",
+   "isin": "INE0PK601023",
+   "quantity": 4572,
+   "value_inr": 13014221.79
+  },
+  {
+   "instrument_name": "Kesoram Industries Limited",
+   "isin": "INE087A01019",
+   "quantity": 3352,
+   "value_inr": 2315398.69
+  },
+  {
+   "instrument_name": "Diffusion Engineers Limited",
+   "isin": "INE184O01015",
+   "quantity": 772,
+   "value_inr": 3673618.53
+  },
+  {
+   "instrument_name": "CG Vak Software & Exports Limited",
+   "isin": "INE084D01010",
+   "quantity": 744,
+   "value_inr": 1197352.21
+  },
+  {
+   "instrument_name": "BOSCH HOME COMFORT INDIA LIMITED",
+   "isin": "INE782A01015",
+   "quantity": 2667,
+   "value_inr": 17238083.39
+  },
+  {
+   "instrument_name": "Goodluck India Limited",
+   "isin": "INE127I01024",
+   "quantity": 111,
+   "value_inr": 241608.92
+  }
+ ],
+ "portfolio_total_inr": 37680283.53,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0065",
+      "maskedDematId": "XXXXXXXXXXXXX8500",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0065",
+          "dob": "1949-06-14",
+          "mobile": 1000000065,
+          "nominee": "REGISTERED",
+          "dematId": "12089610732168500",
+          "email": "synthetic0065@example.invalid",
+          "pan": "ZZZPZ0065Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 13480429.08,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "OCCL Limited",
+           "isin": "INE0PK601023",
+           "isinDescription": "OCCL LIMITED EQ",
+           "units": 4572,
+           "lastTradedPrice": "2227.87"
+          },
+          {
+           "issuerName": "Kesoram Industries Limited",
+           "isin": "INE087A01019",
+           "isinDescription": "KESORAM INDUSTRIES LIMITED EQ",
+           "units": 3352,
+           "lastTradedPrice": "431.11"
+          },
+          {
+           "issuerName": "Diffusion Engineers Limited",
+           "isin": "INE184O01015",
+           "isinDescription": "DIFFUSION ENGINEERS LIMITED EQ",
+           "units": 772,
+           "lastTradedPrice": "2395.76"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0PK601023",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE087A01019",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE184O01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE084D01010",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE782A01015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE127I01024",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

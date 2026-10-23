@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0271",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0271",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "KSE Limited",
+   "isin": "INE953E01022",
+   "quantity": 3410,
+   "value_inr": 29335221.18
+  },
+  {
+   "instrument_name": "Dhoot Transmission Limited",
+   "isin": "INE01NH01023",
+   "quantity": 2260,
+   "value_inr": 5757868.99
+  },
+  {
+   "instrument_name": "Puravankara Limited",
+   "isin": "INE323I01011",
+   "quantity": 2842,
+   "value_inr": 10464311.56
+  },
+  {
+   "instrument_name": "Apollo Tyres Limited",
+   "isin": "INE438A01022",
+   "quantity": 4568,
+   "value_inr": 39984961.47
+  }
+ ],
+ "portfolio_total_inr": 85542363.2,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0271",
+      "maskedDematId": "XXXXXXXXXXXXX4250",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0271",
+          "dob": "1984-02-10",
+          "mobile": 1000000271,
+          "nominee": "REGISTERED",
+          "dematId": "12085116428754250",
+          "email": "synthetic0271@example.invalid",
+          "pan": "ZZZPZ0271Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 449727.3,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Zydus Wellness Limited",
+           "isin": "INE768C01028",
+           "isinDescription": "ZYDUS WELLNESS LIMITED EQ",
+           "units": 330,
+           "lastTradedPrice": "1362.81"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0271",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0271",
+          "dob": "1997-01-12",
+          "mobile": 1000000271,
+          "nominee": "REGISTERED",
+          "dematId": "IN3019621343450000",
+          "email": "synthetic0271@example.invalid",
+          "pan": "ZZZPZ0271Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 18755235.09,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Abans Financial Services Limited",
+           "isin": "INE00ZE01026",
+           "isinDescription": "ABANS FINANCIAL SERVICES LIMITED EQ",
+           "units": 4380,
+           "lastTradedPrice": "3673.78"
+          },
+          {
+           "issuerName": "Aastha Spintex Limited",
+           "isin": "INE2FMX01012",
+           "isinDescription": "AASTHA SPINTEX LIMITED EQ",
+           "units": 143,
+           "lastTradedPrice": "296.43"
+          },
+          {
+           "issuerName": "Shri Krishna Devcon Limited",
+           "isin": "INE997I01012",
+           "isinDescription": "SHRI KRISHNA DEVCON LIMITED EQ",
+           "units": 789,
+           "lastTradedPrice": "3322.80"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE953E01022",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE01NH01023",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE323I01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE438A01022",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

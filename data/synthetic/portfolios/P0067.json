@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0067",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0067",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Sandhar Technologies Limited",
+   "isin": "INE278H01035",
+   "quantity": 2079,
+   "value_inr": 7318578.14
+  },
+  {
+   "instrument_name": "Lemon Tree Hotels Limited",
+   "isin": "INE970X01018",
+   "quantity": 3476,
+   "value_inr": 24447763.94
+  },
+  {
+   "instrument_name": "Bharat Bijlee Limited",
+   "isin": "INE464A01036",
+   "quantity": 6150,
+   "value_inr": 32980116.38
+  },
+  {
+   "instrument_name": "Swarnsarita Jewels India Limited",
+   "isin": "INE967A01012",
+   "quantity": 3293,
+   "value_inr": 16647913.75
+  },
+  {
+   "instrument_name": "Dr. Reddy's Laboratories Limited",
+   "isin": "INE089A01031",
+   "quantity": 3436,
+   "value_inr": 13500073.33
+  }
+ ],
+ "portfolio_total_inr": 94894445.54,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0067",
+      "maskedDematId": "XXXXXXXXXXXXX7870",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0067",
+          "dob": "1995-07-11",
+          "mobile": 1000000067,
+          "nominee": "REGISTERED",
+          "dematId": "12084640100007870",
+          "email": "synthetic0067@example.invalid",
+          "pan": "ZZZPZ0067Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 17589122.55,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Sandhar Technologies Limited",
+           "isin": "INE278H01035",
+           "isinDescription": "SANDHAR TECHNOLOGIES LIMITED EQ",
+           "units": 2079,
+           "lastTradedPrice": "2641.48"
+          },
+          {
+           "issuerName": "Lemon Tree Hotels Limited",
+           "isin": "INE970X01018",
+           "isinDescription": "LEMON TREE HOTELS LIMITED EQ",
+           "units": 3476,
+           "lastTradedPrice": "3160.53"
+          },
+          {
+           "issuerName": "Bharat Bijlee Limited",
+           "isin": "INE464A01036",
+           "isinDescription": "BHARAT BIJLEE LIMITED EQ",
+           "units": 615,
+           "lastTradedPrice": "1807.29"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0067",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0067",
+          "dob": "1961-04-18",
+          "mobile": 1000000067,
+          "nominee": "REGISTERED",
+          "dematId": "IN3010453023560000",
+          "email": "synthetic0067@example.invalid",
+          "pan": "ZZZPZ0067Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 9459433.8,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Rama Phosphates Limited",
+           "isin": "INE809A01032",
+           "isinDescription": "RAMA PHOSPHATES LIMITED EQ",
+           "units": 4908,
+           "lastTradedPrice": "1927.35"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE278H01035",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE970X01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE464A01036",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE967A01012",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE089A01031",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

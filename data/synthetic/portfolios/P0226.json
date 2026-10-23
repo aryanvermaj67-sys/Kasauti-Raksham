@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0226",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0226",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Satin Creditcare Network Limited",
+   "isin": "INE836B01017",
+   "quantity": 4864,
+   "value_inr": 16061275.31
+  },
+  {
+   "instrument_name": "Aditya Birla Capital Limited",
+   "isin": "INE674K01013",
+   "quantity": 1684,
+   "value_inr": 2540614.78
+  },
+  {
+   "instrument_name": "Balkrishna Industries Limited",
+   "isin": "INE787D01026",
+   "quantity": 650,
+   "value_inr": 2115933.46
+  },
+  {
+   "instrument_name": "Sunil Healthcare Limited",
+   "isin": "INE671C01016",
+   "quantity": 3836,
+   "value_inr": 10974253.0
+  }
+ ],
+ "portfolio_total_inr": 31692076.55,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0226",
+      "maskedDematId": "XXXXXXXXXXXXX7900",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0226",
+          "dob": "1950-06-16",
+          "mobile": 1000000226,
+          "nominee": "REGISTERED",
+          "dematId": "12086316365877900",
+          "email": "synthetic0226@example.invalid",
+          "pan": "ZZZPZ0226Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3733838.99,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Prime Focus Limited",
+           "isin": "INE367G01038",
+           "isinDescription": "PRIME FOCUS LIMITED EQ",
+           "units": 583,
+           "lastTradedPrice": "3815.57"
+          },
+          {
+           "issuerName": "Tata Motors Passenger Vehicles Limited",
+           "isin": "INE155A01022",
+           "isinDescription": "TATA MOTORS PASSENGER VEHICLES LIMITED EQ",
+           "units": 436,
+           "lastTradedPrice": "2544.78"
+          },
+          {
+           "issuerName": "Gujarat Narmada Valley Fertilizers and Chemicals Limited",
+           "isin": "INE113A01013",
+           "isinDescription": "GUJARAT NARMADA VALLEY FERTILIZERS AND CHEMICALS LIMITED EQ",
+           "units": 1038,
+           "lastTradedPrice": "385.20"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0226",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0226",
+          "dob": "1975-08-16",
+          "mobile": 1000000226,
+          "nominee": "REGISTERED",
+          "dematId": "IN3026222842810000",
+          "email": "synthetic0226@example.invalid",
+          "pan": "ZZZPZ0226Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4388811.77,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Mangalam Global Enterprise Limited",
+           "isin": "INE0APB01032",
+           "isinDescription": "MANGALAM GLOBAL ENTERPRISE LIMITED EQ",
+           "units": 1169,
+           "lastTradedPrice": "3754.33"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE836B01017",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE674K01013",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE787D01026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE671C01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0177",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0177",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Balmer Lawrie & Company Limited",
+   "isin": "INE164A01016",
+   "quantity": 3489,
+   "value_inr": 10742878.45
+  },
+  {
+   "instrument_name": "Onesource Specialty Pharma Limited",
+   "isin": "INE013P01021",
+   "quantity": 2291,
+   "value_inr": 17377587.94
+  },
+  {
+   "instrument_name": "HALEOS LABS LIMITED",
+   "isin": "INE320X01016",
+   "quantity": 9554,
+   "value_inr": 45444288.71
+  },
+  {
+   "instrument_name": "Harrisons  Malayalam Limited",
+   "isin": "INE544A01019",
+   "quantity": 4951,
+   "value_inr": 19828381.05
+  },
+  {
+   "instrument_name": "Quality Power Electrical Equipments Limited",
+   "isin": "INE0SII01026",
+   "quantity": 3979,
+   "value_inr": 11108044.19
+  }
+ ],
+ "portfolio_total_inr": 104501180.34,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0177",
+      "maskedDematId": "XXXXXXXXXXXXX3740",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0177",
+          "dob": "1965-03-14",
+          "mobile": 1000000177,
+          "nominee": "REGISTERED",
+          "dematId": "12088456260103740",
+          "email": "synthetic0177@example.invalid",
+          "pan": "ZZZPZ0177Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16108044.97,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "HALEOS LABS LIMITED",
+           "isin": "INE320X01016",
+           "isinDescription": "HALEOS LABS LIMITED EQ",
+           "units": 4777,
+           "lastTradedPrice": "2382.73"
+          },
+          {
+           "issuerName": "Nahar Spinning Mills Limited",
+           "isin": "INE290A01027",
+           "isinDescription": "NAHAR SPINNING MILLS LIMITED EQ",
+           "units": 3288,
+           "lastTradedPrice": "1437.27"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0177",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0177",
+          "dob": "1993-09-17",
+          "mobile": 1000000177,
+          "nominee": "REGISTERED",
+          "dematId": "IN3099185737050000",
+          "email": "synthetic0177@example.invalid",
+          "pan": "ZZZPZ0177Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 17159635.97,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Balmer Lawrie & Company Limited",
+           "isin": "INE164A01016",
+           "isinDescription": "BALMER LAWRIE & COMPANY LIMITED EQ",
+           "units": 3489,
+           "lastTradedPrice": "2906.30"
+          },
+          {
+           "issuerName": "Onesource Specialty Pharma Limited",
+           "isin": "INE013P01021",
+           "isinDescription": "ONESOURCE SPECIALTY PHARMA LIMITED EQ",
+           "units": 2291,
+           "lastTradedPrice": "3063.97"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE164A01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE013P01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE320X01016",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE544A01019",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0SII01026",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

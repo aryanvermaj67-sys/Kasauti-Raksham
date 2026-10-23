@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0002",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0002",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "S H Kelkar and Company Limited",
+   "isin": "INE500L01026",
+   "quantity": 4739,
+   "value_inr": 4937816.33
+  },
+  {
+   "instrument_name": "Uniparts India Limited",
+   "isin": "INE244O01017",
+   "quantity": 579,
+   "value_inr": 206105.69
+  },
+  {
+   "instrument_name": "DCW Limited",
+   "isin": "INE500A01029",
+   "quantity": 18760,
+   "value_inr": 138055284.03
+  },
+  {
+   "instrument_name": "Bikaji Foods International Limited",
+   "isin": "INE00E101023",
+   "quantity": 837,
+   "value_inr": 1846586.22
+  },
+  {
+   "instrument_name": "Vipul Limited",
+   "isin": "INE946H01037",
+   "quantity": 3724,
+   "value_inr": 15655230.19
+  }
+ ],
+ "portfolio_total_inr": 160701022.46,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0002",
+      "maskedDematId": "XXXXXXXXXXXXX2840",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0002",
+          "dob": "1948-04-10",
+          "mobile": 1000000002,
+          "nominee": "REGISTERED",
+          "dematId": "12089537034062840",
+          "email": "synthetic0002@example.invalid",
+          "pan": "ZZZPZ0002Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 8197011.66,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Uniparts India Limited",
+           "isin": "INE244O01017",
+           "isinDescription": "UNIPARTS INDIA LIMITED EQ",
+           "units": 579,
+           "lastTradedPrice": "202.38"
+          },
+          {
+           "issuerName": "DCW Limited",
+           "isin": "INE500A01029",
+           "isinDescription": "DCW LIMITED EQ",
+           "units": 1876,
+           "lastTradedPrice": "3096.81"
+          },
+          {
+           "issuerName": "PC Jeweller Limited",
+           "isin": "INE785M01021",
+           "isinDescription": "PC JEWELLER LIMITED EQ",
+           "units": 663,
+           "lastTradedPrice": "3424.16"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0002",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0002",
+          "dob": "1970-05-11",
+          "mobile": 1000000002,
+          "nominee": "REGISTERED",
+          "dematId": "IN3087526126860000",
+          "email": "synthetic0002@example.invalid",
+          "pan": "ZZZPZ0002Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3721584.09,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "S H Kelkar and Company Limited",
+           "isin": "INE500L01026",
+           "isinDescription": "S H KELKAR AND COMPANY LIMITED EQ",
+           "units": 4739,
+           "lastTradedPrice": "785.31"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE500L01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE244O01017",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE500A01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE00E101023",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE946H01037",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

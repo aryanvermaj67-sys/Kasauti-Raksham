@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0089",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0089",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Tonbo Imaging India Limited",
+   "isin": "INE0LDG01026",
+   "quantity": 4243,
+   "value_inr": 15734130.42
+  },
+  {
+   "instrument_name": "RHI MAGNESITA INDIA LIMITED",
+   "isin": "INE743M01012",
+   "quantity": 1217,
+   "value_inr": 1436177.65
+  },
+  {
+   "instrument_name": "Uniinfo Telecom Services Limited",
+   "isin": "INE481Z01011",
+   "quantity": 3688,
+   "value_inr": 3665879.12
+  }
+ ],
+ "portfolio_total_inr": 20836187.19,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0LDG01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE743M01012",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE481Z01011",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

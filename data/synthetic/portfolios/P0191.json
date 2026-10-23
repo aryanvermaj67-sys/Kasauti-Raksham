@@ -1,0 +1,169 @@
+{
+ "mock": true,
+ "case_id": "P0191",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0191",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Moneyview Limited",
+   "isin": "INE0PTN01011",
+   "quantity": 4492,
+   "value_inr": 39251618.53
+  },
+  {
+   "instrument_name": "Aryaman Financial Services Limited",
+   "isin": "INE032E01017",
+   "quantity": 3134,
+   "value_inr": 3540347.19
+  },
+  {
+   "instrument_name": "Shaily Engineering Plastics Limited",
+   "isin": "INE151G01028",
+   "quantity": 2100,
+   "value_inr": 2001400.88
+  }
+ ],
+ "portfolio_total_inr": 44793366.6,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0191",
+      "maskedDematId": "XXXXXXXXXXXXX1570",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0191",
+          "dob": "1996-07-14",
+          "mobile": 1000000191,
+          "nominee": "REGISTERED",
+          "dematId": "12086381531601570",
+          "email": "synthetic0191@example.invalid",
+          "pan": "ZZZPZ0191Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 3807833.28,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "SRF Limited",
+           "isin": "INE647A01010",
+           "isinDescription": "SRF LIMITED EQ",
+           "units": 4672,
+           "lastTradedPrice": "534.69"
+          },
+          {
+           "issuerName": "Shankesh Jewellers Limited",
+           "isin": "INE1WFC01025",
+           "isinDescription": "SHANKESH JEWELLERS LIMITED EQ",
+           "units": 408,
+           "lastTradedPrice": "3210.20"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0191",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0191",
+          "dob": "1967-02-15",
+          "mobile": 1000000191,
+          "nominee": "REGISTERED",
+          "dematId": "IN3035920712030000",
+          "email": "synthetic0191@example.invalid",
+          "pan": "ZZZPZ0191Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 4422442.42,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Kernex Microsystems (India) Limited",
+           "isin": "INE202H01019",
+           "isinDescription": "KERNEX MICROSYSTEMS (INDIA) LIMITED EQ",
+           "units": 2327,
+           "lastTradedPrice": "1306.22"
+          },
+          {
+           "issuerName": "Abbott India Limited",
+           "isin": "INE358A01014",
+           "isinDescription": "ABBOTT INDIA LIMITED EQ",
+           "units": 464,
+           "lastTradedPrice": "2980.32"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0PTN01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE032E01017",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE151G01028",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

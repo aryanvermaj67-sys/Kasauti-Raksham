@@ -1,0 +1,139 @@
+{
+ "mock": true,
+ "case_id": "P0018",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0018",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "KN Agri Resources Limited",
+   "isin": "INE0KNW01016",
+   "quantity": 4012,
+   "value_inr": 13791934.17
+  },
+  {
+   "instrument_name": "V-Mart Retail Limited",
+   "isin": "INE665J01013",
+   "quantity": 1978,
+   "value_inr": 8229899.25
+  },
+  {
+   "instrument_name": "Acme Solar Holdings Limited",
+   "isin": "INE622W01025",
+   "quantity": 4030,
+   "value_inr": 9023134.85
+  },
+  {
+   "instrument_name": "Thomas Cook  (India)  Limited",
+   "isin": "INE332A01027",
+   "quantity": 151,
+   "value_inr": 81645.78
+  }
+ ],
+ "portfolio_total_inr": 31126614.05,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0018",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0018",
+          "dob": "1958-08-14",
+          "mobile": 1000000018,
+          "nominee": "REGISTERED",
+          "dematId": "IN3017952125380000",
+          "email": "synthetic0018@example.invalid",
+          "pan": "ZZZPZ0018Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 21749480.09,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "KN Agri Resources Limited",
+           "isin": "INE0KNW01016",
+           "isinDescription": "KN AGRI RESOURCES LIMITED EQ",
+           "units": 4012,
+           "lastTradedPrice": "2229.60"
+          },
+          {
+           "issuerName": "V-Mart Retail Limited",
+           "isin": "INE665J01013",
+           "isinDescription": "V-MART RETAIL LIMITED EQ",
+           "units": 1978,
+           "lastTradedPrice": "2768.63"
+          },
+          {
+           "issuerName": "Acme Solar Holdings Limited",
+           "isin": "INE622W01025",
+           "isinDescription": "ACME SOLAR HOLDINGS LIMITED EQ",
+           "units": 4030,
+           "lastTradedPrice": "1803.73"
+          },
+          {
+           "issuerName": "Thomas Cook  (India)  Limited",
+           "isin": "INE332A01027",
+           "isinDescription": "THOMAS COOK  (INDIA)  LIMITED EQ",
+           "units": 151,
+           "lastTradedPrice": "390.35"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0KNW01016",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE665J01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE622W01025",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE332A01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

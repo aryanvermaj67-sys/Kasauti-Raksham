@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0035",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0035",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Ahluwalia Contracts (India) Limited",
+   "isin": "INE758C01029",
+   "quantity": 3290,
+   "value_inr": 8350852.82
+  },
+  {
+   "instrument_name": "Milkfood Limited",
+   "isin": "INE588G01021",
+   "quantity": 3252,
+   "value_inr": 17133584.13
+  },
+  {
+   "instrument_name": "Cravatex Limited",
+   "isin": "INE145E01017",
+   "quantity": 3587,
+   "value_inr": 16336158.38
+  },
+  {
+   "instrument_name": "Race Eco Chain Limited",
+   "isin": "INE084Q01012",
+   "quantity": 2003,
+   "value_inr": 4587379.09
+  },
+  {
+   "instrument_name": "Garuda Construction and Engineering Limited",
+   "isin": "INE0JVO01026",
+   "quantity": 2791,
+   "value_inr": 6338802.9
+  },
+  {
+   "instrument_name": "Shradha Realty Limited",
+   "isin": "INE715Y01031",
+   "quantity": 1387,
+   "value_inr": 517097.75
+  }
+ ],
+ "portfolio_total_inr": 53263875.07,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0035",
+      "maskedDematId": "XXXXXXXXXXXXX9490",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0035",
+          "dob": "1985-08-17",
+          "mobile": 1000000035,
+          "nominee": "REGISTERED",
+          "dematId": "12089501943259490",
+          "email": "synthetic0035@example.invalid",
+          "pan": "ZZZPZ0035Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 18258879.18,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Ahluwalia Contracts (India) Limited",
+           "isin": "INE758C01029",
+           "isinDescription": "AHLUWALIA CONTRACTS (INDIA) LIMITED EQ",
+           "units": 3290,
+           "lastTradedPrice": "2105.37"
+          },
+          {
+           "issuerName": "Milkfood Limited",
+           "isin": "INE588G01021",
+           "isinDescription": "MILKFOOD LIMITED EQ",
+           "units": 3252,
+           "lastTradedPrice": "3484.69"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE758C01029",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE588G01021",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE145E01017",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE084Q01012",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE0JVO01026",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE715Y01031",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

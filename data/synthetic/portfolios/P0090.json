@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0090",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0090",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "JSW Holdings Limited",
+   "isin": "INE824G01012",
+   "quantity": 2272,
+   "value_inr": 7251280.54
+  },
+  {
+   "instrument_name": "Menon Bearings Limited",
+   "isin": "INE071D01033",
+   "quantity": 111,
+   "value_inr": 807663.51
+  },
+  {
+   "instrument_name": "Bank of Baroda",
+   "isin": "INE028A01039",
+   "quantity": 4823,
+   "value_inr": 21713477.81
+  },
+  {
+   "instrument_name": "Elpro International Limited",
+   "isin": "INE579B01039",
+   "quantity": 4532,
+   "value_inr": 11624180.99
+  },
+  {
+   "instrument_name": "Borosil Scientific Limited",
+   "isin": "INE02L001032",
+   "quantity": 3447,
+   "value_inr": 2167945.68
+  },
+  {
+   "instrument_name": "PNC Infratech Limited",
+   "isin": "INE195J01029",
+   "quantity": 1235,
+   "value_inr": 1360131.7
+  }
+ ],
+ "portfolio_total_inr": 44924680.23,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0090",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0090",
+          "dob": "1970-06-13",
+          "mobile": 1000000090,
+          "nominee": "REGISTERED",
+          "dematId": "IN3027253738470000",
+          "email": "synthetic0090@example.invalid",
+          "pan": "ZZZPZ0090Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 15221791.49,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "JSW Holdings Limited",
+           "isin": "INE824G01012",
+           "isinDescription": "JSW HOLDINGS LIMITED EQ",
+           "units": 2272,
+           "lastTradedPrice": "2088.36"
+          },
+          {
+           "issuerName": "Menon Bearings Limited",
+           "isin": "INE071D01033",
+           "isinDescription": "MENON BEARINGS LIMITED EQ",
+           "units": 111,
+           "lastTradedPrice": "3150.47"
+          },
+          {
+           "issuerName": "Bank of Baroda",
+           "isin": "INE028A01039",
+           "isinDescription": "BANK OF BARODA EQ",
+           "units": 4823,
+           "lastTradedPrice": "2099.80"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE824G01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE071D01033",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE028A01039",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE579B01039",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE02L001032",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE195J01029",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

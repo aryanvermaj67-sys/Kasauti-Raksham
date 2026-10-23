@@ -1,0 +1,191 @@
+{
+ "mock": true,
+ "case_id": "P0127",
+ "category": "mixed",
+ "failed_depository": null,
+ "customer_id": "SYN-C0127",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Ajanta Pharma Limited",
+   "isin": "INE031B01049",
+   "quantity": 1917,
+   "value_inr": 1913977.58
+  },
+  {
+   "instrument_name": "Godrej Industries Limited",
+   "isin": "INE233A01035",
+   "quantity": 130,
+   "value_inr": 685320.94
+  },
+  {
+   "instrument_name": "CG Vak Software & Exports Limited",
+   "isin": "INE084D01010",
+   "quantity": 5620,
+   "value_inr": 28053479.75
+  },
+  {
+   "instrument_name": "Kennametal India Limited",
+   "isin": "INE717A01029",
+   "quantity": 3808,
+   "value_inr": 25845505.49
+  },
+  {
+   "instrument_name": "DCX Systems Limited",
+   "isin": "INE0KL801015",
+   "quantity": 269,
+   "value_inr": 635198.02
+  }
+ ],
+ "portfolio_total_inr": 57133481.78,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0127",
+      "maskedDematId": "XXXXXXXXXXXXX2330",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0127",
+          "dob": "1960-01-13",
+          "mobile": 1000000127,
+          "nominee": "REGISTERED",
+          "dematId": "12085895187782330",
+          "email": "synthetic0127@example.invalid",
+          "pan": "ZZZPZ0127Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 5014100.2,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Godrej Industries Limited",
+           "isin": "INE233A01035",
+           "isinDescription": "GODREJ INDUSTRIES LIMITED EQ",
+           "units": 130,
+           "lastTradedPrice": "1984.45"
+          },
+          {
+           "issuerName": "CG Vak Software & Exports Limited",
+           "isin": "INE084D01010",
+           "isinDescription": "CG VAK SOFTWARE & EXPORTS LIMITED EQ",
+           "units": 2810,
+           "lastTradedPrice": "1692.57"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0127",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0127",
+          "dob": "1978-04-17",
+          "mobile": 1000000127,
+          "nominee": "REGISTERED",
+          "dematId": "IN3043114024720000",
+          "email": "synthetic0127@example.invalid",
+          "pan": "ZZZPZ0127Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 17061318.54,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Ajanta Pharma Limited",
+           "isin": "INE031B01049",
+           "isinDescription": "AJANTA PHARMA LIMITED EQ",
+           "units": 1917,
+           "lastTradedPrice": "378.98"
+          },
+          {
+           "issuerName": "Kriti Industries (India) Limited",
+           "isin": "INE479D01038",
+           "isinDescription": "KRITI INDUSTRIES (INDIA) LIMITED EQ",
+           "units": 4092,
+           "lastTradedPrice": "3991.89"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE031B01049",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE233A01035",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE084D01010",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_QUANTITY_DIFFERS"
+  },
+  {
+   "isin": "INE717A01029",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE0KL801015",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

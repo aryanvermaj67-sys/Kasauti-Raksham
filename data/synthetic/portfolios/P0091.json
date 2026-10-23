@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0091",
+ "category": "fake_app_only",
+ "failed_depository": null,
+ "customer_id": "SYN-C0091",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Anlon Healthcare Limited",
+   "isin": "INE0Y8W01025",
+   "quantity": 2638,
+   "value_inr": 7442758.44
+  },
+  {
+   "instrument_name": "Nagreeka Exports Limited",
+   "isin": "INE123B01028",
+   "quantity": 3424,
+   "value_inr": 9403784.44
+  },
+  {
+   "instrument_name": "Magadh Sugar & Energy Limited",
+   "isin": "INE347W01011",
+   "quantity": 741,
+   "value_inr": 1376667.01
+  },
+  {
+   "instrument_name": "Vedant Fashions Limited",
+   "isin": "INE825V01034",
+   "quantity": 1741,
+   "value_inr": 11498567.68
+  }
+ ],
+ "portfolio_total_inr": 29721777.57,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0091",
+      "maskedDematId": "XXXXXXXXXXXXX0300",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0091",
+          "dob": "1956-04-13",
+          "mobile": 1000000091,
+          "nominee": "REGISTERED",
+          "dematId": "12081325072000300",
+          "email": "synthetic0091@example.invalid",
+          "pan": "ZZZPZ0091Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11283228.96,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Panacea Biotec Limited",
+           "isin": "INE922B01023",
+           "isinDescription": "PANACEA BIOTEC LIMITED EQ",
+           "units": 3639,
+           "lastTradedPrice": "3100.64"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0091",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0091",
+          "dob": "1960-01-17",
+          "mobile": 1000000091,
+          "nominee": "REGISTERED",
+          "dematId": "IN3045947874850000",
+          "email": "synthetic0091@example.invalid",
+          "pan": "ZZZPZ0091Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 11990019.19,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Astral Limited",
+           "isin": "INE006I01046",
+           "isinDescription": "ASTRAL LIMITED EQ",
+           "units": 2306,
+           "lastTradedPrice": "3374.53"
+          },
+          {
+           "issuerName": "Somi Conveyor Beltings Limited",
+           "isin": "INE323J01019",
+           "isinDescription": "SOMI CONVEYOR BELTINGS LIMITED EQ",
+           "units": 814,
+           "lastTradedPrice": "3890.54"
+          },
+          {
+           "issuerName": "KEI Industries Limited",
+           "isin": "INE878B01027",
+           "isinDescription": "KEI INDUSTRIES LIMITED EQ",
+           "units": 1877,
+           "lastTradedPrice": "554.85"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0Y8W01025",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE123B01028",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE347W01011",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  },
+  {
+   "isin": "INE825V01034",
+   "outcome": "CONTRADICTS",
+   "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+  }
+ ]
+}

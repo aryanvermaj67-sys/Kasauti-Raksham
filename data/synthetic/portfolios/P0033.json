@@ -1,0 +1,180 @@
+{
+ "mock": true,
+ "case_id": "P0033",
+ "category": "real",
+ "failed_depository": null,
+ "customer_id": "SYN-C0033",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Manika Plastech Limited",
+   "isin": "INE0KWF01020",
+   "quantity": 580,
+   "value_inr": 788033.33
+  },
+  {
+   "instrument_name": "Nath Bio-Genes (India) Limited",
+   "isin": "INE448G01010",
+   "quantity": 261,
+   "value_inr": 198191.34
+  },
+  {
+   "instrument_name": "Nile Limited",
+   "isin": "INE445D01013",
+   "quantity": 4355,
+   "value_inr": 7189646.66
+  },
+  {
+   "instrument_name": "A B Cotspin India Limited",
+   "isin": "INE08PH01015",
+   "quantity": 3449,
+   "value_inr": 9736001.41
+  }
+ ],
+ "portfolio_total_inr": 17911872.74,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0033",
+      "maskedDematId": "XXXXXXXXXXXXX8780",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0033",
+          "dob": "1952-06-16",
+          "mobile": 1000000033,
+          "nominee": "REGISTERED",
+          "dematId": "12086658831718780",
+          "email": "synthetic0033@example.invalid",
+          "pan": "ZZZPZ0033Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 439640.0,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Manika Plastech Limited",
+           "isin": "INE0KWF01020",
+           "isinDescription": "MANIKA PLASTECH LIMITED EQ",
+           "units": 580,
+           "lastTradedPrice": "584.66"
+          },
+          {
+           "issuerName": "Nath Bio-Genes (India) Limited",
+           "isin": "INE448G01010",
+           "isinDescription": "NATH BIO-GENES (INDIA) LIMITED EQ",
+           "units": 261,
+           "lastTradedPrice": "385.20"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0033",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0033",
+          "dob": "1988-08-18",
+          "mobile": 1000000033,
+          "nominee": "REGISTERED",
+          "dematId": "IN3057712352430000",
+          "email": "synthetic0033@example.invalid",
+          "pan": "ZZZPZ0033Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 10112165.64,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Nile Limited",
+           "isin": "INE445D01013",
+           "isinDescription": "NILE LIMITED EQ",
+           "units": 4355,
+           "lastTradedPrice": "876.23"
+          },
+          {
+           "issuerName": "A B Cotspin India Limited",
+           "isin": "INE08PH01015",
+           "isinDescription": "A B COTSPIN INDIA LIMITED EQ",
+           "units": 3449,
+           "lastTradedPrice": "1825.51"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0KWF01020",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE448G01010",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE445D01013",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE08PH01015",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  }
+ ]
+}

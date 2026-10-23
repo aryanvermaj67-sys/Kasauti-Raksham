@@ -1,0 +1,59 @@
+{
+ "mock": true,
+ "case_id": "P0049",
+ "category": "no_demat",
+ "failed_depository": null,
+ "customer_id": "SYN-C0049",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "AvenuesAI Limited",
+   "isin": "INE483S01038",
+   "quantity": 1132,
+   "value_inr": 7082158.51
+  },
+  {
+   "instrument_name": "Praj Industries Limited",
+   "isin": "INE074A01025",
+   "quantity": 3890,
+   "value_inr": 16355162.19
+  },
+  {
+   "instrument_name": "Panorama Studios International Limited",
+   "isin": "INE258R01028",
+   "quantity": 1230,
+   "value_inr": 6043121.93
+  }
+ ],
+ "portfolio_total_inr": 29480442.63,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE483S01038",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE074A01025",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  },
+  {
+   "isin": "INE258R01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_NO_DEMAT"
+  }
+ ]
+}

@@ -1,0 +1,147 @@
+{
+ "mock": true,
+ "case_id": "P0190",
+ "category": "partial_depository_failure",
+ "failed_depository": "CDSL",
+ "customer_id": "SYN-C0190",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "STL Networks Limited",
+   "isin": "INE1VXE01018",
+   "quantity": 1678,
+   "value_inr": 9147234.96
+  },
+  {
+   "instrument_name": "Sun TV Network Limited",
+   "isin": "INE424H01027",
+   "quantity": 4177,
+   "value_inr": 40761494.66
+  },
+  {
+   "instrument_name": "Shiva Global Agro Industries Limited",
+   "isin": "INE960E01019",
+   "quantity": 1489,
+   "value_inr": 6192424.51
+  },
+  {
+   "instrument_name": "Control Print Limited",
+   "isin": "INE663B01015",
+   "quantity": 4624,
+   "value_inr": 28806588.52
+  },
+  {
+   "instrument_name": "Emami Limited",
+   "isin": "INE548C01032",
+   "quantity": 4807,
+   "value_inr": 11889627.2
+  },
+  {
+   "instrument_name": "DCM  Limited",
+   "isin": "INE498A01018",
+   "quantity": 43,
+   "value_inr": 110161.96
+  }
+ ],
+ "portfolio_total_inr": 96907531.81,
+ "depositories": {
+  "CDSL": {
+   "status": "FAILED",
+   "accounts": []
+  },
+  "NSDL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-nsdl-0190",
+      "maskedDematId": "XXXXXXXXXXXXXX0000",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0190",
+          "dob": "1946-02-17",
+          "mobile": 1000000190,
+          "nominee": "REGISTERED",
+          "dematId": "IN3023895865830000",
+          "email": "synthetic0190@example.invalid",
+          "pan": "ZZZPZ0190Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 19589973.42,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "STL Networks Limited",
+           "isin": "INE1VXE01018",
+           "isinDescription": "STL NETWORKS LIMITED EQ",
+           "units": 1678,
+           "lastTradedPrice": "3475.33"
+          },
+          {
+           "issuerName": "Sun TV Network Limited",
+           "isin": "INE424H01027",
+           "isinDescription": "SUN TV NETWORK LIMITED EQ",
+           "units": 4177,
+           "lastTradedPrice": "3293.84"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE1VXE01018",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE424H01027",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE960E01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE663B01015",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE548C01032",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE498A01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}

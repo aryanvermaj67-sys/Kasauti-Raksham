@@ -1,0 +1,154 @@
+{
+ "mock": true,
+ "case_id": "P0115",
+ "category": "partial_depository_failure",
+ "failed_depository": "NSDL",
+ "customer_id": "SYN-C0115",
+ "consent_scope": [
+  "CDSL",
+  "NSDL"
+ ],
+ "app_claims": [
+  {
+   "instrument_name": "Glottis Limited",
+   "isin": "INE0TQE01026",
+   "quantity": 3108,
+   "value_inr": 13543921.74
+  },
+  {
+   "instrument_name": "TechNVision Ventures Limited",
+   "isin": "INE314H01012",
+   "quantity": 899,
+   "value_inr": 160553.22
+  },
+  {
+   "instrument_name": "Fusion Finance Limited",
+   "isin": "INE139R01012",
+   "quantity": 4141,
+   "value_inr": 11389266.44
+  },
+  {
+   "instrument_name": "Kanchi Karpooram Limited",
+   "isin": "INE081G01019",
+   "quantity": 4292,
+   "value_inr": 42469254.17
+  },
+  {
+   "instrument_name": "NCC Limited",
+   "isin": "INE868B01028",
+   "quantity": 1235,
+   "value_inr": 7073627.36
+  },
+  {
+   "instrument_name": "Shalby Limited",
+   "isin": "INE597J01018",
+   "quantity": 1463,
+   "value_inr": 5216612.26
+  }
+ ],
+ "portfolio_total_inr": 79853235.19,
+ "depositories": {
+  "CDSL": {
+   "status": "OK",
+   "accounts": [
+    {
+     "Account": {
+      "linkedAccRef": "mock-cdsl-0115",
+      "maskedDematId": "XXXXXXXXXXXXX9480",
+      "type": "equities",
+      "version": "1.0.0",
+      "Profile": {
+       "Holders": {
+        "type": "SINGLE",
+        "Holder": [
+         {
+          "name": "Synthetic Customer 0115",
+          "dob": "1947-09-16",
+          "mobile": 1000000115,
+          "nominee": "REGISTERED",
+          "dematId": "12085055337499480",
+          "email": "synthetic0115@example.invalid",
+          "pan": "ZZZPZ0115Z",
+          "kycCompliance": true
+         }
+        ]
+       }
+      },
+      "Summary": {
+       "currentValue": 16269502.18,
+       "Investment": {
+        "Holdings": {
+         "type": "DEMAT",
+         "Holding": [
+          {
+           "issuerName": "Glottis Limited",
+           "isin": "INE0TQE01026",
+           "isinDescription": "GLOTTIS LIMITED EQ",
+           "units": 3108,
+           "lastTradedPrice": "1554.14"
+          },
+          {
+           "issuerName": "TechNVision Ventures Limited",
+           "isin": "INE314H01012",
+           "isinDescription": "TECHNVISION VENTURES LIMITED EQ",
+           "units": 899,
+           "lastTradedPrice": "85.92"
+          },
+          {
+           "issuerName": "Fusion Finance Limited",
+           "isin": "INE139R01012",
+           "isinDescription": "FUSION FINANCE LIMITED EQ",
+           "units": 4141,
+           "lastTradedPrice": "2743.78"
+          }
+         ]
+        }
+       }
+      },
+      "Transactions": {
+       "startDate": "2026-04-01",
+       "endDate": "2026-10-23",
+       "Transaction": []
+      }
+     }
+    }
+   ]
+  },
+  "NSDL": {
+   "status": "FAILED",
+   "accounts": []
+  }
+ },
+ "expected": [
+  {
+   "isin": "INE0TQE01026",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE314H01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE139R01012",
+   "outcome": "MATCHES",
+   "reason_code": "HOLDING_FOUND"
+  },
+  {
+   "isin": "INE081G01019",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE868B01028",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  },
+  {
+   "isin": "INE597J01018",
+   "outcome": "NO_RECORD",
+   "reason_code": "HOLDING_PARTIAL_COVERAGE"
+  }
+ ]
+}
