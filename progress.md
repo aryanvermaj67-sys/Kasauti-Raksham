@@ -6,10 +6,10 @@
 
 | | |
 |---|---|
-| Phase | 2 · Video + evidence (UI flow done; video and evidence open) |
-| Overall | 42% |
+| Phase | 2 · Video + evidence (UI flow and video source check done on dev clips; evidence chain open) |
+| Overall | 48% |
 | Demo-ready | No |
-| Last updated | 24 Oct 2026, 01:21 IST |
+| Last updated | 24 Oct 2026, 02:00 IST |
 
 ## Team and ownership
 
@@ -32,7 +32,8 @@
 - [ ] Offline fallback: Tesseract + Hindi pack + regex patterns
   - [x] Tesseract 5.4 installed at `C:\Program Files\Tesseract-OCR` with eng, hin (tessdata_fast), osd; not on PATH (set path in config)
   - [x] Regex patterns
-- [ ] Whisper weights (small or medium) and ffmpeg installed
+- [x] Whisper weights (small or medium) and ffmpeg installed
+  - faster-whisper small in `models/whisper`; ffmpeg 9.0.2
 
 **Data to download (log in data/SOURCES.md: URL, date, SHA-256)**
 - [x] SEBI registered intermediaries, scraped by `scripts/fetch_sebi.py` (needs `--ip 202.191.181.158` on a laptop whose DNS cannot resolve sebi.gov.in); counts match SEBI's stated totals
@@ -49,7 +50,8 @@
   - `scripts/fetch_registries.py` marks it "manual download needed"; expected path is `docs/sources/sahamati_fi_types_screenshot.png`
 
 **Offline kit**
-- [ ] CLIP or DINOv2 weights + imagehash
+- [x] CLIP or DINOv2 weights + imagehash
+  - open_clip ViT-B/32 laion2b + imagehash; weights in `models/` (git-ignored)
 - [ ] `pip download -r requirements.txt -d wheels/`, npm cache, Docker images if used
 - [x] Noto Sans Devanagari font (bundled via `@fontsource/noto-sans-devanagari`; the offline run made 0 non-localhost requests)
 - [ ] Pen drive with all of the above + backup demo video
@@ -109,14 +111,17 @@
 
 ### Phase 2 · Video + evidence (hours 16–28)
 - [ ] Consented "official" footage + 30 fakes with compression/crop variants (A)
-- [ ] Footage index (pHash + embeddings) (B)
-- [ ] Source matcher + transcript diff with time ranges (B)
+- [x] Footage index (pHash + embeddings) (B)
+  - `scripts/build_footage_index.py`: 6 dev clips, 270 frames, 561 timed words, built offline from `models/`
+- [x] Source matcher + transcript diff with time ranges (B)
+  - `comparators/video.py`; `POST /api/video` stores a MOCK footage_index record; dev clips only, not the consented set
+  - Open: consented footage item above stays unticked (no consented clips yet)
 - [ ] Evidence hash chain + `verify_chain()` + pack export (C)
 - [x] Response actions: 1930 pre-fill, contact, callback (D)
   - Trusted contact and callback are MOCK, logged to `data/runtime/events.jsonl`
 - [x] Full flow wired: share → confirm → consent → result → act (lead)
 
-**Checkpoint (partly reached 24 Oct):** UI flow runs end to end on demo-001 (EN, HI, offline); video and evidence items still open.
+**Checkpoint (partly reached 24 Oct):** UI flow runs end to end on demo-001 (EN, HI, offline); the video path runs with demo-001 plus `dev_01_fake.mp4` (EN, HI, offline). Consented footage and evidence chain still open.
 
 ### Phase 3 · Reviewer + validation (hours 28–40)
 - [ ] Reviewer console: queue, detail, approve/reject (D)
@@ -141,7 +146,8 @@
 |---|---|---|
 | Claim fields read | ≥ 95% | — |
 | Rule correctness (300) | 100% | 300/300 (1261 holding claims) |
-| Source match top-1 (30) | ≥ 90% | — |
+| Source match top-1 (30) | ≥ 90% | 30/30 = 100% (dev clips, not the consented set) |
+| Unindexed clips (sourceless) | NO_RECORD | 3/3 NO_RECORD; 0 misses returned MATCHES; slowest source search 1.23 s |
 | Adversarial | 0 false MATCHES | — |
 | Comprehension | 5 / 5 | — |
 | Result after consent | < 60 s | 0.78 s (demo-001, local) |
@@ -176,6 +182,9 @@
 | 24 Oct | Message templates are bundled into the frontend from backend/app/templates (vite fs.allow '..') | One source for every sentence, works offline, no extra endpoint |
 | 24 Oct | BSE candidates are labelled with the scrip name, not the issuer | For ETFs the issuer is the fund house, so all 11 Aditya Birla ETFs showed the same name |
 | 24 Oct | demo-002 shows no payee | A MATCHES payee needs a SEBI @valid handle; inventing one for a real broker was avoided, so the genuine-investor screenshot has holdings and a real broker name only |
+| 24 Oct | Stretch items (detector score, C2PA) not built | Not needed for the demo; time went to making the source match trustworthy |
+| 24 Oct | Index official frames also as 90% centre crops; frame cosine threshold 0.96 | CLIP alone could not tell a cropped copy from a look-alike slide; with crops indexed, cropped fakes reach 0.95+ while unindexed clips peak at 0.945 |
+| 24 Oct | faster-whisper gets audio decoded by ffmpeg | its PyAV decoder breaks on the installed PyAV release |
 
 ## Blockers
 
@@ -190,16 +199,23 @@
 - ~~The FR-8.4 MATCHES-only and NO_RECORD-only screens are not yet driven in the browser.~~ Resolved 24 Oct 01:21: demo-002 and demo-003 passed in EN and HI.
 - ~~The running dev backend predates the scrip-name label change.~~ Resolved 24 Oct 01:21: backend restarted in cache mode; /api/isin/candidates gives 11 distinct labels.
 - The Hindi UI strings (71 in the `ui` section) need a fluent reader, like the verdict templates.
+- Video: an off-centre 10% crop (top-left) matched only 35% of frames, so it gives NO_RECORD (a miss, never a false MATCHES). Consider multi-crop indexing or local features if the judges test this.
+- Video: the first `/api/video` request loads the models (about 15 s). Warm them at backend start before the demo.
+- Video: the complaint text does not yet mention the video finding.
+- Video: all results are on dev clips. Re-run make/index/eval with the consented clips once the forms are signed.
+- Environment note: an unrelated package (platformio) on this laptop pins click<8.4, and pip now has click 8.5.0. Not a Kasauti dependency.
 
 ## Next up
 
-1. Goal 3: video source check (footage index, source matcher, transcript diff) — lead / B
-2. Hindi templates and UI strings to a fluent Hindi reader — D
-3. Decide the LLM provider and add a key, or keep offline — B
-4. Push the repo to GitHub and add all four members — Aryan
+1. Record consented official clips (after forms are signed) and re-run `scripts/video_eval.py` — A / B
+2. Goal 4: evidence chain and reviewer console — lead / C / D
+3. Warm the video models at backend start; add the video finding to the complaint text — lead
+4. Hindi templates and UI strings to a fluent Hindi reader — D
+5. Push the repo to GitHub and add all four members — Aryan
 
 ## Changelog
 
+- 24 Oct 02:00 — Goal 3 done on dev clips: video source check (commits bc86138, da9f922, 5718061). GPU: torch 2.11.0+cu128 runs on the RTX 5050; CLIP and Whisper both run on CUDA; deps in `backend/requirements-video.txt`. `scripts/make_dev_clips.py` makes 6 official dev clips (45 one-second generated shape slides, a DEV label, the Windows synthetic TTS voice; no real face or voice), 6 re-voiced fakes from second 5 with one sentence changed plus CRF 32, centre 10% crop and 480p variants, 6 CRF 30 re-encodes and 3 never-indexed clips, all under `data/media/` (git-ignored). `scripts/build_footage_index.py`: 6 clips, 270 frames, 561 timed words, built offline from `models/`. `comparators/video.py`: a source is found only when at least 60% of frames match one clip at one offset (±1 s) with frame cosine ≥ 0.96; official frames are also indexed as 90% centre crops because CLIP put 10%-cropped fakes (0.85–0.92) in the same range as unrelated clips (up to 0.945); the word-level diff gives changed ranges such as 0:11-0:13. `POST /api/video` stores a MOCK footage_index RecordResponse by the clip's SHA-256; the router uses it for endorsement claims. `scripts/video_eval.py` (Python networking disabled): 30/30 top-1, 30/30 word judgements (re-encodes MATCHES, fakes CONTRADICTS), unindexed 3/3 NO_RECORD. The ENDORSEMENT_NO_SOURCE text no longer says "real" (EN/HI); a test bans fake/genuine/real in the endorsement messages. Playwright, full flow with demo-001 plus `dev_01_fake.mp4`, EN and HI, offline: PASSED; the video row reads "words were changed at 0:11-0:13" with the original words; screenshots in `docs/screens/*_video_*.png`; no empty glyph boxes. pytest 65 passed, ruff clean, 300/300, frontend build/lint/test clean. Ticked: footage index, source matcher, CLIP/imagehash weights, Whisper and ffmpeg. Not ticked: consented footage, evidence chain, reviewer console, signed consent forms. Overall 42% to 48% (16 of 33). Three decisions and five risks logged.
 - 24 Oct 01:21 — Samples demo-002/003, reader fix, settings fix (commits fdf953d, 08a3103, dd46ae6, 502524f). `.claude/settings.json` deny rules now name the real secret files (.env, .env.local, .env.production, .env.development, .env.test) instead of `.env.*`, so .env.example is readable; .env.development and .env.test were added beyond the request so they stay blocked. The earlier "`.env.example` does not exist" note was wrong (the deny rule `Read(./.env.*)` blocked reads; the file is tracked), so the Phase 0 item is ticked and that blocker removed. Backend restarted in cache mode; /api/isin/candidates gives 11 distinct labels for the Aditya Birla ETFs. New samples from the same render script and offline reader (cache never hand-written; demo-001 PNG hash unchanged): demo-002 = SYN-C0028 (real case P0028), 4 holdings plus broker ZERODHA BROKING LIMITED, all MATCHES; demo-003 = SYN-C0025 (P0025, NSDL failed), 3 holdings, all NO_RECORD HOLDING_PARTIAL_COVERAGE, summary INCOMPLETE. `data/demo_cache/demo_customers.json` maps each sample to its customer; the frontend MOCK login takes ?customer=SYN-Cnnnn. Reader fix found while making demo-002: Tesseract read "22,54 ,831"; the offline parser now joins a digit group split by a space before the comma, with a test (without it one holding was silently dropped). Playwright: demo-002 and demo-003 in EN and HI all PASSED, with FR-8.4 checks driven by the template texts. MATCHES: confirmation, no alert, no complaint/trusted contact/callback. NO_RECORD: "We could not verify this", three self-checks, optional callback, no complaint. demo-001 offline regression PASSED. Screenshots: docs/screens/*_demo-002_*.png and *_demo-003_*.png. pytest 60 passed, ruff clean, 300/300, frontend build/lint/test (4 pass) clean. Overall 39% to 42% (14 of 33 top-level checklist items).
 
 - 24 Oct 01:02 — Goal 2 done (bank app and result screen; commits 007adc5, b734a42, 7a6cd04, c82295b). `frontend/`: React + Vite + TypeScript + Tailwind; /api is proxied to :8000. /app runs share (screenshot; a video is hashed in the browser and becomes an endorsement claim) -> editable claim list -> MOCK AA consent with OTP -> two-column result -> actions. /reviewer is a placeholder. Every sentence comes from messages_en/hi.json (a new "ui" section, 71 strings, 0 missing in each language); a TypeScript-AST test fails on planted hard-coded sentences (6 kinds). New endpoints: GET /api/isin/candidates and POST /api/events (trusted contact and callback are MOCK, logged to data/runtime/events.jsonl, git-ignored). New reason code HOLDING_NAME_AMBIGUOUS, used when the customer skips the ISIN choice; only rules.holding gained that branch. Playwright (Python, installed Chromium) ran demo-001 in EN and HI, then again offline (non-localhost blocked, backend LLM_PROVIDER=cache): all PASSED; screenshots in docs/screens/; no empty glyph boxes in Hindi; the offline run made 0 non-localhost requests. Ambiguous-name picker checked in the browser: 11 candidate ISINs plus "I am not sure"; Continue stays disabled until a choice. pytest 54 passed, ruff clean, frontend build/lint/test (4 pass) clean, 300/300 portfolios. Ticked: frontend skeleton, result screen, response actions, full flow wired, Noto Sans Devanagari font (bundled via @fontsource/noto-sans-devanagari). Not ticked: `.env.example` is missing, so that Phase 0 item stays open. Video, footage, source matcher, evidence chain and reviewer console untouched. Three decisions and three open items logged.
