@@ -1,0 +1,60 @@
+{
+  "artifact_sha256": "4e8cd193893c5ff54d3eae76130ed6edd6d5ff4380413594b1538b2d481ed3b0",
+  "language": "en",
+  "claims": [
+    {
+      "id": "c1",
+      "type": "holding",
+      "fields": {
+        "instrument_name": "Reliance Industries",
+        "isin": null,
+        "quantity": 5000,
+        "value_inr": 15200000.0
+      }
+    },
+    {
+      "id": "c2",
+      "type": "holding",
+      "fields": {
+        "instrument_name": "Tata Consultancy Services",
+        "isin": null,
+        "quantity": 3000,
+        "value_inr": 12600000.0
+      }
+    },
+    {
+      "id": "c3",
+      "type": "holding",
+      "fields": {
+        "instrument_name": "Infosys",
+        "isin": null,
+        "quantity": 8000,
+        "value_inr": 12000000.0
+      }
+    },
+    {
+      "id": "c4",
+      "type": "broker",
+      "fields": {
+        "name": "Zyphra Stock Club",
+        "sebi_reg_no": null,
+        "claims_registered": true
+      }
+    },
+    {
+      "id": "c5",
+      "type": "payee",
+      "fields": {
+        "upi_id": "zyphrastock.invest@mockupi",
+        "account_no_last4": null,
+        "ifsc": null,
+        "described_as": "broker"
+      }
+    }
+  ],
+  "portfolio_total_inr": 39800000.0,
+  "reader": {
+    "provider": "offline",
+    "produced_at": "2026-10-24T00:01:55.821001+05:30"
+  }
+}
