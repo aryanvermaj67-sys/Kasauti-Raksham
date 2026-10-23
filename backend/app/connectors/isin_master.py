@@ -20,9 +20,14 @@ def _index():
             )
     with need(reg / "bse_equity.csv").open(encoding="utf-8") as f:
         for r in csv.DictReader(f):
-            for n in (r["issuer_name"], r["scrip_name"]):
-                names.setdefault(normalize_security(n), set()).add((r["isin"], r["issuer_name"]))
+            for n in (r["issuer_name"], r["scrip_name"]):  # label with the scrip name: it tells ETFs apart
+                names.setdefault(normalize_security(n), set()).add((r["isin"], r["scrip_name"]))
     return names
+
+
+def candidates(name: str) -> list[dict]:
+    """Every listed security the name could mean, for the customer to pick from."""
+    return [{"isin": i, "name": n} for i, n in sorted(dict(_index().get(normalize_security(name), set())).items())]
 
 
 def lookup(name: str) -> RecordResponse:
