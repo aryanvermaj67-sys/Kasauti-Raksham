@@ -1,6 +1,9 @@
 """Word lists for name matching (SEBI, NSE/BSE, RBI connectors and broker rules)."""
 
-# Dropped before an exact match: legal form only, so "Pvt. Ltd." vs "Private Limited" still matches exactly.
+# Security (share) names for ISIN mapping: only these suffixes are stripped, never words like capital or stock.
+SECURITY_SUFFIXES = frozenset({"ltd", "limited", "pvt", "private"})
+
+# Firm names (brokers, RBI list). Dropped before an exact match: legal form only ("Pvt. Ltd." = "Private Limited").
 LEGAL_WORDS = frozenset({"limited", "ltd", "pvt", "p", "private", "the", "co", "inc", "llp"})
 
 # Also dropped before the similarity score: words any broker name may carry, which say nothing about who it is.

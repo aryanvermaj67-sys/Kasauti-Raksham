@@ -18,3 +18,13 @@ def renderable(v):
         missing = set(re.findall(r"\{(\w+)\}", entry["app"] + entry["record"])) - set(v.params)
         assert not missing, f"{v.reason_code} ({lang}) lacks params {missing}"
     return v
+
+
+JOIN = {"en": " and ", "hi": " और "}
+
+
+def render(v, lang):
+    """Fill a verdict's templates the way the UI will: lists joined per language."""
+    params = {k: JOIN[lang].join(x) if isinstance(x, list) else x for k, x in v.params.items()}
+    entry = TEMPLATES[lang][v.reason_code]
+    return {k: re.sub(r"\{(\w+)\}", lambda m: str(params[m[1]]), entry[k]) for k in ("app", "record")}
