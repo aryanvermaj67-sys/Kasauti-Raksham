@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ResultScreen from '../components/ResultScreen.tsx'
 import {
   CUSTOMER,
+  ackPrompt,
   isinCandidates,
+  triggerPrompts,
+  type Prompt,
   readArtifact,
   runCheck,
   uploadVideo,
@@ -35,6 +38,10 @@ export default function BankApp() {
   const [otpWrong, setOtpWrong] = useState(false)
   const [result, setResult] = useState<CheckResult | null>(null)
   const [error, setError] = useState('')
+  const [prompts, setPrompts] = useState<Prompt[]>([])
+  useEffect(() => {
+    triggerPrompts(CUSTOMER.id).then(setPrompts).catch(() => setPrompts([])) // a failed trigger never blocks the app
+  }, [])
   const t = (key: string, params?: Params) => ui(lang, key, params)
 
   const fail = (e: unknown) => setError(t('error', { error: e instanceof Error ? e.message : String(e) }))
@@ -117,6 +124,21 @@ export default function BankApp() {
       </header>
       <p className="mb-4 text-sm text-slate-600">{t('signed_in', { customer: CUSTOMER.name })}</p>
       {error && <p className="mb-4 rounded bg-red-100 p-2 text-red-800">{error}</p>}
+
+      {step === 'home' && prompts[0] && (
+        <div data-testid="trigger-banner" className="mb-4 rounded-lg border-2 border-amber-500 bg-amber-50 p-3">
+          <p className="font-semibold">{t('trigger_title')}</p>
+          <p className="mt-1">{t(`trigger_${prompts[0].reason}`, { payee: prompts[0].payee })}</p>
+          <p className="mt-1 text-sm">{t('trigger_not_blocked')}</p>
+          <button
+            data-testid="trigger-dismiss"
+            className="mt-2 rounded border px-3 py-1"
+            onClick={() => ackPrompt(CUSTOMER.id, prompts[0].campaign).then(() => setPrompts((p) => p.slice(1)))}
+          >
+            {t('trigger_dismiss')}
+          </button>
+        </div>
+      )}
 
       {step === 'home' && (
         <button data-testid="check-button" className={`${btn} w-full`} onClick={() => setStep('upload')}>

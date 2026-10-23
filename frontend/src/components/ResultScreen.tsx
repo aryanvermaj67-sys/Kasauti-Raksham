@@ -27,13 +27,20 @@ export default function ResultScreen({ lang, result, claimset, onRestart }: Prop
 
   const field = (type: string, key: string) => claimset.claims.find((c) => c.type === type)?.fields[key] ?? null
   const totals = result.summary[0]?.params ?? {}
-  const complaint = t('complaint', {
-    ...totals,
-    broker: field('broker', 'name'),
-    payee: field('payee', 'upi_id') ?? field('payee', 'account_no_last4'),
-    check_id: result.check_id,
-    artifact_sha256: result.artifact_sha256,
-  })
+  const video = result.verdicts.find((v) => v.claim_type === 'endorsement' && v.outcome === 'CONTRADICTS')
+  const complaint = [
+    t('complaint', {
+      ...totals,
+      broker: field('broker', 'name'),
+      payee: field('payee', 'upi_id') ?? field('payee', 'account_no_last4'),
+      check_id: result.check_id,
+      artifact_sha256: result.artifact_sha256,
+    }),
+    video && t('complaint_video', video.params),
+    t('complaint_pack', { pack_id: `pack-${result.check_id}` }), // the reviewer exports this pack for the case
+  ]
+    .filter(Boolean)
+    .join(' ')
 
   async function act(kind: 'trusted_contact' | 'bank_callback' | 'still_pay') {
     await logEvent(kind, result.check_id)

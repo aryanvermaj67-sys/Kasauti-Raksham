@@ -50,7 +50,34 @@ export const runCheck = (claimset: ClaimSet, consentId: string) =>
 export const logEvent = (kind: 'trusted_contact' | 'bank_callback' | 'still_pay', checkId: string) =>
   post('/api/events', { kind, check_id: checkId, customer_id: CUSTOMER.id }).then(body<{ event_id: string }>)
 
-export type VideoMatch = { source_found: boolean; quote?: string; transcript: string }
+export type Prompt = { campaign: string; reason: string; payee: string }
+export const triggerPrompts = (customerId: string) =>
+  fetch(`/api/trigger/${customerId}`)
+    .then(body<{ prompts: Prompt[] }>)
+    .then((r) => r.prompts)
+export const ackPrompt = (customerId: string, campaign: string) => post(`/api/trigger/${customerId}/ack`, { campaign })
+
+// MOCK reviewer login: the role travels in a header; the backend refuses reviewer data to any other role
+const asReviewer = { 'X-Role': 'reviewer', 'Content-Type': 'application/json' }
+export const review = {
+  queue: () => fetch('/api/reviewer/queue', { headers: asReviewer }).then(body<{ check_id: string; customer_id: string; created_at: string }[]>),
+  detail: (id: string) => fetch(`/api/reviewer/checks/${id}`, { headers: asReviewer }).then(body<ReviewDetail>),
+  decide: (id: string, decision: 'approve' | 'reject', reason: string) =>
+    fetch(`/api/reviewer/checks/${id}/${decision}`, { method: 'POST', headers: asReviewer, body: JSON.stringify({ reason }) }).then(
+      body<{ registry_added?: { identifier: string }[]; other_customers_who_paid?: string[]; reason?: string }>,
+    ),
+  pack: (id: string) => fetch(`/api/reviewer/checks/${id}/pack`, { method: 'POST', headers: asReviewer }).then(body<{ pack_id: string; html: string }>),
+}
+export type ReviewDetail = {
+  check: { check_id: string; customer_id: string; status: string }
+  claims: Claim[]
+  result: CheckResult
+  records: Record<string, unknown>[]
+  hashes: { seq: number; kind: string; entry_hash: string; prev_hash: string | null }[]
+  chain: { valid: boolean; detail: string }
+}
+
+export type VideoMatch ={ source_found: boolean; quote?: string; transcript: string }
 
 /** FR-6 source check: the backend stores the result as evidence, keyed by the file's SHA-256. */
 export function uploadVideo(file: File) {
