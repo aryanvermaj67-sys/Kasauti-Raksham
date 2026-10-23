@@ -5,7 +5,7 @@ import {
   isinCandidates,
   readArtifact,
   runCheck,
-  sha256Hex,
+  uploadVideo,
   type Candidate,
   type CheckResult,
   type Claim,
@@ -58,8 +58,10 @@ export default function BankApp() {
     try {
       const cs = await readArtifact(shot)
       if (video) {
-        const media = await sha256Hex(video)
-        cs.claims.push({ id: `c${cs.claims.length + 1}`, type: 'endorsement', fields: { person: '', quote: '', media_sha256: media } })
+        const { media_sha256, match } = await uploadVideo(video)
+        // the words changed from the source are the claim; with no change or no source, the opening words
+        const quote = match.quote || match.transcript.split(' ').slice(0, 25).join(' ')
+        cs.claims.push({ id: `c${cs.claims.length + 1}`, type: 'endorsement', fields: { person: '', quote, media_sha256 } })
       }
       setClaimset(cs)
       setChoices({})
@@ -165,6 +167,7 @@ export default function BankApp() {
                       <input
                         className={input}
                         readOnly={k === 'isin'}
+                        data-testid={`field-${c.type}-${k}`}
                         type={NUMBER_FIELDS.includes(k) ? 'number' : 'text'}
                         value={v === null ? '' : String(v)}
                         onChange={(e) => setField(c.id, k, NUMBER_FIELDS.includes(k) ? (e.target.value === '' ? null : Number(e.target.value)) : e.target.value || null)}

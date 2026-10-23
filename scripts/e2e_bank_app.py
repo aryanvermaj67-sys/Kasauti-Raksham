@@ -73,13 +73,14 @@ def check_screen(expect, ui, text, count):
     }
 
 
-def run(lang, offline, base, demo):
+def run(lang, offline, base, demo, video=None):
     SCREENS.mkdir(parents=True, exist_ok=True)
     customer = json.loads((ROOT / "data" / "demo_cache" / "demo_customers.json").read_text())[f"{demo}.png"]
-    ui = json.loads((ROOT / "backend" / "app" / "templates" / f"messages_{lang}.json").read_text(encoding="utf-8"))[
-        "ui"
-    ]
-    tag = lang if demo == "demo-001" else f"{demo}_{lang}"
+    messages = json.loads(
+        (ROOT / "backend" / "app" / "templates" / f"messages_{lang}.json").read_text(encoding="utf-8")
+    )
+    ui = messages["ui"]
+    tag = (lang if demo == "demo-001" else f"{demo}_{lang}") if not video else f"video_{lang}"
     external = []
     with sync_playwright() as p:
         browser = p.chromium.launch()
@@ -98,8 +99,12 @@ def run(lang, offline, base, demo):
             page.click("[data-testid=lang-toggle]")
         page.click("[data-testid=check-button]")
         page.set_input_files("[data-testid=shot-input]", str(ROOT / "data" / "demo_cache" / f"{demo}.png"))
+        if video:
+            page.set_input_files("[data-testid=video-input]", str(ROOT / video))
         page.click("[data-testid=read-button]")
-        page.wait_for_selector("[data-testid=confirm]")
+        page.wait_for_selector("[data-testid=confirm]", timeout=120000)
+        if video:
+            page.fill("[data-testid=field-endorsement-person]", "DEV clip speaker")
         page.wait_for_function("!document.querySelector('[data-testid=continue]').disabled")
         page.screenshot(path=str(SCREENS / f"confirm_{tag}.png"), full_page=True)
         page.click("[data-testid=continue]")
@@ -109,6 +114,9 @@ def run(lang, offline, base, demo):
         page.wait_for_selector("[data-testid=result]", timeout=60000)
         text = page.inner_text("[data-testid=result]")
         checks = check_screen(EXPECT[demo], ui, text, lambda tid: page.locator(f"[data-testid={tid}]").count())
+        if video:  # the record column's fixed words before the {time_ranges} parameter
+            changed = messages["reason_codes"]["ENDORSEMENT_WORDS_CHANGED"]["record"].split("{")[0].strip()
+            checks["video finding shown (words changed, with time range)"] = changed in text
         complaint = page.input_value("[data-testid=complaint]") if EXPECT[demo] == "CONTRADICTS" else ""
         page.click("[data-testid=act-still_pay]")
         page.wait_for_selector(f"text={ui['still_pay_note']}")
@@ -137,6 +145,7 @@ if __name__ == "__main__":
     ap.add_argument("--lang", choices=["en", "hi"], default="en")
     ap.add_argument("--demo", choices=sorted(EXPECT), default="demo-001")
     ap.add_argument("--offline", action="store_true")
+    ap.add_argument("--video", help="also upload this clip, e.g. data/media/fakes/dev_01_fake.mp4")
     ap.add_argument("--base", default="http://localhost:5173")
     a = ap.parse_args()
-    sys.exit(run(a.lang, a.offline, a.base, a.demo))
+    sys.exit(run(a.lang, a.offline, a.base, a.demo, a.video))

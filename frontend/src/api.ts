@@ -50,7 +50,11 @@ export const runCheck = (claimset: ClaimSet, consentId: string) =>
 export const logEvent = (kind: 'trusted_contact' | 'bank_callback' | 'still_pay', checkId: string) =>
   post('/api/events', { kind, check_id: checkId, customer_id: CUSTOMER.id }).then(body<{ event_id: string }>)
 
-export async function sha256Hex(file: File) {
-  const digest = await crypto.subtle.digest('SHA-256', await file.arrayBuffer())
-  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('')
+export type VideoMatch = { source_found: boolean; quote?: string; transcript: string }
+
+/** FR-6 source check: the backend stores the result as evidence, keyed by the file's SHA-256. */
+export function uploadVideo(file: File) {
+  const form = new FormData()
+  form.append('file', file)
+  return fetch('/api/video', { method: 'POST', body: form }).then(body<{ media_sha256: string; match: VideoMatch }>)
 }
