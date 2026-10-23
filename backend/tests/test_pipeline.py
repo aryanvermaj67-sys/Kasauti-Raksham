@@ -120,3 +120,11 @@ def test_api_read_rejects_non_images():
 def test_300_synthetic_portfolios_all_correct():
     out = subprocess.run([sys.executable, str(ROOT / "scripts" / "run_portfolios.py")], capture_output=True, text=True)
     assert out.returncode == 0 and "300/300 correct" in out.stdout, out.stdout
+
+
+def test_offline_parse_tolerates_space_before_comma():
+    line = "Sintercom India Limited 4,405 shares Rs. 22,54 ,831"
+    cs = offline.parse(line, "0" * 64)
+    assert [(c.fields.instrument_name, c.fields.quantity, c.fields.value_inr) for c in cs.claims] == [
+        ("Sintercom India Limited", 4405, 2254831.0)
+    ]

@@ -38,6 +38,7 @@ def num(s):
 
 
 def parse(text: str, sha: str) -> ClaimSet:
+    text = re.sub(r"(\d) +,(\d)", r"\1,\2", text)  # OCR noise: "22,54 ,831" -> "22,54,831"
     lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
     claims = []
     for m in HOLDING.finditer(text):
