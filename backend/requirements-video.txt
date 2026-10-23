@@ -1,0 +1,8 @@
+# video source check (FR-6); install on top of requirements.txt
+# GPU: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128  (RTX 50xx needs CUDA 12.8+)
+torch==2.11.0
+torchvision==0.26.0
+open_clip_torch==3.3.0
+faster-whisper==1.2.1
+ctranslate2==4.8.3
+imagehash==4.3.2
