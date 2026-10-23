@@ -56,8 +56,13 @@ def fetch_list(intm_id, ip, jar):
     pages = -(-total // 25)
     rows = parse(first)
     for p in range(1, pages):
-        body = f"nextValue={p}&next=n&intmId={intm_id}&contPer=&name=&regNo=&email=&location=&exchange=&affiliate=&alp=&doDirect={p}&intmIds="
-        rows += parse(curl(["-e", base, "-H", f"Origin: https://{HOST}", "-H", "X-Requested-With: XMLHttpRequest", "-d", body, f"https://{HOST}/sebiweb/ajax/other/getintmfpiinfo.jsp"], ip, jar))
+        body = (
+            f"nextValue={p}&next=n&intmId={intm_id}&contPer=&name=&regNo=&email=&location=&exchange="
+            f"&affiliate=&alp=&doDirect={p}&intmIds="
+        )
+        headers = ["-H", f"Origin: https://{HOST}", "-H", "X-Requested-With: XMLHttpRequest"]
+        url = f"https://{HOST}/sebiweb/ajax/other/getintmfpiinfo.jsp"
+        rows += parse(curl(["-e", base, *headers, "-d", body, url], ip, jar))
     return total, rows
 
 

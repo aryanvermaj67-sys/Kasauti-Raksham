@@ -1,0 +1,1 @@
+extend = "backend/pyproject.toml"  # one lint config for backend/ and scripts/
