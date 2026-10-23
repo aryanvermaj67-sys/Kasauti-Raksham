@@ -1,13 +1,16 @@
+import hashlib
 import json
+import tempfile
 import uuid
 from datetime import datetime
+from pathlib import Path
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException, UploadFile
 from pydantic import BaseModel, ConfigDict
 
 from app import reader
-from app.connectors import DATA, isin_master
+from app.connectors import DATA, footage_index, isin_master
 from app.router.check import map_isins, run_check
 from app.schemas.claims import ClaimSet
 from app.schemas.evidence import IST
@@ -15,6 +18,7 @@ from app.schemas.verdict import CheckResult
 
 app = FastAPI(title="Kasauti")
 MAX_UPLOAD = 10 * 1024 * 1024
+MAX_VIDEO = 100 * 1024 * 1024
 EVENTS = DATA / "runtime" / "events.jsonl"
 
 
@@ -76,3 +80,23 @@ def api_events(event: Event):
     with EVENTS.open("a", encoding="utf-8") as f:
         f.write(json.dumps(row) + "\n")
     return {"event_id": row["event_id"], "logged_at": row["logged_at"], "mock": event.kind != "still_pay"}
+
+
+@app.post("/api/video")
+def api_video(file: UploadFile):
+    """FR-6 source check on an uploaded clip; the result is stored as the footage_index evidence record."""
+    if file.content_type not in {"video/mp4", "video/quicktime", "video/webm"}:
+        raise HTTPException(415, "upload an MP4, MOV or WebM video")
+    data = file.file.read(MAX_VIDEO + 1)
+    if len(data) > MAX_VIDEO:
+        raise HTTPException(413, "file over 100 MB")
+    from app.comparators import video  # torch and the models load on the first video only
+
+    if not (video.INDEX / "clips.json").exists():
+        raise HTTPException(503, "footage index not built: run python scripts/build_footage_index.py")
+    sha = hashlib.sha256(data).hexdigest()
+    with tempfile.TemporaryDirectory() as tmp:
+        path = Path(tmp) / "upload.mp4"
+        path.write_bytes(data)
+        result = video.match(path)
+    return {"media_sha256": sha, "match": result, "record": footage_index.store(sha, result)}

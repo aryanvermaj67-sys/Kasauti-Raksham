@@ -26,7 +26,7 @@
     "PAYEE_NO_REGISTRY_HIT": {"app": "Pay to {payee}", "record": "{payee} is not in the Suspect Registry. We could not verify who owns it."},
     "ENDORSEMENT_SOURCE_SAME": {"app": "{person}: \"{quote}\"", "record": "The original video has the same words."},
     "ENDORSEMENT_WORDS_CHANGED": {"app": "{person}: \"{quote}\"", "record": "The original video exists, but the words were changed at {time_ranges}. Original words: \"{original_quote}\"."},
-    "ENDORSEMENT_NO_SOURCE": {"app": "{person}: \"{quote}\"", "record": "We found no original video. We could not verify this. This does not mean the video is real."},
+    "ENDORSEMENT_NO_SOURCE": {"app": "{person}: \"{quote}\"", "record": "We found no original video to compare it with. We could not verify this. A missing source proves nothing either way."},
     "PLATFORM_ON_RBI_ALERT_LIST": {"app": "Platform: {name}", "record": "{name} is on the RBI Alert List of unauthorised forex platforms."},
     "PLATFORM_NOT_ON_ALERT_LIST": {"app": "Platform: {name}", "record": "{name} is not on the RBI Alert List. We could not verify this."}
   },

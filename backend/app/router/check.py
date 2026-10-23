@@ -3,7 +3,7 @@
 import uuid
 from datetime import datetime
 
-from app.connectors import aa_mock, isin_master, rbi, sebi, suspect_registry, upi
+from app.connectors import aa_mock, footage_index, isin_master, rbi, sebi, suspect_registry, upi
 from app.schemas.claims import ClaimSet
 from app.schemas.evidence import IST
 from app.schemas.verdict import CheckResult
@@ -42,7 +42,9 @@ def run_check(claimset: ClaimSet, customer_id: str, consent_id: str, scope=aa_mo
             records += [r for r in (reg, u) if r]
             v = rules.payee(c, reg, u)
         elif c.type == "endorsement":
-            v = rules.endorsement(c, None)  # shortcut: footage_index arrives with the video goal; until then NO_RECORD
+            rec = footage_index.lookup(f.media_sha256)  # stored by POST /api/video; None -> NO_RECORD
+            records += [rec] if rec else []
+            v = rules.endorsement(c, rec)
         else:
             rec = rbi.lookup(f.name)
             records.append(rec)

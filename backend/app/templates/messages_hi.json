@@ -26,7 +26,7 @@
     "PAYEE_NO_REGISTRY_HIT": {"app": "{payee} को भुगतान", "record": "{payee} संदिग्ध रजिस्ट्री में नहीं है। हम यह पुष्टि नहीं कर सके कि यह किसका है।", "needs_native_review": true},
     "ENDORSEMENT_SOURCE_SAME": {"app": "{person}: \"{quote}\"", "record": "मूल वीडियो में यही शब्द हैं।", "needs_native_review": true},
     "ENDORSEMENT_WORDS_CHANGED": {"app": "{person}: \"{quote}\"", "record": "मूल वीडियो मौजूद है, पर {time_ranges} पर शब्द बदले गए हैं। मूल शब्द: \"{original_quote}\"।", "needs_native_review": true},
-    "ENDORSEMENT_NO_SOURCE": {"app": "{person}: \"{quote}\"", "record": "हमें कोई मूल वीडियो नहीं मिला। हम इसकी पुष्टि नहीं कर सके। इसका मतलब यह नहीं कि वीडियो असली है।", "needs_native_review": true},
+    "ENDORSEMENT_NO_SOURCE": {"app": "{person}: \"{quote}\"", "record": "हमें तुलना के लिए कोई मूल वीडियो नहीं मिला। हम इसकी पुष्टि नहीं कर सके। मूल वीडियो न मिलना किसी भी बात का प्रमाण नहीं है।", "needs_native_review": true},
     "PLATFORM_ON_RBI_ALERT_LIST": {"app": "प्लेटफ़ॉर्म: {name}", "record": "{name} अनधिकृत फॉरेक्स प्लेटफ़ॉर्म की RBI अलर्ट सूची में है।", "needs_native_review": true},
     "PLATFORM_NOT_ON_ALERT_LIST": {"app": "प्लेटफ़ॉर्म: {name}", "record": "{name} RBI अलर्ट सूची में नहीं है। हम इसकी पुष्टि नहीं कर सके।", "needs_native_review": true}
   },
