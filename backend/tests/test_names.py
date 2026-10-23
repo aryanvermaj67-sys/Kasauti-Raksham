@@ -31,7 +31,7 @@ def test_ambiguous_security_name_gives_no_record():
         id="c1", type="holding", fields={"instrument_name": name, "isin": None, "quantity": 1, "value_inr": 1}
     )
     v = rules.holding(claim, aa(cdsl=[("INE002A01018", 1)]), rec)
-    assert (v.outcome, v.reason_code) == ("NO_RECORD", "HOLDING_ISIN_UNMAPPED")
+    assert (v.outcome, v.reason_code) == ("NO_RECORD", "HOLDING_NAME_AMBIGUOUS")
 
 
 def test_isin_collision_check_on_full_lists():

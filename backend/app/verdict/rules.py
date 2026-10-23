@@ -27,6 +27,9 @@ def holding(claim, aa_records, mapping=None):
     params = {"instrument_name": f.instrument_name, "quantity": f.quantity}
     evidence = [*aa_records, mapping]
     if f.isin is None:
+        count = mapping.payload["candidates"] if mapping else 0
+        if count > 1:  # the customer skipped choosing among several listed securities
+            return _v(claim, "NO_RECORD", "HOLDING_NAME_AMBIGUOUS", params | {"candidate_count": count}, evidence)
         return _v(claim, "NO_RECORD", "HOLDING_ISIN_UNMAPPED", params, evidence)
     facts = compare(f.isin, aa_records)
     failed = [d for d in ALL_DEPOSITORIES if d not in facts["ok_depositories"]]

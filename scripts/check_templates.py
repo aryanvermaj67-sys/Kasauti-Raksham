@@ -42,6 +42,13 @@ def main():
             e = msgs[lang][c]
             if c.startswith("HOLDING") and re.search(r"CDSL|NSDL", e["app"] + e["record"]):
                 problems.append(f"{lang} {c}: hard-coded depository name; use {{depositories}}")
+    ui = {lang: json.loads((TEMPLATES / f"messages_{lang}.json").read_text(encoding="utf-8"))["ui"] for lang in msgs}
+    keys = {lang: {k for k in u if not k.startswith("_")} for lang, u in ui.items()}
+    problems += [f"ui key {k} missing in {lang}" for lang in ui for k in set().union(*keys.values()) - keys[lang]]
+    for k in keys["en"] & keys["hi"]:
+        if set(re.findall(r"\{(\w+)\}", ui["en"][k])) != set(re.findall(r"\{(\w+)\}", ui["hi"][k])):
+            problems.append(f"ui {k}: placeholders differ between en and hi")
+    print(f"ui: {len(keys['en'])} strings, {len(keys['en'] ^ keys['hi'])} missing")
     for p in problems:
         print("problem:", p)
     return 1 if problems else 0
