@@ -1,22 +1,39 @@
 import hashlib
 import json
+import os
 import tempfile
 import uuid
+from contextlib import asynccontextmanager
 from datetime import datetime
 from pathlib import Path
 from typing import Literal
 
-from fastapi import FastAPI, HTTPException, UploadFile
+from fastapi import FastAPI, Header, HTTPException, UploadFile
 from pydantic import BaseModel, ConfigDict
 
-from app import reader
-from app.connectors import DATA, footage_index, isin_master
+from app import reader, reviewer, trigger
+from app.connectors import DATA, footage_index, isin_master, suspect_registry
+from app.evidence import hashchain, pack
 from app.router.check import map_isins, run_check
 from app.schemas.claims import ClaimSet
 from app.schemas.evidence import IST
 from app.schemas.verdict import CheckResult
 
-app = FastAPI(title="Kasauti")
+
+@asynccontextmanager
+async def lifespan(_app):
+    print(f"retention: purged {hashchain.purge_expired()} checks older than {hashchain.RETENTION_DAYS} days")
+    if os.environ.get("KASAUTI_PRELOAD_VIDEO", "1") == "1" and (ROOT / "models" / "whisper").exists():
+        from app.comparators import video
+
+        if (video.INDEX / "clips.json").exists():
+            video.warm_up()
+            print(f"video models ready ({video.device()})", flush=True)
+    yield
+
+
+app = FastAPI(title="Kasauti", lifespan=lifespan)
+ROOT = DATA.parent
 MAX_UPLOAD = 10 * 1024 * 1024
 MAX_VIDEO = 100 * 1024 * 1024
 EVENTS = DATA / "runtime" / "events.jsonl"
@@ -55,7 +72,9 @@ class CheckRequest(BaseModel):
 
 @app.post("/api/check", response_model=CheckResult)
 def api_check(req: CheckRequest):
-    return run_check(req.claimset, req.customer_id, req.consent_id, tuple(req.consent_scope))[0]
+    result, records = run_check(req.claimset, req.customer_id, req.consent_id, tuple(req.consent_scope))
+    hashchain.record_check(result, req.claimset, records, req.customer_id)  # FR-9: every check is chained
+    return result
 
 
 @app.get("/api/isin/candidates")
@@ -100,3 +119,68 @@ def api_video(file: UploadFile):
         path.write_bytes(data)
         result = video.match(path)
     return {"media_sha256": sha, "match": result, "record": footage_index.store(sha, result)}
+
+
+def reviewer_role(x_role: str) -> str:
+    """MOCK role from a header (no login in the prototype); only a reviewer may read evidence or decide."""
+    if x_role != "reviewer":
+        raise HTTPException(403, "reviewer role required")
+    return x_role
+
+
+@app.get("/api/reviewer/queue")
+def api_review_queue(x_role: str = Header("customer")):
+    reviewer_role(x_role)
+    return reviewer.queue()
+
+
+@app.get("/api/reviewer/checks/{check_id}")
+def api_review_detail(check_id: str, x_role: str = Header("customer")):
+    if not hashchain.checks("check_id = ?", (check_id,)):
+        raise HTTPException(404, "no such check")
+    return reviewer.detail(check_id, reviewer_role(x_role))
+
+
+class Decision(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    reason: str = ""
+
+
+@app.post("/api/reviewer/checks/{check_id}/approve")
+def api_review_approve(check_id: str, d: Decision, x_role: str = Header("customer")):
+    return reviewer.approve(check_id, reviewer_role(x_role), d.reason)
+
+
+@app.post("/api/reviewer/checks/{check_id}/reject")
+def api_review_reject(check_id: str, d: Decision, x_role: str = Header("customer")):
+    if not d.reason.strip():
+        raise HTTPException(422, "a reason is required to reject")
+    return reviewer.reject(check_id, reviewer_role(x_role), d.reason)
+
+
+@app.post("/api/reviewer/checks/{check_id}/pack")
+def api_review_pack(check_id: str, x_role: str = Header("customer")):
+    return pack.export(check_id, reviewer_role(x_role))
+
+
+@app.get("/api/registry/lookup")
+def api_registry_lookup(identifier: str):
+    """MOCK Suspect Registry lookup, as a bank would query it."""
+    return suspect_registry.lookup(identifier)
+
+
+@app.get("/api/trigger/{customer_id}")
+def api_trigger(customer_id: str):
+    """FR-1.2 prompts for this customer; a prompt asks for a check and never blocks a payment."""
+    return {"customer_id": customer_id, "prompts": trigger.for_customer(customer_id), "payment_blocked": False}
+
+
+class Ack(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    campaign: str
+
+
+@app.post("/api/trigger/{customer_id}/ack")
+def api_trigger_ack(customer_id: str, ack: Ack):
+    trigger.acknowledge(customer_id, ack.campaign)
+    return {"acknowledged": ack.campaign}

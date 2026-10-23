@@ -61,6 +61,14 @@ def _whisper():
     return WhisperModel("small", device="cpu", compute_type="int8", **kw), "cpu"
 
 
+def warm_up() -> None:
+    """Load both models and run one tiny inference each (first CUDA calls are slow)."""
+    embed(np.zeros((1, H, W, 3), np.uint8))
+    model, _ = _whisper()
+    list(model.transcribe(np.zeros(16000, np.float32), language="en")[0])
+    _index()
+
+
 def frames(path: Path) -> np.ndarray:
     """1 frame per second, scaled to W x H RGB."""
     cmd = [

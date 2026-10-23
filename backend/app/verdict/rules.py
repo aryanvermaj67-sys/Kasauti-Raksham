@@ -131,6 +131,7 @@ def endorsement(claim, footage_record=None):
     m = footage_record.payload if footage_record and footage_record.status == "OK" else {}
     if not m.get("source_found"):  # missing source is not proof: never MATCHES, never "real"
         return _v(claim, "NO_RECORD", "ENDORSEMENT_NO_SOURCE", params, [footage_record])
+    params |= {"source_clip": m.get("source_clip")}
     if m["transcript_same"]:
         return _v(claim, "MATCHES", "ENDORSEMENT_SOURCE_SAME", params, [footage_record])
     params |= {"time_ranges": m["changed_ranges"], "original_quote": m["original_quote"]}

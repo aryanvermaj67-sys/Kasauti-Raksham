@@ -43,6 +43,13 @@
   "SYN-C0243",
   "SYN-C0273"
  ],
+ "demo_payee_customers": [
+  "SYN-C0011",
+  "SYN-C0108",
+  "SYN-C0123",
+  "SYN-C0202",
+  "SYN-C0217"
+ ],
  "transactions": [
   {
    "customer_id": "SYN-C0003",
@@ -55789,6 +55796,51 @@
    "narration": "payment",
    "new_payee": false,
    "txn_id": "TXN006194"
+  },
+  {
+   "customer_id": "SYN-C0011",
+   "date": "2026-10-10",
+   "payee": "zyphrastock.invest@mockupi",
+   "amount_inr": 25596,
+   "narration": "Zyphra Stock Club wallet top-up",
+   "new_payee": true,
+   "txn_id": "TXN006195"
+  },
+  {
+   "customer_id": "SYN-C0108",
+   "date": "2026-09-26",
+   "payee": "zyphrastock.invest@mockupi",
+   "amount_inr": 76329,
+   "narration": "Zyphra Stock Club wallet top-up",
+   "new_payee": true,
+   "txn_id": "TXN006196"
+  },
+  {
+   "customer_id": "SYN-C0123",
+   "date": "2026-09-16",
+   "payee": "zyphrastock.invest@mockupi",
+   "amount_inr": 66692,
+   "narration": "Zyphra Stock Club wallet top-up",
+   "new_payee": true,
+   "txn_id": "TXN006197"
+  },
+  {
+   "customer_id": "SYN-C0202",
+   "date": "2026-10-17",
+   "payee": "zyphrastock.invest@mockupi",
+   "amount_inr": 61381,
+   "narration": "Zyphra Stock Club wallet top-up",
+   "new_payee": true,
+   "txn_id": "TXN006198"
+  },
+  {
+   "customer_id": "SYN-C0217",
+   "date": "2026-10-11",
+   "payee": "zyphrastock.invest@mockupi",
+   "amount_inr": 10591,
+   "narration": "Zyphra Stock Club wallet top-up",
+   "new_payee": true,
+   "txn_id": "TXN006199"
   }
  ]
 }

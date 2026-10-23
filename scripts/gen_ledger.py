@@ -86,11 +86,21 @@ def main():
     txns.sort(key=lambda t: (t["date"], t["customer_id"]))
     for n, t in enumerate(txns, 1):
         t["txn_id"] = f"TXN{n:06d}"
+    # demo-001's payee: a few other synthetic customers already paid it. Own seed and appended last, so every
+    # row above stays identical; no invest/IPO/trading words, so only a reviewed Suspect Registry entry can warn them.
+    demo = random.Random(1930)
+    demo_payers = sorted(demo.sample([c for c in customers if c != "SYN-C0001"], 5))
+    for c in demo_payers:
+        day = START + timedelta(days=demo.randrange(60, 110))
+        txns.append({"customer_id": c, "date": day.isoformat(), "payee": "zyphrastock.invest@mockupi",
+                     "amount_inr": demo.randrange(10000, 90000), "narration": "Zyphra Stock Club wallet top-up",
+                     "new_payee": True, "txn_id": f"TXN{len(txns) + 1:06d}"})  # fmt: skip
     OUT.mkdir(parents=True, exist_ok=True)
     ledger = {
         "mock": True,
         "note": "Synthetic payments ledger; not real bank data.",
         "injected_customers": sorted(injected),
+        "demo_payee_customers": demo_payers,
         "transactions": txns,
     }
     (OUT / "ledger.json").write_text(json.dumps(ledger, indent=1) + "\n", encoding="utf-8")
@@ -113,6 +123,7 @@ def main():
     (OUT / "suspect_registry_mock.json").write_text(json.dumps(registry, indent=1) + "\n", encoding="utf-8")
     print(f"ledger: {len(txns)} transactions, {len(customers)} customers, scam pattern injected for {len(injected)}")
     print(f"suspect_registry_mock: {len(listed)} entries (mock)")
+    print(f"demo payee zyphrastock.invest@mockupi paid by: {', '.join(demo_payers)}")
 
 
 if __name__ == "__main__":
