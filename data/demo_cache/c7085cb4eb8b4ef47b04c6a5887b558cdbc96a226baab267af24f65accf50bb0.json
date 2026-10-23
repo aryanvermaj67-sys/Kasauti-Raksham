@@ -1,0 +1,50 @@
+{
+  "artifact_sha256": "c7085cb4eb8b4ef47b04c6a5887b558cdbc96a226baab267af24f65accf50bb0",
+  "language": "en",
+  "claims": [
+    {
+      "id": "c1",
+      "type": "holding",
+      "fields": {
+        "instrument_name": "Century Extrusions Limited",
+        "isin": null,
+        "quantity": 3266,
+        "value_inr": 10188302.0
+      }
+    },
+    {
+      "id": "c2",
+      "type": "holding",
+      "fields": {
+        "instrument_name": "Trent Limited",
+        "isin": null,
+        "quantity": 2701,
+        "value_inr": 20898774.0
+      }
+    },
+    {
+      "id": "c3",
+      "type": "holding",
+      "fields": {
+        "instrument_name": "Shilpa Medicare Limited",
+        "isin": null,
+        "quantity": 4381,
+        "value_inr": 18429950.0
+      }
+    },
+    {
+      "id": "c4",
+      "type": "broker",
+      "fields": {
+        "name": "ZERODHA BROKING LIMITED",
+        "sebi_reg_no": null,
+        "claims_registered": true
+      }
+    }
+  ],
+  "portfolio_total_inr": 49517026.0,
+  "reader": {
+    "provider": "offline",
+    "produced_at": "2026-10-24T01:18:03.011833+05:30"
+  }
+}

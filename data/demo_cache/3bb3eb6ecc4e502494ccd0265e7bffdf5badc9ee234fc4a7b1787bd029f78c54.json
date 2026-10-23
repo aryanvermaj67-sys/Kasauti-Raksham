@@ -1,0 +1,60 @@
+{
+  "artifact_sha256": "3bb3eb6ecc4e502494ccd0265e7bffdf5badc9ee234fc4a7b1787bd029f78c54",
+  "language": "en",
+  "claims": [
+    {
+      "id": "c1",
+      "type": "holding",
+      "fields": {
+        "instrument_name": "Nahar Spinning Mills Limited",
+        "isin": null,
+        "quantity": 3006,
+        "value_inr": 1140506.0
+      }
+    },
+    {
+      "id": "c2",
+      "type": "holding",
+      "fields": {
+        "instrument_name": "Cravatex Limited",
+        "isin": null,
+        "quantity": 3242,
+        "value_inr": 244447.0
+      }
+    },
+    {
+      "id": "c3",
+      "type": "holding",
+      "fields": {
+        "instrument_name": "Sintercom India Limited",
+        "isin": null,
+        "quantity": 4405,
+        "value_inr": 2254831.0
+      }
+    },
+    {
+      "id": "c4",
+      "type": "holding",
+      "fields": {
+        "instrument_name": "BF Utilities Limited",
+        "isin": null,
+        "quantity": 3029,
+        "value_inr": 8171818.0
+      }
+    },
+    {
+      "id": "c5",
+      "type": "broker",
+      "fields": {
+        "name": "ZERODHA BROKING LIMITED",
+        "sebi_reg_no": null,
+        "claims_registered": true
+      }
+    }
+  ],
+  "portfolio_total_inr": 11811602.0,
+  "reader": {
+    "provider": "offline",
+    "produced_at": "2026-10-24T01:18:00.762771+05:30"
+  }
+}
