@@ -7,9 +7,9 @@
 | | |
 |---|---|
 | Phase | 2 · Video + evidence (UI flow done; video and evidence open) |
-| Overall | 39% |
+| Overall | 42% |
 | Demo-ready | No |
-| Last updated | 24 Oct 2026, 01:02 IST |
+| Last updated | 24 Oct 2026, 01:21 IST |
 
 ## Team and ownership
 
@@ -91,8 +91,7 @@
   - [x] Decide whether SEBI CSVs are committed: git-ignore `data/registries/*.csv` except `rbi_alert_list.csv` (see Decisions log)
 - [ ] Decide LLM provider (Bedrock Nova vs Claude) and log below (B)
   - No API key in `.env` yet; the demo cache was produced by the offline reader; `bedrock` and `anthropic` providers are not built
-- [ ] `.env.example`, `.gitignore`, requirements.txt, package.json
-  - `.gitignore`, `backend/requirements.txt`, `frontend/package.json` exist; `.env.example` is still missing
+- [x] `.env.example`, `.gitignore`, requirements.txt, package.json
 
 **Checkpoint:** every service returns sample data end to end.
 
@@ -176,6 +175,7 @@
 | 24 Oct | Money shows with ₹ ("₹3.98 crore", "₹1,07,000"), not "Rs" | CLAUDE.md convention; the goal text said "Rs 3.98 crore" |
 | 24 Oct | Message templates are bundled into the frontend from backend/app/templates (vite fs.allow '..') | One source for every sentence, works offline, no extra endpoint |
 | 24 Oct | BSE candidates are labelled with the scrip name, not the issuer | For ETFs the issuer is the fund house, so all 11 Aditya Birla ETFs showed the same name |
+| 24 Oct | demo-002 shows no payee | A MATCHES payee needs a SEBI @valid handle; inventing one for a real broker was avoided, so the genuine-investor screenshot has holdings and a real broker name only |
 
 ## Blockers
 
@@ -187,20 +187,20 @@
 - ~~Broker-matching goal stopped on its own stop rule (24 Oct, 00:10): no similarity metric separated invented names from one-letter typos.~~ Resolved 24 Oct 00:13: one-typo rule, see Decisions log.
 - Environment note: Python on this laptop is 3.14.6, but the stack specifies 3.11. Node is 24.19 and npm is 11.17. Python Playwright 1.64 needed chromium-headless-shell build 1248, now installed.
 - ~~Risk (not built): an ambiguous share name gives `HOLDING_ISIN_UNMAPPED` with unclear text.~~ Addressed 24 Oct: the UI offers an ISIN picker, and `HOLDING_NAME_AMBIGUOUS` is used when the customer skips the choice.
-- The FR-8.4 MATCHES-only and NO_RECORD-only screens (self-check steps, callback only) are built but not yet driven in the browser, because demo-001 is all CONTRADICTS. Add a demo-002 with real holdings.
-- The running dev backend predates the scrip-name label change; restart it to serve the new labels.
+- ~~The FR-8.4 MATCHES-only and NO_RECORD-only screens are not yet driven in the browser.~~ Resolved 24 Oct 01:21: demo-002 and demo-003 passed in EN and HI.
+- ~~The running dev backend predates the scrip-name label change.~~ Resolved 24 Oct 01:21: backend restarted in cache mode; /api/isin/candidates gives 11 distinct labels.
 - The Hindi UI strings (71 in the `ui` section) need a fluent reader, like the verdict templates.
-- `.env.example` is missing, so the Phase 0 item stays open.
 
 ## Next up
 
 1. Goal 3: video source check (footage index, source matcher, transcript diff) — lead / B
-2. demo-002 (MATCHES) and demo-003 (partial coverage) screenshots for the other FR-8.4 screens — lead / A
-3. Hindi templates and UI strings to a fluent Hindi reader — D
-4. Decide the LLM provider and add a key, or keep offline — B
-5. Push the repo to GitHub and add all four members — Aryan
+2. Hindi templates and UI strings to a fluent Hindi reader — D
+3. Decide the LLM provider and add a key, or keep offline — B
+4. Push the repo to GitHub and add all four members — Aryan
 
 ## Changelog
+
+- 24 Oct 01:21 — Samples demo-002/003, reader fix, settings fix (commits fdf953d, 08a3103, dd46ae6, 502524f). `.claude/settings.json` deny rules now name the real secret files (.env, .env.local, .env.production, .env.development, .env.test) instead of `.env.*`, so .env.example is readable; .env.development and .env.test were added beyond the request so they stay blocked. The earlier "`.env.example` does not exist" note was wrong (the deny rule `Read(./.env.*)` blocked reads; the file is tracked), so the Phase 0 item is ticked and that blocker removed. Backend restarted in cache mode; /api/isin/candidates gives 11 distinct labels for the Aditya Birla ETFs. New samples from the same render script and offline reader (cache never hand-written; demo-001 PNG hash unchanged): demo-002 = SYN-C0028 (real case P0028), 4 holdings plus broker ZERODHA BROKING LIMITED, all MATCHES; demo-003 = SYN-C0025 (P0025, NSDL failed), 3 holdings, all NO_RECORD HOLDING_PARTIAL_COVERAGE, summary INCOMPLETE. `data/demo_cache/demo_customers.json` maps each sample to its customer; the frontend MOCK login takes ?customer=SYN-Cnnnn. Reader fix found while making demo-002: Tesseract read "22,54 ,831"; the offline parser now joins a digit group split by a space before the comma, with a test (without it one holding was silently dropped). Playwright: demo-002 and demo-003 in EN and HI all PASSED, with FR-8.4 checks driven by the template texts. MATCHES: confirmation, no alert, no complaint/trusted contact/callback. NO_RECORD: "We could not verify this", three self-checks, optional callback, no complaint. demo-001 offline regression PASSED. Screenshots: docs/screens/*_demo-002_*.png and *_demo-003_*.png. pytest 60 passed, ruff clean, 300/300, frontend build/lint/test (4 pass) clean. Overall 39% to 42% (14 of 33 top-level checklist items).
 
 - 24 Oct 01:02 — Goal 2 done (bank app and result screen; commits 007adc5, b734a42, 7a6cd04, c82295b). `frontend/`: React + Vite + TypeScript + Tailwind; /api is proxied to :8000. /app runs share (screenshot; a video is hashed in the browser and becomes an endorsement claim) -> editable claim list -> MOCK AA consent with OTP -> two-column result -> actions. /reviewer is a placeholder. Every sentence comes from messages_en/hi.json (a new "ui" section, 71 strings, 0 missing in each language); a TypeScript-AST test fails on planted hard-coded sentences (6 kinds). New endpoints: GET /api/isin/candidates and POST /api/events (trusted contact and callback are MOCK, logged to data/runtime/events.jsonl, git-ignored). New reason code HOLDING_NAME_AMBIGUOUS, used when the customer skips the ISIN choice; only rules.holding gained that branch. Playwright (Python, installed Chromium) ran demo-001 in EN and HI, then again offline (non-localhost blocked, backend LLM_PROVIDER=cache): all PASSED; screenshots in docs/screens/; no empty glyph boxes in Hindi; the offline run made 0 non-localhost requests. Ambiguous-name picker checked in the browser: 11 candidate ISINs plus "I am not sure"; Continue stays disabled until a choice. pytest 54 passed, ruff clean, frontend build/lint/test (4 pass) clean, 300/300 portfolios. Ticked: frontend skeleton, result screen, response actions, full flow wired, Noto Sans Devanagari font (bundled via @fontsource/noto-sans-devanagari). Not ticked: `.env.example` is missing, so that Phase 0 item stays open. Video, footage, source matcher, evidence chain and reviewer console untouched. Three decisions and three open items logged.
 - 23 Oct 22:45 to 24 Oct 00:21 (Phases 0-1, folded) — Docs and agent config created; prerequisites fetched (Tesseract 5.4, NSE/BSE, SEBI lists, RBI Alert List, ReBIT schemas, SOURCES.md). Goal 0: git repo, `docs/formats` (4 schemas, validated 4/4), EN/HI templates for all reason codes, 300 synthetic portfolios, 6194-row ledger plus 79-entry mock Suspect Registry, backend skeleton. Goal 1: `demo-001` through `POST /api/check` for SYN-C0001 in 0.78 s (0 of 3 holdings found), image-injection test passes, grep test finds no "safe", "verified", "genuine" or "%". Broker matching: first Jaro-Winkler attempt stopped on its own rule (86% vs 90% target), then replaced by the one-typo rule (invented 50/50 CONTRADICTS, typos 50/50 NO_RECORD, 0 false MATCHES). `BROKER_NEAR_MATCH` now names the closest registered firm and reg no; ISIN normaliser covers all NSE series; 358 ambiguous names map to no ISIN, 0 map wrongly. Single ruff config. pytest 51 passed at that point.
