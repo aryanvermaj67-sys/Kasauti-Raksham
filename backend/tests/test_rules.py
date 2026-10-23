@@ -101,8 +101,8 @@ def test_broker_contradicts():
 
 
 def test_broker_no_record():
-    check(broker("Zerodah Broking"), "NO_RECORD", "BROKER_NEAR_MATCH_AMBIGUOUS")  # one swapped pair of letters
-    check(broker("ABC Capital"), "NO_RECORD", "BROKER_NEAR_MATCH_AMBIGUOUS")  # one edit from ANC Securities
+    check(broker("Zerodah Broking"), "NO_RECORD", "BROKER_NEAR_MATCH")  # one swapped pair of letters
+    check(broker("ABC Capital"), "NO_RECORD", "BROKER_NEAR_MATCH")  # one edit from ANC Securities
     check(broker("Zyphra Stock Club", claims_registered=False), "NO_RECORD", "BROKER_NOT_FOUND_NOT_CLAIMED")
 
 
@@ -111,7 +111,7 @@ def test_broker_adversarial_borrowed_reg_no():
 
 
 def test_broker_adversarial_real_name_with_other_generic_words_never_matches():
-    check(broker("Zerodha Wealth Club"), "NO_RECORD", "BROKER_NEAR_MATCH_AMBIGUOUS")
+    check(broker("Zerodha Wealth Club"), "NO_RECORD", "BROKER_NEAR_MATCH")
 
 
 def test_within_one_edit_agrees_with_full_edit_distance():

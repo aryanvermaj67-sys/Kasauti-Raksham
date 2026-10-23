@@ -16,7 +16,7 @@
     "HOLDING_ISIN_UNMAPPED": {"app": "{instrument_name}", "record": "We could not match this name to a listed share. We could not verify this."},
     "BROKER_ON_SEBI_LIST": {"app": "Broker: {name}", "record": "{name} is on the SEBI list of registered intermediaries ({sebi_reg_no})."},
     "BROKER_NOT_ON_SEBI_LIST": {"app": "Broker: {name}, says it is SEBI registered", "record": "{name} is not on the SEBI list of registered intermediaries."},
-    "BROKER_NEAR_MATCH_AMBIGUOUS": {"app": "Broker: {name}", "record": "The SEBI list has a similar name, {near_name}, but not {name}. We could not verify this."},
+    "BROKER_NEAR_MATCH": {"app": "Broker: {name}", "record": "{name} is not identical to the SEBI-registered firm {near_name} ({near_reg_no}). Compare the exact name and registration number on SEBI Check before you pay."},
     "BROKER_NOT_FOUND_NOT_CLAIMED": {"app": "Broker: {name}", "record": "{name} is not on the SEBI list. We could not verify this."},
     "BROKER_REG_NO_MISMATCH": {"app": "Broker: {name}, SEBI reg. no. {claimed_reg_no}", "record": "On the SEBI list, {claimed_reg_no} is not the registration number of {name}."},
     "PAYEE_VALID_HANDLE": {"app": "Pay to {payee}", "record": "{payee} is a SEBI @valid handle and is not in the Suspect Registry."},

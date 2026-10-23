@@ -79,12 +79,24 @@ def broker(claim, sebi_record):
         if q in names:
             return _v(claim, "MATCHES", "BROKER_ON_SEBI_LIST", params | {"sebi_reg_no": reg["reg_no"]}, ev)
         if reg and reg["within_one_typo"]:
-            return _v(claim, "NO_RECORD", "BROKER_NEAR_MATCH_AMBIGUOUS", params | {"near_name": reg["name"]}, ev)
+            return _v(
+                claim,
+                "NO_RECORD",
+                "BROKER_NEAR_MATCH",
+                params | {"near_name": reg["name"], "near_reg_no": reg["reg_no"]},
+                ev,
+            )
         return _v(claim, "CONTRADICTS", "BROKER_REG_NO_MISMATCH", params | {"claimed_reg_no": f.sebi_reg_no}, ev)
     if p["exact"]:
         return _v(claim, "MATCHES", "BROKER_ON_SEBI_LIST", params | {"sebi_reg_no": p["exact"]["reg_no"]}, ev)
     if p["near"]:  # within one typo of a registered firm, but not its exact name: ambiguous
-        return _v(claim, "NO_RECORD", "BROKER_NEAR_MATCH_AMBIGUOUS", params | {"near_name": p["near"]["name"]}, ev)
+        return _v(
+            claim,
+            "NO_RECORD",
+            "BROKER_NEAR_MATCH",
+            params | {"near_name": p["near"]["name"], "near_reg_no": p["near"]["reg_no"]},
+            ev,
+        )
     if f.claims_registered:
         return _v(claim, "CONTRADICTS", "BROKER_NOT_ON_SEBI_LIST", params, ev)
     return _v(claim, "NO_RECORD", "BROKER_NOT_FOUND_NOT_CLAIMED", params, ev)
