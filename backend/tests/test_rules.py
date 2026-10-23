@@ -1,11 +1,15 @@
 """FR-5 rules: one MATCHES, CONTRADICTS, NO_RECORD and adversarial case per claim type."""
 
+import random
 import re
+import subprocess
+import sys
 
 import pytest
 from pydantic import ValidationError
 
 from app.connectors import rbi, sebi, suspect_registry, upi
+from app.connectors.names import within_one_edit
 from app.schemas.claims import BrokerClaim, EndorsementClaim, HoldingClaim, PayeeClaim, PlatformClaim
 from app.schemas.evidence import make_record
 from app.schemas.verdict import Verdict
@@ -97,12 +101,34 @@ def test_broker_contradicts():
 
 
 def test_broker_no_record():
-    check(broker("1FC Securites"), "NO_RECORD", "BROKER_NEAR_MATCH_AMBIGUOUS")
+    check(broker("Zerodah Broking"), "NO_RECORD", "BROKER_NEAR_MATCH_AMBIGUOUS")  # one swapped pair of letters
+    check(broker("ABC Capital"), "NO_RECORD", "BROKER_NEAR_MATCH_AMBIGUOUS")  # one edit from ANC Securities
     check(broker("Zyphra Stock Club", claims_registered=False), "NO_RECORD", "BROKER_NOT_FOUND_NOT_CLAIMED")
 
 
 def test_broker_adversarial_borrowed_reg_no():
     check(broker("Zyphra Stock Club", "INZ000333130"), "CONTRADICTS", "BROKER_REG_NO_MISMATCH")
+
+
+def test_broker_adversarial_real_name_with_other_generic_words_never_matches():
+    check(broker("Zerodha Wealth Club"), "NO_RECORD", "BROKER_NEAR_MATCH_AMBIGUOUS")
+
+
+def test_within_one_edit_agrees_with_full_edit_distance():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from broker_match_eval import osa_distance
+
+    rng = random.Random(1)
+    for _ in range(5000):
+        a, b = ("".join(rng.choice("abc") for _ in range(rng.randint(0, 5))) for _ in range(2))
+        assert within_one_edit(a, b) == (osa_distance(a, b) <= 1), (a, b)
+
+
+def test_broker_match_sets_on_real_sebi_list():
+    out = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "broker_match_eval.py")], capture_output=True, text=True
+    )
+    assert out.returncode == 0 and "all targets met" in out.stdout, out.stdout
 
 
 # payees

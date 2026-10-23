@@ -4,14 +4,11 @@ The claim reader (LLM or OCR) never reaches this module, so text inside an artif
 Three outcomes only: MATCHES, CONTRADICTS, NO_RECORD.
 """
 
-import difflib
-
 from app.comparators.holdings import compare
 from app.connectors.names import normalize
 from app.schemas.verdict import Message, Verdict
 
 ALL_DEPOSITORIES = ("CDSL", "NSDL")
-NEAR = 0.6  # FR-5: below this similarity a broker name has no near match
 
 
 def _v(claim, outcome, reason, params, records):
@@ -70,10 +67,6 @@ def holdings_summary(verdicts, portfolio_total_inr, aa_records):
     return [Message(reason_code=code, params=params)]
 
 
-def _sim(a, b):
-    return difflib.SequenceMatcher(None, a, b).ratio()
-
-
 def broker(claim, sebi_record):
     f, p = claim.fields, sebi_record.payload
     q = normalize(f.name)
@@ -82,15 +75,15 @@ def broker(claim, sebi_record):
     if f.sebi_reg_no:
         # The number must belong to this name: a borrowed registration number is the classic impersonation.
         reg = p["reg_no_entry"]
-        names = {normalize(reg["name"]), normalize(reg.get("trade_name") or reg["name"])} if reg else set()
+        names = {normalize(reg["name"]), normalize(reg["trade_name"] or reg["name"])} if reg else set()
         if q in names:
             return _v(claim, "MATCHES", "BROKER_ON_SEBI_LIST", params | {"sebi_reg_no": reg["reg_no"]}, ev)
-        if reg and max(_sim(q, n) for n in names) >= NEAR:
+        if reg and reg["within_one_typo"]:
             return _v(claim, "NO_RECORD", "BROKER_NEAR_MATCH_AMBIGUOUS", params | {"near_name": reg["name"]}, ev)
         return _v(claim, "CONTRADICTS", "BROKER_REG_NO_MISMATCH", params | {"claimed_reg_no": f.sebi_reg_no}, ev)
     if p["exact"]:
         return _v(claim, "MATCHES", "BROKER_ON_SEBI_LIST", params | {"sebi_reg_no": p["exact"]["reg_no"]}, ev)
-    if p["near"]:  # similarity 0.6-1.0 but not the exact normalised name: ambiguous
+    if p["near"]:  # within one typo of a registered firm, but not its exact name: ambiguous
         return _v(claim, "NO_RECORD", "BROKER_NEAR_MATCH_AMBIGUOUS", params | {"near_name": p["near"]["name"]}, ev)
     if f.claims_registered:
         return _v(claim, "CONTRADICTS", "BROKER_NOT_ON_SEBI_LIST", params, ev)
