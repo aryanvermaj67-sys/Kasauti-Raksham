@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "language": "hi",
+    "note": "Draft translations of messages_en.json. Every entry needs review by a fluent Hindi reader before the demo; set needs_native_review to false only after that review."
+  },
+  "reason_codes": {
+    "HOLDINGS_TOTAL_NONE_FOUND": {"app": "आपका ऐप {claimed_count} होल्डिंग में {claimed_value_inr} के शेयर दिखाता है।", "record": "{depositories} के रिकॉर्ड में इनमें से कोई भी शेयर आपके नाम पर नहीं है।", "needs_native_review": true},
+    "HOLDINGS_TOTAL_SOME_FOUND": {"app": "आपका ऐप {claimed_count} होल्डिंग में {claimed_value_inr} के शेयर दिखाता है।", "record": "{depositories} के रिकॉर्ड में {claimed_count} में से केवल {found_count} आपके नाम पर हैं।", "needs_native_review": true},
+    "HOLDINGS_TOTAL_ALL_FOUND": {"app": "आपका ऐप {claimed_count} होल्डिंग में {claimed_value_inr} के शेयर दिखाता है।", "record": "{depositories} के रिकॉर्ड में सभी {claimed_count} आपके नाम पर हैं।", "needs_native_review": true},
+    "HOLDINGS_TOTAL_INCOMPLETE": {"app": "आपका ऐप {claimed_count} होल्डिंग में {claimed_value_inr} के शेयर दिखाता है।", "record": "हम हर डिपॉज़िटरी की जाँच नहीं कर सके ({failed_depositories} से जवाब नहीं मिला), इसलिए हम नहीं कह सकते कि ये शेयर आपके हैं या नहीं।", "needs_native_review": true},
+    "HOLDING_FOUND": {"app": "{instrument_name}: {quantity} शेयर", "record": "{depositories} में {quantity} शेयर आपके नाम पर हैं।", "needs_native_review": true},
+    "HOLDING_NOT_FOUND_ALL_DEPOSITORIES": {"app": "{instrument_name}: {quantity} शेयर", "record": "{depositories} में आपके नाम पर नहीं है।", "needs_native_review": true},
+    "HOLDING_QUANTITY_DIFFERS": {"app": "{instrument_name}: {quantity} शेयर", "record": "{depositories} में आपके नाम पर {record_quantity} शेयर हैं, {quantity} नहीं।", "needs_native_review": true},
+    "HOLDING_PARTIAL_COVERAGE": {"app": "{instrument_name}: {quantity} शेयर", "record": "{depositories} में नहीं मिला, लेकिन {failed_depositories} की जाँच नहीं हो सकी। हम इसकी पुष्टि नहीं कर सके।", "needs_native_review": true},
+    "HOLDING_NO_DEMAT": {"app": "{instrument_name}: {quantity} शेयर", "record": "{depositories} में आपके नाम पर कोई डीमैट खाता नहीं है। हम इसकी पुष्टि नहीं कर सके।", "needs_native_review": true},
+    "HOLDING_ISIN_UNMAPPED": {"app": "{instrument_name}", "record": "हम इस नाम को किसी सूचीबद्ध शेयर से नहीं मिला सके। हम इसकी पुष्टि नहीं कर सके।", "needs_native_review": true},
+    "BROKER_ON_SEBI_LIST": {"app": "ब्रोकर: {name}", "record": "{name} SEBI के पंजीकृत मध्यस्थों की सूची में है ({sebi_reg_no})।", "needs_native_review": true},
+    "BROKER_NOT_ON_SEBI_LIST": {"app": "ब्रोकर: {name}, जो SEBI पंजीकृत होने का दावा करता है", "record": "{name} SEBI के पंजीकृत मध्यस्थों की सूची में नहीं है।", "needs_native_review": true},
+    "BROKER_NEAR_MATCH_AMBIGUOUS": {"app": "ब्रोकर: {name}", "record": "SEBI सूची में मिलता-जुलता नाम {near_name} है, पर {name} नहीं। हम इसकी पुष्टि नहीं कर सके।", "needs_native_review": true},
+    "BROKER_NOT_FOUND_NOT_CLAIMED": {"app": "ब्रोकर: {name}", "record": "{name} SEBI सूची में नहीं है। हम इसकी पुष्टि नहीं कर सके।", "needs_native_review": true},
+    "PAYEE_VALID_HANDLE": {"app": "{payee} को भुगतान", "record": "{payee} SEBI का @valid हैंडल है और संदिग्ध रजिस्ट्री में नहीं है।", "needs_native_review": true},
+    "PAYEE_IN_SUSPECT_REGISTRY": {"app": "{payee} को भुगतान", "record": "{payee} धोखाधड़ी के लिए रिपोर्ट किए गए खातों की संदिग्ध रजिस्ट्री में है।", "needs_native_review": true},
+    "PAYEE_BROKER_NOT_VALID_HANDLE": {"app": "{payee} को भुगतान, जिसे ब्रोकर बताया गया है", "record": "पंजीकृत ब्रोकर @valid हैंडल से पैसे लेते हैं। {payee} ऐसा हैंडल नहीं है।", "needs_native_review": true},
+    "PAYEE_NO_REGISTRY_HIT": {"app": "{payee} को भुगतान", "record": "{payee} संदिग्ध रजिस्ट्री में नहीं है। हम यह पुष्टि नहीं कर सके कि यह किसका है।", "needs_native_review": true},
+    "ENDORSEMENT_SOURCE_SAME": {"app": "{person}: \"{quote}\"", "record": "मूल वीडियो में यही शब्द हैं।", "needs_native_review": true},
+    "ENDORSEMENT_WORDS_CHANGED": {"app": "{person}: \"{quote}\"", "record": "मूल वीडियो मौजूद है, पर {time_ranges} पर शब्द बदले गए हैं। मूल शब्द: \"{original_quote}\"।", "needs_native_review": true},
+    "ENDORSEMENT_NO_SOURCE": {"app": "{person}: \"{quote}\"", "record": "हमें कोई मूल वीडियो नहीं मिला। हम इसकी पुष्टि नहीं कर सके। इसका मतलब यह नहीं कि वीडियो असली है।", "needs_native_review": true},
+    "PLATFORM_ON_RBI_ALERT_LIST": {"app": "प्लेटफ़ॉर्म: {name}", "record": "{name} अनधिकृत फॉरेक्स प्लेटफ़ॉर्म की RBI अलर्ट सूची में है।", "needs_native_review": true},
+    "PLATFORM_NOT_ON_ALERT_LIST": {"app": "प्लेटफ़ॉर्म: {name}", "record": "{name} RBI अलर्ट सूची में नहीं है। हम इसकी पुष्टि नहीं कर सके।", "needs_native_review": true}
+  }
+}

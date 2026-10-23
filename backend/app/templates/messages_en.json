@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "language": "en",
+    "note": "One entry per reason_code in docs/formats/verdict.schema.json. app = 'Your app says' column, record = 'Your record says' column. {depositories} and {failed_depositories} are lists joined by the UI per language; *_inr params are rupees formatted by the UI in Indian style."
+  },
+  "reason_codes": {
+    "HOLDINGS_TOTAL_NONE_FOUND": {"app": "Your app shows {claimed_value_inr} of shares in {claimed_count} holdings.", "record": "None of them is in your name in the {depositories} record."},
+    "HOLDINGS_TOTAL_SOME_FOUND": {"app": "Your app shows {claimed_value_inr} of shares in {claimed_count} holdings.", "record": "Only {found_count} of {claimed_count} are in your name in the {depositories} record."},
+    "HOLDINGS_TOTAL_ALL_FOUND": {"app": "Your app shows {claimed_value_inr} of shares in {claimed_count} holdings.", "record": "All {claimed_count} are in your name in the {depositories} record."},
+    "HOLDINGS_TOTAL_INCOMPLETE": {"app": "Your app shows {claimed_value_inr} of shares in {claimed_count} holdings.", "record": "We could not check every depository ({failed_depositories} did not respond), so we cannot say whether these shares are yours."},
+    "HOLDING_FOUND": {"app": "{instrument_name}: {quantity} shares", "record": "{quantity} shares in your name at {depositories}."},
+    "HOLDING_NOT_FOUND_ALL_DEPOSITORIES": {"app": "{instrument_name}: {quantity} shares", "record": "Not in your name at {depositories}."},
+    "HOLDING_QUANTITY_DIFFERS": {"app": "{instrument_name}: {quantity} shares", "record": "{record_quantity} shares in your name at {depositories}, not {quantity}."},
+    "HOLDING_PARTIAL_COVERAGE": {"app": "{instrument_name}: {quantity} shares", "record": "Not found at {depositories}, but {failed_depositories} could not be checked. We could not verify this."},
+    "HOLDING_NO_DEMAT": {"app": "{instrument_name}: {quantity} shares", "record": "No demat account in your name at {depositories}. We could not verify this."},
+    "HOLDING_ISIN_UNMAPPED": {"app": "{instrument_name}", "record": "We could not match this name to a listed share. We could not verify this."},
+    "BROKER_ON_SEBI_LIST": {"app": "Broker: {name}", "record": "{name} is on the SEBI list of registered intermediaries ({sebi_reg_no})."},
+    "BROKER_NOT_ON_SEBI_LIST": {"app": "Broker: {name}, says it is SEBI registered", "record": "{name} is not on the SEBI list of registered intermediaries."},
+    "BROKER_NEAR_MATCH_AMBIGUOUS": {"app": "Broker: {name}", "record": "The SEBI list has a similar name, {near_name}, but not {name}. We could not verify this."},
+    "BROKER_NOT_FOUND_NOT_CLAIMED": {"app": "Broker: {name}", "record": "{name} is not on the SEBI list. We could not verify this."},
+    "PAYEE_VALID_HANDLE": {"app": "Pay to {payee}", "record": "{payee} is a SEBI @valid handle and is not in the Suspect Registry."},
+    "PAYEE_IN_SUSPECT_REGISTRY": {"app": "Pay to {payee}", "record": "{payee} is in the Suspect Registry of accounts reported for fraud."},
+    "PAYEE_BROKER_NOT_VALID_HANDLE": {"app": "Pay to {payee}, described as a broker", "record": "Registered brokers collect money through @valid handles. {payee} is not one."},
+    "PAYEE_NO_REGISTRY_HIT": {"app": "Pay to {payee}", "record": "{payee} is not in the Suspect Registry. We could not verify who owns it."},
+    "ENDORSEMENT_SOURCE_SAME": {"app": "{person}: \"{quote}\"", "record": "The original video has the same words."},
+    "ENDORSEMENT_WORDS_CHANGED": {"app": "{person}: \"{quote}\"", "record": "The original video exists, but the words were changed at {time_ranges}. Original words: \"{original_quote}\"."},
+    "ENDORSEMENT_NO_SOURCE": {"app": "{person}: \"{quote}\"", "record": "We found no original video. We could not verify this. This does not mean the video is real."},
+    "PLATFORM_ON_RBI_ALERT_LIST": {"app": "Platform: {name}", "record": "{name} is on the RBI Alert List of unauthorised forex platforms."},
+    "PLATFORM_NOT_ON_ALERT_LIST": {"app": "Platform: {name}", "record": "{name} is not on the RBI Alert List. We could not verify this."}
+  }
+}
