@@ -7,9 +7,9 @@
 | | |
 |---|---|
 | Phase | 0 · Setup |
-| Overall | 12% |
+| Overall | 15% |
 | Demo-ready | No |
-| Last updated | 23 Oct 2026, 18:07 IST |
+| Last updated | 23 Oct 2026, 23:48 IST |
 
 ## Team and ownership
 
@@ -46,6 +46,7 @@
 - [x] ReBIT AA schemas: equities and mutual funds (`data/schemas/rebit_equities.html`, `rebit_mutual_funds.html`)
 - [x] `data/SOURCES.md` rows filled for the files above
 - [ ] Sahamati page saved (screenshot + date) for "CDSL and NSDL provide data over AA"
+  - `scripts/fetch_registries.py` marks it "manual download needed"; expected path is `docs/sources/sahamati_fi_types_screenshot.png`
 
 **Offline kit**
 - [ ] CLIP or DINOv2 weights + imagehash
@@ -57,12 +58,12 @@
 - [ ] Signed consent forms from every teammate on camera or voice
 - [ ] 5–10 "official" speech videos + manipulated versions + compressed/cropped copies (30-video test)
 - [ ] ~60 fake-app screenshots, 6 layouts, Hindi + English
-- [ ] ~300 synthetic portfolios (fake, mixed, real, no demat, partial coverage)
-- [ ] Synthetic payments ledger with scam pattern + mock Suspect Registry
+- [x] ~300 synthetic portfolios (fake, mixed, real, no demat, partial coverage)
+- [x] Synthetic payments ledger with scam pattern + mock Suspect Registry
 - [ ] Frozen test set written by someone else, hashed
 
 **Design**
-- [ ] JSON formats frozen: claims, verdicts, record responses, evidence pack
+- [x] JSON formats frozen: claims, verdicts, record responses, evidence pack
 - [ ] Hindi templates checked by a fluent Hindi reader
 - [ ] Owners for roles A–D set
 
@@ -86,19 +87,19 @@
 - [x] SEBI, RBI, NSE, BSE lists downloaded and cached as CSV (A)
   - [x] RBI Alert List, NSE equity list
   - [x] SEBI intermediaries (brokers, advisers, research analysts), BSE equity list
-  - [ ] Decide whether SEBI CSVs are committed (see Decisions log and Blockers)
+  - [x] Decide whether SEBI CSVs are committed: git-ignore `data/registries/*.csv` except `rbi_alert_list.csv` (see Decisions log)
 - [ ] Decide LLM provider (Bedrock Nova vs Claude) and log below (B)
 - [ ] `.env.example`, `.gitignore`, requirements.txt, package.json
 
 **Checkpoint:** every service returns sample data end to end.
 
 ### Phase 1 · Core slice (hours 4–16)
-- [ ] Synthetic portfolios generator, ReBIT format, incl. partial-coverage cases (A)
+- [x] Synthetic portfolios generator, ReBIT format, incl. partial-coverage cases (A)
 - [ ] Fake trading app screens + 60 screenshots, 6 layouts (A)
 - [ ] Claim reader + cache mode + schema validation (B)
 - [ ] AA mock, SEBI, UPI, RBI, Suspect Registry connectors (C)
 - [ ] Holdings comparator + verdict rules with full-coverage rule (C)
-- [ ] EN/HI templates (D)
+- [x] EN/HI templates (D)
 - [ ] Result screen (D)
 
 **Checkpoint:** screenshot in → "0 of 3 found" out.
@@ -155,26 +156,31 @@
 | 23 Oct | Offline claim-reader fallback: Tesseract (Hindi) + regex; Whisper run locally | Network may fail at the venue |
 | 23 Oct | RBI Alert List CSV hand-typed from the 19 Nov 2025 PDF | No machine-readable copy; 95 entries; needs a second-person spot-check against the PDF |
 | 23 Oct | SEBI lists fetched by `scripts/fetch_sebi.py` with a pinned IP (`--ip 202.191.181.158`) | Local DNS on one laptop cannot resolve sebi.gov.in; scripted fetch works once the IP is given. Row counts match SEBI's stated totals |
-| 23 Oct | OPEN: commit or git-ignore the SEBI CSVs | They total ~2 MB and hold public contact emails/phones; CLAUDE.md says not to commit large copies of public lists. Lead to decide |
+| 23 Oct | RESOLVED (next rows): commit or git-ignore the SEBI CSVs | They total ~2 MB and hold public contact emails/phones; CLAUDE.md says not to commit large copies of public lists |
 | 23 Oct | Run GOALS.md in order: Goal 0, then Goal 1, then Goal 2 | Goal 2 (bank app + result screen) was started but stopped before any code; its prerequisites do not exist yet |
+| 23 Oct | Git-ignore `data/registries/*.csv` except `rbi_alert_list.csv` | RBI list is our own hand transcription. Public lists stay local; `scripts/fetch_registries.py` re-fetches or verifies them against SOURCES.md hashes |
+| 23 Oct | `aa_mock` returns one RecordResponse per depository (source `aa_mock:CDSL` / `aa_mock:NSDL`) with status OK or FAILED | The full-coverage rule can see each depository separately |
+| 23 Oct | Templates are two-column (app/record) per reason_code; money and depository lists are raw params | The UI formats them per language (Indian number format, {depositories}) |
 
 ## Blockers
 
 - ~~SEBI intermediaries and BSE equity list need manual download~~ Resolved 23 Oct: both fetched and logged in `data/SOURCES.md`.
-- Decision pending: SEBI CSVs (~2 MB, contain public contact emails/phones) in git or not. Owner: lead.
+- ~~Decision pending: SEBI CSVs in git or not~~ Resolved 23 Oct: git-ignored, see Decisions log.
 - Tesseract is not on PATH. Code must read the install path from config/env (`C:\Program Files\Tesseract-OCR`) or PATH must be set on each laptop.
-- Goal 2 (bank app + result screen) was started but stopped before any code was written. Its prerequisites are missing: no `backend/`, no schemas, no `messages_en.json` / `messages_hi.json`, no `demo-001`, no `/api/check`, no verdict rules, and the project folder is not a git repo yet. Lead decided to run GOALS.md Goal 0 first, then Goal 1, then Goal 2.
+- Goal 1 next: Pydantic models must match `docs/formats`; `demo-001` not yet made.
 - Environment note: Python on this laptop is 3.14.6, but the stack specifies 3.11. Node is 24.19 and npm is 11.17.
 
 ## Next up
 
-1. Run Goal 0 (contracts, templates, synthetic data) — lead
-2. Decide on committing SEBI CSVs, then `git init`, push repo and add all four members — Aryan
-3. Second-person spot-check of `rbi_alert_list.csv` against the PDF — A
+1. Run Goal 1 (backend slice) — lead
+2. Hindi templates to a fluent Hindi reader — D
+3. Take the Sahamati screenshot (`docs/sources/sahamati_fi_types_screenshot.png`) — A
+4. Push the repo to GitHub and add all four members — Aryan
 
 ## Changelog
 
-- 23 Oct 18:07 — Goal 2 started and stopped before any code (prerequisites missing, folder not a git repo). Plan set: Goal 0, then Goal 1, then Goal 2. Environment noted: Python 3.14.6 (stack says 3.11), Node 24.19, npm 11.17. No checklist items changed.
+- 23 Oct 23:48 — Goal 0 done. Git repo initialised locally, 6 commits. `docs/formats/` has 4 JSON Schemas plus examples; `scripts/validate_formats.py` prints "validated 4/4 examples". Templates `messages_en.json` and `messages_hi.json` cover all 23 reason codes ("0 missing" in both); every Hindi entry is flagged needs_native_review, and holdings messages take {depositories} as a parameter. `gen_portfolios.py --n 300 --seed 42` writes 60 cases each of fake_app_only, mixed, real, no_demat, plus 60 partial_depository_failure (30 CDSL ok / NSDL failed, 30 the reverse); ReBIT equities v1.0.0 shape (transcribed in `data/schemas/rebit_equities_v1.0.0.schema.json`), deterministic. `gen_ledger.py` writes 6194 transactions with the scam pattern injected for 40 customers, plus a mock suspect registry of 79 entries. `fetch_registries.py` verifies 8 of 9 SOURCES.md files by SHA-256; Sahamati screenshot still needs a manual download. `backend/` has /health, requirements.txt, pytest and ruff config; pytest 6 passed, ruff clean. Duplicate root `bse_equity.csv` (same SHA-256 as `data/registries/`) removed; `.gitattributes` `data/** -text` keeps data hashes stable on Windows. SEBI CSV decision closed (git-ignored).
+- 23 Oct 23:37 — Goal 2 started and stopped before any code (prerequisites missing, folder not a git repo). Time corrected from 18:07, which was UTC. Plan set: Goal 0, then Goal 1, then Goal 2. Environment noted: Python 3.14.6 (stack says 3.11), Node 24.19, npm 11.17. No checklist items changed.
 - 23 Oct 23:20 — Registries complete: BSE equity (5120), SEBI brokers (5002), advisers (1062), research analysts (2324) added via `scripts/fetch_sebi.py`; SOURCES.md has no manual-download rows left. SEBI/BSE blocker removed; commit-or-ignore decision on SEBI CSVs opened.
 - 23 Oct 23:15 — Prerequisites: Tesseract 5.4 (eng, hin, osd), NSE equity CSV, RBI Alert List CSV (95), ReBIT AA schemas saved, SOURCES.md rows filled. SEBI and BSE lists blocked on manual download.
 - 23 Oct 22:45 — Project docs and agent orchestration created.
