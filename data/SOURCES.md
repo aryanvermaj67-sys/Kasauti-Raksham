@@ -12,7 +12,7 @@ One row per downloaded public file. Fill in when you download, not later. Do not
 | bse_equity.csv | bseindia.com list of scrips | 23 Oct 2026 | lead | 9409a1479a9a45b51b5a42737ee1135dc5161aa0e542705c347cc3b5764faadf | 5120 Active Equity scrips from api.bseindia.com ListofScripData, fetched in a browser and saved as CSV |
 | rebit_equities_schema | specifications.rebit.org.in .../documentation/equities.html | 23 Oct 2026 | lead | 0d953e9477edf37d582b17709c04295148e084f88845f591147160da6829086a | saved as data/schemas/rebit_equities.html; real URL specifications.rebit.org.in/api_schema/account_aggregator/documentation/equities.html (XSD docs) |
 | rebit_mutual_funds_schema | specifications.rebit.org.in .../documentation/mutual_funds.html | 23 Oct 2026 | lead | 0b63b63cd82b09f088613de9a6fc5c54a5caf0e98c4f4ae43dff06eeee7d54e6 | saved as data/schemas/rebit_mutual_funds.html; .../account_aggregator/documentation/mutual_funds.html |
-| sahamati_fi_types_screenshot.png | sahamati.org.in/fi-types-activated-by-non-banking-fips-on-aa/ | | | | page said "Last Updated 29 May 2026" on 23 Oct 2026 |
+| sahamati_fi_types_screenshot.png | sahamati.org.in/fi-types-activated-by-non-banking-fips-on-aa/ |  |  |  | manual download needed: page screenshot, take it in a browser. page said "Last Updated 29 May 2026" on 23 Oct 2026 |
 
 ## Mocked (not downloadable)
 

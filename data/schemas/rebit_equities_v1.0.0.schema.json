@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rebit_equities_v1.0.0.schema.json",
+  "title": "ReBIT AA equities Account v1.0.0 (JSON transcription)",
+  "description": "Hand transcription of the Account/Profile/Summary/Transactions part of ReBIT equities.xsd (data/schemas/rebit_equities.html, logged in data/SOURCES.md). XML attributes become JSON keys, child elements become nested objects, repeated elements become arrays. Required/optional and enums follow the XSD for the attributes Kasauti uses; others are optional here.",
+  "type": "object",
+  "required": ["Account"],
+  "properties": {
+    "Account": {
+      "type": "object",
+      "required": ["linkedAccRef", "maskedDematId", "type", "version"],
+      "properties": {
+        "linkedAccRef": {"type": "string"},
+        "maskedDematId": {"type": "string"},
+        "type": {"const": "equities"},
+        "version": {"const": "1.0.0"},
+        "Profile": {
+          "type": "object",
+          "required": ["Holders"],
+          "properties": {
+            "Holders": {
+              "type": "object",
+              "required": ["Holder"],
+              "properties": {
+                "type": {"enum": ["SINGLE", "JOINT"]},
+                "Holder": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "required": ["name", "mobile", "dematId"],
+                    "properties": {
+                      "name": {"type": "string"},
+                      "dob": {"type": "string", "format": "date"},
+                      "mobile": {"type": "integer"},
+                      "nominee": {"enum": ["REGISTERED", "NOT-REGISTERED"]},
+                      "dematId": {"type": "string"},
+                      "landline": {"type": "string"},
+                      "address": {"type": "string"},
+                      "email": {"type": "string"},
+                      "pan": {"type": "string", "pattern": "^[A-Z]{5}[0-9]{4}[A-Z]$"},
+                      "kycCompliance": {"type": "boolean"}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Summary": {
+          "type": "object",
+          "required": ["currentValue", "Investment"],
+          "properties": {
+            "currentValue": {"type": "number"},
+            "Investment": {
+              "type": "object",
+              "required": ["Holdings"],
+              "properties": {
+                "Holdings": {
+                  "type": "object",
+                  "required": ["type", "Holding"],
+                  "properties": {
+                    "type": {"enum": ["DEMAT", "PHYSICAL"]},
+                    "Holding": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "required": ["issuerName", "isin", "isinDescription", "units", "lastTradedPrice"],
+                        "properties": {
+                          "issuerName": {"type": "string"},
+                          "isin": {"type": "string", "pattern": "^IN[A-Z0-9]{10}$"},
+                          "isinDescription": {"type": "string"},
+                          "units": {"type": "integer", "minimum": 1},
+                          "lastTradedPrice": {"type": "string"}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Transactions": {
+          "type": "object",
+          "properties": {
+            "startDate": {"type": "string", "format": "date"},
+            "endDate": {"type": "string", "format": "date"},
+            "Transaction": {"type": "array"}
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "check_id": "chk-0001",
+  "artifact_sha256": "d4d9561645cd8be6f3e73f704f50cf383af5e7abc421400a5a0516061d52456d",
+  "consent_id": "consent-mock-0001",
+  "created_at": "2026-10-24T10:16:05+05:30",
+  "summary": [
+    {
+      "reason_code": "HOLDINGS_TOTAL_NONE_FOUND",
+      "params": {
+        "claimed_count": 3,
+        "found_count": 0,
+        "claimed_value_inr": 39800000,
+        "depositories": [
+          "CDSL",
+          "NSDL"
+        ]
+      }
+    }
+  ],
+  "verdicts": [
+    {
+      "claim_id": "c1",
+      "claim_type": "holding",
+      "outcome": "CONTRADICTS",
+      "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES",
+      "params": {
+        "instrument_name": "Reliance Industries",
+        "quantity": 5000,
+        "depositories": [
+          "CDSL",
+          "NSDL"
+        ]
+      },
+      "evidence_ids": [
+        "ev-2",
+        "ev-3"
+      ]
+    },
+    {
+      "claim_id": "c2",
+      "claim_type": "holding",
+      "outcome": "CONTRADICTS",
+      "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES",
+      "params": {
+        "instrument_name": "Tata Consultancy Services",
+        "quantity": 3000,
+        "depositories": [
+          "CDSL",
+          "NSDL"
+        ]
+      },
+      "evidence_ids": [
+        "ev-2",
+        "ev-3"
+      ]
+    },
+    {
+      "claim_id": "c3",
+      "claim_type": "holding",
+      "outcome": "CONTRADICTS",
+      "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES",
+      "params": {
+        "instrument_name": "Infosys",
+        "quantity": 8000,
+        "depositories": [
+          "CDSL",
+          "NSDL"
+        ]
+      },
+      "evidence_ids": [
+        "ev-2",
+        "ev-3"
+      ]
+    },
+    {
+      "claim_id": "c4",
+      "claim_type": "broker",
+      "outcome": "CONTRADICTS",
+      "reason_code": "BROKER_NOT_ON_SEBI_LIST",
+      "params": {
+        "name": "ABC Capital"
+      },
+      "evidence_ids": [
+        "ev-4"
+      ]
+    },
+    {
+      "claim_id": "c5",
+      "claim_type": "payee",
+      "outcome": "CONTRADICTS",
+      "reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE",
+      "params": {
+        "upi_id": "abccapital.invest@okaxis"
+      },
+      "evidence_ids": [
+        "ev-5"
+      ]
+    }
+  ]
+}

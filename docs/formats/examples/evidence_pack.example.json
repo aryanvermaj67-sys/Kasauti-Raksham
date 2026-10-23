@@ -1,0 +1,67 @@
+{
+  "pack_id": "pack-0001",
+  "check_id": "chk-0001",
+  "exported_at": "2026-10-24T10:20:00+05:30",
+  "chain_valid": true,
+  "entries": [
+    {
+      "seq": 0,
+      "kind": "artifact",
+      "recorded_at": "2026-10-24T10:16:00+05:30",
+      "content_sha256": "889c8786fc24b49a21b0548cb41c81e156354620d8431827ab110e6b7ec97d78",
+      "prev_hash": null,
+      "entry_hash": "245f705d3bcfb28194d32e20d1e2111e326d74684e4c5150c10853714f6b7184",
+      "summary": {
+        "file": "demo-001.png"
+      }
+    },
+    {
+      "seq": 1,
+      "kind": "claims",
+      "recorded_at": "2026-10-24T10:16:01+05:30",
+      "content_sha256": "14181e61860f0d4ce5bcb6abf9d7c8fcf92110113847365d6d8df760f309306d",
+      "prev_hash": "245f705d3bcfb28194d32e20d1e2111e326d74684e4c5150c10853714f6b7184",
+      "entry_hash": "4295751c2dbf7a5c2bc6de48a99992cb71825bd19c55e8ab8cb19be156cb1d35",
+      "summary": {
+        "claim_count": 5
+      }
+    },
+    {
+      "seq": 2,
+      "kind": "record",
+      "recorded_at": "2026-10-24T10:16:02+05:30",
+      "content_sha256": "0396b4ca4ee5742df6ade33c0a2782dcbbbda655c04ceddcdc6949ea32b134fa",
+      "prev_hash": "4295751c2dbf7a5c2bc6de48a99992cb71825bd19c55e8ab8cb19be156cb1d35",
+      "entry_hash": "e4d682acc16ed599789a6418126c6edf00261ed50835e5e8e943b401c87a6a44",
+      "summary": {
+        "source": "aa_mock:CDSL",
+        "isins_claimed": 3,
+        "isins_found": 0
+      }
+    },
+    {
+      "seq": 3,
+      "kind": "record",
+      "recorded_at": "2026-10-24T10:16:03+05:30",
+      "content_sha256": "c908b9f8680d9311810be3d4efe5fefb5549bf316261e03edbb8b5579514da50",
+      "prev_hash": "e4d682acc16ed599789a6418126c6edf00261ed50835e5e8e943b401c87a6a44",
+      "entry_hash": "2ac110cd45f823ede5836b892ec4e53d785bf629f01ab75a153336ae65b57b95",
+      "summary": {
+        "source": "aa_mock:NSDL",
+        "isins_claimed": 3,
+        "isins_found": 0
+      }
+    },
+    {
+      "seq": 4,
+      "kind": "verdict",
+      "recorded_at": "2026-10-24T10:16:04+05:30",
+      "content_sha256": "8bf0badbceb1e1d83cbc4b364781faab094587471cfceee281a9ce9a0a463fc7",
+      "prev_hash": "2ac110cd45f823ede5836b892ec4e53d785bf629f01ab75a153336ae65b57b95",
+      "entry_hash": "2e044948461cad04ad94d0a22e8beb8416882419226e0d1cb4cc17f5c3d43f97",
+      "summary": {
+        "check_id": "chk-0001"
+      }
+    }
+  ]
+}

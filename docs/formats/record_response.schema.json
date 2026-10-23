@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "record_response.schema.json",
+  "title": "RecordResponse",
+  "description": "What every connector returns (PRD FR-4); the evidence chain stores it as-is. aa_mock returns one RecordResponse per depository, so a FAILED depository is visible to the full-coverage rule. sha256 is over the canonical JSON of payload (sorted keys, no spaces).",
+  "type": "object",
+  "required": ["source", "fetched_at", "consent_id", "status", "mock", "payload", "sha256"],
+  "additionalProperties": false,
+  "properties": {
+    "source": {
+      "description": "Connector name, with the depository for aa_mock (e.g. aa_mock:CDSL).",
+      "type": "string",
+      "pattern": "^(aa_mock:(CDSL|NSDL)|isin_master|sebi|rbi|upi|suspect_registry|footage_index)$"
+    },
+    "fetched_at": {"type": "string", "format": "date-time"},
+    "consent_id": {"type": ["string", "null"], "description": "Set for consented fetches (AA); null for public lists."},
+    "status": {"enum": ["OK", "FAILED"]},
+    "mock": {"type": "boolean", "description": "true when the source is a mock (AA, Suspect Registry, @valid lookup, footage)."},
+    "payload": {"type": "object"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

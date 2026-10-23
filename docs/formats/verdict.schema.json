@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "verdict.schema.json",
+  "title": "CheckResult",
+  "description": "Output of the verdict rules for one check (PRD FR-5, FR-7). Three outcomes only. User-facing text comes from templates keyed by reason_code; params are raw values (money in rupees as numbers, depositories as a list) that the UI formats per language.",
+  "type": "object",
+  "required": ["check_id", "artifact_sha256", "consent_id", "created_at", "summary", "verdicts"],
+  "additionalProperties": false,
+  "properties": {
+    "check_id": {"type": "string"},
+    "artifact_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "consent_id": {"type": ["string", "null"]},
+    "created_at": {"type": "string", "format": "date-time"},
+    "summary": {
+      "description": "Totals shown first on the result screen.",
+      "type": "array",
+      "items": {"$ref": "#/$defs/message"}
+    },
+    "verdicts": {"type": "array", "items": {"$ref": "#/$defs/verdict"}}
+  },
+  "$defs": {
+    "outcome": {"enum": ["MATCHES", "CONTRADICTS", "NO_RECORD"]},
+    "reason_code": {
+      "enum": [
+        "HOLDINGS_TOTAL_NONE_FOUND",
+        "HOLDINGS_TOTAL_SOME_FOUND",
+        "HOLDINGS_TOTAL_ALL_FOUND",
+        "HOLDINGS_TOTAL_INCOMPLETE",
+        "HOLDING_FOUND",
+        "HOLDING_NOT_FOUND_ALL_DEPOSITORIES",
+        "HOLDING_QUANTITY_DIFFERS",
+        "HOLDING_PARTIAL_COVERAGE",
+        "HOLDING_NO_DEMAT",
+        "HOLDING_ISIN_UNMAPPED",
+        "BROKER_ON_SEBI_LIST",
+        "BROKER_NOT_ON_SEBI_LIST",
+        "BROKER_NEAR_MATCH_AMBIGUOUS",
+        "BROKER_NOT_FOUND_NOT_CLAIMED",
+        "PAYEE_VALID_HANDLE",
+        "PAYEE_IN_SUSPECT_REGISTRY",
+        "PAYEE_BROKER_NOT_VALID_HANDLE",
+        "PAYEE_NO_REGISTRY_HIT",
+        "ENDORSEMENT_SOURCE_SAME",
+        "ENDORSEMENT_WORDS_CHANGED",
+        "ENDORSEMENT_NO_SOURCE",
+        "PLATFORM_ON_RBI_ALERT_LIST",
+        "PLATFORM_NOT_ON_ALERT_LIST"
+      ]
+    },
+    "message": {
+      "type": "object",
+      "required": ["reason_code", "params"],
+      "additionalProperties": false,
+      "properties": {
+        "reason_code": {"$ref": "#/$defs/reason_code"},
+        "params": {"type": "object"}
+      }
+    },
+    "verdict": {
+      "type": "object",
+      "required": ["claim_id", "claim_type", "outcome", "reason_code", "params", "evidence_ids"],
+      "additionalProperties": false,
+      "properties": {
+        "claim_id": {"type": "string"},
+        "claim_type": {"enum": ["holding", "broker", "payee", "endorsement", "platform"]},
+        "outcome": {"$ref": "#/$defs/outcome"},
+        "reason_code": {"$ref": "#/$defs/reason_code"},
+        "params": {"type": "object"},
+        "evidence_ids": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

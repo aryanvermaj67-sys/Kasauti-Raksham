@@ -1,0 +1,12 @@
+{
+  "source": "aa_mock:CDSL",
+  "fetched_at": "2026-10-24T10:16:02+05:30",
+  "consent_id": "consent-mock-0001",
+  "status": "OK",
+  "mock": true,
+  "payload": {
+    "depository": "CDSL",
+    "accounts": []
+  },
+  "sha256": "f111faa50d2262e21cab73a0cc6f8b4900683bad5e3d956c754dfb1bcbfb51a1"
+}

@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "claims.schema.json",
+  "title": "ClaimSet",
+  "description": "What the claim reader extracted from one artifact (PRD FR-3). Claims only; never a verdict.",
+  "type": "object",
+  "required": ["artifact_sha256", "language", "claims", "portfolio_total_inr", "reader"],
+  "additionalProperties": false,
+  "properties": {
+    "artifact_sha256": {"$ref": "#/$defs/sha256"},
+    "language": {"enum": ["en", "hi"]},
+    "claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}},
+    "portfolio_total_inr": {"type": ["number", "null"], "minimum": 0},
+    "reader": {
+      "description": "Which provider produced this ClaimSet and when (cache mode replays this unchanged).",
+      "type": "object",
+      "required": ["provider", "produced_at"],
+      "additionalProperties": false,
+      "properties": {
+        "provider": {"enum": ["bedrock", "anthropic", "offline"]},
+        "produced_at": {"type": "string", "format": "date-time"}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "claim": {
+      "oneOf": [
+        {"$ref": "#/$defs/holding"},
+        {"$ref": "#/$defs/broker"},
+        {"$ref": "#/$defs/payee"},
+        {"$ref": "#/$defs/endorsement"},
+        {"$ref": "#/$defs/platform"}
+      ]
+    },
+    "holding": {
+      "type": "object",
+      "required": ["id", "type", "fields"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "type": {"const": "holding"},
+        "fields": {
+          "type": "object",
+          "required": ["instrument_name", "isin", "quantity", "value_inr"],
+          "additionalProperties": false,
+          "properties": {
+            "instrument_name": {"type": "string"},
+            "isin": {"type": ["string", "null"], "pattern": "^IN[A-Z0-9]{10}$"},
+            "quantity": {"type": ["integer", "null"], "minimum": 0},
+            "value_inr": {"type": ["number", "null"], "minimum": 0}
+          }
+        }
+      }
+    },
+    "broker": {
+      "type": "object",
+      "required": ["id", "type", "fields"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "type": {"const": "broker"},
+        "fields": {
+          "type": "object",
+          "required": ["name", "sebi_reg_no", "claims_registered"],
+          "additionalProperties": false,
+          "properties": {
+            "name": {"type": "string"},
+            "sebi_reg_no": {"type": ["string", "null"]},
+            "claims_registered": {"type": "boolean"}
+          }
+        }
+      }
+    },
+    "payee": {
+      "type": "object",
+      "required": ["id", "type", "fields"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "type": {"const": "payee"},
+        "fields": {
+          "type": "object",
+          "required": ["upi_id", "account_no_last4", "ifsc", "described_as"],
+          "additionalProperties": false,
+          "properties": {
+            "upi_id": {"type": ["string", "null"]},
+            "account_no_last4": {"type": ["string", "null"], "pattern": "^[0-9]{4}$"},
+            "ifsc": {"type": ["string", "null"], "pattern": "^[A-Z]{4}0[A-Z0-9]{6}$"},
+            "described_as": {"enum": ["broker", "advisor", "other"]}
+          }
+        }
+      }
+    },
+    "endorsement": {
+      "type": "object",
+      "required": ["id", "type", "fields"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "type": {"const": "endorsement"},
+        "fields": {
+          "type": "object",
+          "required": ["person", "quote", "media_sha256"],
+          "additionalProperties": false,
+          "properties": {
+            "person": {"type": "string"},
+            "quote": {"type": "string"},
+            "media_sha256": {"$ref": "#/$defs/sha256"}
+          }
+        }
+      }
+    },
+    "platform": {
+      "type": "object",
+      "required": ["id", "type", "fields"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "type": {"const": "platform"},
+        "fields": {
+          "type": "object",
+          "required": ["name", "category", "claims_licensed"],
+          "additionalProperties": false,
+          "properties": {
+            "name": {"type": "string"},
+            "category": {"enum": ["equity", "forex", "crypto", "other"]},
+            "claims_licensed": {"type": "boolean"}
+          }
+        }
+      }
+    }
+  }
+}

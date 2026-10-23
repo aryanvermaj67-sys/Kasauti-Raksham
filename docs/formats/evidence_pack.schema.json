@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "evidence_pack.schema.json",
+  "title": "EvidencePack",
+  "description": "Exported hash chain for one check (PRD FR-9). entry_hash = SHA-256 of prev_hash + content_sha256 + kind + recorded_at. Holdings entries keep only the hash and a minimal result (ISINs claimed, found or not), never the holdings payload.",
+  "type": "object",
+  "required": ["pack_id", "check_id", "exported_at", "chain_valid", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "pack_id": {"type": "string"},
+    "check_id": {"type": "string"},
+    "exported_at": {"type": "string", "format": "date-time"},
+    "chain_valid": {"type": "boolean", "description": "Result of verify_chain() at export time."},
+    "entries": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/entry"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "entry": {
+      "type": "object",
+      "required": ["seq", "kind", "recorded_at", "content_sha256", "prev_hash", "entry_hash", "summary"],
+      "additionalProperties": false,
+      "properties": {
+        "seq": {"type": "integer", "minimum": 0},
+        "kind": {"enum": ["artifact", "claims", "record", "verdict", "event", "review"]},
+        "recorded_at": {"type": "string", "format": "date-time"},
+        "content_sha256": {"$ref": "#/$defs/sha256"},
+        "prev_hash": {"anyOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}], "description": "null only for seq 0."},
+        "entry_hash": {"$ref": "#/$defs/sha256"},
+        "summary": {"type": "object"}
+      }
+    }
+  }
+}

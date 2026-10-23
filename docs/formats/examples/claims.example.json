@@ -1,0 +1,60 @@
+{
+  "artifact_sha256": "d4d9561645cd8be6f3e73f704f50cf383af5e7abc421400a5a0516061d52456d",
+  "language": "en",
+  "portfolio_total_inr": 39800000,
+  "reader": {
+    "provider": "offline",
+    "produced_at": "2026-10-24T10:15:00+05:30"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "type": "holding",
+      "fields": {
+        "instrument_name": "Reliance Industries",
+        "isin": "INE002A01018",
+        "quantity": 5000,
+        "value_inr": 15200000
+      }
+    },
+    {
+      "id": "c2",
+      "type": "holding",
+      "fields": {
+        "instrument_name": "Tata Consultancy Services",
+        "isin": "INE467B01029",
+        "quantity": 3000,
+        "value_inr": 12600000
+      }
+    },
+    {
+      "id": "c3",
+      "type": "holding",
+      "fields": {
+        "instrument_name": "Infosys",
+        "isin": "INE009A01021",
+        "quantity": 8000,
+        "value_inr": 12000000
+      }
+    },
+    {
+      "id": "c4",
+      "type": "broker",
+      "fields": {
+        "name": "ABC Capital",
+        "sebi_reg_no": null,
+        "claims_registered": true
+      }
+    },
+    {
+      "id": "c5",
+      "type": "payee",
+      "fields": {
+        "upi_id": "abccapital.invest@okaxis",
+        "account_no_last4": null,
+        "ifsc": null,
+        "described_as": "broker"
+      }
+    }
+  ]
+}
