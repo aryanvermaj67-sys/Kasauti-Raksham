@@ -41,7 +41,7 @@
       "id": "c4",
       "type": "broker",
       "fields": {
-        "name": "ABC Capital",
+        "name": "Zyphra Stock Club",
         "sebi_reg_no": null,
         "claims_registered": true
       }
@@ -50,7 +50,7 @@
       "id": "c5",
       "type": "payee",
       "fields": {
-        "upi_id": "abccapital.invest@okaxis",
+        "upi_id": "zyphrastock.invest@mockupi",
         "account_no_last4": null,
         "ifsc": null,
         "described_as": "broker"

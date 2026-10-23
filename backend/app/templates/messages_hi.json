@@ -18,6 +18,7 @@
     "BROKER_NOT_ON_SEBI_LIST": {"app": "ब्रोकर: {name}, जो SEBI पंजीकृत होने का दावा करता है", "record": "{name} SEBI के पंजीकृत मध्यस्थों की सूची में नहीं है।", "needs_native_review": true},
     "BROKER_NEAR_MATCH_AMBIGUOUS": {"app": "ब्रोकर: {name}", "record": "SEBI सूची में मिलता-जुलता नाम {near_name} है, पर {name} नहीं। हम इसकी पुष्टि नहीं कर सके।", "needs_native_review": true},
     "BROKER_NOT_FOUND_NOT_CLAIMED": {"app": "ब्रोकर: {name}", "record": "{name} SEBI सूची में नहीं है। हम इसकी पुष्टि नहीं कर सके।", "needs_native_review": true},
+    "BROKER_REG_NO_MISMATCH": {"app": "ब्रोकर: {name}, SEBI पंजीकरण संख्या {claimed_reg_no}", "record": "SEBI सूची में {claimed_reg_no}, {name} की पंजीकरण संख्या नहीं है।", "needs_native_review": true},
     "PAYEE_VALID_HANDLE": {"app": "{payee} को भुगतान", "record": "{payee} SEBI का @valid हैंडल है और संदिग्ध रजिस्ट्री में नहीं है।", "needs_native_review": true},
     "PAYEE_IN_SUSPECT_REGISTRY": {"app": "{payee} को भुगतान", "record": "{payee} धोखाधड़ी के लिए रिपोर्ट किए गए खातों की संदिग्ध रजिस्ट्री में है।", "needs_native_review": true},
     "PAYEE_BROKER_NOT_VALID_HANDLE": {"app": "{payee} को भुगतान, जिसे ब्रोकर बताया गया है", "record": "पंजीकृत ब्रोकर @valid हैंडल से पैसे लेते हैं। {payee} ऐसा हैंडल नहीं है।", "needs_native_review": true},

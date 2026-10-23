@@ -78,7 +78,7 @@
       "outcome": "CONTRADICTS",
       "reason_code": "BROKER_NOT_ON_SEBI_LIST",
       "params": {
-        "name": "ABC Capital"
+        "name": "Zyphra Stock Club"
       },
       "evidence_ids": [
         "ev-4"
@@ -90,7 +90,7 @@
       "outcome": "CONTRADICTS",
       "reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE",
       "params": {
-        "upi_id": "abccapital.invest@okaxis"
+        "upi_id": "zyphrastock.invest@mockupi"
       },
       "evidence_ids": [
         "ev-5"

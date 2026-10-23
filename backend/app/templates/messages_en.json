@@ -18,6 +18,7 @@
     "BROKER_NOT_ON_SEBI_LIST": {"app": "Broker: {name}, says it is SEBI registered", "record": "{name} is not on the SEBI list of registered intermediaries."},
     "BROKER_NEAR_MATCH_AMBIGUOUS": {"app": "Broker: {name}", "record": "The SEBI list has a similar name, {near_name}, but not {name}. We could not verify this."},
     "BROKER_NOT_FOUND_NOT_CLAIMED": {"app": "Broker: {name}", "record": "{name} is not on the SEBI list. We could not verify this."},
+    "BROKER_REG_NO_MISMATCH": {"app": "Broker: {name}, SEBI reg. no. {claimed_reg_no}", "record": "On the SEBI list, {claimed_reg_no} is not the registration number of {name}."},
     "PAYEE_VALID_HANDLE": {"app": "Pay to {payee}", "record": "{payee} is a SEBI @valid handle and is not in the Suspect Registry."},
     "PAYEE_IN_SUSPECT_REGISTRY": {"app": "Pay to {payee}", "record": "{payee} is in the Suspect Registry of accounts reported for fraud."},
     "PAYEE_BROKER_NOT_VALID_HANDLE": {"app": "Pay to {payee}, described as a broker", "record": "Registered brokers collect money through @valid handles. {payee} is not one."},
