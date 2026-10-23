@@ -20,8 +20,10 @@ export type CheckResult = {
 }
 export type Candidate = { isin: string; name: string }
 
-// MOCK bank login: the signed-in customer is synthetic case P0001 in data/synthetic/portfolios
-export const CUSTOMER = { id: 'SYN-C0001', name: 'Synthetic Customer 0001' }
+// MOCK bank login: ?customer=SYN-C0028 signs in as that synthetic customer from data/synthetic/portfolios
+const asked = new URLSearchParams(window.location.search).get('customer') ?? ''
+const id = /^SYN-C\d{4}$/.test(asked) ? asked : 'SYN-C0001'
+export const CUSTOMER = { id, name: `Synthetic Customer ${id.slice(-4)}` }
 
 async function body<T>(r: Response): Promise<T> {
   if (!r.ok) throw new Error(`${r.status} ${await r.text()}`)
