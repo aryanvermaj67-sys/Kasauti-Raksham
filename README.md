@@ -17,7 +17,7 @@ A customer partway through a fake-investment scam opens their bank app and taps 
    | Claim | Record |
    |---|---|
    | "You hold 3 stocks worth ₹3.98 crore" | Depository holdings via Account Aggregator |
-   | "ABC Capital, SEBI-registered" | SEBI registered intermediaries |
+   | "Zyphra Stock Club, SEBI-registered" | SEBI registered intermediaries |
    | "Pay this UPI ID" | SEBI @valid handles, I4C Suspect Registry |
    | "The minister recommends it" | Official footage the clip was cut from |
    | "Licensed forex app" | RBI Alert List |

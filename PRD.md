@@ -108,7 +108,7 @@ All cached public files follow the rules in section 11 (Data sources).
 | Claim | MATCHES | CONTRADICTS | NO_RECORD |
 |---|---|---|---|
 | Holding | ISIN found, quantity within ±0 | Not found (or qty differs) AND all depositories in scope returned OK | Any depository failed or not in scope; no demat account |
-| Broker | Exact normalized name or reg no on SEBI list | `claims_registered=true` and no exact or near match (similarity < 0.6) | Near match only (0.6–0.9): ambiguous |
+| Broker | Exact name on the SEBI list after normalising (lowercase, punctuation stripped, legal words such as ltd, pvt, private dropped). A quoted SEBI reg no must belong to that name | `claims_registered=true` and the name's distinctive words are more than one typo from every registered firm; or a quoted reg no that belongs to a different name or is not on the list (`BROKER_REG_NO_MISMATCH`: a borrowed number is the classic impersonation) | Distinctive words within one typo (one insert, delete, substitute or adjacent swap) of a registered firm, but not its exact name: ambiguous. Generic words (capital, securities, broking, stock, club, ...) are dropped before this comparison; the list is in `backend/app/constants.py`. Also: not on the list and registration not claimed |
 | Payee | Valid @valid handle and not in Suspect Registry | In Suspect Registry, or described as broker but not a @valid handle | Bank account with no registry hit |
 | Endorsement | Source found, transcript same | Source found (sim ≥ threshold), transcript differs: report changed time range | No source found |
 | Platform | — (never MATCHES in MVP) | On RBI Alert List | Not on list |
