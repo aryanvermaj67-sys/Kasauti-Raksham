@@ -6,10 +6,10 @@
 
 | | |
 |---|---|
-| Phase | 5a · Demo hardening, on `main`. Frozen-set validation (no-video scope, set hash `d2bfe2f3…40ec`) run seven times; run 7: 274/274 outcomes, FALSE CONTRADICTION 0 (details in Test results, `docs/VALIDATION_SUMMARY.md`, `docs/VALIDATION_RUN7.md`). Post-freeze rule and reader fixes, local commits ahead of origin/main, not pushed. Open: a009 needs a rerun through the video route once the real official clips are indexed, the 32 frozen clips and the consented-video evaluation (s01-s08), consented footage, comprehension test, Wi-Fi-off rehearsal, backup video |
-| Overall | 67% (22 of 33, unchanged: frozen-set validation is a sub-item of open parents) |
+| Phase | 5a · Demo hardening, on `main`. Frozen-set validation (no-video scope, set hash `d2bfe2f3…40ec`) run eight times; run 8: 274/274 outcomes, FALSE CONTRADICTION 0 (details in Test results, `docs/VALIDATION_SUMMARY.md`, `docs/VALIDATION_RUN8.md`). 60 MOCK fake-app screenshots made and scored (97.8% fields). Post-freeze rule and reader fixes, local commits ahead of origin/main, not pushed. Open: a009 needs a rerun through the video route once the real official clips are indexed, the 32 frozen clips and the consented-video evaluation (s01-s08), consented footage (user recording), comprehension test, Hindi review, Wi-Fi-off rehearsal, backup video |
+| Overall | 70% (23 of 33; fake-app screenshot item done) |
 | Demo-ready | No (scripted offline run and browser run of demo-001 pass; Wi-Fi not physically switched off, no backup video, no consented footage, video part of the frozen set not run, GPU memory tight with gemma kept loaded) |
-| Last updated | 25 Oct 2026, 03:10 IST |
+| Last updated | 25 Oct 2026, 03:36 IST |
 
 ## Team and ownership
 
@@ -23,7 +23,7 @@
 ## Pre-finale checklist (before 24 Oct)
 
 **Rules to confirm with organisers**
-- [ ] Pre-written code allowed, or only data, designs and models?
+- [x] Pre-written code allowed, or only data, designs and models? Organisers confirmed pre-written code IS allowed; the form was submitted (25 Oct)
 - [ ] Venue internet, power, paid cloud APIs allowed?
 - [ ] Registered track matches the deck (Track 03)
 
@@ -61,7 +61,8 @@
 **Media and synthetic data**
 - [ ] Signed consent forms from every teammate on camera or voice
 - [ ] 5–10 "official" speech videos + manipulated versions + compressed/cropped copies (30-video test)
-- [ ] ~60 fake-app screenshots, 6 layouts, Hindi + English
+- [x] ~60 fake-app screenshots, 6 layouts, Hindi + English
+  - `scripts/make_fake_app_screens.py`: 60 MOCK screenshots (30 EN + 30 HI, 6 layouts) with exact labels in `data/media/fake_apps/` (git-ignored, regenerated from `--seed`); `--score` reads them through the real reader
 - [x] ~300 synthetic portfolios (fake, mixed, real, no demat, partial coverage)
 - [x] Synthetic payments ledger with scam pattern + mock Suspect Registry
 - [ ] Frozen test set written by someone else, hashed
@@ -109,7 +110,8 @@
 
 ### Phase 1 · Core slice (hours 4–16)
 - [x] Synthetic portfolios generator, ReBIT format, incl. partial-coverage cases (A)
-- [ ] Fake trading app screens + 60 screenshots, 6 layouts (A)
+- [x] Fake trading app screens + 60 screenshots, 6 layouts (A)
+  - Reader score on them: 497/584 fields first pass (536 counting name-mapped ISINs), 571/584 (97.8%) after the reader fixes below (target ≥ 95%)
 - [x] Claim reader + cache mode + schema validation (B)
   - `local` (default) and `offline` providers built (`reader/local.py`, `local_prompt.txt`); hosted providers removed. Local: one retry, then fallback to the Tesseract reader with `reader.fallback=true` in the evidence pack
   - Models compared on demo-001..003 (56 fields): gemma3:4b 56/56, 0 invented claims; qwen2.5:3b 49/56 on GPU, 53/56 on CPU. Speed ~4.5 s/image GPU, ~46 s CPU; gemma peaks at 7.1 GB VRAM with CLIP, Whisper and EasyOCR loaded (8.15 GB card)
@@ -186,7 +188,8 @@
   - `/app`: 8 steps (Payment, Upload, Confirm, Consent, Checking, Result, Action, Pack), EN/HI from the templates, Inter + Noto Sans Devanagari bundled, lucide-react icons, spec tokens (4 px radius, tabular numerals, 44 px targets, 19 px large-text mode), `/api/health` chip ("Preparing" disables Check). Outcome labels: "MATCHES THE RECORD", "CONTRADICTS THE RECORD", "NO RECORD FOUND". Checking shows real call progress (no timers); Result shows each claim beside its records (source, fetched_at, MOCK/public); Pack downloads the real pack and shows the backend SHA-256 of the exact bytes; read-aloud only if a voice exists for the language
   - New endpoints: `GET /demo/scenarios`, `GET /demo/files/{name}` (whitelist, traversal 404), `GET /api/checks/{id}/records` and `/pack` (own customer only), `GET /cases` (New / In review / Approved / Rejected), `GET /stats` (outcome counts, median latency from the evidence store; latency now stored in the verdict entry; prompt rate computed live), `POST /demo/run` and `POST /demo/reset` (only with `KASAUTI_DEMO=1`). Reviewer detail adds a MOCK linked-accounts panel (Suspect Registry mock + ledger payers); Approve/Dismiss already write a review entry into the hash chain
   - `/reviewer` and `/present` rebuilt (EN/HI); `/present` shows phone and console as two pages that each poll the backend (no shared state), Run starts a real run, Reset calls `POST /demo/reset`. New reason code `HOLDING_NO_CONSENT` (post-freeze, see Decisions log)
-- [x] Frozen-set validation, no-video scope (25 Oct): seven runs, run 1 251/274 outcomes with 14 false contradictions, run 7 274/274 with 0; post-freeze changes with tests in `test_post_freeze_rules.py` and `test_rules.py` (Decisions log). `docs/VALIDATION_SUMMARY.md`, `VALIDATION_RUN1..7.md`, `validation_results_run*.json`
+- [x] Frozen-set validation, no-video scope (25 Oct): eight runs, run 1 251/274 outcomes with 14 false contradictions, run 8 274/274 with 0; post-freeze changes with tests in `test_post_freeze_rules.py` and `test_rules.py` (Decisions log). `docs/VALIDATION_SUMMARY.md`, `VALIDATION_RUN1..8.md`, `validation_results_run*.json`
+  - [x] Reader fixes found by the fake-app set, with tests: UPI handle completed from the printed one, SEBI reg no taken from the page, platform category needs a text cue and the name is the app title, lost decimal points (7 68 लाख, 684 लाख), bare L/Cr amounts, grouped quantities (2 500), 'Lta' read for 'Ltd', total on the line after a stray rupee sign
   - [x] No-demat rule (`HOLDING_NO_DEMAT`) applied in PRD FR-5, EN/HI templates, `test_rules.py`, `scripts/gen_portfolios.py` and the 60 `no_demat` synthetic portfolios
   - [x] a009 (sourceless video frame) now scored through the video route: the harness makes a 3 s silent clip, calls `POST /api/video`, then the rules
   - [ ] Rerun a009 once the real official clips are indexed
@@ -199,7 +202,7 @@
 
 | Test | Target | Result |
 |---|---|---|
-| Claim fields read | ≥ 95% | gemma3:4b 56/56 on demo-001..003 (3 images, 0 invented claims); qwen2.5:3b 49/56 GPU, 53/56 CPU. Not yet the 60-screenshot set |
+| Claim fields read | ≥ 95% | 60 MOCK fake-app screenshots (6 layouts, 30 EN + 30 HI, `make_fake_app_screens.py --score`, real reader): 497/584 first pass (536 counting name-mapped ISINs), 571/584 = 97.8% after fixes. Earlier: gemma3:4b 56/56 on demo-001..003 (0 invented claims); qwen2.5:3b 49/56 GPU, 53/56 CPU |
 | Rule correctness (300) | 100% | 300/300 (1261 holding claims) |
 | Source match top-1 (30) | ≥ 90% | 30/30 = 100% (dev clips, not the consented set) |
 | Unindexed clips (sourceless) | NO_RECORD | 3/3 NO_RECORD; 0 misses returned MATCHES; slowest source search 1.23 s |
@@ -210,10 +213,10 @@
 | Source search < 5 s | < 5 s | GPU 2.17 s; CPU fallback (CUDA_VISIBLE_DEVICES=-1) 2.66 s |
 | Full video result (read + video + check) < 60 s | < 60 s | GPU 11.50 s; CPU fallback 18.11 s |
 | Offline demo run (`scripts/demo.py`) | all steps pass | 24 Oct 12:53: all 6 flows PASSED, "demo OK offline", 0 blocked attempts under the socket guard plus HF/transformers offline vars and a dead proxy (Wi-Fi not physically off). Earlier run (05:30) was reported as 7 steps |
-| Full suite | green | 25 Oct, after run 7: backend pytest 151 passed, ruff clean (as reported by the lead). Earlier the same day, 148 passed and `scripts/verify_all.sh --quick` ALL CHECKS PASSED. Earlier, 24 Oct at ff73c5d: pytest 119, frontend 7 tests + typecheck + build OK, real-model injection tests EN and HI |
+| Full suite | green | 25 Oct, after run 8: backend pytest 156 passed, ruff clean (as reported by the lead). After run 7: 151 passed. Earlier the same day, 148 passed and `scripts/verify_all.sh --quick` ALL CHECKS PASSED. Earlier, 24 Oct at ff73c5d: pytest 119, frontend 7 tests + typecheck + build OK, real-model injection tests EN and HI |
 | Reader hardening eval (24 dev images) | report | `docs/READER_HARDENING_EVAL.md`: gemma3:4b broker names 5/7 -> 7/7, language 17/24 -> 20/24; total errors worse (gemma3:4b 66 -> 82, qwen2.5:3b 81 -> 75) because payees are dropped when OCR garbles the UPI id; gemma3:4b holding names/quantities slipped 2-3 fields. Dev images, not the frozen set |
 | Browser run, demo-001 (24 Oct evening) | all steps | Read, confirm, consent, check, result through the Vite UI (proxy to :8000 already wired) incl. the video step: "original video exists, words changed at 0:11-0:13". An earlier NO_SOURCE result came from another session's reset clearing results |
-| Frozen set, real `data/frozen/`, no-video scope (25 Oct, run 1 to run 7) | report | Not a full-scope result: the 32 video clips were not run. Run 7 (latest): outcomes 274/274; FALSE CONTRADICTION 0; reason codes 307/307; screenshot fields 603/632; reader fallbacks 0; injection 5/5; read time 1.9-7.0 s per screenshot on GPU. Run 1 (before fixes) was 251/274 outcomes with 14 false contradictions and 372/632 fields. a009 is now scored through the video route (sourceless frame, 3 s silent clip), so it must be rerun when the real official clips are indexed. 29 screenshot fields still wrong from OCR limits. Earlier CPU subset: 21-83 s per screenshot; prompt rate 133 per 1,000 (upper bound, synthetic ledger). `docs/VALIDATION_RUN7.md` |
+| Frozen set, real `data/frozen/`, no-video scope (25 Oct, run 1 to run 8) | report | Not a full-scope result: the 32 video clips were not run. Run 8 (latest): outcomes 274/274; FALSE CONTRADICTION 0; reason codes 307/307; screenshot fields 607/632; reader fallbacks 0; injection 5/5 (run 7: fields 603/632, read time 1.9-7.0 s per screenshot on GPU). Run 1 (before fixes) was 251/274 outcomes with 14 false contradictions and 372/632 fields. a009 is now scored through the video route (sourceless frame, 3 s silent clip), so it must be rerun when the real official clips are indexed. 25 screenshot fields still wrong from OCR limits (run 8). Earlier CPU subset: 21-83 s per screenshot; prompt rate 133 per 1,000 (upper bound, synthetic ledger). `docs/VALIDATION_RUN8.md` |
 | Frozen runner on `data/frozen_example/` (`--example`) | report | 24 Oct 13:13: outcomes 8/8, FALSE CONTRADICTION 0, reason codes 10/10, injection 1/1, fallbacks 0, screenshot fields 5/8 (3 real reader errors, labels unchanged). Example set only |
 | Peak memory, image (local reader, gemma3:4b) + video request at once | < 7.8 GB VRAM | 7181 MB peak on the whole GPU (includes 3740 MB already in use before start). Image 7.56 s, video 10.30 s concurrently |
 | Local read, GPU hidden (backend `CUDA_VISIBLE_DEVICES=-1`, Ollama `num_gpu=0`) | < 60 s | demo-001 42.21 s, demo-002 44.65 s, demo-003 40.21 s per image, gemma3:4b, no fallback. Read alone is 40-45 s, so little margin on a CPU-only laptop in local mode |
@@ -272,6 +275,8 @@
 | 25 Oct | DECIDED (closes the OPEN row on rc-024, rc-025, rc-127): a customer with no demat account where every depository answered is CONTRADICTS, new reason code `HOLDING_NO_DEMAT`; if a depository failed it stays NO_RECORD. PRD FR-5, EN/HI templates, `test_rules.py`, `scripts/gen_portfolios.py` and the 60 `no_demat` synthetic portfolios updated | Matches the frozen labels, and the full-coverage rule still protects against a false contradiction: with every depository answering, no holding exists in the customer's name |
 | 25 Oct | a009 (sourceless video frame) is scored through the video route: the harness makes a 3 s silent clip, calls `POST /api/video`, then applies the rules. Rerun when the real official clips are indexed | Endorsements come from video, not from a screenshot read, so a009 cannot be judged by the screenshot reader |
 | 25 Oct | POST-FREEZE CHANGES, reader (run 7): values re-read off the page after the number check; ISIN recovered from page text; payee 'broker/advisor' set only if the text uses the word; adaptive 3x model timeout on CPU-only laptops (`KASAUTI_READ_TIMEOUT` overrides it); torch cache released after OCR | Fewer wrong values and invented roles; CPU-only laptops were timing out before the model finished; frees GPU memory for the model |
+| 25 Oct | Pre-written code is allowed | Organisers confirmed it and the form was submitted; the existing codebase can be used at the finale |
+| 25 Oct | POST-FREEZE CHANGES, reader (run 8, found by the 60 fake-app screenshots; tests added): UPI handle completed from the printed one; SEBI reg no taken from the page; platform category needs a text cue and the name is the app title, not a category line; lost decimal points repaired (7 68 लाख, 684 लाख); bare L/Cr amounts; grouped quantities (2 500); 'Lta' read for 'Ltd'; total on the line after a stray rupee sign | Reader score on the fake-app set rose from 497/584 to 571/584 (97.8%); frozen run 8 still 0 false contradictions. Fake-app screenshots are MOCK and regenerated from `--seed` |
 | 24 Oct | OPEN, needs a team decision: keep reader hardening as committed (payee dropped when OCR garbles the UPI id; customer re-adds it on the confirm screen) or loosen the UPI validator | Fewer wrong payees reach the rules, but the hardening eval shows total errors up on gemma3:4b (66 -> 82) and 2-3 holding fields slipped; by design the confirm screen is the safety net |
 
 ## Blockers
@@ -292,12 +297,13 @@
 
 ## Next up
 
-1. Commit the pending changes (reader, no-demat rule, regenerated portfolios, docs/VALIDATION_SUMMARY.md and VALIDATION_RUN7.md), push, rerun preflight on a clean commit; decide the reader-hardening payee trade-off — lead / Aryan
+1. Push the local commits, rerun preflight on a clean commit; decide the reader-hardening payee trade-off — lead / Aryan
 2. Record the official clips (user is recording), index them, rerun a009 through the video route, then the consented-video evaluation (s01-s08) and the full-scope hash with the 32 frozen clips — user / set's author / B
-3. Teammates: 60 screenshots, Hindi review of templates (incl. new `HOLDING_NO_DEMAT`), comprehension test, deck fixes, Wi-Fi-off rehearsal, backup video — A / D
+3. Teammates: Hindi review of templates (incl. new `HOLDING_NO_DEMAT`), comprehension test, deck fixes, role owners, Wi-Fi-off rehearsal, backup video — A / D
 
 ## Changelog
 
+- 25 Oct 03:36 — Organisers confirmed pre-written code is allowed, form submitted (ticked, Decisions log). 60 MOCK fake-app screenshots done (`scripts/make_fake_app_screens.py`, 6 layouts, 30 EN + 30 HI, `--score`): reader 497/584 first pass, 571/584 (97.8%) after 8 reader fixes with tests. Frozen run 8 (no-video scope): 274/274 outcomes, 0 false contradictions, 307/307 reason codes, 607/632 fields, 0 fallbacks, injection 5/5; 156 backend tests pass, ruff clean. `docs/VALIDATION_SUMMARY.md`, `docs/VALIDATION_RUN8.md` updated. Lead reports a local commit, not pushed (git log at 03:36 still showed 18b7e73 on top). Overall 67% to 70% (23 of 33). Unchanged: consented video (user recording), Hindi review, comprehension test, deck fixes, role owners.
 - 25 Oct 03:10 — Decision: no-demat customer with every depository answering is CONTRADICTS (`HOLDING_NO_DEMAT`), NO_RECORD if a depository failed; PRD FR-5, EN/HI templates, test_rules, gen_portfolios and 60 no_demat portfolios updated, rc-024/025/127 row closed. a009 now scored through the video route (rerun when the real clips are indexed). Reader fixes (re-read values, ISIN from page text, payee role wording, adaptive CPU timeout with `KASAUTI_READ_TIMEOUT`, torch cache release). Frozen run 7 (no-video scope): 274/274 outcomes, 0 false contradictions, 307/307 reason codes, 603/632 fields, 0 fallbacks, injection 5/5, read 1.9-7.0 s on GPU; 151 backend tests pass, ruff clean. Docs: `docs/VALIDATION_SUMMARY.md`, `docs/VALIDATION_RUN7.md`. Clips still pending (user recording). Not pushed. Overall stays 67%.
 - 25 Oct 02:45 — Frozen-set validation, no-video scope, six runs (set hash `d2bfe2f3…40ec`): outcomes 251/274 to 270/274, FALSE CONTRADICTION 14 to 0, reason codes 306/307, screenshot fields 593/632, injection 5/5; 4 items left (3 label/PRD conflicts, 1 by design). 11 post-freeze changes logged with 23 tests; pytest 148 passed, ruff clean, `verify_all.sh --quick` passed. Video part and consented-video evaluation still waiting for clips. Not pushed. Earlier 25 Oct 00:12: no-video scope documented and committed (d79017b, 9fc1396, dce03df). Overall stays 67%.
 - 24 Oct 11:17 to 16:05 (folded) — Frozen-set groundwork (spec, checker, runner, example set), free local claim reader (gemma3:4b 56/56 on demo-001..003, overall 64% to 67%), warm-up, offline guards, preflight, kit scripts, runbook; frozen set received and committed as received (835441d); new UI on the real pipeline (ceec7e4, ea38484, 47e5d98), `main` pushed at 20a1050; POST-FREEZE `HOLDING_NO_CONSENT`; reader hardening ff73c5d (payee trade-off open); browser run of demo-001 incl. video passed.

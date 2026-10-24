@@ -349,3 +349,52 @@ def test_a_payee_is_described_as_broker_or_advisor_only_if_the_text_uses_the_wor
         c = payee(said)
         local._ground_payee(c, text)
         assert c[0]["fields"]["described_as"] == want
+
+
+def test_ocr_cleanup_lost_points_ltd_and_grouped_quantities():
+    assert local.clean_ocr("Infosys Lta") == "Infosys Ltd"
+    assert "₹ 7.68 लाख" in local.clean_ocr("₹ 7 68 लाख")
+    assert "₹ 6.84 लाख" in local.clean_ocr("₹ 684 लाख")
+    assert "1.14 लाख" in local.clean_ocr("1.14 लाख")  # already has its point
+    assert "₹ 1,50,000" in local.clean_ocr("₹ 1,50,000")
+    assert "मातरा 2,500" in local.clean_ocr("मातरा 2 500")
+    assert "Qty 250" in local.clean_ocr("Qty 250")
+
+
+def test_a_decimal_amount_with_a_unit_but_no_rupee_sign_fills_a_value():
+    claims = [
+        {"type": "holding", "fields": {"instrument_name": n, "isin": None, "quantity": 1, "value_inr": None}}
+        for n in ("Alpha Mills", "Beta Works")
+    ]
+    local._fill_values(claims, "Alpha Mills\nQty 2,500\n89.60 L\nBeta Works\nQty 40\n₹ 1.43 L")
+    assert [c["fields"]["value_inr"] for c in claims] == [8960000, 143000]
+
+
+def test_a_total_after_a_stray_rupee_sign_is_still_the_total():
+    assert local._printed_total("Total value\nरे\n6,76,000\nAlpha Mills") == 676000
+
+
+def test_a_short_handle_is_completed_from_the_printed_one_and_a_reg_no_is_taken_from_the_page():
+    text = "UPI ID:\ntopup hub@validmock\nUPI ID: topup.hub@validmock\nSEBI Reg. No.: INZ778246640"
+    claims = [
+        {"type": "payee", "fields": {"upi_id": "hub@validmock"}},
+        {"type": "broker", "fields": {"name": "Kiran Wealth Circle", "sebi_reg_no": None}},
+    ]
+    local._complete_handle(claims, text)
+    local._reg_no_from_text(claims, text)
+    assert claims[0]["fields"]["upi_id"] == "topup.hub@validmock"
+    assert claims[1]["fields"]["sebi_reg_no"] == "INZ778246640"
+    local._reg_no_from_text(claims, "INZ000000001 and INZ000000002")  # two different numbers: ambiguous, left alone
+    claims[1]["fields"]["sebi_reg_no"] = None
+    local._reg_no_from_text(claims, "INZ000000001 and INZ000000002")
+    assert claims[1]["fields"]["sebi_reg_no"] is None
+
+
+def test_platform_category_needs_a_cue_and_the_name_is_not_the_category_line_or_a_handle_part():
+    text = "9:41\n4G 91%\nKubera Coin\nExchange\nक्रिप्टो एक्सचेंज\nUPI ID: fxfunds.in@mockupi"
+    claims = [{"type": "platform", "fields": {"name": "fxfunds . in", "category": "crypto", "claims_licensed": True}}]
+    local._ground_platform(claims, text)
+    assert claims[0]["fields"]["name"] == "Kubera Coin Exchange" and claims[0]["fields"]["category"] == "crypto"
+    plain = [{"type": "platform", "fields": {"name": "Arena", "category": "forex", "claims_licensed": True}}]
+    local._ground_platform(plain, "Arena\nTrading platform")
+    assert plain[0]["fields"]["category"] == "other"  # the text never says forex

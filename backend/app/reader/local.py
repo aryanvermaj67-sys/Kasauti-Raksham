@@ -57,7 +57,7 @@ SCALE = {
     "लाख": 1e5,
 }
 AMOUNT = re.compile(rf"({NUM})\s*(crores?|cr\b|करोड़|lakhs?|lac\b|l\b|लाख)?", re.I)
-QTY_WORDS = r"shares?|qty|quantity|units?|शेयर|मात्रा|यूनिट"
+QTY_WORDS = r"shares?|qty|quantity|units?|शेयर|मात्रा|मातरा|यूनिट"
 QTY = re.compile(rf"(?:{QTY_WORDS})(?:\s+held)?\s*[:ः\-]?\s*({NUM})|({NUM})\s*(?:{QTY_WORDS})", re.I)
 RUPEES = re.compile(rf"(?:₹|rs\.?|inr)\s*({NUM})", re.I)
 TOTAL_LINE = re.compile(r"\b(total|portfolio|account value)\b|कुल|पोर्टफोलियो", re.I)
@@ -166,12 +166,22 @@ LOOKALIKE_DIGITS = str.maketrans("OIlSB", "01158")
 CAPITAL_O_IN_WORD = re.compile(r"(?<=[a-z])O(?=[a-z])")  # "ZerOdha": a capital O inside a lower-case word is a zero
 
 
+LTD_MISREAD = re.compile(r"(?<=[a-z]) Lt[aq]\b")  # the Devanagari model reads the Latin "Ltd" as "Lta"
+LOST_POINT_SPACE = re.compile(r"(?<![\d,.])(\d{1,3}) (\d{2})(?= (?:लाख|करोड़|L\b|Cr\b|lakh|crore))")  # "7 68 लाख"
+LOST_POINT_LAKH = re.compile(r"(?<![\d,.])([1-9])(\d{2})(?= (?:लाख|L\b|lakh))")  # "684 लाख": apps switch to Cr at 100
+QTY_GROUP_SPACE = re.compile(rf"((?:{QTY_WORDS})\W{{0,2}}\s*)(\d{{1,2}}) (\d{{3}})\b", re.I)  # "मातरा 2 500"
+
+
 def clean_ocr(text: str) -> str:
     """Undo EasyOCR habits: Devanagari digits for printed digits, rupee sign read as र, and look-alike glyphs in
     identifiers whose format fixes the reading (SEBI registration numbers, @valid handles, a zero inside a word)."""
     text = RUPEE_AS_RA.sub("₹ ", text.translate(DEVANAGARI_DIGITS))
     text = REG_NO_MISREAD.sub(lambda m: f"IN{m[1]}{m[2].translate(LOOKALIKE_DIGITS)}", text)
     text = SEBI_HANDLE.sub(lambda m: f"{m[1]}.{m[2].lower()}@{m[3]}", text)
+    text = LTD_MISREAD.sub(" Ltd", text)
+    text = LOST_POINT_SPACE.sub(r"\1.\2", text)  # shortcut: a lost decimal point is guessed from the unit; the total
+    text = LOST_POINT_LAKH.sub(r"\1.\2", text)  # check later catches a wrong guess
+    text = QTY_GROUP_SPACE.sub(r"\1\2,\3", text)
     return CAPITAL_O_IN_WORD.sub("0", text)
 
 
@@ -217,10 +227,16 @@ def _is_total_line(c: dict) -> bool:
     return c["fields"].get("quantity") is None and bool(TOTAL_LINE.search(c["fields"].get("instrument_name") or ""))
 
 
+def _total_window(lines: list[str], i: int) -> str:
+    """The Total line and the line after it; one more when that line is only a stray rupee sign ("रे", "Rs")."""
+    n = 3 if len(lines) > i + 1 and len(lines[i + 1].strip()) <= 3 else 2
+    return " ".join(lines[i : i + n])
+
+
 def _labelled_total(text: str, v: float) -> bool:
     """True if v is printed on a Total / Portfolio / कुल line (or the line after it)."""
     lines = text.splitlines()
-    return any(TOTAL_LINE.search(ln) and _near(v, _amounts(" ".join(lines[i : i + 2]))) for i, ln in enumerate(lines))
+    return any(TOTAL_LINE.search(ln) and _near(v, _amounts(_total_window(lines, i))) for i, ln in enumerate(lines))
 
 
 def _check_numbers(claims: list[dict], total, text: str):
@@ -341,6 +357,10 @@ def _payee_from_text(claims: list[dict], text: str) -> None:
 RUPEE_AMOUNT = re.compile(rf"(?:₹|rs\.?|inr)\s*({NUM})\s*(crores?|cr\b|करोड़|lakhs?|lac\b|l\b|लाख)?", re.I)
 
 
+# EasyOCR often drops the rupee sign, so a decimal amount with L / Cr / लाख counts too (not a bare "2,500 L")
+UNIT_AMOUNT = re.compile(r"(\d[\d,]*\.\d+)\s*(crores?|cr\b|करोड़|lakhs?|lac\b|l\b|लाख)", re.I)
+
+
 def _fill_values(claims: list[dict], text: str) -> None:
     """The model leaves a value null when it is written as "₹ 4.26 L". If the page prints a rupee amount for a holding
     (after its name, before the next holding or a total line), that amount is its value."""
@@ -355,7 +375,7 @@ def _fill_values(claims: list[dict], text: str) -> None:
         window = text[start + len(f["instrument_name"]) : end]
         total_at = TOTAL_LINE.search(window)
         window = window[: total_at.start()] if total_at else window
-        m = RUPEE_AMOUNT.search(window)
+        m = RUPEE_AMOUNT.search(window) or UNIT_AMOUNT.search(window)
         if m:
             f["value_inr"] = _num(m[1]) * SCALE.get((m[2] or "").lower(), 1)
 
@@ -394,12 +414,81 @@ def _ground_payee(claims: list[dict], text: str) -> None:
             f["described_as"] = "other"
 
 
+PLATFORM_CATEGORY = {
+    "crypto": re.compile(r"crypto|क्र\S{0,3}टो|bitcoin|coin", re.I),  # EasyOCR mangles the Hindi word
+    "forex": re.compile(r"forex|फॉरेक्स|फॉरेक्स|fx", re.I),
+    "equity": re.compile(r"equity|stock|इक्विटी|शेयर", re.I),
+}
+GENERIC_PLATFORM = re.compile(
+    r"(trading|ट्रेडिंग|ट्रेडगि)\s*(platform|प्लेटफ़?ॉर्म)|(crypto|क्रिप्टो)\s*(exchange|एक्सचेंज)|licen[sc]ed|लाइसेंस", re.I
+)
+STATUS_BAR = re.compile(r"^(\d{1,2}:\d{2}|\d?G|\d+%|wi-?fi.*|admin|home)$", re.I)
+
+
+def _title_lines(text: str) -> str | None:
+    """The app's name: the first Latin-letter lines at the top (up to two, e.g. "Kubera Coin" + "Exchange")."""
+    out = []
+    for ln in (x.strip() for x in text.splitlines()):
+        if not ln or STATUS_BAR.match(ln) or re.search(r"\d", ln):
+            if out:
+                break
+            continue
+        if re.fullmatch(r"[A-Za-z][A-Za-z &.'-]*", ln) and not GENERIC_PLATFORM.search(ln) and len(ln.split()) <= 3:
+            out.append(ln)
+            if len(out) == 2:
+                break
+        elif out:
+            break
+    return " ".join(out) or None
+
+
+def _ground_platform(claims: list[dict], text: str) -> None:
+    """A platform's category must be what the text says (else "other"), and its name is not the category line or a
+    fragment of its UPI handle: then it is the app title printed at the top of the page."""
+    handles = [h.lower() for h in UPI_HANDLE.findall(re.sub(r"\s*\.\s*", ".", text))]
+    for c in claims:
+        if c["type"] != "platform":
+            continue
+        f = c["fields"]
+        if f.get("category") != "other" and not PLATFORM_CATEGORY.get(f.get("category", ""), re.compile("$^")).search(
+            text
+        ):
+            f["category"] = "other"
+        name = (f.get("name") or "").strip().lower().replace(" ", "")
+        if GENERIC_PLATFORM.search(f.get("name") or "") or (name and any(name in h for h in handles)):
+            title = _title_lines(text)
+            if title:
+                f["name"] = title
+
+
+def _complete_handle(claims: list[dict], text: str) -> None:
+    """EasyOCR can lose the front of "name.part@bank" (a dot read as a space). A printed handle that ends with what the
+    model gave, and is longer, is the whole handle."""
+    printed = {h for h in UPI_HANDLE.findall(re.sub(r"\s*\.\s*", ".", text))}
+    for c in claims:
+        upi = c["fields"].get("upi_id") if c["type"] == "payee" else None
+        if upi:
+            longer = [h for h in printed if h.lower().endswith(upi.lower()) and len(h) > len(upi)]
+            if len(longer) == 1:
+                c["fields"]["upi_id"] = longer[0]
+
+
+def _reg_no_from_text(claims: list[dict], text: str) -> None:
+    """A registration number the page prints once, in SEBI's format, belongs to the broker claim that lacks one."""
+    found = set(re.findall(r"(?<![A-Za-z0-9])IN[AHZ]\d{9}(?![A-Za-z0-9])", text))
+    if len(found) == 1:
+        for c in claims:
+            if c["type"] == "broker" and not c["fields"].get("sebi_reg_no"):
+                c["fields"]["sebi_reg_no"] = found.pop()
+                break
+
+
 def _printed_total(text: str):
     """The amount printed on (or just after) a Total / Portfolio / कुल line, if any."""
     lines = text.splitlines()
     for i, ln in enumerate(lines):
         if TOTAL_LINE.search(ln):
-            amounts = _amounts(" ".join(lines[i : i + 2]))
+            amounts = _amounts(_total_window(lines, i))
             if amounts:
                 return amounts[0]
     return None
@@ -467,6 +556,9 @@ def _to_claimset(content: str, sha: str, model: str, text: str = "") -> ClaimSet
     _ground(claims, text)
     _isins_from_text(claims, text)
     _ground_payee(claims, text)
+    _ground_platform(claims, text)
+    _complete_handle(claims, text)
+    _reg_no_from_text(claims, text)
     claims, total = _check_numbers(claims, data["portfolio_total_inr"], text)
     _fill_values(
         claims, text
