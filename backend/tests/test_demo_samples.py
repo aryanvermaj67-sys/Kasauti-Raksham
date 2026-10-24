@@ -20,7 +20,7 @@ def check(demo, monkeypatch):
 
 def test_demo_002_genuine_investor_all_matches(monkeypatch):
     claimset, result = check("demo-002.png", monkeypatch)
-    assert claimset.reader.provider == "offline"
+    assert claimset.reader.provider == "local"
     assert [c.type for c in claimset.claims].count("holding") == 4
     assert {v.outcome for v in result.verdicts} == {"MATCHES"}
     assert result.summary[0].reason_code == "HOLDINGS_TOTAL_ALL_FOUND"
@@ -39,4 +39,4 @@ def test_demo_003_nsdl_failed_every_holding_partial(monkeypatch):
 @pytest.mark.parametrize("demo", sorted(CUSTOMERS))
 def test_demo_cache_entries_come_from_a_reader(demo, monkeypatch):
     claimset, _ = check(demo, monkeypatch)
-    assert claimset.reader.provider in {"offline", "bedrock", "anthropic"}
+    assert claimset.reader.provider in {"offline", "local"}

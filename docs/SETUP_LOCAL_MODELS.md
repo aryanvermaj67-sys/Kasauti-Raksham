@@ -1,6 +1,6 @@
 # Free local model stack (claim reader)
 
-The hackathon forbids paid APIs, so the claim reader's local option is free and runs offline once downloaded: EasyOCR (Hindi + English) reads the text, and a small Ollama model turns it into the fixed claim schema. Installed and checked on 24 Oct 2026 (Windows 11, RTX 5050 8 GB, Python 3.14.6, no venv). This is a smoke-tested stack, not the reader yet: `LLM_PROVIDER` has no local option, and `claims.schema.json` has no local provider value.
+The hackathon forbids paid APIs, so the claim reader's local option is free and runs offline once downloaded: EasyOCR (Hindi + English) reads the text, and a small Ollama model turns it into the fixed claim schema. Installed and checked on 24 Oct 2026 (Windows 11, RTX 5050 8 GB, Python 3.14.6, no venv). The reader that uses it is described below.
 
 ## What was installed
 
@@ -16,19 +16,24 @@ python-bidi 0.6.x ships a DLL that this laptop's Windows Application Control pol
 
 On Windows, set `PYTHONUTF8=1` (or run `python -X utf8`): EasyOCR's download progress bar and Hindi output crash on the default cp1252 console.
 
-## Smoke test results (qwen2.5:3b, structured output set to `docs/formats/claims.schema.json`)
+## The reader built on it (`LLM_PROVIDER=local`, the default)
 
-| | demo-001.png (EN) | `docs/screens/confirm_hi.png` (HI) |
+`backend/app/reader/local.py`: EasyOCR (hi+en, GPU if available) -> text -> Ollama on localhost with the output format set to `claims.schema.json` (minus the fields code fills: sha256, claim ids, reader; no endorsement claims, those come from video) -> validated by the Pydantic `ClaimSet`. Invalid output gets one retry, then `ReaderError`, then `reader/__init__.py` answers with the offline (Tesseract) reader and sets `reader.fallback = true`, which the evidence chain records (`reader_fallback` in the `claims` entry of the pack). 60 s limit; only loopback calls (`OLLAMA_HOST` must be localhost). Only validated claims reach the router; code also drops claims that read like an instruction, nulls a SEBI registration number that is not in SEBI's format, nulls a total that disagrees with its own holding lines, and drops payees with no UPI id, account or IFSC. The backend warms the model at startup (the first call is 100+ s cold).
+
+Models, scored on the three demo screenshots (56 fields; `scripts/eval_local_reader.py`, full per-field tables in `docs/LOCAL_READER_EVAL_GPU.md` and `docs/LOCAL_READER_EVAL_CPU.md`):
+
+| | gemma3:4b (default) | qwen2.5:3b (fallback) |
 |---|---|---|
-| EasyOCR (GPU, warm) | 1.7 s | 2.1 s |
-| qwen2.5:3b, warm | 14.3 s | 9.6 s (first call after loading the model: 147 s) |
-| Output validates against the schema | yes | yes |
-| Peak VRAM, with CLIP + Whisper small + EasyOCR + qwen loaded | 5.5 GB of 8.15 GB | 4.9 GB of 8.15 GB |
+| Fields right, GPU | 56/56 | 49/56 (missed a payee, misread an Indian-format total) |
+| Fields right, CPU | 56/56 | 53/56 |
+| Claims invented | 0 | 0 |
+| Seconds per image, GPU (OCR + model) | 1.2 + 3.3 | 1.2 + 3.0 |
+| Seconds per image, CPU (OCR + model) | 13 + 33 | 13 + 31 |
+| VRAM | 7.1 GB peak with CLIP, Whisper small and EasyOCR also loaded (of 8.15 GB) | 4.3 GB alone |
 
-Quality is not good enough yet; this is why the reader is not built:
-- demo-001: every claim came back as `endorsement` and no `holding` or `broker` claim appeared; `portfolio_total_inr` was 5 instead of 39800000.
-- Hindi sample: holdings, quantities and values were right, but EasyOCR read the ISINs with letter O for zero (`INEOO2A01018`), and the button text "आगे बढ़ें" became a second broker.
-- The schema requires `artifact_sha256` and `reader`, which code should fill, not the model. A reader built on this should ask the model only for `claims` and `portfolio_total_inr`, with a smaller schema per claim type.
+The two `ex_s*` images in `data/frozen_example/` are tiny and EasyOCR garbles them ("Inicsys", "Faliance"); both models get under half their fields. Their labels are illustrations (they expect an ISIN the image does not show), so they are shown but not scored. Hindi screenshots read correctly except the ISIN O/0 confusion (`INEOO2A01018`); the customer corrects claims on the confirm screen. Small-sample caution: 3 images, one run per model on GPU; qwen scored 49/56 on GPU and 53/56 on CPU for the same images, so its output varies between runs. Set `KASAUTI_LOCAL_MODEL=qwen2.5:3b` to switch the default.
+
+On demo-001..003 the verdicts through the real API on `LLM_PROVIDER=local` equal the verdicts from the regenerated cache and from the earlier offline-reader cache (`scripts/compare_reader_verdicts.py`).
 
 ## Folders to copy for offline use
 

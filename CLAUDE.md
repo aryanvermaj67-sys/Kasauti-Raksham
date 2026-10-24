@@ -44,7 +44,7 @@ Effort is forced to high for every model by `CLAUDE_CODE_EFFORT_LEVEL` in `.clau
 
 - Backend: Python 3.11, FastAPI, Pydantic v2, SQLite, pytest, ruff
 - Frontend: React + Vite + TypeScript + Tailwind; one app with routes `/app` (bank app) and `/reviewer` (reviewer console)
-- Claim reader: vision LLM behind `LLM_PROVIDER` = `bedrock` (Amazon Nova) | `anthropic` | `cache` | `offline` (Tesseract with Hindi pack + regex). Demo runs on `cache`; `offline` is the fallback if the network dies.
+- Claim reader: free local models behind `LLM_PROVIDER` = `local` (default: EasyOCR hi+en, then Ollama gemma3:4b with qwen2.5:3b as fallback) | `cache` | `offline` (Tesseract with Hindi pack + regex). Demo runs on `cache`; a failed `local` read falls back to `offline`. No paid APIs.
 - Video: ffmpeg, perceptual hashes (imagehash) + CLIP/DINOv2 frame embeddings, locally run Whisper (small or medium weights, pre-downloaded) for transcripts
 - UI font: Noto Sans Devanagari bundled locally so Hindi renders without internet
 - Offline kit: `wheels/` (pip download -r requirements.txt -d wheels/), npm cache, model weights; nothing may need the network at demo time

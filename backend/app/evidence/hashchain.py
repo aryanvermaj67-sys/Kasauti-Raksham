@@ -108,7 +108,7 @@ def record_check(result, claimset, records, customer_id: str) -> None:
         )
     videos = [c.fields.media_sha256 for c in claimset.claims if c.type == "endorsement"]
     append(cid, "artifact", {"artifact_sha256": claimset.artifact_sha256, "media_sha256": videos})
-    append(cid, "claims", {"claimset": claimset.model_dump(mode="json")})
+    append(cid, "claims", {"claimset": claimset.model_dump(mode="json"), "reader_fallback": claimset.reader.fallback})
     claimed = [v.params["isin"] for v in result.verdicts if v.claim_type == "holding" and v.params.get("isin")]
     for rec in records:
         append(cid, "record", _minimal(rec, claimed, videos))

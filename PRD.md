@@ -193,7 +193,7 @@ Note for the pitch: the 300-portfolio suite proves rule correctness, not detecti
 | Victim told to ignore the check | Evidence is their own record shown by their own bank; acknowledged as a limit |
 
 ## 10. Open questions
-- LLM provider for the live path: Amazon Nova on Bedrock vs Claude (decide hour 0; log in progress.md).
+- Claim reader: free local models only (the hackathon forbids paid APIs): EasyOCR + Ollama, with `cache` and `offline` modes. Decided 24 Oct.
 - Exact @valid UPI handle format: confirm against the SEBI circular.
 - Rules to confirm with organisers: whether pre-written code is allowed or only data, designs and models; venue internet and power; whether paid cloud APIs are allowed; that the registered track is Track 03.
 - Deck fixes for the finale presentation: Pitch 2 fraud figure (see section 1); Pitch 6 "and lips"; Pitch 7 and Architecture 3 "NSDL is to be confirmed" (Sahamati now lists both NSDL and CDSL, section 11; keep the full-coverage rule anyway); Pitch 4 Hindi sentence names only CDSL; Pitch 10 says broker and payee checks run "on real public lists", but the @valid lookup and Suspect Registry are mocks.

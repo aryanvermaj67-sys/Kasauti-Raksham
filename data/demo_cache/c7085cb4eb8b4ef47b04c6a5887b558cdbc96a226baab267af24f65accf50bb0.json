@@ -44,7 +44,9 @@
   ],
   "portfolio_total_inr": 49517026.0,
   "reader": {
-    "provider": "offline",
-    "produced_at": "2026-10-24T01:18:03.011833+05:30"
+    "provider": "local",
+    "produced_at": "2026-10-24T12:27:41.167664+05:30",
+    "model": "gemma3:4b",
+    "fallback": false
   }
 }

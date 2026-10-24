@@ -2,6 +2,7 @@ import hashlib
 import json
 import os
 import tempfile
+import threading
 import uuid
 from contextlib import asynccontextmanager
 from datetime import datetime
@@ -29,6 +30,8 @@ async def lifespan(_app):
         if (video.INDEX / "clips.json").exists():
             video.warm_up()
             print(f"video models ready ({video.device()})", flush=True)
+    if os.environ.get("LLM_PROVIDER", "local") == "local":  # first Ollama call is slow; do it before the first customer
+        threading.Thread(target=reader.local.warm_up, daemon=True).start()
     yield
 
 

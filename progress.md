@@ -6,10 +6,10 @@
 
 | | |
 |---|---|
-| Phase | 5a · Demo hardening (reset, one-command offline demo run, fresh-clone test, offline kit for pip, demo script, frozen-set spec and checker done; `data/frozen/` itself not written, consented footage, adversarial suite, comprehension test, physical Wi-Fi-off rehearsal and backup video open) |
-| Overall | 64% (21 of 33, same basis as before: Q&A answers and timing runs newly ticked) |
-| Demo-ready | No (scripted offline run passes; Wi-Fi was not physically switched off, no backup video, no consented footage) |
-| Last updated | 24 Oct 2026, 11:17 IST |
+| Phase | 5a · Demo hardening (reset, one-command offline demo run, fresh-clone test, offline kit for pip, demo script, frozen-set spec and checker, free local claim reader done; `data/frozen/` itself not written, consented footage, adversarial suite, comprehension test, physical Wi-Fi-off rehearsal and backup video open) |
+| Overall | 67% (22 of 33, same basis as before: "Decide LLM provider" newly ticked) |
+| Demo-ready | No (scripted offline run passes; Wi-Fi was not physically switched off, no backup video, no consented footage; local-reader changes are uncommitted) |
+| Last updated | 24 Oct 2026, 12:32 IST |
 
 ## Team and ownership
 
@@ -28,7 +28,8 @@
 - [ ] Registered track matches the deck (Track 03)
 
 **Accounts and keys (test on a fresh laptop)**
-- [ ] Hosted vision model chosen (Claude API or Amazon Nova on Bedrock); credits and rate limits checked
+- ~~Hosted vision model chosen (Claude API or Amazon Nova on Bedrock); credits and rate limits checked~~ Dropped 24 Oct: the reader is local, no hosted model or key (see Decisions log)
+- [x] Local reader: EasyOCR (hi+en) + Ollama `gemma3:4b` (fallback `qwen2.5:3b`); models must be on the pen drive (`docs/SETUP_LOCAL_MODELS.md`)
 - [ ] Offline fallback: Tesseract + Hindi pack + regex patterns
   - [x] Tesseract 5.4 installed at `C:\Program Files\Tesseract-OCR` with eng, hin (tessdata_fast), osd; not on PATH (set path in config)
   - [x] Regex patterns
@@ -98,8 +99,8 @@
   - [x] RBI Alert List, NSE equity list
   - [x] SEBI intermediaries (brokers, advisers, research analysts), BSE equity list
   - [x] Decide whether SEBI CSVs are committed: git-ignore `data/registries/*.csv` except `rbi_alert_list.csv` (see Decisions log)
-- [ ] Decide LLM provider (Bedrock Nova vs Claude) and log below (B)
-  - No API key in `.env` yet; the demo cache was produced by the offline reader; `bedrock` and `anthropic` providers are not built
+- [x] Decide LLM provider and log below (B)
+  - Decided 24 Oct: free local reader (`LLM_PROVIDER=local`, default); cloud providers removed; see Decisions log
 - [x] `.env.example`, `.gitignore`, requirements.txt, package.json
 
 **Checkpoint:** every service returns sample data end to end.
@@ -108,7 +109,9 @@
 - [x] Synthetic portfolios generator, ReBIT format, incl. partial-coverage cases (A)
 - [ ] Fake trading app screens + 60 screenshots, 6 layouts (A)
 - [x] Claim reader + cache mode + schema validation (B)
-  - `cache` and `offline` providers built; hosted providers (`bedrock`, `anthropic`) not built
+  - `local` (default) and `offline` providers built (`reader/local.py`, `local_prompt.txt`); hosted providers removed. Local: one retry, then fallback to the Tesseract reader with `reader.fallback=true` in the evidence pack
+  - Models compared on demo-001..003 (56 fields): gemma3:4b 56/56, 0 invented claims; qwen2.5:3b 49/56 on GPU, 53/56 on CPU. Speed ~4.5 s/image GPU, ~46 s CPU; gemma peaks at 7.1 GB VRAM with CLIP, Whisper and EasyOCR loaded (8.15 GB card)
+  - `demo_cache` regenerated from the local reader; verdicts via the real API on local equal the cache-mode and old offline-cache verdicts for all three demos
 - [x] AA mock, SEBI, UPI, RBI, Suspect Registry connectors (C)
 - [x] Holdings comparator + verdict rules with full-coverage rule (C)
 - [x] EN/HI templates (D)
@@ -171,11 +174,11 @@
 
 | Test | Target | Result |
 |---|---|---|
-| Claim fields read | ≥ 95% | — |
+| Claim fields read | ≥ 95% | gemma3:4b 56/56 on demo-001..003 (3 images, 0 invented claims); qwen2.5:3b 49/56 GPU, 53/56 CPU. Not yet the 60-screenshot set |
 | Rule correctness (300) | 100% | 300/300 (1261 holding claims) |
 | Source match top-1 (30) | ≥ 90% | 30/30 = 100% (dev clips, not the consented set) |
 | Unindexed clips (sourceless) | NO_RECORD | 3/3 NO_RECORD; 0 misses returned MATCHES; slowest source search 1.23 s |
-| Adversarial | 0 false MATCHES | — |
+| Adversarial | 0 false MATCHES | Injection only so far: real-model tests in EN and HI, instruction text never becomes a claim and no verdict is MATCHES. Renamed broker, near-duplicate UPI and sourceless video suites still open |
 | Comprehension | 5 / 5 | — |
 | Result after consent | < 60 s | 0.78 s (demo-001, local) |
 | Prompts per 1,000 customers | report | 133 (40 of 300 customers, one prompt per campaign); 40/40 prompted are injected scam-pattern customers, 0 others (synthetic ledger where the pattern was injected to fit the rule, so this is an upper bound) |
@@ -183,7 +186,7 @@
 | Source search < 5 s | < 5 s | GPU 2.17 s; CPU fallback (CUDA_VISIBLE_DEVICES=-1) 2.66 s |
 | Full video result (read + video + check) < 60 s | < 60 s | GPU 11.50 s; CPU fallback 18.11 s |
 | Offline demo run (`scripts/demo.py`) | all steps pass | 7 steps PASSED, 0 blocked network attempts under the socket guard (Wi-Fi not physically off) |
-| Full suite | green | pytest 89 passed, ruff clean (24 Oct 11:17, includes 6 frozen-checker tests); frontend build/lint/test and attribution grep last reported clean at 05:30 |
+| Full suite | green | pytest 99 passed (24 Oct 12:32, includes real-model injection tests EN and HI); ruff and frontend build/lint/test not re-reported since 11:17 / 05:30 |
 | Frozen-set checker on `data/frozen_example/` (`--example`) | pass | passes; combined hash `c5d57d978beda5beedda79a801ec8b21b148fd7b4084a91b0e9fd50156305076`. This is the example, not the real frozen set, which does not exist yet |
 
 ## Decisions log
@@ -229,6 +232,9 @@
 | 24 Oct | `scripts/check_frozen.py` writes `HASH.txt` only when it is absent and all checks pass (or with `--rehash`); otherwise it verifies and fails on any changed, added or removed file | The goal said to write HASH.txt when everything passes, but rewriting it on every pass would hide tampering |
 | 24 Oct | Frozen-set checker never reads or runs `verdict/rules.py`; labels are written by hand to `docs/FROZEN_SET_SPEC.md` | Keeps the frozen set independent of the rule author (a test checks the checker does not reference rules.py) |
 | 24 Oct | Git-ignore `data/frozen/videos/*` except `manifest.json`; clips travel by pen drive | Video is large and CLAUDE.md bars large media in git; the hash still covers the clips |
+| 24 Oct | Claim reader is free and local: `LLM_PROVIDER=local` default (EasyOCR hi+en -> Ollama `gemma3:4b`, fallback `qwen2.5:3b` -> schema-validated ClaimSet; one retry, then the Tesseract reader with `reader.fallback=true` in the pack). Provider enum is now `local` / `offline`; cloud providers and API-key mentions removed from code, README, PRD, `.env.example`, CLAUDE.md. Supersedes the 23 Oct "Bedrock vs Claude" plan | No key, no credits, nothing needed from the network at the venue |
+| 24 Oct | gemma3:4b chosen over qwen2.5:3b as the default reader | 56/56 fields and 0 invented claims on demo-001..003 against 49/56 (GPU) and 53/56 (CPU) |
+| 24 Oct | python-bidi pinned to 0.4.2 (pure Python) | The 0.6 DLL is blocked by Windows Application Control on this laptop |
 
 ## Blockers
 
@@ -255,19 +261,24 @@
 - The trigger rate comes from a synthetic ledger built to match the rule, so field precision is unknown.
 - Video: all results are on dev clips. Re-run make/index/eval with the consented clips once the forms are signed.
 - Frozen set not authored: someone who does not write the verdict rules must produce `data/frozen/` to `docs/FROZEN_SET_SPEC.md` (60 screenshots, 100 rule cases, 60 brokers, 15 payees, 30 videos, adversarial PNGs) and run the checker to write `HASH.txt`. The 30 clips also depend on consented footage. Until then the rule-correctness claim rests on our own 300 synthetic portfolios, not a frozen set.
+- Local reader: Ollama and its models (`gemma3:4b`, `qwen2.5:3b`), EasyOCR weights must be copied to the demo machine and pen drive; CPU-only reading takes ~46 s per image (GPU ~4.5 s). The reader change is uncommitted (`reader/local.py`, `test_local_reader.py`, eval docs and scripts are untracked).
+- `scripts/verify_all.sh` does not exist in this repo, so the goal item pointing section 6 at `check_frozen.py` was not done.
+- To confirm: `docs/DEMO.md` and `scripts/demo.py` still describe `LLM_PROVIDER=cache`, while the provider enum is now `local` / `offline`; check which path the demo run uses.
 - Environment note: an unrelated package (platformio) on this laptop pins click<8.4, and pip now has click 8.5.0. Not a Kasauti dependency.
 
 ## Next up
 
 1. Author `data/frozen/` to `docs/FROZEN_SET_SPEC.md` (clips by pen drive), run `scripts/check_frozen.py` to write `HASH.txt` — a teammate who does not write the verdict rules (owner to be named)
-2. Adapter that runs the rules on `data/frozen/rule_cases.json` and reports results against the hash — C / Aryan
-3. Physical Wi-Fi-off rehearsal of `scripts/demo.sh` / `demo.ps1`, then record the backup demo video; test `npm --offline` install — D / Aryan
+2. Commit the local-reader work, then physical Wi-Fi-off rehearsal of `scripts/demo.sh` / `demo.ps1` on the local reader, record the backup demo video, test `npm --offline` install — D / Aryan
+3. Adapter that runs the rules on `data/frozen/rule_cases.json` and reports against the hash; remaining adversarial suites (renamed broker, near-duplicate UPI, sourceless video) — C / Aryan
 
 ## Changelog
 
+- 24 Oct 12:32 — Free local claim reader built and verified (uncommitted at time of writing). `LLM_PROVIDER=local` is the default: EasyOCR hi+en -> Ollama gemma3:4b (fallback qwen2.5:3b) -> schema-validated ClaimSet; one retry, then the Tesseract reader with `reader.fallback=true` in the pack. Cloud providers and key mentions removed from code, README, PRD, `.env.example`, CLAUDE.md; enum is `local` / `offline`. gemma3:4b 56/56 fields, 0 invented claims on demo-001..003 (qwen2.5:3b 49/56 GPU, 53/56 CPU); ~4.5 s/image GPU, ~46 s CPU; peak 7.1 GB VRAM of 8.15 GB. `demo_cache` regenerated; real-API verdicts on local match cache-mode and old offline-cache verdicts for all three demos. 99 tests passed incl. real-model injection tests in EN and HI. python-bidi pinned to 0.4.2. Ticked: "Decide LLM provider"; overall 64% to 67% (22 of 33). Not done: `scripts/verify_all.sh` absent, so the section-6 pointer to `check_frozen.py` was skipped; `data/frozen/` still unwritten.
 - 24 Oct 11:17 — Frozen-set groundwork (uncommitted at time of writing). `docs/FROZEN_SET_SPEC.md`: layout of `data/frozen/` (screenshots + labels.json, rule_cases.json, brokers.json, payees.json, videos/manifest.json, adversarial/ + labels.json with five kinds), minimum counts (60 screenshots / 6 layouts / en+hi; 100 rule cases over all 5 claim types and all 25 reason codes; 60 brokers incl. 20 impersonations; 15 payees; 30 videos incl. 5 no-source and 5 off-centre crops; one adversarial PNG per kind), author rules, HASH.txt recipe. `scripts/check_frozen.py` validates structure, claims against `claims.schema.json`, outcomes and reason codes against `verdict.schema.json`, counts and coverage; writes HASH.txt once, then verifies (decision logged). `data/frozen_example/` passes in `--example` mode (hash c5d57d97...5076); `test_check_frozen.py` 6 tests (pass, missing field, wrong count, tampered file, full minimums reject the example, no reference to rules.py). `.gitignore`: frozen videos ignored except manifest. pytest 89 passed, ruff clean. No checklist item newly ticked, overall stays 64%. Open: `data/frozen/` not written (checklist item stays unticked), rules adapter against the hash.
 - 24 Oct 05:30 — Phase 5a demo hardening. Reset script (`scripts/reset_demo.*`, `demo_reset.py`): first run took evidence checks 28 to 0, reviewer queue 15 to 0, registry additions 1 to 0, events 14 to 0, dev key file 1 to 0, seed 79 kept; `EVIDENCE_KEY` generated into `.env`; `test_demo_reset.py` covers flow then reset. Bug fixed: `hashchain._db` never closed SQLite connections (file locked on Windows), now a context manager. `scripts/demo.*`: reset, start backend (cache) and frontend under a socket guard, 7 steps (demo-001 EN/HI, demo-002, demo-003, fake clip, reviewer approval) all PASSED, 0 blocked network attempts, "demo OK offline"; Wi-Fi not physically switched off. Timing: source search GPU 2.17 s / CPU 2.66 s, full result GPU 11.50 s / CPU 18.11 s, both inside targets. Fresh clone: python-multipart was missing (added, 0.0.32), `bse_equity.csv` needs a manual copy; then 74 passed, 5 video tests skipped, and the clone's pip install worked offline from `wheels/` (277 MB, 67 files). `test_verdict_source.py` (AST + runtime spy: only `rules._v` makes verdicts; frontend sets none), MOCK footer in both UIs, `docs/DEMO.md` (script, fallback order, Q&A). pytest 83 passed; ruff and frontend build/lint/test clean; attribution grep 0. Ticked: Q&A answers, timing runs, pip wheels (sub-item). Overall 58% to 64% (21 of 33, same basis). Open: backup video, Wi-Fi-off rehearsal, `npm --offline`, Hindi footer review, consented footage, adversarial suite, comprehension test.
 - 24 Oct 02:24 (Goal 4, folded; commits 5ae0575, 9a62440, 38a6c07) — Encrypted SHA-256 evidence chain per check with `verify_chain` (tampered ciphertext and hash both fail, tested), JSON/HTML evidence pack (not a legal certificate), reviewer console with MOCK X-Role (customer gets 403), FR-1.2 trigger rule (133 prompts per 1,000 customers, upper bound), models preloaded at startup (first /api/video 3.09 s), 1930 complaint names the video finding. `scripts/e2e_review.py` PASSED; pytest 79 passed. Overall 48% to 58% (19 of 33).
 - 24 Oct 00:21 to 02:00 (Phase 2 so far, folded; commits 007adc5 to 5718061) — Bank app and result screen (React/Vite, /app flow, EN/HI strings from templates, offline Playwright runs), demo-002 and demo-003 samples, reader digit-group fix, settings deny-rule fix, and the video source check on dev clips (footage index, source matcher 30/30 top-1, unindexed 3/3 NO_RECORD, POST /api/video, CLIP and Whisper on GPU). Overall reached 48% (16 of 33) at that point.
 
 - 23 Oct 22:45 to 24 Oct 00:21 (Phases 0-1, folded) — Docs and agent config created; prerequisites fetched (Tesseract 5.4, NSE/BSE, SEBI lists, RBI Alert List, ReBIT schemas, SOURCES.md). Goal 0: git repo, `docs/formats` (4 schemas, validated 4/4), EN/HI templates for all reason codes, 300 synthetic portfolios, 6194-row ledger plus 79-entry mock Suspect Registry, backend skeleton. Goal 1: `demo-001` through `POST /api/check` for SYN-C0001 in 0.78 s (0 of 3 holdings found), image-injection test passes, grep test finds no "safe", "verified", "genuine" or "%". Broker matching: first Jaro-Winkler attempt stopped on its own rule (86% vs 90% target), then replaced by the one-typo rule (invented 50/50 CONTRADICTS, typos 50/50 NO_RECORD, 0 false MATCHES). `BROKER_NEAR_MATCH` now names the closest registered firm and reg no; ISIN normaliser covers all NSE series; 358 ambiguous names map to no ISIN, 0 map wrongly. Single ruff config. pytest 51 passed at that point.
+

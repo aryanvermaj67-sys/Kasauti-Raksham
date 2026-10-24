@@ -50,7 +50,7 @@ Personal data stays in the bank. Outside records are only read; the single write
 |---|---|
 | Backend | Python 3.11, FastAPI, Pydantic v2, SQLite |
 | Frontend | React, Vite, TypeScript, Tailwind |
-| Claim reading | Vision LLM (Amazon Nova on Bedrock or Claude), with an offline cache mode |
+| Claim reading | Free local models: EasyOCR (Hindi + English) then a small Ollama model (gemma3:4b, fallback qwen2.5:3b), with a cache mode for the demo and a Tesseract offline fallback |
 | Video | ffmpeg, imagehash, CLIP / DINOv2 embeddings, faster-whisper |
 | Evidence | SHA-256 hash chain, Fernet encryption |
 | Tests | pytest, ruff |
@@ -123,9 +123,8 @@ scripts/demo.sh            # or scripts/demo.ps1 [--cpu]: start both servers in 
 
 | Variable | Values | Purpose |
 |---|---|---|
-| `LLM_PROVIDER` | `cache` · `bedrock` · `anthropic` | Claim reader backend; `cache` needs no network |
-| `AWS_REGION`, `BEDROCK_MODEL_ID` | | For `bedrock` |
-| `ANTHROPIC_API_KEY` | | For `anthropic` |
+| `LLM_PROVIDER` | `local` (default) · `cache` · `offline` | Claim reader backend; `cache` replays stored reader output, `offline` is Tesseract + regex |
+| `KASAUTI_LOCAL_MODEL`, `OLLAMA_HOST` | `gemma3:4b`, `http://127.0.0.1:11434` | For `local`; loopback only |
 | `EVIDENCE_KEY` | Fernet key | Encrypts the evidence store |
 | `REGISTRY_DIR` | path | Cached SEBI/RBI/NSE lists (default `data/registries`) |
 

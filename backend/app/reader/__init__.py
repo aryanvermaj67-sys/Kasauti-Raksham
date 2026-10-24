@@ -4,7 +4,7 @@ import hashlib
 import os
 
 from app.connectors import DATA
-from app.reader import offline
+from app.reader import local, offline
 from app.schemas.claims import ClaimSet
 
 CACHE = DATA / "demo_cache"
@@ -12,15 +12,23 @@ CACHE = DATA / "demo_cache"
 
 def read(image: bytes) -> ClaimSet:
     sha = hashlib.sha256(image).hexdigest()
-    provider = os.environ.get("LLM_PROVIDER", "cache")
+    provider = os.environ.get("LLM_PROVIDER", "local")
     if provider == "cache":  # replays a stored reader output, keyed by the file's SHA-256; nothing else is cached
         path = CACHE / f"{sha}.json"
         if not path.exists():
             raise LookupError(f"no cached ClaimSet for {sha}")
         return ClaimSet.model_validate_json(path.read_text(encoding="utf-8"))
+    if provider == "local":  # free local models; if they fail the offline reader answers and the ClaimSet says so
+        try:
+            return local.read(image, sha)
+        except local.ReaderError as e:
+            print(f"local reader failed, using offline reader: {e}", flush=True)
+            claimset = offline.read(image, sha)
+            claimset.reader.fallback = True
+            return claimset
     if provider == "offline":
         return offline.read(image, sha)
-    raise NotImplementedError(f"LLM_PROVIDER={provider} is not built yet; use cache or offline")
+    raise NotImplementedError(f"LLM_PROVIDER={provider} is unknown; use local, cache or offline")
 
 
 def save_to_cache(cs: ClaimSet):

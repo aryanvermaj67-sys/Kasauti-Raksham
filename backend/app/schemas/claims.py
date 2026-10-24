@@ -80,8 +80,10 @@ Claim = Annotated[
 
 
 class Reader(Strict):
-    provider: Literal["bedrock", "anthropic", "offline"]
+    provider: Literal["local", "offline"]
     produced_at: datetime
+    model: str | None = None  # the Ollama model, for provider=local
+    fallback: bool = False  # true when the local reader failed and the offline reader produced this ClaimSet
 
 
 class ClaimSet(Strict):

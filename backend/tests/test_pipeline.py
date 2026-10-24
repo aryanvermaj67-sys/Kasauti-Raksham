@@ -59,7 +59,7 @@ def test_cache_replays_stored_reader_output(monkeypatch):
     data = DEMO.read_bytes()
     cs = reader.read(data)
     assert cs.artifact_sha256 == hashlib.sha256(data).hexdigest()
-    assert cs.reader.provider in {"offline", "bedrock", "anthropic"}
+    assert cs.reader.provider in {"offline", "local"}
     with pytest.raises(LookupError):
         reader.read(b"not cached")
 
