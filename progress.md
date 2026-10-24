@@ -7,9 +7,9 @@
 | | |
 |---|---|
 | Phase | 5a · Demo hardening, on `main`. Frozen-set validation (no-video scope, set hash `d2bfe2f3…40ec`) run eight times; run 8: 274/274 outcomes, FALSE CONTRADICTION 0 (details in Test results, `docs/VALIDATION_SUMMARY.md`, `docs/VALIDATION_RUN8.md`). 60 MOCK fake-app screenshots made and scored (97.8% fields). Post-freeze rule and reader fixes, local commits ahead of origin/main, not pushed. Open: a009 needs a rerun through the video route once the real official clips are indexed, the 32 frozen clips and the consented-video evaluation (s01-s08), consented footage (user recording), comprehension test, Hindi review, Wi-Fi-off rehearsal, backup video |
-| Overall | 70% (23 of 33; fake-app screenshot item done) |
+| Overall | 79% (26 of 33; track, Sahamati and cited-figure checks ticked 25 Oct; deck-fix item stays open until the edits are applied in the deck) |
 | Demo-ready | No (scripted offline run and browser run of demo-001 pass; Wi-Fi not physically switched off, no backup video, no consented footage, video part of the frozen set not run, GPU memory tight with gemma kept loaded) |
-| Last updated | 25 Oct 2026, 03:36 IST |
+| Last updated | 25 Oct 2026, 03:47 IST |
 
 ## Team and ownership
 
@@ -24,8 +24,8 @@
 
 **Rules to confirm with organisers**
 - [x] Pre-written code allowed, or only data, designs and models? Organisers confirmed pre-written code IS allowed; the form was submitted (25 Oct)
-- [ ] Venue internet, power, paid cloud APIs allowed?
-- [ ] Registered track matches the deck (Track 03)
+- [ ] Venue internet, power, paid cloud APIs allowed? Model and backup-video questions too. Drafted in `docs/ORGANISER_QUESTIONS.md`; the team still has to send them
+- [x] Registered track matches the deck: Track 03, confirmed from the organisers' brief (25 Oct)
 
 **Accounts and keys (test on a fresh laptop)**
 - [x] Local reader: EasyOCR (hi+en) + Ollama `gemma3:4b` (fallback `qwen2.5:3b`); models must be on the pen drive (`docs/SETUP_LOCAL_MODELS.md`)
@@ -44,8 +44,8 @@
   - [x] BSE: `data/registries/bse_equity.csv` (5120 rows, fetched via Chrome)
 - [x] ReBIT AA schemas: equities and mutual funds (`data/schemas/rebit_equities.html`, `rebit_mutual_funds.html`)
 - [x] `data/SOURCES.md` rows filled for the files above
-- [ ] Sahamati page saved (screenshot + date) for "CDSL and NSDL provide data over AA"
-  - `scripts/fetch_registries.py` marks it "manual download needed"; expected path is `docs/sources/sahamati_fi_types_screenshot.png`
+- [x] Sahamati page saved (screenshot + date) for "CDSL and NSDL provide data over AA"
+  - Two screenshots in `data/evidence/`, logged in `data/SOURCES.md`: NSDL's own page says LIVE as FIP (updated 25 Oct 2026); Sahamati post of 8 May 2023 says CDSL live April 2023. "NSDL to be confirmed" can be dropped from the deck
 
 **Offline kit**
 - [x] CLIP weights + imagehash (open_clip ViT-B/32 laion2b; weights in `models/`, git-ignored)
@@ -76,11 +76,11 @@
 **Design**
 - [x] JSON formats frozen: claims, verdicts, record responses, evidence pack
 - [ ] Hindi templates checked by a fluent Hindi reader
-- [ ] Owners for roles A–D set
+- [ ] Owners for roles A–D set (waiting for names from the user, 25 Oct)
 
 **Facts and deck**
-- [ ] Deck fixes: "NSDL to be confirmed" (Pitch 7, Arch 3); fraud figure to ₹22,495 crore / "over 75%" (Pitch 2); drop "and lips" (Pitch 6); Pitch 4 Hindi sentence names only CDSL; Pitch 10 "real public lists" for payee check (@valid and Suspect Registry are mocks); demo broker is now Zyphra Stock Club
-- [ ] Verify or drop: Supreme Court hash ruling, Singapore 2,700+, FBI 77%, face-swap attribution paper, CBI ABHAY
+- [ ] Deck fixes: sheet done (`docs/DECK_FIXES.md`), edits NOT yet applied in the deck. `docs/DECK_FIXES.md` has exact old to new text per slide (NSDL, fraud figure, "and lips", Pitch 4 Hindi sentence, Pitch 10 mocks, Zyphra Stock Club). The Round 1 PDF is `Downloads/Kasauti_Round1_Alpha.pdf`, no editable source here; teammates apply the edits in the finale deck
+- [x] Verify or drop: cited figures checked 25 Oct, sources in `docs/DECK_FIXES.md`: Supreme Court s.63(4) (Pune Bar Association v UoI, 22 May 2026; the Court left open who signs Part B); Singapore 2,700+ (SPF, 6 Mar 2024); FBI 77% (DOJ elder fraud report via Orrick, 21 Nov 2025); face-swap paper (abstract only read); CBI ABHAY (FPJ, 15 May 2026); fraud ₹22,495 crore, over 75% (ThePrint)
 - [x] Q&A answers: "isn't this just a lookup?", "fully AI-generated video?", "why would a victim share a screenshot?"
   - In `docs/DEMO.md` (judges Q&A section)
 
@@ -156,7 +156,7 @@
 - [ ] Code freeze, tag `v1.0-demo`
 - [ ] Offline run with `LLM_PROVIDER=cache`
 - [ ] Backup demo video recorded
-- [ ] Re-verify all cited figures in the deck
+- [x] Re-verify all cited figures in the deck (25 Oct; deck edits still to apply)
 - [ ] Pitch rehearsal × 3, Q&A drill (sourceless video, false positives, consent)
 
 ### Phase 5a · Demo hardening
@@ -271,15 +271,16 @@
 | 25 Oct | POST-FREEZE CHANGES, reader (run 7): values re-read off the page after the number check; ISIN recovered from page text; payee 'broker/advisor' set only if the text uses the word; adaptive 3x model timeout on CPU-only laptops (`KASAUTI_READ_TIMEOUT` overrides it); torch cache released after OCR | Fewer wrong values and invented roles; CPU-only laptops were timing out before the model finished; frees GPU memory for the model |
 | 25 Oct | Pre-written code is allowed | Organisers confirmed it and the form was submitted; the existing codebase can be used at the finale |
 | 25 Oct | POST-FREEZE CHANGES, reader (run 8, found by the 60 fake-app screenshots; tests added): UPI handle completed from the printed one; SEBI reg no taken from the page; platform category needs a text cue and the name is the app title, not a category line; lost decimal points repaired (7 68 लाख, 684 लाख); bare L/Cr amounts; grouped quantities (2 500); 'Lta' read for 'Ltd'; total on the line after a stray rupee sign | Reader score on the fake-app set rose from 497/584 to 571/584 (97.8%); frozen run 8 still 0 false contradictions. Fake-app screenshots are MOCK and regenerated from `--seed` |
+| 25 Oct | Deck uses one fraud figure: ₹22,495 crore, "over 75%" investment scams (ThePrint). The ₹19,813 crore / 77% figure is not shown. NSDL "to be confirmed" dropped from the deck | One figure avoids a judge asking which is right; NSDL's own page says LIVE as FIP (25 Oct 2026), CDSL live April 2023 per Sahamati (screenshots in `data/evidence/`) |
 | 24 Oct | OPEN, needs a team decision: keep reader hardening as committed (payee dropped when OCR garbles the UPI id; customer re-adds it on the confirm screen) or loosen the UPI validator | Fewer wrong payees reach the rules, but the hardening eval shows total errors up on gemma3:4b (66 -> 82) and 2-3 holding fields slipped; by design the confirm screen is the safety net |
 
 ## Blockers
 
+- Not sent yet: organiser questions on venue internet, power, models and backup video (`docs/ORGANISER_QUESTIONS.md`). Roles A-D have no names. Deck edits in `docs/DECK_FIXES.md` are not applied; no editable deck source on this laptop.
 - Tesseract is not on PATH. Code must read the install path from config/env (`C:\Program Files\Tesseract-OCR`) or PATH must be set on each laptop. Environment note: Python on this laptop is 3.14.6, but the stack specifies 3.11. Node is 24.19 and npm is 11.17. Python Playwright 1.64 needed chromium-headless-shell build 1248, now installed.
 - ~~Validation waits for the writer's `HOLDING_NO_CONSENT` case~~ Resolved 25 Oct: the writer's version (dce03df) was hashed in no-video scope and validated six times. Still open: the 32 frozen clips (`data/frozen/videos/manifest.json`, none found), so no full-scope hash and the video part is not run; the consented-video evaluation (s01-s08, `make_test_clips.sh`) waits for the clips and the script on this laptop.
 - GPU memory is tight with gemma kept loaded (a video source-search timing test took 8.7 s once under contention, passes alone). CPU-only reads exceed 60 s end to end (21-83 s on the frozen subset): a CPU-only demo laptop will miss the 60 s target.
-- The Hindi UI strings (71 in the `ui` section, plus the new MOCK footer and "preparing" strings, and the new /app, /reviewer and /present strings) need a fluent reader, like the verdict templates.
-- `data/registries/bse_equity.csv` cannot be fetched by script; a fresh clone needs it copied by hand (README lists it). Copy it onto the pen drive.
+- The Hindi UI strings (71 in the `ui` section, plus the new MOCK footer and "preparing" strings, and the new /app, /reviewer and /present strings) need a fluent reader, like the verdict templates. `data/registries/bse_equity.csv` cannot be fetched by script; copy it onto the pen drive (README lists it).
 - The Wi-Fi-off rehearsal is not done: the offline proof so far is the socket guard (0 blocked attempts), not a physical disconnect. No backup demo video yet (last fallback in `docs/DEMO.md`). `npm --offline` install is untested; only the pip side of the offline kit is verified.
 - Video: an off-centre 10% crop (top-left) matched only 35% of frames, so it gives NO_RECORD (a miss, never a false MATCHES). Consider multi-crop indexing or local features if the judges test this. All video results so far are on dev clips; re-run make/index/eval with the consented clips once forms are signed.
 - The dev evidence key sits in `data/runtime/evidence.key` when `EVIDENCE_KEY` is unset. On this laptop `.env` now has an `EVIDENCE_KEY` (git-ignored); copy `.env` to the demo machine, otherwise the dev key file is used again. Local reader: Ollama and its models (`gemma3:4b`, `qwen2.5:3b`), EasyOCR weights must be on the demo machine; `make_kit.ps1` bundles them. Reader, reader hardening (ff73c5d, not pushed), validation runner, preflight, kit scripts and runbook are committed.
@@ -289,11 +290,10 @@
 
 1. Push the local commits, rerun preflight on a clean commit; decide the reader-hardening payee trade-off — lead / Aryan
 2. Record the official clips (user is recording), index them, rerun a009 through the video route, then the consented-video evaluation (s01-s08) and the full-scope hash with the 32 frozen clips — user / set's author / B
-3. Teammates: Hindi review of templates (incl. new `HOLDING_NO_DEMAT`), comprehension test, deck fixes, role owners, Wi-Fi-off rehearsal, backup video — A / D
+3. Apply `docs/DECK_FIXES.md` in the finale deck, send `docs/ORGANISER_QUESTIONS.md`, name owners for roles A-D, then Hindi review (incl. `HOLDING_NO_DEMAT`), comprehension test, Wi-Fi-off rehearsal, backup video — A / D / user
 
 ## Changelog
 
+- 25 Oct 03:47 — Commit 1057c88 (local, not pushed): `docs/DECK_FIXES.md` (exact old to new text per slide; edits still to apply in the deck), cited figures checked with sources, Sahamati and NSDL evidence screenshots logged in `data/SOURCES.md`, `docs/ORGANISER_QUESTIONS.md` drafted (not sent), Track 03 confirmed. One deck fraud figure decided. Roles A-D still unnamed. Overall 70% to 82% (27 of 33).
 - 25 Oct 03:36 — Organisers confirmed pre-written code is allowed, form submitted (ticked, Decisions log). 60 MOCK fake-app screenshots done (`scripts/make_fake_app_screens.py`, 6 layouts, 30 EN + 30 HI, `--score`): reader 497/584 first pass, 571/584 (97.8%) after 8 reader fixes with tests. Frozen run 8 (no-video scope): 274/274 outcomes, 0 false contradictions, 307/307 reason codes, 607/632 fields, 0 fallbacks, injection 5/5; 156 backend tests pass, ruff clean. `docs/VALIDATION_SUMMARY.md`, `docs/VALIDATION_RUN8.md` updated. Lead reports a local commit, not pushed (git log at 03:36 still showed 18b7e73 on top). Overall 67% to 70% (23 of 33). Unchanged: consented video (user recording), Hindi review, comprehension test, deck fixes, role owners.
-- 25 Oct 00:12 to 03:10 (folded) — Frozen validation runs 1-7 (no-video scope; false contradictions 14 to 0; 11 post-freeze changes logged), `HOLDING_NO_DEMAT` decision, a009 via the video route, `verify_all.sh --quick` passed. Superseded by run 8 above.
-- 23 Oct 22:45 to 24 Oct 05:30 (folded) — Docs, prerequisites and synthetic data; Goal 1 slice (screenshot to "0 of 3 found" in 0.78 s); broker one-typo rule; bank app and result screen; video source check on dev clips (30/30 top-1); encrypted evidence chain, reviewer console, trigger rate (133 per 1,000); reset script, offline demo run, fresh-clone test, `test_verdict_source.py`, `docs/DEMO.md`. Overall 48% to 64% (21 of 33) by 05:30. 24 Oct 11:17 to 16:05 (folded) — Frozen-set groundwork (spec, checker, runner, example set), free local claim reader (gemma3:4b 56/56 on demo-001..003, overall 64% to 67%), warm-up, offline guards, preflight, kit scripts, runbook; frozen set received and committed as received (835441d); new UI on the real pipeline (ceec7e4, ea38484, 47e5d98), `main` pushed at 20a1050; POST-FREEZE `HOLDING_NO_CONSENT`; reader hardening ff73c5d (payee trade-off open); browser run of demo-001 incl. video passed.
-
+- Folded: 25 Oct 00:12 to 03:10, frozen validation runs 1-7 (false contradictions 14 to 0; 11 post-freeze changes logged), `HOLDING_NO_DEMAT` decision, a009 via the video route, `verify_all.sh --quick` passed. 23 Oct 22:45 to 24 Oct 05:30 — Docs, prerequisites and synthetic data; Goal 1 slice (screenshot to "0 of 3 found" in 0.78 s); broker one-typo rule; bank app and result screen; video source check on dev clips (30/30 top-1); encrypted evidence chain, reviewer console, trigger rate (133 per 1,000); reset script, offline demo run, fresh-clone test, `test_verdict_source.py`, `docs/DEMO.md`. Overall 48% to 64% (21 of 33) by 05:30. 24 Oct 11:17 to 16:05 (folded) — Frozen-set groundwork (spec, checker, runner, example set), free local claim reader (gemma3:4b 56/56 on demo-001..003, overall 64% to 67%), warm-up, offline guards, preflight, kit scripts, runbook; frozen set received and committed as received (835441d); new UI on the real pipeline (ceec7e4, ea38484, 47e5d98), `main` pushed at 20a1050; POST-FREEZE `HOLDING_NO_CONSENT`; reader hardening ff73c5d (payee trade-off open); browser run of demo-001 incl. video passed.
