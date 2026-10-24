@@ -1,6 +1,8 @@
 """Rule changes made after the first frozen-set run (see progress.md, "post-freeze change"). Names come from the public
 lists at run time or are made up here; nothing is copied from data/frozen."""
 
+import csv
+
 import pytest
 
 from app.connectors import isin_master, sebi
@@ -78,10 +80,28 @@ def test_listed_isin_not_held_still_contradicts_and_a_held_unlisted_isin_still_m
 
 
 # a broker name one typo from a registered firm is never CONTRADICTS, wherever the typo is
-@pytest.mark.parametrize("typo", ["Kotak Securties Limited", "Kotak Securitiess Limited", "Kotk Securities Limited"])
-def test_one_typo_anywhere_in_a_registered_name_is_a_near_match(typo):
-    assert normalize("Kotak Securities Limited") != normalize(typo)
-    check(broker(typo), "NO_RECORD", "BROKER_NEAR_MATCH")
+def a_registered_securities_firm():
+    """The first registered broker whose name ends in "SECURITIES LIMITED", taken from the list."""
+    with (ROOT / "data" / "registries" / "sebi_brokers.csv").open(encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            name = row["Name"]
+            if name.isascii() and name.upper().endswith(" SECURITIES LIMITED") and 22 <= len(name) <= 32:
+                return name
+    pytest.skip("no suitable registered broker")
+
+
+@pytest.mark.parametrize("where", ["drop", "double", "swap"])
+def test_one_typo_anywhere_in_a_registered_name_is_a_near_match(where):
+    name = a_registered_securities_firm()
+    word = "SECURITIES"
+    typo = {
+        "drop": word.replace("CUR", "CR"),
+        "double": word.replace("TIES", "TIIES"),
+        "swap": word.replace("SE", "ES"),
+    }
+    typed = name.upper().replace(word, typo[where])
+    assert normalize(name) != normalize(typed) and sebi.lookup(name, None).payload["exact"]
+    check(broker(typed), "NO_RECORD", "BROKER_NEAR_MATCH")
 
 
 def test_two_typos_or_a_different_firm_is_not_a_near_match():
@@ -269,3 +289,18 @@ def test_missing_holding_is_asked_for_once_when_the_lines_do_not_add_up_to_the_p
     assert notes[0] is None and "add up to 400000 but the page total is 1000000" in notes[1] and len(notes) == 2
     monkeypatch.setattr(local, "_ask", lambda *a: first)  # the retry changes nothing: the first answer stands
     assert len(local.read_text(text, SHA_ZERO).claims) == 1
+
+
+def test_a_rupee_amount_written_with_a_unit_fills_a_value_the_model_left_null():
+    from app.reader.local import _fill_values
+
+    text = (
+        "Total value\n₹ 3,00,000\nAlpha Mills\n₹ 1.50 L\nShares: 10\nBeta Works\n₹ 0.30 L\nShares: 5\n"
+        "Gamma Ltd\nShares: 2"
+    )
+    claims = [
+        {"type": "holding", "fields": {"instrument_name": n, "isin": None, "quantity": q, "value_inr": v}}
+        for n, q, v in (("Alpha Mills", 10, None), ("Beta Works", 5, 30000.0), ("Gamma Ltd", 2, None))
+    ]
+    _fill_values(claims, text)
+    assert [c["fields"]["value_inr"] for c in claims] == [150000.0, 30000.0, None]  # Gamma prints no amount: stays null

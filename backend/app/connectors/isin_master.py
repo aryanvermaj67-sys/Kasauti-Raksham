@@ -1,6 +1,6 @@
 """NSE + BSE equity lists (public, cached CSV): security name -> ISIN. Exact normalised name only; never fuzzy.
 
-A name that other listed names begin with ("Tata Motors" after the demerger, "Reliance") is ambiguous even when one
+A name that other listed names begin with (a company that split in two, a group name) is ambiguous even when one
 listed name equals it: the customer may hold any of them, so it is left unmapped for the customer to pick.
 """
 

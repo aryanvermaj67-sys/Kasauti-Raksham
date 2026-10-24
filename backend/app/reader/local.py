@@ -326,6 +326,28 @@ def _payee_from_text(claims: list[dict], text: str) -> None:
         claims.append({"type": "payee", "fields": fields})
 
 
+RUPEE_AMOUNT = re.compile(rf"(?:₹|rs\.?|inr)\s*({NUM})\s*(crores?|cr\b|करोड़|lakhs?|lac\b|l\b|लाख)?", re.I)
+
+
+def _fill_values(claims: list[dict], text: str) -> None:
+    """The model leaves a value null when it is written as "₹ 4.26 L". If the page prints a rupee amount for a holding
+    (after its name, before the next holding or a total line), that amount is its value."""
+    held = [c for c in claims if c["type"] == "holding" and c["fields"].get("instrument_name")]
+    where = sorted((text.find(c["fields"]["instrument_name"]), i) for i, c in enumerate(held))
+    where = [(p, i) for p, i in where if p >= 0]
+    for n, (start, i) in enumerate(where):
+        f = held[i]["fields"]
+        if f.get("value_inr") is not None:
+            continue
+        end = where[n + 1][0] if n + 1 < len(where) else len(text)
+        window = text[start + len(f["instrument_name"]) : end]
+        total_at = TOTAL_LINE.search(window)
+        window = window[: total_at.start()] if total_at else window
+        m = RUPEE_AMOUNT.search(window)
+        if m:
+            f["value_inr"] = _num(m[1]) * SCALE.get((m[2] or "").lower(), 1)
+
+
 def _printed_total(text: str):
     """The amount printed on (or just after) a Total / Portfolio / कुल line, if any."""
     lines = text.splitlines()
@@ -376,7 +398,13 @@ def _to_claimset(content: str, sha: str, model: str, text: str = "") -> ClaimSet
         "payee",
         "platform",
     )  # the offline reader's order, so the result screen reads the same
-    claims.sort(key=lambda c: order.index(c["type"]))
+    # claims in the offline reader's order, holdings in the order the page prints them
+    claims.sort(
+        key=lambda c: (
+            order.index(c["type"]),
+            text.find(c["fields"].get("instrument_name") or "") if c["type"] == "holding" and text else 0,
+        )
+    )
     payee_keys = ("upi_id", "account_no_last4", "ifsc")  # a payee that names nothing is not a claim
     claims = [c for c in claims if c["type"] != "payee" or any(c["fields"].get(k) for k in payee_keys)]
     for c in claims:
@@ -388,6 +416,7 @@ def _to_claimset(content: str, sha: str, model: str, text: str = "") -> ClaimSet
                 None  # OCR drops the dot in handles ("name desk@bank"); a guess could name another payee
             )
     claims = _tidy(claims)
+    _fill_values(claims, text)
     _payee_from_text(claims, text)
     _ground(claims, text)
     claims, total = _check_numbers(claims, data["portfolio_total_inr"], text)
