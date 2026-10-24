@@ -11,18 +11,21 @@ Scope: **no-video** (the 32 video clips are not run). Set: `data/frozen`, combin
 | 3 (new model layout) | 269 | 1 | 304 | 450 | 0 | 4/5 |
 | 4 (second OCR, grounding, ISIN repair) | 269 | 0 | 305 | 535 (counting ISINs the app fills in from the name separately) | 0 | 4/5 |
 | 5 (payee fallback, completeness retry, units) | 270 | 0 | 306 | 582 | 0 | 5/5 |
-| 6 (final: value fill, page order) | 270 | 0 | 306 | 593 | 0 | 5/5 |
+| 6 (value fill, page order) | 270 | 0 | 306 | 593 | 0 | 5/5 |
+| 7 (final: no-demat contradicts, sourceless frame via the video route, value re-fill, ISIN from page, payee wording grounded) | **274** | 0 | **307** | **603** | 0 | 5/5 |
 
-Final confusion matrix (run 6): MATCHES 78/78 correct; CONTRADICTS 106 correct, 3 given NO_RECORD; NO_RECORD 86 correct, 1 NOT_READ. Seconds per screenshot (read, GPU): 2.1 to 14.6, mean about 5. On the CPU (`CUDA_VISIBLE_DEVICES=-1`, subset of 3): 21 to 83 s per screenshot (OCR 9 to 41 s, model 12 to 42 s). Prompt rate on the synthetic ledger: 133 per 1,000 customers (an upper bound; the pattern was injected to fit the rule).
+Final confusion matrix (run 7): MATCHES 78/78, CONTRADICTS 109/109, NO_RECORD 87/87. Seconds per screenshot (read, GPU): 1.9 to 7.0. On the CPU (`CUDA_VISIBLE_DEVICES=-1`, subset of 3): 21 to 83 s per screenshot (OCR 9 to 41 s, model 12 to 42 s); a CPU-only laptop now gets 3x the model time limit (`KASAUTI_READ_TIMEOUT` overrides), so it no longer falls back to the offline reader. Prompt rate on the synthetic ledger: 133 per 1,000 customers (an upper bound; the pattern was injected to fit the rule).
 
-## Failures left (4 verdicts) and their cause
+## Failures left: none in verdicts
 
-| Items | Expected / got | Cause |
-|---|---|---|
-| rc-024, rc-025, rc-127 | CONTRADICTS / NO_RECORD (both `HOLDING_NO_DEMAT`) | **Label vs PRD.** PRD FR-5 says "no demat account" is NO_RECORD; the frozen labels say a customer with no account anywhere contradicts a holding claim. Both are defensible: product decision, not a bug. Nothing changed. |
-| a009 | NO_RECORD / NOT_READ | **Label vs design.** The screenshot reader never produces endorsement claims (those come from video), so a frame from a promo video yields no claim. |
+The three cases that failed in run 6 were decisions, now taken:
 
-## Screenshot fields still wrong (39 of 632)
+| Items | Decision |
+|---|---|
+| rc-024, rc-025, rc-127 | A customer with no demat account at any depository, where every depository answered, is **CONTRADICTS** (`HOLDING_NO_DEMAT`), not NO_RECORD. It follows the rule "CONTRADICTS only if every depository was queried successfully" and the frozen labels. If a depository fails, it is still NO_RECORD (partial coverage). PRD FR-5, both templates, `test_rules.py`, `gen_portfolios.py` and the 60 no-demat synthetic portfolios were changed to match. |
+| a009 | A frame from a promo video is a video item, not a screenshot. The harness now makes the frame a 3 s silent clip and runs the real source search (`POST /api/video`), then the rules: NO_RECORD `ENDORSEMENT_NO_SOURCE`. This runs against the dev footage index; with the real official clips indexed it must be rerun. |
+
+## Screenshot fields still wrong (29 of 632)
 
 OCR limits and look-alike glyphs, not rules: a table whose columns EasyOCR scrambles (s037), a digit zero printed in a firm name read as the letter O (`Angel 0ne`, `Zer0dha` is repaired only inside a lower-case word), a digit 1 for a letter l in a handle (`va1idmock`), an ISIN with a dropped character, UPI ids the label gives with a space (`profit king@mockupi`), two platform names the model got wrong, and a few values on pages with an unusual amount layout. The customer sees every claim on the confirm screen and corrects it before the check.
 
@@ -41,5 +44,7 @@ OCR limits and look-alike glyphs, not rules: a table whose columns EasyOCR scram
 | Tesseract second reading for UPI handles and registration numbers | EasyOCR drops "@" in about a third of the screenshots |
 | Words for null, page headings and unsupported "registered" claims are removed; an ISIN copied onto two holdings stays on one | The model invented brokers from headings and a "registered" claim the text did not make |
 | Holdings that do not add up to the printed total get one retry; values filled from printed rupee amounts; L and Cr units; page order | The model dropped lines (or put a name in the UPI field) and left "₹ 4.26 L" null |
+| Values the model scaled wrongly ("₹ 7.10 L" as 71 lakh) are read again off the page after the number check; an ISIN the model garbled is replaced by the listed, check-digit-valid ISIN the page prints (never when the page prints that exact ISIN); a payee is "broker" or "advisor" only if the text uses the word | Run 6 left 14 values null and one ISIN dropped a digit; a payee called "broker" with no such word would have produced a contradiction |
+| A holding claim where every depository answered and none holds an account is CONTRADICTS | see above |
 
 Harness changes (`scripts/run_frozen.py`): the model is warmed up first, as the backend does at startup; ISINs the app fills in from the name are counted as such, not as misreads; security names are compared the way the app maps them (case, punctuation, Ltd ignored).

@@ -38,7 +38,7 @@
     },
     "HOLDING_NO_DEMAT": {
       "app": "{instrument_name}: {quantity} shares",
-      "record": "No demat account in your name at {depositories}. We could not verify this."
+      "record": "No demat account in your name at {depositories}, so these shares are not in your name."
     },
     "HOLDING_ISIN_UNMAPPED": {
       "app": "{instrument_name}",

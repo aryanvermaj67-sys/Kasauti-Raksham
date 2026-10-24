@@ -46,8 +46,8 @@ def holding(claim, aa_records, mapping=None):
         return _v(claim, "NO_RECORD", "HOLDING_PARTIAL_COVERAGE", params, evidence)
     if units:
         return _v(claim, "CONTRADICTS", "HOLDING_QUANTITY_DIFFERS", params | {"record_quantity": units}, evidence)
-    if not facts["has_account"]:
-        return _v(claim, "NO_RECORD", "HOLDING_NO_DEMAT", params, evidence)
+    if not facts["has_account"]:  # every depository answered and none holds an account in this name
+        return _v(claim, "CONTRADICTS", "HOLDING_NO_DEMAT", params, evidence)
     return _v(claim, "CONTRADICTS", "HOLDING_NOT_FOUND_ALL_DEPOSITORIES", params, evidence)
 
 

@@ -5,8 +5,9 @@ DIR defaults to data/frozen; --example runs data/frozen_example with the example
 1. Refuses to run unless scripts/check_frozen.py passes, including the HASH.txt comparison.
 2. Rule cases, brokers and payees go straight through router.run_check, with the MOCK connectors answering from the
    case (depositories, Suspect Registry hits, @valid handles, footage). SEBI and RBI checks use the real cached lists.
-3. Screenshots and adversarial images go through the real API (POST /api/read) on LLM_PROVIDER (default local); the
-   adversarial claims then go through the rules like a rule case.
+3. A sourceless-video frame is made a silent 3 s clip and goes through POST /api/video (source search only), then the
+   rules. Screenshots and the other adversarial images go through the real API (POST /api/read) on LLM_PROVIDER
+   (default local); the adversarial claims then go through the rules like a rule case.
 Writes docs/VALIDATION.md and docs/validation_results.json (…_EXAMPLE / …_example with --example). Only reads DIR.
 """
 
@@ -14,7 +15,9 @@ import argparse
 import importlib.util
 import json
 import os
+import subprocess
 import sys
+import tempfile
 import time
 from collections import Counter
 from contextlib import ExitStack
@@ -166,6 +169,25 @@ def mapped_from_name(claim: dict, isin: str) -> bool:
     return isin_master.lookup(claim["fields"].get("instrument_name", "")).payload["isin"] == isin
 
 
+def sourceless_items(client, frame: Path, lab: dict) -> list[dict]:
+    """Make the frame a 3 s silent clip, run the real source search (POST /api/video), then the rules on the result."""
+    with tempfile.TemporaryDirectory() as tmp:
+        clip = Path(tmp) / "frame.mp4"
+        subprocess.run(
+            ["ffmpeg", "-loglevel", "error", "-loop", "1", "-i", str(frame), "-f", "lavfi", "-i", "anullsrc=r=16000",
+             "-t", "3", "-pix_fmt", "yuv420p", "-shortest", str(clip)], check=True)  # fmt: skip
+        r = client.post("/api/video", files={"file": (clip.name, clip.read_bytes(), "video/mp4")})
+    m = r.json()["match"] if r.status_code == 200 else {}
+    footage = {"source_clip": m.get("source_clip"), "changed_ranges": m.get("changed_ranges", [])} if m else None
+    verdicts = through_rules({"footage": footage}, lab["claims"])[0]
+    out = []
+    for e in lab["expected"]:
+        v = verdicts[e["claim_id"]]
+        out.append(item(f"adversarial:{lab['kind']}", f"{frame.name}/{e['claim_id']}", e["outcome"], v.outcome,
+                        e["reason_code"], v.reason_code, lab.get("note", "")))  # fmt: skip
+    return out
+
+
 def image_items(root: Path) -> tuple[list[dict], dict]:
     from app import main
     from fastapi.testclient import TestClient
@@ -209,6 +231,9 @@ def image_items(root: Path) -> tuple[list[dict], dict]:
                 else:
                     misses.append(f"{name} {key[0]}#{key[1]} {f}: expected {want!r}, got {have!r}")
     for name, lab in json.loads((root / "adversarial" / "labels.json").read_text(encoding="utf-8")).items():
+        if lab["kind"] == "sourceless_video":  # a video frame: endorsements come from the video route, not the reader
+            out += sourceless_items(client, root / "adversarial" / name, lab)
+            continue
         cs = read(root / "adversarial" / name)
         read_claims = [c for c in (cs["claims"] if cs else []) if c["type"] != "endorsement"]
         verdicts = through_rules(lab, read_claims)[0] if read_claims else {}

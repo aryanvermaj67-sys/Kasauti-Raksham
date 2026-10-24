@@ -28,7 +28,7 @@ MODELS = [
     os.environ.get("KASAUTI_LOCAL_MODEL", "gemma3:4b"),
     "qwen2.5:3b",
 ]  # default (scored best in docs/LOCAL_READER_EVAL_GPU.md), fallback
-TIMEOUT_S = 60
+TIMEOUT_S = int(os.environ.get("KASAUTI_READ_TIMEOUT", "60"))  # model time on a GPU; a CPU-only laptop gets 3x
 MAX_TOKENS = 1500  # a runaway answer ends here (about 25 s on the GPU) instead of at the time limit
 KEEP_ALIVE = os.environ.get(
     "KASAUTI_KEEP_ALIVE", "60m"
@@ -105,6 +105,13 @@ def _as_claims(data: dict) -> list[dict]:
     return [{"type": "holding", "fields": h} for h in data["holdings"]] + one
 
 
+def _timeout() -> int:
+    """shortcut: judged by torch's GPU, not by where Ollama put the model; set KASAUTI_READ_TIMEOUT to override."""
+    import torch
+
+    return TIMEOUT_S if torch.cuda.is_available() else 3 * TIMEOUT_S
+
+
 @cache
 def _easyocr():
     import bidi
@@ -141,7 +148,12 @@ def second_reading(image: bytes, text: str) -> str:
 
 
 def ocr(image: bytes) -> str:
-    text = clean_ocr("\n".join(_easyocr().readtext(image, detail=0)))
+    import torch
+
+    lines = _easyocr().readtext(image, detail=0)
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()  # EasyOCR's cached blocks go back: the GPU is shared with Ollama, CLIP and Whisper
+    text = clean_ocr("\n".join(lines))
     return text + second_reading(image, text)
 
 
@@ -348,6 +360,40 @@ def _fill_values(claims: list[dict], text: str) -> None:
             f["value_inr"] = _num(m[1]) * SCALE.get((m[2] or "").lower(), 1)
 
 
+ISIN_TOKEN = re.compile(r"\bIN[A-Z0-9]{10}\b")
+
+
+def _isins_from_text(claims: list[dict], text: str) -> None:
+    """A model that copies a long ISIN may drop or add a character. If its ISIN is not a listed one, take the printed
+    token (after look-alike repair) that is listed, passes the check digit and is close to what the model wrote."""
+    from difflib import SequenceMatcher
+
+    from app.connectors import isin_master
+
+    listed = isin_master.listed_isins()
+    printed = {isin_master.repair_isin(t) for t in ISIN_TOKEN.findall(text)} & listed
+    for c in claims:
+        f = c["fields"]
+        isin = f.get("isin") if c["type"] == "holding" else None
+        if isin and isin not in text and isin_master.repair_isin(isin) not in listed:  # one the page prints stays as is
+            close = [p for p in printed if SequenceMatcher(None, isin, p).ratio() >= 0.8]
+            if len(close) == 1:
+                f["isin"] = close[0]
+
+
+def _ground_payee(claims: list[dict], text: str) -> None:
+    """ "Described as a broker" turns a payee that is not an @valid handle into a contradiction, so the text must use
+    the word. A payee called broker or advisor without that cue gets the cue the text does have, else "other"."""
+    for c in claims:
+        if c["type"] != "payee":
+            continue
+        f = c["fields"]
+        if f.get("described_as") == "broker" and not BROKER_WORD.search(text):
+            f["described_as"] = "advisor" if ADVISOR_WORD.search(text) else "other"
+        elif f.get("described_as") == "advisor" and not ADVISOR_WORD.search(text):
+            f["described_as"] = "other"
+
+
 def _printed_total(text: str):
     """The amount printed on (or just after) a Total / Portfolio / कुल line, if any."""
     lines = text.splitlines()
@@ -419,7 +465,12 @@ def _to_claimset(content: str, sha: str, model: str, text: str = "") -> ClaimSet
     _fill_values(claims, text)
     _payee_from_text(claims, text)
     _ground(claims, text)
+    _isins_from_text(claims, text)
+    _ground_payee(claims, text)
     claims, total = _check_numbers(claims, data["portfolio_total_inr"], text)
+    _fill_values(
+        claims, text
+    )  # a value the model got wrong ("7.10 L" as 71 lakh) was nulled above: read it off the page
     _repair_rupee_digit(claims, total)
     claims = [c for c in claims if c["type"] != "payee" or any(c["fields"].get(k) for k in payee_keys)]
     values = [c["fields"]["value_inr"] for c in claims if c["type"] == "holding"]
@@ -439,7 +490,7 @@ def _to_claimset(content: str, sha: str, model: str, text: str = "") -> ClaimSet
 def read_text(text: str, sha: str) -> ClaimSet:
     """OCR text -> validated ClaimSet. One retry on invalid output; a missing model moves on to the next one."""
     _check_loopback()
-    deadline = time.monotonic() + TIMEOUT_S
+    deadline = time.monotonic() + _timeout()
     for model in dict.fromkeys(MODELS):
         note = None
         for _attempt in range(2):

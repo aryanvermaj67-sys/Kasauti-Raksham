@@ -59,8 +59,10 @@ def test_holding_contradicts_when_all_depositories_ok():
     check(rules.holding(hold(qty=50000), aa(nsdl=[(RELIANCE, 5000)])), "CONTRADICTS", "HOLDING_QUANTITY_DIFFERS")
 
 
-def test_holding_no_record_without_demat():
-    check(rules.holding(hold(), aa()), "NO_RECORD", "HOLDING_NO_DEMAT")
+def test_holding_contradicts_without_demat_when_every_depository_answered():
+    check(rules.holding(hold(), aa()), "CONTRADICTS", "HOLDING_NO_DEMAT")
+    # a depository that did not answer may hold the account: never CONTRADICTS
+    check(rules.holding(hold(), aa(failed=["NSDL"])), "NO_RECORD", "HOLDING_PARTIAL_COVERAGE")
 
 
 def test_partial_coverage_is_no_record():

@@ -42,17 +42,17 @@
  "expected": [
   {
    "isin": "INE571B01036",
-   "outcome": "NO_RECORD",
+   "outcome": "CONTRADICTS",
    "reason_code": "HOLDING_NO_DEMAT"
   },
   {
    "isin": "INE0PT501018",
-   "outcome": "NO_RECORD",
+   "outcome": "CONTRADICTS",
    "reason_code": "HOLDING_NO_DEMAT"
   },
   {
    "isin": "INE02A801020",
-   "outcome": "NO_RECORD",
+   "outcome": "CONTRADICTS",
    "reason_code": "HOLDING_NO_DEMAT"
   }
  ]

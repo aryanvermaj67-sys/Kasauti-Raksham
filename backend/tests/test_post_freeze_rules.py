@@ -2,11 +2,13 @@
 lists at run time or are made up here; nothing is copied from data/frozen."""
 
 import csv
+import json
 
 import pytest
 
 from app.connectors import isin_master, sebi
 from app.connectors.names import normalize, normalize_security
+from app.reader import local
 from app.schemas.claims import HoldingClaim
 from app.verdict import rules
 from tests.helpers import ROOT
@@ -304,3 +306,46 @@ def test_a_rupee_amount_written_with_a_unit_fills_a_value_the_model_left_null():
     ]
     _fill_values(claims, text)
     assert [c["fields"]["value_inr"] for c in claims] == [150000.0, 30000.0, None]  # Gamma prints no amount: stays null
+
+
+def test_a_value_the_model_got_wrong_is_read_off_the_page():
+    text = "Total value\n₹ 80,000\nAlpha Mills\n₹ 7.10 L\nShares: 10\nBeta Works\n₹ 0.90 L\nShares: 5"
+    model = {
+        "language": "en",
+        "portfolio_total_inr": 80000,
+        "holdings": [
+            {"instrument_name": "Alpha Mills", "isin": None, "quantity": 10, "value_inr": 7100000},  # 10x too large
+            {"instrument_name": "Beta Works", "isin": None, "quantity": 5, "value_inr": 90000},
+        ],
+        "broker": None,
+        "payee": None,
+        "platform": None,
+    }
+    cs = local._to_claimset(json.dumps(model), SHA_ZERO, "m", text)
+    assert [c.fields.value_inr for c in cs.claims] == [710000, 90000]
+
+
+def test_a_garbled_isin_is_replaced_by_the_listed_one_the_page_prints_but_a_printed_one_stays():
+    text = f"Infosys Ltd\nISIN: {INFY.replace('0', 'O', 2)}\nQty 40"  # printed with O for 0
+    held = [{"type": "holding", "fields": {"instrument_name": "Infosys Ltd", "isin": INFY[:-1], "quantity": 40}}]
+    local._isins_from_text(held, text)
+    assert held[0]["fields"]["isin"] == INFY  # one character dropped by the model
+    fake = "INE000Z01010"
+    held = [{"type": "holding", "fields": {"instrument_name": "X", "isin": fake, "quantity": 1}}]
+    local._isins_from_text(held, f"X\nISIN {fake}\n{INFY}")
+    assert held[0]["fields"]["isin"] == fake  # printed as such: never swapped for another
+
+
+def test_a_payee_is_described_as_broker_or_advisor_only_if_the_text_uses_the_word():
+    def payee(said):
+        return [{"type": "payee", "fields": {"upi_id": "a@b", "described_as": said}}]
+
+    for said, text, want in (
+        ("broker", "Add funds by UPI", "other"),
+        ("broker", "सलाहकार को भुगतान करें", "advisor"),
+        ("broker", "Pay your broker", "broker"),
+        ("advisor", "Add funds", "other"),
+    ):
+        c = payee(said)
+        local._ground_payee(c, text)
+        assert c[0]["fields"]["described_as"] == want

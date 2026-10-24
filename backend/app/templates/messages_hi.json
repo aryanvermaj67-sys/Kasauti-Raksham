@@ -46,7 +46,7 @@
     },
     "HOLDING_NO_DEMAT": {
       "app": "{instrument_name}: {quantity} शेयर",
-      "record": "{depositories} में आपके नाम पर कोई डीमैट खाता नहीं है। हम इसकी पुष्टि नहीं कर सके।",
+      "record": "{depositories} में आपके नाम पर कोई डीमैट खाता नहीं है, इसलिए ये शेयर आपके नाम पर नहीं हैं।",
       "needs_native_review": true
     },
     "HOLDING_ISIN_UNMAPPED": {

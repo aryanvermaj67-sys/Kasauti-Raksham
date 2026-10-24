@@ -111,7 +111,7 @@ def make_case(rng, i, category, isins, failed):
     elif category == "no_demat":
         real = []
         for h in fake[:3]:
-            expect(claim(rng, h), "NO_RECORD", "HOLDING_NO_DEMAT")
+            expect(claim(rng, h), "CONTRADICTS", "HOLDING_NO_DEMAT")
     else:  # partial_depository_failure: one depository FAILED, so nothing may be CONTRADICTS
         status[failed] = "FAILED"
         for h in real:
