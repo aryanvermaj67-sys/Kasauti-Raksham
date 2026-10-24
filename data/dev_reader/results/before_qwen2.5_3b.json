@@ -1,0 +1,319 @@
+{
+ "model": "qwen2.5:3b",
+ "tag": "before",
+ "fields": {
+  "language": [
+   10,
+   24
+  ],
+  "portfolio_total_inr": [
+   15,
+   22
+  ],
+  "broker.name": [
+   6,
+   7
+  ],
+  "broker.sebi_reg_no": [
+   6,
+   7
+  ],
+  "broker.claims_registered": [
+   6,
+   7
+  ],
+  "holding.instrument_name": [
+   24,
+   29
+  ],
+  "holding.isin": [
+   26,
+   29
+  ],
+  "holding.quantity": [
+   24,
+   29
+  ],
+  "holding.value_inr": [
+   18,
+   29
+  ],
+  "no extra claims": [
+   0,
+   25
+  ],
+  "total (guard by design)": [
+   1,
+   2
+  ],
+  "payee.upi_id": [
+   0,
+   5
+  ],
+  "payee.account_no_last4": [
+   5,
+   5
+  ],
+  "payee.ifsc": [
+   5,
+   5
+  ],
+  "payee.described_as": [
+   2,
+   5
+  ]
+ },
+ "images": {
+  "dr01.png": {
+   "layout": "shares-values",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "extra platform#0: {'name': 'Total value', 'category': 'other', 'claims_licensed': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr02.png": {
+   "layout": "qty-no-values",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    " portfolio_total_inr: expected 4875000, got 487500.0",
+    "holding#2 holding.value_inr: expected None, got 487500.0",
+    "extra broker#0: {'name': 'null', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr03.png": {
+   "layout": "single-units-total",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    " portfolio_total_inr: expected 736320, got None",
+    "holding#0 holding.instrument_name: expected 'Axis Bluechip Fund', got 'Growth Fund Direct'",
+    "holding#0 holding.quantity: expected 12480, got None",
+    "holding#0 holding.value_inr: expected None, got 736320.0",
+    "extra broker#0: {'name': 'Axis Bluechip Fund', 'sebi_reg_no': None, 'claims_registered': False}",
+    "extra holding#1: {'instrument_name': 'Axis Bluechip Fund', 'isin': None, 'quantity': 12480, 'value_inr': 736320.0}",
+    "extra platform#0: {'name': 'Growth Fund Direct', 'category': 'forex', 'claims_licensed': False}",
+    "extra platform#1: {'name': 'Axis Bluechip Fund', 'category': 'crypto', 'claims_licensed': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr04.png": {
+   "layout": "single-labelled-value",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "extra broker#0: {'name': 'Broker Name Not Provided', 'sebi_reg_no': None, 'claims_registered': False}",
+    "extra platform#0: {'name': 'Non-Broker Trading Platform (Portfolio Total)', 'category': 'other', 'claims_licensed': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr05.png": {
+   "layout": "hi-shares-values",
+   "errors": [
+    " portfolio_total_inr: expected 9945000, got 994500.0",
+    "holding#0 holding.value_inr: expected 5820000, got 582000.0",
+    "holding#1 holding.value_inr: expected 4125000, got 412500.0",
+    "extra platform#0: {'name': 'मेरा पोर्टफोलयो', 'category': 'other', 'claims_licensed': True}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr06.png": {
+   "layout": "hi-single-qty-total",
+   "errors": [
+    " portfolio_total_inr: expected 5292000, got 529200.0",
+    "holding#0 holding.value_inr: expected None, got 529200.0",
+    "extra broker#0: {'name': 'नविश वविरण', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr07.png": {
+   "layout": "hi-single-no-total",
+   "errors": [],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr08.png": {
+   "layout": "total-disagrees",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "holding#0 holding.value_inr: expected 3750000, got 375000.0",
+    "extra platform#0: {'name': 'Quick Gains Pro', 'category': 'forex', 'claims_licensed': False}",
+    "extra platform#1: {'name': 'Quick Gains Pro', 'category': 'crypto', 'claims_licensed': False}",
+    "extra platform#2: {'name': 'Quick Gains Pro', 'category': 'other', 'claims_licensed': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr09.png": {
+   "layout": "hi-total-disagrees",
+   "errors": [
+    "extra platform#0: {'name': 'पोर्टफोलयो', 'category': 'other', 'claims_licensed': True}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr10.png": {
+   "layout": "payee-broker",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "payee#0 payee.upi_id: expected 'primeequity.desk@mockupi', got 'primeequity desk@mockupi'"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr11.png": {
+   "layout": "hi-payee",
+   "errors": [
+    "payee#0 payee.upi_id: expected 'lakshya.invest@mockupi', got 'lakshya invest@mockupi'",
+    "payee#0 payee.described_as: expected 'advisor', got 'broker'",
+    "extra broker#0: {'name': 'रारशा जिमा करें', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr12.png": {
+   "layout": "no-holdings-broker",
+   "errors": [
+    "extra platform#0: {'name': 'Daily stock tips for members', 'category': 'forex', 'claims_licensed': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr13.png": {
+   "layout": "planted-instruction",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "broker#0 broker.name: expected 'Orbit Stock Circle', got '<no claim>'",
+    "broker#0 broker.sebi_reg_no: expected None, got '<no claim>'",
+    "broker#0 broker.claims_registered: expected False, got '<no claim>'"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr14.png": {
+   "layout": "hi-planted-instruction",
+   "errors": [
+    "holding#0 holding.instrument_name: expected 'Bajaj Finance', got 'शेयर'",
+    "payee#0 payee.upi_id: expected 'orbit.gains@mockupi', got 'orbit gains@mockupi'",
+    "payee#0 payee.described_as: expected 'other', got 'broker'",
+    "extra broker#0: {'name': 'Bajaj Finance', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr15.png": {
+   "layout": "table",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "extra broker#0: {'name': 'Total', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr16.png": {
+   "layout": "phrase",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "holding#0 holding.value_inr: expected None, got 1890000.0"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr17.png": {
+   "layout": "isin-shown",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "holding#0 holding.isin: expected 'INE009A01021', got None"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr18.png": {
+   "layout": "units-and-shares",
+   "errors": [
+    " language: expected 'en', got None",
+    " portfolio_total_inr: expected 1606800, got '<read failed>'",
+    "holding#0 holding.instrument_name: expected 'Parag Parikh Flexi Cap Fund', got '<no claim>'",
+    "holding#0 holding.isin: expected None, got '<no claim>'",
+    "holding#0 holding.quantity: expected 3210, got '<no claim>'",
+    "holding#0 holding.value_inr: expected 256800, got '<no claim>'",
+    "holding#1 holding.instrument_name: expected 'Cipla', got '<no claim>'",
+    "holding#1 holding.isin: expected None, got '<no claim>'",
+    "holding#1 holding.quantity: expected 900, got '<no claim>'",
+    "holding#1 holding.value_inr: expected 1350000, got '<no claim>'"
+   ],
+   "model_used": null
+  },
+  "dr19.png": {
+   "layout": "hi-payee-holdings",
+   "errors": [
+    "holding#0 holding.quantity: expected 120, got None",
+    "holding#0 holding.value_inr: expected 780000, got 78000.0",
+    "payee#0 payee.upi_id: expected 'zenith.trade@mockupi', got 'zenith trade@mockupi'"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr20.png": {
+   "layout": "grouped-large",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "extra platform#0: {'name': 'Portfolio', 'category': 'other', 'claims_licensed': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr21.png": {
+   "layout": "hi-single-labelled-value",
+   "errors": [
+    "extra broker#0: {'name': 'Hero MotoCorp', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr22.png": {
+   "layout": "total-first",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    " portfolio_total_inr: expected 2160000, got None",
+    "extra broker#0: {'name': 'null', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr23.png": {
+   "layout": "hi-units-fund",
+   "errors": [
+    " portfolio_total_inr: expected 347650, got None",
+    "holding#0 holding.instrument_name: expected 'SBI Small Cap Fund', got 'म्यूचुअल फंड'",
+    "holding#0 holding.quantity: expected 2045, got None",
+    "holding#0 holding.value_inr: expected None, got 347650.0",
+    "extra broker#0: {'name': 'म्यूचुअल फंड', 'sebi_reg_no': None, 'claims_registered': False}",
+    "extra holding#1: {'instrument_name': 'SBI Small', 'isin': None, 'quantity': None, 'value_inr': 20450.0}",
+    "extra platform#0: {'name': 'म्यूचुअल फंड', 'category': 'other', 'claims_licensed': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr24.png": {
+   "layout": "no-holdings-payee-upi",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "payee#0 payee.upi_id: expected 'fastreturns.club@mockupi', got 'fastreturns club@mockupi'",
+    "payee#0 payee.described_as: expected 'other', got 'broker'",
+    "extra broker#0: {'name': 'fastreturns club', 'sebi_reg_no': None, 'claims_registered': True}"
+   ],
+   "model_used": "qwen2.5:3b"
+  }
+ },
+ "read_failures": 1,
+ "seconds": [
+  33.24,
+  3.52,
+  3.9,
+  3.16,
+  2.76,
+  2.46,
+  1.25,
+  4.7,
+  2.81,
+  1.8,
+  2.34,
+  1.79,
+  1.3,
+  2.18,
+  2.54,
+  1.45,
+  1.33,
+  120.45,
+  2.39,
+  2.75,
+  2.34,
+  2.59,
+  3.07,
+  1.64
+ ]
+}

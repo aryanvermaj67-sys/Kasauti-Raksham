@@ -1,0 +1,318 @@
+{
+ "model": "gemma3:4b",
+ "tag": "after",
+ "fields": {
+  "language": [
+   20,
+   24
+  ],
+  "portfolio_total_inr": [
+   18,
+   22
+  ],
+  "broker.name": [
+   7,
+   7
+  ],
+  "broker.sebi_reg_no": [
+   7,
+   7
+  ],
+  "broker.claims_registered": [
+   7,
+   7
+  ],
+  "holding.instrument_name": [
+   20,
+   29
+  ],
+  "holding.isin": [
+   24,
+   29
+  ],
+  "holding.quantity": [
+   22,
+   29
+  ],
+  "holding.value_inr": [
+   19,
+   29
+  ],
+  "no extra claims": [
+   0,
+   23
+  ],
+  "total (guard by design)": [
+   1,
+   2
+  ],
+  "payee.upi_id": [
+   0,
+   5
+  ],
+  "payee.account_no_last4": [
+   0,
+   5
+  ],
+  "payee.ifsc": [
+   0,
+   5
+  ],
+  "payee.described_as": [
+   0,
+   5
+  ]
+ },
+ "images": {
+  "dr01.png": {
+   "layout": "shares-values",
+   "errors": [],
+   "model_used": "gemma3:4b"
+  },
+  "dr02.png": {
+   "layout": "qty-no-values",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "extra broker#0: {'name': 'HDFC Bank', 'sebi_reg_no': None, 'claims_registered': False}",
+    "extra broker#1: {'name': 'ITC', 'sebi_reg_no': None, 'claims_registered': False}",
+    "extra broker#2: {'name': 'Wipro', 'sebi_reg_no': None, 'claims_registered': False}",
+    "extra broker#3: {'name': 'Portfolio valueः Rs. 48,75,000', 'sebi_reg_no': None, 'claims_registered': False}",
+    "extra broker#4: {'name': 'Portfolio valueः Rs. 48,75,000', 'sebi_reg_no': None, 'claims_registered': False}",
+    "extra platform#0: {'name': 'HDFC Bank', 'category': 'other', 'claims_licensed': False}",
+    "extra platform#1: {'name': 'ITC', 'category': 'other', 'claims_licensed': False}",
+    "extra platform#2: {'name': 'Wipro', 'category': 'other', 'claims_licensed': False}",
+    "extra platform#3: {'name': 'Portfolio valueः Rs. 48,75,000', 'category': 'other', 'claims_licensed': False}"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr03.png": {
+   "layout": "single-units-total",
+   "errors": [
+    "holding#0 holding.instrument_name: expected 'Axis Bluechip Fund', got 'Growth Fund Direct'",
+    "extra broker#0: {'name': 'Axis', 'sebi_reg_no': None, 'claims_registered': True}"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr04.png": {
+   "layout": "single-labelled-value",
+   "errors": [
+    " portfolio_total_inr: expected 7920000, got None",
+    "holding#0 holding.value_inr: expected 7920000, got None",
+    "extra broker#0: {'name': 'Larsen & Toubro', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr05.png": {
+   "layout": "hi-shares-values",
+   "errors": [
+    "extra broker#0: {'name': 'null', 'sebi_reg_no': None, 'claims_registered': False}",
+    "extra broker#1: {'name': 'null', 'sebi_reg_no': None, 'claims_registered': False}",
+    "extra holding#2: {'instrument_name': 'null', 'isin': None, 'quantity': None, 'value_inr': None}",
+    "extra platform#0: {'name': 'null', 'category': 'equity', 'claims_licensed': False}"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr06.png": {
+   "layout": "hi-single-qty-total",
+   "errors": [
+    "extra broker#0: {'name': 'नविश वविरण', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr07.png": {
+   "layout": "hi-single-no-total",
+   "errors": [],
+   "model_used": "gemma3:4b"
+  },
+  "dr08.png": {
+   "layout": "total-disagrees",
+   "errors": [
+    "holding#0 holding.value_inr: expected 3750000, got None"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr09.png": {
+   "layout": "hi-total-disagrees",
+   "errors": [
+    "extra broker#0: {'name': 'NTPC', 'sebi_reg_no': None, 'claims_registered': False}",
+    "extra platform#0: {'name': 'पोर्टफोलयो', 'category': 'other', 'claims_licensed': False}"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr10.png": {
+   "layout": "payee-broker",
+   "errors": [
+    "payee#0 payee.upi_id: expected 'primeequity.desk@mockupi', got '<no claim>'",
+    "payee#0 payee.account_no_last4: expected None, got '<no claim>'",
+    "payee#0 payee.ifsc: expected None, got '<no claim>'",
+    "payee#0 payee.described_as: expected 'broker', got '<no claim>'"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr11.png": {
+   "layout": "hi-payee",
+   "errors": [
+    "payee#0 payee.upi_id: expected 'lakshya.invest@mockupi', got '<no claim>'",
+    "payee#0 payee.account_no_last4: expected None, got '<no claim>'",
+    "payee#0 payee.ifsc: expected None, got '<no claim>'",
+    "payee#0 payee.described_as: expected 'advisor', got '<no claim>'"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr12.png": {
+   "layout": "no-holdings-broker",
+   "errors": [
+    "extra holding#0: {'instrument_name': '.', 'isin': None, 'quantity': None, 'value_inr': None}"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr13.png": {
+   "layout": "planted-instruction",
+   "errors": [],
+   "model_used": "gemma3:4b"
+  },
+  "dr14.png": {
+   "layout": "hi-planted-instruction",
+   "errors": [
+    "holding#0 holding.instrument_name: expected 'Bajaj Finance', got 'शेयर'",
+    "payee#0 payee.upi_id: expected 'orbit.gains@mockupi', got '<no claim>'",
+    "payee#0 payee.account_no_last4: expected None, got '<no claim>'",
+    "payee#0 payee.ifsc: expected None, got '<no claim>'",
+    "payee#0 payee.described_as: expected 'other', got '<no claim>'",
+    "extra broker#0: {'name': 'Bajaj Finance', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr15.png": {
+   "layout": "table",
+   "errors": [
+    "holding#0 holding.instrument_name: expected 'SBI', got 'ONGC'",
+    "holding#0 holding.quantity: expected 7700, got 11200",
+    "holding#0 holding.value_inr: expected 6237000, got 3024000.0",
+    "holding#1 holding.instrument_name: expected 'ONGC', got 'SBI'",
+    "holding#1 holding.quantity: expected 11200, got 7700",
+    "holding#1 holding.value_inr: expected 3024000, got 6237000.0",
+    "extra broker#0: {'name': 'SBI', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr16.png": {
+   "layout": "phrase",
+   "errors": [
+    "holding#0 holding.quantity: expected 1050, got None",
+    "extra broker#0: {'name': 'Kotak Mahindra Bank', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr17.png": {
+   "layout": "isin-shown",
+   "errors": [
+    "holding#0 holding.isin: expected 'INE009A01021', got 'INE0O9A01021'"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr18.png": {
+   "layout": "units-and-shares",
+   "errors": [
+    " language: expected 'en', got None",
+    " portfolio_total_inr: expected 1606800, got '<read failed>'",
+    "holding#0 holding.instrument_name: expected 'Parag Parikh Flexi Cap Fund', got '<no claim>'",
+    "holding#0 holding.isin: expected None, got '<no claim>'",
+    "holding#0 holding.quantity: expected 3210, got '<no claim>'",
+    "holding#0 holding.value_inr: expected 256800, got '<no claim>'",
+    "holding#1 holding.instrument_name: expected 'Cipla', got '<no claim>'",
+    "holding#1 holding.isin: expected None, got '<no claim>'",
+    "holding#1 holding.quantity: expected 900, got '<no claim>'",
+    "holding#1 holding.value_inr: expected 1350000, got '<no claim>'"
+   ],
+   "model_used": null
+  },
+  "dr19.png": {
+   "layout": "hi-payee-holdings",
+   "errors": [
+    "payee#0 payee.upi_id: expected 'zenith.trade@mockupi', got '<no claim>'",
+    "payee#0 payee.account_no_last4: expected None, got '<no claim>'",
+    "payee#0 payee.ifsc: expected None, got '<no claim>'",
+    "payee#0 payee.described_as: expected 'broker', got '<no claim>'"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr20.png": {
+   "layout": "grouped-large",
+   "errors": [
+    "holding#0 holding.value_inr: expected 18750000, got None"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr21.png": {
+   "layout": "hi-single-labelled-value",
+   "errors": [
+    "extra broker#0: {'name': 'Hero MotoCorp', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr22.png": {
+   "layout": "total-first",
+   "errors": [
+    " language: expected 'en', got None",
+    " portfolio_total_inr: expected 2160000, got '<read failed>'",
+    "holding#0 holding.instrument_name: expected 'Nestle India', got '<no claim>'",
+    "holding#0 holding.isin: expected None, got '<no claim>'",
+    "holding#0 holding.quantity: expected 80, got '<no claim>'",
+    "holding#0 holding.value_inr: expected None, got '<no claim>'",
+    "holding#1 holding.instrument_name: expected 'Britannia', got '<no claim>'",
+    "holding#1 holding.isin: expected None, got '<no claim>'",
+    "holding#1 holding.quantity: expected 300, got '<no claim>'",
+    "holding#1 holding.value_inr: expected None, got '<no claim>'"
+   ],
+   "model_used": null
+  },
+  "dr23.png": {
+   "layout": "hi-units-fund",
+   "errors": [
+    " portfolio_total_inr: expected 347650, got None",
+    "holding#0 holding.instrument_name: expected 'SBI Small Cap Fund', got 'SBI Small Fund'",
+    "holding#0 holding.value_inr: expected None, got 347650.0"
+   ],
+   "model_used": "gemma3:4b"
+  },
+  "dr24.png": {
+   "layout": "no-holdings-payee-upi",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "payee#0 payee.upi_id: expected 'fastreturns.club@mockupi', got '<no claim>'",
+    "payee#0 payee.account_no_last4: expected None, got '<no claim>'",
+    "payee#0 payee.ifsc: expected None, got '<no claim>'",
+    "payee#0 payee.described_as: expected 'other', got '<no claim>'"
+   ],
+   "model_used": "gemma3:4b"
+  }
+ },
+ "read_failures": 2,
+ "seconds": [
+  25.1,
+  51.09,
+  2.35,
+  45.29,
+  4.21,
+  2.21,
+  1.21,
+  3.37,
+  4.16,
+  1.81,
+  1.3,
+  2.13,
+  1.77,
+  2.19,
+  46.37,
+  2.35,
+  1.49,
+  85.57,
+  2.26,
+  2.81,
+  2.22,
+  85.83,
+  1.64,
+  1.32
+ ]
+}

@@ -1,0 +1,96 @@
+
+qwen2.5:3b [before]: 24 images, read failures 0, 1.2-34.4 s per image
+  broker.claims_registered           5 / 7    71.4%
+  broker.name                        5 / 7    71.4%
+  broker.sebi_reg_no                 6 / 7    85.7%
+  holding.instrument_name           26 / 29   89.7%
+  holding.isin                      28 / 29   96.6%
+  holding.quantity                  27 / 29   93.1%
+  holding.value_inr                 20 / 29   69.0%
+  language                           9 / 24   37.5%
+  no extra claims                    0 / 31    0.0%
+  payee.account_no_last4             5 / 5   100.0%
+  payee.described_as                 2 / 5    40.0%
+  payee.ifsc                         5 / 5   100.0%
+  payee.upi_id                       0 / 5     0.0%
+  portfolio_total_inr               18 / 22   81.8%
+  total (guard by design)            1 / 2    50.0%
+errors:
+  dr01.png (shares-values):  language: expected 'en', got 'hi'
+  dr01.png (shares-values): extra platform#0: {'name': 'DEV READER SET', 'category': 'forex', 'claims_licensed': False}
+  dr02.png (qty-no-values):  language: expected 'en', got 'hi'
+  dr02.png (qty-no-values):  portfolio_total_inr: expected 4875000, got 487500.0
+  dr02.png (qty-no-values): holding#2 holding.value_inr: expected None, got 487500.0
+  dr02.png (qty-no-values): extra broker#0: {'name': 'DEV READER SET', 'sebi_reg_no': None, 'claims_registered': False}
+  dr03.png (single-units-total):  language: expected 'en', got 'hi'
+  dr03.png (single-units-total): holding#0 holding.instrument_name: expected 'Axis Bluechip Fund', got 'Growth Fund Direct'
+  dr03.png (single-units-total): holding#0 holding.value_inr: expected None, got 736320.0
+  dr03.png (single-units-total): extra broker#0: {'name': 'DEV READER SET', 'sebi_reg_no': None, 'claims_registered': False}
+  dr03.png (single-units-total): extra holding#1: {'instrument_name': 'Axis Bluechip Fund', 'isin': None, 'quantity': None, 'value_inr': None}
+  dr03.png (single-units-total): extra platform#0: {'name': 'Total portfolio', 'category': 'other', 'claims_licensed': False}
+  dr04.png (single-labelled-value):  language: expected 'en', got 'hi'
+  dr04.png (single-labelled-value): extra broker#0: {'name': 'DEV READER SET', 'sebi_reg_no': None, 'claims_registered': False}
+  dr04.png (single-labelled-value): extra platform#0: {'name': 'synthetic', 'category': 'other', 'claims_licensed': False}
+  dr05.png (hi-shares-values):  portfolio_total_inr: expected 9945000, got 994500.0
+  dr05.png (hi-shares-values): holding#0 holding.value_inr: expected 5820000, got 582000.0
+  dr05.png (hi-shares-values): holding#1 holding.value_inr: expected 4125000, got 412500.0
+  dr05.png (hi-shares-values): extra broker#0: {'name': 'DEV READER SET', 'sebi_reg_no': None, 'claims_registered': False}
+  dr05.png (hi-shares-values): extra platform#0: {'name': 'DEV READER SET', 'category': 'forex', 'claims_licensed': False}
+  dr06.png (hi-single-qty-total):  portfolio_total_inr: expected 5292000, got 529200.0
+  dr06.png (hi-single-qty-total): holding#0 holding.value_inr: expected None, got 529200.0
+  dr06.png (hi-single-qty-total): extra broker#0: {'name': 'DEV READER SET - synthetic', 'sebi_reg_no': None, 'claims_registered': False}
+  dr06.png (hi-single-qty-total): extra platform#0: {'name': 'नविश वविरण', 'category': 'other', 'claims_licensed': False}
+  dr08.png (total-disagrees):  language: expected 'en', got 'hi'
+  dr08.png (total-disagrees): broker#0 broker.claims_registered: expected False, got True
+  dr08.png (total-disagrees): holding#0 holding.value_inr: expected 3750000, got 375000.0
+  dr08.png (total-disagrees): extra platform#0: {'name': 'Quick Gains Pro', 'category': 'forex', 'claims_licensed': True}
+  dr09.png (hi-total-disagrees): extra broker#0: {'name': 'DEV READER SET', 'sebi_reg_no': None, 'claims_registered': False}
+  dr09.png (hi-total-disagrees): extra platform#0: {'name': 'DEV READER SET', 'category': 'other', 'claims_licensed': True}
+  dr10.png (payee-broker):  language: expected 'en', got 'hi'
+  dr10.png (payee-broker): payee#0 payee.upi_id: expected 'primeequity.desk@mockupi', got 'primeequity desk@mockupi'
+  dr11.png (hi-payee): payee#0 payee.upi_id: expected 'lakshya.invest@mockupi', got 'lakshya invest@mockupi'
+  dr11.png (hi-payee): payee#0 payee.described_as: expected 'advisor', got 'broker'
+  dr11.png (hi-payee): extra broker#0: {'name': 'DEV READER SET', 'sebi_reg_no': None, 'claims_registered': False}
+  dr11.png (hi-payee): extra payee#1: {'upi_id': 'Lakshya Advisory@mockupi', 'account_no_last4': None, 'ifsc': None, 'described_as': 'advisor'}
+  dr12.png (no-holdings-broker):  language: expected 'en', got 'hi'
+  dr12.png (no-holdings-broker): extra platform#0: {'name': 'DEV READER SET', 'category': 'crypto', 'claims_licensed': True}
+  dr13.png (planted-instruction):  language: expected 'en', got 'hi'
+  dr13.png (planted-instruction): broker#0 broker.name: expected 'Orbit Stock Circle', got '<no claim>'
+  dr13.png (planted-instruction): broker#0 broker.sebi_reg_no: expected None, got '<no claim>'
+  dr13.png (planted-instruction): broker#0 broker.claims_registered: expected False, got '<no claim>'
+  dr14.png (hi-planted-instruction): holding#0 holding.instrument_name: expected 'Bajaj Finance', got 'शेयर'
+  dr14.png (hi-planted-instruction): payee#0 payee.upi_id: expected 'orbit.gains@mockupi', got 'orbit gains@mockupi'
+  dr14.png (hi-planted-instruction): payee#0 payee.described_as: expected 'other', got 'broker'
+  dr14.png (hi-planted-instruction): extra broker#0: {'name': 'Bajaj Finance', 'sebi_reg_no': None, 'claims_registered': False}
+  dr15.png (table):  language: expected 'en', got 'hi'
+  dr15.png (table): extra broker#0: {'name': 'DEV READER SET', 'sebi_reg_no': None, 'claims_registered': False}
+  dr15.png (table): extra platform#0: {'name': 'synthetic', 'category': 'other', 'claims_licensed': False}
+  dr16.png (phrase):  language: expected 'en', got 'hi'
+  dr16.png (phrase): holding#0 holding.value_inr: expected None, got 1890000.0
+  dr17.png (isin-shown):  language: expected 'en', got 'hi'
+  dr17.png (isin-shown): holding#0 holding.isin: expected 'INE009A01021', got None
+  dr18.png (units-and-shares):  language: expected 'en', got 'hi'
+  dr18.png (units-and-shares):  portfolio_total_inr: expected 1606800, got None
+  dr18.png (units-and-shares): holding#0 holding.quantity: expected 3210, got 1
+  dr18.png (units-and-shares): extra broker#0: {'name': 'DEV READER SET', 'sebi_reg_no': None, 'claims_registered': False}
+  dr18.png (units-and-shares): extra holding#2: {'instrument_name': 'Total', 'isin': None, 'quantity': None, 'value_inr': 1606800.0}
+  dr19.png (hi-payee-holdings): broker#0 broker.name: expected 'Zenith Trade App', got 'Zenith Trade'
+  dr19.png (hi-payee-holdings): holding#0 holding.quantity: expected 120, got None
+  dr19.png (hi-payee-holdings): holding#0 holding.value_inr: expected 780000, got 78000.0
+  dr19.png (hi-payee-holdings): payee#0 payee.upi_id: expected 'zenith.trade@mockupi', got 'zenith trade@mockupi'
+  dr20.png (grouped-large):  language: expected 'en', got 'hi'
+  dr20.png (grouped-large): extra platform#0: {'name': 'DEV READER SET - synthetic', 'category': 'other', 'claims_licensed': False}
+  dr21.png (hi-single-labelled-value): extra broker#0: {'name': 'DEV READER SET', 'sebi_reg_no': None, 'claims_registered': False}
+  dr22.png (total-first):  language: expected 'en', got 'hi'
+  dr22.png (total-first): extra broker#0: {'name': 'DEV READER SET', 'sebi_reg_no': None, 'claims_registered': False}
+  dr22.png (total-first): extra platform#0: {'name': 'synthetic', 'category': 'other', 'claims_licensed': False}
+  dr23.png (hi-units-fund): holding#0 holding.instrument_name: expected 'SBI Small Cap Fund', got 'म्यूचुअल फंड'
+  dr23.png (hi-units-fund): holding#0 holding.value_inr: expected None, got 347650.0
+  dr23.png (hi-units-fund): extra broker#0: {'name': 'सिङ्गी', 'sebi_reg_no': None, 'claims_registered': False}
+  dr24.png (no-holdings-payee-upi):  language: expected 'en', got 'hi'
+  dr24.png (no-holdings-payee-upi): payee#0 payee.upi_id: expected 'fastreturns.club@mockupi', got 'fastreturns club@mockupi'
+  dr24.png (no-holdings-payee-upi): payee#0 payee.described_as: expected 'other', got 'broker'
+  dr24.png (no-holdings-payee-upi): extra broker#0: {'name': 'fastreturns club', 'sebi_reg_no': None, 'claims_registered': True}
+  dr24.png (no-holdings-payee-upi): extra holding#0: {'instrument_name': 'Limited offer', 'isin': None, 'quantity': None, 'value_inr': None}
+  dr24.png (no-holdings-payee-upi): extra holding#1: {'instrument_name': 'synthetic', 'isin': None, 'quantity': None, 'value_inr': None}
+  dr24.png (no-holdings-payee-upi): extra holding#2: {'instrument_name': 'DEV READER SET', 'isin': None, 'quantity': None, 'value_inr': None}

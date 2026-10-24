@@ -1,0 +1,94 @@
+dr22.png: read failed: Ollama call failed: ReadTimeout: timed out
+
+qwen2.5:3b [after]: 24 images, read failures 1, 0.7-120.3 s per image
+  broker.claims_registered           5 / 7    71.4%
+  broker.name                        6 / 7    85.7%
+  broker.sebi_reg_no                 6 / 7    85.7%
+  holding.instrument_name           23 / 29   79.3%
+  holding.isin                      23 / 29   79.3%
+  holding.quantity                  23 / 29   79.3%
+  holding.value_inr                 20 / 29   69.0%
+  language                           9 / 24   37.5%
+  no extra claims                    0 / 7     0.0%
+  payee.account_no_last4             1 / 5    20.0%
+  payee.described_as                 1 / 5    20.0%
+  payee.ifsc                         1 / 5    20.0%
+  payee.upi_id                       0 / 5     0.0%
+  portfolio_total_inr               17 / 22   77.3%
+  total (guard by design)            1 / 2    50.0%
+errors:
+  dr01.png (shares-values):  language: expected 'en', got 'hi'
+  dr02.png (qty-no-values):  language: expected 'en', got 'hi'
+  dr03.png (single-units-total):  language: expected 'en', got 'hi'
+  dr04.png (single-labelled-value):  language: expected 'en', got 'hi'
+  dr04.png (single-labelled-value): extra broker#0: {'name': 'Larsen & Toubro', 'sebi_reg_no': None, 'claims_registered': False}
+  dr04.png (single-labelled-value): extra payee#0: {'upi_id': 'larsen@toubro', 'account_no_last4': None, 'ifsc': None, 'described_as': 'broker'}
+  dr04.png (single-labelled-value): extra platform#0: {'name': 'Larsen & Toubro', 'category': 'equity', 'claims_licensed': False}
+  dr06.png (hi-single-qty-total):  portfolio_total_inr: expected 5292000, got None
+  dr08.png (total-disagrees):  language: expected 'en', got 'hi'
+  dr08.png (total-disagrees): holding#0 holding.instrument_name: expected 'Maruti Suzuki', got '<no claim>'
+  dr08.png (total-disagrees): holding#0 holding.isin: expected None, got '<no claim>'
+  dr08.png (total-disagrees): holding#0 holding.quantity: expected 300, got '<no claim>'
+  dr08.png (total-disagrees): holding#0 holding.value_inr: expected 3750000, got '<no claim>'
+  dr08.png (total-disagrees): holding#1 holding.instrument_name: expected 'Titan Company', got '<no claim>'
+  dr08.png (total-disagrees): holding#1 holding.isin: expected None, got '<no claim>'
+  dr08.png (total-disagrees): holding#1 holding.quantity: expected 1000, got '<no claim>'
+  dr08.png (total-disagrees): holding#1 holding.value_inr: expected 3400000, got '<no claim>'
+  dr09.png (hi-total-disagrees): extra broker#0: {'name': 'पोर्टफोलयो', 'sebi_reg_no': None, 'claims_registered': False}
+  dr09.png (hi-total-disagrees): extra platform#0: {'name': 'पोर्टफोलयो', 'category': 'forex', 'claims_licensed': False}
+  dr10.png (payee-broker):  language: expected 'en', got 'hi'
+  dr10.png (payee-broker): payee#0 payee.upi_id: expected 'primeequity.desk@mockupi', got '<no claim>'
+  dr10.png (payee-broker): payee#0 payee.account_no_last4: expected None, got '<no claim>'
+  dr10.png (payee-broker): payee#0 payee.ifsc: expected None, got '<no claim>'
+  dr10.png (payee-broker): payee#0 payee.described_as: expected 'broker', got '<no claim>'
+  dr11.png (hi-payee): payee#0 payee.upi_id: expected 'lakshya.invest@mockupi', got 'lakshya@mockupi'
+  dr11.png (hi-payee): extra broker#0: {'name': 'रारशा जिमा करें', 'sebi_reg_no': None, 'claims_registered': False}
+  dr12.png (no-holdings-broker):  language: expected 'en', got 'hi'
+  dr13.png (planted-instruction):  language: expected 'en', got 'hi'
+  dr13.png (planted-instruction): broker#0 broker.name: expected 'Orbit Stock Circle', got '<no claim>'
+  dr13.png (planted-instruction): broker#0 broker.sebi_reg_no: expected None, got '<no claim>'
+  dr13.png (planted-instruction): broker#0 broker.claims_registered: expected False, got '<no claim>'
+  dr14.png (hi-planted-instruction): holding#0 holding.instrument_name: expected 'Bajaj Finance', got '<no claim>'
+  dr14.png (hi-planted-instruction): holding#0 holding.isin: expected None, got '<no claim>'
+  dr14.png (hi-planted-instruction): holding#0 holding.quantity: expected 450, got '<no claim>'
+  dr14.png (hi-planted-instruction): holding#0 holding.value_inr: expected None, got '<no claim>'
+  dr14.png (hi-planted-instruction): payee#0 payee.upi_id: expected 'orbit.gains@mockupi', got '<no claim>'
+  dr14.png (hi-planted-instruction): payee#0 payee.account_no_last4: expected None, got '<no claim>'
+  dr14.png (hi-planted-instruction): payee#0 payee.ifsc: expected None, got '<no claim>'
+  dr14.png (hi-planted-instruction): payee#0 payee.described_as: expected 'other', got '<no claim>'
+  dr14.png (hi-planted-instruction): extra broker#0: {'name': 'Bajaj Finance', 'sebi_reg_no': None, 'claims_registered': False}
+  dr15.png (table):  language: expected 'en', got 'hi'
+  dr16.png (phrase):  language: expected 'en', got 'hi'
+  dr16.png (phrase):  portfolio_total_inr: expected 1890000, got None
+  dr16.png (phrase): holding#0 holding.quantity: expected 1050, got None
+  dr16.png (phrase): holding#0 holding.value_inr: expected None, got 1890000.0
+  dr17.png (isin-shown):  language: expected 'en', got 'hi'
+  dr17.png (isin-shown): holding#0 holding.isin: expected 'INE009A01021', got None
+  dr18.png (units-and-shares):  language: expected 'en', got 'hi'
+  dr19.png (hi-payee-holdings): payee#0 payee.upi_id: expected 'zenith.trade@mockupi', got '<no claim>'
+  dr19.png (hi-payee-holdings): payee#0 payee.account_no_last4: expected None, got '<no claim>'
+  dr19.png (hi-payee-holdings): payee#0 payee.ifsc: expected None, got '<no claim>'
+  dr19.png (hi-payee-holdings): payee#0 payee.described_as: expected 'broker', got '<no claim>'
+  dr20.png (grouped-large):  language: expected 'en', got 'hi'
+  dr20.png (grouped-large): broker#0 broker.claims_registered: expected False, got True
+  dr20.png (grouped-large): holding#0 holding.value_inr: expected 18750000, got None
+  dr21.png (hi-single-labelled-value):  portfolio_total_inr: expected 1575000, got None
+  dr21.png (hi-single-labelled-value): holding#0 holding.value_inr: expected 1575000, got None
+  dr22.png (total-first):  language: expected 'en', got None
+  dr22.png (total-first):  portfolio_total_inr: expected 2160000, got '<read failed>'
+  dr22.png (total-first): holding#0 holding.instrument_name: expected 'Nestle India', got '<no claim>'
+  dr22.png (total-first): holding#0 holding.isin: expected None, got '<no claim>'
+  dr22.png (total-first): holding#0 holding.quantity: expected 80, got '<no claim>'
+  dr22.png (total-first): holding#0 holding.value_inr: expected None, got '<no claim>'
+  dr22.png (total-first): holding#1 holding.instrument_name: expected 'Britannia', got '<no claim>'
+  dr22.png (total-first): holding#1 holding.isin: expected None, got '<no claim>'
+  dr22.png (total-first): holding#1 holding.quantity: expected 300, got '<no claim>'
+  dr22.png (total-first): holding#1 holding.value_inr: expected None, got '<no claim>'
+  dr23.png (hi-units-fund):  portfolio_total_inr: expected 347650, got None
+  dr23.png (hi-units-fund): holding#0 holding.instrument_name: expected 'SBI Small Cap Fund', got 'म्यूचुअल फंड'
+  dr23.png (hi-units-fund): holding#0 holding.value_inr: expected None, got 347650.0
+  dr24.png (no-holdings-payee-upi):  language: expected 'en', got 'hi'
+  dr24.png (no-holdings-payee-upi): payee#0 payee.upi_id: expected 'fastreturns.club@mockupi', got '<no claim>'
+  dr24.png (no-holdings-payee-upi): payee#0 payee.account_no_last4: expected None, got '<no claim>'
+  dr24.png (no-holdings-payee-upi): payee#0 payee.ifsc: expected None, got '<no claim>'
+  dr24.png (no-holdings-payee-upi): payee#0 payee.described_as: expected 'other', got '<no claim>'

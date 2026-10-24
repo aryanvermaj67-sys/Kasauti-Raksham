@@ -37,6 +37,16 @@ INSTRUCTION = re.compile(
     re.I,
 )
 PROMPT = (Path(__file__).parent / "local_prompt.txt").read_text(encoding="utf-8")
+DEVANAGARI_DIGITS = str.maketrans("०१२३४५६७८९", "0123456789")
+RUPEE_AS_RA = re.compile(r"(?<![\u0900-\u097F])र\s*(?=\d)")  # EasyOCR (hi+en) reads ₹ as र before a number
+NUM = r"\d[\d,]*(?:\.\d+)?"
+SCALE = {"crore": 1e7, "cr": 1e7, "करोड़": 1e7, "lakh": 1e5, "lac": 1e5, "लाख": 1e5}
+AMOUNT = re.compile(rf"({NUM})\s*(crore|cr\b|करोड़|lakh|lac\b|लाख)?", re.I)
+QTY_WORDS = r"shares?|qty|quantity|units?|शेयर|मात्रा|यूनिट"
+QTY = re.compile(rf"(?:{QTY_WORDS})(?:\s+held)?\s*[:ः\-]?\s*({NUM})|({NUM})\s*(?:{QTY_WORDS})", re.I)
+RUPEES = re.compile(rf"(?:₹|rs\.?|inr)\s*({NUM})", re.I)
+TOTAL_LINE = re.compile(r"\b(total|portfolio|account value)\b|कुल|पोर्टफोलियो", re.I)
+UPI = re.compile(r"[\w.\-]+@[A-Za-z]+")
 
 
 class ReaderError(Exception):
@@ -72,7 +82,25 @@ def _easyocr():
 
 
 def ocr(image: bytes) -> str:
-    return "\n".join(_easyocr().readtext(image, detail=0))
+    return clean_ocr("\n".join(_easyocr().readtext(image, detail=0)))
+
+
+def clean_ocr(text: str) -> str:
+    """Undo two EasyOCR habits: Devanagari digits for printed digits (even in English lines), and ₹ read as र."""
+    return RUPEE_AS_RA.sub("₹ ", text.translate(DEVANAGARI_DIGITS))
+
+
+def _num(s: str) -> float:
+    return float(s.replace(",", ""))
+
+
+def _amounts(text: str) -> list[float]:
+    """Every number printed in the text (₹3.98 crore -> 39800000), once per appearance."""
+    return [_num(n) * SCALE.get(unit.lower(), 1) if unit else _num(n) for n, unit in AMOUNT.findall(text)]
+
+
+def _near(x, values) -> bool:
+    return any(abs(x - v) <= 1 for v in values)
 
 
 def _check_loopback() -> None:
@@ -99,7 +127,37 @@ def _ask(model: str, text: str, retry_note: str | None, deadline: float) -> str:
     return r.json()["message"]["content"]
 
 
-def _to_claimset(content: str, sha: str, model: str) -> ClaimSet:
+def _is_total_line(c: dict) -> bool:
+    return c["fields"].get("quantity") is None and bool(TOTAL_LINE.search(c["fields"].get("instrument_name") or ""))
+
+
+def _check_numbers(claims: list[dict], total, text: str):
+    """Numbers the OCR text does not back up become null: a model may move, copy or invent them."""
+    printed = _amounts(text)
+    qty_labelled = [_num(a or b) for a, b in QTY.findall(text)]
+    rupee_labelled = [_num(n) for n in RUPEES.findall(text)]
+    if total is not None and not _near(total, printed):
+        total = None
+    for c in [c for c in claims if c["type"] == "holding"]:
+        f = c["fields"]
+        if total is None and _is_total_line(c):
+            total = f.get("value_inr")  # the model made a holding of the total line
+        for k in ("quantity", "value_inr"):
+            if f.get(k) is not None and not _near(f[k], printed):
+                f[k] = None
+        v = f.get("value_inr")
+        if v is not None and _near(v, qty_labelled) and not _near(v, rupee_labelled):
+            f["quantity"], f["value_inr"] = f.get("quantity") or v, None  # a number by a share label is a quantity
+        q = f.get("quantity")
+        if q is not None and _near(q, rupee_labelled) and not _near(q, qty_labelled):
+            f["quantity"] = None  # a rupee amount is never a quantity
+        v = f.get("value_inr")
+        if v is not None and total is not None and abs(v - total) <= 1 and sum(abs(v - p) <= 1 for p in printed) < 2:
+            f["value_inr"] = None  # printed once, as the total: copied from it, not that line's own value
+    return [c for c in claims if c["type"] != "holding" or not _is_total_line(c)], total
+
+
+def _to_claimset(content: str, sha: str, model: str, text: str = "") -> ClaimSet:
     data = json.loads(content)
     claims = [c for c in data["claims"] if not INSTRUCTION.search(json.dumps(c.get("fields", {}), ensure_ascii=False))]
     order = (
@@ -115,14 +173,19 @@ def _to_claimset(content: str, sha: str, model: str) -> ClaimSet:
         # a registration number is only ever in SEBI's format; the model once returned "SEBI Registered Broker"
         if c["type"] == "broker" and not REG_NO.fullmatch(str(c["fields"].get("sebi_reg_no"))):
             c["fields"]["sebi_reg_no"] = None
+        if c["type"] == "payee" and c["fields"].get("upi_id") and not UPI.fullmatch(c["fields"]["upi_id"]):
+            c["fields"]["upi_id"] = (
+                None  # OCR drops the dot in handles ("name desk@bank"); a guess could name another payee
+            )
+    claims, total = _check_numbers(claims, data["portfolio_total_inr"], text)
+    claims = [c for c in claims if c["type"] != "payee" or any(c["fields"].get(k) for k in payee_keys)]
     values = [c["fields"]["value_inr"] for c in claims if c["type"] == "holding"]
-    total = data["portfolio_total_inr"]
     if total is not None and values and None not in values and abs(total - sum(values)) > 1:
         total = None  # a total that disagrees with its own lines is a misread (the model once gave 10x the sum)
     return ClaimSet.model_validate(
         {
             "artifact_sha256": sha,
-            "language": data["language"],
+            "language": "hi" if re.search(r"[\u0900-\u097F]", text) else data["language"],  # from the text
             "claims": [{"id": f"c{i}", **c} for i, c in enumerate(claims, 1)],
             "portfolio_total_inr": total,
             "reader": {"provider": "local", "produced_at": datetime.now(IST), "model": model},
@@ -138,7 +201,7 @@ def read_text(text: str, sha: str) -> ClaimSet:
         note = None
         for _attempt in range(2):
             try:
-                return _to_claimset(_ask(model, text, note, deadline), sha, model)
+                return _to_claimset(_ask(model, text, note, deadline), sha, model, text)
             except LookupError:
                 break  # model not pulled: try the fallback model
             except (

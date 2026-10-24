@@ -1,0 +1,312 @@
+{
+ "model": "qwen2.5:3b",
+ "tag": "after",
+ "fields": {
+  "language": [
+   9,
+   24
+  ],
+  "portfolio_total_inr": [
+   17,
+   22
+  ],
+  "broker.name": [
+   6,
+   7
+  ],
+  "broker.sebi_reg_no": [
+   6,
+   7
+  ],
+  "broker.claims_registered": [
+   5,
+   7
+  ],
+  "holding.instrument_name": [
+   23,
+   29
+  ],
+  "holding.isin": [
+   23,
+   29
+  ],
+  "holding.quantity": [
+   23,
+   29
+  ],
+  "holding.value_inr": [
+   20,
+   29
+  ],
+  "no extra claims": [
+   0,
+   7
+  ],
+  "total (guard by design)": [
+   1,
+   2
+  ],
+  "payee.upi_id": [
+   0,
+   5
+  ],
+  "payee.account_no_last4": [
+   1,
+   5
+  ],
+  "payee.ifsc": [
+   1,
+   5
+  ],
+  "payee.described_as": [
+   1,
+   5
+  ]
+ },
+ "images": {
+  "dr01.png": {
+   "layout": "shares-values",
+   "errors": [
+    " language: expected 'en', got 'hi'"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr02.png": {
+   "layout": "qty-no-values",
+   "errors": [
+    " language: expected 'en', got 'hi'"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr03.png": {
+   "layout": "single-units-total",
+   "errors": [
+    " language: expected 'en', got 'hi'"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr04.png": {
+   "layout": "single-labelled-value",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "extra broker#0: {'name': 'Larsen & Toubro', 'sebi_reg_no': None, 'claims_registered': False}",
+    "extra payee#0: {'upi_id': 'larsen@toubro', 'account_no_last4': None, 'ifsc': None, 'described_as': 'broker'}",
+    "extra platform#0: {'name': 'Larsen & Toubro', 'category': 'equity', 'claims_licensed': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr05.png": {
+   "layout": "hi-shares-values",
+   "errors": [],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr06.png": {
+   "layout": "hi-single-qty-total",
+   "errors": [
+    " portfolio_total_inr: expected 5292000, got None"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr07.png": {
+   "layout": "hi-single-no-total",
+   "errors": [],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr08.png": {
+   "layout": "total-disagrees",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "holding#0 holding.instrument_name: expected 'Maruti Suzuki', got '<no claim>'",
+    "holding#0 holding.isin: expected None, got '<no claim>'",
+    "holding#0 holding.quantity: expected 300, got '<no claim>'",
+    "holding#0 holding.value_inr: expected 3750000, got '<no claim>'",
+    "holding#1 holding.instrument_name: expected 'Titan Company', got '<no claim>'",
+    "holding#1 holding.isin: expected None, got '<no claim>'",
+    "holding#1 holding.quantity: expected 1000, got '<no claim>'",
+    "holding#1 holding.value_inr: expected 3400000, got '<no claim>'"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr09.png": {
+   "layout": "hi-total-disagrees",
+   "errors": [
+    "extra broker#0: {'name': 'पोर्टफोलयो', 'sebi_reg_no': None, 'claims_registered': False}",
+    "extra platform#0: {'name': 'पोर्टफोलयो', 'category': 'forex', 'claims_licensed': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr10.png": {
+   "layout": "payee-broker",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "payee#0 payee.upi_id: expected 'primeequity.desk@mockupi', got '<no claim>'",
+    "payee#0 payee.account_no_last4: expected None, got '<no claim>'",
+    "payee#0 payee.ifsc: expected None, got '<no claim>'",
+    "payee#0 payee.described_as: expected 'broker', got '<no claim>'"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr11.png": {
+   "layout": "hi-payee",
+   "errors": [
+    "payee#0 payee.upi_id: expected 'lakshya.invest@mockupi', got 'lakshya@mockupi'",
+    "extra broker#0: {'name': 'रारशा जिमा करें', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr12.png": {
+   "layout": "no-holdings-broker",
+   "errors": [
+    " language: expected 'en', got 'hi'"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr13.png": {
+   "layout": "planted-instruction",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "broker#0 broker.name: expected 'Orbit Stock Circle', got '<no claim>'",
+    "broker#0 broker.sebi_reg_no: expected None, got '<no claim>'",
+    "broker#0 broker.claims_registered: expected False, got '<no claim>'"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr14.png": {
+   "layout": "hi-planted-instruction",
+   "errors": [
+    "holding#0 holding.instrument_name: expected 'Bajaj Finance', got '<no claim>'",
+    "holding#0 holding.isin: expected None, got '<no claim>'",
+    "holding#0 holding.quantity: expected 450, got '<no claim>'",
+    "holding#0 holding.value_inr: expected None, got '<no claim>'",
+    "payee#0 payee.upi_id: expected 'orbit.gains@mockupi', got '<no claim>'",
+    "payee#0 payee.account_no_last4: expected None, got '<no claim>'",
+    "payee#0 payee.ifsc: expected None, got '<no claim>'",
+    "payee#0 payee.described_as: expected 'other', got '<no claim>'",
+    "extra broker#0: {'name': 'Bajaj Finance', 'sebi_reg_no': None, 'claims_registered': False}"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr15.png": {
+   "layout": "table",
+   "errors": [
+    " language: expected 'en', got 'hi'"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr16.png": {
+   "layout": "phrase",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    " portfolio_total_inr: expected 1890000, got None",
+    "holding#0 holding.quantity: expected 1050, got None",
+    "holding#0 holding.value_inr: expected None, got 1890000.0"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr17.png": {
+   "layout": "isin-shown",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "holding#0 holding.isin: expected 'INE009A01021', got None"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr18.png": {
+   "layout": "units-and-shares",
+   "errors": [
+    " language: expected 'en', got 'hi'"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr19.png": {
+   "layout": "hi-payee-holdings",
+   "errors": [
+    "payee#0 payee.upi_id: expected 'zenith.trade@mockupi', got '<no claim>'",
+    "payee#0 payee.account_no_last4: expected None, got '<no claim>'",
+    "payee#0 payee.ifsc: expected None, got '<no claim>'",
+    "payee#0 payee.described_as: expected 'broker', got '<no claim>'"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr20.png": {
+   "layout": "grouped-large",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "broker#0 broker.claims_registered: expected False, got True",
+    "holding#0 holding.value_inr: expected 18750000, got None"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr21.png": {
+   "layout": "hi-single-labelled-value",
+   "errors": [
+    " portfolio_total_inr: expected 1575000, got None",
+    "holding#0 holding.value_inr: expected 1575000, got None"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr22.png": {
+   "layout": "total-first",
+   "errors": [
+    " language: expected 'en', got None",
+    " portfolio_total_inr: expected 2160000, got '<read failed>'",
+    "holding#0 holding.instrument_name: expected 'Nestle India', got '<no claim>'",
+    "holding#0 holding.isin: expected None, got '<no claim>'",
+    "holding#0 holding.quantity: expected 80, got '<no claim>'",
+    "holding#0 holding.value_inr: expected None, got '<no claim>'",
+    "holding#1 holding.instrument_name: expected 'Britannia', got '<no claim>'",
+    "holding#1 holding.isin: expected None, got '<no claim>'",
+    "holding#1 holding.quantity: expected 300, got '<no claim>'",
+    "holding#1 holding.value_inr: expected None, got '<no claim>'"
+   ],
+   "model_used": null
+  },
+  "dr23.png": {
+   "layout": "hi-units-fund",
+   "errors": [
+    " portfolio_total_inr: expected 347650, got None",
+    "holding#0 holding.instrument_name: expected 'SBI Small Cap Fund', got 'म्यूचुअल फंड'",
+    "holding#0 holding.value_inr: expected None, got 347650.0"
+   ],
+   "model_used": "qwen2.5:3b"
+  },
+  "dr24.png": {
+   "layout": "no-holdings-payee-upi",
+   "errors": [
+    " language: expected 'en', got 'hi'",
+    "payee#0 payee.upi_id: expected 'fastreturns.club@mockupi', got '<no claim>'",
+    "payee#0 payee.account_no_last4: expected None, got '<no claim>'",
+    "payee#0 payee.ifsc: expected None, got '<no claim>'",
+    "payee#0 payee.described_as: expected 'other', got '<no claim>'"
+   ],
+   "model_used": "qwen2.5:3b"
+  }
+ },
+ "read_failures": 1,
+ "seconds": [
+  27.66,
+  2.45,
+  1.38,
+  4.58,
+  1.99,
+  1.25,
+  1.11,
+  1.4,
+  4.16,
+  1.25,
+  2.42,
+  1.07,
+  1.28,
+  1.28,
+  1.93,
+  1.33,
+  1.23,
+  1.98,
+  2.12,
+  2.2,
+  1.3,
+  120.27,
+  1.63,
+  0.73
+ ]
+}

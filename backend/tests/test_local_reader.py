@@ -38,6 +38,7 @@ HOLDINGS = [
         ("Infosys", 8000, 12000000),
     )
 ]
+OCR = "\n".join(LINES)  # what EasyOCR gives for these lines; the reader checks numbers against it
 BROKER = {"type": "broker", "fields": {"name": "Zyphra Stock Club", "sebi_reg_no": None, "claims_registered": True}}
 MODEL_OUT = {"language": "en", "portfolio_total_inr": 39800000, "claims": [BROKER, *HOLDINGS]}
 
@@ -54,7 +55,7 @@ def verdicts(claimset):
 
 def test_valid_model_output_becomes_a_claimset(monkeypatch):
     monkeypatch.setattr(local, "_ask", model_says(MODEL_OUT))
-    cs = local.read_text("x", SHA)
+    cs = local.read_text(OCR, SHA)
     assert cs.reader.provider == "local" and cs.reader.fallback is False and cs.reader.model == local.MODELS[0]
     assert [c.id for c in cs.claims] == ["c1", "c2", "c3", "c4"]
     assert {o for _, o, _ in verdicts(cs)} == {"CONTRADICTS"}  # none of the three shares is in this customer's name
@@ -71,10 +72,10 @@ def test_a_model_that_obeys_the_instruction_still_changes_nothing(monkeypatch, i
         ],
     }
     monkeypatch.setattr(local, "_ask", model_says(obeyed))
-    cs = local.read_text("x", SHA)
+    cs = local.read_text(OCR, SHA)
     assert injection not in cs.model_dump_json()
     monkeypatch.setattr(local, "_ask", model_says(MODEL_OUT))
-    assert verdicts(cs) == verdicts(local.read_text("x", SHA))  # same verdicts as without the injected claims
+    assert verdicts(cs) == verdicts(local.read_text(OCR, SHA))  # same verdicts as without the injected claims
     assert all(o != "MATCHES" for _, o, _ in verdicts(cs))
 
 
@@ -91,7 +92,7 @@ def test_sebi_reg_no_and_total_are_sanity_checked(monkeypatch):
         ],
     }
     monkeypatch.setattr(local, "_ask", model_says(odd))
-    cs = local.read_text("x", SHA)
+    cs = local.read_text(OCR, SHA)
     broker = next(c for c in cs.claims if c.type == "broker")
     assert broker.fields.sebi_reg_no is None and cs.portfolio_total_inr is None
 
@@ -104,10 +105,10 @@ def test_invalid_output_is_retried_once_then_a_typed_error(monkeypatch):
         return "not json" if len(calls) == 1 else json.dumps(MODEL_OUT)
 
     monkeypatch.setattr(local, "_ask", flaky)
-    assert local.read_text("x", SHA).reader.provider == "local" and calls[0] is None and calls[1]
+    assert local.read_text(OCR, SHA).reader.provider == "local" and calls[0] is None and calls[1]
     monkeypatch.setattr(local, "_ask", lambda *a: json.dumps({"claims": "nope"}))
     with pytest.raises(local.ReaderError):
-        local.read_text("x", SHA)
+        local.read_text(OCR, SHA)
 
 
 def test_ollama_down_or_slow_is_a_reader_error(monkeypatch):
@@ -116,13 +117,13 @@ def test_ollama_down_or_slow_is_a_reader_error(monkeypatch):
 
     monkeypatch.setattr(local, "_ask", down)
     with pytest.raises(local.ReaderError):
-        local.read_text("x", SHA)
+        local.read_text(OCR, SHA)
 
 
 def test_only_loopback_is_allowed(monkeypatch):
     monkeypatch.setattr(local, "OLLAMA", "http://example.com:11434")
     with pytest.raises(local.ReaderError):
-        local.read_text("x", SHA)
+        local.read_text(OCR, SHA)
 
 
 def test_failure_falls_back_to_offline_and_the_evidence_pack_says_so(monkeypatch):

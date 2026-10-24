@@ -1,0 +1,557 @@
+{
+ "_note": "SYNTHETIC dev set for the claim reader; not data/frozen, not the example set",
+ "dr01.png": {
+  "layout": "shares-values",
+  "language": "en",
+  "portfolio_total_inr": 27200000,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "broker",
+    "fields": {
+     "name": "Apex Trade Club",
+     "sebi_reg_no": null,
+     "claims_registered": false
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries",
+     "isin": null,
+     "quantity": 5000,
+     "value_inr": 15200000
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys",
+     "isin": null,
+     "quantity": 8000,
+     "value_inr": 12000000
+    }
+   }
+  ]
+ },
+ "dr02.png": {
+  "layout": "qty-no-values",
+  "language": "en",
+  "portfolio_total_inr": 4875000,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "HDFC Bank",
+     "isin": null,
+     "quantity": 1250,
+     "value_inr": null
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "ITC",
+     "isin": null,
+     "quantity": 9400,
+     "value_inr": null
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Wipro",
+     "isin": null,
+     "quantity": 3300,
+     "value_inr": null
+    }
+   }
+  ]
+ },
+ "dr03.png": {
+  "layout": "single-units-total",
+  "language": "en",
+  "portfolio_total_inr": 736320,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Axis Bluechip Fund",
+     "isin": null,
+     "quantity": 12480,
+     "value_inr": null
+    }
+   }
+  ]
+ },
+ "dr04.png": {
+  "layout": "single-labelled-value",
+  "language": "en",
+  "portfolio_total_inr": 7920000,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Larsen & Toubro",
+     "isin": null,
+     "quantity": 2200,
+     "value_inr": 7920000
+    }
+   }
+  ]
+ },
+ "dr05.png": {
+  "layout": "hi-shares-values",
+  "language": "hi",
+  "portfolio_total_inr": 9945000,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Motors",
+     "isin": null,
+     "quantity": 6000,
+     "value_inr": 5820000
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bharti Airtel",
+     "isin": null,
+     "quantity": 2500,
+     "value_inr": 4125000
+    }
+   }
+  ]
+ },
+ "dr06.png": {
+  "layout": "hi-single-qty-total",
+  "language": "hi",
+  "portfolio_total_inr": 5292000,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Asian Paints",
+     "isin": null,
+     "quantity": 1800,
+     "value_inr": null
+    }
+   }
+  ]
+ },
+ "dr07.png": {
+  "layout": "hi-single-no-total",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Sun Pharma",
+     "isin": null,
+     "quantity": 4750,
+     "value_inr": null
+    }
+   }
+  ]
+ },
+ "dr08.png": {
+  "layout": "total-disagrees",
+  "language": "en",
+  "portfolio_total_inr": 71500000,
+  "guard_nulls_total": true,
+  "claims": [
+   {
+    "type": "broker",
+    "fields": {
+     "name": "Quick Gains Pro",
+     "sebi_reg_no": null,
+     "claims_registered": false
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Maruti Suzuki",
+     "isin": null,
+     "quantity": 300,
+     "value_inr": 3750000
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Titan Company",
+     "isin": null,
+     "quantity": 1000,
+     "value_inr": 3400000
+    }
+   }
+  ]
+ },
+ "dr09.png": {
+  "layout": "hi-total-disagrees",
+  "language": "hi",
+  "portfolio_total_inr": 133000000,
+  "guard_nulls_total": true,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "NTPC",
+     "isin": null,
+     "quantity": 20000,
+     "value_inr": 7000000
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Coal India",
+     "isin": null,
+     "quantity": 15000,
+     "value_inr": 6300000
+    }
+   }
+  ]
+ },
+ "dr10.png": {
+  "layout": "payee-broker",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "broker",
+    "fields": {
+     "name": "Prime Equity Desk",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   },
+   {
+    "type": "payee",
+    "fields": {
+     "upi_id": "primeequity.desk@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ]
+ },
+ "dr11.png": {
+  "layout": "hi-payee",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "payee",
+    "fields": {
+     "upi_id": "lakshya.invest@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "advisor"
+    }
+   }
+  ]
+ },
+ "dr12.png": {
+  "layout": "no-holdings-broker",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "broker",
+    "fields": {
+     "name": "Silverline Capital",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ]
+ },
+ "dr13.png": {
+  "layout": "planted-instruction",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "broker",
+    "fields": {
+     "name": "Orbit Stock Circle",
+     "sebi_reg_no": null,
+     "claims_registered": false
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Hindalco Industries",
+     "isin": null,
+     "quantity": 2600,
+     "value_inr": null
+    }
+   }
+  ]
+ },
+ "dr14.png": {
+  "layout": "hi-planted-instruction",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj Finance",
+     "isin": null,
+     "quantity": 450,
+     "value_inr": null
+    }
+   },
+   {
+    "type": "payee",
+    "fields": {
+     "upi_id": "orbit.gains@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ]
+ },
+ "dr15.png": {
+  "layout": "table",
+  "language": "en",
+  "portfolio_total_inr": 9261000,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "SBI",
+     "isin": null,
+     "quantity": 7700,
+     "value_inr": 6237000
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "ONGC",
+     "isin": null,
+     "quantity": 11200,
+     "value_inr": 3024000
+    }
+   }
+  ]
+ },
+ "dr16.png": {
+  "layout": "phrase",
+  "language": "en",
+  "portfolio_total_inr": 1890000,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Kotak Mahindra Bank",
+     "isin": null,
+     "quantity": 1050,
+     "value_inr": null
+    }
+   }
+  ]
+ },
+ "dr17.png": {
+  "layout": "isin-shown",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys",
+     "isin": "INE009A01021",
+     "quantity": 640,
+     "value_inr": 960000
+    }
+   }
+  ]
+ },
+ "dr18.png": {
+  "layout": "units-and-shares",
+  "language": "en",
+  "portfolio_total_inr": 1606800,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Parag Parikh Flexi Cap Fund",
+     "isin": null,
+     "quantity": 3210,
+     "value_inr": 256800
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Cipla",
+     "isin": null,
+     "quantity": 900,
+     "value_inr": 1350000
+    }
+   }
+  ]
+ },
+ "dr19.png": {
+  "layout": "hi-payee-holdings",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "broker",
+    "fields": {
+     "name": "Zenith Trade App",
+     "sebi_reg_no": null,
+     "claims_registered": false
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Dr Reddys",
+     "isin": null,
+     "quantity": 120,
+     "value_inr": 780000
+    }
+   },
+   {
+    "type": "payee",
+    "fields": {
+     "upi_id": "zenith.trade@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ]
+ },
+ "dr20.png": {
+  "layout": "grouped-large",
+  "language": "en",
+  "portfolio_total_inr": 18750000,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "broker",
+    "fields": {
+     "name": "Elite Investors",
+     "sebi_reg_no": null,
+     "claims_registered": false
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Adani Ports",
+     "isin": null,
+     "quantity": 12500,
+     "value_inr": 18750000
+    }
+   }
+  ]
+ },
+ "dr21.png": {
+  "layout": "hi-single-labelled-value",
+  "language": "hi",
+  "portfolio_total_inr": 1575000,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Hero MotoCorp",
+     "isin": null,
+     "quantity": 350,
+     "value_inr": 1575000
+    }
+   }
+  ]
+ },
+ "dr22.png": {
+  "layout": "total-first",
+  "language": "en",
+  "portfolio_total_inr": 2160000,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Nestle India",
+     "isin": null,
+     "quantity": 80,
+     "value_inr": null
+    }
+   },
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Britannia",
+     "isin": null,
+     "quantity": 300,
+     "value_inr": null
+    }
+   }
+  ]
+ },
+ "dr23.png": {
+  "layout": "hi-units-fund",
+  "language": "hi",
+  "portfolio_total_inr": 347650,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "holding",
+    "fields": {
+     "instrument_name": "SBI Small Cap Fund",
+     "isin": null,
+     "quantity": 2045,
+     "value_inr": null
+    }
+   }
+  ]
+ },
+ "dr24.png": {
+  "layout": "no-holdings-payee-upi",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "guard_nulls_total": false,
+  "claims": [
+   {
+    "type": "payee",
+    "fields": {
+     "upi_id": "fastreturns.club@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ]
+ }
+}
