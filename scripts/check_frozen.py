@@ -1,7 +1,10 @@
 """Validate the frozen test set against docs/FROZEN_SET_SPEC.md, then write or verify data/frozen/HASH.txt.
 
-Usage: python scripts/check_frozen.py [DIR] [--example] [--rehash]
+Usage: python scripts/check_frozen.py [DIR] [--example] [--skip-videos] [--rehash]
 DIR defaults to data/frozen. --example checks a small sample (two of each kind) instead of the spec's minimum counts.
+--skip-videos is the documented no-video scope: video counts and clip files are not required (videos/manifest.json is
+still checked for shape) and HASH.txt starts with the line `scope: no-video`. Once HASH.txt exists its first line
+decides the scope, so later runs need no flag (here and in scripts/run_frozen.py).
 Reads only DIR and docs/formats (never the verdict rules). The only file it writes is DIR/HASH.txt: when absent and
 every check passes, or with --rehash. An existing HASH.txt is compared, and any changed, added or removed file fails.
 """
@@ -28,6 +31,8 @@ MIN = {
     "screenshots": 60, "layouts": 6, "rule_cases": 100, "brokers": 60, "impersonations": 20,
     "payees": 15, "videos": 30, "videos_no_source": 5, "videos_off_centre": 5,
 }  # fmt: skip
+NO_VIDEO_LINE = "scope: no-video"
+VIDEO_COUNTS = {"videos", "videos_no_source", "videos_off_centre"}  # minimums that the no-video scope skips
 MIN_EXAMPLE = dict.fromkeys(MIN, 2) | {"layouts": 2, "impersonations": 1, "videos_no_source": 1, "videos_off_centre": 1}
 
 
@@ -87,8 +92,16 @@ def expected_list(item: dict, claim_ids: set, where: str, problems: list) -> Non
                 problems.append(f"{where} expected[{i}]: claim_id {e['claim_id']!r} is not one of the case's claims")
 
 
-def check(root: Path, example: bool = False) -> tuple[list, dict]:
-    """Every problem found, and the counts against their minimums."""
+def scope_of(root: Path) -> str | None:
+    """'no-video' or 'full' from the first line of HASH.txt; None when the set has not been hashed yet."""
+    h = root / "HASH.txt"
+    if not h.exists():
+        return None
+    return "no-video" if h.read_text(encoding="utf-8").splitlines()[:1] == [NO_VIDEO_LINE] else "full"
+
+
+def check(root: Path, example: bool = False, no_video: bool = False) -> tuple[list, dict]:
+    """Every problem found, and the counts against their minimums (video counts are skipped when no_video)."""
     p, mins = [], MIN_EXAMPLE if example else MIN
     if not root.is_dir():
         return [f"folder not found: {root}"], {}
@@ -147,7 +160,8 @@ def check(root: Path, example: bool = False) -> tuple[list, dict]:
         if need(v, "file expected_source expected_changed variant", where, p):
             f = root / "videos" / v["file"]
             if not f.is_file():
-                p.append(f"{where}: clip file not found in videos/")
+                if not no_video:
+                    p.append(f"{where}: clip file not found in videos/")
             elif f.suffix.lower() not in (".mp4", ".mov", ".webm") or f.stat().st_size > 20 * 1024 * 1024:
                 p.append(f"{where}: must be MP4, MOV or WebM under 20 MB")
             if v["variant"] not in VARIANTS:
@@ -171,7 +185,7 @@ def check(root: Path, example: bool = False) -> tuple[list, dict]:
         "videos_off_centre": sum(1 for v in vids if v.get("variant") == "off_centre_crop"),
     }  # fmt: skip
     for k, n in counts.items():
-        if n < mins[k]:
+        if n < mins[k] and not (no_video and k in VIDEO_COUNTS):
             p.append(f"count: {k} {n}, need at least {mins[k]}")
     if not {"en", "hi"} <= langs:
         p.append(f"screenshots: need both en and hi, have {sorted(x for x in langs if x)}")
@@ -191,13 +205,17 @@ def hash_lines(root: Path) -> list[str]:
     return [f"{hashlib.sha256((root / f).read_bytes()).hexdigest()}  {f}" for f in files]
 
 
-def hash_text(lines: list[str]) -> str:
-    body = "\n".join(lines) + "\n"
+def hash_text(lines: list[str], no_video: bool = False) -> str:
+    body = "\n".join([NO_VIDEO_LINE, *lines] if no_video else lines) + "\n"
     return body + f"combined  {hashlib.sha256(body.encode()).hexdigest()}\n"
 
 
 def verify_hash(root: Path) -> list[str]:
-    old = [x for x in (root / "HASH.txt").read_text(encoding="utf-8").splitlines() if not x.startswith("combined")]
+    old = [
+        x
+        for x in (root / "HASH.txt").read_text(encoding="utf-8").splitlines()
+        if not x.startswith(("combined", "scope:"))
+    ]
     old_d, new_d = (dict(x.split("  ", 1)[::-1] for x in lines) for lines in (old, hash_lines(root)))
     p = [f"hash: {f} changed since HASH.txt" for f in sorted(old_d.keys() & new_d.keys()) if old_d[f] != new_d[f]]
     p += [f"hash: {f} added after HASH.txt" for f in sorted(new_d.keys() - old_d.keys())]
@@ -208,24 +226,32 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("dir", nargs="?", default=str(ROOT / "data" / "frozen"))
     ap.add_argument("--example", action="store_true", help="two of each kind instead of the spec's minimum counts")
+    ap.add_argument("--skip-videos", action="store_true", help="no-video scope: clips are not required (see top)")
     ap.add_argument("--rehash", action="store_true", help="write a new HASH.txt for a deliberate new version")
     a = ap.parse_args(argv)
     root = Path(a.dir)
-    problems, counts = check(root, a.example)
-    hashed = (root / "HASH.txt").exists()
+    scope = scope_of(root)
+    # a hashed set keeps its scope; only --rehash (a deliberate new version) may change it
+    no_video = a.skip_videos if a.rehash or scope is None else scope == "no-video"
+    problems, counts = check(root, a.example, no_video)
+    hashed = scope is not None
     if hashed and not a.rehash:
         problems += verify_hash(root)
+        if a.skip_videos and scope == "full":
+            problems.append("scope: HASH.txt is full scope; --skip-videos cannot weaken it (use --rehash)")
     mins = MIN_EXAMPLE if a.example else MIN
     print(f"{root}{' (EXAMPLE mode: minimum counts are 2 of each, not the spec)' if a.example else ''}")
+    print(f"scope: {'no-video (video counts and clips not required)' if no_video else 'full'}")
     for k, n in counts.items():
-        print(f"  {'ok  ' if n >= mins[k] else 'LOW '} {k:18} {n:>4} / {mins[k]}")
+        mark = "skip" if no_video and k in VIDEO_COUNTS else "ok  " if n >= mins[k] else "LOW "
+        print(f"  {mark} {k:18} {n:>4} / {mins[k]}")
     for x in problems:
         print(f"  MISSING/WRONG: {x}")
     if problems:
         print(f"FROZEN SET NOT OK: {len(problems)} problem(s)")
         return 1
     if not hashed or a.rehash:
-        (root / "HASH.txt").write_text(hash_text(hash_lines(root)), encoding="utf-8", newline="\n")
+        (root / "HASH.txt").write_text(hash_text(hash_lines(root), no_video), encoding="utf-8", newline="\n")
         print("wrote HASH.txt")
     print(f"{(root / 'HASH.txt').read_text(encoding='utf-8').splitlines()[-1]}")
     print("FROZEN SET OK")

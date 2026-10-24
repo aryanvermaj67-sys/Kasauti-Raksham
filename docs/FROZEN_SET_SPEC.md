@@ -124,3 +124,14 @@ Rules of thumb to label with: a holding may be `CONTRADICTS` only if every depos
 4. The set hash is the SHA-256 of those lines joined with `\n`, plus a final `\n`, as UTF-8. `HASH.txt` holds the lines, then `combined  <set hash>`.
 
 `python scripts/check_frozen.py` does all of this on Windows, Linux or macOS. It writes `HASH.txt` only when none exists; afterwards it compares and fails on any changed, added or removed file. `--rehash` writes a new hash for a deliberate new version.
+
+## No-video scope
+
+When the clips cannot be handed over yet, the rest of the set can be frozen on its own: `python scripts/check_frozen.py --skip-videos`.
+
+- The video counts (30 clips, 5 with no source, 5 off-centre) and the clip files are not required. `videos/manifest.json` must still exist and every entry must have its fields (`file`, `expected_source`, `expected_changed`, `variant`, with a valid `variant`); a clip file that is present is still checked for type and size.
+- Everything else is unchanged: all the other minimums, coverage rules and labels.
+- On success `HASH.txt` gets a first line `scope: no-video`, then the file lines and `combined` as in the recipe above. The scope line is part of the hashed text, so a no-video hash can never equal a full one. The hash covers every file present.
+- The scope lives in `HASH.txt`: once it exists, a plain `python scripts/check_frozen.py` and `python scripts/run_frozen.py` use the same scope with no flag. `--skip-videos` cannot weaken a set that was hashed without it.
+- The refusal rule is unchanged: any changed, added or removed file fails, including a clip added later. Adding the clips means a new version of the set (`--rehash`, logged in progress.md), which is full scope unless `--skip-videos` is given again.
+- `scripts/run_frozen.py` prints the scope at the top of its report and lists every manifest entry as "not run (no-video scope)".

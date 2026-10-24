@@ -1,6 +1,6 @@
 """Run the frozen test set (docs/FROZEN_SET_SPEC.md) and report against its hash.
 
-Usage: python scripts/run_frozen.py [DIR] [--example]
+Usage: python scripts/run_frozen.py [DIR] [--example]  (a set hashed with `scope: no-video` runs with no flag)
 DIR defaults to data/frozen; --example runs data/frozen_example with the example's minimum counts.
 1. Refuses to run unless scripts/check_frozen.py passes, including the HASH.txt comparison.
 2. Rule cases, brokers and payees go straight through router.run_check, with the MOCK connectors answering from the
@@ -38,7 +38,7 @@ OUTCOMES = ("MATCHES", "CONTRADICTS", "NO_RECORD")
 
 def gate(root: Path, example: bool) -> tuple[list[str], str]:
     """Structure and hash problems (empty means OK to run) and the set's combined hash."""
-    problems, _ = check_frozen.check(root, example)
+    problems, _ = check_frozen.check(root, example, check_frozen.scope_of(root) == "no-video")
     if not (root / "HASH.txt").exists():
         return [*problems, "no HASH.txt: run scripts/check_frozen.py first"], ""
     problems += check_frozen.verify_hash(root)
@@ -197,7 +197,22 @@ def image_items(root: Path) -> tuple[list[dict], dict]:
     return out, stats
 
 
+def video_section(root: Path, no_video: bool) -> list[str]:
+    """Every manifest entry, as not run: this script never runs the video source check."""
+    why = "no-video scope" if no_video else "run scripts/video_eval.py"
+    manifest = root / "videos" / "manifest.json"
+    clips = json.loads(manifest.read_text(encoding="utf-8")) if manifest.exists() else []
+    return [
+        "",
+        f"## Video items ({len(clips)}): not run",
+        "",
+        *(f"- `{v['file']}`: not run ({why})" for v in clips),
+        "",
+    ]
+
+
 def report(items, stats, set_hash, root, example) -> str:
+    no_video = check_frozen.scope_of(root) == "no-video"
     verdict_items = [i for i in items if i["expected"] in OUTCOMES]
     matrix = Counter((i["expected"], i["got"]) for i in verdict_items)
     false_c = [i for i in verdict_items if i["got"] == "CONTRADICTS" and i["expected"] != "CONTRADICTS"]
@@ -207,6 +222,8 @@ def report(items, stats, set_hash, root, example) -> str:
     secs = stats["seconds"]
     lines = [
         f"# Frozen-set validation{' (EXAMPLE set, not the frozen set)' if example else ''}",
+        "",
+        f"**Scope: {'no-video (video items are not run, see the end)' if no_video else 'full'}**",
         "",
         f"Set: `{root.relative_to(ROOT).as_posix()}` · combined hash `{set_hash}` · "
         f"reader LLM_PROVIDER={os.environ['LLM_PROVIDER']} · {datetime.now(IST):%d %b %Y %H:%M} IST",
@@ -244,7 +261,7 @@ def report(items, stats, set_hash, root, example) -> str:
             for i in fails
         ),  # fmt: skip
         *(f"- field: {m}" for m in stats["field_misses"]),
-        "",
+        *video_section(root, no_video),
     ]
     return "\n".join(lines)
 
