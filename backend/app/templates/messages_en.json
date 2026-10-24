@@ -36,6 +36,7 @@
     "mock_footer": "Prototype. MOCK: Account Aggregator, Suspect Registry, SEBI @valid lookup, payments ledger, official footage, bank login, OTP. Customers are synthetic.",
     "signed_in": "Signed in as {customer} (MOCK bank login, synthetic customer)",
     "lang_toggle": "हिंदी",
+    "preparing": "Preparing the checker (loading models on this computer).",
     "check_button": "Check an investment",
     "upload_title": "Share what the app or ad shows you",
     "upload_screenshot": "Screenshot (PNG or JPG)",

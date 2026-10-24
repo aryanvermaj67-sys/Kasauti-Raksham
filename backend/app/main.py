@@ -24,15 +24,30 @@ from app.schemas.verdict import CheckResult
 @asynccontextmanager
 async def lifespan(_app):
     print(f"retention: purged {hashchain.purge_expired()} checks older than {hashchain.RETENTION_DAYS} days")
+    jobs = []
     if os.environ.get("KASAUTI_PRELOAD_VIDEO", "1") == "1" and (ROOT / "models" / "whisper").exists():
         from app.comparators import video
 
         if (video.INDEX / "clips.json").exists():
-            video.warm_up()
-            print(f"video models ready ({video.device()})", flush=True)
-    if os.environ.get("LLM_PROVIDER", "local") == "local":  # first Ollama call is slow; do it before the first customer
-        threading.Thread(target=reader.local.warm_up, daemon=True).start()
+            jobs.append(("video models", lambda: (video.warm_up(), print(f"video models ready ({video.device()})"))))
+    if os.environ.get("LLM_PROVIDER", "local") == "local":  # EasyOCR + the first Ollama call are slow
+        jobs.append(("claim reader", reader.local.warm_up))
+    LOADING.update(name for name, _ in jobs)
+    threading.Thread(target=_warm_up, args=(jobs,), daemon=True).start()  # /health says ready=false until done
     yield
+
+
+LOADING: set[str] = set()
+
+
+def _warm_up(jobs) -> None:
+    for name, load in jobs:  # one at a time: CLIP, Whisper and Ollama share one GPU
+        try:
+            load()
+        except Exception as e:  # a model that fails to load must not leave the UI "preparing" forever
+            print(f"{name} warm-up failed: {e}", flush=True)
+        finally:
+            LOADING.discard(name)
 
 
 app = FastAPI(title="Kasauti", lifespan=lifespan)
@@ -43,8 +58,9 @@ EVENTS = DATA / "runtime" / "events.jsonl"
 
 
 @app.get("/health")
+@app.get("/api/health")  # the frontend dev proxy forwards /api only
 def health():
-    return {"status": "ok"}
+    return {"status": "ok", "ready": not LOADING, "loading": sorted(LOADING)}
 
 
 @app.post("/api/read", response_model=ClaimSet)

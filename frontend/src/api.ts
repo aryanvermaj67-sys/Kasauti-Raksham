@@ -25,6 +25,8 @@ const asked = new URLSearchParams(window.location.search).get('customer') ?? ''
 const id = /^SYN-C\d{4}$/.test(asked) ? asked : 'SYN-C0001'
 export const CUSTOMER = { id, name: `Synthetic Customer ${id.slice(-4)}` }
 
+export const health = () => fetch('/api/health').then(body<{ ready: boolean; loading: string[] }>)
+
 async function body<T>(r: Response): Promise<T> {
   if (!r.ok) throw new Error(`${r.status} ${await r.text()}`)
   return r.json() as Promise<T>

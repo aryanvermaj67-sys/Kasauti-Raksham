@@ -29,7 +29,9 @@ if __name__ == "__main__":
     prompted = {c for c, p in prompts.items() if p}
     total = sum(len(p) for p in prompts.values())
     print(f"customers: {len(customers)}; scam pattern injected for {len(injected)} (synthetic ledger, MOCK)")
-    print(f"prompts: {total} (one per campaign per customer) = {1000 * total / len(customers):.0f} per 1,000 customers")
+    rate = 1000 * total / len(customers)
+    print(f"prompts: {total} (one per campaign per customer) = {rate:.0f} per 1,000 customers")
+    print(f"PROMPT RATE: {rate:.0f} per 1,000 customers, upper bound on a synthetic ledger")
     print(f"customers prompted: {len(prompted)} = {1000 * len(prompted) / len(customers):.0f} per 1,000 customers")
     print(f"  true scam-pattern customers among them: {len(prompted & injected)} of {len(injected)} injected")
     print(f"  prompted without the injected pattern: {len(prompted - injected)}")

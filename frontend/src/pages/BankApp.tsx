@@ -3,6 +3,7 @@ import ResultScreen from '../components/ResultScreen.tsx'
 import {
   CUSTOMER,
   ackPrompt,
+  health,
   isinCandidates,
   triggerPrompts,
   type Prompt,
@@ -39,6 +40,12 @@ export default function BankApp() {
   const [result, setResult] = useState<CheckResult | null>(null)
   const [error, setError] = useState('')
   const [prompts, setPrompts] = useState<Prompt[]>([])
+  const [ready, setReady] = useState(false)
+  useEffect(() => {
+    // models load after the backend starts; until then (or while it is still starting) show "preparing", never an error
+    const poll = () => health().then((h) => h.ready).catch(() => false).then((r) => (r ? setReady(true) : void setTimeout(poll, 1000)))
+    poll()
+  }, [])
   useEffect(() => {
     triggerPrompts(CUSTOMER.id).then(setPrompts).catch(() => setPrompts([])) // a failed trigger never blocks the app
   }, [])
@@ -140,8 +147,9 @@ export default function BankApp() {
         </div>
       )}
 
+      {step === 'home' && !ready && <p data-testid="preparing" className="rounded bg-amber-50 p-3">{t('preparing')}</p>}
       {step === 'home' && (
-        <button data-testid="check-button" className={`${btn} w-full`} onClick={() => setStep('upload')}>
+        <button data-testid="check-button" className={`${btn} w-full`} disabled={!ready} onClick={() => setStep('upload')}>
           {t('check_button')}
         </button>
       )}

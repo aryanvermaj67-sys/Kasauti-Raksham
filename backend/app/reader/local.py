@@ -163,6 +163,7 @@ def read(image: bytes, sha: str) -> ClaimSet:
 def warm_up() -> None:
     """Load the model and compile its JSON grammar once (the first call took 147 s cold, over the 60 s limit)."""
     try:
+        _easyocr()
         read_text("Warm up 1 share Rs. 1", "0" * 64)
     except Exception as e:  # never block startup; the first real call may then fall back to offline
         print(f"local reader warm-up failed: {e}", flush=True)

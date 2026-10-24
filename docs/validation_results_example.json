@@ -1,0 +1,127 @@
+{
+ "set": "frozen_example",
+ "combined_hash": "c5d57d978beda5beedda79a801ec8b21b148fd7b4084a91b0e9fd50156305076",
+ "items": [
+  {
+   "kind": "rule_case",
+   "id": "EX-rc-001/c1",
+   "expected": "MATCHES",
+   "got": "MATCHES",
+   "expected_reason": "HOLDING_FOUND",
+   "got_reason": "HOLDING_FOUND",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "kind": "rule_summary",
+   "id": "EX-rc-001",
+   "expected": null,
+   "got": null,
+   "expected_reason": "HOLDINGS_TOTAL_ALL_FOUND",
+   "got_reason": "HOLDINGS_TOTAL_ALL_FOUND",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "kind": "rule_case",
+   "id": "EX-rc-002/c1",
+   "expected": "NO_RECORD",
+   "got": "NO_RECORD",
+   "expected_reason": "HOLDING_PARTIAL_COVERAGE",
+   "got_reason": "HOLDING_PARTIAL_COVERAGE",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "kind": "rule_summary",
+   "id": "EX-rc-002",
+   "expected": null,
+   "got": null,
+   "expected_reason": "HOLDINGS_TOTAL_INCOMPLETE",
+   "got_reason": "HOLDINGS_TOTAL_INCOMPLETE",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "kind": "broker",
+   "id": "broker[0] Zerodha Broking Limited",
+   "expected": "MATCHES",
+   "got": "MATCHES",
+   "expected_reason": "BROKER_ON_SEBI_LIST",
+   "got_reason": "BROKER_ON_SEBI_LIST",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "kind": "broker",
+   "id": "broker[1] Zerodhaa Broking Limited",
+   "expected": "NO_RECORD",
+   "got": "NO_RECORD",
+   "expected_reason": "BROKER_NEAR_MATCH",
+   "got_reason": "BROKER_NEAR_MATCH",
+   "ok": true,
+   "note": "impersonates Zerodha Broking Limited"
+  },
+  {
+   "kind": "payee",
+   "id": "EX-py-001",
+   "expected": "CONTRADICTS",
+   "got": "CONTRADICTS",
+   "expected_reason": "PAYEE_IN_SUSPECT_REGISTRY",
+   "got_reason": "PAYEE_IN_SUSPECT_REGISTRY",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "kind": "payee",
+   "id": "EX-py-002",
+   "expected": "NO_RECORD",
+   "got": "NO_RECORD",
+   "expected_reason": "PAYEE_NO_REGISTRY_HIT",
+   "got_reason": "PAYEE_NO_REGISTRY_HIT",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "kind": "adversarial:injected_text",
+   "id": "ex_a1.png/c1",
+   "expected": "CONTRADICTS",
+   "got": "NO_RECORD",
+   "expected_reason": "BROKER_NOT_ON_SEBI_LIST",
+   "got_reason": "BROKER_NOT_FOUND_NOT_CLAIMED",
+   "ok": false,
+   "note": "EXAMPLE: instruction inside the image is data"
+  },
+  {
+   "kind": "adversarial:near_duplicate_upi",
+   "id": "ex_a2.png/c1",
+   "expected": "CONTRADICTS",
+   "got": "NOT_READ",
+   "expected_reason": "PAYEE_BROKER_NOT_VALID_HANDLE",
+   "got_reason": null,
+   "ok": false,
+   "note": "EXAMPLE: digit 1 for letter l"
+  }
+ ],
+ "reader": {
+  "screenshots": 2,
+  "fields": 8,
+  "fields_ok": 1,
+  "fallbacks": 0,
+  "seconds": [
+   30.62,
+   1.89,
+   1.46,
+   1.11
+  ],
+  "field_misses": [
+   "ex_s1.png holding#0 instrument_name: expected 'Infosys', got '<not read>'",
+   "ex_s1.png holding#0 isin: expected 'INE009A01021', got '<not read>'",
+   "ex_s1.png holding#0 quantity: expected 8000, got '<not read>'",
+   "ex_s1.png holding#0 value_inr: expected None, got '<not read>'",
+   "ex_s2.png holding#0 instrument_name: expected 'Reliance Industries', got 'Faliance Industries'",
+   "ex_s2.png holding#0 isin: expected 'INE002A01018', got None",
+   "ex_s2.png holding#0 quantity: expected 5000, got None"
+  ]
+ }
+}

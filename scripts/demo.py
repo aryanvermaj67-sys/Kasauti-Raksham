@@ -69,6 +69,26 @@ def up(url):
         return False
 
 
+def health() -> dict:
+    try:
+        return json.loads(urllib.request.urlopen(API + "/health", timeout=3).read())
+    except OSError:
+        return {}
+
+
+def ui_preparing() -> bool:
+    """While the backend still loads models, the bank app says so and keeps Check disabled (it never errors)."""
+    from playwright.sync_api import sync_playwright
+
+    with sync_playwright() as p:
+        page = p.chromium.launch().new_page()
+        page.goto("http://localhost:5173/app")
+        page.wait_for_selector("[data-testid=preparing]", timeout=15000)
+        ok = page.locator("[data-testid=check-button]").is_disabled() and not health().get("ready")
+        page.wait_for_selector("[data-testid=preparing]", state="detached", timeout=300000)
+        return ok and page.locator("[data-testid=check-button]").is_enabled()
+
+
 def post_file(path, name, ctype, data):
     b = uuid.uuid4().hex
     head = f'--{b}\r\nContent-Disposition: form-data; name="file"; filename="{name}"\r\nContent-Type: {ctype}\r\n\r\n'
@@ -97,6 +117,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cpu", action="store_true", help="hide the GPU from the backend (CUDA_VISIBLE_DEVICES=-1)")
     a = ap.parse_args()
+    dead = "http://127.0.0.1:9"  # nothing listens there: any proxied (non-local) request fails
+    os.environ.update({"HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1", "NO_PROXY": "localhost,127.0.0.1,::1"})
+    os.environ.update({k: dead for k in ("HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy")})
+    os.environ["no_proxy"] = os.environ["NO_PROXY"]
     os.environ["PYTHONIOENCODING"] = "utf-8"  # flows print ₹ and Devanagari; a redirected Windows console is cp1252
     sys.stdout.reconfigure(encoding="utf-8")
     if subprocess.run([sys.executable, str(ROOT / "scripts" / "reset_demo.py")]).returncode:
@@ -121,21 +145,27 @@ def main():
     ]
     results = {}
     try:
-        ready = wait_for("'video models ready'", lambda: "video models ready" in backend_log.read_text("utf-8"), 300)
-        ready = ready and wait_for("frontend on :5173", lambda: up("http://localhost:5173/app"), 60)
+        ready = wait_for("frontend on :5173", lambda: up("http://localhost:5173/app"), 60)
+        preparing = ready and ui_preparing()
+        ready = ready and wait_for("/health ready=true", lambda: health().get("ready"), 300)
         if not ready:
             print(backend_log.read_text("utf-8")[-2000:])
             return 1
         print(next(line for line in backend_log.read_text("utf-8").splitlines() if "video models ready" in line))
+        print(f"UI showed 'preparing' with Check disabled while models loaded: {preparing}")
+        results["UI 'preparing' before ready"] = preparing
         for name, args in FLOWS:
             print(f"\n######## {name}: {' '.join(args)}")
             t0 = time.perf_counter()
             results[name] = subprocess.run([sys.executable, str(ROOT / "scripts" / args[0]), *args[1:]]).returncode == 0
             print(f"######## {name}: {'PASSED' if results[name] else 'FAILED'} in {time.perf_counter() - t0:.1f} s")
         timings, read_s, check_s, total_s = time_video_path()
-        print(f"\nvideo path timing (API, {'cpu' if a.cpu else 'default device'}): source search {timings['source_search']:.2f} s "
-              f"(match total {timings['total']:.2f} s); read+video {read_s:.2f} s; check after consent {check_s:.2f} s; "
-              f"full result {total_s:.2f} s. Targets: source search < 5 s, result < 60 s")
+        print(
+            f"\nvideo path timing (API, {'cpu' if a.cpu else 'default device'}): "
+            f"source search {timings['source_search']:.2f} s "
+            f"(match total {timings['total']:.2f} s); read+video {read_s:.2f} s; check after consent {check_s:.2f} s; "
+            f"full result {total_s:.2f} s. Targets: source search < 5 s, result < 60 s"
+        )
     finally:
         for p in procs:
             stop(p)
@@ -143,7 +173,7 @@ def main():
     print(f"\nbackend network attempts blocked by the offline guard: {blocked}")
     for name, ok in results.items():
         print(f"  [{'ok' if ok else 'FAIL'}] {name}")
-    passed = len(results) == len(FLOWS) and all(results.values()) and not blocked
+    passed = len(results) == len(FLOWS) + 1 and all(results.values()) and not blocked
     print("demo OK offline" if passed else "demo FAILED")
     return 0 if passed else 1
 
