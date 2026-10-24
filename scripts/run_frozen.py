@@ -143,6 +143,13 @@ def same(a, b) -> bool:
     return str(a).strip().lower() == str(b).strip().lower() if a is not None and b is not None else a == b
 
 
+def same_security(want, have) -> bool:
+    """Security names match the way the app maps them to ISINs: case, punctuation and Ltd/Limited are ignored."""
+    from app.connectors.names import normalize_security
+
+    return isinstance(want, str) and isinstance(have, str) and normalize_security(want) == normalize_security(have)
+
+
 def by_type(claims: list[dict]) -> dict:
     """(type, n-th of that type) -> claim, so read claims line up with labelled ones whatever ids the reader gave."""
     seen, out = Counter(), {}
@@ -152,12 +159,23 @@ def by_type(claims: list[dict]) -> dict:
     return out
 
 
+def mapped_from_name(claim: dict, isin: str) -> bool:
+    """True if the ISIN is what the NSE/BSE lists give for the claim's name: the app's mapping, not a misread."""
+    from app.connectors import isin_master
+
+    return isin_master.lookup(claim["fields"].get("instrument_name", "")).payload["isin"] == isin
+
+
 def image_items(root: Path) -> tuple[list[dict], dict]:
     from app import main
     from fastapi.testclient import TestClient
 
     client = TestClient(main.app)  # no `with`: the startup warm-up is not part of the test
-    stats = {"screenshots": 0, "fields": 0, "fields_ok": 0, "fallbacks": 0, "seconds": []}
+    if os.environ["LLM_PROVIDER"] == "local":
+        from app.reader import local
+
+        local.warm_up()  # the backend does this at startup; a cold model would time out the first reads
+    stats = {"screenshots": 0, "fields": 0, "fields_ok": 0, "isin_mapped": 0, "fallbacks": 0, "seconds": []}
     out, misses = [], []
 
     def read(path):
@@ -178,8 +196,16 @@ def image_items(root: Path) -> tuple[list[dict], dict]:
             for f, want in c["fields"].items():
                 stats["fields"] += 1
                 have = got.get(key, {}).get("fields", {}).get(f, "<not read>")
-                if same(want, have):
+                if same(want, have) or (f == "instrument_name" and same_security(want, have)):
                     stats["fields_ok"] += 1
+                elif (
+                    f == "isin"
+                    and want is None
+                    and have not in (None, "<not read>")
+                    and mapped_from_name(got[key], have)
+                ):
+                    stats["fields_ok"] += 1  # the image prints no ISIN; the app filled it in from the name (FR-2.7)
+                    stats["isin_mapped"] += 1
                 else:
                     misses.append(f"{name} {key[0]}#{key[1]} {f}: expected {want!r}, got {have!r}")
     for name, lab in json.loads((root / "adversarial" / "labels.json").read_text(encoding="utf-8")).items():
@@ -240,7 +266,7 @@ def report(items, stats, set_hash, root, example) -> str:
         f"| reason_code correct (incl. {sum(i['kind'] == 'rule_summary' for i in items)} summaries) | "
         f"{reason_ok} / {len(items)} |",
         f"| Screenshot fields read correctly | {stats['fields_ok']} / {stats['fields']} "
-        f"({stats['screenshots']} screenshots) |",
+        f"({stats['screenshots']} screenshots; {stats['isin_mapped']} are ISINs the app filled in from the name) |",
         f"| Reader fallbacks (local failed, offline answered) | {stats['fallbacks']} |",
         f"| Seconds per image (read) | {min(secs, default=0)}–{max(secs, default=0)} |",
         f"| Injection cases passed | {sum(i['ok'] for i in injection)} / {len(injection)} |",

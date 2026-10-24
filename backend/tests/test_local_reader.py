@@ -57,7 +57,8 @@ def test_valid_model_output_becomes_a_claimset(monkeypatch):
     monkeypatch.setattr(local, "_ask", model_says(MODEL_OUT))
     cs = local.read_text(OCR, SHA)
     assert cs.reader.provider == "local" and cs.reader.fallback is False and cs.reader.model == local.MODELS[0]
-    assert [c.id for c in cs.claims] == ["c1", "c2", "c3", "c4"]
+    # the model returned no payee but the OCR text prints a UPI handle: the reader adds it from the text
+    assert [c.id for c in cs.claims] == ["c1", "c2", "c3", "c4", "c5"] and cs.claims[-1].type == "payee"
     assert {o for _, o, _ in verdicts(cs)} == {"CONTRADICTS"}  # none of the three shares is in this customer's name
 
 

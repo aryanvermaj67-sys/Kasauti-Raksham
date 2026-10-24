@@ -7,7 +7,10 @@ from app.connectors import isin_master, sebi
 from app.connectors.names import normalize, normalize_security
 from app.schemas.claims import HoldingClaim
 from app.verdict import rules
+from tests.helpers import ROOT
 from tests.test_rules import INFY, OTHER, RELIANCE, aa, broker, check
+
+SHA_ZERO = "0" * 64
 
 
 def holding(name, isin, qty=10):
@@ -100,3 +103,169 @@ def test_a_registration_number_nobody_holds_falls_back_to_the_name_logic():
         "NO_RECORD",
         "BROKER_NOT_FOUND_NOT_CLAIMED",
     )
+
+
+# OCR repairs: an ISIN misread with look-alike glyphs, and identifiers whose printed format fixes the reading
+def test_isin_misread_with_lookalike_glyphs_is_repaired_only_to_a_listed_isin():
+    assert isin_master.repair_isin("INEO02A01018") == RELIANCE  # O for 0
+    assert isin_master.repair_isin("INEOO2A01018") == RELIANCE  # two swaps
+    assert isin_master.repair_isin(RELIANCE) == RELIANCE and isin_master.repair_isin(None) is None
+    unlisted = "INE000ZZ0000"
+    assert isin_master.repair_isin(unlisted) == unlisted  # nothing listed is one swap away: left as read
+    assert isin_master.repair_isin("INE0O2A01019") == "INE0O2A01019"  # fails the check digit: never guessed
+
+
+def test_check_digit_accepts_real_isins_and_rejects_a_changed_digit():
+    assert isin_master._check_digit_ok(RELIANCE) and isin_master._check_digit_ok(INFY)
+    assert not isin_master._check_digit_ok("INE002A01019")
+
+
+def test_ocr_cleanup_repairs_registration_numbers_handles_and_a_zero_inside_a_word():
+    from app.reader.local import clean_ocr
+
+    assert "INZ000031633" in clean_ocr("SEBI Reg. No.: |NZ000031633")
+    assert "INZ000O31633".replace("O", "0") in clean_ocr("Reg No INZO00031633")  # letter O inside the digits
+    assert "ravi.brk@validbank" in clean_ocr("ravi . brkavalidbank")
+    assert "Zer0dha Broking" in clean_ocr("ZerOdha Broking")
+    assert (
+        clean_ocr("Get 5OO fund") == "Get 5OO fund" and clean_ocr("OPEN NOW") == "OPEN NOW"
+    )  # not in a lower-case word
+
+
+# model output clean-up (reader/local.py)
+def holding_claim(name, value):
+    return {"type": "holding", "fields": {"instrument_name": name, "isin": None, "quantity": 1, "value_inr": value}}
+
+
+def test_words_for_null_and_page_headings_are_not_claims():
+    from app.reader.local import _tidy
+
+    claims = [
+        {"type": "broker", "fields": {"name": "null", "sebi_reg_no": None, "claims_registered": False}},
+        {"type": "broker", "fields": {"name": "Holdings", "sebi_reg_no": "null", "claims_registered": False}},
+        {"type": "broker", "fields": {"name": "होल्डिंग्स", "sebi_reg_no": None, "claims_registered": False}},
+        {
+            "type": "broker",
+            "fields": {"name": "Quillfeather Wealth Desk", "sebi_reg_no": "None", "claims_registered": True},
+        },
+        {"type": "payee", "fields": {"upi_id": "N/A", "account_no_last4": None, "ifsc": None, "described_as": "other"}},
+    ]
+    kept = _tidy(claims)
+    assert [c["fields"].get("name") for c in kept if c["type"] == "broker"] == ["Quillfeather Wealth Desk"]
+    assert kept[0]["fields"]["sebi_reg_no"] is None and kept[1]["fields"]["upi_id"] is None
+
+
+def test_a_stray_leading_2_from_a_misread_rupee_sign_is_removed_only_when_the_total_proves_it():
+    from app.reader.local import _repair_rupee_digit
+
+    lines = [holding_claim("A", 852500.0), holding_claim("B", 62250000.0), holding_claim("C", 260800.0)]
+    _repair_rupee_digit(lines, 63163300)
+    assert [c["fields"]["value_inr"] for c in lines] == [852500.0, 62250000.0, 60800.0]
+    unproven = [holding_claim("A", 852500.0), holding_claim("C", 260800.0)]
+    _repair_rupee_digit(unproven, 99999999)  # the total does not fit any single fix: left alone
+    assert unproven[1]["fields"]["value_inr"] == 260800.0
+    ok = [holding_claim("A", 200.0), holding_claim("B", 300.0)]
+    _repair_rupee_digit(ok, 500)  # already adds up: a real 2xx value is never touched
+    assert ok[0]["fields"]["value_inr"] == 200.0
+
+
+def test_the_model_layout_becomes_a_claims_list():
+    from app.reader.local import _as_claims, model_schema
+
+    assert set(model_schema()["properties"]) == {
+        "language",
+        "portfolio_total_inr",
+        "holdings",
+        "broker",
+        "payee",
+        "platform",
+    }
+    claims = _as_claims(
+        {"holdings": [{"instrument_name": "A"}], "broker": {"name": "B"}, "payee": None, "platform": None}
+    )
+    assert [c["type"] for c in claims] == ["holding", "broker"]
+
+
+def test_a_firm_is_registered_only_if_the_text_says_so_and_an_isin_stays_on_one_holding():
+    from app.reader.local import _ground
+
+    broker_claim = {"type": "broker", "fields": {"name": "X Desk", "sebi_reg_no": None, "claims_registered": True}}
+    _ground([broker_claim], "X Desk\nmargin to your broker")
+    assert broker_claim["fields"]["claims_registered"] is False
+    broker_claim["fields"]["claims_registered"] = True
+    _ground([broker_claim], "X Desk\nSEBI Registered Broker")
+    assert broker_claim["fields"]["claims_registered"] is True
+    text = "Alpha Mills\n12,000\nBeta Works\n9,000\nISIN: INE000AA0001\nQty 5"
+    a = {"type": "holding", "fields": {"instrument_name": "Alpha Mills", "isin": "INE000AA0001"}}
+    b = {"type": "holding", "fields": {"instrument_name": "Beta Works", "isin": "INE000AA0001"}}
+    _ground([a, b], text)
+    assert a["fields"]["isin"] is None and b["fields"]["isin"] == "INE000AA0001"  # the ISIN follows Beta Works
+
+
+def test_a_single_holding_keeps_its_value_even_when_it_equals_the_total():
+    from app.reader.local import _check_numbers
+
+    holding = {"type": "holding", "fields": {"instrument_name": "Alpha Mills", "quantity": 5, "value_inr": 5975000.0}}
+    claims, total = _check_numbers([holding], 5975000.0, "Alpha Mills\nQuantity 5\nCurrent value ₹ 59,75,000")
+    assert claims[0]["fields"]["value_inr"] == 5975000.0
+
+
+def test_second_reading_adds_a_handle_the_first_reading_lost():
+    from app.reader import local, offline
+
+    if not offline.os.path.exists(offline.TESSERACT):
+        pytest.skip("Tesseract not installed")
+    image = (ROOT / "data" / "demo_cache" / "demo-001.png").read_bytes()
+    assert local.second_reading(image, "no handle here").count("UPI ID: ") == 1
+    text = local.ocr(image)
+    assert text.count("zyphrastock.invest@mockupi") <= 2  # already read by the first engine: not added twice
+
+
+def test_a_printed_upi_handle_becomes_a_payee_when_the_model_returned_none():
+    from app.reader.local import _payee_from_text
+
+    text = "Quillfeather Desk\nSEBI Registered Broker\nUPI ID:\nquill . deskemockupi\nUPI ID: quill.desk@mockupi"
+    claims = [
+        {"type": "payee", "fields": {"upi_id": None, "account_no_last4": None, "ifsc": None, "described_as": "other"}}
+    ]
+    _payee_from_text(claims, text)
+    assert [(c["fields"]["upi_id"], c["fields"]["described_as"]) for c in claims] == [("quill.desk@mockupi", "broker")]
+    advisor = []
+    _payee_from_text(advisor, "सलाहकार\nUPI: a.b@mockupi")
+    assert advisor[0]["fields"]["described_as"] == "advisor"
+    none = []
+    _payee_from_text(none, "no handle in this text")
+    assert none == []
+
+
+def test_indian_amount_units_l_and_cr_are_read():
+    from app.reader.local import _amounts
+
+    got = _amounts("₹ 2.76 L ₹ 1.70 Cr ₹ 37.20 लाख ₹ 3.98 crore ₹ 4,500")
+    assert got == pytest.approx([276000, 17000000, 3720000, 39800000, 4500])
+
+
+def test_missing_holding_is_asked_for_once_when_the_lines_do_not_add_up_to_the_printed_total(monkeypatch):
+    from app.reader import local
+
+    text = "कुल\n₹ 10,00,000\nAlpha Mills\n₹ 4,00,000\nShares: 4\nBeta Works\n₹ 6,00,000\nShares: 6"
+    alpha = '{"instrument_name":"Alpha Mills","isin":null,"quantity":4,"value_inr":400000}'
+    beta = '{"instrument_name":"Beta Works","isin":null,"quantity":6,"value_inr":600000}'
+    tail = '"broker":null,"payee":null,"platform":null}'
+    first = f'{{"language":"hi","portfolio_total_inr":1000000,"holdings":[{alpha}],{tail}'
+    second = f'{{"language":"hi","portfolio_total_inr":1000000,"holdings":[{alpha},{beta}],{tail}'
+    notes = []
+
+    def ask(model, t, note, deadline):
+        notes.append(note)
+        return second if note else first
+
+    monkeypatch.setattr(local, "_ask", ask)
+    cs = local.read_text(text, SHA_ZERO)
+    assert [c.fields.instrument_name for c in cs.claims] == [
+        "Alpha Mills",
+        "Beta Works",
+    ] and cs.portfolio_total_inr == 1000000
+    assert notes[0] is None and "add up to 400000 but the page total is 1000000" in notes[1] and len(notes) == 2
+    monkeypatch.setattr(local, "_ask", lambda *a: first)  # the retry changes nothing: the first answer stands
+    assert len(local.read_text(text, SHA_ZERO).claims) == 1

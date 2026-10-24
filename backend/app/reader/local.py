@@ -9,6 +9,7 @@ Only loopback network calls are made (checked below).
 import json
 import os
 import re
+import subprocess
 import time
 from datetime import datetime
 from functools import cache
@@ -28,6 +29,10 @@ MODELS = [
     "qwen2.5:3b",
 ]  # default (scored best in docs/LOCAL_READER_EVAL_GPU.md), fallback
 TIMEOUT_S = 60
+MAX_TOKENS = 1500  # a runaway answer ends here (about 25 s on the GPU) instead of at the time limit
+KEEP_ALIVE = os.environ.get(
+    "KASAUTI_KEEP_ALIVE", "60m"
+)  # Ollama unloads an idle model after 5 min; a cold load takes 100 s+
 EXTRA_OPTIONS = json.loads(os.environ.get("KASAUTI_OLLAMA_OPTIONS", "{}"))  # e.g. {"num_gpu": 0} to measure on CPU
 # defence in depth: a claim whose text reads like an instruction to us is dropped (verdicts come from rules anyway)
 REG_NO = re.compile(r"IN[AHZ]\d{9}")  # same format the offline reader accepts
@@ -40,13 +45,23 @@ PROMPT = (Path(__file__).parent / "local_prompt.txt").read_text(encoding="utf-8"
 DEVANAGARI_DIGITS = str.maketrans("०१२३४५६७८९", "0123456789")
 RUPEE_AS_RA = re.compile(r"(?<![\u0900-\u097F])र\s*(?=\d)")  # EasyOCR (hi+en) reads ₹ as र before a number
 NUM = r"\d[\d,]*(?:\.\d+)?"
-SCALE = {"crore": 1e7, "cr": 1e7, "करोड़": 1e7, "lakh": 1e5, "lac": 1e5, "लाख": 1e5}
-AMOUNT = re.compile(rf"({NUM})\s*(crore|cr\b|करोड़|lakh|lac\b|लाख)?", re.I)
+SCALE = {
+    "crore": 1e7,
+    "crores": 1e7,
+    "cr": 1e7,
+    "करोड़": 1e7,
+    "lakh": 1e5,
+    "lakhs": 1e5,
+    "lac": 1e5,
+    "l": 1e5,
+    "लाख": 1e5,
+}
+AMOUNT = re.compile(rf"({NUM})\s*(crores?|cr\b|करोड़|lakhs?|lac\b|l\b|लाख)?", re.I)
 QTY_WORDS = r"shares?|qty|quantity|units?|शेयर|मात्रा|यूनिट"
 QTY = re.compile(rf"(?:{QTY_WORDS})(?:\s+held)?\s*[:ः\-]?\s*({NUM})|({NUM})\s*(?:{QTY_WORDS})", re.I)
 RUPEES = re.compile(rf"(?:₹|rs\.?|inr)\s*({NUM})", re.I)
 TOTAL_LINE = re.compile(r"\b(total|portfolio|account value)\b|कुल|पोर्टफोलियो", re.I)
-UPI = re.compile(r"[\w.\-]+@[A-Za-z]+")
+UPI = re.compile(r"[\w.\-]+@[A-Za-z0-9.\-]+")
 
 
 class ReaderError(Exception):
@@ -55,17 +70,39 @@ class ReaderError(Exception):
 
 @cache
 def model_schema() -> dict:
-    """claims.schema.json as the model sees it: no sha256/reader/ids (code fills them), no endorsement (video only)."""
+    """What the model fills in, built from claims.schema.json: the field definitions of each claim type, laid out as a
+    holdings list plus at most one broker, payee and platform (null when absent). A free list of claims let gemma loop
+    on empty claims until the token limit. Code adds ids, sha256 and reader, and turns this into a claims list."""
     s = json.loads(SCHEMA.read_text(encoding="utf-8"))
-    defs = s["$defs"]
-    for name in ("holding", "broker", "payee", "platform"):
-        defs[name]["properties"].pop("id")
-        defs[name]["required"].remove("id")
-    defs["claim"] = {"oneOf": [{"$ref": f"#/$defs/{n}"} for n in ("holding", "broker", "payee", "platform")]}
-    for k in ("artifact_sha256", "reader"):
-        s["properties"].pop(k)
-        s["required"].remove(k)
-    return s
+
+    def fields(name):
+        return s["$defs"][name]["properties"]["fields"]
+
+    def maybe(name):
+        return {"anyOf": [fields(name), {"type": "null"}]}
+
+    return {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["language", "portfolio_total_inr", "holdings", "broker", "payee", "platform"],
+        "properties": {
+            "language": s["properties"]["language"],
+            "portfolio_total_inr": s["properties"]["portfolio_total_inr"],
+            "holdings": {"type": "array", "maxItems": 30, "items": fields("holding")},
+            "broker": maybe("broker"),
+            "payee": maybe("payee"),
+            "platform": maybe("platform"),
+        },
+    }
+
+
+def _as_claims(data: dict) -> list[dict]:
+    """The model's layout (holdings list + single broker, payee, platform) as a claims list. A ready-made "claims"
+    list is accepted too."""
+    if "claims" in data:
+        return data["claims"]
+    one = [{"type": t, "fields": data[t]} for t in ("broker", "payee", "platform") if data.get(t)]
+    return [{"type": "holding", "fields": h} for h in data["holdings"]] + one
 
 
 @cache
@@ -81,13 +118,49 @@ def _easyocr():
     return easyocr.Reader(["hi", "en"], gpu=torch.cuda.is_available(), verbose=False)
 
 
+IDENTIFIER = re.compile(
+    r"[A-Za-z0-9_\-]+(?:\s*\.\s*[A-Za-z0-9_\-]+)*\s*@\s*[A-Za-z0-9.\-]+|(?<![A-Za-z0-9])IN[AHZ]\d{9}(?![A-Za-z0-9])"
+)
+
+
+def second_reading(image: bytes, text: str) -> str:
+    """EasyOCR reads "@" as a letter and loses UPI handles. Tesseract reads them well, so any UPI handle or SEBI
+    registration number it finds that the text lacks is appended on its own line. Without Tesseract: nothing added."""
+    from app.reader import offline
+
+    try:
+        found = IDENTIFIER.findall(offline.ocr(image))
+    except (OSError, subprocess.SubprocessError):
+        return ""
+    have = re.sub(r"\s+", "", text).casefold()
+    lines = []
+    for raw in dict.fromkeys(re.sub(r"\s+", "", f) for f in found):
+        if raw.casefold() not in have:
+            lines.append(f"SEBI Reg. No.: {raw}" if raw.startswith("IN") and "@" not in raw else f"UPI ID: {raw}")
+    return "\n" + "\n".join(lines) if lines else ""
+
+
 def ocr(image: bytes) -> str:
-    return clean_ocr("\n".join(_easyocr().readtext(image, detail=0)))
+    text = clean_ocr("\n".join(_easyocr().readtext(image, detail=0)))
+    return text + second_reading(image, text)
+
+
+# OCR habits repaired below, each only where the printed format makes the right reading certain
+REG_NO_MISREAD = re.compile(r"(?<![A-Za-z0-9])[|Il1!]N([AHZ])([0-9OIlSB]{9})(?![A-Za-z0-9])")  # SEBI reg no: |NZ0000..
+SEBI_HANDLE = re.compile(
+    r"([a-z0-9]+)\s*\.\s*(brk|mf)\s*[a@]\s*(valid[a-z0-9]+)", re.I
+)  # name.brk@validbank, "@" read as a
+LOOKALIKE_DIGITS = str.maketrans("OIlSB", "01158")
+CAPITAL_O_IN_WORD = re.compile(r"(?<=[a-z])O(?=[a-z])")  # "ZerOdha": a capital O inside a lower-case word is a zero
 
 
 def clean_ocr(text: str) -> str:
-    """Undo two EasyOCR habits: Devanagari digits for printed digits (even in English lines), and ₹ read as र."""
-    return RUPEE_AS_RA.sub("₹ ", text.translate(DEVANAGARI_DIGITS))
+    """Undo EasyOCR habits: Devanagari digits for printed digits, rupee sign read as र, and look-alike glyphs in
+    identifiers whose format fixes the reading (SEBI registration numbers, @valid handles, a zero inside a word)."""
+    text = RUPEE_AS_RA.sub("₹ ", text.translate(DEVANAGARI_DIGITS))
+    text = REG_NO_MISREAD.sub(lambda m: f"IN{m[1]}{m[2].translate(LOOKALIKE_DIGITS)}", text)
+    text = SEBI_HANDLE.sub(lambda m: f"{m[1]}.{m[2].lower()}@{m[3]}", text)
+    return CAPITAL_O_IN_WORD.sub("0", text)
 
 
 def _num(s: str) -> float:
@@ -117,7 +190,8 @@ def _ask(model: str, text: str, retry_note: str | None, deadline: float) -> str:
         "model": model,
         "stream": False,
         "format": model_schema(),
-        "options": {"temperature": 0.2 if retry_note else 0, **EXTRA_OPTIONS},
+        "keep_alive": KEEP_ALIVE,
+        "options": {"temperature": 0.2 if retry_note else 0, "num_predict": MAX_TOKENS, **EXTRA_OPTIONS},
         "messages": messages,
     }
     r = httpx.post(f"{OLLAMA}/api/chat", json=body, timeout=max(1.0, deadline - time.monotonic()))
@@ -129,6 +203,12 @@ def _ask(model: str, text: str, retry_note: str | None, deadline: float) -> str:
 
 def _is_total_line(c: dict) -> bool:
     return c["fields"].get("quantity") is None and bool(TOTAL_LINE.search(c["fields"].get("instrument_name") or ""))
+
+
+def _labelled_total(text: str, v: float) -> bool:
+    """True if v is printed on a Total / Portfolio / कुल line (or the line after it)."""
+    lines = text.splitlines()
+    return any(TOTAL_LINE.search(ln) and _near(v, _amounts(" ".join(lines[i : i + 2]))) for i, ln in enumerate(lines))
 
 
 def _check_numbers(claims: list[dict], total, text: str):
@@ -152,14 +232,144 @@ def _check_numbers(claims: list[dict], total, text: str):
         if q is not None and _near(q, rupee_labelled) and not _near(q, qty_labelled):
             f["quantity"] = None  # a rupee amount is never a quantity
         v = f.get("value_inr")
-        if v is not None and total is not None and abs(v - total) <= 1 and sum(abs(v - p) <= 1 for p in printed) < 2:
+        if (
+            v is not None
+            and total is not None
+            and (len([c for c in claims if c["type"] == "holding"]) > 1 or _labelled_total(text, v))
+            and abs(v - total) <= 1
+            and sum(abs(v - p) <= 1 for p in printed) < 2
+        ):
             f["value_inr"] = None  # printed once, as the total: copied from it, not that line's own value
     return [c for c in claims if c["type"] != "holding" or not _is_total_line(c)], total
 
 
+NULLISH = {"null", "none", "n/a", "na", "nil", "-", ""}  # the model sometimes writes null as a word
+NOT_A_FIRM = {"holdings", "portfolio", "total value", "home", "होल्डिंग्स", "पोर्टफोलियो", "कुल मूल्य", "होम"}
+
+
+def _tidy(claims: list[dict]) -> list[dict]:
+    """Words for null become null, and a claim that needs a name and has none (or only a page heading) is dropped."""
+    out = []
+    for c in claims:
+        f = c["fields"]
+        for k, v in f.items():
+            if isinstance(v, str) and v.strip().lower() in NULLISH:
+                f[k] = None
+        name = f.get("instrument_name" if c["type"] == "holding" else "name")
+        if c["type"] != "payee" and (not name or (c["type"] != "holding" and name.strip().lower() in NOT_A_FIRM)):
+            continue
+        out.append(c)
+    return out
+
+
+def _repair_rupee_digit(claims: list[dict], total):
+    """A rupee sign read as the digit 2 puts a stray leading 2 on a value. If the printed total says which one (it is
+    the only holding whose value, minus that 2, makes the lines add up to the total), take the 2 off."""
+    held = [c["fields"] for c in claims if c["type"] == "holding"]
+    values = [f.get("value_inr") for f in held]
+    if total is None or not held or None in values or abs(sum(values) - total) <= 1:
+        return
+    fixes = [
+        f
+        for f in held
+        if str(int(f["value_inr"])).startswith("2")
+        and len(str(int(f["value_inr"]))) > 1
+        and abs(sum(values) - f["value_inr"] + int(str(int(f["value_inr"]))[1:]) - total) <= 1
+    ]
+    if len(fixes) == 1:
+        fixes[0]["value_inr"] = float(str(int(fixes[0]["value_inr"]))[1:])
+
+
+REGISTERED_CUE = re.compile(
+    r"(sebi|सेबी)[^\n]{0,30}(regist|licen|authori[sz]|पंजीकृत|रजिस्टर)|(regist|licen)[^\n]{0,30}(sebi|सेबी)|पंजीकृत|\bIN[AHZ]\d{9}\b",
+    re.I,
+)
+
+
+def _ground(claims: list[dict], text: str) -> None:
+    """The model may not claim more than the text says. A firm 'claims to be registered' only if the text says so, and
+    an ISIN that the model put on several holdings stays only on the holding whose name comes last before it."""
+    if not REGISTERED_CUE.search(text):
+        for c in claims:
+            if c["type"] == "broker":
+                c["fields"]["claims_registered"] = False
+    held = [c["fields"] for c in claims if c["type"] == "holding" and c["fields"].get("isin")]
+    for isin in {f["isin"] for f in held if sum(g["isin"] == f["isin"] for g in held) > 1}:
+        at = text.find(isin)
+        owners = [f for f in held if f["isin"] == isin]
+        before = [(text.rfind(f["instrument_name"], 0, max(at, 0)), f) for f in owners]
+        keep = max(before, key=lambda p: p[0])[1] if at >= 0 and any(p[0] >= 0 for p in before) else None
+        for f in owners:
+            if f is not keep:
+                f["isin"] = None
+
+
+UPI_HANDLE = re.compile(r"[A-Za-z0-9_\-]+(?:\.[A-Za-z0-9_\-]+)*@[A-Za-z0-9.\-]+")
+BROKER_WORD = re.compile(r"broker|ब्रोकर", re.I)
+ADVISOR_WORD = re.compile(r"advis[eo]r|advisory|सलाहकार", re.I)
+
+
+def _payee_from_text(claims: list[dict], text: str) -> None:
+    """The model sometimes leaves payee null although a UPI handle is printed. A handle in the text (with its "@") is a
+    payee claim; who it belongs to is read from the words around it, else "other"."""
+    claims[:] = [  # a payee whose id was cleared (not a UPI id) names nothing: it does not count as read
+        c
+        for c in claims
+        if c["type"] != "payee" or any(c["fields"].get(k) for k in ("upi_id", "account_no_last4", "ifsc"))
+    ]
+    if any(c["type"] == "payee" for c in claims):
+        return
+    handle = UPI_HANDLE.search(re.sub(r"\s*\.\s*", ".", text))
+    if handle:
+        who = "advisor" if ADVISOR_WORD.search(text) else "broker" if BROKER_WORD.search(text) else "other"
+        fields = {"upi_id": handle[0], "account_no_last4": None, "ifsc": None, "described_as": who}
+        claims.append({"type": "payee", "fields": fields})
+
+
+def _printed_total(text: str):
+    """The amount printed on (or just after) a Total / Portfolio / कुल line, if any."""
+    lines = text.splitlines()
+    for i, ln in enumerate(lines):
+        if TOTAL_LINE.search(ln):
+            amounts = _amounts(" ".join(lines[i : i + 2]))
+            if amounts:
+                return amounts[0]
+    return None
+
+
+def _gap(cs: ClaimSet, printed) -> float | None:
+    """How far the holdings' values are from the printed total; None when it cannot be told."""
+    values = [c.fields.value_inr for c in cs.claims if c.type == "holding"]
+    if printed is None or not values or None in values:
+        return None
+    return abs(sum(values) - printed)
+
+
+def _complete(cs: ClaimSet, model: str, text: str, sha: str, deadline: float) -> ClaimSet:
+    """If the holdings do not add up to the printed total, a line was probably missed: ask once more, saying so, and
+    keep whichever answer is closer to the total."""
+    printed = _printed_total(text)
+    gap = _gap(cs, printed)
+    if not gap or gap <= 1:
+        return cs
+    held = sum(c.fields.value_inr for c in cs.claims if c.type == "holding")
+    note = (
+        f"the holdings add up to {held:.0f} but the page total is {printed:.0f}; "
+        "a holding line is missing or a number is wrong. List every holding line printed"
+    )
+    try:
+        again = _to_claimset(_ask(model, text, note, deadline), sha, model, text)
+    except (ValueError, KeyError, TypeError, AttributeError, IndexError, httpx.HTTPError):
+        return cs
+    new = _gap(again, printed)
+    return again if new is not None and new < gap else cs
+
+
 def _to_claimset(content: str, sha: str, model: str, text: str = "") -> ClaimSet:
     data = json.loads(content)
-    claims = [c for c in data["claims"] if not INSTRUCTION.search(json.dumps(c.get("fields", {}), ensure_ascii=False))]
+    claims = [
+        c for c in _as_claims(data) if not INSTRUCTION.search(json.dumps(c.get("fields", {}), ensure_ascii=False))
+    ]
     order = (
         "holding",
         "broker",
@@ -177,7 +387,11 @@ def _to_claimset(content: str, sha: str, model: str, text: str = "") -> ClaimSet
             c["fields"]["upi_id"] = (
                 None  # OCR drops the dot in handles ("name desk@bank"); a guess could name another payee
             )
+    claims = _tidy(claims)
+    _payee_from_text(claims, text)
+    _ground(claims, text)
     claims, total = _check_numbers(claims, data["portfolio_total_inr"], text)
+    _repair_rupee_digit(claims, total)
     claims = [c for c in claims if c["type"] != "payee" or any(c["fields"].get(k) for k in payee_keys)]
     values = [c["fields"]["value_inr"] for c in claims if c["type"] == "holding"]
     if total is not None and values and None not in values and abs(total - sum(values)) > 1:
@@ -201,7 +415,8 @@ def read_text(text: str, sha: str) -> ClaimSet:
         note = None
         for _attempt in range(2):
             try:
-                return _to_claimset(_ask(model, text, note, deadline), sha, model, text)
+                cs = _to_claimset(_ask(model, text, note, deadline), sha, model, text)
+                return cs if note else _complete(cs, model, text, sha, deadline)
             except LookupError:
                 break  # model not pulled: try the fallback model
             except (

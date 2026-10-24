@@ -16,6 +16,7 @@ def map_isins(claimset: ClaimSet):
     mappings = {}
     for c in cs.claims:
         if c.type == "holding":
+            c.fields.isin = isin_master.repair_isin(c.fields.isin)  # undo O-for-0 style misreads, only to a listed ISIN
             rec = isin_master.lookup(c.fields.instrument_name, c.fields.isin)  # also says if a shown ISIN is listed
             c.fields.isin = c.fields.isin or rec.payload["isin"]
             mappings[c.id] = rec

@@ -5,6 +5,7 @@ listed name equals it: the customer may hold any of them, so it is left unmapped
 """
 
 import csv
+import itertools
 from functools import cache
 
 from app.connectors import DATA, need
@@ -32,6 +33,36 @@ def _index():
 @cache
 def listed_isins() -> frozenset:
     return frozenset(i for hits in _index().values() for i, _ in hits)
+
+
+LOOKALIKE = {"0": "O", "O": "0", "1": "I", "I": "1", "5": "S", "S": "5", "8": "B", "B": "8", "2": "Z", "Z": "2"}
+
+
+def _check_digit_ok(isin: str) -> bool:
+    """ISIN check digit: letters become two digits (A=10 .. Z=35), then the Luhn test over all digits."""
+    digits = [int(d) for d in "".join(str(int(c, 36)) for c in isin)]
+    total = sum(d if i % 2 == 0 else (d * 2 - 9 if d > 4 else d * 2) for i, d in enumerate(reversed(digits)))
+    return total % 10 == 0
+
+
+def repair_isin(isin: str | None) -> str | None:
+    """OCR swaps look-alike glyphs (O for 0, I for 1 ...). Return the one listed ISIN that is at most two such swaps
+    away and passes the check digit; otherwise the ISIN as it was read. A listed ISIN is never changed."""
+    if not isin or isin in listed_isins():
+        return isin
+    spots = [i for i, c in enumerate(isin) if c in LOOKALIKE]
+    found = set()
+    for n in (1, 2):
+        for combo in itertools.combinations(spots, n):
+            v = list(isin)
+            for i in combo:
+                v[i] = LOOKALIKE[v[i]]
+            v = "".join(v)
+            if v in listed_isins() and _check_digit_ok(v):
+                found.add(v)
+        if found:
+            break  # fewer swaps is the likelier misread
+    return found.pop() if len(found) == 1 else isin
 
 
 def _hits(name: str) -> dict:
