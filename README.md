@@ -73,7 +73,7 @@ uvicorn app.main:app --reload --port 8000
 # frontend (new terminal)
 cd frontend
 npm install
-npm run dev                     # bank app: http://localhost:5173/app · reviewer: /reviewer
+npm run dev                     # customer app: http://localhost:5173/app · reviewer: /reviewer · presenter: /present
 ```
 
 Run tests: `cd backend && pytest -q`. On a clone with only the steps above, 74 pass and 5 video tests skip (they need the files below).
@@ -119,6 +119,16 @@ scripts/demo.sh            # or scripts/demo.ps1 [--cpu]: start both servers in 
 
 `demo.sh` blocks every non-loopback connection from the backend and every non-localhost browser request. It does not switch Wi-Fi off: do that by hand for the last rehearsal. Script, clicks, fallbacks and judges' Q&A: [docs/DEMO.md](docs/DEMO.md).
 
+## Screens
+
+| Route | What it is |
+|---|---|
+| `/app` | Customer app: 8 steps (Payment, Upload, Confirm, Consent, Checking, Result, Action, Pack), English and Hindi, larger-text mode |
+| `/reviewer` | Bank reviewer console: cases by state, claims against records, MOCK linked accounts, computed stats, evidence chain (`/console` redirects here) |
+| `/present` | Presenter view: phone and console side by side; each polls the backend. Run and Reset buttons need `KASAUTI_DEMO=1` on the backend |
+
+Every value on these screens comes from the API; every sentence from `backend/app/templates`. Details: [docs/UI_INTEGRATION.md](docs/UI_INTEGRATION.md).
+
 ## Environment variables
 
 | Variable | Values | Purpose |
@@ -127,6 +137,7 @@ scripts/demo.sh            # or scripts/demo.ps1 [--cpu]: start both servers in 
 | `KASAUTI_LOCAL_MODEL`, `OLLAMA_HOST` | `gemma3:4b`, `http://127.0.0.1:11434` | For `local`; loopback only |
 | `EVIDENCE_KEY` | Fernet key | Encrypts the evidence store |
 | `REGISTRY_DIR` | path | Cached SEBI/RBI/NSE lists (default `data/registries`) |
+| `KASAUTI_DEMO` | `1` | Enables `POST /demo/run` and `POST /demo/reset` for the presenter view |
 
 ## Demo script (3 minutes)
 

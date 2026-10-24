@@ -80,3 +80,11 @@ def acknowledge(customer_id: str, campaign: str) -> None:
         acks[customer_id].append(campaign)
     ACKS.parent.mkdir(parents=True, exist_ok=True)
     ACKS.write_text(json.dumps(acks, indent=1), encoding="utf-8")
+
+
+def prompt_rate() -> dict:
+    """FR-1.2 prompts per 1,000 customers on the synthetic ledger: an upper bound, the scam pattern was injected."""
+    txns = ledger()
+    customers = sorted({t["customer_id"] for t in txns})
+    prompts = sum(len(evaluate([{k: t[k] for k in FIELDS} for t in txns if t["customer_id"] == c])) for c in customers)
+    return {"prompts": prompts, "customers": len(customers), "per_1000": round(1000 * prompts / len(customers))}

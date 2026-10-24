@@ -128,6 +128,7 @@ Each verdict has `reason_code`, `evidence_ids[]`, and template params.
 - FR-7.5 Holdings sentences name the depositories actually queried ("CDSL", "NSDL" or "CDSL and NSDL") as a template parameter. The deck's Pitch 4 Hindi sentence names only CDSL; do not copy it as a fixed string. Seed wording from the deck: "Your app shows ₹3.98 crore of shares. None of them is in your name in the depository record."
 - FR-7.3 Shows self-check steps: CDSL easi, monthly CAS, SEBI Check.
 - FR-7.4 No score, no "verified" badge, nothing shareable outside the app.
+- FR-7.6 UI (design: `docs/design/reference/`; mapping: `docs/UI_INTEGRATION.md`). Routes `/app` (customer, 8 steps: Payment, Upload, Confirm, Consent, Checking, Result, Action, Pack), `/reviewer` (`/console` redirects), `/present` (phone and console side by side, each polling the backend). Outcome labels exactly "MATCHES THE RECORD", "CONTRADICTS THE RECORD", "NO RECORD FOUND". Refusing consent checks registries only; holdings give `HOLDING_NO_CONSENT` (NO_RECORD). Each verdict shows the records it was decided on (source, fetched_at, MOCK or public). Stats on the console (outcome counts, median latency, prompt rate labelled "upper bound on a synthetic ledger") are computed from the evidence store. Fonts and icons are bundled; nothing calls the network.
 
 ### FR-8 Response actions
 - FR-8.1 Pre-filled complaint text for 1930 / cybercrime.gov.in (copy + open link; no auto-submit).

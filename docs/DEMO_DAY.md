@@ -28,7 +28,7 @@ You should see `reset OK`, evidence checks 0, reviewer queue 0, registry seed en
    python -m uvicorn app.main:app --port 8000
    ```
 3. **Frontend** (another window): `cd "D:\Kasauti IITD\frontend"; npm run dev`
-4. Open `http://localhost:5173/app?customer=SYN-C0001`. It shows "Preparing the checker" with **Check** disabled until the models are loaded.
+4. Open `http://localhost:5173/present` (phone and reviewer console side by side; set `$env:KASAUTI_DEMO = "1"` before starting the backend so Run and Reset work), or `/app` and `/reviewer` in two windows. The phone at `/app?customer=SYN-C0001` It shows "Preparing the checker" with **Check** disabled until the models are loaded.
 
 **How long to wait.** Measured on the demo laptop: `video models ready` in the backend window after 29–41 s in `cache` mode; `/health` ready after 47–48 s in `local` mode (Ollama model and EasyOCR too). The Check button turns on by itself.
 

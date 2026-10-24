@@ -86,6 +86,42 @@ def run_one(browser, s: dict, lang: str, blocked: list, tofu: dict) -> int:
     return len(STEPS)
 
 
+def guarded_page(browser, blocked: list):
+    page = browser.new_page(viewport={"width": 1440, "height": 1000})
+
+    def guard(route):
+        if urlparse(route.request.url).hostname in {"localhost", "127.0.0.1"}:
+            return route.continue_()
+        blocked.append(route.request.url)
+        return route.abort()
+
+    page.route("**/*", guard)
+    return page
+
+
+def console_and_present(browser, lang: str, blocked: list, tofu: dict) -> int:
+    """/reviewer with the newest case open, and /present after a real presenter run, in one language."""
+    page = guarded_page(browser, blocked)
+    page.goto(f"{APP}/reviewer?lang={lang}")
+    page.wait_for_selector("[data-testid=stats]", timeout=60000)
+    page.click("[data-testid^=queue-chk-]")
+    page.wait_for_selector("[data-testid=matrix]")
+    page.screenshot(path=str(OUT / f"reviewer_{lang}.png"), full_page=True)
+    if lang == "hi":
+        tofu["reviewer"] = page.evaluate(TOFU)
+    page.goto(f"{APP}/present")
+    if lang == "hi":
+        page.click("[data-testid=present-lang]")
+    page.click("[data-testid=present-run-demo-001]")
+    page.wait_for_selector("[data-testid=present-note]", timeout=120000)
+    page.frame_locator("[data-testid=present-console]").locator("[data-testid=stats]").wait_for(timeout=60000)
+    page.frame_locator("[data-testid=present-phone]").locator("[data-testid=step-payment]").wait_for(timeout=60000)
+    page.screenshot(path=str(OUT / f"present_{lang}.png"), full_page=True)
+    print(f"present {lang}: {page.inner_text('[data-testid=present-note]')}")
+    page.close()
+    return 2
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     url = "http://localhost:8000/demo/scenarios"
@@ -96,12 +132,14 @@ def main() -> int:
         for s in scenarios:
             for lang in ("en", "hi"):
                 shots += run_one(browser, s, lang, blocked, tofu)
+        for lang in ("en", "hi"):
+            shots += console_and_present(browser, lang, blocked, tofu)
         browser.close()
     bad = {k: v for k, v in tofu.items() if v}
     print(f"screenshots: {shots} in {OUT.relative_to(ROOT)}")
     print(f"blocked non-localhost requests: {len(blocked)} {blocked[:3]}")
     print(f"Hindi screens with missing-glyph boxes: {len(bad)} of {len(tofu)} {bad}")
-    ok = shots == len(scenarios) * 2 * len(STEPS) and not blocked and not bad
+    ok = shots == len(scenarios) * 2 * len(STEPS) + 4 and not blocked and not bad
     print("UI screens PASSED" if ok else "UI screens FAILED")
     return 0 if ok else 1
 

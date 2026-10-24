@@ -3,6 +3,7 @@ import json
 import os
 import tempfile
 import threading
+import time
 import uuid
 from contextlib import asynccontextmanager
 from datetime import datetime
@@ -92,8 +93,10 @@ class CheckRequest(BaseModel):
 
 @app.post("/api/check", response_model=CheckResult)
 def api_check(req: CheckRequest):
+    t0 = time.perf_counter()
     result, records = run_check(req.claimset, req.customer_id, req.consent_id, tuple(req.consent_scope))
-    hashchain.record_check(result, req.claimset, records, req.customer_id)  # FR-9: every check is chained
+    # FR-9: every check is chained; the latency (records + rules) feeds GET /stats
+    hashchain.record_check(result, req.claimset, records, req.customer_id, round(time.perf_counter() - t0, 3))
     return result
 
 
@@ -234,7 +237,63 @@ def _scenarios() -> list[dict]:
 
 @app.get("/demo/scenarios")
 def demo_scenarios():
-    return {"mock": True, "scenarios": _scenarios()}
+    return {"mock": True, "demo_mode": DEMO_MODE(), "scenarios": _scenarios()}
+
+
+def DEMO_MODE() -> bool:  # noqa: N802
+    return os.environ.get("KASAUTI_DEMO") == "1"
+
+
+@app.get("/cases")
+def api_cases(x_role: str = Header("customer")):
+    reviewer_role(x_role)
+    return reviewer.cases()
+
+
+@app.get("/stats")
+def api_stats(x_role: str = Header("customer")):
+    return reviewer.stats(reviewer_role(x_role))
+
+
+class DemoRun(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    scenario: str
+
+
+@app.post("/demo/run")
+def demo_run(req: DemoRun):
+    """Presenter button: the real pipeline on one demo artifact (read, video source check, records, rules, chain)."""
+    if not DEMO_MODE():
+        raise HTTPException(403, "demo runs need KASAUTI_DEMO=1")
+    s = next((x for x in _scenarios() if x["id"] == req.scenario), None)
+    if s is None:
+        raise HTTPException(404, "no such demo scenario")
+    claimset = reader.read((DEMO / f"{s['id']}.png").read_bytes())
+    if s["video"]:
+        from app.comparators import video
+
+        clip = DATA / "media" / s["video"].removeprefix("/demo/files/")
+        sha = hashlib.sha256(clip.read_bytes()).hexdigest()
+        match = video.match(clip)
+        footage_index.store(sha, match)
+        quote = match.get("quote") or " ".join(match["transcript"].split()[:25])  # as the bank app does
+        fields = {"person": "", "quote": quote, "media_sha256": sha}
+        cs = claimset.model_dump(mode="json")
+        cs["claims"].append({"id": f"c{len(cs['claims']) + 1}", "type": "endorsement", "fields": fields})
+        claimset = ClaimSet.model_validate(cs)
+    req2 = CheckRequest(claimset=claimset, customer_id=s["customer_id"], consent_id="consent-demo-run")
+    return {"scenario": s["id"], "check_id": api_check(req2).check_id}
+
+
+@app.post("/demo/reset")
+def demo_reset_route():
+    """Presenter Reset: evidence DB, dev key, MOCK registry additions, acks and events back to the seed."""
+    if not DEMO_MODE():
+        raise HTTPException(403, "demo reset needs KASAUTI_DEMO=1")
+    from app import demo_reset
+
+    demo_reset.reset()
+    return demo_reset.counts()
 
 
 @app.get("/demo/files/{name:path}")

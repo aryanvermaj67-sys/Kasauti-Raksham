@@ -40,6 +40,7 @@ const BLANK: Record<string, Record<string, FieldValue>> = {
   platform: { name: null, category: 'other', claims_licensed: false },
 }
 const MOCK_OTP = '123456'
+const params = new URLSearchParams(window.location.search) // ?scenario= and ?lang= come from /present
 export const btn = 'inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-box bg-ink px-4 py-2 font-semibold text-white hover:bg-ink-2 disabled:opacity-40'
 export const btn2 = 'inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-box border border-line-2 bg-white px-4 py-2 font-semibold text-ink'
 const input = 'min-h-12 w-full rounded-box border border-line-2 px-3 text-base focus:border-ink focus:outline-none'
@@ -57,7 +58,7 @@ function StageRow({ label, stage, lang }: { label: string; stage: Stage; lang: L
 }
 
 export default function CustomerApp() {
-  const [lang, setLang] = useState<Lang>('en')
+  const [lang, setLang] = useState<Lang>(params.get('lang') === 'hi' ? 'hi' : 'en')
   const [large, setLarge] = useLarge()
   const status = useHealth()
   const [step, setStep] = useState<Step>('payment')
@@ -87,7 +88,8 @@ export default function CustomerApp() {
     scenarios()
       .then((s) => {
         setList(s)
-        if (!URL_CUSTOMER && s[0]) choose(s[0])
+        const wanted = s.find((x) => x.id === params.get('scenario'))
+        if (wanted || (!URL_CUSTOMER && s[0])) choose(wanted ?? s[0])
       })
       .catch(fail)
     // eslint-disable-next-line react-hooks/exhaustive-deps

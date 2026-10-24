@@ -132,6 +132,7 @@ def main():
     benv = {
         **os.environ,
         "LLM_PROVIDER": "cache",
+        "KASAUTI_DEMO": "1",  # enables /demo/run and /demo/reset for the presenter view
         "EVIDENCE_KEY": dotenv["EVIDENCE_KEY"],
         "HF_HUB_OFFLINE": "1",
         "PYTHONPATH": os.pathsep.join(filter(None, [guard, os.environ.get("PYTHONPATH")])),

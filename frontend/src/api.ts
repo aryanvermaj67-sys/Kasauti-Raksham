@@ -90,12 +90,28 @@ export const review = {
     ),
   pack: (id: string) => fetch(`/api/reviewer/checks/${id}/pack`, { method: 'POST', headers: asReviewer }).then(body<{ pack_id: string; html: string }>),
 }
+export type Case = { check_id: string; customer_id: string; created_at: string; status: string; note: string | null }
+export type Stats = {
+  checks: number
+  outcomes: Record<Outcome, number>
+  median_latency_s: number | null
+  latency_samples: number
+  prompt_rate: { prompts: number; customers: number; per_1000: number }
+}
+export const cases = () => fetch('/cases', { headers: asReviewer }).then(body<Record<'new' | 'in_review' | 'approved' | 'rejected', Case[]>>)
+export const stats = () => fetch('/stats', { headers: asReviewer }).then(body<Stats>)
+export const demo = {
+  run: (scenario: string) => post('/demo/run', { scenario }).then(body<{ scenario: string; check_id: string }>),
+  reset: () => fetch('/demo/reset', { method: 'POST' }).then(body<Record<string, number>>),
+  mode: () => fetch('/demo/scenarios').then(body<{ demo_mode: boolean; scenarios: Scenario[] }>),
+}
 export type ReviewDetail = {
   check: { check_id: string; customer_id: string; status: string }
   claims: Claim[]
   result: CheckResult
-  records: Record<string, unknown>[]
-  hashes: { seq: number; kind: string; entry_hash: string; prev_hash: string | null }[]
+  records: (RecordSummary & Record<string, unknown>)[]
+  network: { payee: string; registry_hit: { added_on: string } | null; ledger_payers: string[] }[]
+  hashes: { seq: number; kind: string; recorded_at: string; entry_hash: string; prev_hash: string | null }[]
   chain: { valid: boolean; detail: string }
 }
 

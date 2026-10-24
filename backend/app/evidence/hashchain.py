@@ -98,7 +98,7 @@ def _minimal(rec, claimed: list[str], videos: list[str]) -> dict:
     return base | {"payload": rec.payload}  # public lists and mock registries: no customer holdings
 
 
-def record_check(result, claimset, records, customer_id: str) -> None:
+def record_check(result, claimset, records, customer_id: str, latency_s: float | None = None) -> None:
     """Chain a finished check: the customer's files (hashed on receipt), claims, every record, the verdicts."""
     cid = result.check_id
     contradicts = any(v.outcome == "CONTRADICTS" for v in result.verdicts)
@@ -112,7 +112,7 @@ def record_check(result, claimset, records, customer_id: str) -> None:
     claimed = [v.params["isin"] for v in result.verdicts if v.claim_type == "holding" and v.params.get("isin")]
     for rec in records:
         append(cid, "record", _minimal(rec, claimed, videos))
-    append(cid, "verdict", {"result": result.model_dump(mode="json")})
+    append(cid, "verdict", {"result": result.model_dump(mode="json"), "latency_s": latency_s})
 
 
 def entries(check_id: str, role: str) -> list[dict]:
@@ -195,3 +195,26 @@ def purge_expired(now: datetime | None = None, days: int = RETENTION_DAYS) -> in
             con.execute("DELETE FROM entries WHERE check_id=?", (cid,))
             con.execute("DELETE FROM checks WHERE check_id=?", (cid,))
     return len(old)
+
+
+def verdict_summaries(role: str) -> list[dict]:
+    """Every check's verdict entry, for aggregate stats; logged once as a read of all checks ("*")."""
+    with _db() as con:
+        con.execute("INSERT INTO read_log VALUES (?,?,?,?)", (_now(), role, "*", "stats"))
+        rows = con.execute("SELECT check_id, blob FROM entries WHERE kind = 'verdict'").fetchall()
+    out = []
+    for cid, blob in rows:
+        try:
+            out.append({"check_id": cid, **json.loads(_fernet().decrypt(blob))})
+        except InvalidToken:
+            continue  # a tampered entry shows up in that check's chain verification instead
+    return out
+
+
+def read_by(role: str) -> set[str]:
+    """Checks whose evidence this role has opened (the stats read "*" is not an opening)."""
+    with _db() as con:
+        return {
+            r[0]
+            for r in con.execute("SELECT DISTINCT check_id FROM read_log WHERE role = ? AND check_id != '*'", (role,))
+        }

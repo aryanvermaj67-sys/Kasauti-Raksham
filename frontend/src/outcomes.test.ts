@@ -23,13 +23,19 @@ test('the only outcome identifiers in src are MATCHES, CONTRADICTS and NO_RECORD
 test('no forbidden wording, demo figures or network URLs in app code or UI strings', () => {
   const banned = /\b(altered|source altered|partial match|high discrepancy|synthetic voice|safe|verified|genuine|fake|gemini)\b/i
   const figures = /Zyphra|39800000|3,98,00,000|3\.98 cr/i
+  // real people, agencies and brands the design export used; every source shown must be a connector we have
+  const brands = /minister|PIB|sansad|SBI|State Bank|AMFI|CAMS|sachet|ICICI|HDFC|Axis Bank|Kotak|Yes Bank|Bharat Bank|Lok Sabha/i
   for (const [name, c] of FILES) {
     assert.doesNotMatch(c, banned, name)
     assert.doesNotMatch(c, figures, name)
+    assert.doesNotMatch(c, brands, name)
     const urls = [...c.matchAll(/https?:\/\/[^\s'"`]+/g)].map((m) => m[0])
     assert.deepEqual(urls.filter((u) => u !== 'https://cybercrime.gov.in'), [], name) // the one link opens only when tapped
   }
-  for (const l of ['en', 'hi']) for (const [k, v] of Object.entries(T[l].ui)) assert.doesNotMatch(String(v), banned, `${l}.ui.${k}`)
+  for (const l of ['en', 'hi']) for (const [k, v] of Object.entries(T[l].ui)) {
+    assert.doesNotMatch(String(v), banned, `${l}.ui.${k}`)
+    assert.doesNotMatch(String(v), brands, `${l}.ui.${k}`)
+  }
 })
 
 test('English and Hindi strings have the same keys and the same {placeholders}', () => {
