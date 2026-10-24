@@ -80,6 +80,8 @@ Run tests: `cd backend && pytest -q`. On a clone with only the steps above, 74 p
 
 Requires ffmpeg on PATH for the video check. Video dependencies: `pip install -r requirements-video.txt` (GPU: see the comment in that file).
 
+Free local claim-reader stack (EasyOCR + Ollama, smoke-tested only): see [docs/SETUP_LOCAL_MODELS.md](docs/SETUP_LOCAL_MODELS.md); `python scripts/check_local_models.py` checks it.
+
 ### Files a clone does not have (git-ignored); copy them from a teammate or the pen drive
 
 | Copy to | Size | Needed for | If missing |

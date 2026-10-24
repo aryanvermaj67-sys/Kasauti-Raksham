@@ -1,0 +1,4 @@
+# free local claim-reader stack (docs/SETUP_LOCAL_MODELS.md); install on top of requirements.txt
+easyocr==1.7.2
+# pure-Python build: the 0.6 wheel ships a DLL that Windows Application Control can block; easyocr needs the bidi.get_display shim in scripts/check_local_models.py
+python-bidi==0.4.2
