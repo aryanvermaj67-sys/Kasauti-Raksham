@@ -5676,5 +5676,139 @@
     "reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE"
    }
   ]
+ },
+ {
+  "id": "rc-128",
+  "note": "depository consent refused, one holding, nothing compared",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys",
+     "isin": "INE009A01021",
+     "quantity": 450,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_NO_CONSENT"
+   }
+  ]
+ },
+ {
+  "id": "rc-129",
+  "note": "depository consent refused, three holdings, nothing compared",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries",
+     "isin": "INE002A01018",
+     "quantity": 1200,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "HDFC Bank",
+     "isin": "INE040A01034",
+     "quantity": 640,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "State Bank of India",
+     "isin": "INE062A01020",
+     "quantity": 3100,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_NO_CONSENT"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_NO_CONSENT"
+   },
+   {
+    "claim_id": "c3",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_NO_CONSENT"
+   }
+  ]
+ },
+ {
+  "id": "rc-130",
+  "note": "depository consent refused, real broker on the SEBI list",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services",
+     "isin": "INE467B01029",
+     "quantity": 75,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "broker",
+    "fields": {
+     "name": "Zerodha Broking Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_NO_CONSENT"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "MATCHES",
+    "reason_code": "BROKER_ON_SEBI_LIST"
+   }
+  ]
  }
 ]
