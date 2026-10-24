@@ -9,6 +9,7 @@ import hashlib
 import json
 import os
 import sqlite3
+from contextlib import contextmanager
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -34,7 +35,9 @@ def _fernet() -> Fernet:
     return Fernet(key.encode() if isinstance(key, str) else key)
 
 
-def _db() -> sqlite3.Connection:
+@contextmanager
+def _db():
+    """Commit on success and always close: an open handle keeps the file locked on Windows (demo reset)."""
     Path(DB).parent.mkdir(parents=True, exist_ok=True)
     con = sqlite3.connect(DB)
     con.executescript("""
@@ -44,7 +47,11 @@ def _db() -> sqlite3.Connection:
             content_sha256 TEXT, prev_hash TEXT, entry_hash TEXT, blob BLOB, PRIMARY KEY (check_id, seq));
         CREATE TABLE IF NOT EXISTS read_log (at TEXT, role TEXT, check_id TEXT, what TEXT);
     """)
-    return con
+    try:
+        with con:
+            yield con
+    finally:
+        con.close()
 
 
 def _sha(text: str) -> str:

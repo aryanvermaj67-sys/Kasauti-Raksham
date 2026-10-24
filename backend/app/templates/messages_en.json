@@ -33,6 +33,7 @@
   "ui": {
     "app_title": "Kasauti check",
     "mock": "MOCK",
+    "mock_footer": "Prototype. MOCK: Account Aggregator, Suspect Registry, SEBI @valid lookup, payments ledger, official footage, bank login, OTP. Customers are synthetic.",
     "signed_in": "Signed in as {customer} (MOCK bank login, synthetic customer)",
     "lang_toggle": "हिंदी",
     "check_button": "Check an investment",

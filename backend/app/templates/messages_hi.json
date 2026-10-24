@@ -34,6 +34,7 @@
     "_needs_native_review": true,
     "app_title": "कसौटी जाँच",
     "mock": "MOCK",
+    "mock_footer": "प्रोटोटाइप। MOCK: अकाउंट एग्रीगेटर, संदिग्ध रजिस्ट्री, SEBI @valid जाँच, भुगतान रिकॉर्ड, आधिकारिक फ़ुटेज, बैंक लॉगिन, OTP। ग्राहक कृत्रिम हैं।",
     "signed_in": "{customer} के रूप में साइन इन (MOCK बैंक लॉगिन, कृत्रिम ग्राहक)",
     "lang_toggle": "English",
     "check_button": "निवेश की जाँच करें",

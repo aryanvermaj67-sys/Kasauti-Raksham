@@ -107,6 +107,7 @@ export default function Reviewer() {
           {outcome && <p data-testid="review-outcome" className="rounded bg-slate-100 p-2 text-sm [overflow-wrap:anywhere]">{outcome}</p>}
         </section>
       )}
+      <footer data-testid="mock-footer" className="mt-6 text-xs text-slate-500">{t('mock_footer')}</footer>
     </main>
   )
 }

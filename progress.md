@@ -6,10 +6,10 @@
 
 | | |
 |---|---|
-| Phase | 3 · Reviewer + validation (evidence chain, reviewer console and trigger rule done; consented footage, timing runs, adversarial suite and comprehension test open) |
-| Overall | 58% |
-| Demo-ready | No |
-| Last updated | 24 Oct 2026, 02:24 IST |
+| Phase | 5a · Demo hardening (reset, one-command offline demo run, fresh-clone test, offline kit for pip, demo script done; consented footage, adversarial suite, comprehension test, physical Wi-Fi-off rehearsal and backup video open) |
+| Overall | 64% (21 of 33, same basis as before: Q&A answers and timing runs newly ticked) |
+| Demo-ready | No (scripted offline run passes; Wi-Fi was not physically switched off, no backup video, no consented footage) |
+| Last updated | 24 Oct 2026, 05:30 IST |
 
 ## Team and ownership
 
@@ -53,6 +53,8 @@
 - [x] CLIP or DINOv2 weights + imagehash
   - open_clip ViT-B/32 laion2b + imagehash; weights in `models/` (git-ignored)
 - [ ] `pip download -r requirements.txt -d wheels/`, npm cache, Docker images if used
+  - [x] pip: `wheels/` 277 MB, 67 files (CPU torch), git-ignored; a fresh clone installed the video wheels `--no-index` from it
+  - [ ] npm cache: steps documented in README, `npm --offline` install not tested
 - [x] Noto Sans Devanagari font (bundled via `@fontsource/noto-sans-devanagari`; the offline run made 0 non-localhost requests)
 - [ ] Pen drive with all of the above + backup demo video
 
@@ -72,7 +74,8 @@
 **Facts and deck**
 - [ ] Deck fixes: "NSDL to be confirmed" (Pitch 7, Arch 3); fraud figure to ₹22,495 crore / "over 75%" (Pitch 2); drop "and lips" (Pitch 6); Pitch 4 Hindi sentence names only CDSL; Pitch 10 "real public lists" for payee check (@valid and Suspect Registry are mocks); demo broker is now Zyphra Stock Club
 - [ ] Verify or drop: Supreme Court hash ruling, Singapore 2,700+, FBI 77%, face-swap attribution paper, CBI ABHAY
-- [ ] Q&A answers: "isn't this just a lookup?", "fully AI-generated video?", "why would a victim share a screenshot?"
+- [x] Q&A answers: "isn't this just a lookup?", "fully AI-generated video?", "why would a victim share a screenshot?"
+  - In `docs/DEMO.md` (judges Q&A section)
 
 **Logistics**
 - [ ] Laptops, chargers, extension board, HDMI/USB-C adapters, a phone, mobile hotspot, college ID
@@ -129,7 +132,8 @@
   - `/reviewer`, English only; approve adds the payee to the MOCK registry; a customer role gets 403
 - [ ] Rule-correctness suite: 300 portfolios (C)
 - [ ] Adversarial tests: injected text, renamed broker, near-duplicate UPI, sourceless video (B, C)
-- [ ] Timing runs vs targets (C)
+- [x] Timing runs vs targets (C)
+  - GPU and CPU fallback both inside <5 s source search and <60 s result (see Test results); dev clips, local
 - [x] Prompt-rate report on synthetic transactions (C)
   - `trigger.py`, `scripts/trigger_rate.py`; 133 prompts per 1,000 customers on the synthetic ledger (upper bound, see Blockers)
 - [ ] Comprehension test with 5 adults (D)
@@ -142,6 +146,22 @@
 - [ ] Backup demo video recorded
 - [ ] Re-verify all cited figures in the deck
 - [ ] Pitch rehearsal × 3, Q&A drill (sourceless video, false positives, consent)
+
+### Phase 5a · Demo hardening
+- [x] Reset script: `scripts/reset_demo.sh` / `.ps1` (logic in `backend/app/demo_reset.py`, `scripts/reset_demo.py`)
+  - Clears evidence DB, dev key file, MOCK registry additions, trigger acks, event log, packs, video results; restores the registry seed from git if edited
+  - First real run: evidence checks 28 to 0, reviewer queue 15 to 0, registry additions 1 to 0, events 14 to 0, dev key file 1 to 0, seed 79 kept
+  - `tests/test_demo_reset.py` runs the full flow, then reset, and checks it is back to the seed
+- [x] One-command demo run: `scripts/demo.sh` (GPU) / `scripts/demo.ps1` (`--cpu`), logic in `scripts/demo.py`
+  - Resets, starts backend (`LLM_PROVIDER=cache`, `EVIDENCE_KEY` from `.env`, socket guard `scripts/offline_guard` blocks non-loopback connects) and frontend, waits for "video models ready", then runs demo-001 EN, HI, demo-002, demo-003, fake clip, reviewer approval: all PASSED, 0 blocked network attempts, printed "demo OK offline"
+  - Open: Wi-Fi was not physically switched off; do it by hand at rehearsal
+- [x] Fresh-clone test: after adding python-multipart to requirements.txt and copying bse_equity.csv by hand, 74 passed, 5 video tests skipped; with models/, data/footage_index/, data/media/ copied and wheels installed offline it worked. README lists the files to copy
+- [x] Verdict-source test (`tests/test_verdict_source.py`): AST check that no backend module except `verdict/rules.py` builds a Verdict or hard-codes an outcome or reason code; runtime spy shows all 5 API verdicts came from `rules._v`; frontend never sets an outcome or reason code
+- [x] MOCK footer in bank app and reviewer (EN/HI)
+- [x] `docs/DEMO.md`: 3-minute script with on-screen text from the running app, fallback order (cache, offline reader, backup video), judges Q&A
+- [ ] Backup demo video recorded
+- [ ] Physical Wi-Fi-off rehearsal
+- [ ] `npm --offline` install tested
 
 ## Test results
 
@@ -156,6 +176,10 @@
 | Result after consent | < 60 s | 0.78 s (demo-001, local) |
 | Prompts per 1,000 customers | report | 133 (40 of 300 customers, one prompt per campaign); 40/40 prompted are injected scam-pattern customers, 0 others (synthetic ledger where the pattern was injected to fit the rule, so this is an upper bound) |
 | First /api/video after fresh start | report | 3.09 s (models preloaded, GPU) |
+| Source search < 5 s | < 5 s | GPU 2.17 s; CPU fallback (CUDA_VISIBLE_DEVICES=-1) 2.66 s |
+| Full video result (read + video + check) < 60 s | < 60 s | GPU 11.50 s; CPU fallback 18.11 s |
+| Offline demo run (`scripts/demo.py`) | all steps pass | 7 steps PASSED, 0 blocked network attempts under the socket guard (Wi-Fi not physically off) |
+| Full suite | green | pytest 83 passed; ruff, frontend build/lint/test clean; git log attribution grep = 0 |
 
 ## Decisions log
 
@@ -192,6 +216,11 @@
 | 24 Oct | A campaign = trigger hits within 14 days of its first hit | Scams rotate new payee handles; counting each handle as a campaign gave 5.5 prompts per scam customer (220 total) against 1 now (40) |
 | 24 Oct | Reviewer role comes from a MOCK X-Role header | No login in the prototype; the backend still refuses evidence to any non-reviewer role |
 | 24 Oct | Pack id = "pack-" + check id | Keeps the CheckResult format unchanged |
+| 24 Oct | Demo reset restores the registry seed from git and generates `EVIDENCE_KEY` into `.env` if missing | Every rehearsal starts from the same state; `.env` had no key, one was generated (git-ignored) |
+| 24 Oct | `hashchain._db` is a context manager that commits and closes | Connections were never closed and the SQLite file stayed locked on Windows (bug fixed) |
+| 24 Oct | Demo run blocks non-loopback connects with a socket guard (`scripts/offline_guard`) | Gives a printed count of blocked network attempts as offline evidence until the Wi-Fi is switched off by hand |
+| 24 Oct | A test enforces that only `verdict/rules.py` builds verdicts | Backs the "rules decide, never the LLM" rule with an AST check and a runtime spy |
+| 24 Oct | python-multipart 0.0.32 added to requirements.txt | The fresh-clone test found it missing |
 
 ## Blockers
 
@@ -205,11 +234,15 @@
 - ~~Risk (not built): an ambiguous share name gives `HOLDING_ISIN_UNMAPPED` with unclear text.~~ Addressed 24 Oct: the UI offers an ISIN picker, and `HOLDING_NAME_AMBIGUOUS` is used when the customer skips the choice.
 - ~~The FR-8.4 MATCHES-only and NO_RECORD-only screens are not yet driven in the browser.~~ Resolved 24 Oct 01:21: demo-002 and demo-003 passed in EN and HI.
 - ~~The running dev backend predates the scrip-name label change.~~ Resolved 24 Oct 01:21: backend restarted in cache mode; /api/isin/candidates gives 11 distinct labels.
-- The Hindi UI strings (71 in the `ui` section) need a fluent reader, like the verdict templates.
+- The Hindi UI strings (71 in the `ui` section, plus the new MOCK footer string) need a fluent reader, like the verdict templates.
+- `data/registries/bse_equity.csv` cannot be fetched by script; a fresh clone needs it copied by hand (README lists it). Copy it onto the pen drive.
+- The Wi-Fi-off rehearsal is not done: the offline proof so far is the socket guard (0 blocked attempts), not a physical disconnect.
+- No backup demo video yet (last fallback in `docs/DEMO.md`).
+- `npm --offline` install is untested; only the pip side of the offline kit is verified.
 - Video: an off-centre 10% crop (top-left) matched only 35% of frames, so it gives NO_RECORD (a miss, never a false MATCHES). Consider multi-crop indexing or local features if the judges test this.
 - ~~Video: the first `/api/video` request loads the models (about 15 s).~~ Resolved 24 Oct 02:24: models preload at startup; first request 3.09 s.
 - ~~Video: the complaint text does not yet mention the video finding.~~ Resolved 24 Oct 02:24: the 1930 complaint names the source clip, changed range and pack id (EN/HI test).
-- The dev evidence key sits in `data/runtime/evidence.key` when `EVIDENCE_KEY` is unset. Set `EVIDENCE_KEY` on the demo machine.
+- The dev evidence key sits in `data/runtime/evidence.key` when `EVIDENCE_KEY` is unset. On this laptop `.env` now has an `EVIDENCE_KEY` (git-ignored); copy `.env` to the demo machine, otherwise the dev key file is used again.
 - The reviewer UI is English only; its Hindi strings exist but are not toggled.
 - The trigger rate comes from a synthetic ledger built to match the rule, so field precision is unknown.
 - Video: all results are on dev clips. Re-run make/index/eval with the consented clips once the forms are signed.
@@ -217,15 +250,14 @@
 
 ## Next up
 
-1. Record consented official clips (after forms are signed) and re-run `scripts/video_eval.py` — A / B
-2. Phase 3 validation: adversarial tests (injected text, renamed broker, near-duplicate UPI, sourceless video) and timing runs vs targets — B / C
-3. Hindi templates and UI strings (including the reviewer's Hindi toggle) to a fluent Hindi reader — D
-4. Set `EVIDENCE_KEY` on the demo machine; comprehension test with 5 adults — C / D
-5. Push the repo to GitHub and add all four members — Aryan
+1. Physical Wi-Fi-off rehearsal of `scripts/demo.sh` / `demo.ps1`, then record the backup demo video; test `npm --offline` install — D / Aryan
+2. Record consented official clips (after forms are signed) and re-run `scripts/video_eval.py`; adversarial suite (injected text, renamed broker, near-duplicate UPI, sourceless video) — A / B / C
+3. Hindi templates and UI strings (incl. MOCK footer and the reviewer's Hindi toggle) to a fluent Hindi reader — D
 
 ## Changelog
 
-- 24 Oct 02:24 — Goal 4 done: evidence chain, reviewer console, trigger rule (commits 5ae0575, 9a62440, 38a6c07). Backend preloads CLIP and Whisper at startup ("video models ready (cuda)"); the first POST /api/video after a fresh start took 3.09 s. `evidence/hashchain.py`: one SHA-256 chain per check in SQLite (data/runtime/kasauti.db), Fernet-encrypted (EVIDENCE_KEY; dev fallback key file in data/runtime, marked as a shortcut); each entry stores source, time, consent_id, sha256 and previous hash; AA records keep only claimed vs found ISINs; video records keep source clip, similarity, offset, changed ranges and file SHA-256; every read is logged with the caller's role; 30-day retention purge runs at startup. `verify_chain`: an untouched chain passes, flipping one ciphertext byte fails ("ciphertext altered"), changing one stored hash fails ("content hash does not match"); both are tests. Evidence pack export: JSON (validates against evidence_pack.schema.json) plus HTML "Hash listing to support a certificate", explicitly not a legal certificate (docs/screens/evidence_pack.png). The 1930 complaint now names the video's source clip, the changed range and the pack id (EN/HI test). /reviewer: queue, detail (claims, verdicts, records, hashes, chain status), Approve/Reject with reason, pack export; Approve adds the payee to the MOCK registry (runtime additions file, git-ignored) and lists the ledger's other payers; reviewer endpoints need a MOCK X-Role: reviewer header, a customer gets 403. `trigger.py` and GET /api/trigger/{customer_id}: FR-1.2 rule over date, payee, amount, narration and new-payee flag only (a test records every field read); one prompt per campaign (hits within 14 days), acknowledged via POST .../ack; the bank app shows the prompt and says the payment is not blocked. Ledger: 5 synthetic customers (SYN-C0011, SYN-C0108, SYN-C0123, SYN-C0202, SYN-C0217) paid demo-001's payee; rows appended with their own seed, the other 6,194 rows unchanged. `scripts/e2e_review.py` PASSED (customer check with the fake video, registry empty, reviewer approves with chain intact, payee in MOCK registry, SYN-C0011 warned). tests/conftest.py keeps every test off the demo's runtime state (found when the e2e approval made an older payee test see a registry hit). pytest 79 passed, ruff clean, 300/300, frontend build/lint/test clean; demo-002/003 regressions PASSED. Ticked: evidence chain, reviewer console, prompt-rate report. Not ticked: consented footage, rule-correctness suite, timing runs, comprehension test, Phase 4 items. Overall 48% to 58% (19 of 33). Three decisions and three risks added; two risks resolved.
+- 24 Oct 05:30 — Phase 5a demo hardening. Reset script (`scripts/reset_demo.*`, `demo_reset.py`): first run took evidence checks 28 to 0, reviewer queue 15 to 0, registry additions 1 to 0, events 14 to 0, dev key file 1 to 0, seed 79 kept; `EVIDENCE_KEY` generated into `.env`; `test_demo_reset.py` covers flow then reset. Bug fixed: `hashchain._db` never closed SQLite connections (file locked on Windows), now a context manager. `scripts/demo.*`: reset, start backend (cache) and frontend under a socket guard, 7 steps (demo-001 EN/HI, demo-002, demo-003, fake clip, reviewer approval) all PASSED, 0 blocked network attempts, "demo OK offline"; Wi-Fi not physically switched off. Timing: source search GPU 2.17 s / CPU 2.66 s, full result GPU 11.50 s / CPU 18.11 s, both inside targets. Fresh clone: python-multipart was missing (added, 0.0.32), `bse_equity.csv` needs a manual copy; then 74 passed, 5 video tests skipped, and the clone's pip install worked offline from `wheels/` (277 MB, 67 files). `test_verdict_source.py` (AST + runtime spy: only `rules._v` makes verdicts; frontend sets none), MOCK footer in both UIs, `docs/DEMO.md` (script, fallback order, Q&A). pytest 83 passed; ruff and frontend build/lint/test clean; attribution grep 0. Ticked: Q&A answers, timing runs, pip wheels (sub-item). Overall 58% to 64% (21 of 33, same basis). Open: backup video, Wi-Fi-off rehearsal, `npm --offline`, Hindi footer review, consented footage, adversarial suite, comprehension test.
+- 24 Oct 02:24 (Goal 4, folded; commits 5ae0575, 9a62440, 38a6c07) — Encrypted SHA-256 evidence chain per check with `verify_chain` (tampered ciphertext and hash both fail, tested), JSON/HTML evidence pack (not a legal certificate), reviewer console with MOCK X-Role (customer gets 403), FR-1.2 trigger rule (133 prompts per 1,000 customers, upper bound), models preloaded at startup (first /api/video 3.09 s), 1930 complaint names the video finding. `scripts/e2e_review.py` PASSED; pytest 79 passed. Overall 48% to 58% (19 of 33).
 - 24 Oct 00:21 to 02:00 (Phase 2 so far, folded; commits 007adc5 to 5718061) — Bank app and result screen (React/Vite, /app flow, EN/HI strings from templates, offline Playwright runs), demo-002 and demo-003 samples, reader digit-group fix, settings deny-rule fix, and the video source check on dev clips (footage index, source matcher 30/30 top-1, unindexed 3/3 NO_RECORD, POST /api/video, CLIP and Whisper on GPU). Overall reached 48% (16 of 33) at that point.
 
 - 23 Oct 22:45 to 24 Oct 00:21 (Phases 0-1, folded) — Docs and agent config created; prerequisites fetched (Tesseract 5.4, NSE/BSE, SEBI lists, RBI Alert List, ReBIT schemas, SOURCES.md). Goal 0: git repo, `docs/formats` (4 schemas, validated 4/4), EN/HI templates for all reason codes, 300 synthetic portfolios, 6194-row ledger plus 79-entry mock Suspect Registry, backend skeleton. Goal 1: `demo-001` through `POST /api/check` for SYN-C0001 in 0.78 s (0 of 3 holdings found), image-injection test passes, grep test finds no "safe", "verified", "genuine" or "%". Broker matching: first Jaro-Winkler attempt stopped on its own rule (86% vs 90% target), then replaced by the one-typo rule (invented 50/50 CONTRADICTS, typos 50/50 NO_RECORD, 0 false MATCHES). `BROKER_NEAR_MATCH` now names the closest registered firm and reg no; ISIN normaliser covers all NSE series; 358 ambiguous names map to no ISIN, 0 map wrongly. Single ruff config. pytest 51 passed at that point.

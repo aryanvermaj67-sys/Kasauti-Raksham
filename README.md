@@ -76,9 +76,46 @@ npm install
 npm run dev                     # bank app: http://localhost:5173/app · reviewer: /reviewer
 ```
 
-Run tests: `cd backend && pytest -q`
+Run tests: `cd backend && pytest -q`. On a clone with only the steps above, 74 pass and 5 video tests skip (they need the files below).
 
-Requires ffmpeg on PATH for the video check.
+Requires ffmpeg on PATH for the video check. Video dependencies: `pip install -r requirements-video.txt` (GPU: see the comment in that file).
+
+### Files a clone does not have (git-ignored); copy them from a teammate or the pen drive
+
+| Copy to | Size | Needed for | If missing |
+|---|---|---|---|
+| `.env` (from `.env.example`) | tiny | `EVIDENCE_KEY`; `scripts/reset_demo.py` writes one if absent | dev key file fallback |
+| `data/registries/bse_equity.csv` | ~0.5 MB | ISIN mapping; `fetch_registries.py` cannot fetch it (BSE answers only a browser session) | `test_names.py` and the API fail to import |
+| `models/open_clip/` (CLIP ViT-B/32 laion2b, `models--laion--CLIP-ViT-B-32-laion2B-s34B-b79K`) | 578 MB | video frame embeddings | video tests skip; `/api/video` fails |
+| `models/whisper/` (faster-whisper small, `models--Systran--faster-whisper-small`) | 464 MB | video transcripts | video tests skip; no "video models ready" |
+| `data/footage_index/` (`clips.json`, `embeddings.npy`, `owner.npy`) | 0.6 MB | MOCK footage index; or rebuild with `python scripts/build_footage_index.py data/media/official/` | video tests skip; `/api/video` gives 503 |
+| `data/media/` (`official/`, `fakes/`, `unindexed/`, `dev_manifest.json`) | 29 MB | dev clips for the video demo and tests | video tests skip |
+| `wheels/` | 277 MB | offline `pip install` (below) | needs the network |
+
+`fetch_registries.py` also downloads the SEBI lists (add `--ip 202.191.181.158` to `scripts/fetch_sebi.py` if sebi.gov.in does not resolve) and the NSE list; it marks the Sahamati screenshot as a manual step.
+
+### Offline kit
+
+```bash
+# with network, once
+pip download -r backend/requirements.txt -r backend/requirements-video.txt -d wheels/   # 277 MB, CPU torch from PyPI
+cd frontend && npm install && npm cache verify      # fills the npm cache (~/.npm or %LocalAppData%
+pm-cache)
+# without network
+pip install --no-index --find-links wheels -r backend/requirements.txt -r backend/requirements-video.txt
+cd frontend && npm install --offline               # uses the npm cache only
+```
+
+The wheels hold the CPU build of torch; for a GPU laptop install torch from the CUDA index while online. Models load only from `models/` (`HF_HUB_OFFLINE=1`, `local_files_only`).
+
+### Run the demo
+
+```bash
+scripts/reset_demo.sh      # or scripts/reset_demo.ps1: clear evidence, dev key, MOCK registry additions, acks, events
+scripts/demo.sh            # or scripts/demo.ps1 [--cpu]: start both servers in cache mode, run every flow, print "demo OK offline"
+```
+
+`demo.sh` blocks every non-loopback connection from the backend and every non-localhost browser request. It does not switch Wi-Fi off: do that by hand for the last rehearsal. Script, clicks, fallbacks and judges' Q&A: [docs/DEMO.md](docs/DEMO.md).
 
 ## Environment variables
 
@@ -94,11 +131,13 @@ Requires ffmpeg on PATH for the video check.
 
 1. A deepfake ad of a "public figure" (a teammate, with consent) promotes a trading app.
 2. The fake app shows a ₹3.98 crore portfolio and asks for another deposit.
-3. In the bank app, the customer taps **Check** and uploads the screenshot and the ad.
-4. Claims appear; he confirms them and gives OTP consent.
-5. Result: **0 of 3 holdings found in your record** · **broker not on SEBI's list** · **ad cut from an official speech, words changed at 0:14–0:32**.
-6. He taps **Report to 1930**; the complaint is pre-filled.
-7. The reviewer opens the evidence pack, sees the hash chain is intact, approves, and the payee is listed.
+3. In the bank app, the customer taps **Check an investment** and uploads the screenshot and the ad.
+4. Claims appear; the customer confirms them and gives OTP consent (MOCK).
+5. Result: **none of the 3 holdings is in your name at CDSL and NSDL** · **broker not on SEBI's list** · **the original video exists, but the words were changed at 0:11-0:13** (dev clip).
+6. The customer opens **Report to 1930**; the complaint is pre-filled.
+7. The reviewer opens the check, sees the hash chain is intact, approves, and the payee is listed in the MOCK Suspect Registry.
+
+Exact clicks and on-screen text: [docs/DEMO.md](docs/DEMO.md).
 
 ## Repository layout
 
@@ -130,7 +169,7 @@ Each limit falls back to **No record found**, never to a false "safe".
 
 ## Data sources
 
-Public: SEBI registered intermediaries, RBI Alert List, NSE and BSE equity lists (name to ISIN), ReBIT Account Aggregator schemas (equities, mutual funds), Sahamati's list of data providers. Each file's source page, download date and SHA-256 is recorded in `data/SOURCES.md`. Mocked and labelled as such: Account Aggregator data, the I4C Suspect Registry, SEBI @valid lookups, bank payment records and official footage.
+Public: SEBI registered intermediaries, RBI Alert List, NSE and BSE equity lists (name to ISIN), ReBIT Account Aggregator schemas (equities, mutual funds), Sahamati's list of data providers. Each file's source page, download date and SHA-256 is recorded in `data/SOURCES.md`. Mocked and labelled as such: Account Aggregator data, the I4C Suspect Registry, SEBI @valid lookups, bank payment records and official footage. The app shows the same list in a MOCK footer on every screen.
 
 ## Team Alpha
 

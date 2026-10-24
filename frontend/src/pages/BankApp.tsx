@@ -235,6 +235,7 @@ export default function BankApp() {
       )}
 
       {step === 'result' && result && claimset && <ResultScreen lang={lang} result={result} claimset={claimset} onRestart={restart} />}
+      <footer data-testid="mock-footer" className="mt-6 text-xs text-slate-500">{t('mock_footer')}</footer>
     </div>
   )
 }

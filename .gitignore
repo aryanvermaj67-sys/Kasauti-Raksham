@@ -16,3 +16,6 @@ data/registries/*.csv
 data/runtime/
 models/
 data/footage_index/
+
+# offline kit (pip download), not committed
+wheels/
