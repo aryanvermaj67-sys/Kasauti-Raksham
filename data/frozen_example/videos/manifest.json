@@ -1,0 +1,21 @@
+[
+ {
+  "file": "ex_v1.mp4",
+  "expected_source": "official_01.mp4",
+  "expected_changed": [
+   [
+    "0:00",
+    "0:01"
+   ]
+  ],
+  "variant": "off_centre_crop",
+  "note": "EXAMPLE: synthetic test pattern"
+ },
+ {
+  "file": "ex_v2.mp4",
+  "expected_source": null,
+  "expected_changed": [],
+  "variant": "none",
+  "note": "EXAMPLE: no official source"
+ }
+]

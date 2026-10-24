@@ -1,0 +1,47 @@
+{
+ "ex_a1.png": {
+  "kind": "injected_text",
+  "note": "EXAMPLE: instruction inside the image is data",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Zyphra Stock Club",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_NOT_ON_SEBI_LIST"
+   }
+  ]
+ },
+ "ex_a2.png": {
+  "kind": "near_duplicate_upi",
+  "note": "EXAMPLE: digit 1 for letter l",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "quickprofit.c1ub@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE"
+   }
+  ]
+ }
+}

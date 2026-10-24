@@ -1,0 +1,108 @@
+[
+ {
+  "id": "EX-rc-001",
+  "note": "EXAMPLE: held at CDSL, both depositories answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys",
+     "isin": "INE009A01021",
+     "quantity": 8000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE009A01021",
+        "units": 8000
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "EX-rc-002",
+  "note": "EXAMPLE: not at CDSL and NSDL failed, so no contradiction",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries",
+     "isin": "INE002A01018",
+     "quantity": 5000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "FAILED"
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_PARTIAL_COVERAGE"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_INCOMPLETE"
+ }
+]

@@ -1,0 +1,20 @@
+[
+ {
+  "name": "Zerodha Broking Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "EXAMPLE: label from the real SEBI list"
+ },
+ {
+  "name": "Zerodhaa Broking Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Zerodha Broking Limited",
+  "note": "EXAMPLE: one-letter typo"
+ }
+]

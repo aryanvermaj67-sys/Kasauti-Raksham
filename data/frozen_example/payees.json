@@ -1,0 +1,44 @@
+[
+ {
+  "id": "EX-py-001",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "quickprofit.club@mockupi",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "broker"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [
+    "quickprofit.club@mockupi"
+   ],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "PAYEE_IN_SUSPECT_REGISTRY",
+  "note": "EXAMPLE"
+ },
+ {
+  "id": "EX-py-002",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "friend.name@mockupi",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "other"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "PAYEE_NO_REGISTRY_HIT",
+  "note": "EXAMPLE"
+ }
+]

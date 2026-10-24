@@ -19,3 +19,7 @@ data/footage_index/
 
 # offline kit (pip download), not committed
 wheels/
+
+# frozen-set clips travel by pen drive; HASH.txt covers them (docs/FROZEN_SET_SPEC.md)
+data/frozen/videos/*
+!data/frozen/videos/manifest.json

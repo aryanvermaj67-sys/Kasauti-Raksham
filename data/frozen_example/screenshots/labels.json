@@ -1,0 +1,36 @@
+{
+ "ex_s1.png": {
+  "layout": "EX-L1",
+  "language": "en",
+  "portfolio_total_inr": 120000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys",
+     "isin": "INE009A01021",
+     "quantity": 8000,
+     "value_inr": null
+    }
+   }
+  ]
+ },
+ "ex_s2.png": {
+  "layout": "EX-L2",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries",
+     "isin": "INE002A01018",
+     "quantity": 5000,
+     "value_inr": null
+    }
+   }
+  ]
+ }
+}

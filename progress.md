@@ -6,10 +6,10 @@
 
 | | |
 |---|---|
-| Phase | 5a · Demo hardening (reset, one-command offline demo run, fresh-clone test, offline kit for pip, demo script done; consented footage, adversarial suite, comprehension test, physical Wi-Fi-off rehearsal and backup video open) |
+| Phase | 5a · Demo hardening (reset, one-command offline demo run, fresh-clone test, offline kit for pip, demo script, frozen-set spec and checker done; `data/frozen/` itself not written, consented footage, adversarial suite, comprehension test, physical Wi-Fi-off rehearsal and backup video open) |
 | Overall | 64% (21 of 33, same basis as before: Q&A answers and timing runs newly ticked) |
 | Demo-ready | No (scripted offline run passes; Wi-Fi was not physically switched off, no backup video, no consented footage) |
-| Last updated | 24 Oct 2026, 05:30 IST |
+| Last updated | 24 Oct 2026, 11:17 IST |
 
 ## Team and ownership
 
@@ -65,6 +65,10 @@
 - [x] ~300 synthetic portfolios (fake, mixed, real, no demat, partial coverage)
 - [x] Synthetic payments ledger with scam pattern + mock Suspect Registry
 - [ ] Frozen test set written by someone else, hashed
+  - [x] Spec: `docs/FROZEN_SET_SPEC.md` (layout, minimum counts, author rules, HASH.txt recipe)
+  - [x] Checker: `scripts/check_frozen.py` (structure, schemas, counts, coverage; writes HASH.txt once, then verifies); `data/frozen_example/` passes in `--example` mode
+  - [ ] `data/frozen/` authored to the spec by someone who does not write the verdict rules (does not exist yet)
+  - [ ] Adapter that runs the rules on `rule_cases.json` and reports against the hash
 
 **Design**
 - [x] JSON formats frozen: claims, verdicts, record responses, evidence pack
@@ -179,7 +183,8 @@
 | Source search < 5 s | < 5 s | GPU 2.17 s; CPU fallback (CUDA_VISIBLE_DEVICES=-1) 2.66 s |
 | Full video result (read + video + check) < 60 s | < 60 s | GPU 11.50 s; CPU fallback 18.11 s |
 | Offline demo run (`scripts/demo.py`) | all steps pass | 7 steps PASSED, 0 blocked network attempts under the socket guard (Wi-Fi not physically off) |
-| Full suite | green | pytest 83 passed; ruff, frontend build/lint/test clean; git log attribution grep = 0 |
+| Full suite | green | pytest 89 passed, ruff clean (24 Oct 11:17, includes 6 frozen-checker tests); frontend build/lint/test and attribution grep last reported clean at 05:30 |
+| Frozen-set checker on `data/frozen_example/` (`--example`) | pass | passes; combined hash `c5d57d978beda5beedda79a801ec8b21b148fd7b4084a91b0e9fd50156305076`. This is the example, not the real frozen set, which does not exist yet |
 
 ## Decisions log
 
@@ -221,6 +226,9 @@
 | 24 Oct | Demo run blocks non-loopback connects with a socket guard (`scripts/offline_guard`) | Gives a printed count of blocked network attempts as offline evidence until the Wi-Fi is switched off by hand |
 | 24 Oct | A test enforces that only `verdict/rules.py` builds verdicts | Backs the "rules decide, never the LLM" rule with an AST check and a runtime spy |
 | 24 Oct | python-multipart 0.0.32 added to requirements.txt | The fresh-clone test found it missing |
+| 24 Oct | `scripts/check_frozen.py` writes `HASH.txt` only when it is absent and all checks pass (or with `--rehash`); otherwise it verifies and fails on any changed, added or removed file | The goal said to write HASH.txt when everything passes, but rewriting it on every pass would hide tampering |
+| 24 Oct | Frozen-set checker never reads or runs `verdict/rules.py`; labels are written by hand to `docs/FROZEN_SET_SPEC.md` | Keeps the frozen set independent of the rule author (a test checks the checker does not reference rules.py) |
+| 24 Oct | Git-ignore `data/frozen/videos/*` except `manifest.json`; clips travel by pen drive | Video is large and CLAUDE.md bars large media in git; the hash still covers the clips |
 
 ## Blockers
 
@@ -246,16 +254,18 @@
 - The reviewer UI is English only; its Hindi strings exist but are not toggled.
 - The trigger rate comes from a synthetic ledger built to match the rule, so field precision is unknown.
 - Video: all results are on dev clips. Re-run make/index/eval with the consented clips once the forms are signed.
+- Frozen set not authored: someone who does not write the verdict rules must produce `data/frozen/` to `docs/FROZEN_SET_SPEC.md` (60 screenshots, 100 rule cases, 60 brokers, 15 payees, 30 videos, adversarial PNGs) and run the checker to write `HASH.txt`. The 30 clips also depend on consented footage. Until then the rule-correctness claim rests on our own 300 synthetic portfolios, not a frozen set.
 - Environment note: an unrelated package (platformio) on this laptop pins click<8.4, and pip now has click 8.5.0. Not a Kasauti dependency.
 
 ## Next up
 
-1. Physical Wi-Fi-off rehearsal of `scripts/demo.sh` / `demo.ps1`, then record the backup demo video; test `npm --offline` install — D / Aryan
-2. Record consented official clips (after forms are signed) and re-run `scripts/video_eval.py`; adversarial suite (injected text, renamed broker, near-duplicate UPI, sourceless video) — A / B / C
-3. Hindi templates and UI strings (incl. MOCK footer and the reviewer's Hindi toggle) to a fluent Hindi reader — D
+1. Author `data/frozen/` to `docs/FROZEN_SET_SPEC.md` (clips by pen drive), run `scripts/check_frozen.py` to write `HASH.txt` — a teammate who does not write the verdict rules (owner to be named)
+2. Adapter that runs the rules on `data/frozen/rule_cases.json` and reports results against the hash — C / Aryan
+3. Physical Wi-Fi-off rehearsal of `scripts/demo.sh` / `demo.ps1`, then record the backup demo video; test `npm --offline` install — D / Aryan
 
 ## Changelog
 
+- 24 Oct 11:17 — Frozen-set groundwork (uncommitted at time of writing). `docs/FROZEN_SET_SPEC.md`: layout of `data/frozen/` (screenshots + labels.json, rule_cases.json, brokers.json, payees.json, videos/manifest.json, adversarial/ + labels.json with five kinds), minimum counts (60 screenshots / 6 layouts / en+hi; 100 rule cases over all 5 claim types and all 25 reason codes; 60 brokers incl. 20 impersonations; 15 payees; 30 videos incl. 5 no-source and 5 off-centre crops; one adversarial PNG per kind), author rules, HASH.txt recipe. `scripts/check_frozen.py` validates structure, claims against `claims.schema.json`, outcomes and reason codes against `verdict.schema.json`, counts and coverage; writes HASH.txt once, then verifies (decision logged). `data/frozen_example/` passes in `--example` mode (hash c5d57d97...5076); `test_check_frozen.py` 6 tests (pass, missing field, wrong count, tampered file, full minimums reject the example, no reference to rules.py). `.gitignore`: frozen videos ignored except manifest. pytest 89 passed, ruff clean. No checklist item newly ticked, overall stays 64%. Open: `data/frozen/` not written (checklist item stays unticked), rules adapter against the hash.
 - 24 Oct 05:30 — Phase 5a demo hardening. Reset script (`scripts/reset_demo.*`, `demo_reset.py`): first run took evidence checks 28 to 0, reviewer queue 15 to 0, registry additions 1 to 0, events 14 to 0, dev key file 1 to 0, seed 79 kept; `EVIDENCE_KEY` generated into `.env`; `test_demo_reset.py` covers flow then reset. Bug fixed: `hashchain._db` never closed SQLite connections (file locked on Windows), now a context manager. `scripts/demo.*`: reset, start backend (cache) and frontend under a socket guard, 7 steps (demo-001 EN/HI, demo-002, demo-003, fake clip, reviewer approval) all PASSED, 0 blocked network attempts, "demo OK offline"; Wi-Fi not physically switched off. Timing: source search GPU 2.17 s / CPU 2.66 s, full result GPU 11.50 s / CPU 18.11 s, both inside targets. Fresh clone: python-multipart was missing (added, 0.0.32), `bse_equity.csv` needs a manual copy; then 74 passed, 5 video tests skipped, and the clone's pip install worked offline from `wheels/` (277 MB, 67 files). `test_verdict_source.py` (AST + runtime spy: only `rules._v` makes verdicts; frontend sets none), MOCK footer in both UIs, `docs/DEMO.md` (script, fallback order, Q&A). pytest 83 passed; ruff and frontend build/lint/test clean; attribution grep 0. Ticked: Q&A answers, timing runs, pip wheels (sub-item). Overall 58% to 64% (21 of 33, same basis). Open: backup video, Wi-Fi-off rehearsal, `npm --offline`, Hindi footer review, consented footage, adversarial suite, comprehension test.
 - 24 Oct 02:24 (Goal 4, folded; commits 5ae0575, 9a62440, 38a6c07) — Encrypted SHA-256 evidence chain per check with `verify_chain` (tampered ciphertext and hash both fail, tested), JSON/HTML evidence pack (not a legal certificate), reviewer console with MOCK X-Role (customer gets 403), FR-1.2 trigger rule (133 prompts per 1,000 customers, upper bound), models preloaded at startup (first /api/video 3.09 s), 1930 complaint names the video finding. `scripts/e2e_review.py` PASSED; pytest 79 passed. Overall 48% to 58% (19 of 33).
 - 24 Oct 00:21 to 02:00 (Phase 2 so far, folded; commits 007adc5 to 5718061) — Bank app and result screen (React/Vite, /app flow, EN/HI strings from templates, offline Playwright runs), demo-002 and demo-003 samples, reader digit-group fix, settings deny-rule fix, and the video source check on dev clips (footage index, source matcher 30/30 top-1, unindexed 3/3 NO_RECORD, POST /api/video, CLIP and Whisper on GPU). Overall reached 48% (16 of 33) at that point.

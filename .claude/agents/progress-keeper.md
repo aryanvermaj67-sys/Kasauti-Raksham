@@ -13,7 +13,8 @@ When invoked:
 1. Read progress.md in full.
 2. Check reality: run `git log --oneline -15` and `git diff --stat HEAD~5` (ignore errors if history is short). If tests are mentioned, check the latest summary the lead gave you; do not run the suite yourself.
 3. Update these sections in place:
-   - Status block at the top: phase, overall %, demo-ready yes/no, last updated (IST time).
+   - Status block at the top: phase, overall %, demo-ready yes/no, last updated.
+     * Time: run `date -u -d '+5 hours 30 minutes' '+%d %b %Y, %H:%M IST'` and use that output. It adds the IST offset to UTC, so it is right whatever the laptop's timezone; never copy the raw system clock or use `TZ=`.
    - Phase checklist: tick finished items, add sub-items if work was split.
    - Decisions log: append any decision with date, what, why.
    - Blockers: add new ones, strike resolved ones.
