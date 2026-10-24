@@ -113,10 +113,10 @@ def evidence_db():
 
 
 def port(n: int, url: str):
-    with socket.socket() as s:
-        s.settimeout(1)
-        if s.connect_ex(("127.0.0.1", n)):
-            return True, f":{n} free", ""
+    try:  # "localhost" tries IPv6 and IPv4: the frontend dev server may listen on ::1 only
+        socket.create_connection(("localhost", n), timeout=1).close()
+    except OSError:
+        return True, f":{n} free", ""
     try:
         status = get(url)[0]
     except OSError as e:
