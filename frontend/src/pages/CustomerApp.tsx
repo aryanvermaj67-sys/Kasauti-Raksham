@@ -1,4 +1,3 @@
-import { Check, Loader, Plus, Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import {
   ackPrompt,
@@ -41,18 +40,51 @@ const BLANK: Record<string, Record<string, FieldValue>> = {
 }
 const MOCK_OTP = '123456'
 const params = new URLSearchParams(window.location.search) // ?scenario= and ?lang= come from /present
-export const btn = 'inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-box bg-ink px-4 py-2 font-semibold text-white hover:bg-ink-2 disabled:opacity-40'
-export const btn2 = 'inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-box border border-line-2 bg-white px-4 py-2 font-semibold text-ink'
-const input = 'min-h-12 w-full rounded-box border border-line-2 px-3 text-base focus:border-ink focus:outline-none'
-const card = 'rounded-box border border-line bg-white p-4'
 
-function StageRow({ label, stage, lang }: { label: string; stage: Stage; lang: Lang }) {
-  const Icon = stage === 'done' ? Check : Loader
+// classes from the design export (ui_incoming/src/components/CustomerPhone.tsx)
+export const btn = 'w-full py-2.5 bg-[#000000] text-[#ffffff] rounded font-semibold text-xs flex items-center justify-center gap-1.5 shadow-sm hover:bg-[#131b2e] transition-all disabled:bg-[#e0e3e5] disabled:text-[#76777d] disabled:cursor-not-allowed'
+export const btn2 = 'w-full py-2 bg-[#eceef0] text-[#191c1e] text-xs font-semibold rounded hover:bg-[#e0e3e5] border border-[#c6c6cd] text-center'
+export const back = 'py-2 px-3.5 bg-[#eceef0] text-[#191c1e] text-xs font-semibold rounded hover:bg-[#e0e3e5]'
+export const fwd = 'py-2 px-4 bg-[#000000] text-[#ffffff] text-xs font-semibold rounded flex items-center gap-1 shadow-sm disabled:bg-[#e0e3e5] disabled:text-[#76777d]'
+export const panel = 'bg-[#f2f4f6] p-3 rounded-lg flex flex-col gap-2 border border-[#e0e3e5]'
+const input = 'w-full px-2 py-1 bg-[#ffffff] text-[#191c1e] text-xs rounded border border-[#c6c6cd] focus:outline-none focus:border-[#000000]'
+const tile = 'flex-1 py-3.5 bg-[#eceef0] hover:bg-[#e0e3e5] rounded-lg flex flex-col items-center justify-center gap-1 text-[#191c1e] border border-[#c6c6cd] transition-all cursor-pointer'
+const JUMP_ON = 'bg-[#000000] text-[#ffffff] font-bold shadow-xs'
+const JUMP_OFF = 'bg-[#ffffff] text-[#191c1e] hover:bg-[#d8dadc] disabled:opacity-40'
+const SCENARIO_ON = 'bg-[#ffffff] border-[#000000]'
+const SCENARIO_OFF = 'bg-[#f2f4f6] hover:bg-[#eceef0] border-[#e0e3e5]'
+
+export const Icon = ({ name, className = '' }: { name: string; className?: string }) => (
+  <span className={`material-symbols-outlined ${className}`} aria-hidden>
+    {name}
+  </span>
+)
+
+export function Kicker({ kicker, title, desc }: { kicker?: string; title: string; desc?: string }) {
   return (
-    <li data-testid="stage" data-stage={stage} className={`flex min-h-11 items-center gap-2 ${card}`}>
-      <Icon size={18} aria-hidden className={stage === 'running' ? 'animate-spin' : ''} />
-      <span className="mr-auto">{label}</span>
-      <span className="text-sm text-muted">{ui(lang, `progress_${stage}`)}</span>
+    <div className="flex flex-col">
+      {kicker && <span className="text-xs text-[#515f74] uppercase font-semibold">{kicker}</span>}
+      <h2 className="font-bold text-base text-[#191c1e]">{title}</h2>
+      {desc && <p className="text-xs text-[#45464d] mt-0.5">{desc}</p>}
+    </div>
+  )
+}
+
+const DONE_CHIP = 'bg-[#ffffff] text-[#191c1e] border border-[#e0e3e5]'
+const WAIT_CHIP = 'bg-[#eceef0] text-[#515f74]'
+
+export function StageRow({ title, sub, stage, lang, icon = 'database' }: { title: string; sub?: string; stage: Stage; lang: Lang; icon?: string }) {
+  const done = stage === 'done'
+  return (
+    <li data-testid="stage" data-stage={stage} className="p-2.5 bg-[#f2f4f6] rounded-lg flex items-center justify-between gap-2 border border-[#e0e3e5]">
+      <div className="flex items-center gap-2 min-w-0">
+        <Icon name={done ? icon : 'progress_activity'} className={`text-[18px] ${done ? 'text-[#191c1e]' : 'text-[#515f74] animate-spin'}`} />
+        <div className="flex flex-col min-w-0">
+          <span className="text-xs font-semibold text-[#191c1e] [overflow-wrap:anywhere]">{title}</span>
+          {sub && <span className="text-[10px] text-[#45464d] [overflow-wrap:anywhere]">{sub}</span>}
+        </div>
+      </div>
+      <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase whitespace-nowrap ${done ? DONE_CHIP : WAIT_CHIP}`}>{ui(lang, `progress_${stage}`)}</span>
     </li>
   )
 }
@@ -62,6 +94,7 @@ export default function CustomerApp() {
   const [large, setLarge] = useLarge()
   const status = useHealth()
   const [step, setStep] = useState<Step>('payment')
+  const [reached, setReached] = useState(0)
   const [list, setList] = useState<Scenario[]>([])
   const [scenario, setScenario] = useState<Scenario | null>(null)
   const [customer, setCustomer] = useState(URL_CUSTOMER ?? '')
@@ -73,6 +106,8 @@ export default function CustomerApp() {
   const [claimset, setClaimset] = useState<ClaimSet | null>(null)
   const [choices, setChoices] = useState<Record<string, Candidate[]>>({})
   const [picked, setPicked] = useState<Record<string, string>>({})
+  const [adding, setAdding] = useState(false)
+  const [addType, setAddType] = useState('holding')
   const [otp, setOtp] = useState('')
   const [otpWrong, setOtpWrong] = useState(false)
   const [stages, setStages] = useState<Record<string, Stage>>({})
@@ -80,9 +115,14 @@ export default function CustomerApp() {
   const [records, setRecords] = useState<RecordSummary[]>([])
   const [error, setError] = useState('')
   const [prompts, setPrompts] = useState<Prompt[]>([])
-  const t = (key: string, params?: Params) => ui(lang, key, params)
+  const [clock, setClock] = useState(() => new Date())
+  const t = (key: string, p?: Params) => ui(lang, key, p)
   const fail = (e: unknown) => setError(t('error', { error: e instanceof Error ? e.message : String(e) }))
   const stage = (k: string, s: Stage) => setStages((x) => ({ ...x, [k]: s }))
+  const go = (s: Step) => {
+    setStep(s)
+    setReached((r) => Math.max(r, STEPS.indexOf(s)))
+  }
 
   useEffect(() => {
     scenarios()
@@ -92,6 +132,8 @@ export default function CustomerApp() {
         if (wanted || (!URL_CUSTOMER && s[0])) choose(wanted ?? s[0])
       })
       .catch(fail)
+    const timer = setInterval(() => setClock(new Date()), 30000)
+    return () => clearInterval(timer)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useEffect(() => {
@@ -102,14 +144,12 @@ export default function CustomerApp() {
     setScenario(s)
     setCustomer(s.customer_id)
     setPayee(s.payment_request?.payee ?? '')
-    setShot(null)
-    setVideo(null)
   }
 
-  async function loadScenarioFiles() {
-    if (!scenario) return
-    setShot(await demoFile(scenario.screenshot))
-    setVideo(scenario.video ? await demoFile(scenario.video) : null)
+  async function loadScenario(s: Scenario) {
+    choose(s)
+    setShot(await demoFile(s.screenshot))
+    setVideo(s.video ? await demoFile(s.video) : null)
   }
 
   async function resolveIsin(claim: Claim) {
@@ -138,7 +178,7 @@ export default function CustomerApp() {
       setClaimset(cs)
       setChoices({})
       setPicked({})
-      setStep('confirm')
+      go('confirm')
       await Promise.all(cs.claims.filter((c) => c.type === 'holding' && c.fields.isin === null).map(resolveIsin))
     } catch (e) {
       fail(e)
@@ -150,12 +190,13 @@ export default function CustomerApp() {
     setClaimset((cs) => cs && { ...cs, claims: cs.claims.map((c) => (c.id === id ? { ...c, fields: { ...c.fields, [key]: value } } : c)) })
   }
   const removeClaim = (id: string) => setClaimset((cs) => cs && { ...cs, claims: cs.claims.filter((c) => c.id !== id) })
-  function addClaim(type: string) {
+  function addClaim() {
     setClaimset((cs) => {
       if (!cs) return cs
       const n = Math.max(0, ...cs.claims.map((c) => Number(c.id.slice(1)) || 0)) + 1
-      return { ...cs, claims: [...cs.claims, { id: `c${n}`, type: type as Claim['type'], fields: { ...BLANK[type] } }] }
+      return { ...cs, claims: [...cs.claims, { id: `c${n}`, type: addType as Claim['type'], fields: { ...BLANK[addType] } }] }
     })
+    setAdding(false)
   }
   function pick(id: string, isin: string) {
     setPicked((p) => ({ ...p, [id]: isin }))
@@ -166,7 +207,7 @@ export default function CustomerApp() {
     if (scope.length && otp !== MOCK_OTP) return setOtpWrong(true)
     setOtpWrong(false)
     setError('')
-    setStep('checking')
+    go('checking')
     setStages({ check: 'running', records: 'waiting' })
     try {
       const r = await runCheck(claimset!, customer, `consent-mock-${crypto.randomUUID().slice(0, 8)}`, scope)
@@ -183,6 +224,7 @@ export default function CustomerApp() {
 
   function restart() {
     setStep('payment')
+    setReached(0)
     setShot(null)
     setVideo(null)
     setClaimset(null)
@@ -197,239 +239,370 @@ export default function CustomerApp() {
 
   const allPicked = Object.keys(choices).every((id) => id in picked)
   const idx = STEPS.indexOf(step)
-  const next = (s: Step) => (
-    <button data-testid="next" className={btn} onClick={() => setStep(s)}>
-      {t('next')}
-    </button>
-  )
+  const percent = (((idx + 1) / STEPS.length) * 100).toFixed(1)
 
   return (
-    <div lang={lang} className="min-h-screen bg-canvas">
+    <div lang={lang} className="min-h-screen bg-[#f7f9fb]">
       <Header lang={lang} setLang={setLang} large={large} setLarge={setLarge} status={status} onReset={restart} />
-      <main className="mx-auto max-w-[430px] p-4">
-        <div className="mb-4 rounded-lg border border-line bg-white">
-          <div className="border-b border-line px-4 py-3">
-            <p data-testid="step-title" className="font-semibold">
-              {t('step_of', { n: idx + 1, total: STEPS.length, name: t(`step_${step}`) })}
-            </p>
-            <ol className="mt-2 grid grid-cols-8 gap-1" aria-hidden>
-              {STEPS.map((s, i) => (
-                <li key={s} className={`h-1.5 rounded-box ${i <= idx ? 'bg-ink' : 'bg-line'}`} />
-              ))}
-            </ol>
-            <p className="mt-2 text-sm text-muted">{customer && t('signed_in', { customer })}</p>
+      <div className="w-full flex flex-col items-center justify-start py-6 px-3 sm:px-6">
+        <div
+          data-testid="phone"
+          style={{ zoom: large ? 1.1875 : 1 }} // large-text mode: the design's 16 px base becomes 19 px
+          className="w-full max-w-[430px] bg-[#ffffff] rounded-2xl shadow-xl flex flex-col relative overflow-hidden border border-[#c6c6cd]"
+        >
+          {/* status bar */}
+          <div className="w-full bg-[#131b2e] px-4 pt-2.5 pb-1 flex items-center justify-between text-[#ffffff] text-xs font-mono select-none">
+            <span className="font-bold tracking-tight">{clock.toTimeString().slice(0, 5)}</span>
+            <div className="w-20 h-3.5 bg-[#000000] rounded-full mx-auto -mt-1 opacity-90" />
+            <div className="flex items-center gap-1.5 text-[12px]">
+              <Icon name="signal_cellular_4_bar" className="text-[13px]" />
+              <Icon name="wifi" className="text-[13px]" />
+              <Icon name="battery_charging_full" className="text-[13px]" />
+            </div>
           </div>
 
-          <div className="space-y-4 p-4">
-            {error && <p className="rounded-box border border-contra-line bg-contra-bg p-3 text-contra">{error}</p>}
+          {/* brand bar */}
+          <div className="bg-[#131b2e] text-[#ffffff] px-4 py-2.5 flex items-center justify-between border-b border-[#3f465c]">
+            <div className="flex items-center gap-2">
+              <span className="w-6 h-6 rounded bg-[#ffffff] text-[#000000] font-bold text-xs flex items-center justify-center shadow-xs">K</span>
+              <div className="flex flex-col">
+                <div className="flex items-center gap-1">
+                  <span className="text-xs uppercase font-bold text-[#ffffff] tracking-tight">{t('ph_brand')}</span>
+                  <span className="text-[10px] text-[#bec6e0] font-normal opacity-80">{t('ph_bank')}</span>
+                </div>
+                <span className="text-[9px] text-[#bec6e0] font-mono tracking-wide">{t('ph_subtitle')}</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-1">
+              <button data-testid="lang-toggle" onClick={() => setLang(lang === 'en' ? 'hi' : 'en')} type="button" className="px-2 py-0.5 rounded bg-[#ffffff]/20 text-[#ffffff] text-[11px] font-semibold hover:bg-[#ffffff]/30 transition-colors">
+                {t('ph_lang')}
+              </button>
+              <button onClick={restart} type="button" aria-label={t('reset')} className="p-1 rounded bg-[#ffffff]/20 text-[#ffffff] hover:bg-[#ffffff]/30 transition-colors flex items-center">
+                <Icon name="restart_alt" className="text-[14px]" />
+              </button>
+            </div>
+          </div>
+
+          {/* quick jump: only to steps already reached, so every screen has real data behind it */}
+          <div className="w-full bg-[#eceef0] px-2 py-1 flex items-center justify-between overflow-x-auto text-[11px] font-semibold gap-1 border-b border-[#e0e3e5]">
+            {STEPS.map((s, i) => (
+              <button key={s} type="button" data-testid={`jump-${s}`} disabled={i > reached} onClick={() => setStep(s)} className={`px-2 py-0.5 rounded text-[10px] whitespace-nowrap ${step === s ? JUMP_ON : JUMP_OFF}`}>
+                {t(`ph_jump_${i + 1}`)}
+              </button>
+            ))}
+          </div>
+
+          {/* stepper */}
+          <div className="bg-[#f2f4f6] px-4 py-2 flex flex-col gap-1.5 border-b border-[#e0e3e5]">
+            <div className="flex items-center justify-between text-[#45464d] text-xs">
+              <span data-testid="step-title" className="uppercase tracking-wider font-semibold text-[11px]">
+                {t(`ph_title_${idx + 1}`)}
+              </span>
+              <span className="font-mono text-[11px] font-bold text-[#191c1e]">{percent}%</span>
+            </div>
+            <div className="w-full bg-[#e0e3e5] h-1.5 rounded-full overflow-hidden flex">
+              <div className="bg-[#000000] h-full transition-all duration-300" style={{ width: `${percent}%` }} />
+            </div>
+          </div>
+
+          <div className="p-4 min-h-[560px] flex flex-col justify-between">
+            {error && <p className="mb-3 p-2 rounded bg-[#ffdad6] border border-[#f87171] text-[#93000a] text-xs [overflow-wrap:anywhere]">{error}</p>}
 
             {step === 'payment' && (
-              <section data-testid="step-payment" className="space-y-4">
-                {list.length > 0 && (
-                  <div className="space-y-2">
-                    <p className="text-sm font-semibold text-muted">{t('scenario_title')}</p>
-                    {list.map((s) => (
-                      <button
-                        key={s.id}
-                        data-testid={`scenario-${s.id}`}
-                        aria-pressed={scenario?.id === s.id}
-                        className={`${btn2} justify-start text-left ${scenario?.id === s.id ? 'border-ink' : ''}`}
-                        onClick={() => choose(s)}
-                      >
-                        {t('scenario_pick', { id: s.id, customer: s.customer_id })} {s.video && `· ${t('scenario_video')}`}
-                      </button>
-                    ))}
-                  </div>
-                )}
+              <section data-testid="step-payment" className="flex flex-col gap-3.5">
+                <div className="flex items-center gap-1.5 text-[#191c1e]">
+                  <Icon name="send_money" className="text-[#515f74]" />
+                  <h2 className="font-bold text-base">{t('ph_transfer')}</h2>
+                </div>
                 {prompts[0] && (
-                  <div data-testid="trigger-banner" className="rounded-box border border-contra-line bg-contra-bg p-3 text-contra">
-                    <p className="font-semibold">{t('trigger_title')}</p>
-                    <p className="mt-1">{t(`trigger_${prompts[0].reason}`, { payee: prompts[0].payee })}</p>
-                    <p className="mt-1 text-sm">{t('trigger_not_blocked')}</p>
-                    <button
-                      data-testid="trigger-dismiss"
-                      className={`${btn2} mt-2`}
-                      onClick={() => ackPrompt(customer, prompts[0].campaign).then(() => setPrompts((p) => p.slice(1)))}
-                    >
+                  <div data-testid="trigger-banner" className="p-2.5 rounded-lg bg-[#ffdad6] border border-[#f87171] text-[#93000a] flex flex-col gap-1">
+                    <span className="text-xs font-bold">{t('trigger_title')}</span>
+                    <span className="text-[11px] [overflow-wrap:anywhere]">{t(`trigger_${prompts[0].reason}`, { payee: prompts[0].payee })}</span>
+                    <span className="text-[10px]">{t('trigger_not_blocked')}</span>
+                    <button data-testid="trigger-dismiss" type="button" className={`${btn2} mt-1`} onClick={() => ackPrompt(customer, prompts[0].campaign).then(() => setPrompts((p) => p.slice(1)))}>
                       {t('trigger_dismiss')}
                     </button>
                   </div>
                 )}
-                <div className={card}>
-                  <h2 className="mb-3 text-lg font-semibold">{t('payment_title')}</h2>
-                  <label className="mb-3 block">
-                    <span className="text-sm text-muted">{t('payment_payee')}</span>
-                    <input data-testid="payment-payee" className={input} value={payee} onChange={(e) => setPayee(e.target.value)} />
+                <div className="bg-[#f2f4f6] p-3.5 rounded-lg flex flex-col gap-2 border border-[#e0e3e5]">
+                  <label className="flex justify-between items-baseline gap-3">
+                    <span className="text-xs text-[#45464d] whitespace-nowrap">{t('ph_beneficiary')}</span>
+                    <input data-testid="payment-payee" value={payee} onChange={(e) => setPayee(e.target.value)} className="min-w-0 flex-1 text-right text-xs font-bold text-[#191c1e] bg-transparent focus:outline-none focus:bg-[#ffffff] rounded px-1" />
                   </label>
-                  {scenario?.payment_request && <p className="mb-3 text-sm text-muted">{t('payment_prefilled')}</p>}
-                  <label className="block">
-                    <span className="text-sm text-muted">{t('payment_amount')}</span>
-                    <input data-testid="payment-amount" inputMode="numeric" className={input} value={amount} onChange={(e) => setAmount(e.target.value)} />
+                  {scenario?.payment_request && <span className="text-[10px] text-[#45464d] text-right">{t('payment_prefilled')}</span>}
+                  <label className="pt-2 border-t border-[#e0e3e5] flex justify-between items-baseline gap-3">
+                    <span className="text-xs text-[#45464d] whitespace-nowrap">
+                      {t('ph_amount')} <span className="text-[10px]">({t('ph_amount_hint')})</span>
+                    </span>
+                    <input data-testid="payment-amount" inputMode="numeric" value={amount} onChange={(e) => setAmount(e.target.value)} className="min-w-0 w-32 text-right text-xl text-[#000000] font-bold tabular-nums bg-[#ffffff] border border-[#e0e3e5] rounded px-1" />
                   </label>
                 </div>
-                <p className="font-semibold">{t('payment_check_first')}</p>
-                {status !== 'ready' && (
-                  <p data-testid="preparing" className="rounded-box border border-line-2 bg-panel p-3">
-                    {t('preparing')}
-                  </p>
-                )}
-                <button data-testid="check-button" className={btn} disabled={status !== 'ready' || !customer} onClick={() => setStep('upload')}>
-                  {t('check_button')}
-                </button>
-                <button data-testid="pay-skip" className={btn2} onClick={() => setSkipped(true)}>
-                  {t('payment_skip')}
-                </button>
-                {skipped && <p className="text-sm">{t('still_pay_note')}</p>}
+
+                <div className="bg-[#eceef0] p-3.5 rounded-lg flex flex-col gap-2.5 shadow-xs border border-[#c6c6cd]">
+                  <div className="flex items-start gap-2">
+                    <Icon name="policy" className="text-[#515f74] text-[20px] mt-0.5" />
+                    <div className="flex flex-col">
+                      <span className="text-xs font-bold text-[#191c1e]">{t('ph_check_before')}</span>
+                      <p className="text-[11px] text-[#45464d] mt-0.5 leading-snug">{t('ph_check_before_desc')}</p>
+                    </div>
+                  </div>
+                  {status !== 'ready' && (
+                    <p data-testid="preparing" className="text-[11px] text-[#45464d] flex items-center gap-1">
+                      <Icon name="progress_activity" className="text-[14px] animate-spin" /> {t('preparing')}
+                    </p>
+                  )}
+                  <div className="flex flex-col gap-2 pt-1">
+                    <button data-testid="check-button" onClick={() => go('upload')} disabled={status !== 'ready' || !customer} type="button" className={btn}>
+                      <Icon name="policy" className="text-[16px]" />
+                      <span>{t('ph_verify')}</span>
+                    </button>
+                    <button data-testid="pay-skip" onClick={() => setSkipped(true)} type="button" className="w-full py-1.5 bg-transparent text-[#515f74] text-[11px] hover:text-[#191c1e] text-center">
+                      {t('ph_not_now')}
+                    </button>
+                    {skipped && <p className="text-[11px] text-[#191c1e] text-center">{t('still_pay_note')}</p>}
+                  </div>
+                </div>
+
+                <div className="bg-[#f2f4f6] p-2 rounded text-[#45464d] flex items-center gap-1.5 border border-[#e0e3e5]">
+                  <Icon name="gavel" className="text-[15px] text-[#515f74]" />
+                  <span className="text-[11px] leading-tight">{t('ph_disclaimer')}</span>
+                </div>
               </section>
             )}
 
             {step === 'upload' && (
-              <section data-testid="step-upload" className="space-y-4">
-                <h2 className="text-lg font-semibold">{t('upload_title')}</h2>
-                {scenario && (
-                  <button data-testid="use-scenario" className={btn2} onClick={() => loadScenarioFiles().catch(fail)}>
-                    {t('scenario_pick', { id: scenario.id, customer: scenario.customer_id })}
-                  </button>
+              <section data-testid="step-upload" className="flex flex-col gap-3.5">
+                <Kicker kicker={t('ph_kicker_2')} title={t('ph_share')} desc={t('ph_share_desc')} />
+                <div className="flex gap-2">
+                  <label className={tile}>
+                    <Icon name="photo_camera" className="text-[24px]" />
+                    <span className="text-xs font-semibold">{t('ph_camera')}</span>
+                    <input type="file" accept="image/*" capture="environment" className="sr-only" onChange={(e) => setShot(e.target.files?.[0] ?? null)} />
+                  </label>
+                  <label className={tile}>
+                    <Icon name="upload_file" className="text-[24px]" />
+                    <span className="text-xs font-semibold">{t('ph_gallery')}</span>
+                    <input data-testid="shot-input" type="file" accept="image/png,image/jpeg" className="sr-only" onChange={(e) => setShot(e.target.files?.[0] ?? null)} />
+                  </label>
+                  <label className={tile}>
+                    <Icon name="videocam" className="text-[24px]" />
+                    <span className="text-xs font-semibold">{t('ph_video')}</span>
+                    <input data-testid="video-input" type="file" accept="video/mp4" className="sr-only" onChange={(e) => setVideo(e.target.files?.[0] ?? null)} />
+                  </label>
+                </div>
+                {(shot || video) && (
+                  <p data-testid="selected-files" className="text-[11px] text-[#191c1e] [overflow-wrap:anywhere]">
+                    {t('ph_selected', { files: [shot?.name, video?.name].filter(Boolean) })}
+                  </p>
                 )}
-                <label className="block">
-                  <span className="text-sm text-muted">{t('upload_screenshot')}</span>
-                  <input data-testid="shot-input" type="file" accept="image/png,image/jpeg" className={input} onChange={(e) => setShot(e.target.files?.[0] ?? null)} />
-                  {shot && <span className="text-sm">{shot.name}</span>}
-                </label>
-                <label className="block">
-                  <span className="text-sm text-muted">{t('upload_video')}</span>
-                  <input data-testid="video-input" type="file" accept="video/mp4" className={input} onChange={(e) => setVideo(e.target.files?.[0] ?? null)} />
-                  {video && <span className="text-sm">{video.name}</span>}
-                </label>
-                {video && <p className="text-sm text-muted">{t('video_note')}</p>}
+                {video && <p className="text-[10px] text-[#45464d]">{t('video_note')}</p>}
+
+                {list.length > 0 && (
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-[11px] text-[#45464d] uppercase font-semibold">{t('ph_or_scenario')}</span>
+                    {list.map((s, i) => (
+                      <button
+                        key={s.id}
+                        data-testid={`use-${s.id}`}
+                        type="button"
+                        onClick={() => loadScenario(s).catch(fail)}
+                        className={`p-2.5 rounded-lg text-left flex items-start gap-2 border transition-all ${scenario?.id === s.id && shot ? SCENARIO_ON : SCENARIO_OFF}`}
+                      >
+                        <Icon name={s.video ? 'videocam' : 'account_balance_wallet'} className="text-[#515f74] text-[18px] mt-0.5" />
+                        <div className="flex flex-col">
+                          <span className="text-xs font-bold text-[#191c1e]">
+                            {i + 1}. {s.id}
+                          </span>
+                          <span className="text-[10px] text-[#45464d]">{t(s.video ? 'ph_scenario_video' : 'ph_scenario_desc', { customer: s.customer_id })}</span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+
                 {Object.keys(stages).length > 0 && (
-                  <ul className="space-y-2">
-                    {stages.read && <StageRow label={t('progress_read')} stage={stages.read} lang={lang} />}
-                    {stages.video && <StageRow label={t('progress_video')} stage={stages.video} lang={lang} />}
+                  <ul className="flex flex-col gap-2">
+                    {stages.read && <StageRow title={t('progress_read')} stage={stages.read} lang={lang} icon="document_scanner" />}
+                    {stages.video && <StageRow title={t('progress_video')} stage={stages.video} lang={lang} icon="smart_display" />}
                   </ul>
                 )}
-                <button data-testid="read-button" className={btn} disabled={!shot || stages.read === 'running'} onClick={read}>
-                  {t('read_button')}
-                </button>
-                <button className={btn2} onClick={() => setStep('payment')}>
-                  {t('back')}
-                </button>
+
+                <div className="mt-auto flex justify-between items-center pt-3 border-t border-[#f2f4f6]">
+                  <button onClick={() => setStep('payment')} type="button" className={back}>
+                    {t('back')}
+                  </button>
+                  <button data-testid="read-button" onClick={read} disabled={!shot || stages.read === 'running'} type="button" className={fwd}>
+                    <span>{t('ph_analyze')}</span>
+                    <Icon name="arrow_forward" className="text-[14px]" />
+                  </button>
+                </div>
               </section>
             )}
 
             {step === 'confirm' && claimset && (
-              <section data-testid="confirm" className="space-y-4">
-                <h2 className="text-lg font-semibold">{t('confirm_title')}</h2>
-                {claimset.claims.map((c) => (
-                  <fieldset key={c.id} data-testid={`claim-${c.id}`} className={card}>
-                    <legend className="px-1 text-sm font-semibold">{t(`claim_${c.type}`)}</legend>
-                    {Object.entries(c.fields)
-                      .filter(([k]) => !HIDDEN_FIELDS.includes(k))
-                      .map(([k, v]) => (
-                        <label key={k} className="mb-2 block">
-                          <span className="text-sm text-muted">{t(`field_${k}`)}</span>
-                          {BOOL_FIELDS.includes(k) ? (
-                            <input type="checkbox" className="ml-2 size-[18px] accent-ink" checked={Boolean(v)} onChange={(e) => setField(c.id, k, e.target.checked)} />
-                          ) : SELECT_FIELDS[k] ? (
-                            <select className={input} value={String(v)} onChange={(e) => setField(c.id, k, e.target.value)}>
-                              {SELECT_FIELDS[k].map((o) => (
-                                <option key={o}>{o}</option>
-                              ))}
-                            </select>
-                          ) : (
-                            <input
-                              className={input}
-                              readOnly={k === 'isin'}
-                              data-testid={`field-${c.type}-${k}`}
-                              type={NUMBER_FIELDS.includes(k) ? 'number' : 'text'}
-                              value={v === null ? '' : String(v)}
-                              onChange={(e) => setField(c.id, k, NUMBER_FIELDS.includes(k) ? (e.target.value === '' ? null : Number(e.target.value)) : e.target.value || null)}
-                              onBlur={k === 'instrument_name' ? () => resolveIsin(c).catch(fail) : undefined}
-                            />
-                          )}
-                        </label>
-                      ))}
-                    {choices[c.id] && (
-                      <div data-testid={`choices-${c.id}`} className="mt-2 rounded-box border border-line-2 bg-panel p-2">
-                        <p className="text-sm">{t('ambiguous_pick')}</p>
-                        {[...choices[c.id], { isin: '', name: t('skip_choice') }].map((o) => (
-                          <label key={o.isin || 'skip'} className="flex min-h-11 items-center gap-2 text-sm">
-                            <input type="radio" name={`pick-${c.id}`} checked={picked[c.id] === o.isin} onChange={() => pick(c.id, o.isin)} />
-                            {o.isin ? `${o.isin} · ${o.name}` : o.name}
+              <section data-testid="confirm" className="flex flex-col gap-3">
+                <Kicker kicker={t('ph_kicker_3')} title={t('ph_extracted')} desc={t('ph_extracted_desc')} />
+                <div className="flex flex-col gap-2">
+                  {claimset.claims.map((c) => (
+                    <fieldset key={c.id} data-testid={`claim-${c.id}`} className="p-2.5 bg-[#f2f4f6] rounded-lg flex flex-col gap-1.5 border border-[#e0e3e5]">
+                      <div className="flex items-center justify-between">
+                        <legend className="text-[11px] font-bold uppercase text-[#515f74]">{t(`claim_${c.type}`)}</legend>
+                        <button data-testid={`remove-${c.id}`} onClick={() => removeClaim(c.id)} type="button" aria-label={t('remove_claim')} className="text-[#ba1a1a] hover:opacity-80 p-0.5">
+                          <Icon name="delete" className="text-[16px]" />
+                        </button>
+                      </div>
+                      {Object.entries(c.fields)
+                        .filter(([k]) => !HIDDEN_FIELDS.includes(k))
+                        .map(([k, v]) => (
+                          <label key={k} className="flex flex-col gap-0.5">
+                            <span className="text-[10px] text-[#45464d]">{t(`field_${k}`)}</span>
+                            {BOOL_FIELDS.includes(k) ? (
+                              <input type="checkbox" className="size-[18px] accent-[#000000]" checked={Boolean(v)} onChange={(e) => setField(c.id, k, e.target.checked)} />
+                            ) : SELECT_FIELDS[k] ? (
+                              <select className={input} value={String(v)} onChange={(e) => setField(c.id, k, e.target.value)}>
+                                {SELECT_FIELDS[k].map((o) => (
+                                  <option key={o}>{o}</option>
+                                ))}
+                              </select>
+                            ) : (
+                              <input
+                                className={input}
+                                readOnly={k === 'isin'}
+                                data-testid={`field-${c.type}-${k}`}
+                                type={NUMBER_FIELDS.includes(k) ? 'number' : 'text'}
+                                value={v === null ? '' : String(v)}
+                                onChange={(e) => setField(c.id, k, NUMBER_FIELDS.includes(k) ? (e.target.value === '' ? null : Number(e.target.value)) : e.target.value || null)}
+                                onBlur={k === 'instrument_name' ? () => resolveIsin(c).catch(fail) : undefined}
+                              />
+                            )}
                           </label>
                         ))}
-                      </div>
-                    )}
-                    <button data-testid={`remove-${c.id}`} className={`${btn2} mt-2`} onClick={() => removeClaim(c.id)}>
-                      <Trash2 size={16} aria-hidden /> {t('remove_claim')}
-                    </button>
-                  </fieldset>
-                ))}
-                <div className="grid grid-cols-2 gap-2">
-                  {Object.keys(BLANK).map((type) => (
-                    <button key={type} data-testid={`add-${type}`} className={btn2} onClick={() => addClaim(type)}>
-                      <Plus size={16} aria-hidden /> {t(`claim_${type}`)}
-                    </button>
+                      {choices[c.id] && (
+                        <div data-testid={`choices-${c.id}`} className="mt-1 p-2 rounded bg-[#ffffff] border border-[#c6c6cd] flex flex-col gap-1">
+                          <p className="text-[11px] text-[#191c1e]">{t('ambiguous_pick')}</p>
+                          {[...choices[c.id], { isin: '', name: t('skip_choice') }].map((o) => (
+                            <label key={o.isin || 'skip'} className="flex items-center gap-2 text-[11px] text-[#191c1e]">
+                              <input type="radio" name={`pick-${c.id}`} checked={picked[c.id] === o.isin} onChange={() => pick(c.id, o.isin)} />
+                              {o.isin ? `${o.isin} · ${o.name}` : o.name}
+                            </label>
+                          ))}
+                        </div>
+                      )}
+                    </fieldset>
                   ))}
                 </div>
-                <p className="sr-only">{t('add_claim')}</p>
-                <button data-testid="continue" className={btn} disabled={!allPicked || !claimset.claims.length} onClick={() => setStep('consent')}>
-                  {t('continue')}
-                </button>
+                {adding ? (
+                  <div className="flex gap-1.5 mt-1">
+                    <select data-testid="add-type" value={addType} onChange={(e) => setAddType(e.target.value)} className="flex-1 px-2.5 py-1 text-xs bg-[#ffffff] border border-[#c6c6cd] rounded text-[#191c1e] focus:outline-none focus:border-[#000000]">
+                      {Object.keys(BLANK).map((type) => (
+                        <option key={type} value={type}>
+                          {t(`claim_${type}`)}
+                        </option>
+                      ))}
+                    </select>
+                    <button data-testid="add-save" type="button" onClick={addClaim} className="px-3 py-1 bg-[#000000] text-[#ffffff] text-xs font-semibold rounded">
+                      {t('ph_save')}
+                    </button>
+                    <button type="button" onClick={() => setAdding(false)} className="px-2 py-1 bg-[#eceef0] text-[#45464d] text-xs rounded">
+                      {t('ph_cancel')}
+                    </button>
+                  </div>
+                ) : (
+                  <button data-testid="add-claim" onClick={() => setAdding(true)} type="button" className="py-1.5 px-3 bg-[#eceef0] text-[#191c1e] text-xs font-semibold rounded flex items-center justify-center gap-1 hover:bg-[#e0e3e5] transition-colors border border-[#c6c6cd]">
+                    <Icon name="add" className="text-[16px]" />
+                    <span>{t('ph_add')}</span>
+                  </button>
+                )}
+                <div className="mt-auto flex justify-between items-center pt-3 border-t border-[#f2f4f6]">
+                  <button onClick={() => setStep('upload')} type="button" className={back}>
+                    {t('back')}
+                  </button>
+                  <button data-testid="continue" onClick={() => go('consent')} disabled={!allPicked || !claimset.claims.length} type="button" className={fwd}>
+                    <span>{t('ph_confirm')}</span>
+                    <Icon name="arrow_forward" className="text-[14px]" />
+                  </button>
+                </div>
               </section>
             )}
 
             {step === 'consent' && (
-              <section data-testid="consent" className="space-y-4 rounded-box border border-dashed border-line-2 bg-white p-4">
-                <p className="inline-block rounded-box border border-ink px-2 py-0.5 text-sm font-bold">{t('mock')}</p>
-                <h2 className="text-lg font-semibold">{t('consent_title')}</h2>
-                <p>{t('consent_depositories')}</p>
-                <p className="text-sm">{t('consent_mock')}</p>
-                <p className="text-sm">{t('consent_body')}</p>
-                <label className="block">
-                  <span className="text-sm text-muted">{t('otp_label')}</span>
-                  <input data-testid="otp" inputMode="numeric" maxLength={6} className={input} value={otp} onChange={(e) => setOtp(e.target.value)} />
-                </label>
-                {otpWrong && <p className="text-sm text-contra">{t('otp_wrong')}</p>}
-                <button data-testid="approve" className={btn} onClick={() => check(['CDSL', 'NSDL'])}>
-                  {t('approve')}
-                </button>
-                <button data-testid="refuse" className={btn2} onClick={() => check([])}>
-                  {t('refuse')}
-                </button>
+              <section data-testid="consent" className="flex flex-col gap-3">
+                <Kicker kicker={t('ph_kicker_4')} title={t('ph_gate')} desc={t('ph_gate_desc')} />
+                <div className={panel}>
+                  <div className="flex items-start gap-2">
+                    <Icon name="shield" className="text-[#515f74] text-[20px] mt-0.5" />
+                    <div className="flex flex-col">
+                      <span className="text-xs font-bold text-[#191c1e]">{t('ph_retention')}</span>
+                      <p className="text-[11px] text-[#45464d] leading-relaxed mt-0.5">{t('ph_retention_desc')}</p>
+                    </div>
+                  </div>
+                  <div className="bg-[#ffffff] p-2 rounded flex items-center justify-between border border-[#e0e3e5]">
+                    <span className="text-[11px] text-[#45464d]">{t('ph_target')}</span>
+                    <span className="text-xs font-mono font-bold text-[#191c1e]">{t('ph_target_value')}</span>
+                  </div>
+                  <span className="text-[10px] text-[#45464d]">{t('consent_mock')}</span>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="otp" className="text-xs text-[#191c1e] font-semibold">
+                    {t('ph_enter_otp')}
+                  </label>
+                  <div className="flex items-center gap-2">
+                    <input id="otp" data-testid="otp" inputMode="numeric" maxLength={6} value={otp} onChange={(e) => setOtp(e.target.value)} className="w-full text-center tracking-widest font-mono font-bold text-base py-1.5 px-3 bg-[#f2f4f6] text-[#191c1e] rounded border border-[#c6c6cd] focus:outline-none focus:border-[#000000]" />
+                    <button data-testid="otp-autofill" onClick={() => setOtp(MOCK_OTP)} type="button" className="py-2 px-3 bg-[#eceef0] text-[#191c1e] text-xs font-semibold rounded whitespace-nowrap hover:bg-[#e0e3e5] border border-[#c6c6cd]">
+                      {t('ph_autofill')}
+                    </button>
+                  </div>
+                  <span className="text-[10px] text-[#45464d]">{t('ph_otp_note')}</span>
+                  {otpWrong && <span className="text-[11px] text-[#93000a]">{t('otp_wrong')}</span>}
+                </div>
+                <div className="flex flex-col gap-2 pt-2 border-t border-[#f2f4f6]">
+                  <button data-testid="approve" onClick={() => check(['CDSL', 'NSDL'])} type="button" className={btn}>
+                    <Icon name="lock_open" className="text-[16px]" />
+                    <span>{t('ph_authorize')}</span>
+                  </button>
+                  <button data-testid="refuse" onClick={() => check([])} type="button" className="w-full py-2 bg-transparent text-[#515f74] text-xs hover:text-[#191c1e] text-center">
+                    {t('ph_skip')}
+                  </button>
+                </div>
               </section>
             )}
 
             {step === 'checking' && (
-              <section data-testid="step-checking" className="space-y-4">
-                <ul className="space-y-2">
-                  <StageRow label={t('progress_check')} stage={stages.check ?? 'waiting'} lang={lang} />
-                  <StageRow label={t('progress_records', { count: records.length })} stage={stages.records ?? 'waiting'} lang={lang} />
+              <section data-testid="step-checking" className="flex flex-col gap-3">
+                <Kicker kicker={t('ph_kicker_5')} title={t('ph_querying')} desc={t('ph_querying_desc')} />
+                <ul className="flex flex-col gap-2.5 py-1">
+                  <StageRow title={t('progress_check')} stage={stages.check ?? 'waiting'} lang={lang} icon="rule" />
+                  <StageRow title={t('progress_records', { count: records.length })} stage={stages.records ?? 'waiting'} lang={lang} icon="inventory" />
                 </ul>
                 {stages.records === 'done' && (
-                  <ul data-testid="record-sources" className="space-y-1 text-sm text-muted">
+                  <ul data-testid="record-sources" className="flex flex-col gap-2">
                     {records.map((r) => (
-                      <li key={r.sha256}>
-                        {t('record_source', { source: r.source })} · {t(r.mock ? 'record_mock' : 'record_public')}
-                      </li>
+                      <StageRow key={r.sha256} title={t('record_source', { source: r.source })} sub={`${t('record_fetched', { fetched_at: r.fetched_at })} · ${t(r.mock ? 'record_mock' : 'record_public')}`} stage="done" lang={lang} />
                     ))}
                   </ul>
                 )}
-                {stages.records === 'done' && next('result')}
+                <div className="mt-auto pt-2 flex flex-col gap-2">
+                  <button data-testid="next" onClick={() => go('result')} disabled={stages.records !== 'done'} type="button" className={btn}>
+                    <span>{t(stages.records === 'done' ? 'ph_view_results' : 'ph_waiting_records')}</span>
+                  </button>
+                </div>
               </section>
             )}
 
-            {step === 'result' && result && <ResultStep lang={lang} result={result} records={records} onNext={() => setStep('action')} />}
-            {step === 'action' && result && claimset && (
-              <ActionStep lang={lang} result={result} claimset={claimset} customer={customer} onNext={() => setStep('pack')} />
-            )}
+            {step === 'result' && result && <ResultStep lang={lang} result={result} records={records} onBack={() => setStep('consent')} onNext={() => go('action')} />}
+            {step === 'action' && result && claimset && <ActionStep lang={lang} result={result} claimset={claimset} customer={customer} onNext={() => go('pack')} />}
             {step === 'pack' && result && <PackStep lang={lang} result={result} customer={customer} onRestart={restart} />}
           </div>
+
+          {/* home bar */}
+          <div className="w-full py-2 bg-[#ffffff] flex justify-center border-t border-[#f2f4f6]">
+            <div className="w-28 h-1 bg-[#45464d] rounded-full opacity-40" />
+          </div>
         </div>
-        <footer data-testid="mock-footer" className="text-sm text-muted">
+        <footer data-testid="mock-footer" className="mt-4 max-w-[430px] text-[11px] text-[#45464d] text-center">
           {t('mock_footer')}
         </footer>
-      </main>
+      </div>
     </div>
   )
 }

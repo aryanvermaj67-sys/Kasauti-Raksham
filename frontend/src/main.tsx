@@ -6,6 +6,7 @@ import '@fontsource/inter/600.css'
 import '@fontsource/inter/700.css'
 import '@fontsource/noto-sans-devanagari/400.css'
 import '@fontsource/noto-sans-devanagari/700.css'
+import 'material-symbols/outlined.css' // the design's icon font, bundled (no Google Fonts)
 import './index.css'
 import App from './App.tsx'
 

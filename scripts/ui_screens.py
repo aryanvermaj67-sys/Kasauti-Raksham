@@ -49,14 +49,13 @@ def run_one(browser, s: dict, lang: str, blocked: list, tofu: dict) -> int:
         if lang == "hi":
             tofu[f"{s['id']} {STEPS[n]}"] = page.evaluate(TOFU)
 
-    page.goto(f"{APP}/app")
+    page.goto(f"{APP}/app?scenario={s['id']}")
     page.wait_for_selector("[data-testid=status-chip][data-status=ready]", timeout=300000)
-    page.click(f"[data-testid=scenario-{s['id']}]")
     if lang == "hi":
         page.click("[data-testid=lang-toggle]")
     snap(0)
     page.click("[data-testid=check-button]")
-    page.click("[data-testid=use-scenario]")
+    page.click(f"[data-testid=use-{s['id']}]")
     page.wait_for_function("!document.querySelector('[data-testid=read-button]').disabled")
     snap(1)
     page.click("[data-testid=read-button]")
