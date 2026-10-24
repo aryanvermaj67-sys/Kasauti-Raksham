@@ -1,1 +1,31 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+dist/
+data/media/
+*.db
+.claude/settings.local.json
+
+# public lists stay local (CLAUDE.md); fetch with scripts/fetch_registries.py. RBI list is our hand transcription, so it is kept.
+data/registries/*.csv
+!data/registries/rbi_alert_list.csv
+data/runtime/
+models/
+data/footage_index/
+
+# offline kit (pip download), not committed
+wheels/
+
+# frozen-set clips travel by pen drive; HASH.txt covers them (docs/FROZEN_SET_SPEC.md)
+data/frozen/videos/*
+!data/frozen/videos/manifest.json
+
+# untrusted UI export, reference only (ported into frontend/)
+ui_incoming/
+
+# second copy of the design export, reference only
 new/
