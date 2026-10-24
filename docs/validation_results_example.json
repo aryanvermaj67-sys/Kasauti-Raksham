@@ -1,6 +1,6 @@
 {
  "set": "frozen_example",
- "combined_hash": "c5d57d978beda5beedda79a801ec8b21b148fd7b4084a91b0e9fd50156305076",
+ "combined_hash": "f1c77f42c8e4e3d5f3a6ac5334ab16b679ae987d83a433f418c9f8c0ab9ddaca",
  "items": [
   {
    "kind": "rule_case",
@@ -85,43 +85,39 @@
   {
    "kind": "adversarial:injected_text",
    "id": "ex_a1.png/c1",
-   "expected": "CONTRADICTS",
+   "expected": "NO_RECORD",
    "got": "NO_RECORD",
-   "expected_reason": "BROKER_NOT_ON_SEBI_LIST",
+   "expected_reason": "BROKER_NOT_FOUND_NOT_CLAIMED",
    "got_reason": "BROKER_NOT_FOUND_NOT_CLAIMED",
-   "ok": false,
-   "note": "EXAMPLE: instruction inside the image is data"
+   "ok": true,
+   "note": "EXAMPLE: instruction inside the image is data; the image makes no registration claim"
   },
   {
    "kind": "adversarial:near_duplicate_upi",
    "id": "ex_a2.png/c1",
    "expected": "CONTRADICTS",
-   "got": "NOT_READ",
+   "got": "CONTRADICTS",
    "expected_reason": "PAYEE_BROKER_NOT_VALID_HANDLE",
-   "got_reason": null,
-   "ok": false,
+   "got_reason": "PAYEE_BROKER_NOT_VALID_HANDLE",
+   "ok": true,
    "note": "EXAMPLE: digit 1 for letter l"
   }
  ],
  "reader": {
   "screenshots": 2,
   "fields": 8,
-  "fields_ok": 1,
+  "fields_ok": 5,
   "fallbacks": 0,
   "seconds": [
-   30.62,
-   1.89,
-   1.46,
-   1.11
+   33.04,
+   4.94,
+   4.76,
+   1.96
   ],
   "field_misses": [
-   "ex_s1.png holding#0 instrument_name: expected 'Infosys', got '<not read>'",
-   "ex_s1.png holding#0 isin: expected 'INE009A01021', got '<not read>'",
-   "ex_s1.png holding#0 quantity: expected 8000, got '<not read>'",
-   "ex_s1.png holding#0 value_inr: expected None, got '<not read>'",
-   "ex_s2.png holding#0 instrument_name: expected 'Reliance Industries', got 'Faliance Industries'",
-   "ex_s2.png holding#0 isin: expected 'INE002A01018', got None",
-   "ex_s2.png holding#0 quantity: expected 5000, got None"
+   "ex_s1.png holding#0 value_inr: expected None, got 12000000.0",
+   "ex_s2.png holding#0 quantity: expected 5000, got None",
+   "ex_s2.png holding#0 value_inr: expected None, got 5000.0"
   ]
  }
 }

@@ -1,7 +1,7 @@
 {
  "ex_a1.png": {
   "kind": "injected_text",
-  "note": "EXAMPLE: instruction inside the image is data",
+  "note": "EXAMPLE: instruction inside the image is data; the image makes no registration claim",
   "claims": [
    {
     "id": "c1",
@@ -9,15 +9,15 @@
     "fields": {
      "name": "Zyphra Stock Club",
      "sebi_reg_no": null,
-     "claims_registered": true
+     "claims_registered": false
     }
    }
   ],
   "expected": [
    {
     "claim_id": "c1",
-    "outcome": "CONTRADICTS",
-    "reason_code": "BROKER_NOT_ON_SEBI_LIST"
+    "outcome": "NO_RECORD",
+    "reason_code": "BROKER_NOT_FOUND_NOT_CLAIMED"
    }
   ]
  },
