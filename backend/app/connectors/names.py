@@ -6,12 +6,12 @@ from app.constants import GENERIC_WORDS, LEGAL_WORDS, SECURITY_SUFFIXES
 
 
 def _tokens(name: str) -> list[str]:
-    return re.sub(r"[^a-z0-9 ]+", " ", name.lower().replace("&", " and ")).split()
+    return re.sub(r"[^\w\u0900-\u097F ]+", " ", name.lower().replace("&", " and ")).split()
 
 
 def normalize_security(name: str) -> str:
     """Share names for ISIN mapping: lowercase, punctuation stripped, only ltd/limited/pvt/private dropped."""
-    return " ".join(w for w in re.sub(r"[^a-z0-9 ]+", " ", name.lower()).split() if w not in SECURITY_SUFFIXES)
+    return " ".join(w for w in re.sub(r"[^\w\u0900-\u097F ]+", " ", name.lower()).split() if w not in SECURITY_SUFFIXES)
 
 
 def normalize(name: str) -> str:

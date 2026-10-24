@@ -15,9 +15,9 @@ def map_isins(claimset: ClaimSet):
     cs = claimset.model_copy(deep=True)
     mappings = {}
     for c in cs.claims:
-        if c.type == "holding" and c.fields.isin is None:
-            rec = isin_master.lookup(c.fields.instrument_name)
-            c.fields.isin = rec.payload["isin"]
+        if c.type == "holding":
+            rec = isin_master.lookup(c.fields.instrument_name, c.fields.isin)  # also says if a shown ISIN is listed
+            c.fields.isin = c.fields.isin or rec.payload["isin"]
             mappings[c.id] = rec
     return cs, mappings
 

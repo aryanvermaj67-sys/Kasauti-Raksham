@@ -39,6 +39,9 @@ def holding(claim, aa_records, mapping=None):
     params |= {"isin": f.isin, "depositories": facts["ok_depositories"], "failed_depositories": failed}
     if units and (f.quantity is None or units == f.quantity):
         return _v(claim, "MATCHES", "HOLDING_FOUND", params | {"quantity": units}, evidence)
+    if mapping and not mapping.payload.get("listed", True):
+        # an ISIN on neither list is likelier a misread (O for 0) than a security: its absence proves nothing
+        return _v(claim, "NO_RECORD", "HOLDING_ISIN_UNMAPPED", params, evidence)
     if failed:  # a depository we could not read may hold it: partial coverage is never CONTRADICTS
         return _v(claim, "NO_RECORD", "HOLDING_PARTIAL_COVERAGE", params, evidence)
     if units:
@@ -91,7 +94,8 @@ def broker(claim, sebi_record):
                 params | {"near_name": reg["name"], "near_reg_no": reg["reg_no"]},
                 ev,
             )
-        return _v(claim, "CONTRADICTS", "BROKER_REG_NO_MISMATCH", params | {"claimed_reg_no": f.sebi_reg_no}, ev)
+        if reg or p["exact"]:  # the number belongs to another firm, or this firm is listed under another number
+            return _v(claim, "CONTRADICTS", "BROKER_REG_NO_MISMATCH", params | {"claimed_reg_no": f.sebi_reg_no}, ev)
     if p["exact"]:
         return _v(claim, "MATCHES", "BROKER_ON_SEBI_LIST", params | {"sebi_reg_no": p["exact"]["reg_no"]}, ev)
     if p["near"]:  # within one typo of a registered firm, but not its exact name: ambiguous
