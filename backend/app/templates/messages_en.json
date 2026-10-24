@@ -4,31 +4,110 @@
     "note": "One entry per reason_code in docs/formats/verdict.schema.json. app = 'Your app says' column, record = 'Your record says' column. {depositories} and {failed_depositories} are lists joined by the UI per language; *_inr params are rupees formatted by the UI in Indian style."
   },
   "reason_codes": {
-    "HOLDINGS_TOTAL_NONE_FOUND": {"app": "Your app shows {claimed_value_inr} of shares in {claimed_count} holdings.", "record": "None of them is in your name in the {depositories} record."},
-    "HOLDINGS_TOTAL_SOME_FOUND": {"app": "Your app shows {claimed_value_inr} of shares in {claimed_count} holdings.", "record": "Only {found_count} of {claimed_count} are in your name in the {depositories} record."},
-    "HOLDINGS_TOTAL_ALL_FOUND": {"app": "Your app shows {claimed_value_inr} of shares in {claimed_count} holdings.", "record": "All {claimed_count} are in your name in the {depositories} record."},
-    "HOLDINGS_TOTAL_INCOMPLETE": {"app": "Your app shows {claimed_value_inr} of shares in {claimed_count} holdings.", "record": "We could not check every depository ({failed_depositories} did not respond), so we cannot say whether these shares are yours."},
-    "HOLDING_FOUND": {"app": "{instrument_name}: {quantity} shares", "record": "{quantity} shares in your name at {depositories}."},
-    "HOLDING_NOT_FOUND_ALL_DEPOSITORIES": {"app": "{instrument_name}: {quantity} shares", "record": "Not in your name at {depositories}."},
-    "HOLDING_QUANTITY_DIFFERS": {"app": "{instrument_name}: {quantity} shares", "record": "{record_quantity} shares in your name at {depositories}, not {quantity}."},
-    "HOLDING_PARTIAL_COVERAGE": {"app": "{instrument_name}: {quantity} shares", "record": "Not found at {depositories}, but {failed_depositories} could not be checked. We could not verify this."},
-    "HOLDING_NO_DEMAT": {"app": "{instrument_name}: {quantity} shares", "record": "No demat account in your name at {depositories}. We could not verify this."},
-    "HOLDING_ISIN_UNMAPPED": {"app": "{instrument_name}", "record": "We could not match this name to a listed share. We could not verify this."},
-    "HOLDING_NAME_AMBIGUOUS": {"app": "{instrument_name}: {quantity} shares", "record": "This name matches {candidate_count} listed securities, so we cannot tell which one to look for. We could not verify this."},
-    "BROKER_ON_SEBI_LIST": {"app": "Broker: {name}", "record": "{name} is on the SEBI list of registered intermediaries ({sebi_reg_no})."},
-    "BROKER_NOT_ON_SEBI_LIST": {"app": "Broker: {name}, says it is SEBI registered", "record": "{name} is not on the SEBI list of registered intermediaries."},
-    "BROKER_NEAR_MATCH": {"app": "Broker: {name}", "record": "{name} is not identical to the SEBI-registered firm {near_name} ({near_reg_no}). Compare the exact name and registration number on SEBI Check before you pay."},
-    "BROKER_NOT_FOUND_NOT_CLAIMED": {"app": "Broker: {name}", "record": "{name} is not on the SEBI list. We could not verify this."},
-    "BROKER_REG_NO_MISMATCH": {"app": "Broker: {name}, SEBI reg. no. {claimed_reg_no}", "record": "On the SEBI list, {claimed_reg_no} is not the registration number of {name}."},
-    "PAYEE_VALID_HANDLE": {"app": "Pay to {payee}", "record": "{payee} is a SEBI @valid handle and is not in the Suspect Registry."},
-    "PAYEE_IN_SUSPECT_REGISTRY": {"app": "Pay to {payee}", "record": "{payee} is in the Suspect Registry of accounts reported for fraud."},
-    "PAYEE_BROKER_NOT_VALID_HANDLE": {"app": "Pay to {payee}, described as a broker", "record": "Registered brokers collect money through @valid handles. {payee} is not one."},
-    "PAYEE_NO_REGISTRY_HIT": {"app": "Pay to {payee}", "record": "{payee} is not in the Suspect Registry. We could not verify who owns it."},
-    "ENDORSEMENT_SOURCE_SAME": {"app": "{person}: \"{quote}\"", "record": "The original video has the same words."},
-    "ENDORSEMENT_WORDS_CHANGED": {"app": "{person}: \"{quote}\"", "record": "The original video exists, but the words were changed at {time_ranges}. Original words: \"{original_quote}\"."},
-    "ENDORSEMENT_NO_SOURCE": {"app": "{person}: \"{quote}\"", "record": "We found no original video to compare it with. We could not verify this. A missing source proves nothing either way."},
-    "PLATFORM_ON_RBI_ALERT_LIST": {"app": "Platform: {name}", "record": "{name} is on the RBI Alert List of unauthorised forex platforms."},
-    "PLATFORM_NOT_ON_ALERT_LIST": {"app": "Platform: {name}", "record": "{name} is not on the RBI Alert List. We could not verify this."}
+    "HOLDINGS_TOTAL_NONE_FOUND": {
+      "app": "Your app shows {claimed_value_inr} of shares in {claimed_count} holdings.",
+      "record": "None of them is in your name in the {depositories} record."
+    },
+    "HOLDINGS_TOTAL_SOME_FOUND": {
+      "app": "Your app shows {claimed_value_inr} of shares in {claimed_count} holdings.",
+      "record": "Only {found_count} of {claimed_count} are in your name in the {depositories} record."
+    },
+    "HOLDINGS_TOTAL_ALL_FOUND": {
+      "app": "Your app shows {claimed_value_inr} of shares in {claimed_count} holdings.",
+      "record": "All {claimed_count} are in your name in the {depositories} record."
+    },
+    "HOLDINGS_TOTAL_INCOMPLETE": {
+      "app": "Your app shows {claimed_value_inr} of shares in {claimed_count} holdings.",
+      "record": "We could not check every depository ({failed_depositories} did not respond), so we cannot say whether these shares are yours."
+    },
+    "HOLDING_FOUND": {
+      "app": "{instrument_name}: {quantity} shares",
+      "record": "{quantity} shares in your name at {depositories}."
+    },
+    "HOLDING_NOT_FOUND_ALL_DEPOSITORIES": {
+      "app": "{instrument_name}: {quantity} shares",
+      "record": "Not in your name at {depositories}."
+    },
+    "HOLDING_QUANTITY_DIFFERS": {
+      "app": "{instrument_name}: {quantity} shares",
+      "record": "{record_quantity} shares in your name at {depositories}, not {quantity}."
+    },
+    "HOLDING_PARTIAL_COVERAGE": {
+      "app": "{instrument_name}: {quantity} shares",
+      "record": "Not found at {depositories}, but {failed_depositories} could not be checked. We could not verify this."
+    },
+    "HOLDING_NO_DEMAT": {
+      "app": "{instrument_name}: {quantity} shares",
+      "record": "No demat account in your name at {depositories}. We could not verify this."
+    },
+    "HOLDING_ISIN_UNMAPPED": {
+      "app": "{instrument_name}",
+      "record": "We could not match this name to a listed share. We could not verify this."
+    },
+    "HOLDING_NAME_AMBIGUOUS": {
+      "app": "{instrument_name}: {quantity} shares",
+      "record": "This name matches {candidate_count} listed securities, so we cannot tell which one to look for. We could not verify this."
+    },
+    "BROKER_ON_SEBI_LIST": {
+      "app": "Broker: {name}",
+      "record": "{name} is on the SEBI list of registered intermediaries ({sebi_reg_no})."
+    },
+    "BROKER_NOT_ON_SEBI_LIST": {
+      "app": "Broker: {name}, says it is SEBI registered",
+      "record": "{name} is not on the SEBI list of registered intermediaries."
+    },
+    "BROKER_NEAR_MATCH": {
+      "app": "Broker: {name}",
+      "record": "{name} is not identical to the SEBI-registered firm {near_name} ({near_reg_no}). Compare the exact name and registration number on SEBI Check before you pay."
+    },
+    "BROKER_NOT_FOUND_NOT_CLAIMED": {
+      "app": "Broker: {name}",
+      "record": "{name} is not on the SEBI list. We could not verify this."
+    },
+    "BROKER_REG_NO_MISMATCH": {
+      "app": "Broker: {name}, SEBI reg. no. {claimed_reg_no}",
+      "record": "On the SEBI list, {claimed_reg_no} is not the registration number of {name}."
+    },
+    "PAYEE_VALID_HANDLE": {
+      "app": "Pay to {payee}",
+      "record": "{payee} is a SEBI @valid handle and is not in the Suspect Registry."
+    },
+    "PAYEE_IN_SUSPECT_REGISTRY": {
+      "app": "Pay to {payee}",
+      "record": "{payee} is in the Suspect Registry of accounts reported for fraud."
+    },
+    "PAYEE_BROKER_NOT_VALID_HANDLE": {
+      "app": "Pay to {payee}, described as a broker",
+      "record": "Registered brokers collect money through @valid handles. {payee} is not one."
+    },
+    "PAYEE_NO_REGISTRY_HIT": {
+      "app": "Pay to {payee}",
+      "record": "{payee} is not in the Suspect Registry. We could not verify who owns it."
+    },
+    "ENDORSEMENT_SOURCE_SAME": {
+      "app": "{person}: \"{quote}\"",
+      "record": "The original video has the same words."
+    },
+    "ENDORSEMENT_WORDS_CHANGED": {
+      "app": "{person}: \"{quote}\"",
+      "record": "The original video exists, but the words were changed at {time_ranges}. Original words: \"{original_quote}\"."
+    },
+    "ENDORSEMENT_NO_SOURCE": {
+      "app": "{person}: \"{quote}\"",
+      "record": "We found no original video to compare it with. We could not verify this. A missing source proves nothing either way."
+    },
+    "PLATFORM_ON_RBI_ALERT_LIST": {
+      "app": "Platform: {name}",
+      "record": "{name} is on the RBI Alert List of unauthorised forex platforms."
+    },
+    "PLATFORM_NOT_ON_ALERT_LIST": {
+      "app": "Platform: {name}",
+      "record": "{name} is not on the RBI Alert List. We could not verify this."
+    },
+    "HOLDING_NO_CONSENT": {
+      "app": "{instrument_name}: {quantity} shares",
+      "record": "You did not allow a holdings check, so we did not compare this with your depository record."
+    }
   },
   "ui": {
     "app_title": "Kasauti check",
@@ -78,9 +157,9 @@
     "result_title": "What we found",
     "col_app": "Your app says",
     "col_record": "Your record says",
-    "outcome_MATCHES": "Matches your record",
-    "outcome_CONTRADICTS": "Does not match your record",
-    "outcome_NO_RECORD": "No record to compare",
+    "outcome_MATCHES": "MATCHES THE RECORD",
+    "outcome_CONTRADICTS": "CONTRADICTS THE RECORD",
+    "outcome_NO_RECORD": "NO RECORD FOUND",
     "matches_note": "Everything we checked matches your record. No action needed.",
     "no_record_title": "We could not verify this.",
     "self_check_title": "You can check it yourself:",
@@ -129,6 +208,57 @@
     "reviewer_others": "Other customers who paid it: {customers}",
     "reviewer_rejected": "Rejected: {reason}",
     "reviewer_pack": "Export evidence pack",
-    "reviewer_pack_done": "Evidence pack {pack_id} written: {html}"
+    "reviewer_pack_done": "Evidence pack {pack_id} written: {html}",
+    "synthetic_chip": "SYNTHETIC DATA",
+    "status_ready": "Checker ready",
+    "status_preparing": "Preparing",
+    "status_down": "Checker not reachable",
+    "large_text": "A+",
+    "large_text_label": "Larger text",
+    "reset": "Reset",
+    "step_of": "Step {n} of {total}: {name}",
+    "step_payment": "Payment",
+    "step_upload": "Upload",
+    "step_confirm": "Confirm",
+    "step_consent": "Consent",
+    "step_checking": "Checking",
+    "step_result": "Result",
+    "step_action": "Action",
+    "step_pack": "Pack",
+    "payment_title": "Make a payment",
+    "payment_payee": "Pay to",
+    "payment_amount": "Amount in rupees (you enter it)",
+    "payment_prefilled": "Filled in from the ad you were sent.",
+    "payment_check_first": "Check this investment before you pay?",
+    "payment_skip": "Continue without checking",
+    "scenario_title": "Demo artifacts in this repo (synthetic)",
+    "scenario_pick": "Demo {id} · customer {customer}",
+    "scenario_video": "with its video clip (dev clip)",
+    "progress_read": "Read the screenshot",
+    "progress_video": "Searched the official footage index (MOCK)",
+    "progress_check": "Checked each claim against its record",
+    "progress_records": "Loaded the records used: {count}",
+    "progress_running": "running",
+    "progress_done": "done",
+    "progress_waiting": "waiting",
+    "add_claim": "Add a claim",
+    "remove_claim": "Remove this claim",
+    "consent_depositories": "Depositories asked: CDSL and NSDL",
+    "refuse": "Refuse: check public registries only",
+    "record_source": "Source: {source}",
+    "record_fetched": "Fetched at {fetched_at}",
+    "record_mock": "MOCK record",
+    "record_public": "Public list (cached)",
+    "read_aloud": "Read the result aloud",
+    "stop_reading": "Stop reading",
+    "next": "Next",
+    "back": "Back",
+    "pack_title": "Your evidence pack",
+    "pack_download": "Download the evidence pack",
+    "pack_hash": "SHA-256 of the downloaded file: {hash}",
+    "pack_chain_ok": "Hash chain intact",
+    "pack_chain_bad": "Hash chain broken",
+    "pack_note": "A list of hashes for your records. It is not a legal certificate.",
+    "pack_id": "Pack {pack_id}"
   }
 }

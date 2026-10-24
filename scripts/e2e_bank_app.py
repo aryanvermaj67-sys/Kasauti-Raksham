@@ -111,8 +111,11 @@ def run(lang, offline, base, demo, video=None):
         page.fill("[data-testid=otp]", "123456")
         page.screenshot(path=str(SCREENS / f"consent_{tag}.png"), full_page=True)
         page.click("[data-testid=approve]")
+        page.click("[data-testid=step-checking] [data-testid=next]", timeout=60000)  # enabled once records are loaded
         page.wait_for_selector("[data-testid=result]", timeout=60000)
         text = page.inner_text("[data-testid=result]")
+        page.click("[data-testid=result] [data-testid=next]")  # the Action step holds the complaint and buttons
+        page.wait_for_selector("[data-testid=actions]")
         checks = check_screen(EXPECT[demo], ui, text, lambda tid: page.locator(f"[data-testid={tid}]").count())
         if video:  # the record column's fixed words before the {time_ranges} parameter
             changed = messages["reason_codes"]["ENDORSEMENT_WORDS_CHANGED"]["record"].split("{")[0].strip()
@@ -121,14 +124,16 @@ def run(lang, offline, base, demo, video=None):
         page.click("[data-testid=act-still_pay]")
         page.wait_for_selector(f"text={ui['still_pay_note']}")
         checks["'I still want to pay' recorded, payment not blocked"] = True
-        text = page.inner_text("[data-testid=result]")
-        fonts = page.evaluate("document.fonts.check('16px \"Noto Sans Devanagari\"', 'हिंदी')")
+        text += "\n" + page.inner_text("[data-testid=actions]")
+        # the bundled face this language's body text uses: Inter for English, Noto Sans Devanagari for Hindi
+        face, sample = ("Noto Sans Devanagari", "हिंदी") if lang == "hi" else ("Inter", "Kasauti")
+        fonts = page.evaluate(f"document.fonts.check('16px \"{face}\"', '{sample}')")
         page.screenshot(path=str(SCREENS / f"result_{tag}.png"), full_page=True)
         browser.close()
     print(f"=== {demo} ({customer}) visible result text ({lang}{', offline' if offline else ''}) ===\n{text}\n")
     if complaint:
         print(f"=== complaint text ===\n{complaint}\n")
-    checks["Noto Sans Devanagari loaded"] = fonts
+    checks[f"bundled font {face} loaded"] = fonts
     if offline:
         checks["backend in LLM_PROVIDER=cache"] = backend_in_cache_mode("http://localhost:8000")
         checks[f"no non-localhost requests ({len(external)})"] = not external

@@ -29,6 +29,7 @@ FLOWS = [
     ("demo-003", ["e2e_bank_app.py", "--demo", "demo-003", "--offline"]),
     ("fake clip", ["e2e_bank_app.py", "--video", FAKE, "--offline"]),
     ("reviewer approval", ["e2e_review.py"]),
+    ("new UI: 8 steps x EN/HI x 3 scenarios", ["ui_screens.py"]),
 ]
 
 

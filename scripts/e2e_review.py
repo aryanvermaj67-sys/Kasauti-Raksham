@@ -55,6 +55,8 @@ def main():
         page.click("[data-testid=continue]")
         page.fill("[data-testid=otp]", "123456")
         page.click("[data-testid=approve]")
+        page.click("[data-testid=step-checking] [data-testid=next]", timeout=60000)
+        page.click("[data-testid=result] [data-testid=next]")
         page.wait_for_selector("[data-testid=complaint]", timeout=60000)
         complaint = page.input_value("[data-testid=complaint]")
         check_id = re.search(r"chk-[0-9a-f]{12}", complaint)[0]

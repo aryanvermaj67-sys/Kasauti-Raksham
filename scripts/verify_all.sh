@@ -8,6 +8,7 @@ step backend tests;      (cd backend && python -m pytest -q)
 step backend lint;       (cd backend && python -m ruff check . && python -m ruff format --check .)
 step templates;          python scripts/check_templates.py
 step frontend;           (cd frontend && npm run build && npm run lint && npm test)
+step "app code has no demo figures"; ! grep -rniE "Zyphra|39800000|3,98,00,000|3\.98 cr" frontend/src --include=*.tsx --include=*.ts --exclude=*.test.ts
 step example frozen set; python scripts/check_frozen.py data/frozen_example --example
 if [ "$1" != "--quick" ]; then
   step offline demo;     python scripts/demo.py

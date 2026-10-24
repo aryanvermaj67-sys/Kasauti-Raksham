@@ -9,7 +9,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Literal
 
-from fastapi import FastAPI, Header, HTTPException, UploadFile
+from fastapi import FastAPI, Header, HTTPException, Response, UploadFile
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, ConfigDict
 
 from app import reader, reviewer, trigger
@@ -203,3 +204,66 @@ class Ack(BaseModel):
 def api_trigger_ack(customer_id: str, ack: Ack):
     trigger.acknowledge(customer_id, ack.campaign)
     return {"acknowledged": ack.campaign}
+
+
+DEMO = DATA / "demo_cache"
+
+
+def _scenarios() -> list[dict]:
+    """The demo artifacts in the repo: screenshot, its synthetic customer, the dev clip for it (if present)."""
+    customers = json.loads((DEMO / "demo_customers.json").read_text(encoding="utf-8"))
+    videos = json.loads((DEMO / "demo_videos.json").read_text(encoding="utf-8"))
+    out = []
+    for shot, customer in customers.items():
+        sha = hashlib.sha256((DEMO / shot).read_bytes()).hexdigest()
+        cached = ClaimSet.model_validate_json((DEMO / f"{sha}.json").read_text(encoding="utf-8"))
+        payee = next((c.fields.upi_id for c in cached.claims if c.type == "payee" and c.fields.upi_id), None)
+        clip = videos.get(shot)
+        out.append(
+            {
+                "id": shot.removesuffix(".png"),
+                "customer_id": customer,
+                "screenshot": f"/demo/files/{shot}",
+                "video": f"/demo/files/{clip}" if clip and (DATA / "media" / clip).exists() else None,
+                # the payee the ad asks the customer to pay, from the stored reader output; the amount is the customer's
+                "payment_request": {"payee": payee, "source": "payee printed in the screenshot"} if payee else None,
+            }
+        )
+    return out
+
+
+@app.get("/demo/scenarios")
+def demo_scenarios():
+    return {"mock": True, "scenarios": _scenarios()}
+
+
+@app.get("/demo/files/{name:path}")
+def demo_file(name: str):
+    allowed = {s["screenshot"] for s in _scenarios()} | {s["video"] for s in _scenarios() if s["video"]}
+    if f"/demo/files/{name}" not in allowed:
+        raise HTTPException(404, "not a demo artifact")
+    return FileResponse(DEMO / name if name.endswith(".png") else DATA / "media" / name)
+
+
+def _own_check(check_id: str, customer_id: str) -> None:
+    """MOCK bank login: a customer reads only their own check (the customer id stands in for the session)."""
+    rows = hashchain.checks("check_id = ?", (check_id,))
+    if not rows or rows[0]["customer_id"] != customer_id:
+        raise HTTPException(404, "no such check for this customer")
+
+
+@app.get("/api/checks/{check_id}/records")
+def api_check_records(check_id: str, customer_id: str):
+    """The records each verdict was decided on, as the evidence chain stores them (source, fetched_at, mock, sha256)."""
+    _own_check(check_id, customer_id)
+    return [e["summary"] for e in hashchain.entries(check_id, "customer") if e["kind"] == "record"]
+
+
+@app.get("/api/checks/{check_id}/pack")
+def api_check_pack(check_id: str, customer_id: str):
+    """The customer's own hashed evidence pack, as a file; X-Pack-SHA256 is the SHA-256 of exactly these bytes."""
+    _own_check(check_id, customer_id)
+    data = Path(pack.export(check_id, "customer")["json"]).read_bytes()
+    headers = {"Content-Disposition": f'attachment; filename="pack-{check_id}.json"',
+               "X-Pack-SHA256": hashlib.sha256(data).hexdigest()}  # fmt: skip
+    return Response(data, media_type="application/json", headers=headers)

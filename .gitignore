@@ -23,3 +23,6 @@ wheels/
 # frozen-set clips travel by pen drive; HASH.txt covers them (docs/FROZEN_SET_SPEC.md)
 data/frozen/videos/*
 !data/frozen/videos/manifest.json
+
+# untrusted UI export, reference only (ported into frontend/)
+ui_incoming/

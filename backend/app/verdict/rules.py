@@ -26,6 +26,8 @@ def holding(claim, aa_records, mapping=None):
     f = claim.fields
     params = {"instrument_name": f.instrument_name, "quantity": f.quantity}
     evidence = [*aa_records, mapping]
+    if not aa_records:  # the customer refused the holdings check: nothing was compared, so never CONTRADICTS
+        return _v(claim, "NO_RECORD", "HOLDING_NO_CONSENT", params, [mapping])
     if f.isin is None:
         count = mapping.payload["candidates"] if mapping else 0
         if count > 1:  # the customer skipped choosing among several listed securities
@@ -48,7 +50,7 @@ def holding(claim, aa_records, mapping=None):
 
 def holdings_summary(verdicts, portfolio_total_inr, aa_records):
     hv = [v for v in verdicts if v.claim_type == "holding"]
-    if not hv:
+    if not hv or not aa_records:  # no consent: each holding row already says nothing was compared
         return []
     ok = [r.payload["depository"] for r in aa_records if r.status == "OK"]
     failed = [d for d in ALL_DEPOSITORIES if d not in ok]

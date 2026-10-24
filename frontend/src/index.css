@@ -1,5 +1,38 @@
 @import "tailwindcss";
 
+/* tokens from docs/design/reference/design_spec.md */
+@theme {
+  --color-ink: #0f172a;
+  --color-ink-2: #1e293b;
+  --color-muted: #475569;
+  --color-faint: #94a3b8;
+  --color-canvas: #f8fafc;
+  --color-panel: #f1f5f9;
+  --color-line: #e2e8f0;
+  --color-line-2: #cbd5e1;
+  --color-contra-bg: #fef2f2;
+  --color-contra-line: #f87171;
+  --color-contra: #991b1b;
+  --color-match-bg: #f0fdfa;
+  --color-match-line: #99f6e4;
+  --color-match: #0f766e;
+  --color-norec-bg: #f8fafc;
+  --color-norec-line: #cbd5e1;
+  --color-norec: #475569;
+  --radius-box: 4px;
+  --font-sans: "Inter", "Noto Sans Devanagari", system-ui, sans-serif;
+}
+
+/* large-text mode: every size is in rem, so the root size takes body text from 16 px to 19 px */
+html {
+  font-size: 16px;
+}
+html[data-large="1"] {
+  font-size: 19px;
+}
 body {
-  font-family: "Noto Sans Devanagari", system-ui, sans-serif;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
 }

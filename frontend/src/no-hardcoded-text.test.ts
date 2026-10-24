@@ -42,7 +42,7 @@ function problems(code: string): string[] {
 test('a planted hard-coded sentence in a real component fails the check', () => {
   const original = readFileSync(join(SRC, 'components', 'ResultScreen.tsx'), 'utf8')
   assert.deepEqual(problems(original), [])
-  const anchor = '<h2 className="text-lg font-bold">'
+  const anchor = '<h2 className="text-lg font-semibold">'
   assert.ok(original.includes(anchor))
   const plants = [
     '<p>Not in your name at CDSL and NSDL.</p>', // a template sentence copied into markup
