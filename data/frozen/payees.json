@@ -1,0 +1,432 @@
+[
+ {
+  "id": "py-001",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "sunrisecap.brk@validmock",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "broker"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "sunrisecap.brk@validmock"
+   ]
+  },
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "PAYEE_VALID_HANDLE",
+  "note": "exact mock @valid handle"
+ },
+ {
+  "id": "py-002",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "meridian.ia@validmock",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "advisor"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "meridian.ia@validmock"
+   ]
+  },
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "PAYEE_VALID_HANDLE",
+  "note": "adviser paid on its exact mock @valid handle"
+ },
+ {
+  "id": "py-003",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "harborline.brk@validmock",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "broker"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "sunrisecap.brk@validmock",
+    "harborline.brk@validmock"
+   ]
+  },
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "PAYEE_VALID_HANDLE",
+  "note": "one of two mock @valid handles"
+ },
+ {
+  "id": "py-004",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "quickgain.trades@mockupi",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "broker"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [
+    "quickgain.trades@mockupi"
+   ],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "PAYEE_IN_SUSPECT_REGISTRY",
+  "note": "listed in the mock Suspect Registry"
+ },
+ {
+  "id": "py-005",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "lucky.returns@mockupi",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "other"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [
+    "lucky.returns@mockupi"
+   ],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "PAYEE_IN_SUSPECT_REGISTRY",
+  "note": "listed in the mock Suspect Registry, described as other"
+ },
+ {
+  "id": "py-006",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "tipsdesk.fee@mockupi",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "advisor"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [
+    "tipsdesk.fee@mockupi",
+    "lucky.returns@mockupi"
+   ],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "PAYEE_IN_SUSPECT_REGISTRY",
+  "note": "adviser payee listed in the mock Suspect Registry"
+ },
+ {
+  "id": "py-007",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "sunrisecap.brk@va1idmock",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "broker"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "sunrisecap.brk@validmock"
+   ]
+  },
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE",
+  "note": "near duplicate: digit 1 for letter l in the @valid suffix"
+ },
+ {
+  "id": "py-008",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "sunrisecap.brkr@validmock",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "broker"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "sunrisecap.brk@validmock"
+   ]
+  },
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE",
+  "note": "near duplicate: one extra letter"
+ },
+ {
+  "id": "py-009",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "sunrisecap.brk.validmock",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "broker"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "sunrisecap.brk@validmock"
+   ]
+  },
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE",
+  "note": "wrong UPI format: no @"
+ },
+ {
+  "id": "py-010",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "fastgain.brk@validmock",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "broker"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE",
+  "note": "looks like an @valid handle but is not in the mock @valid lookup"
+ },
+ {
+  "id": "py-011",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "investdesk.pay@mockupi",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "broker"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE",
+  "note": "broker asking for money on an ordinary UPI ID"
+ },
+ {
+  "id": "py-012",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "harborline.brk@validmock.com",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "broker"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "harborline.brk@validmock"
+   ]
+  },
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE",
+  "note": "wrong UPI format: extra domain after the handle"
+ },
+ {
+  "id": "py-013",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "profit king@mockupi",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "other"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "PAYEE_NO_REGISTRY_HIT",
+  "note": "wrong UPI format (space); no registry hit, so nothing to contradict"
+ },
+ {
+  "id": "py-014",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "quickgain.trade@mockupi",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "other"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [
+    "quickgain.trades@mockupi"
+   ],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "PAYEE_NO_REGISTRY_HIT",
+  "note": "near duplicate of a Suspect Registry entry but not the entry itself"
+ },
+ {
+  "id": "py-015",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "family.savings@mockupi",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "other"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "PAYEE_NO_REGISTRY_HIT",
+  "note": "ordinary payee, no registry hit"
+ },
+ {
+  "id": "py-016",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": null,
+    "account_no_last4": "4821",
+    "ifsc": "MOCK0001234",
+    "described_as": "other"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "PAYEE_NO_REGISTRY_HIT",
+  "note": "bank account only, no UPI ID, no registry hit"
+ },
+ {
+  "id": "py-017",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "laabh.kendra@mockupi",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "other"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "PAYEE_NO_REGISTRY_HIT",
+  "note": "Hindi-word handle (laabh kendra), no registry hit"
+ },
+ {
+  "id": "py-018",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "goldmint.desk@mockupi",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "broker"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [
+    "goldmint.desk@mockupi"
+   ],
+   "valid_upi_handles": [
+    "sunrisecap.brk@validmock"
+   ]
+  },
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "PAYEE_IN_SUSPECT_REGISTRY",
+  "note": "broker payee in the mock Suspect Registry"
+ },
+ {
+  "id": "py-019",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "bullrise@@mockupi",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "broker"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE",
+  "note": "wrong UPI format: double @"
+ },
+ {
+  "id": "py-020",
+  "claim": {
+   "id": "c1",
+   "type": "payee",
+   "fields": {
+    "upi_id": "chartcircle.fee@mockupi",
+    "account_no_last4": null,
+    "ifsc": null,
+    "described_as": "other"
+   }
+  },
+  "registry": {
+   "suspect_registry_hits": [
+    "chartcircle.fees@mockupi"
+   ],
+   "valid_upi_handles": []
+  },
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "PAYEE_NO_REGISTRY_HIT",
+  "note": "one letter short of a Suspect Registry entry"
+ }
+]

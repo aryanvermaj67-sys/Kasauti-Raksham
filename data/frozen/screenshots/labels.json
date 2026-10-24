@@ -1,0 +1,2066 @@
+{
+ "s001.png": {
+  "layout": "L1",
+  "language": "en",
+  "portfolio_total_inr": 63163300,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services Ltd",
+     "isin": "INE467B01029",
+     "quantity": 250,
+     "value_inr": 852500
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Maruti Suzuki India Ltd",
+     "isin": "INE585B01010",
+     "quantity": 5000,
+     "value_inr": 62250000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys Ltd",
+     "isin": "INE009A01021",
+     "quantity": 40,
+     "value_inr": 60800
+    }
+   }
+  ]
+ },
+ "s002.png": {
+  "layout": "L1",
+  "language": "hi",
+  "portfolio_total_inr": 9636000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Sun Pharmaceutical Industries Ltd",
+     "isin": "INE044A01036",
+     "quantity": 5000,
+     "value_inr": 8550000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj Finance Ltd",
+     "isin": "INE296A01032",
+     "quantity": 1200,
+     "value_inr": 1086000
+    }
+   }
+  ]
+ },
+ "s003.png": {
+  "layout": "L1",
+  "language": "en",
+  "portfolio_total_inr": 4025100,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj Finance Ltd",
+     "isin": "INE296A01032",
+     "quantity": 3000,
+     "value_inr": 2715000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "State Bank of India",
+     "isin": "INE062A01020",
+     "quantity": 500,
+     "value_inr": 406000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Eternal Ltd",
+     "isin": "INE758T01015",
+     "quantity": 500,
+     "value_inr": 140500
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "ITC Ltd",
+     "isin": "INE154A01025",
+     "quantity": 1200,
+     "value_inr": 501600
+    }
+   },
+   {
+    "id": "c5",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Wipro Ltd",
+     "isin": "INE075A01022",
+     "quantity": 1000,
+     "value_inr": 262000
+    }
+   }
+  ]
+ },
+ "s004.png": {
+  "layout": "L1",
+  "language": "hi",
+  "portfolio_total_inr": 20497700,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services Ltd",
+     "isin": "INE467B01029",
+     "quantity": 150,
+     "value_inr": 511500
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries Ltd",
+     "isin": "INE002A01018",
+     "quantity": 750,
+     "value_inr": 2130000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Larsen & Toubro Ltd",
+     "isin": "INE018A01030",
+     "quantity": 5000,
+     "value_inr": 17800000
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Eternal Ltd",
+     "isin": "INE758T01015",
+     "quantity": 200,
+     "value_inr": 56200
+    }
+   }
+  ]
+ },
+ "s005.png": {
+  "layout": "L1",
+  "language": "en",
+  "portfolio_total_inr": 9730900,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Hindustan Unilever Ltd",
+     "isin": "INE030A01027",
+     "quantity": 300,
+     "value_inr": 754500
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services Ltd",
+     "isin": "INE467B01029",
+     "quantity": 40,
+     "value_inr": 136400
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Axis Bank Ltd",
+     "isin": "INE238A01034",
+     "quantity": 8000,
+     "value_inr": 8840000
+    }
+   }
+  ]
+ },
+ "s006.png": {
+  "layout": "L1",
+  "language": "hi",
+  "portfolio_total_inr": 5975500,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Sun Pharmaceutical Industries Ltd",
+     "isin": "INE044A01036",
+     "quantity": 1500,
+     "value_inr": 2565000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bharti Airtel Ltd",
+     "isin": "INE397D01024",
+     "quantity": 250,
+     "value_inr": 482500
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries Ltd",
+     "isin": "INE002A01018",
+     "quantity": 75,
+     "value_inr": 213000
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj Finance Ltd",
+     "isin": "INE296A01032",
+     "quantity": 3000,
+     "value_inr": 2715000
+    }
+   }
+  ]
+ },
+ "s007.png": {
+  "layout": "L1",
+  "language": "en",
+  "portfolio_total_inr": 17977420,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Eternal Ltd",
+     "isin": "INE758T01015",
+     "quantity": 1200,
+     "value_inr": 337200
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "HDFC Bank Ltd",
+     "isin": "INE040A01034",
+     "quantity": 300,
+     "value_inr": 502500
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries Ltd",
+     "isin": "INE002A01018",
+     "quantity": 25,
+     "value_inr": 71000
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "ITC Ltd",
+     "isin": "INE154A01025",
+     "quantity": 40,
+     "value_inr": 16720
+    }
+   },
+   {
+    "id": "c5",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services Ltd",
+     "isin": "INE467B01029",
+     "quantity": 5000,
+     "value_inr": 17050000
+    }
+   }
+  ]
+ },
+ "s008.png": {
+  "layout": "L1",
+  "language": "hi",
+  "portfolio_total_inr": 19720000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Larsen & Toubro Ltd",
+     "isin": "INE018A01030",
+     "quantity": 750,
+     "value_inr": 2670000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services Ltd",
+     "isin": "INE467B01029",
+     "quantity": 5000,
+     "value_inr": 17050000
+    }
+   }
+  ]
+ },
+ "s009.png": {
+  "layout": "L2",
+  "language": "en",
+  "portfolio_total_inr": 5593000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "State Bank of India",
+     "isin": null,
+     "quantity": 5000,
+     "value_inr": 4060000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries Ltd",
+     "isin": null,
+     "quantity": 200,
+     "value_inr": 568000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bharti Airtel Ltd",
+     "isin": null,
+     "quantity": 500,
+     "value_inr": 965000
+    }
+   }
+  ]
+ },
+ "s010.png": {
+  "layout": "L2",
+  "language": "hi",
+  "portfolio_total_inr": 115694300,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Eternal Ltd",
+     "isin": null,
+     "quantity": 200,
+     "value_inr": 56200
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "HDFC Bank Ltd",
+     "isin": null,
+     "quantity": 300,
+     "value_inr": 502500
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Asian Paints Ltd",
+     "isin": null,
+     "quantity": 40,
+     "value_inr": 95600
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Maruti Suzuki India Ltd",
+     "isin": null,
+     "quantity": 8000,
+     "value_inr": 99600000
+    }
+   },
+   {
+    "id": "c5",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bharti Airtel Ltd",
+     "isin": null,
+     "quantity": 8000,
+     "value_inr": 15440000
+    }
+   }
+  ]
+ },
+ "s011.png": {
+  "layout": "L2",
+  "language": "en",
+  "portfolio_total_inr": 2610250,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bharti Airtel Ltd",
+     "isin": null,
+     "quantity": 750,
+     "value_inr": 1447500
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Larsen & Toubro Ltd",
+     "isin": null,
+     "quantity": 150,
+     "value_inr": 534000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Hindustan Unilever Ltd",
+     "isin": null,
+     "quantity": 250,
+     "value_inr": 628750
+    }
+   }
+  ]
+ },
+ "s012.png": {
+  "layout": "L2",
+  "language": "hi",
+  "portfolio_total_inr": 9574075,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj Finance Ltd",
+     "isin": null,
+     "quantity": 75,
+     "value_inr": 67875
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Eternal Ltd",
+     "isin": null,
+     "quantity": 200,
+     "value_inr": 56200
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Kotak Mahindra Bank Ltd",
+     "isin": null,
+     "quantity": 5000,
+     "value_inr": 9450000
+    }
+   }
+  ]
+ },
+ "s013.png": {
+  "layout": "L2",
+  "language": "en",
+  "portfolio_total_inr": 6690900,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Asian Paints Ltd",
+     "isin": null,
+     "quantity": 150,
+     "value_inr": 358500
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Kotak Mahindra Bank Ltd",
+     "isin": null,
+     "quantity": 1200,
+     "value_inr": 2268000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Sun Pharmaceutical Industries Ltd",
+     "isin": null,
+     "quantity": 500,
+     "value_inr": 855000
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bharti Airtel Ltd",
+     "isin": null,
+     "quantity": 1500,
+     "value_inr": 2895000
+    }
+   },
+   {
+    "id": "c5",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Wipro Ltd",
+     "isin": null,
+     "quantity": 1200,
+     "value_inr": 314400
+    }
+   }
+  ]
+ },
+ "s014.png": {
+  "layout": "L2",
+  "language": "hi",
+  "portfolio_total_inr": 63084750,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Hindustan Unilever Ltd",
+     "isin": null,
+     "quantity": 100,
+     "value_inr": 251500
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Eternal Ltd",
+     "isin": null,
+     "quantity": 250,
+     "value_inr": 70250
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Sun Pharmaceutical Industries Ltd",
+     "isin": null,
+     "quantity": 300,
+     "value_inr": 513000
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Maruti Suzuki India Ltd",
+     "isin": null,
+     "quantity": 5000,
+     "value_inr": 62250000
+    }
+   }
+  ]
+ },
+ "s015.png": {
+  "layout": "L2",
+  "language": "en",
+  "portfolio_total_inr": 10623000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services Ltd",
+     "isin": null,
+     "quantity": 3000,
+     "value_inr": 10230000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Wipro Ltd",
+     "isin": null,
+     "quantity": 1500,
+     "value_inr": 393000
+    }
+   }
+  ]
+ },
+ "s016.png": {
+  "layout": "L2",
+  "language": "hi",
+  "portfolio_total_inr": 3867875,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys Ltd",
+     "isin": null,
+     "quantity": 2500,
+     "value_inr": 3800000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj Finance Ltd",
+     "isin": null,
+     "quantity": 75,
+     "value_inr": 67875
+    }
+   }
+  ]
+ },
+ "s017.png": {
+  "layout": "L3",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Asian Paints Ltd",
+     "isin": "INE021A01026",
+     "quantity": 2500,
+     "value_inr": 5975000
+    }
+   }
+  ]
+ },
+ "s018.png": {
+  "layout": "L3",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys Ltd",
+     "isin": "INE009A01021",
+     "quantity": 750,
+     "value_inr": 1140000
+    }
+   }
+  ]
+ },
+ "s019.png": {
+  "layout": "L3",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Larsen & Toubro Ltd",
+     "isin": "INE018A01030",
+     "quantity": 100,
+     "value_inr": 356000
+    }
+   }
+  ]
+ },
+ "s020.png": {
+  "layout": "L3",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Axis Bank Ltd",
+     "isin": "INE238A01034",
+     "quantity": 500,
+     "value_inr": 552500
+    }
+   }
+  ]
+ },
+ "s021.png": {
+  "layout": "L3",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys Ltd",
+     "isin": "INE009A01021",
+     "quantity": 100,
+     "value_inr": 152000
+    }
+   }
+  ]
+ },
+ "s022.png": {
+  "layout": "L3",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Asian Paints Ltd",
+     "isin": "INE021A01026",
+     "quantity": 2500,
+     "value_inr": 5975000
+    }
+   }
+  ]
+ },
+ "s023.png": {
+  "layout": "L3",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "HDFC Bank Ltd",
+     "isin": "INE040A01034",
+     "quantity": 150,
+     "value_inr": 251250
+    }
+   }
+  ]
+ },
+ "s024.png": {
+  "layout": "L3",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries Ltd",
+     "isin": "INE002A01018",
+     "quantity": 8000,
+     "value_inr": 22720000
+    }
+   }
+  ]
+ },
+ "s025.png": {
+  "layout": "L4",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Quantrix Wealth Partners",
+     "sebi_reg_no": "INZ000482917",
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "quickgain.trades@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ]
+ },
+ "s026.png": {
+  "layout": "L4",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Bullrise Capital Club",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "bullrise.margin@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ]
+ },
+ "s027.png": {
+  "layout": "L4",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Velvora Securities",
+     "sebi_reg_no": "INZ000573104",
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "velvora.funds@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ]
+ },
+ "s028.png": {
+  "layout": "L4",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Candle Talk Corner",
+     "sebi_reg_no": null,
+     "claims_registered": false
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "crestvane.pay@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ]
+ },
+ "s029.png": {
+  "layout": "L4",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Crestvane Broking",
+     "sebi_reg_no": "INZ000482917",
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "goldmint.desk@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ]
+ },
+ "s030.png": {
+  "layout": "L4",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Goldmint Market Desk",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "arthvik.brk@validmock",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ]
+ },
+ "s031.png": {
+  "layout": "L4",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Arthvik Capital Securities",
+     "sebi_reg_no": "INZ000691352",
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "tejasvi.fee@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ]
+ },
+ "s032.png": {
+  "layout": "L4",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Candle Talk Corner",
+     "sebi_reg_no": null,
+     "claims_registered": false
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "zyrova.invest@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ]
+ },
+ "s033.png": {
+  "layout": "L5",
+  "language": "en",
+  "portfolio_total_inr": 16504000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries Ltd",
+     "isin": "INE002A01018",
+     "quantity": 1500,
+     "value_inr": 4260000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Larsen & Toubro Ltd",
+     "isin": "INE018A01030",
+     "quantity": 2500,
+     "value_inr": 8900000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "ITC Ltd",
+     "isin": "INE154A01025",
+     "quantity": 8000,
+     "value_inr": 3344000
+    }
+   }
+  ]
+ },
+ "s034.png": {
+  "layout": "L5",
+  "language": "hi",
+  "portfolio_total_inr": 5953800,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj Finance Ltd",
+     "isin": "INE296A01032",
+     "quantity": 300,
+     "value_inr": 271500
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Larsen & Toubro Ltd",
+     "isin": "INE018A01030",
+     "quantity": 1200,
+     "value_inr": 4272000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Axis Bank Ltd",
+     "isin": "INE238A01034",
+     "quantity": 1200,
+     "value_inr": 1326000
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Eternal Ltd",
+     "isin": "INE758T01015",
+     "quantity": 300,
+     "value_inr": 84300
+    }
+   }
+  ]
+ },
+ "s035.png": {
+  "layout": "L5",
+  "language": "en",
+  "portfolio_total_inr": 5394500,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "HDFC Bank Ltd",
+     "isin": "INE040A01034",
+     "quantity": 150,
+     "value_inr": 251250
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Larsen & Toubro Ltd",
+     "isin": "INE018A01030",
+     "quantity": 500,
+     "value_inr": 1780000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Axis Bank Ltd",
+     "isin": "INE238A01034",
+     "quantity": 3000,
+     "value_inr": 3315000
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bharti Airtel Ltd",
+     "isin": "INE397D01024",
+     "quantity": 25,
+     "value_inr": 48250
+    }
+   }
+  ]
+ },
+ "s036.png": {
+  "layout": "L5",
+  "language": "hi",
+  "portfolio_total_inr": 846900,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Kotak Mahindra Bank Ltd",
+     "isin": "INE237A01036",
+     "quantity": 75,
+     "value_inr": 141750
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Maruti Suzuki India Ltd",
+     "isin": "INE585B01010",
+     "quantity": 25,
+     "value_inr": 311250
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "State Bank of India",
+     "isin": "INE062A01020",
+     "quantity": 200,
+     "value_inr": 162400
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Suvarna Bharat Infra Ltd",
+     "isin": "INE999Z01019",
+     "quantity": 100,
+     "value_inr": 64000
+    }
+   },
+   {
+    "id": "c5",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "HDFC Bank Ltd",
+     "isin": "INE040A01034",
+     "quantity": 100,
+     "value_inr": 167500
+    }
+   }
+  ]
+ },
+ "s037.png": {
+  "layout": "L5",
+  "language": "en",
+  "portfolio_total_inr": 2880375,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Sun Pharmaceutical Industries Ltd",
+     "isin": "INE044A01036",
+     "quantity": 250,
+     "value_inr": 427500
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Asian Paints Ltd",
+     "isin": "INE021A01026",
+     "quantity": 1000,
+     "value_inr": 2390000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Hindustan Unilever Ltd",
+     "isin": "INE030A01027",
+     "quantity": 25,
+     "value_inr": 62875
+    }
+   }
+  ]
+ },
+ "s038.png": {
+  "layout": "L5",
+  "language": "hi",
+  "portfolio_total_inr": 14196750,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj Finance Ltd",
+     "isin": "INE296A01032",
+     "quantity": 750,
+     "value_inr": 678750
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Larsen & Toubro Ltd",
+     "isin": "INE018A01030",
+     "quantity": 300,
+     "value_inr": 1068000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Maruti Suzuki India Ltd",
+     "isin": "INE585B01010",
+     "quantity": 1000,
+     "value_inr": 12450000
+    }
+   }
+  ]
+ },
+ "s039.png": {
+  "layout": "L5",
+  "language": "en",
+  "portfolio_total_inr": 12246350,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys Ltd",
+     "isin": "INE009A01021",
+     "quantity": 8000,
+     "value_inr": 12160000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Axis Bank Ltd",
+     "isin": "INE238A01034",
+     "quantity": 40,
+     "value_inr": 44200
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Eternal Ltd",
+     "isin": "INE758T01015",
+     "quantity": 150,
+     "value_inr": 42150
+    }
+   }
+  ]
+ },
+ "s040.png": {
+  "layout": "L5",
+  "language": "hi",
+  "portfolio_total_inr": 1778125,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bharti Airtel Ltd",
+     "isin": "INE397D01024",
+     "quantity": 100,
+     "value_inr": 193000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries Ltd",
+     "isin": "INE002A01018",
+     "quantity": 250,
+     "value_inr": 710000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj Finance Ltd",
+     "isin": "INE296A01032",
+     "quantity": 25,
+     "value_inr": 22625
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services Ltd",
+     "isin": "INE467B01029",
+     "quantity": 250,
+     "value_inr": 852500
+    }
+   }
+  ]
+ },
+ "s041.png": {
+  "layout": "L6",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "OctaFX",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "octa.deposit@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ]
+ },
+ "s042.png": {
+  "layout": "L6",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Binomo",
+     "category": "forex",
+     "claims_licensed": false
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "fxfunds.in@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ]
+ },
+ "s043.png": {
+  "layout": "L6",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Quotex",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "coinadd@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ]
+ },
+ "s044.png": {
+  "layout": "L6",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Olymp Trade",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "arena.topup@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ]
+ },
+ "s045.png": {
+  "layout": "L6",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Zentrix FX Pro",
+     "category": "forex",
+     "claims_licensed": false
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "octa.deposit@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ]
+ },
+ "s046.png": {
+  "layout": "L6",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Kubera Coin Exchange",
+     "category": "crypto",
+     "claims_licensed": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "fxfunds.in@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ]
+ },
+ "s047.png": {
+  "layout": "L6",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Crescent Forex Hub",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "coinadd@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ]
+ },
+ "s048.png": {
+  "layout": "L6",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Nimbal Trade Arena",
+     "category": "other",
+     "claims_licensed": false
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "arena.topup@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ]
+ },
+ "s049.png": {
+  "layout": "L7",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Goldmint Market Desk",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "crestvane.pay@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "advisor"
+    }
+   }
+  ]
+ },
+ "s050.png": {
+  "layout": "L7",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Arthvik Capital Securities",
+     "sebi_reg_no": "INZ000691352",
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "goldmint.desk@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "advisor"
+    }
+   }
+  ]
+ },
+ "s051.png": {
+  "layout": "L7",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Zerodha Brokking Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "arthvik.brk@validmock",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "advisor"
+    }
+   }
+  ]
+ },
+ "s052.png": {
+  "layout": "L7",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Angel 0ne Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "tejasvi.fee@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "advisor"
+    }
+   }
+  ]
+ },
+ "s053.png": {
+  "layout": "L7",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Sharekhaan Limited",
+     "sebi_reg_no": "INZ000171337",
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "zyrova.invest@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "advisor"
+    }
+   }
+  ]
+ },
+ "s054.png": {
+  "layout": "L7",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Tejasvi Alpha Traders",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "profit king@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "advisor"
+    }
+   }
+  ]
+ },
+ "s055.png": {
+  "layout": "L7",
+  "language": "en",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Zyrova Stock Point",
+     "sebi_reg_no": "INZ000315837",
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "lucky.returns@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "advisor"
+    }
+   }
+  ]
+ },
+ "s056.png": {
+  "layout": "L7",
+  "language": "hi",
+  "portfolio_total_inr": null,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Quantrix Wealth Partners",
+     "sebi_reg_no": "INZ000482917",
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "sunrisecap.brk@va1idmock",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "advisor"
+    }
+   }
+  ]
+ },
+ "s057.png": {
+  "layout": "L8",
+  "language": "en",
+  "portfolio_total_inr": 62910000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries Ltd",
+     "isin": null,
+     "quantity": 250,
+     "value_inr": 710000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Maruti Suzuki India Ltd",
+     "isin": null,
+     "quantity": 5000,
+     "value_inr": 62200000
+    }
+   }
+  ]
+ },
+ "s058.png": {
+  "layout": "L8",
+  "language": "hi",
+  "portfolio_total_inr": 13911000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Sun Pharmaceutical Industries Ltd",
+     "isin": null,
+     "quantity": 8000,
+     "value_inr": 13700000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Eternal Ltd",
+     "isin": null,
+     "quantity": 750,
+     "value_inr": 211000
+    }
+   }
+  ]
+ },
+ "s059.png": {
+  "layout": "L8",
+  "language": "en",
+  "portfolio_total_inr": 21372000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Axis Bank Ltd",
+     "isin": null,
+     "quantity": 250,
+     "value_inr": 276000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "HDFC Bank Ltd",
+     "isin": null,
+     "quantity": 750,
+     "value_inr": 1256000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services Ltd",
+     "isin": null,
+     "quantity": 5000,
+     "value_inr": 17000000
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries Ltd",
+     "isin": null,
+     "quantity": 1000,
+     "value_inr": 2840000
+    }
+   }
+  ]
+ },
+ "s060.png": {
+  "layout": "L8",
+  "language": "hi",
+  "portfolio_total_inr": 11468000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "State Bank of India",
+     "isin": null,
+     "quantity": 250,
+     "value_inr": 203000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "ICICI Bank Ltd",
+     "isin": null,
+     "quantity": 3000,
+     "value_inr": 3720000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Hindustan Unilever Ltd",
+     "isin": null,
+     "quantity": 3000,
+     "value_inr": 7545000
+    }
+   }
+  ]
+ },
+ "s061.png": {
+  "layout": "L8",
+  "language": "en",
+  "portfolio_total_inr": 27816000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services Ltd",
+     "isin": null,
+     "quantity": 8000,
+     "value_inr": 27300000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries Ltd",
+     "isin": null,
+     "quantity": 150,
+     "value_inr": 426000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj Finance Ltd",
+     "isin": null,
+     "quantity": 100,
+     "value_inr": 90000
+    }
+   }
+  ]
+ },
+ "s062.png": {
+  "layout": "L8",
+  "language": "hi",
+  "portfolio_total_inr": 2899000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "State Bank of India",
+     "isin": null,
+     "quantity": 1000,
+     "value_inr": 812000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj Finance Ltd",
+     "isin": null,
+     "quantity": 1000,
+     "value_inr": 905000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Hindustan Unilever Ltd",
+     "isin": null,
+     "quantity": 300,
+     "value_inr": 754000
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Sun Pharmaceutical Industries Ltd",
+     "isin": null,
+     "quantity": 250,
+     "value_inr": 428000
+    }
+   }
+  ]
+ },
+ "s063.png": {
+  "layout": "L8",
+  "language": "en",
+  "portfolio_total_inr": 789000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Eternal Ltd",
+     "isin": null,
+     "quantity": 1200,
+     "value_inr": 337000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj Finance Ltd",
+     "isin": null,
+     "quantity": 500,
+     "value_inr": 452000
+    }
+   }
+  ]
+ },
+ "s064.png": {
+  "layout": "L8",
+  "language": "hi",
+  "portfolio_total_inr": 11010000,
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bharti Airtel Ltd",
+     "isin": null,
+     "quantity": 100,
+     "value_inr": 193000
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Maruti Suzuki India Ltd",
+     "isin": null,
+     "quantity": 750,
+     "value_inr": 9338000
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries Ltd",
+     "isin": null,
+     "quantity": 100,
+     "value_inr": 284000
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Asian Paints Ltd",
+     "isin": null,
+     "quantity": 500,
+     "value_inr": 1195000
+    }
+   }
+  ]
+ }
+}

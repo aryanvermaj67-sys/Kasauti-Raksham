@@ -1,0 +1,686 @@
+[
+ {
+  "name": "Zerodha Broking Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Angel One Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Upstox Securities Private Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "ICICI Securities Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "HDFC Securities Ltd.",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Kotak Securities Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "5paisa Capital Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Motilal Oswal Financial Services Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Sharekhan Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Paytm Money Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Axis Securities Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "SBICAP Securities Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "IIFL Capital Services Ltd.",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Nuvama Wealth Management Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Alice Blue Financial Services Private Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Samco Securities Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Anand Rathi Share and Stock Brokers Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "JM Financial Services Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Religare Broking Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Mirae Asset Capital Markets (India) Private Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Groww Invest Tech Private Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "INDstocks Private Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Geojit Financial Services Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Fyers Securities Private Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Zerodha Broking Limited",
+  "sebi_reg_no": "INZ000031633",
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name with its own registration number; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Angel One Limited",
+  "sebi_reg_no": "INZ000161534",
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name with its own registration number; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Groww Invest Tech Private Limited",
+  "sebi_reg_no": "INZ000301838",
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name with its own registration number; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "HDFC Securities Ltd.",
+  "sebi_reg_no": "INZ000186937",
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name with its own registration number; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Upstox Securities Private Limited",
+  "sebi_reg_no": "INZ000315837",
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name with its own registration number; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "5paisa Capital Limited",
+  "sebi_reg_no": "INZ000010231",
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name with its own registration number; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "JM Financial Services Limited",
+  "sebi_reg_no": "INZ000195834",
+  "claims_registered": true,
+  "expected_outcome": "MATCHES",
+  "expected_reason_code": "BROKER_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "real broker name with its own registration number; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Zerodha Brokking Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Zerodha Broking Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Angel 0ne Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Angel One Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Upstox Securites Private Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Upstox Securities Private Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "ICICl Securities Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "ICICI Securities Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "HDFC Secvrities Ltd.",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "HDFC Securities Ltd.",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "5paisa Capitol Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "5paisa Capital Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Motilal Oswaal Financial Services Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Motilal Oswal Financial Services Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Sharekhaan Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Sharekhan Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Paytm Monney Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Paytm Money Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Axiss Securities Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Axis Securities Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "SBICAP Securties Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "SBICAP Securities Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Nuvana Wealth Management Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Nuvama Wealth Management Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Alise Blue Financial Services Private Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Alice Blue Financial Services Private Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Samcco Securities Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Samco Securities Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Grow Invest Tech Private Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Groww Invest Tech Private Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Anand Rathl Share and Stock Brokers Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Anand Rathi Share and Stock Brokers Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "JM Finnancial Services Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "JM Financial Services Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Religare Brocking Limited",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NEAR_MATCH",
+  "impersonates": "Religare Broking Limited",
+  "note": "one-letter change from a real broker name; no exact entry on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Zerodha Broking Limited",
+  "sebi_reg_no": "INZ000161534",
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_REG_NO_MISMATCH",
+  "impersonates": "Zerodha Broking Limited",
+  "note": "real name with a borrowed number: registration number belongs to Angel One Limited; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Groww Invest Tech Private Limited",
+  "sebi_reg_no": "INZ000031633",
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_REG_NO_MISMATCH",
+  "impersonates": "Groww Invest Tech Private Limited",
+  "note": "real name with a borrowed number: registration number belongs to Zerodha Broking Limited; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Angel One Limited",
+  "sebi_reg_no": "INZ000315837",
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_REG_NO_MISMATCH",
+  "impersonates": "Angel One Limited",
+  "note": "real name with a borrowed number: registration number belongs to Upstox Securities Private Limited; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Upstox Securities Private Limited",
+  "sebi_reg_no": "INZ000010231",
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_REG_NO_MISMATCH",
+  "impersonates": "Upstox Securities Private Limited",
+  "note": "real name with a borrowed number: registration number belongs to 5paisa Capital Limited; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "ICICI Securities Limited",
+  "sebi_reg_no": "INZ000186937",
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_REG_NO_MISMATCH",
+  "impersonates": "ICICI Securities Limited",
+  "note": "real name with a borrowed number: registration number belongs to HDFC Securities Ltd.; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Paytm Money Limited",
+  "sebi_reg_no": "INZ000171337",
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_REG_NO_MISMATCH",
+  "impersonates": "Paytm Money Limited",
+  "note": "real name with a borrowed number: registration number belongs to Sharekhan Limited; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Kotak Securities Limited",
+  "sebi_reg_no": "INZ000161633",
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_REG_NO_MISMATCH",
+  "impersonates": "Kotak Securities Limited",
+  "note": "real name with a borrowed number: registration number belongs to Axis Securities Limited; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Motilal Oswal Financial Services Limited",
+  "sebi_reg_no": "INZ000999918",
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_REG_NO_MISMATCH",
+  "impersonates": "Motilal Oswal Financial Services Limited",
+  "note": "real name with a borrowed number: registration number is not on the SEBI list; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Sharekhan Limited",
+  "sebi_reg_no": "INZ000123499",
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_REG_NO_MISMATCH",
+  "impersonates": "Sharekhan Limited",
+  "note": "real name with a borrowed number: registration number is not on the SEBI list; label from the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Quantrix Wealth Partners",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_NOT_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "made-up firm that says it is SEBI registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Bullrise Capital Club",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_NOT_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "made-up firm that says it is SEBI registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Velvora Securities",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_NOT_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "made-up firm that says it is SEBI registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Profitbridge Equity Room",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_NOT_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "made-up firm that says it is SEBI registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Crestvane Broking",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_NOT_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "made-up firm that says it is SEBI registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Goldmint Market Desk",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_NOT_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "made-up firm that says it is SEBI registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Arthvik Capital Securities",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_NOT_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "made-up firm that says it is SEBI registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Sensex Shakti Trading Desk",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_NOT_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "made-up firm that says it is SEBI registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Velmora Capital Desk",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_NOT_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "made-up firm that says it is SEBI registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Tejasvi Alpha Traders",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_NOT_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "made-up firm that says it is SEBI registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Zyrova Stock Point",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_NOT_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "made-up firm that says it is SEBI registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "शुभ लाभ स्टॉक पॉइंट",
+  "sebi_reg_no": null,
+  "claims_registered": true,
+  "expected_outcome": "CONTRADICTS",
+  "expected_reason_code": "BROKER_NOT_ON_SEBI_LIST",
+  "impersonates": null,
+  "note": "made-up firm written in Hindi that says it is SEBI registered; not on the real SEBI list in any spelling, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Daily Chart Circle",
+  "sebi_reg_no": null,
+  "claims_registered": false,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NOT_FOUND_NOT_CLAIMED",
+  "impersonates": null,
+  "note": "made-up group that does not say it is registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Market Mantra Circle",
+  "sebi_reg_no": null,
+  "claims_registered": false,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NOT_FOUND_NOT_CLAIMED",
+  "impersonates": null,
+  "note": "made-up group that does not say it is registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Weekend Option Lessons",
+  "sebi_reg_no": null,
+  "claims_registered": false,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NOT_FOUND_NOT_CLAIMED",
+  "impersonates": null,
+  "note": "made-up group that does not say it is registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Bazaar Buzz Group",
+  "sebi_reg_no": null,
+  "claims_registered": false,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NOT_FOUND_NOT_CLAIMED",
+  "impersonates": null,
+  "note": "made-up group that does not say it is registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Swing Setup Society",
+  "sebi_reg_no": null,
+  "claims_registered": false,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NOT_FOUND_NOT_CLAIMED",
+  "impersonates": null,
+  "note": "made-up group that does not say it is registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ },
+ {
+  "name": "Candle Talk Corner",
+  "sebi_reg_no": null,
+  "claims_registered": false,
+  "expected_outcome": "NO_RECORD",
+  "expected_reason_code": "BROKER_NOT_FOUND_NOT_CLAIMED",
+  "impersonates": null,
+  "note": "made-up group that does not say it is registered; not on the real SEBI list, checked against data/registries/sebi_brokers.csv (the public SEBI stock broker list), 2026-10-24"
+ }
+]

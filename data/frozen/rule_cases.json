@@ -1,0 +1,5680 @@
+[
+ {
+  "id": "rc-001",
+  "note": "held at CDSL, NSDL answered with nothing",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys",
+     "isin": "INE009A01021",
+     "quantity": 8000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE009A01021",
+        "units": 8000
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-002",
+  "note": "held at NSDL, no account at CDSL",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services",
+     "isin": "INE467B01029",
+     "quantity": 8000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": []
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE467B01029",
+        "units": 8000
+       },
+       {
+        "isin": "INE018A01030",
+        "units": 40
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-003",
+  "note": "held at CDSL, NSDL answered with nothing",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "HDFC Bank",
+     "isin": "INE040A01034",
+     "quantity": 1200,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE040A01034",
+        "units": 1200
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-004",
+  "note": "held at NSDL, no account at CDSL",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bharti Airtel",
+     "isin": "INE397D01024",
+     "quantity": 1200,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": []
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE397D01024",
+        "units": 1200
+       },
+       {
+        "isin": "INE018A01030",
+        "units": 40
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-005",
+  "note": "quantity split across CDSL and NSDL adds up to the claim",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries",
+     "isin": "INE002A01018",
+     "quantity": 5000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE002A01018",
+        "units": 3000
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE002A01018",
+        "units": 2000
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-006",
+  "note": "quantity split across CDSL and NSDL adds up to the claim",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "ICICI Bank",
+     "isin": "INE090A01021",
+     "quantity": 1000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE090A01021",
+        "units": 700
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE090A01021",
+        "units": 300
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-007",
+  "note": "quantity split across two CDSL accounts adds up to the claim",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "State Bank of India",
+     "isin": "INE062A01020",
+     "quantity": 2500,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE062A01020",
+        "units": 1500
+       }
+      ]
+     },
+     {
+      "holdings": [
+       {
+        "isin": "INE062A01020",
+        "units": 1000
+       },
+       {
+        "isin": "INE154A01025",
+        "units": 50
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": []
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-008",
+  "note": "not held anywhere, both depositories answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Maruti Suzuki India",
+     "isin": "INE585B01010",
+     "quantity": 500,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE154A01025",
+        "units": 10
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_NONE_FOUND"
+ },
+ {
+  "id": "rc-009",
+  "note": "not held anywhere, both depositories answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Kotak Mahindra Bank",
+     "isin": "INE237A01036",
+     "quantity": 500,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE154A01025",
+        "units": 10
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_NONE_FOUND"
+ },
+ {
+  "id": "rc-010",
+  "note": "account at CDSL is empty, no account at NSDL; both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Asian Paints",
+     "isin": "INE021A01026",
+     "quantity": 900,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": []
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_NONE_FOUND"
+ },
+ {
+  "id": "rc-011",
+  "note": "account at CDSL is empty, no account at NSDL; both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Sun Pharmaceutical Industries",
+     "isin": "INE044A01036",
+     "quantity": 900,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": []
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_NONE_FOUND"
+ },
+ {
+  "id": "rc-012",
+  "note": "held but quantity differs (claimed 8000, record 800); both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys",
+     "isin": "INE009A01021",
+     "quantity": 8000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE009A01021",
+        "units": 800
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_QUANTITY_DIFFERS"
+   }
+  ]
+ },
+ {
+  "id": "rc-013",
+  "note": "held but quantity differs (claimed 3000, record 300); both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services",
+     "isin": "INE467B01029",
+     "quantity": 3000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE467B01029",
+        "units": 300
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_QUANTITY_DIFFERS"
+   }
+  ]
+ },
+ {
+  "id": "rc-014",
+  "note": "held but quantity differs (claimed 5000, record 5500); both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Eternal",
+     "isin": "INE758T01015",
+     "quantity": 5000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE758T01015",
+        "units": 5500
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_QUANTITY_DIFFERS"
+   }
+  ]
+ },
+ {
+  "id": "rc-015",
+  "note": "held but quantity differs (claimed 1000, record 999); both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bharti Airtel",
+     "isin": "INE397D01024",
+     "quantity": 1000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE397D01024",
+        "units": 999
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_QUANTITY_DIFFERS"
+   }
+  ]
+ },
+ {
+  "id": "rc-016",
+  "note": "held at both depositories but the total differs from the claim",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Hindustan Unilever",
+     "isin": "INE030A01027",
+     "quantity": 1000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE030A01027",
+        "units": 400
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE030A01027",
+        "units": 400
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_QUANTITY_DIFFERS"
+   }
+  ]
+ },
+ {
+  "id": "rc-017",
+  "note": "not at CDSL and NSDL did not answer",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries",
+     "isin": "INE002A01018",
+     "quantity": 5000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "FAILED"
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_PARTIAL_COVERAGE"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_INCOMPLETE"
+ },
+ {
+  "id": "rc-018",
+  "note": "CDSL did not answer, not at NSDL",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries",
+     "isin": "INE002A01018",
+     "quantity": 2000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "FAILED"
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_PARTIAL_COVERAGE"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_INCOMPLETE"
+ },
+ {
+  "id": "rc-019",
+  "note": "not at CDSL and NSDL did not answer",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Axis Bank",
+     "isin": "INE238A01034",
+     "quantity": 5000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "FAILED"
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_PARTIAL_COVERAGE"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_INCOMPLETE"
+ },
+ {
+  "id": "rc-020",
+  "note": "CDSL did not answer, not at NSDL",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Axis Bank",
+     "isin": "INE238A01034",
+     "quantity": 2000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "FAILED"
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_PARTIAL_COVERAGE"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_INCOMPLETE"
+ },
+ {
+  "id": "rc-021",
+  "note": "neither depository answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Larsen & Toubro",
+     "isin": "INE018A01030",
+     "quantity": 300,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "FAILED"
+   },
+   {
+    "depository": "NSDL",
+    "status": "FAILED"
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_PARTIAL_COVERAGE"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_INCOMPLETE"
+ },
+ {
+  "id": "rc-022",
+  "note": "only part of the quantity at CDSL and NSDL did not answer",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "ITC",
+     "isin": "INE154A01025",
+     "quantity": 10000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE154A01025",
+        "units": 4000
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "FAILED"
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_PARTIAL_COVERAGE"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_INCOMPLETE"
+ },
+ {
+  "id": "rc-023",
+  "note": "no account at CDSL and NSDL did not answer",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj Finance",
+     "isin": "INE296A01032",
+     "quantity": 600,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": []
+   },
+   {
+    "depository": "NSDL",
+    "status": "FAILED"
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_PARTIAL_COVERAGE"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_INCOMPLETE"
+ },
+ {
+  "id": "rc-024",
+  "note": "no demat account at either depository; both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys",
+     "isin": "INE009A01021",
+     "quantity": 1000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": []
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": []
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NO_DEMAT"
+   }
+  ]
+ },
+ {
+  "id": "rc-025",
+  "note": "no demat account at either depository; both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Vodafone Idea",
+     "isin": "INE669E01016",
+     "quantity": 1000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": []
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": []
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NO_DEMAT"
+   }
+  ]
+ },
+ {
+  "id": "rc-026",
+  "note": "ISIN is well formed but on neither NSE nor BSE list",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Suvarna Bharat Infra",
+     "isin": "INE999Z01019",
+     "quantity": 2000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_ISIN_UNMAPPED"
+   }
+  ]
+ },
+ {
+  "id": "rc-027",
+  "note": "made-up security, no ISIN shown, name matches no listed security",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Navyug Solar Power",
+     "isin": null,
+     "quantity": 1500,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_ISIN_UNMAPPED"
+   }
+  ]
+ },
+ {
+  "id": "rc-028",
+  "note": "well-formed ISIN not on NSE or BSE list, one depository failed",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Kshitij Agro Exports",
+     "isin": "INE0XX801014",
+     "quantity": 750,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "FAILED"
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_ISIN_UNMAPPED"
+   }
+  ]
+ },
+ {
+  "id": "rc-029",
+  "note": "name 'Tata Motors' maps to two ISINs (INE1TAE01010 and INE155A01022), no ISIN shown",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Motors",
+     "isin": null,
+     "quantity": 1000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_NAME_AMBIGUOUS"
+   }
+  ]
+ },
+ {
+  "id": "rc-030",
+  "note": "name 'Reliance' maps to several listed securities, no ISIN shown",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance",
+     "isin": null,
+     "quantity": 2000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_NAME_AMBIGUOUS"
+   }
+  ]
+ },
+ {
+  "id": "rc-031",
+  "note": "name 'Adani' maps to several listed securities, no ISIN shown",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Adani",
+     "isin": null,
+     "quantity": 400,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_NAME_AMBIGUOUS"
+   }
+  ]
+ },
+ {
+  "id": "rc-032",
+  "note": "name 'Bajaj' maps to several listed securities, no ISIN shown",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bajaj",
+     "isin": null,
+     "quantity": 250,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_NAME_AMBIGUOUS"
+   }
+  ]
+ },
+ {
+  "id": "rc-033",
+  "note": "name in Hindi, ISIN given, held at CDSL",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "इंफोसिस",
+     "isin": "INE009A01021",
+     "quantity": 600,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE009A01021",
+        "units": 600
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-034",
+  "note": "name in Hindi, ISIN given, held at CDSL",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "रिलायंस इंडस्ट्रीज",
+     "isin": "INE002A01018",
+     "quantity": 600,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE002A01018",
+        "units": 600
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-035",
+  "note": "name in Hindi, ISIN given, held at CDSL",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "भारतीय स्टेट बैंक",
+     "isin": "INE062A01020",
+     "quantity": 600,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE062A01020",
+        "units": 600
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-036",
+  "note": "name in Hindi, ISIN given, held at CDSL",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "आईटीसी",
+     "isin": "INE154A01025",
+     "quantity": 600,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE154A01025",
+        "units": 600
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-037",
+  "note": "name in Hindi, ISIN given, not held, both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "इंफोसिस",
+     "isin": "INE009A01021",
+     "quantity": 8000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_NONE_FOUND"
+ },
+ {
+  "id": "rc-038",
+  "note": "three holdings all found across both depositories",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys",
+     "isin": "INE009A01021",
+     "quantity": 100,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services",
+     "isin": "INE467B01029",
+     "quantity": 50,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "HDFC Bank",
+     "isin": "INE040A01034",
+     "quantity": 300,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE009A01021",
+        "units": 100
+       },
+       {
+        "isin": "INE467B01029",
+        "units": 50
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE040A01034",
+        "units": 300
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   },
+   {
+    "claim_id": "c3",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-039",
+  "note": "three holdings, none found, both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries",
+     "isin": "INE002A01018",
+     "quantity": 5000,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services",
+     "isin": "INE467B01029",
+     "quantity": 3000,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys",
+     "isin": "INE009A01021",
+     "quantity": 8000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   },
+   {
+    "claim_id": "c3",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_NONE_FOUND"
+ },
+ {
+  "id": "rc-040",
+  "note": "two found, one not found, both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "State Bank of India",
+     "isin": "INE062A01020",
+     "quantity": 200,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "ITC",
+     "isin": "INE154A01025",
+     "quantity": 1000,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Maruti Suzuki India",
+     "isin": "INE585B01010",
+     "quantity": 75,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE062A01020",
+        "units": 200
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE154A01025",
+        "units": 1000
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   },
+   {
+    "claim_id": "c3",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_SOME_FOUND"
+ },
+ {
+  "id": "rc-041",
+  "note": "one found, two not found, both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Wipro",
+     "isin": "INE075A01022",
+     "quantity": 120,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Larsen & Toubro",
+     "isin": "INE018A01030",
+     "quantity": 900,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bharti Airtel",
+     "isin": "INE397D01024",
+     "quantity": 1100,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   },
+   {
+    "claim_id": "c3",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_SOME_FOUND"
+ },
+ {
+  "id": "rc-042",
+  "note": "five holdings: three found, two not found, both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys",
+     "isin": "INE009A01021",
+     "quantity": 40,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "HDFC Bank",
+     "isin": "INE040A01034",
+     "quantity": 60,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "ICICI Bank",
+     "isin": "INE090A01021",
+     "quantity": 80,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c4",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Maruti Suzuki India",
+     "isin": "INE585B01010",
+     "quantity": 900,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c5",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Kotak Mahindra Bank",
+     "isin": "INE237A01036",
+     "quantity": 2500,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE009A01021",
+        "units": 40
+       },
+       {
+        "isin": "INE040A01034",
+        "units": 60
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE090A01021",
+        "units": 80
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   },
+   {
+    "claim_id": "c3",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   },
+   {
+    "claim_id": "c4",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   },
+   {
+    "claim_id": "c5",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_SOME_FOUND"
+ },
+ {
+  "id": "rc-043",
+  "note": "two holdings, neither at CDSL, NSDL did not answer",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services",
+     "isin": "INE467B01029",
+     "quantity": 3000,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries",
+     "isin": "INE002A01018",
+     "quantity": 5000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "FAILED"
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_PARTIAL_COVERAGE"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_PARTIAL_COVERAGE"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_INCOMPLETE"
+ },
+ {
+  "id": "rc-044",
+  "note": "one found, one quantity differs, both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Sun Pharmaceutical Industries",
+     "isin": "INE044A01036",
+     "quantity": 100,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Asian Paints",
+     "isin": "INE021A01026",
+     "quantity": 2000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE044A01036",
+        "units": 100
+       },
+       {
+        "isin": "INE021A01026",
+        "units": 20
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_QUANTITY_DIFFERS"
+   }
+  ]
+ },
+ {
+  "id": "rc-045",
+  "note": "one found, one ambiguous name",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys",
+     "isin": "INE009A01021",
+     "quantity": 100,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Motors",
+     "isin": null,
+     "quantity": 1000,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE009A01021",
+        "units": 100
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_NAME_AMBIGUOUS"
+   }
+  ]
+ },
+ {
+  "id": "rc-046",
+  "note": "one not found, one unmapped ISIN, both answered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Eternal",
+     "isin": "INE758T01015",
+     "quantity": 3000,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Suvarna Bharat Infra",
+     "isin": "INE999Z01019",
+     "quantity": 900,
+     "value_inr": null
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_ISIN_UNMAPPED"
+   }
+  ]
+ },
+ {
+  "id": "rc-047",
+  "note": "real broker name on the SEBI list",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Zerodha Broking Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "BROKER_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-048",
+  "note": "real broker name on the SEBI list",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Angel One Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "BROKER_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-049",
+  "note": "real broker name on the SEBI list",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Groww Invest Tech Private Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "BROKER_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-050",
+  "note": "real broker name on the SEBI list",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Sharekhan Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "BROKER_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-051",
+  "note": "real broker name on the SEBI list",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Mirae Asset Capital Markets (India) Private Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "BROKER_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-052",
+  "note": "real broker name with its own registration number",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Upstox Securities Private Limited",
+     "sebi_reg_no": "INZ000315837",
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "BROKER_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-053",
+  "note": "real broker name with its own registration number",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Kotak Securities Limited",
+     "sebi_reg_no": "INZ000200137",
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "BROKER_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-054",
+  "note": "real broker name in the list's upper-case spelling",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "PAYTM MONEY LIMITED",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "BROKER_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-055",
+  "note": "one-letter look-alike of Zerodha Broking Limited",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Zerodha Brokking Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "BROKER_NEAR_MATCH"
+   }
+  ]
+ },
+ {
+  "id": "rc-056",
+  "note": "one-letter look-alike of Angel One Limited",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Angel 0ne Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "BROKER_NEAR_MATCH"
+   }
+  ]
+ },
+ {
+  "id": "rc-057",
+  "note": "one-letter look-alike of Groww Invest Tech Private Limited",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Grow Invest Tech Private Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "BROKER_NEAR_MATCH"
+   }
+  ]
+ },
+ {
+  "id": "rc-058",
+  "note": "one-letter look-alike of Upstox Securities Private Limited",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Upstox Securites Private Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "BROKER_NEAR_MATCH"
+   }
+  ]
+ },
+ {
+  "id": "rc-059",
+  "note": "one-letter look-alike of ICICI Securities Limited",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "ICICl Securities Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "BROKER_NEAR_MATCH"
+   }
+  ]
+ },
+ {
+  "id": "rc-060",
+  "note": "real name Zerodha Broking Limited with registration number INZ000161534 that is not its own",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Zerodha Broking Limited",
+     "sebi_reg_no": "INZ000161534",
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_REG_NO_MISMATCH"
+   }
+  ]
+ },
+ {
+  "id": "rc-061",
+  "note": "real name Groww Invest Tech Private Limited with registration number INZ000031633 that is not its own",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Groww Invest Tech Private Limited",
+     "sebi_reg_no": "INZ000031633",
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_REG_NO_MISMATCH"
+   }
+  ]
+ },
+ {
+  "id": "rc-062",
+  "note": "real name Angel One Limited with registration number INZ000315837 that is not its own",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Angel One Limited",
+     "sebi_reg_no": "INZ000315837",
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_REG_NO_MISMATCH"
+   }
+  ]
+ },
+ {
+  "id": "rc-063",
+  "note": "real name Upstox Securities Private Limited with registration number INZ000010231 that is not its own",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Upstox Securities Private Limited",
+     "sebi_reg_no": "INZ000010231",
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_REG_NO_MISMATCH"
+   }
+  ]
+ },
+ {
+  "id": "rc-064",
+  "note": "real name Motilal Oswal Financial Services Limited with registration number INZ000999918 that is not its own",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Motilal Oswal Financial Services Limited",
+     "sebi_reg_no": "INZ000999918",
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_REG_NO_MISMATCH"
+   }
+  ]
+ },
+ {
+  "id": "rc-065",
+  "note": "made-up firm says it is SEBI registered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Quantrix Wealth Partners",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_NOT_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-066",
+  "note": "made-up firm says it is SEBI registered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Bullrise Capital Club",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_NOT_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-067",
+  "note": "made-up firm says it is SEBI registered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Velvora Securities",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_NOT_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-068",
+  "note": "made-up firm says it is SEBI registered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Profitbridge Equity Room",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_NOT_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-069",
+  "note": "made-up firm shows a made-up registration number",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Crestvane Broking",
+     "sebi_reg_no": "INZ000482917",
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_NOT_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-070",
+  "note": "made-up firm in Hindi says it is SEBI registered",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "शुभ लाभ स्टॉक पॉइंट",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_NOT_ON_SEBI_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-071",
+  "note": "made-up group that does not claim registration",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Daily Chart Circle",
+     "sebi_reg_no": null,
+     "claims_registered": false
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "BROKER_NOT_FOUND_NOT_CLAIMED"
+   }
+  ]
+ },
+ {
+  "id": "rc-072",
+  "note": "made-up group that does not claim registration",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Market Mantra Circle",
+     "sebi_reg_no": null,
+     "claims_registered": false
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "BROKER_NOT_FOUND_NOT_CLAIMED"
+   }
+  ]
+ },
+ {
+  "id": "rc-073",
+  "note": "made-up group that does not claim registration",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "broker",
+    "fields": {
+     "name": "Weekend Option Lessons",
+     "sebi_reg_no": null,
+     "claims_registered": false
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "BROKER_NOT_FOUND_NOT_CLAIMED"
+   }
+  ]
+ },
+ {
+  "id": "rc-074",
+  "note": "payee: exact mock @valid handle",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "sunrisecap.brk@validmock",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "sunrisecap.brk@validmock"
+   ]
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "PAYEE_VALID_HANDLE"
+   }
+  ]
+ },
+ {
+  "id": "rc-075",
+  "note": "payee: adviser paid on its exact mock @valid handle",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "meridian.ia@validmock",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "advisor"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "meridian.ia@validmock"
+   ]
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "PAYEE_VALID_HANDLE"
+   }
+  ]
+ },
+ {
+  "id": "rc-076",
+  "note": "payee: one of two mock @valid handles",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "harborline.brk@validmock",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "sunrisecap.brk@validmock",
+    "harborline.brk@validmock"
+   ]
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "PAYEE_VALID_HANDLE"
+   }
+  ]
+ },
+ {
+  "id": "rc-077",
+  "note": "payee: listed in the mock Suspect Registry",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "quickgain.trades@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [
+    "quickgain.trades@mockupi"
+   ],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_IN_SUSPECT_REGISTRY"
+   }
+  ]
+ },
+ {
+  "id": "rc-078",
+  "note": "payee: listed in the mock Suspect Registry, described as other",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "lucky.returns@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [
+    "lucky.returns@mockupi"
+   ],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_IN_SUSPECT_REGISTRY"
+   }
+  ]
+ },
+ {
+  "id": "rc-079",
+  "note": "payee: adviser payee listed in the mock Suspect Registry",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "tipsdesk.fee@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "advisor"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [
+    "tipsdesk.fee@mockupi",
+    "lucky.returns@mockupi"
+   ],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_IN_SUSPECT_REGISTRY"
+   }
+  ]
+ },
+ {
+  "id": "rc-080",
+  "note": "payee: near duplicate: digit 1 for letter l in the @valid suffix",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "sunrisecap.brk@va1idmock",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "sunrisecap.brk@validmock"
+   ]
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE"
+   }
+  ]
+ },
+ {
+  "id": "rc-081",
+  "note": "payee: near duplicate: one extra letter",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "sunrisecap.brkr@validmock",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "sunrisecap.brk@validmock"
+   ]
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE"
+   }
+  ]
+ },
+ {
+  "id": "rc-082",
+  "note": "payee: wrong UPI format: no @",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "sunrisecap.brk.validmock",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "sunrisecap.brk@validmock"
+   ]
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE"
+   }
+  ]
+ },
+ {
+  "id": "rc-083",
+  "note": "payee: looks like an @valid handle but is not in the mock @valid lookup",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "fastgain.brk@validmock",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE"
+   }
+  ]
+ },
+ {
+  "id": "rc-084",
+  "note": "payee: broker asking for money on an ordinary UPI ID",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "investdesk.pay@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE"
+   }
+  ]
+ },
+ {
+  "id": "rc-085",
+  "note": "payee: wrong UPI format: extra domain after the handle",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "harborline.brk@validmock.com",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "harborline.brk@validmock"
+   ]
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE"
+   }
+  ]
+ },
+ {
+  "id": "rc-086",
+  "note": "payee: wrong UPI format (space); no registry hit, so nothing to contradict",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "profit king@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "PAYEE_NO_REGISTRY_HIT"
+   }
+  ]
+ },
+ {
+  "id": "rc-087",
+  "note": "payee: near duplicate of a Suspect Registry entry but not the entry itself",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "quickgain.trade@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [
+    "quickgain.trades@mockupi"
+   ],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "PAYEE_NO_REGISTRY_HIT"
+   }
+  ]
+ },
+ {
+  "id": "rc-088",
+  "note": "payee: ordinary payee, no registry hit",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": "family.savings@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "PAYEE_NO_REGISTRY_HIT"
+   }
+  ]
+ },
+ {
+  "id": "rc-089",
+  "note": "payee: bank account only, no UPI ID, no registry hit",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "payee",
+    "fields": {
+     "upi_id": null,
+     "account_no_last4": "4821",
+     "ifsc": "MOCK0001234",
+     "described_as": "other"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "PAYEE_NO_REGISTRY_HIT"
+   }
+  ]
+ },
+ {
+  "id": "rc-090",
+  "note": "OctaFX is on the RBI Alert List",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "OctaFX",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PLATFORM_ON_RBI_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-091",
+  "note": "Binomo is on the RBI Alert List",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Binomo",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PLATFORM_ON_RBI_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-092",
+  "note": "IQ Option is on the RBI Alert List",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "IQ Option",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PLATFORM_ON_RBI_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-093",
+  "note": "Olymp Trade is on the RBI Alert List",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Olymp Trade",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PLATFORM_ON_RBI_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-094",
+  "note": "Quotex is on the RBI Alert List",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Quotex",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PLATFORM_ON_RBI_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-095",
+  "note": "Expert Option is on the RBI Alert List",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Expert Option",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PLATFORM_ON_RBI_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-096",
+  "note": "Pocket Option is on the RBI Alert List",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Pocket Option",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PLATFORM_ON_RBI_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-097",
+  "note": "FBS is on the RBI Alert List",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "FBS",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PLATFORM_ON_RBI_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-098",
+  "note": "Exness is on the RBI Alert List",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Exness",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PLATFORM_ON_RBI_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-099",
+  "note": "made-up platform, not on the RBI Alert List (which does not prove it is licensed)",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Zentrix FX Pro",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "PLATFORM_NOT_ON_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-100",
+  "note": "made-up platform, not on the RBI Alert List (which does not prove it is licensed)",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Crescent Forex Hub",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "PLATFORM_NOT_ON_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-101",
+  "note": "made-up platform, not on the RBI Alert List (which does not prove it is licensed)",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Kubera Coin Exchange",
+     "category": "crypto",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "PLATFORM_NOT_ON_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-102",
+  "note": "made-up platform, not on the RBI Alert List (which does not prove it is licensed)",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Nimbal Trade Arena",
+     "category": "other",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "PLATFORM_NOT_ON_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-103",
+  "note": "made-up platform, not on the RBI Alert List (which does not prove it is licensed)",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Saffron Pips Club",
+     "category": "forex",
+     "claims_licensed": false
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "PLATFORM_NOT_ON_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-104",
+  "note": "made-up platform, not on the RBI Alert List (which does not prove it is licensed)",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "लाभ फॉरेक्स ऐप",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "PLATFORM_NOT_ON_ALERT_LIST"
+   }
+  ]
+ },
+ {
+  "id": "rc-105",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Ritvik Sandhane",
+     "quote": "Long-term investing needs patience.",
+     "media_sha256": "791b43bd50f10be81a69fce706ffd7497f2afb30e90deebc9106df318009cbf2"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": "official_01.mp4",
+   "changed_ranges": []
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "ENDORSEMENT_SOURCE_SAME"
+   }
+  ]
+ },
+ {
+  "id": "rc-106",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Meher Kalsekar",
+     "quote": "Always check your broker on the SEBI website.",
+     "media_sha256": "0ab9e257a459672a9d196b752474963433270c9fbc827b2240422ef228aaf667"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": "official_02.mp4",
+   "changed_ranges": []
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "ENDORSEMENT_SOURCE_SAME"
+   }
+  ]
+ },
+ {
+  "id": "rc-107",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Ishaan Varmode",
+     "quote": "धैर्य से निवेश करें।",
+     "media_sha256": "faa06675372396ccff3c5bfddb683382a4f95ca1b86ae4c87c67e03881869e8c"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": "official_03.mp4",
+   "changed_ranges": []
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "ENDORSEMENT_SOURCE_SAME"
+   }
+  ]
+ },
+ {
+  "id": "rc-108",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Tanvi Oberkar",
+     "quote": "I use this app and doubled my money in a month.",
+     "media_sha256": "d7e21764fe264cefeef6423c304d315c0e61cf02f2da0b3893de696a7388532c"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": "official_04.mp4",
+   "changed_ranges": [
+    [
+     "0:11",
+     "0:13"
+    ]
+   ]
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "ENDORSEMENT_WORDS_CHANGED"
+   }
+  ]
+ },
+ {
+  "id": "rc-109",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Kabir Nandvekar",
+     "quote": "Join this group for guaranteed daily profit.",
+     "media_sha256": "758d97f08a5ba1aeed594424ce1b160c753b1b030ef550c4f22aaa7f3dd49872"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": "official_05.mp4",
+   "changed_ranges": [
+    [
+     "0:04",
+     "0:09"
+    ]
+   ]
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "ENDORSEMENT_WORDS_CHANGED"
+   }
+  ]
+ },
+ {
+  "id": "rc-110",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Anaya Shirolkar",
+     "quote": "इस ऐप से मैंने तीन महीने में पैसा तीन गुना किया।",
+     "media_sha256": "573a518aeb34c05209644931e915558ae831ba240bf76d0eea4a01ceaa878cf6"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": "official_06.mp4",
+   "changed_ranges": [
+    [
+     "0:02",
+     "0:05"
+    ],
+    [
+     "0:20",
+     "0:22"
+    ]
+   ]
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "ENDORSEMENT_WORDS_CHANGED"
+   }
+  ]
+ },
+ {
+  "id": "rc-111",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Ritvik Sandhane",
+     "quote": "Put all your savings in this one stock.",
+     "media_sha256": "9a2c1b09a701996715f9ff3e1f44a7b21f0b0c55a699a84efe27de26845bcb39"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": "official_01.mp4",
+   "changed_ranges": [
+    [
+     "0:30",
+     "0:31"
+    ]
+   ]
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "ENDORSEMENT_WORDS_CHANGED"
+   }
+  ]
+ },
+ {
+  "id": "rc-112",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Meher Kalsekar",
+     "quote": "This platform is approved by the regulator.",
+     "media_sha256": "856c47f838b12f2ea791c1910852dd336edc2e951bd72a0c1f364e155bd14356"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": null,
+   "changed_ranges": []
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "ENDORSEMENT_NO_SOURCE"
+   }
+  ]
+ },
+ {
+  "id": "rc-113",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Devansh Purohitkar",
+     "quote": "Send me ₹10,000 and I will make it ₹1 lakh.",
+     "media_sha256": "22b4c44358c6a515cd57f14e7a2c04e9b7420366fc5b96f927571b5798062a9d"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": null,
+   "changed_ranges": []
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "ENDORSEMENT_NO_SOURCE"
+   }
+  ]
+ },
+ {
+  "id": "rc-114",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Ishaan Varmode",
+     "quote": "यह स्कीम पूरी तरह सुरक्षित है।",
+     "media_sha256": "47c5aee593e2a1d56c9cf635706a05b3baf9f7010a5b046faeeb4563aae9ff09"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": null,
+   "changed_ranges": []
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "ENDORSEMENT_NO_SOURCE"
+   }
+  ]
+ },
+ {
+  "id": "rc-115",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Tanvi Oberkar",
+     "quote": "Read the risk disclosure before you trade.",
+     "media_sha256": "1158eb518744376e110735b0e9e322a599e0dfbd36b40175200a4aefa20bdf9b"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": "official_07.mp4",
+   "changed_ranges": []
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "ENDORSEMENT_SOURCE_SAME"
+   }
+  ]
+ },
+ {
+  "id": "rc-116",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Kabir Nandvekar",
+     "quote": "My personal tips never fail.",
+     "media_sha256": "9c1f4ba341dda225689371e9c824190f4ad4e740fa92395f7b2935e564312bc4"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": null,
+   "changed_ranges": []
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "ENDORSEMENT_NO_SOURCE"
+   }
+  ]
+ },
+ {
+  "id": "rc-117",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Anaya Shirolkar",
+     "quote": "निवेश से पहले जोखिम समझें।",
+     "media_sha256": "9750a9dee05a5cb18e444086c4c8def7ebec7eabb740ff76d4a8842949154215"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": "official_08.mp4",
+   "changed_ranges": []
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "ENDORSEMENT_SOURCE_SAME"
+   }
+  ]
+ },
+ {
+  "id": "rc-118",
+  "note": "endorsement clip, mock footage-index answer given",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Devansh Purohitkar",
+     "quote": "Guaranteed 40% a month, no risk.",
+     "media_sha256": "e805ee8773342116e2d20d401f2c167d7fc881944354348a616e081f053eccfc"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": "official_09.mp4",
+   "changed_ranges": [
+    [
+     "0:15",
+     "0:18"
+    ]
+   ]
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "ENDORSEMENT_WORDS_CHANGED"
+   }
+  ]
+ },
+ {
+  "id": "rc-119",
+  "note": "fake portfolio, unregistered firm, ordinary UPI ID for a broker",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Reliance Industries",
+     "isin": "INE002A01018",
+     "quantity": 5000,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services",
+     "isin": "INE467B01029",
+     "quantity": 3000,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c3",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Infosys",
+     "isin": "INE009A01021",
+     "quantity": 8000,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c4",
+    "type": "broker",
+    "fields": {
+     "name": "Zyrova Stock Point",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c5",
+    "type": "payee",
+    "fields": {
+     "upi_id": "zyrova.invest@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": []
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   },
+   {
+    "claim_id": "c3",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NOT_FOUND_ALL_DEPOSITORIES"
+   },
+   {
+    "claim_id": "c4",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_NOT_ON_SEBI_LIST"
+   },
+   {
+    "claim_id": "c5",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_NONE_FOUND"
+ },
+ {
+  "id": "rc-120",
+  "note": "genuine holding, real broker, exact mock @valid handle",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "HDFC Bank",
+     "isin": "INE040A01034",
+     "quantity": 250,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "broker",
+    "fields": {
+     "name": "Zerodha Broking Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c3",
+    "type": "payee",
+    "fields": {
+     "upi_id": "sunrisecap.brk@validmock",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE040A01034",
+        "units": 250
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "sunrisecap.brk@validmock"
+   ]
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "MATCHES",
+    "reason_code": "BROKER_ON_SEBI_LIST"
+   },
+   {
+    "claim_id": "c3",
+    "outcome": "MATCHES",
+    "reason_code": "PAYEE_VALID_HANDLE"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-121",
+  "note": "NSDL did not answer, look-alike broker, payee in Suspect Registry",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Maruti Suzuki India",
+     "isin": "INE585B01010",
+     "quantity": 200,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "broker",
+    "fields": {
+     "name": "Sharekhaan Limited",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c3",
+    "type": "payee",
+    "fields": {
+     "upi_id": "quickgain.trades@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE075A01022",
+        "units": 120
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "FAILED"
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [
+    "quickgain.trades@mockupi"
+   ],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "HOLDING_PARTIAL_COVERAGE"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "NO_RECORD",
+    "reason_code": "BROKER_NEAR_MATCH"
+   },
+   {
+    "claim_id": "c3",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_IN_SUSPECT_REGISTRY"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_INCOMPLETE"
+ },
+ {
+  "id": "rc-122",
+  "note": "RBI-listed platform and an ordinary payee",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "OctaFX",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "payee",
+    "fields": {
+     "upi_id": "family.savings@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PLATFORM_ON_RBI_ALERT_LIST"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "NO_RECORD",
+    "reason_code": "PAYEE_NO_REGISTRY_HIT"
+   }
+  ]
+ },
+ {
+  "id": "rc-123",
+  "note": "edited clip and a group that does not claim registration",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "endorsement",
+    "fields": {
+     "person": "Kabir Nandvekar",
+     "quote": "Join this group for guaranteed daily profit.",
+     "media_sha256": "c82cb892fe2d3014e2a40396a273257dfafb7143461e470a79d74b3af8e7053a"
+    }
+   },
+   {
+    "id": "c2",
+    "type": "broker",
+    "fields": {
+     "name": "Bazaar Buzz Group",
+     "sebi_reg_no": null,
+     "claims_registered": false
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": "official_05.mp4",
+   "changed_ranges": [
+    [
+     "0:04",
+     "0:09"
+    ]
+   ]
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "ENDORSEMENT_WORDS_CHANGED"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "NO_RECORD",
+    "reason_code": "BROKER_NOT_FOUND_NOT_CLAIMED"
+   }
+  ]
+ },
+ {
+  "id": "rc-124",
+  "note": "quantity differs and a borrowed registration number",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Bharti Airtel",
+     "isin": "INE397D01024",
+     "quantity": 2000,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "broker",
+    "fields": {
+     "name": "Paytm Money Limited",
+     "sebi_reg_no": "INZ000171337",
+     "claims_registered": true
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE397D01024",
+        "units": 20
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": []
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_QUANTITY_DIFFERS"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_REG_NO_MISMATCH"
+   }
+  ]
+ },
+ {
+  "id": "rc-125",
+  "note": "made-up platform, clip with no source, payee in Suspect Registry",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "platform",
+    "fields": {
+     "name": "Zentrix FX Pro",
+     "category": "forex",
+     "claims_licensed": true
+    }
+   },
+   {
+    "id": "c2",
+    "type": "endorsement",
+    "fields": {
+     "person": "Meher Kalsekar",
+     "quote": "This platform is approved by the regulator.",
+     "media_sha256": "925ca66213c330bb215d407b6ebfe0da3de565a2cc91dd2b09516d1ed52c9aaa"
+    }
+   },
+   {
+    "id": "c3",
+    "type": "payee",
+    "fields": {
+     "upi_id": "lucky.returns@mockupi",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "other"
+    }
+   }
+  ],
+  "consent_scope": [],
+  "depositories": [],
+  "registry": {
+   "suspect_registry_hits": [
+    "lucky.returns@mockupi"
+   ],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": null,
+   "changed_ranges": []
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "NO_RECORD",
+    "reason_code": "PLATFORM_NOT_ON_ALERT_LIST"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "NO_RECORD",
+    "reason_code": "ENDORSEMENT_NO_SOURCE"
+   },
+   {
+    "claim_id": "c3",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_IN_SUSPECT_REGISTRY"
+   }
+  ]
+ },
+ {
+  "id": "rc-126",
+  "note": "Hindi holding found and an unchanged Hindi clip",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "भारतीय स्टेट बैंक",
+     "isin": "INE062A01020",
+     "quantity": 600,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "endorsement",
+    "fields": {
+     "person": "Anaya Shirolkar",
+     "quote": "निवेश से पहले जोखिम समझें।",
+     "media_sha256": "387e49688f9df9f3deaaff96648945809fa5b9981f11574b1e845e0543523eda"
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": []
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": [
+     {
+      "holdings": [
+       {
+        "isin": "INE062A01020",
+        "units": 600
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": []
+  },
+  "footage": {
+   "source_clip": "official_08.mp4",
+   "changed_ranges": []
+  },
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "MATCHES",
+    "reason_code": "HOLDING_FOUND"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "MATCHES",
+    "reason_code": "ENDORSEMENT_SOURCE_SAME"
+   }
+  ],
+  "expected_summary": "HOLDINGS_TOTAL_ALL_FOUND"
+ },
+ {
+  "id": "rc-127",
+  "note": "no demat account anywhere, made-up firm with registration claim, near-duplicate @valid handle",
+  "claims": [
+   {
+    "id": "c1",
+    "type": "holding",
+    "fields": {
+     "instrument_name": "Tata Consultancy Services",
+     "isin": "INE467B01029",
+     "quantity": 1500,
+     "value_inr": null
+    }
+   },
+   {
+    "id": "c2",
+    "type": "broker",
+    "fields": {
+     "name": "Velvora Securities",
+     "sebi_reg_no": null,
+     "claims_registered": true
+    }
+   },
+   {
+    "id": "c3",
+    "type": "payee",
+    "fields": {
+     "upi_id": "sunrisecap.brk@va1idmock",
+     "account_no_last4": null,
+     "ifsc": null,
+     "described_as": "broker"
+    }
+   }
+  ],
+  "consent_scope": [
+   "CDSL",
+   "NSDL"
+  ],
+  "depositories": [
+   {
+    "depository": "CDSL",
+    "status": "OK",
+    "accounts": []
+   },
+   {
+    "depository": "NSDL",
+    "status": "OK",
+    "accounts": []
+   }
+  ],
+  "registry": {
+   "suspect_registry_hits": [],
+   "valid_upi_handles": [
+    "sunrisecap.brk@validmock"
+   ]
+  },
+  "footage": null,
+  "expected": [
+   {
+    "claim_id": "c1",
+    "outcome": "CONTRADICTS",
+    "reason_code": "HOLDING_NO_DEMAT"
+   },
+   {
+    "claim_id": "c2",
+    "outcome": "CONTRADICTS",
+    "reason_code": "BROKER_NOT_ON_SEBI_LIST"
+   },
+   {
+    "claim_id": "c3",
+    "outcome": "CONTRADICTS",
+    "reason_code": "PAYEE_BROKER_NOT_VALID_HANDLE"
+   }
+  ]
+ }
+]

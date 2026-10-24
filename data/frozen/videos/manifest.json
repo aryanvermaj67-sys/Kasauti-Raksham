@@ -1,0 +1,285 @@
+[
+ {
+  "file": "v001.mp4",
+  "expected_source": "official_01.mp4",
+  "expected_changed": [],
+  "variant": "none",
+  "note": "full clip, no edits. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v002.mp4",
+  "expected_source": "official_01.mp4",
+  "expected_changed": [
+   [
+    "0:11",
+    "0:13"
+   ]
+  ],
+  "variant": "none",
+  "note": "two seconds of speech replaced. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v003.mp4",
+  "expected_source": "official_02.mp4",
+  "expected_changed": [],
+  "variant": "recompressed",
+  "note": "re-encoded at a low bitrate. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v004.mp4",
+  "expected_source": "official_02.mp4",
+  "expected_changed": [
+   [
+    "0:04",
+    "0:07"
+   ]
+  ],
+  "variant": "recompressed",
+  "note": "re-encoded, words changed. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v005.mp4",
+  "expected_source": "official_03.mp4",
+  "expected_changed": [],
+  "variant": "resized",
+  "note": "scaled to 480p. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v006.mp4",
+  "expected_source": "official_03.mp4",
+  "expected_changed": [
+   [
+    "0:20",
+    "0:22"
+   ]
+  ],
+  "variant": "resized",
+  "note": "scaled to 720p, words changed. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v007.mp4",
+  "expected_source": "official_04.mp4",
+  "expected_changed": [],
+  "variant": "centre_crop",
+  "note": "20% centre crop. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v008.mp4",
+  "expected_source": "official_04.mp4",
+  "expected_changed": [
+   [
+    "0:02",
+    "0:05"
+   ]
+  ],
+  "variant": "centre_crop",
+  "note": "15% centre crop, words changed. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v009.mp4",
+  "expected_source": "official_05.mp4",
+  "expected_changed": [],
+  "variant": "off_centre_crop",
+  "note": "10% crop from the top-left. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v010.mp4",
+  "expected_source": "official_05.mp4",
+  "expected_changed": [
+   [
+    "0:09",
+    "0:12"
+   ]
+  ],
+  "variant": "off_centre_crop",
+  "note": "15% crop from the bottom-right, words changed. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v011.mp4",
+  "expected_source": "official_06.mp4",
+  "expected_changed": [],
+  "variant": "off_centre_crop",
+  "note": "crop keeping the left two thirds. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v012.mp4",
+  "expected_source": "official_06.mp4",
+  "expected_changed": [
+   [
+    "0:01",
+    "0:03"
+   ],
+   [
+    "0:14",
+    "0:16"
+   ]
+  ],
+  "variant": "off_centre_crop",
+  "note": "crop from the top, two edited ranges. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v013.mp4",
+  "expected_source": "official_07.mp4",
+  "expected_changed": [],
+  "variant": "off_centre_crop",
+  "note": "vertical 9:16 crop taken from the right side. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v014.mp4",
+  "expected_source": "official_07.mp4",
+  "expected_changed": [
+   [
+    "0:30",
+    "0:33"
+   ]
+  ],
+  "variant": "off_centre_crop",
+  "note": "12% crop from the bottom-left, words changed. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v015.mp4",
+  "expected_source": "official_08.mp4",
+  "expected_changed": [],
+  "variant": "other",
+  "note": "logo and subtitles overlaid. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v016.mp4",
+  "expected_source": "official_08.mp4",
+  "expected_changed": [
+   [
+    "0:05",
+    "0:08"
+   ]
+  ],
+  "variant": "other",
+  "note": "mirrored, words changed. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v017.mp4",
+  "expected_source": "official_09.mp4",
+  "expected_changed": [],
+  "variant": "recompressed",
+  "note": "screen recording of the clip playing. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v018.mp4",
+  "expected_source": "official_09.mp4",
+  "expected_changed": [
+   [
+    "0:15",
+    "0:18"
+   ]
+  ],
+  "variant": "none",
+  "note": "Hindi audio, a phrase replaced. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v019.mp4",
+  "expected_source": "official_10.mp4",
+  "expected_changed": [],
+  "variant": "resized",
+  "note": "letterboxed into a square frame. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v020.mp4",
+  "expected_source": "official_10.mp4",
+  "expected_changed": [
+   [
+    "0:00",
+    "0:02"
+   ]
+  ],
+  "variant": "centre_crop",
+  "note": "opening line replaced, 10% centre crop. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v021.mp4",
+  "expected_source": "official_01.mp4",
+  "expected_changed": [],
+  "variant": "other",
+  "note": "first 15 seconds only. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v022.mp4",
+  "expected_source": "official_03.mp4",
+  "expected_changed": [],
+  "variant": "recompressed",
+  "note": "forwarded several times in a chat app. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v023.mp4",
+  "expected_source": "official_05.mp4",
+  "expected_changed": [],
+  "variant": "resized",
+  "note": "sped up to 1.1x and scaled down. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v024.mp4",
+  "expected_source": "official_06.mp4",
+  "expected_changed": [],
+  "variant": "none",
+  "note": "Hindi clip, unchanged. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v025.mp4",
+  "expected_source": "official_02.mp4",
+  "expected_changed": [
+   [
+    "0:10",
+    "0:11"
+   ]
+  ],
+  "variant": "other",
+  "note": "background music added, one word changed. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v026.mp4",
+  "expected_source": null,
+  "expected_changed": [],
+  "variant": "none",
+  "note": "clip with no official source: made-up speaker to camera. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v027.mp4",
+  "expected_source": null,
+  "expected_changed": [],
+  "variant": "recompressed",
+  "note": "no official source: re-encoded promo. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v028.mp4",
+  "expected_source": null,
+  "expected_changed": [],
+  "variant": "off_centre_crop",
+  "note": "no official source, cropped from the right. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v029.mp4",
+  "expected_source": null,
+  "expected_changed": [],
+  "variant": "resized",
+  "note": "no official source, Hindi voice-over. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v030.mp4",
+  "expected_source": null,
+  "expected_changed": [],
+  "variant": "other",
+  "note": "no official source: slideshow with a voice-over. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v031.mp4",
+  "expected_source": null,
+  "expected_changed": [],
+  "variant": "centre_crop",
+  "note": "no official source, centre crop. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ },
+ {
+  "file": "v032.mp4",
+  "expected_source": null,
+  "expected_changed": [],
+  "variant": "none",
+  "note": "no official source: look-alike studio set. Not recorded yet: a teammate's consented clip is still to be recorded and copied here."
+ }
+]
