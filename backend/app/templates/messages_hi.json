@@ -1,138 +1,138 @@
 {
   "_meta": {
     "language": "hi",
-    "note": "Draft translations of messages_en.json. Every entry needs review by a fluent Hindi reader before the demo; set needs_native_review to false only after that review."
+    "note": "Hindi reason-code messages reviewed by a fluent Hindi reader on 25 Oct 2026 (corrections applied; 'असली' was not taken because it can read as 'genuine'). The ui strings below have not been reviewed yet (ui._needs_native_review)."
   },
   "reason_codes": {
     "HOLDINGS_TOTAL_NONE_FOUND": {
       "app": "आपका ऐप {claimed_count} होल्डिंग में {claimed_value_inr} के शेयर दिखाता है।",
       "record": "{depositories} के रिकॉर्ड में इनमें से कोई भी शेयर आपके नाम पर नहीं है।",
-      "needs_native_review": true
+      "needs_native_review": false
     },
     "HOLDINGS_TOTAL_SOME_FOUND": {
       "app": "आपका ऐप {claimed_count} होल्डिंग में {claimed_value_inr} के शेयर दिखाता है।",
       "record": "{depositories} के रिकॉर्ड में {claimed_count} में से केवल {found_count} आपके नाम पर हैं।",
-      "needs_native_review": true
+      "needs_native_review": false
     },
     "HOLDINGS_TOTAL_ALL_FOUND": {
       "app": "आपका ऐप {claimed_count} होल्डिंग में {claimed_value_inr} के शेयर दिखाता है।",
       "record": "{depositories} के रिकॉर्ड में सभी {claimed_count} आपके नाम पर हैं।",
-      "needs_native_review": true
+      "needs_native_review": false
     },
     "HOLDINGS_TOTAL_INCOMPLETE": {
       "app": "आपका ऐप {claimed_count} होल्डिंग में {claimed_value_inr} के शेयर दिखाता है।",
-      "record": "हम हर डिपॉज़िटरी की जाँच नहीं कर सके ({failed_depositories} से जवाब नहीं मिला), इसलिए हम नहीं कह सकते कि ये शेयर आपके हैं या नहीं।",
-      "needs_native_review": true
+      "record": "हम सभी डिपॉज़िटरी से जानकारी नहीं ले सके ({failed_depositories} से जवाब नहीं मिला), इसलिए अभी यह नहीं कहा जा सकता कि ये शेयर आपके नाम पर हैं या नहीं।",
+      "needs_native_review": false
     },
     "HOLDING_FOUND": {
       "app": "{instrument_name}: {quantity} शेयर",
       "record": "{depositories} में {quantity} शेयर आपके नाम पर हैं।",
-      "needs_native_review": true
+      "needs_native_review": false
     },
     "HOLDING_NOT_FOUND_ALL_DEPOSITORIES": {
       "app": "{instrument_name}: {quantity} शेयर",
-      "record": "{depositories} में आपके नाम पर नहीं है।",
-      "needs_native_review": true
+      "record": "{depositories} में आपके नाम पर नहीं हैं।",
+      "needs_native_review": false
     },
     "HOLDING_QUANTITY_DIFFERS": {
       "app": "{instrument_name}: {quantity} शेयर",
       "record": "{depositories} में आपके नाम पर {record_quantity} शेयर हैं, {quantity} नहीं।",
-      "needs_native_review": true
+      "needs_native_review": false
     },
     "HOLDING_PARTIAL_COVERAGE": {
       "app": "{instrument_name}: {quantity} शेयर",
-      "record": "{depositories} में नहीं मिला, लेकिन {failed_depositories} की जाँच नहीं हो सकी। हम इसकी पुष्टि नहीं कर सके।",
-      "needs_native_review": true
+      "record": "{depositories} में नहीं मिले, और {failed_depositories} की जाँच नहीं हो सकी। हम इसकी पुष्टि नहीं कर सके।",
+      "needs_native_review": false
     },
     "HOLDING_NO_DEMAT": {
       "app": "{instrument_name}: {quantity} शेयर",
       "record": "{depositories} में आपके नाम पर कोई डीमैट खाता नहीं है, इसलिए ये शेयर आपके नाम पर नहीं हैं।",
-      "needs_native_review": true
+      "needs_native_review": false
     },
     "HOLDING_ISIN_UNMAPPED": {
       "app": "{instrument_name}",
-      "record": "हम इस नाम को किसी सूचीबद्ध शेयर से नहीं मिला सके। हम इसकी पुष्टि नहीं कर सके।",
-      "needs_native_review": true
+      "record": "हम इस नाम को बाज़ार में लिस्टेड किसी शेयर से नहीं मिला सके। हम इसकी पुष्टि नहीं कर सके।",
+      "needs_native_review": false
     },
     "HOLDING_NAME_AMBIGUOUS": {
       "app": "{instrument_name}: {quantity} शेयर",
-      "record": "यह नाम {candidate_count} सूचीबद्ध प्रतिभूतियों से मेल खाता है, इसलिए हम नहीं जान सकते कि किसे खोजना है। हम इसकी पुष्टि नहीं कर सके।",
-      "needs_native_review": true
+      "record": "यह नाम {candidate_count} लिस्टेड शेयरों (सिक्योरिटीज़) से मिलता-जुलता है, इसलिए यह तय नहीं हो सका कि किसकी जाँच करें। हम इसकी पुष्टि नहीं कर सके।",
+      "needs_native_review": false
     },
     "BROKER_ON_SEBI_LIST": {
       "app": "ब्रोकर: {name}",
-      "record": "{name} SEBI के पंजीकृत मध्यस्थों की सूची में है ({sebi_reg_no})।",
-      "needs_native_review": true
+      "record": "{name} SEBI की रजिस्टर्ड संस्थाओं (इंटरमीडियरी) की सूची में है ({sebi_reg_no})।",
+      "needs_native_review": false
     },
     "BROKER_NOT_ON_SEBI_LIST": {
-      "app": "ब्रोकर: {name}, जो SEBI पंजीकृत होने का दावा करता है",
-      "record": "{name} SEBI के पंजीकृत मध्यस्थों की सूची में नहीं है।",
-      "needs_native_review": true
+      "app": "ब्रोकर: {name}, जो SEBI में रजिस्टर्ड होने का दावा करता है",
+      "record": "{name} SEBI की रजिस्टर्ड संस्थाओं (इंटरमीडियरी) की सूची में नहीं है।",
+      "needs_native_review": false
     },
     "BROKER_NEAR_MATCH": {
       "app": "ब्रोकर: {name}",
-      "record": "{name} SEBI में पंजीकृत फ़र्म {near_name} ({near_reg_no}) से हूबहू मेल नहीं खाता। भुगतान से पहले SEBI Check पर सटीक नाम और पंजीकरण संख्या मिलाएँ।",
-      "needs_native_review": true
+      "record": "{name} का नाम SEBI में रजिस्टर्ड फ़र्म {near_name} ({near_reg_no}) से पूरी तरह मेल नहीं खाता। पैसे देने से पहले SEBI Check पर पूरा नाम और रजिस्ट्रेशन नंबर ज़रूर मिला लें।",
+      "needs_native_review": false
     },
     "BROKER_NOT_FOUND_NOT_CLAIMED": {
       "app": "ब्रोकर: {name}",
-      "record": "{name} SEBI सूची में नहीं है। हम इसकी पुष्टि नहीं कर सके।",
-      "needs_native_review": true
+      "record": "{name} SEBI की सूची में नहीं है। हम इसकी पुष्टि नहीं कर सके।",
+      "needs_native_review": false
     },
     "BROKER_REG_NO_MISMATCH": {
-      "app": "ब्रोकर: {name}, SEBI पंजीकरण संख्या {claimed_reg_no}",
-      "record": "SEBI सूची में {claimed_reg_no}, {name} की पंजीकरण संख्या नहीं है।",
-      "needs_native_review": true
+      "app": "ब्रोकर: {name}, SEBI रजिस्ट्रेशन नंबर {claimed_reg_no}",
+      "record": "SEBI की सूची में {claimed_reg_no}, {name} का रजिस्ट्रेशन नंबर नहीं है।",
+      "needs_native_review": false
     },
     "PAYEE_VALID_HANDLE": {
       "app": "{payee} को भुगतान",
-      "record": "{payee} SEBI का @valid हैंडल है और संदिग्ध रजिस्ट्री में नहीं है।",
-      "needs_native_review": true
+      "record": "{payee} SEBI का @valid हैंडल है और संदिग्ध खातों की सूची (Suspect Registry) में नहीं है।",
+      "needs_native_review": false
     },
     "PAYEE_IN_SUSPECT_REGISTRY": {
       "app": "{payee} को भुगतान",
-      "record": "{payee} धोखाधड़ी के लिए रिपोर्ट किए गए खातों की संदिग्ध रजिस्ट्री में है।",
-      "needs_native_review": true
+      "record": "{payee} धोखाधड़ी की शिकायत वाले संदिग्ध खातों की सूची (Suspect Registry) में शामिल है।",
+      "needs_native_review": false
     },
     "PAYEE_BROKER_NOT_VALID_HANDLE": {
       "app": "{payee} को भुगतान, जिसे ब्रोकर बताया गया है",
-      "record": "पंजीकृत ब्रोकर @valid हैंडल से पैसे लेते हैं। {payee} ऐसा हैंडल नहीं है।",
-      "needs_native_review": true
+      "record": "रजिस्टर्ड ब्रोकर @valid हैंडल के ज़रिए ही पैसे लेते हैं। {payee} ऐसा हैंडल नहीं है।",
+      "needs_native_review": false
     },
     "PAYEE_NO_REGISTRY_HIT": {
       "app": "{payee} को भुगतान",
-      "record": "{payee} संदिग्ध रजिस्ट्री में नहीं है। हम यह पुष्टि नहीं कर सके कि यह किसका है।",
-      "needs_native_review": true
+      "record": "{payee} संदिग्ध खातों की सूची (Suspect Registry) में नहीं है। हम यह पुष्टि नहीं कर सके कि यह खाता किसका है।",
+      "needs_native_review": false
     },
     "ENDORSEMENT_SOURCE_SAME": {
       "app": "{person}: \"{quote}\"",
       "record": "मूल वीडियो में यही शब्द हैं।",
-      "needs_native_review": true
+      "needs_native_review": false
     },
     "ENDORSEMENT_WORDS_CHANGED": {
       "app": "{person}: \"{quote}\"",
       "record": "मूल वीडियो मौजूद है, पर {time_ranges} पर शब्द बदले गए हैं। मूल शब्द: \"{original_quote}\"।",
-      "needs_native_review": true
+      "needs_native_review": false
     },
     "ENDORSEMENT_NO_SOURCE": {
       "app": "{person}: \"{quote}\"",
-      "record": "हमें तुलना के लिए कोई मूल वीडियो नहीं मिला। हम इसकी पुष्टि नहीं कर सके। मूल वीडियो न मिलना किसी भी बात का प्रमाण नहीं है।",
-      "needs_native_review": true
+      "record": "हमें मिलान करने के लिए मूल वीडियो नहीं मिला। हम इसकी पुष्टि नहीं कर सके। मूल वीडियो न मिलने से कुछ भी साबित नहीं होता।",
+      "needs_native_review": false
     },
     "PLATFORM_ON_RBI_ALERT_LIST": {
       "app": "प्लेटफ़ॉर्म: {name}",
-      "record": "{name} अनधिकृत फॉरेक्स प्लेटफ़ॉर्म की RBI अलर्ट सूची में है।",
-      "needs_native_review": true
+      "record": "{name} बिना अनुमति वाले (अनधिकृत) फ़ॉरेक्स प्लेटफ़ॉर्म की RBI अलर्ट लिस्ट में शामिल है।",
+      "needs_native_review": false
     },
     "PLATFORM_NOT_ON_ALERT_LIST": {
       "app": "प्लेटफ़ॉर्म: {name}",
       "record": "{name} RBI अलर्ट सूची में नहीं है। हम इसकी पुष्टि नहीं कर सके।",
-      "needs_native_review": true
+      "needs_native_review": false
     },
     "HOLDING_NO_CONSENT": {
       "app": "{instrument_name}: {quantity} शेयर",
       "record": "आपने होल्डिंग जाँच की अनुमति नहीं दी, इसलिए हमने इसे आपके डिपॉज़िटरी रिकॉर्ड से नहीं मिलाया।",
-      "needs_native_review": true
+      "needs_native_review": false
     }
   },
   "ui": {

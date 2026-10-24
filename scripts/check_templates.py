@@ -1,7 +1,7 @@
 """Check messages_en.json / messages_hi.json cover every reason_code in verdict.schema.json.
 
-Also checks: both columns present, same {placeholders} in both languages, Hindi entries flagged
-needs_native_review, and no holdings message hard-codes a depository name.
+Also checks: both columns present, same {placeholders} in both languages, Hindi entries carry a
+needs_native_review true/false flag, and no holdings message hard-codes a depository name.
 Usage: python scripts/check_templates.py   (exit 1 on any problem)
 """
 
@@ -36,8 +36,8 @@ def main():
             continue
         if placeholders(msgs["en"][c]) != placeholders(msgs["hi"][c]):
             problems.append(f"{c}: placeholders differ between en and hi")
-        if msgs["hi"][c].get("needs_native_review") is not True:
-            problems.append(f"hi {c}: needs_native_review is not true")
+        if not isinstance(msgs["hi"][c].get("needs_native_review"), bool):  # true until a Hindi reader signs it off
+            problems.append(f"hi {c}: needs_native_review must be true or false")
         for lang in msgs:
             e = msgs[lang][c]
             if c.startswith("HOLDING") and re.search(r"CDSL|NSDL", e["app"] + e["record"]):

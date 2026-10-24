@@ -31,3 +31,27 @@ The Round 1 PDF is a finished file (no editable source on this laptop), so these
 | CDSL went live on AA, April 2023 | True | `data/evidence/sahamati_org_in_depositories-as-fip-on-account-aggregator_.png` |
 
 The old Pitch 2 figure (₹19,813 crore, 77%, IANS 3 Jan 2026) is also real, just earlier; the finale deck should use one figure only.
+
+## From the judging rubric (25 Oct 2026)
+
+The final presentation is **6 minutes plus 3 minutes of questions, with a quick demo inside it**, to a jury of 6 (`docs/JUDGING_PLAN.md`). The ten Round 1 slides do not fit in 6 minutes, so cut to about six, in this order:
+
+| Slide | Content | Why (rubric weight) |
+|---|---|---|
+| 1 | Pitch 2: the user, the Pune case, the corrected ₹22,495 crore figure | Problem and user, 20 |
+| 2 | Pitch 3 and 5, one slide: today's journey, and "records, not scores" | Problem and differentiation |
+| 3 | **Live demo, 2 minutes**: ad, screenshot, check, result, 1930, reviewer, second customer warned | Live user journey, 25 |
+| 4 | Pitch 8, with a genuine investor shown "matches" and a depository that did not answer shown "we could not verify" | Responsible AI, 10 |
+| 5 | What we miss and what we would change (from `docs/TEST_KIT.md` failure cases) and the measured results (Pitch 7 replacement above) | Adversarial robustness, 20 |
+| 6 | Pitch 9: who runs it, what a pilot needs | Deployability, 15 |
+
+Also fix in the deck:
+
+| Where | Change |
+|---|---|
+| Pitch 7 and Pitch 10 | The rubric scores "delivery against the Round 1 plan": add a one-line table of what was built and what was cut on purpose (lip analysis, live Account Aggregator), as in `docs/JUDGING_PLAN.md` |
+| Pitch 7, targets | "5 non-technical adults explain the result screen": remove it if the test is not done by the freeze, or mark it "pending". Do not claim a result that was not measured |
+| Anywhere the deck says a number is "tested" | Say what it was tested on: synthetic data, the team's consented clips, or a set written by someone else. The rubric penalises "accuracy with no measurement" |
+| Pitch 9 | Add a one-line cost answer if the team has a number; otherwise say "runs on the bank's own servers with free local models" and nothing more |
+
+Disclosure: the hackathon requires AI use, datasets, models and third-party assets to be disclosed in an appendix or slide note. The Round 1 disclosure slide already does this; update its model line as above and keep it in the finale appendix.
