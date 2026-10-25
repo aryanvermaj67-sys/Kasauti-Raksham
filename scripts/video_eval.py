@@ -2,13 +2,22 @@
 
 Usage: python scripts/video_eval.py   (exit 1 if top-1 < 90%, any unindexed clip is not NO_RECORD,
                                        any miss is MATCHES, or a source search takes 5 s or more)
-Each clip goes through comparators/video.match and the real rules.endorsement. Dev clips, not the consented set.
+       python scripts/video_eval.py data/media/clips/labels.csv [--only s05,nosrc_01] [--out docs/VIDEO_EVAL]
+         the team's own test clips (scripts/make_test_clips.py): per-clip lines, a summary by type and, with --out,
+         a Markdown report and its JSON. Exit 1 if a no-source clip is not NO_RECORD or an unchanged clip whose
+         source was found is reported as changed.
+Each clip goes through comparators/video.match and the real rules.endorsement. The first form runs the dev clips.
 """
 
+import argparse
+import csv
 import json
 import os
+import re
 import socket
+import statistics
 import sys
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -80,5 +89,128 @@ def main():
     return 0 if ok else 1
 
 
+def secs(rng: str) -> tuple[int, int]:
+    a, b = (int(m) * 60 + int(s) for m, s in re.findall(r"(\d+):(\d\d)", rng))
+    return a, b
+
+
+def summarise(res: list[dict]) -> list[str]:
+    def rate(xs, key):
+        return f"{sum(x[key] for x in xs)}/{len(xs)}"
+
+    out = [
+        f"- {t}: source found top-1 {rate(xs, 'source_ok')}"
+        for t in ("reupload", "lowq", "cropped", "banner", "trimmed", "words", "words_lowq")
+        if (xs := [x for x in res if x["type"] == t])
+    ]
+    unchanged = [x for x in res if x["type"] in ("reupload", "lowq", "cropped", "banner", "trimmed")]
+    if unchanged:
+        out.append(
+            f"- source match over re-upload, low quality, cropped, banner, trimmed: {rate(unchanged, 'source_ok')}"
+        )
+    words = [x for x in res if x["words_changed_expected"]]
+    if words:
+        errs = [
+            max(abs(x["span_got_s"][0] - x["span_expected_s"][0]), abs(x["span_got_s"][1] - x["span_expected_s"][1]))
+            for x in words
+            if x["span_got_s"]
+        ]
+        err = f", edge error median {statistics.median(errs):.1f} s, worst {max(errs):.1f} s" if errs else ""
+        out.append(
+            f"- words-changed clips: change found {rate(words, 'words_changed_got')}, reported span within 2 s of "
+            f"the real window {rate(words, 'span_ok')}{err}"
+        )
+    nosrc = [x for x in res if x["type"] == "no_source"]
+    if nosrc:
+        n = sum(x["verdict"] == "NO_RECORD" for x in nosrc)
+        out.append(
+            f"- no-source clips -> NO_RECORD: {n}/{len(nosrc)}; "
+            f"MATCHES: {sum(x['verdict'] == 'MATCHES' for x in nosrc)}"
+        )
+    fa = [x["file"] for x in res if not x["words_changed_expected"] and x["source_ok"] and x["words_changed_got"]]
+    out.append(f'- false "changed words" on unchanged clips whose source was found: {len(fa)} {fa or ""}')
+    search, total = [x["search_s"] for x in res], [x["total_s"] for x in res]
+    out.append(
+        f"- seconds per clip: source search median {statistics.median(search):.2f}, max {max(search):.2f}; "
+        f"whole check (with transcript) median {statistics.median(total):.2f}, max {max(total):.2f}"
+    )
+    return out
+
+
+def eval_labels(labels: Path, only: list[str], out: Path | None) -> int:
+    rows = [r for r in csv.DictReader(labels.open(encoding="utf-8")) if r["file"].startswith(tuple(only) or "")]
+    video._clip(), video._whisper()  # load once, as the API does at its first request; not part of the timings
+    head = "own test set made by the team, not independent"
+    print(f"{head}; device {video.device()}, whisper on {video._whisper()[1]}; network disabled for this run\n")
+    res = []
+    for r in rows:
+        m = video.match(labels.parent / r["file"])
+        verdict, code = outcome(m)
+        ranges = m.get("changed_ranges") or []
+        span = (min(secs(x)[0] for x in ranges), max(secs(x)[1] for x in ranges)) if ranges else None
+        want = (float(r["changed_from_s"]), float(r["changed_to_s"])) if r["changed_from_s"] else None
+        x = {
+            "file": r["file"], "type": r["type"],
+            "source_expected": r["source"] or None, "source_got": m["source_clip"],
+            "words_changed_expected": r["expect_words_changed"] == "1", "words_changed_got": bool(ranges),
+            "span_expected_s": want, "span_got_s": span, "changed_ranges": ranges, "verdict": verdict,
+            "reason_code": code, "share": m["frame_match_share"], "language": m["language"],
+            "search_s": m["timings_s"]["source_search"], "total_s": m["timings_s"]["total"],
+        }  # fmt: skip
+        x["source_ok"] = x["source_got"] == x["source_expected"]
+        # ranges are whole seconds (m:ss), so 2 s either side of the real window
+        x["span_ok"] = bool(span and want and want[0] - 2 <= span[0] and span[1] <= want[1] + 2)
+        res.append(x)
+        print(
+            f"{r['file']:20} {str(x['source_expected']):8}-> {str(x['source_got']):8} share {x['share']:.2f} | "
+            f"changed {int(x['words_changed_expected'])}->{int(x['words_changed_got'])} {want or ''} -> "
+            f"{' '.join(ranges)} | {verdict} {code} | {x['search_s']} s / {x['total_s']} s"
+        )
+    lines = summarise(res)
+    print("\n" + "\n".join(lines))
+    nosrc_bad = [x for x in res if x["type"] == "no_source" and x["verdict"] != "NO_RECORD"]
+    false_alarm = [x for x in res if not x["words_changed_expected"] and x["source_ok"] and x["words_changed_got"]]
+    if out:
+        table = [
+            "| clip | type | source exp -> got | changed exp -> got | span exp (s) | span got | verdict | reason |",
+            "|---|---|---|---|---|---|---|---|",
+        ] + [
+            f"| {x['file']} | {x['type']} | {x['source_expected'] or '-'} -> {x['source_got'] or '-'} | "
+            f"{int(x['words_changed_expected'])} -> {int(x['words_changed_got'])} | "
+            f"{'{:.1f}-{:.1f}'.format(*x['span_expected_s']) if x['span_expected_s'] else ''} | "
+            f"{', '.join(x['changed_ranges'])} | "
+            f"{x['verdict']} | {x['reason_code']} |"
+            for x in res
+        ]
+        md = [
+            f"# Video evaluation: {head}",
+            "",
+            f"Run {time.strftime('%d %b %Y %H:%M')}, device {video.device()}, {len(res)} clips: "
+            f"`python scripts/video_eval.py {labels.as_posix()}`",
+            "",
+            "## Summary",
+            "",
+            *lines,
+            "",
+            "## Per clip",
+            "",
+            *table,
+            "",
+        ]
+        out.with_suffix(".md").write_text("\n".join(md), encoding="utf-8")
+        out.with_suffix(".json").write_text(json.dumps({"note": head, "clips": res}, indent=1) + "\n", "utf-8")
+        print(f"wrote {out.with_suffix('.md')} and {out.with_suffix('.json')}")
+    ok = not nosrc_bad and not false_alarm
+    print("PASSED" if ok else "FAILED (a no-source clip was not NO_RECORD, or an unchanged clip was called changed)")
+    return 0 if ok else 1
+
+
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        ap = argparse.ArgumentParser()
+        ap.add_argument("labels", type=Path)
+        ap.add_argument("--only", default="", help="comma-separated file-name prefixes")
+        ap.add_argument("--out", type=Path, help="write OUT.md and OUT.json")
+        a = ap.parse_args()
+        sys.exit(eval_labels(a.labels, [x for x in a.only.split(",") if x], a.out))
     sys.exit(main())

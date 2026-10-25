@@ -59,7 +59,35 @@ Full rehearsal in one command (resets, starts both, runs every flow, stops): `sc
 - [ ] `scripts\reset_demo.ps1` prints `reset OK`
 - [ ] Ollama running; backend and frontend started as in step 3
 - [ ] `scripts\preflight.ps1` prints `GO` (git tree clean, commit hash noted)
-- [ ] demo-001 in English and Hindi, demo-002, demo-003, the fake clip and the reviewer approval each clicked through by hand (script: `docs/DEMO.md`)
+- [ ] demo-001 in English and Hindi, demo-002, demo-003, the video clip `demo_media\s05_words.mp4` and the reviewer approval each clicked through by hand (script: `docs/DEMO.md`)
 - [ ] Hindi text renders (Noto Sans Devanagari is bundled; no font download)
 - [ ] One `local` read of a new screenshot works, to prove the fallback path
 - [ ] Reset again; leave the laptop on charge with the backend running
+
+## 7. Video clips (the team's consented recordings)
+
+Originals stay untouched in `IITD Videos\` (S01-S08) and `IITD altered Audio\` (the re-voiced Part 2 lines); both are git-ignored. Everything below is made from them and is git-ignored too (people's faces and voices are never committed).
+
+| Path | What |
+|---|---|
+| `data\media\official\s01-s08.mp4` | sources, H.264/AAC 44.1 kHz, 30 fps. The only files in the footage index (MOCK official archive) |
+| `data\media\alt\s0N_alt.wav` | altered speech, silence trimmed, loudness -16 LUFS |
+| `data\media\timing.json` | per clip: where Part 2 starts and Part 3 begins (Whisper word times; s04's start set by hand) |
+| `data\media\clips\` + `labels.csv` | `_reupload _lowq _cropped _banner _trimmed _words _words_lowq` per source, and `nosrc_01-06` |
+| `data\media\unrelated\nosrc_NN.mp4` | no-source clips: no unrelated clips were recorded, so the generated DEV clips stand in |
+| `data\media\dev_official\`, `data\footage_index_dev\` | the old DEV clips and their index (used only by `backend\tests\test_video.py`) |
+| `demo_media\` | `s05.mp4`, `s05_words.mp4`, `s05_words_lowq.mp4` for the stage demo |
+
+Rebuild everything (about 4 min on the GPU), then the index and the evaluation:
+
+```powershell
+python scripts\make_test_clips.py "IITD Videos" "IITD altered Audio"
+python scripts\build_footage_index.py data\media\official
+python scripts\video_eval.py data\media\clips\labels.csv --out docs\VIDEO_EVAL
+```
+
+Demo clip: upload `demo_media\s05_words.mp4` with demo-001 (Present > Run does this). Expected: source `s05.mp4` found, words changed at `0:12-0:24`, CONTRADICTS. Measured 25 Oct: 10.8 s from upload to result on the GPU (source search 1.0 s); on CPU the whole video check is about 14 s.
+
+Offline: `scripts\demo.ps1` runs the backend with a guard that refuses every non-local connection and must print `backend network attempts blocked by the offline guard: 0` and `demo OK offline`. To test with the radio really off: Wi-Fi off, then run the same command.
+
+Tools and weights: ffmpeg 9.0.2 from winget (`%LOCALAPPDATA%\Microsoft\WinGet\Packages\Gyan.FFmpeg_...\ffmpeg-9.0.2-full_build\bin`, on PATH). CLIP ViT-B/32 in `models\open_clip\`, faster-whisper small in `models\whisper\` (both read offline). The pen-drive kit (`scripts\make_kit.ps1`) copies `models\`, `data\media\` (official, clips, alt, unrelated, timing), `data\footage_index\`, `data\footage_index_dev\` and `demo_media\`; a second laptop also needs ffmpeg on PATH.

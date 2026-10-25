@@ -1,4 +1,5 @@
-"""Video source check end to end through the API, with the network disabled. Dev clips, not the consented set."""
+"""Video source check end to end through the API, with the network disabled. Dev clips and their own index
+(data/footage_index_dev), not the consented set or its index."""
 
 import json
 import re
@@ -8,15 +9,17 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app import main
+from app.comparators import video
 from app.connectors import footage_index
 from tests.helpers import ROOT, TEMPLATES, render
 
 MEDIA = ROOT / "data" / "media"
+DEV_INDEX = ROOT / "data" / "footage_index_dev"
 pytestmark = pytest.mark.skipif(
     not (ROOT / "models" / "whisper").exists()
-    or not (ROOT / "data" / "footage_index" / "clips.json").exists()
+    or not (DEV_INDEX / "clips.json").exists()
     or not (MEDIA / "fakes").exists(),
-    reason="video models, footage index or dev clips not on this machine (all git-ignored)",
+    reason="video models, dev footage index or dev clips not on this machine (all git-ignored)",
 )
 
 
@@ -32,6 +35,10 @@ def offline(monkeypatch, tmp_path):
 
     monkeypatch.setattr(socket.socket, "connect", guard)
     monkeypatch.setattr(footage_index, "RESULTS", tmp_path / "video")
+    monkeypatch.setattr(video, "INDEX", DEV_INDEX)
+    video._index.cache_clear()
+    yield
+    video._index.cache_clear()
 
 
 def upload_and_check(clip):

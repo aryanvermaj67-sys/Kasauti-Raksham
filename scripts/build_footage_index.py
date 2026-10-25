@@ -20,4 +20,4 @@ if __name__ == "__main__":
     print(f"device: {video.device()} (embeddings), {video._whisper()[1]} (whisper)")
     took = time.perf_counter() - t
     print(f"indexed {counts['clips']} clips, {counts['frames']} frames, {counts['words']} words in {took:.1f} s")
-    print(f"-> {video.INDEX.relative_to(ROOT)}  (dev clips, not the consented set)")
+    print(f"-> {video.INDEX.relative_to(ROOT)}  (MOCK official-footage archive: the team's consented clips)")

@@ -2,7 +2,7 @@
 
 Usage: python scripts/make_dev_clips.py
 Writes (git-ignored) data/media/:
-  official/dev_NN.mp4      6 "official" clips: 45 one-second slides of generated shapes, DEV label, and the
+  dev_official/dev_NN.mp4  6 "official" clips: 45 one-second slides of generated shapes, DEV label, and the
                            built-in Windows synthetic voice (System.Speech) reading a ~100-word script
   fakes/dev_NN_fake*.mp4   the same frames from second 5 on, re-voiced with one sentence changed, plus
                            CRF 32, 10% crop and 480p variants; and a CRF 30 re-encode of each original (unchanged)
@@ -102,7 +102,7 @@ def clip(frames_dir, wav, out, start=0):
 
 
 def main():
-    for d in ("official", "fakes", "unindexed"):
+    for d in ("dev_official", "fakes", "unindexed"):
         (MEDIA / d).mkdir(parents=True, exist_ok=True)
     manifest = []
     with tempfile.TemporaryDirectory() as tmp:
@@ -118,7 +118,7 @@ def main():
                 clip(fdir, tmp / f"real{n}.wav", out)
                 manifest.append({"file": str(out.relative_to(ROOT)), "source": None, "kind": "unindexed"})
                 continue
-            official = MEDIA / "official" / f"dev_{n:02d}.mp4"
+            official = MEDIA / "dev_official" / f"dev_{n:02d}.mp4"
             clip(fdir, tmp / f"real{n}.wav", official)
             src = str(official.relative_to(ROOT))
             reencode = MEDIA / "fakes" / f"dev_{n:02d}_reencode.mp4"
@@ -158,7 +158,7 @@ def main():
                     }
                 )
     (MEDIA / "dev_manifest.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
-    for d in ("official", "fakes", "unindexed"):
+    for d in ("dev_official", "fakes", "unindexed"):
         files = sorted((MEDIA / d).glob("*.mp4"))
         print(f"{d}: {len(files)} clips")
 

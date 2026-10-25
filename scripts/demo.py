@@ -20,7 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 LOGS = ROOT / "data" / "runtime" / "demo_logs"
 SHOT = ROOT / "data" / "demo_cache" / "demo-001.png"
-FAKE = "data/media/fakes/dev_01_fake.mp4"
+FAKE = "data/media/clips/s05_words.mp4"  # the team's s05 with Part 2 re-voiced
 API = "http://localhost:8000"
 FLOWS = [
     ("demo-001 EN", ["e2e_bank_app.py", "--lang", "en", "--offline"]),

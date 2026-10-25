@@ -9,6 +9,7 @@ $easyocr = if ($env:EASYOCR_MODULE_PATH) { $env:EASYOCR_MODULE_PATH } else { Joi
 $items = [ordered]@{
   "repo\models" = "$repo\models"; "repo\wheels" = "$repo\wheels"; "repo\data\media" = "$repo\data\media"
   "repo\data\footage_index" = "$repo\data\footage_index"; "repo\frontend\node_modules" = "$repo\frontend\node_modules"
+  "repo\data\footage_index_dev" = "$repo\data\footage_index_dev"; "repo\demo_media" = "$repo\demo_media"  # dev index: tests
   "ollama_models" = $ollama; "easyocr" = $easyocr
 }
 New-Item -ItemType Directory -Force $Target | Out-Null

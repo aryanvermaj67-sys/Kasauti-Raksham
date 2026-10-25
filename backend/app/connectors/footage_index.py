@@ -1,4 +1,4 @@
-"""MOCK official-footage index (dev clips until the consented set exists): results of the video source check.
+"""MOCK official-footage index (the team's consented clips stand in for an official archive): video check results.
 
 POST /api/video runs comparators/video.match on an upload and stores the RecordResponse here by the file's
 SHA-256; the check later looks it up by the endorsement claim's media_sha256.

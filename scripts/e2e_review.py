@@ -43,11 +43,11 @@ def main():
         browser = p.chromium.launch()
         page = browser.new_page(viewport={"width": 430, "height": 900})
 
-        step(1, "customer SYN-C0001 checks demo-001 with the fake video dev_01_fake.mp4")
+        step(1, "customer SYN-C0001 checks demo-001 with the words-changed clip s05_words.mp4")
         page.goto(f"{APP}/app?customer=SYN-C0001")
         page.click("[data-testid=check-button]")
         page.set_input_files("[data-testid=shot-input]", str(ROOT / "data" / "demo_cache" / "demo-001.png"))
-        page.set_input_files("[data-testid=video-input]", str(ROOT / "data" / "media" / "fakes" / "dev_01_fake.mp4"))
+        page.set_input_files("[data-testid=video-input]", str(ROOT / "data" / "media" / "clips" / "s05_words.mp4"))
         page.click("[data-testid=read-button]")
         page.wait_for_selector("[data-testid=confirm]", timeout=120000)
         page.fill("[data-testid=field-endorsement-person]", "DEV clip speaker")
@@ -62,7 +62,7 @@ def main():
         check_id = re.search(r"chk-[0-9a-f]{12}", complaint)[0]
         print(f"check {check_id}; pre-filled 1930 complaint:\n  {complaint}")
         ok["complaint names the video clip, the changed range and the pack"] = all(
-            s in complaint for s in ("dev_01.mp4", "0:11-0:13", f"pack-{check_id}")
+            s in complaint for s in ("s05.mp4", "0:12-0:24", f"pack-{check_id}")
         )
 
         step(2, f"before review: is {PAYEE} in the MOCK Suspect Registry?")

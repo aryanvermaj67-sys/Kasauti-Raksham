@@ -29,3 +29,12 @@ ui_incoming/
 
 # second copy of the design export, reference only
 new/
+
+# dev-clip footage index (tests) and the demo/tool copies; media and people never committed
+data/footage_index_dev/
+demo_media/
+tools/
+
+# the team's original recordings (people; never committed)
+IITD Videos/
+IITD altered Audio/

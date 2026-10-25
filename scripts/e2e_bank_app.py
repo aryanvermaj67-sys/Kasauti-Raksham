@@ -150,7 +150,7 @@ if __name__ == "__main__":
     ap.add_argument("--lang", choices=["en", "hi"], default="en")
     ap.add_argument("--demo", choices=sorted(EXPECT), default="demo-001")
     ap.add_argument("--offline", action="store_true")
-    ap.add_argument("--video", help="also upload this clip, e.g. data/media/fakes/dev_01_fake.mp4")
+    ap.add_argument("--video", help="also upload this clip, e.g. data/media/clips/s05_words.mp4")
     ap.add_argument("--base", default="http://localhost:5173")
     a = ap.parse_args()
     sys.exit(run(a.lang, a.offline, a.base, a.demo, a.video))

@@ -107,15 +107,22 @@ def phashes(rgb: np.ndarray) -> list[str]:
     return [str(imagehash.phash(Image.fromarray(f))) for f in rgb]
 
 
-def transcribe(path: Path) -> list[dict]:
+def transcribe(path: Path, language: str | None = None) -> tuple[list[dict], str]:
+    """Words with times, and the language used: the given one, else whichever of the app's two (en, hi) is likelier."""
     # decode with ffmpeg (16 kHz mono float32): faster-whisper's own PyAV decoder breaks on newer PyAV releases
     cmd = ["ffmpeg", "-loglevel", "error", "-i", str(path), "-f", "f32le", "-ac", "1", "-ar", "16000", "-"]
     audio = np.frombuffer(subprocess.run(cmd, capture_output=True, check=True).stdout, np.float32)
     model, _ = _whisper()
-    segments, _ = model.transcribe(audio, word_timestamps=True, beam_size=5, language="en")
-    return [
+    if language is None:  # free detection labels some Hindi speech as Urdu and writes it in Urdu script
+        probs = dict(model.detect_language(audio)[2])
+        language = max(("en", "hi"), key=lambda k: probs.get(k, 0.0))
+    # temperature 0 only: the default fallback re-samples low-confidence audio at random, so the same clip could
+    # come back with different words and show as "changed"
+    segments, _ = model.transcribe(audio, word_timestamps=True, beam_size=5, language=language, temperature=0.0)
+    words = [
         {"w": w.word.strip(), "start": round(w.start, 2), "end": round(w.end, 2)} for s in segments for w in s.words
     ]
+    return words, language
 
 
 def build_index(official: Path) -> dict:
@@ -129,7 +136,8 @@ def build_index(official: Path) -> dict:
         )
         embs += [embed(rgb), embed(crops)]
         owner += [(n, t) for t in range(len(rgb))] * 2
-        clips.append({"clip": f.name, "frames": len(rgb), "phash": phashes(rgb), "words": transcribe(f)})
+        words, lang = transcribe(f)
+        clips.append({"clip": f.name, "frames": len(rgb), "phash": phashes(rgb), "words": words, "lang": lang})
     np.save(INDEX / "embeddings.npy", np.concatenate(embs).astype(np.float16))
     np.save(INDEX / "owner.npy", np.array(owner, dtype=np.int32))
     (INDEX / "clips.json").write_text(json.dumps(clips) + "\n", encoding="utf-8")
@@ -154,24 +162,22 @@ def _ts(s: float) -> str:
 def changed_ranges(source_words: list[dict], query_words: list[dict]):
     """Word-level diff; ranges are in the query clip's time. Returns (ranges, query text, source text) of changes."""
     a, b = [_norm(w["w"]) for w in source_words], [_norm(w["w"]) for w in query_words]
-    spans, said, original = [], [], []
+    merged = []  # [start, end, i1, i2, j1, j2]: opcodes come in time order
     for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
         if op == "equal" or (op == "delete" and j1 in (0, len(b))):
             continue  # source words before or after the query's own start and end are a cut, not a change
         if j2 > j1:
-            spans.append([query_words[j1]["start"], query_words[j2 - 1]["end"]])
+            s, e = query_words[j1]["start"], query_words[j2 - 1]["end"]
         else:  # words dropped from the source: mark the point where they were
-            t = query_words[min(j1, len(query_words) - 1)]["start"] if query_words else 0.0
-            spans.append([t, t])
-        said += [w["w"] for w in query_words[j1:j2]]
-        original += [w["w"] for w in source_words[i1:i2]]
-    merged = []
-    for s, e in sorted(spans):
+            s = e = query_words[min(j1, len(query_words) - 1)]["start"] if query_words else 0.0
         if merged and s - merged[-1][1] <= 2:
-            merged[-1][1] = max(merged[-1][1], e)
+            merged[-1][1], merged[-1][3], merged[-1][5] = max(merged[-1][1], e), i2, j2
         else:
-            merged.append([s, e])
-    return [f"{_ts(s)}-{_ts(e)}" for s, e in merged], " ".join(said), " ".join(original)
+            merged.append([s, e, i1, i2, j1, j2])
+    # quote every word inside each range, so a word that also occurs in the other text is not dropped mid-sentence
+    said = " … ".join(" ".join(w["w"] for w in query_words[m[4] : m[5]]) for m in merged)
+    original = " … ".join(" ".join(w["w"] for w in source_words[m[2] : m[3]]) for m in merged)
+    return [f"{_ts(m[0])}-{_ts(m[1])}" for m in merged], said, original
 
 
 def match(path: Path) -> dict:
@@ -198,7 +204,8 @@ def match(path: Path) -> dict:
         mean_cos = float(np.mean([c for c in cos if c >= FRAME_COS]))
         found = share >= MIN_SHARE
     search_s = time.perf_counter() - t0
-    words = transcribe(path)
+    # a re-used clip is read in its source's language, so both transcripts are compared like for like
+    words, lang = transcribe(path, clips[clip_n].get("lang") if found else None)
     out = {
         "source_found": found,
         "source_clip": clips[clip_n]["clip"] if found else None,
@@ -206,6 +213,7 @@ def match(path: Path) -> dict:
         "frame_match_share": round(share, 3),
         "offset_s": int(offset) if found else None,
         "query_words": len(words),
+        "language": lang,
         "transcript": " ".join(w["w"] for w in words),
     }
     if found:
