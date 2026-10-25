@@ -109,3 +109,58 @@ Image: `data/media/fake_apps_gemini/gm10.png` (the file `Gemini_Generated_Image_
 After the three runs the console reads "Verdicts in 3 stored checks": **MATCHES 5, CONTRADICTS 3, NO RECORD 3**. Run them in any order; the reviewer queue then holds three checks to approve or reject. The video outcomes were checked on the same clips; the holdings, broker, payee and platform outcomes were checked on exactly these inputs.
 
 If you leave the stray "Broker: Bitora Exchange" card in Run 1 with "Says it is SEBI registered" ticked, it adds one **contradicts** ("not on the SEBI list"); unticked, it adds one **no record**. Delete it to keep the story clean.
+
+## Every box on the confirm screen, run by run (screenshot `gm10.png`)
+
+Boxes you do not see in a table are left empty. "Auto" means the app fills it: do not touch it. The video's "What they say" box is filled from the video, so the text depends on the clip.
+
+**Run 1: no record** (video `nosrc_01.mp4`)
+
+| Card | Box | Put this |
+|---|---|---|
+| Broker | (whole card) | delete it with the trash icon |
+| Platform | Name | `Bitora Exchange` |
+| Platform | Category | `crypto` |
+| Platform | Says it is licensed | ticked (the picture says "licensed") |
+| Payee | UPI ID | `gains.pay@mockupi` |
+| Payee | Account no. (last 4 digits) | empty |
+| Payee | IFSC | empty |
+| Payee | Described as | `other` |
+| Video | Person in the video | `Teammate speaker` |
+| Video | What they say | leave what the app filled: "This is a development clip about loan offers. It was made for testing and does not show a real person. Good habits matter more than" |
+
+**Run 2: contradicts** (video `s05_words.mp4`)
+
+| Card | Box | Put this |
+|---|---|---|
+| Broker | (whole card) | delete it |
+| Platform | Name | `OctaFX` |
+| Platform | Category | `forex` |
+| Platform | Says it is licensed | ticked |
+| Payee | UPI ID | `trade0278.desk@mockupi` |
+| Payee | Account no. (last 4 digits) | empty |
+| Payee | IFSC | empty |
+| Payee | Described as | `other` |
+| Video | Person in the video | `Teammate speaker` |
+| Video | What they say | leave what the app filled: "Your portfolio in our app has grown to 3 crores 98 lakh rupees in 3 leading stocks. To withdraw it, you need to pay a small tax and processing fee today. Do not check with your bank because they will delay your profits." |
+
+**Run 3: matches** (video `s05_reupload.mp4`, customer `SYN-C0028` in the address)
+
+| Card | Box | Put this |
+|---|---|---|
+| Broker | Name | `ZERODHA BROKING LIMITED` |
+| Broker | SEBI registration no. | `INZ000031633` |
+| Broker | Says it is SEBI registered | ticked |
+| Platform | (whole card) | delete it |
+| Payee | UPI ID | `zerodha.brk@validbank` |
+| Payee | Account no. (last 4 digits) | empty |
+| Payee | IFSC | empty |
+| Payee | Described as | `broker` |
+| Holding 1 (Add Another Statement, type Holding) | Share name / ISIN / Quantity / Value | `Nahar Spinning Mills Limited` / auto / `3006` / empty |
+| Holding 2 (same) | Share name / ISIN / Quantity / Value | `Cravatex Ltd` / auto / `3242` / empty |
+| Video | Person in the video | `Teammate speaker` |
+| Video | What they say | leave what the app filled: "Hello, I am speaking on behalf of the Saving Advisory Board, a fictional body created for this demonstration. Today, what to do when an app" |
+
+**Extra run: a bank account as the payee** (shows the account and IFSC boxes; result: no record, because no register says who owns an account). Delete the Broker and Platform cards, and in the Payee card put: UPI ID empty, Account no. (last 4 digits) `4821`, IFSC `HDFC0001234`, Described as `other`. The IFSC box accepts only 4 letters, then `0`, then 6 letters or digits; the account box takes exactly 4 digits.
+
+If the broker card is kept in Runs 1 or 2: SEBI registration no. empty, "Says it is SEBI registered" **unticked** gives one extra no record; ticked gives one extra contradicts.
