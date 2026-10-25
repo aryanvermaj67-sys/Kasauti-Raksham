@@ -17,7 +17,7 @@ MEDIA = ROOT / "data" / "media"
 DEV_INDEX = ROOT / "data" / "footage_index_dev"
 pytestmark = pytest.mark.skipif(
     not (ROOT / "models" / "whisper").exists()
-    or not (DEV_INDEX / "clips.json").exists()
+    or not (DEV_INDEX / "audio.npz").exists()
     or not (MEDIA / "fakes").exists(),
     reason="video models, dev footage index or dev clips not on this machine (all git-ignored)",
 )
@@ -80,9 +80,21 @@ def test_reencoded_original_matches():
 
 
 def test_clip_not_in_the_index_is_no_record_never_matches():
-    body, v = upload_and_check(MEDIA / "unindexed" / "dev_new_1.mp4")
+    # a clip whose picture and sound are both outside this (dev) index: the first team source clip, if present
+    other = sorted((MEDIA / "official").glob("*.mp4"))
+    if not other:
+        pytest.skip("no clip outside the dev index on this machine")
+    body, v = upload_and_check(other[0])
     assert body["match"]["source_found"] is False
     assert (v["outcome"], v["reason_code"]) == ("NO_RECORD", "ENDORSEMENT_NO_SOURCE")
+
+
+def test_identical_audio_reused_over_another_picture_is_found_by_sound_and_never_matches():
+    # every dev script shares template sentences and the synthetic voice renders them bit for bit, so this
+    # "unindexed" clip really contains about 20 s of an indexed clip's recording: the fingerprint finds it
+    body, v = upload_and_check(MEDIA / "unindexed" / "dev_new_1.mp4")
+    assert body["match"]["source_found"] is True and body["match"]["source_signal"] == ["audio_fingerprint"]
+    assert v["outcome"] != "MATCHES"
 
 
 def test_endorsement_messages_never_call_a_video_fake_genuine_or_real():

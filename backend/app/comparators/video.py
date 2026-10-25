@@ -1,15 +1,15 @@
 """Video source check (FR-6): which indexed official clip a video re-uses, at what offset, and which words changed.
 
-Frames at 1 fps get a perceptual hash and an open_clip ViT-B/32 embedding. A source is found only when most query
-frames match one clip AND agree on one time offset (look-alike slides do not agree on an offset). Transcripts come
-from faster-whisper small with word timestamps; changed words are reported as time ranges in the query clip.
+Two signals find the source. Visual: frames at 1 fps get an open_clip ViT-B/32 embedding; most query frames must
+match one clip AND agree on one time offset (look-alike slides do not agree on an offset). Audio: a landmark
+fingerprint of the soundtrack (comparators/audio.py) must line up with one clip at one offset. Either one finds the
+source; if both fire on different clips the source is not found. Whether words changed is decided from the audio
+alone (aligned log-mel frames above a calibrated noise floor); faster-whisper only quotes the words in those spans.
 Weights load from models/ only; set KASAUTI_ALLOW_DOWNLOAD=1 once (scripts/fetch_video_models.py) to fetch them.
 """
 
-import difflib
 import json
 import os
-import re
 import statistics
 import subprocess
 import time
@@ -18,6 +18,8 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image
+
+from app.comparators import audio
 
 ROOT = Path(__file__).resolve().parents[3]
 MODELS = ROOT / "models"
@@ -107,18 +109,15 @@ def phashes(rgb: np.ndarray) -> list[str]:
     return [str(imagehash.phash(Image.fromarray(f))) for f in rgb]
 
 
-def transcribe(path: Path, language: str | None = None) -> tuple[list[dict], str]:
+def transcribe(path: Path, language: str | None = None, pcm: np.ndarray | None = None) -> tuple[list[dict], str]:
     """Words with times, and the language used: the given one, else whichever of the app's two (en, hi) is likelier."""
-    # decode with ffmpeg (16 kHz mono float32): faster-whisper's own PyAV decoder breaks on newer PyAV releases
-    cmd = ["ffmpeg", "-loglevel", "error", "-i", str(path), "-f", "f32le", "-ac", "1", "-ar", "16000", "-"]
-    audio = np.frombuffer(subprocess.run(cmd, capture_output=True, check=True).stdout, np.float32)
+    pcm = audio.load(path) if pcm is None else pcm
     model, _ = _whisper()
     if language is None:  # free detection labels some Hindi speech as Urdu and writes it in Urdu script
-        probs = dict(model.detect_language(audio)[2])
+        probs = dict(model.detect_language(pcm)[2])
         language = max(("en", "hi"), key=lambda k: probs.get(k, 0.0))
-    # temperature 0 only: the default fallback re-samples low-confidence audio at random, so the same clip could
-    # come back with different words and show as "changed"
-    segments, _ = model.transcribe(audio, word_timestamps=True, beam_size=5, language=language, temperature=0.0)
+    # temperature 0 only: the default fallback re-samples low-confidence audio at random
+    segments, _ = model.transcribe(pcm, word_timestamps=True, beam_size=5, language=language, temperature=0.0)
     words = [
         {"w": w.word.strip(), "start": round(w.start, 2), "end": round(w.end, 2)} for s in segments for w in s.words
     ]
@@ -127,7 +126,7 @@ def transcribe(path: Path, language: str | None = None) -> tuple[list[dict], str
 
 def build_index(official: Path) -> dict:
     INDEX.mkdir(parents=True, exist_ok=True)
-    clips, embs, owner = [], [], []
+    clips, embs, owner, fp, mels = [], [], [], [], {}
     for n, f in enumerate(sorted(official.glob("*.mp4"))):
         rgb = frames(f)
         h, w = int(H * CROP), int(W * CROP)
@@ -136,10 +135,17 @@ def build_index(official: Path) -> dict:
         )
         embs += [embed(rgb), embed(crops)]
         owner += [(n, t) for t in range(len(rgb))] * 2
-        words, lang = transcribe(f)
+        pcm = audio.load(f)
+        h, t = audio.fingerprint(pcm)
+        fp.append(np.stack([h, np.full(len(h), n), t], 1))
+        mels[f"mel{n}"] = audio.logmel(pcm).astype(np.float16)
+        words, lang = transcribe(f, pcm=pcm)
         clips.append({"clip": f.name, "frames": len(rgb), "phash": phashes(rgb), "words": words, "lang": lang})
     np.save(INDEX / "embeddings.npy", np.concatenate(embs).astype(np.float16))
     np.save(INDEX / "owner.npy", np.array(owner, dtype=np.int32))
+    fp = np.concatenate(fp)
+    fp = fp[np.argsort(fp[:, 0], kind="stable")]
+    np.savez(INDEX / "audio.npz", fp_hash=fp[:, 0], fp_clip=fp[:, 1], fp_t=fp[:, 2], **mels)
     (INDEX / "clips.json").write_text(json.dumps(clips) + "\n", encoding="utf-8")
     _index.cache_clear()
     return {"clips": len(clips), "frames": len(owner) // 2, "words": sum(len(c["words"]) for c in clips)}
@@ -148,44 +154,16 @@ def build_index(official: Path) -> dict:
 @cache
 def _index():
     clips = json.loads((INDEX / "clips.json").read_text(encoding="utf-8"))
-    return clips, np.load(INDEX / "embeddings.npy").astype(np.float32), np.load(INDEX / "owner.npy")
-
-
-def _norm(w: str) -> str:
-    return re.sub(r"[^\w']+", "", w.lower())
+    sound = dict(np.load(INDEX / "audio.npz"))  # an index built before the audio checks fails here: rebuild it
+    return clips, np.load(INDEX / "embeddings.npy").astype(np.float32), np.load(INDEX / "owner.npy"), sound
 
 
 def _ts(s: float) -> str:
     return f"{int(s) // 60}:{int(s) % 60:02d}"
 
 
-def changed_ranges(source_words: list[dict], query_words: list[dict]):
-    """Word-level diff; ranges are in the query clip's time. Returns (ranges, query text, source text) of changes."""
-    a, b = [_norm(w["w"]) for w in source_words], [_norm(w["w"]) for w in query_words]
-    merged = []  # [start, end, i1, i2, j1, j2]: opcodes come in time order
-    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
-        if op == "equal" or (op == "delete" and j1 in (0, len(b))):
-            continue  # source words before or after the query's own start and end are a cut, not a change
-        if j2 > j1:
-            s, e = query_words[j1]["start"], query_words[j2 - 1]["end"]
-        else:  # words dropped from the source: mark the point where they were
-            s = e = query_words[min(j1, len(query_words) - 1)]["start"] if query_words else 0.0
-        if merged and s - merged[-1][1] <= 2:
-            merged[-1][1], merged[-1][3], merged[-1][5] = max(merged[-1][1], e), i2, j2
-        else:
-            merged.append([s, e, i1, i2, j1, j2])
-    # quote every word inside each range, so a word that also occurs in the other text is not dropped mid-sentence
-    said = " … ".join(" ".join(w["w"] for w in query_words[m[4] : m[5]]) for m in merged)
-    original = " … ".join(" ".join(w["w"] for w in source_words[m[2] : m[3]]) for m in merged)
-    return [f"{_ts(m[0])}-{_ts(m[1])}" for m in merged], said, original
-
-
-def match(path: Path) -> dict:
-    """Compare one clip against the footage index. The verdict rule reads source_found and transcript_same."""
-    _clip()  # a one-time model load is not part of the search time
-    t0 = time.perf_counter()
-    clips, E, owner = _index()
-    rgb = frames(path)
+def _visual(rgb: np.ndarray, E: np.ndarray, owner: np.ndarray) -> tuple[int | None, float | None, float, float]:
+    """(clip, offset s, share of frames agreeing on it, mean cosine) from the frame embeddings."""
     q = embed(rgb)
     sims = q @ E.T
     best = sims.argmax(axis=1)
@@ -195,31 +173,69 @@ def match(path: Path) -> dict:
         for i, (j, c) in enumerate(zip(best, cos, strict=True))
         if c >= FRAME_COS
     ]
-    found, clip_n, offset, share, mean_cos = False, None, None, 0.0, 0.0
-    if votes:
-        clip_n = statistics.mode(v[0] for v in votes)
-        offset = statistics.median(v[1] for v in votes if v[0] == clip_n)
-        agree = [i for i, v in enumerate(votes) if v[0] == clip_n and abs(v[1] - offset) <= 1]
-        share = len(agree) / len(q)
-        mean_cos = float(np.mean([c for c in cos if c >= FRAME_COS]))
-        found = share >= MIN_SHARE
+    if not votes:
+        return None, None, 0.0, 0.0
+    clip_n = statistics.mode(v[0] for v in votes)
+    offset = statistics.median(v[1] for v in votes if v[0] == clip_n)
+    share = sum(1 for v in votes if v[0] == clip_n and abs(v[1] - offset) <= 1) / len(q)
+    return clip_n, float(offset), share, float(np.mean([c for c in cos if c >= FRAME_COS]))
+
+
+def match(path: Path) -> dict:
+    """Compare one clip against the footage index. The verdict rule reads source_found and transcript_same (the
+    field keeps its name: it is now true when no audio span differs from the source, whatever the transcripts say)."""
+    _clip()  # a one-time model load is not part of the search time
+    t0 = time.perf_counter()
+    clips, E, owner, sound = _index()
+    rgb, pcm = frames(path), audio.load(path)
+    v_clip, v_off, share, mean_cos = _visual(rgb, E, owner)
+    visual = share >= MIN_SHARE
+    qh, qt = audio.fingerprint(pcm)
+    fp = audio.best_offset(qh, qt, sound["fp_hash"], sound["fp_clip"], sound["fp_t"])
+    if visual:  # does the sound support the clip the picture found? (another clip may share some of its audio)
+        own = audio.best_offset(qh, qt, sound["fp_hash"], sound["fp_clip"], sound["fp_t"], clip=v_clip)
+        fp = own if own and own[2] >= audio.FP_MIN_HITS else fp
+    heard = bool(fp and fp[2] >= audio.FP_MIN_HITS)
+    signals = [s for s, on in (("visual", visual), ("audio_fingerprint", heard)) if on]
+    # the picture of one recording and the sound of another: no single source
+    found = bool(signals) and not (visual and heard and v_clip != fp[0])
+    clip_n = (fp[0] if heard else v_clip) if found else None
+    q_mel = audio.logmel(pcm)
+    # source frame - upload frame: per upload frame from the fingerprint hits (follows a splice of a different
+    # length), else one number from the picture
+    offsets = audio.frame_offsets(fp[3], fp[4], len(q_mel)) if found and heard else None
+    offset = (offsets[0] / audio.FPS if heard else v_off) if found else None  # where the upload starts in the source
     search_s = time.perf_counter() - t0
-    # a re-used clip is read in its source's language, so both transcripts are compared like for like
-    words, lang = transcribe(path, clips[clip_n].get("lang") if found else None)
+    words, lang = transcribe(path, clips[clip_n].get("lang") if found else None, pcm)  # in the source's language
     out = {
         "source_found": found,
         "source_clip": clips[clip_n]["clip"] if found else None,
-        "similarity": round(mean_cos, 3) if found else None,
+        "source_signal": signals,
+        "similarity": round(mean_cos, 3) if visual else None,
         "frame_match_share": round(share, 3),
-        "offset_s": int(offset) if found else None,
+        "fingerprint_hits": fp[2] if fp else 0,
+        "offset_s": round(offset, 2) if found else None,
         "query_words": len(words),
         "language": lang,
         "transcript": " ".join(w["w"] for w in words),
     }
     if found:
-        lo, hi = offset - 1, offset + len(rgb) + 1
-        src = [w for w in clips[clip_n]["words"] if lo <= w["start"] <= hi]
-        ranges, said, original = changed_ranges(src, words)
-        out |= {"transcript_same": not ranges, "changed_ranges": ranges, "quote": said, "original_quote": original}
+        mel = sound[f"mel{clip_n}"].astype(np.float32)
+        align = offsets if heard else round(offset * audio.FPS)
+        spans = audio.changed_spans(audio.frame_distance(q_mel, mel, align, np.unique(fp[3]) if heard else None))
+
+        def local(t):  # offset in seconds at upload time t
+            return offsets[min(int(t * audio.FPS), len(offsets) - 1)] / audio.FPS if heard else offset
+
+        def said(ws, a, b):  # Whisper only quotes the words inside a span the audio flagged
+            return " ".join(w["w"] for w in ws if a <= (w["start"] + w["end"]) / 2 <= b)
+
+        out |= {
+            "transcript_same": not spans,
+            "changed_ranges": [f"{_ts(a)}-{_ts(b)}" for a, b in spans],
+            "changed_spans_s": spans,
+            "quote": " … ".join(said(words, a, b) for a, b in spans),
+            "original_quote": " … ".join(said(clips[clip_n]["words"], a + local(a), b + local(b)) for a, b in spans),
+        }
     out["timings_s"] = {"source_search": round(search_s, 2), "total": round(time.perf_counter() - t0, 2)}
     return out

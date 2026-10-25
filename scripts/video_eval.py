@@ -18,6 +18,7 @@ import socket
 import statistics
 import sys
 import time
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -98,8 +99,12 @@ def summarise(res: list[dict]) -> list[str]:
     def rate(xs, key):
         return f"{sum(x[key] for x in xs)}/{len(xs)}"
 
+    def fired(xs):  # which signal found the source: visual, audio fingerprint, or both
+        c = Counter("+".join(x["signal"]) or "none" for x in xs if x["source_ok"] and x["source_got"])
+        return ", ".join(f"{k} {n}" for k, n in sorted(c.items()))
+
     out = [
-        f"- {t}: source found top-1 {rate(xs, 'source_ok')}"
+        f"- {t}: source found top-1 {rate(xs, 'source_ok')} ({fired(xs)})"
         for t in ("reupload", "lowq", "cropped", "banner", "trimmed", "words", "words_lowq")
         if (xs := [x for x in res if x["type"] == t])
     ]
@@ -146,8 +151,10 @@ def eval_labels(labels: Path, only: list[str], out: Path | None) -> int:
     for r in rows:
         m = video.match(labels.parent / r["file"])
         verdict, code = outcome(m)
-        ranges = m.get("changed_ranges") or []
-        span = (min(secs(x)[0] for x in ranges), max(secs(x)[1] for x in ranges)) if ranges else None
+        ranges, exact = m.get("changed_ranges") or [], m.get("changed_spans_s")
+        if exact is None:  # an older comparator without second-level spans
+            exact = [secs(x) for x in ranges]
+        span = (min(a for a, _ in exact), max(b for _, b in exact)) if exact else None
         want = (float(r["changed_from_s"]), float(r["changed_to_s"])) if r["changed_from_s"] else None
         x = {
             "file": r["file"], "type": r["type"],
@@ -156,13 +163,15 @@ def eval_labels(labels: Path, only: list[str], out: Path | None) -> int:
             "span_expected_s": want, "span_got_s": span, "changed_ranges": ranges, "verdict": verdict,
             "reason_code": code, "share": m["frame_match_share"], "language": m["language"],
             "search_s": m["timings_s"]["source_search"], "total_s": m["timings_s"]["total"],
+            "signal": m.get("source_signal", []), "fingerprint_hits": m.get("fingerprint_hits", 0),
         }  # fmt: skip
         x["source_ok"] = x["source_got"] == x["source_expected"]
         # ranges are whole seconds (m:ss), so 2 s either side of the real window
         x["span_ok"] = bool(span and want and want[0] - 2 <= span[0] and span[1] <= want[1] + 2)
         res.append(x)
         print(
-            f"{r['file']:20} {str(x['source_expected']):8}-> {str(x['source_got']):8} share {x['share']:.2f} | "
+            f"{r['file']:20} {str(x['source_expected']):8}-> {str(x['source_got']):8} share {x['share']:.2f} "
+            f"fp {x['fingerprint_hits']:4} {'+'.join(x['signal']) or '-':24} | "
             f"changed {int(x['words_changed_expected'])}->{int(x['words_changed_got'])} {want or ''} -> "
             f"{' '.join(ranges)} | {verdict} {code} | {x['search_s']} s / {x['total_s']} s"
         )
@@ -172,10 +181,12 @@ def eval_labels(labels: Path, only: list[str], out: Path | None) -> int:
     false_alarm = [x for x in res if not x["words_changed_expected"] and x["source_ok"] and x["words_changed_got"]]
     if out:
         table = [
-            "| clip | type | source exp -> got | changed exp -> got | span exp (s) | span got | verdict | reason |",
-            "|---|---|---|---|---|---|---|---|",
+            "| clip | type | source exp -> got | signal | changed exp -> got | span exp (s) | span got | verdict | "
+            "reason |",
+            "|---|---|---|---|---|---|---|---|---|",
         ] + [
             f"| {x['file']} | {x['type']} | {x['source_expected'] or '-'} -> {x['source_got'] or '-'} | "
+            f"{' + '.join(x['signal']) or '-'} | "
             f"{int(x['words_changed_expected'])} -> {int(x['words_changed_got'])} | "
             f"{'{:.1f}-{:.1f}'.format(*x['span_expected_s']) if x['span_expected_s'] else ''} | "
             f"{', '.join(x['changed_ranges'])} | "

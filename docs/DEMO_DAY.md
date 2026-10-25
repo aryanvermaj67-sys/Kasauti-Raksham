@@ -86,7 +86,9 @@ python scripts\build_footage_index.py data\media\official
 python scripts\video_eval.py data\media\clips\labels.csv --out docs\VIDEO_EVAL
 ```
 
-Demo clip: upload `demo_media\s05_words.mp4` with demo-001 (Present > Run does this). Expected: source `s05.mp4` found, words changed at `0:12-0:24`, CONTRADICTS. Measured 25 Oct: 10.8 s from upload to result on the GPU (source search 1.0 s); on CPU the whole video check is about 14 s.
+The index holds the audio fingerprints and log-mel frames (`data\footage_index\audio.npz`); an index built before 25 Oct lacks it, the backend then answers 503 "footage index not built" and preflight shows `model weights NO`: run `python scripts\build_footage_index.py data\media\official` once (about 75 s). The audio thresholds come from `python scripts\calibrate_audio.py` (source clips only; numbers in progress.md).
+
+Demo clip: upload `demo_media\s05_words.mp4` with demo-001 (Present > Run does this). Expected: source `s05.mp4` found (picture and sound), words changed at `0:11-0:26`, CONTRADICTS. Measured 25 Oct on the GPU: 9.4 s from upload to result (source search 1.2 s). On CPU the whole video check is about 13 s for English clips and up to 48 s for Hindi ones.
 
 Offline: `scripts\demo.ps1` runs the backend with a guard that refuses every non-local connection and must print `backend network attempts blocked by the offline guard: 0` and `demo OK offline`. To test with the radio really off: Wi-Fi off, then run the same command.
 
