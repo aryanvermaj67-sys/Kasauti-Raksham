@@ -29,6 +29,9 @@ type Stage = 'waiting' | 'running' | 'done'
 
 const HIDDEN_FIELDS = ['media_sha256']
 const NUMBER_FIELDS = ['quantity', 'value_inr']
+// the claim schema's formats (backend/app/schemas/claims.py): a wrong one is stopped here, not by a server error
+const FIELD_PATTERN: Record<string, RegExp> = { account_no_last4: /^[0-9]{4}$/, ifsc: /^[A-Z]{4}0[A-Z0-9]{6}$/ }
+const badFormat = (k: string, v: unknown) => v !== null && v !== '' && k in FIELD_PATTERN && !FIELD_PATTERN[k].test(String(v))
 const BOOL_FIELDS = ['claims_registered', 'claims_licensed']
 const SELECT_FIELDS: Record<string, string[]> = { described_as: ['broker', 'advisor', 'other'], category: ['equity', 'forex', 'crypto', 'other'] }
 // empty claims the customer can add (field names from docs/formats/claims.schema.json; endorsements need a video)
@@ -117,7 +120,11 @@ export default function CustomerApp() {
   const [prompts, setPrompts] = useState<Prompt[]>([])
   const [clock, setClock] = useState(() => new Date())
   const t = (key: string, p?: Params) => ui(lang, key, p)
-  const fail = (e: unknown) => setError(t('error', { error: e instanceof Error ? e.message : String(e) }))
+  const fail = (e: unknown) => {
+    const msg = e instanceof Error ? e.message : String(e)
+    const bad = msg.match(/"fields","(\w+)"\]/) // a 422 names the field: say which, not the raw JSON
+    setError(bad ? t('error_field', { field: t(`field_${bad[1]}`) }) : t('error', { error: msg }))
+  }
   const stage = (k: string, s: Stage) => setStages((x) => ({ ...x, [k]: s }))
   const go = (s: Step) => {
     setStep(s)
@@ -471,9 +478,14 @@ export default function CustomerApp() {
                                 data-testid={`field-${c.type}-${k}`}
                                 type={NUMBER_FIELDS.includes(k) ? 'number' : 'text'}
                                 value={v === null ? '' : String(v)}
-                                onChange={(e) => setField(c.id, k, NUMBER_FIELDS.includes(k) ? (e.target.value === '' ? null : Number(e.target.value)) : e.target.value || null)}
+                                onChange={(e) => setField(c.id, k, NUMBER_FIELDS.includes(k) ? (e.target.value === '' ? null : Number(e.target.value)) : (k === 'ifsc' ? e.target.value.toUpperCase() : e.target.value) || null)}
                                 onBlur={k === 'instrument_name' ? () => resolveIsin(c).catch(fail) : undefined}
                               />
+                            )}
+                            {badFormat(k, v) && (
+                              <span data-testid={`bad-${c.type}-${k}`} className="text-[10px] text-[#ba1a1a]">
+                                {t(`hint_${k}`)}
+                              </span>
                             )}
                           </label>
                         ))}
@@ -517,7 +529,7 @@ export default function CustomerApp() {
                   <button onClick={() => setStep('upload')} type="button" className={back}>
                     {t('back')}
                   </button>
-                  <button data-testid="continue" onClick={() => go('consent')} disabled={!allPicked || !claimset.claims.length} type="button" className={fwd}>
+                  <button data-testid="continue" onClick={() => go('consent')} disabled={!allPicked || !claimset.claims.length || claimset.claims.some((c) => Object.entries(c.fields).some(([k, v]) => badFormat(k, v)))} type="button" className={fwd}>
                     <span>{t('ph_confirm')}</span>
                     <Icon name="arrow_forward" className="text-[14px]" />
                   </button>

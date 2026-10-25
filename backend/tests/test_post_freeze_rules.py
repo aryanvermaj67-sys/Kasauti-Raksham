@@ -426,3 +426,16 @@ def test_handle_with_a_space_for_its_dot_is_completed_but_label_words_are_not_jo
     claims = [{"type": "payee", "fields": {"upi_id": "pay@mockupi"}}]
     local._complete_handle(claims, "Pay to pay@mockupi")
     assert claims[0]["fields"]["upi_id"] == "pay@mockupi"
+
+
+def test_a_payee_with_an_account_number_in_the_ifsc_box_or_a_long_account_number_is_made_to_fit_the_schema():
+    def payee(**f):
+        claims = [{"type": "payee", "fields": {"upi_id": None, "account_no_last4": None, "ifsc": None, **f}}]
+        local._clean_payee_ids(claims)
+        return claims[0]["fields"]
+
+    assert payee(ifsc="1234") == {"upi_id": None, "account_no_last4": "1234", "ifsc": None}  # only digits: not an IFSC
+    assert payee(ifsc="hdfc 0001234")["ifsc"] == "HDFC0001234"
+    assert payee(account_no_last4="0012345678")["account_no_last4"] == "5678"
+    assert payee(account_no_last4="12")["account_no_last4"] is None
+    assert payee(ifsc="not an ifsc")["ifsc"] is None

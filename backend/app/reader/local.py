@@ -345,6 +345,24 @@ BROKER_WORD = re.compile(r"broker|ब्रोकर", re.I)
 ADVISOR_WORD = re.compile(r"advis[eo]r|advisory|सलाहकार", re.I)
 
 
+IFSC = re.compile(r"[A-Z]{4}0[A-Z0-9]{6}")
+
+
+def _clean_payee_ids(claims: list[dict]) -> None:
+    """The schema accepts only a real IFSC and exactly 4 account digits. A model that puts an account number in the IFSC
+    field, or a whole account number in the last-4 field, must not fail the whole read: keep what fits."""
+    for c in claims:
+        if c["type"] != "payee":
+            continue
+        f = c["fields"]
+        ifsc = re.sub(r"\s", "", str(f.get("ifsc") or "")).upper()
+        digits = re.sub(r"\D", "", str(f.get("account_no_last4") or ""))
+        if not digits and re.fullmatch(r"\d{4,}", ifsc):  # an account number in the IFSC box
+            digits = ifsc
+        f["ifsc"] = ifsc if IFSC.fullmatch(ifsc) else None
+        f["account_no_last4"] = digits[-4:] if len(digits) >= 4 else None
+
+
 def _payee_from_text(claims: list[dict], text: str) -> None:
     """The model sometimes leaves payee null although a UPI handle is printed. A handle in the text (with its "@") is a
     payee claim; who it belongs to is read from the words around it, else "other"."""
@@ -565,6 +583,7 @@ def _to_claimset(content: str, sha: str, model: str, text: str = "") -> ClaimSet
                 None  # OCR drops the dot in handles ("name desk@bank"); a guess could name another payee
             )
     claims = _tidy(claims)
+    _clean_payee_ids(claims)
     _fill_values(claims, text)
     _payee_from_text(claims, text)
     _ground(claims, text)
