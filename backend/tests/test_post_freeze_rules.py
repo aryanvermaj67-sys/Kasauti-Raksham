@@ -398,3 +398,31 @@ def test_platform_category_needs_a_cue_and_the_name_is_not_the_category_line_or_
     plain = [{"type": "platform", "fields": {"name": "Arena", "category": "forex", "claims_licensed": True}}]
     local._ground_platform(plain, "Arena\nTrading platform")
     assert plain[0]["fields"]["category"] == "other"  # the text never says forex
+
+
+def test_more_ocr_habits_from_realistic_screenshots():
+    assert "₹ 7.10 L" in local.clean_ocr("₹ 7110 L")  # the point read as 1
+    assert "INZ000917334" in local.clean_ocr("पंजीकरण संख्याः INZ00091 7334")  # a gap inside a registration number
+    assert "INZ000917334 x" in local.clean_ocr("INZ000917334 x")
+    assert "शेयर 150" in local.clean_ocr("शेयर 1 50")
+    assert "शेयर 2,000" in local.clean_ocr("शेयर 2,000")
+    assert isin_master.repair_isin("INE397001024") == "INE397D01024"  # D read as 0
+
+
+def test_a_holding_worth_more_than_the_whole_portfolio_is_a_misread():
+    text = "Total value\n₹ 36,04,000\nAsian Paints Ltd\n₹ 7110 L"
+    claims = [
+        {"type": "holding", "fields": {"instrument_name": "Asian Paints Ltd", "quantity": 250, "value_inr": 711e6}}
+    ]
+    claims, total = local._check_numbers(claims, 3604000, local.clean_ocr(text))
+    assert total == 3604000 and claims[0]["fields"]["value_inr"] is None
+
+
+def test_handle_with_a_space_for_its_dot_is_completed_but_label_words_are_not_joined():
+    text = "your broker: quantrix pay@mockupi"
+    claims = [{"type": "payee", "fields": {"upi_id": "pay@mockupi"}}]
+    local._complete_handle(claims, text)
+    assert claims[0]["fields"]["upi_id"] == "quantrix.pay@mockupi"
+    claims = [{"type": "payee", "fields": {"upi_id": "pay@mockupi"}}]
+    local._complete_handle(claims, "Pay to pay@mockupi")
+    assert claims[0]["fields"]["upi_id"] == "pay@mockupi"

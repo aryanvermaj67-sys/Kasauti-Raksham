@@ -9,6 +9,7 @@ The organisers' rubric says the test workflow is part of the submission, complet
 | SEBI registered brokers, advisers, research analysts; RBI Alert List; NSE and BSE equity lists | Public lists, downloaded with `scripts/fetch_registries.py` and `scripts/fetch_sebi.py`; every file has a row in `data/SOURCES.md` (page, date, SHA-256) | Yes, public |
 | 300 synthetic portfolios (fake, mixed, real, no demat, partial coverage) | `scripts/gen_portfolios.py --n 300 --seed 42`, in the ReBIT Account Aggregator format, built from the public lists above | Generated from public data, seeded |
 | 60 fake-app screenshots, 6 layouts, Hindi and English | `scripts/make_fake_app_screens.py --seed 7` | Generated, seeded |
+| 12 realistic fake-app screenshots, English and Hindi | Made with an image generator from the prompts in `scripts/gemini_screen_specs.py`; each image was checked by eye against its label. These are AI-generated images: list them in the disclosure | Prompts in the repo, images are git-ignored |
 | 64 screenshots, 130 rule cases, 76 brokers, 20 payees, 9 adversarial images | `data/frozen/`, written by a person who does not write the rules, hashed in `data/frozen/HASH.txt` | In the repo |
 | Video source matching | Teammates' consented clips (`scripts/make_test_clips.py`), plus 6 development clips from `scripts/make_dev_clips.py` | Consented, not public |
 
@@ -31,8 +32,9 @@ Then run the checks. Each one prints its result and exits non-zero on a miss.
 |---|---|---|---|
 | 1 | `sh scripts/verify_all.sh --quick` | backend tests, lint, templates (English and Hindi), frontend build, lint and tests, example set check | all pass; 156 backend tests |
 | 2 | `python scripts/run_portfolios.py` | verdict rules on the 300 synthetic portfolios, 1,261 holding claims | 300 of 300 correct |
-| 3 | `python -X utf8 scripts/run_frozen.py` | the frozen set end to end (refuses to run unless `HASH.txt` matches): rules, brokers, payees, injected-text images, claim reader on 64 screenshots | 274 of 274 verdicts, 0 false contradictions, 307 of 307 reason codes, 607 of 632 screenshot fields (96%), injection 5 of 5 |
-| 4 | `python -X utf8 scripts/make_fake_app_screens.py --score` | claim reader on the 60 generated screenshots | 571 of 584 fields (97.8%) |
+| 3 | `python -X utf8 scripts/run_frozen.py` | the frozen set end to end (refuses to run unless `HASH.txt` matches): rules, brokers, payees, injected-text images, claim reader on 64 screenshots | 274 of 274 verdicts, 0 false contradictions, 307 of 307 reason codes, 608 of 632 screenshot fields (96%), injection 5 of 5 |
+| 4 | `python -X utf8 scripts/make_fake_app_screens.py --score` | claim reader on the 60 generated full-screen (1080 by 2340) screenshots | 573 of 584 fields (98.1%) |
+| 4b | `python -X utf8 scripts/make_fake_app_screens.py --score-dir data/media/fake_apps_gemini` | claim reader on 12 realistic screenshots made with an image generator from `scripts/gemini_screen_specs.py` (a style the reader was never tuned on; the first run, before any fix, got 97 of 104, the fixes it showed are tested) | 103 of 104 fields (99.0%); the miss is a stylised ad whose firm name "CLUB" is read as "GLUD" |
 | 5 | `python scripts/video_eval.py` | source matching on the development clips, network disabled | 30 of 30 top-1, 3 of 3 unindexed clips give "no record" |
 | 6 | `python scripts/video_eval.py data/media/clips/labels.csv --out docs/VIDEO_EVAL` | the team's consented clips: changed words found, unchanged clips not flagged, no-source clips give "no record" | **pending the recordings** |
 

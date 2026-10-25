@@ -1,7 +1,7 @@
 # ruff: noqa: E501  (the WORDS tables keep one language per few lines)
 """Make the fake-app screenshots (PRD data plan: ~60 images, 6 layouts, Hindi + English) with exact labels.
 
-Usage: python -X utf8 scripts/make_fake_app_screens.py [--seed 7] [--score]
+Usage: python -X utf8 scripts/make_fake_app_screens.py [--seed 7] [--score] [--score-dir DIR]
 Writes data/media/fake_apps/fa01.png .. fa60.png and labels.json (git-ignored, regenerated from the seed).
 Everything here is MOCK: invented firms, platforms and UPI handles (@mockupi / @validmock); listed company names are
 public securities. A field an image does not show is null in its label. --score reads every image through the real
@@ -22,7 +22,7 @@ sys.path.insert(0, str(ROOT / "backend"))
 OUT = ROOT / "data" / "media" / "fake_apps"
 EN, HI, BOLD = r"C:\Windows\Fonts\arial.ttf", r"C:\Windows\Fonts\Nirmala.ttc", r"C:\Windows\Fonts\arialbd.ttf"
 W = 1080
-
+SCREEN_H = 2340  # a full phone screen (9:19.5)
 # listed companies, price band in rupees (an invented, rough band: only so quantity x price is a plausible value)
 STOCKS = {
     "Reliance Industries Ltd": (1200, 1500), "Tata Consultancy Services Ltd": (3000, 4200), "Infosys Ltd": (1300, 1900),
@@ -110,7 +110,7 @@ def draw(c: dict) -> tuple[Image.Image, list[dict], int | None]:
     body = HI if hi else EN
     held = c["holdings"]
     total = sum(h["value"] for h in held) if held else None
-    img = Image.new("RGB", (W, 2000), "#ffffff")
+    img = Image.new("RGB", (W, SCREEN_H), "#ffffff")
     d = ImageDraw.Draw(img)
     claims: list[dict] = []
     shown_total = None
@@ -122,7 +122,7 @@ def draw(c: dict) -> tuple[Image.Image, list[dict], int | None]:
             "quantity": h["qty"] if qty else None, "value_inr": h["value"] if value else None}}  # fmt: skip
 
     if lay == 1:  # cards on a light background
-        d.rectangle([0, 0, W, 2000], fill="#eef2f7")
+        d.rectangle([0, 0, W, SCREEN_H], fill="#eef2f7")
         status_bar(d)
         d.text((50, y), w["port"], fill="#101828", font=font(BOLD if not hi else HI, 46))
         d.rounded_rectangle([40, y + 90, W - 40, y + 300], 28, fill="#0b5fff")
@@ -156,7 +156,7 @@ def draw(c: dict) -> tuple[Image.Image, list[dict], int | None]:
         d.text((50, y + 30), f"{w['total']}   ₹ {inr(total)}", fill="#101828", font=font(HI, 38))
         shown_total, y = total, y + 100
     elif lay == 3:  # tipster chat, quantities only
-        d.rectangle([0, 0, W, 2000], fill="#e8f0e4")
+        d.rectangle([0, 0, W, SCREEN_H], fill="#e8f0e4")
         status_bar(d)
         d.rounded_rectangle([40, y, W - 120, y + 120], 24, fill="white")
         d.text((70, y + 30), c["firm"], fill="#075e54", font=font(BOLD, 36))
@@ -187,7 +187,7 @@ def draw(c: dict) -> tuple[Image.Image, list[dict], int | None]:
             claims.append(hold(h, isin=True, value=True))
             y += 200
     elif lay == 5:  # promo ad naming a firm that says it is registered
-        for i in range(2000):
+        for i in range(SCREEN_H):
             d.line([0, i, W, i], fill=(255, 120 + i // 25, 40 + i // 40))
         status_bar(d, "white")
         d.text(
@@ -207,7 +207,7 @@ def draw(c: dict) -> tuple[Image.Image, list[dict], int | None]:
         ]  # fmt: skip
         y += 560
     else:  # platform dashboard
-        d.rectangle([0, 0, W, 2000], fill="#111827")
+        d.rectangle([0, 0, W, SCREEN_H], fill="#111827")
         status_bar(d, "white")
         pname, cat = c["platform"]
         d.text((60, y + 40), pname, fill="white", font=font(BOLD, 60))
@@ -222,14 +222,19 @@ def draw(c: dict) -> tuple[Image.Image, list[dict], int | None]:
         ]  # fmt: skip
         y += 480
     # no on-image banner: any text on the image is read as a claim; labels.json and this script say it is MOCK
-    return img.crop((0, 0, W, y + 100)), claims, shown_total
+    d.rounded_rectangle([W // 2 - 130, SCREEN_H - 40, W // 2 + 130, SCREEN_H - 32], 4, fill="#98a2b3")  # home bar
+    return img, claims, shown_total  # the whole phone screen, not just the part with content
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--score", action="store_true")
+    ap.add_argument("--score-dir", help="only score the images and labels.json already in this folder (no generation)")
     args = ap.parse_args()
+    if args.score_dir:
+        d = Path(args.score_dir)
+        return score(json.loads((d / "labels.json").read_text(encoding="utf-8")), d)
     from app.connectors import isin_master
 
     isins = {n: isin_master.lookup(n).payload["isin"] for n in STOCKS}
@@ -253,7 +258,7 @@ def main() -> None:
         score(labels)
 
 
-def score(labels: dict) -> None:
+def score(labels: dict, folder: Path = OUT) -> None:
     import os
 
     os.environ.setdefault("LLM_PROVIDER", "local")
@@ -271,7 +276,7 @@ def score(labels: dict) -> None:
     for name, lab in labels.items():
         if name.startswith("_"):
             continue
-        r = client.post("/api/read", files={"file": (name, (OUT / name).read_bytes(), "image/png")})
+        r = client.post("/api/read", files={"file": (name, (folder / name).read_bytes(), "image/png")})
         got = by_type(r.json()["claims"]) if r.status_code == 200 else {}
         for key, c in by_type(lab["claims"]).items():
             for f, want in c["fields"].items():

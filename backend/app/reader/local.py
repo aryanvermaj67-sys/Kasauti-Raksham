@@ -169,6 +169,9 @@ CAPITAL_O_IN_WORD = re.compile(r"(?<=[a-z])O(?=[a-z])")  # "ZerOdha": a capital 
 LTD_MISREAD = re.compile(r"(?<=[a-z]) Lt[aq]\b")  # the Devanagari model reads the Latin "Ltd" as "Lta"
 LOST_POINT_SPACE = re.compile(r"(?<![\d,.])(\d{1,3}) (\d{2})(?= (?:लाख|करोड़|L\b|Cr\b|lakh|crore))")  # "7 68 लाख"
 LOST_POINT_LAKH = re.compile(r"(?<![\d,.])([1-9])(\d{2})(?= (?:लाख|L\b|lakh))")  # "684 लाख": apps switch to Cr at 100
+LOST_POINT_DIGIT = re.compile(r"(?<![\d,.])([1-9])[1l|](\d{2})(?= (?:लाख|L\b|lakh))")  # "7110 L": the "." read as 1
+REG_NO_SPACED = re.compile(r"(?<![A-Za-z0-9])(IN[AHZ])(\d(?:\d| (?=\d)){7,10}\d)(?!\d)")  # "INZ00091 7334"
+QTY_SPLIT = re.compile(rf"((?:{QTY_WORDS})\W{{0,2}}\s*)(\d) (\d{{2}})(?![\d,])", re.I)  # "शेयर 1 50"
 QTY_GROUP_SPACE = re.compile(rf"((?:{QTY_WORDS})\W{{0,2}}\s*)(\d{{1,2}}) (\d{{3}})\b", re.I)  # "मातरा 2 500"
 
 
@@ -181,6 +184,9 @@ def clean_ocr(text: str) -> str:
     text = LTD_MISREAD.sub(" Ltd", text)
     text = LOST_POINT_SPACE.sub(r"\1.\2", text)  # shortcut: a lost decimal point is guessed from the unit; the total
     text = LOST_POINT_LAKH.sub(r"\1.\2", text)  # check later catches a wrong guess
+    text = LOST_POINT_DIGIT.sub(r"\1.\2", text)
+    text = REG_NO_SPACED.sub(lambda m: m[1] + m[2].replace(" ", "") if len(m[2].replace(" ", "")) == 9 else m[0], text)
+    text = QTY_SPLIT.sub(r"\1\2\3", text)
     text = QTY_GROUP_SPACE.sub(r"\1\2,\3", text)
     return CAPITAL_O_IN_WORD.sub("0", text)
 
@@ -253,6 +259,8 @@ def _check_numbers(claims: list[dict], total, text: str):
         for k in ("quantity", "value_inr"):
             if f.get(k) is not None and not _near(f[k], printed):
                 f[k] = None
+        if total is not None and (f.get("value_inr") or 0) > total + 1:
+            f["value_inr"] = None  # one holding cannot be worth more than the whole portfolio: a misread amount
         v = f.get("value_inr")
         if v is not None and _near(v, qty_labelled) and not _near(v, rupee_labelled):
             f["quantity"], f["value_inr"] = f.get("quantity") or v, None  # a number by a share label is a quantity
@@ -461,6 +469,9 @@ def _ground_platform(claims: list[dict], text: str) -> None:
                 f["name"] = title
 
 
+NOT_HANDLE_WORDS = {"to", "at", "on", "by", "id", "upi", "pay", "via", "for", "the", "is", "my", "our", "your", "me"}
+
+
 def _complete_handle(claims: list[dict], text: str) -> None:
     """EasyOCR can lose the front of "name.part@bank" (a dot read as a space). A printed handle that ends with what the
     model gave, and is longer, is the whole handle."""
@@ -469,6 +480,9 @@ def _complete_handle(claims: list[dict], text: str) -> None:
         upi = c["fields"].get("upi_id") if c["type"] == "payee" else None
         if upi:
             longer = [h for h in printed if h.lower().endswith(upi.lower()) and len(h) > len(upi)]
+            if not longer:  # "quantrix pay@bank": the dot read as a space; label words are not part of a handle
+                words = re.findall(rf"(?<![\w.])([a-z0-9_-]+) {re.escape(upi)}", text)
+                longer = [f"{w}.{upi}" for w in words if w not in NOT_HANDLE_WORDS]
             if len(longer) == 1:
                 c["fields"]["upi_id"] = longer[0]
 

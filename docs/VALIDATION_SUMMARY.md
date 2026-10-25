@@ -14,6 +14,7 @@ Scope: **no-video** (the 32 video clips are not run). Set: `data/frozen`, combin
 | 6 (value fill, page order) | 270 | 0 | 306 | 593 | 0 | 5/5 |
 | 7 ( no-demat contradicts, sourceless frame via the video route, value re-fill, ISIN from page, payee wording grounded) | **274** | 0 | **307** | **603** | 0 | 5/5 |
 | 8 (final: lost decimal points, bare L / Cr amounts, grouped quantities, "Lta" for "Ltd", handle and registration number recovery, platform grounding; run on the frozen set to check for regressions) | 274 | 0 | 307 | **607** | 0 | 5/5 |
+| 9 (reader: holding worth more than the portfolio is a misread, spaced registration numbers and quantities, D read as 0 in ISINs, handle with a space for its dot) | 274 | 0 | 307 | **608** | 0 | 5/5 |
 
 Final confusion matrix (runs 7 and 8): MATCHES 78/78, CONTRADICTS 109/109, NO_RECORD 87/87. Seconds per screenshot (read, GPU): 1.9 to 7.0. On the CPU (`CUDA_VISIBLE_DEVICES=-1`, subset of 3): 21 to 83 s per screenshot (OCR 9 to 41 s, model 12 to 42 s); a CPU-only laptop now gets 3x the model time limit (`KASAUTI_READ_TIMEOUT` overrides), so it no longer falls back to the offline reader. Prompt rate on the synthetic ledger: 133 per 1,000 customers (an upper bound; the pattern was injected to fit the rule).
 
@@ -50,6 +51,8 @@ OCR limits and look-alike glyphs, not rules: a table whose columns EasyOCR scram
 
 Harness changes (`scripts/run_frozen.py`): the model is warmed up first, as the backend does at startup; ISINs the app fills in from the name are counted as such, not as misreads; security names are compared the way the app maps them (case, punctuation, Ltd ignored).
 
-## Fake-app screenshots (dev set, not the frozen set)
+## Fake-app screenshots (dev sets, not the frozen set)
 
 `scripts/make_fake_app_screens.py` builds 60 MOCK screenshots in 6 layouts (cards, statement table, tipster chat, statement rows with short amounts, promo ad with a firm and registration number, platform dashboard), 30 English and 30 Hindi, with exact labels, in `data/media/fake_apps/` (git-ignored, regenerated from `--seed`). `--score` reads each through the real reader. First pass: 497 of 584 fields right (536 once the ISINs the app fills in from the name are counted). It found real reader gaps that the frozen set did not: a UPI handle cut at its first dot (`topup.hub@bank` read as `hub@bank`), a registration number missed on a white-on-orange ad, a lost decimal point (`6.84 लाख` read as `684 लाख`), `Ltd` read as `Lta`, `2 500` as a quantity, a platform category the page never states, and the app title replaced by its category line. All fixed with tests; second pass: 571 of 584 fields right (97.8%). Left: one page where the model drops a holding (the customer adds it on the confirm screen), two scrambled value lines.
+
+Update 25 Oct: the 60 generated images are now full phone screens (1080 by 2340) instead of cropped to their content, and 12 realistic images made with an image generator (`scripts/gemini_screen_specs.py`, English and Hindi, six layouts) were added as an unseen-style test. Their first scoring was 97 of 104 fields; it exposed a lost decimal point read as a digit (`₹ 7.10 L` as `₹ 7110 L`), a space inside a registration number and inside a quantity, a handle with a space for its dot, and a `D` read as `0` in an ISIN. All fixed with tests; second scoring 103 of 104, the 60-image set 573 of 584, the frozen set 608 of 632 with 274 of 274 verdicts and 0 false contradictions (run 9).

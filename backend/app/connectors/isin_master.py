@@ -35,7 +35,19 @@ def listed_isins() -> frozenset:
     return frozenset(i for hits in _index().values() for i, _ in hits)
 
 
-LOOKALIKE = {"0": "O", "O": "0", "1": "I", "I": "1", "5": "S", "S": "5", "8": "B", "B": "8", "2": "Z", "Z": "2"}
+LOOKALIKE = {
+    "0": "OD",
+    "O": "0",
+    "D": "0",
+    "1": "I",
+    "I": "1",
+    "5": "S",
+    "S": "5",
+    "8": "B",
+    "B": "8",
+    "2": "Z",
+    "Z": "2",
+}
 
 
 def _check_digit_ok(isin: str) -> bool:
@@ -54,12 +66,13 @@ def repair_isin(isin: str | None) -> str | None:
     found = set()
     for n in (1, 2):
         for combo in itertools.combinations(spots, n):
-            v = list(isin)
-            for i in combo:
-                v[i] = LOOKALIKE[v[i]]
-            v = "".join(v)
-            if v in listed_isins() and _check_digit_ok(v):
-                found.add(v)
+            for subs in itertools.product(*(LOOKALIKE[isin[i]] for i in combo)):
+                v = list(isin)
+                for i, ch in zip(combo, subs, strict=True):
+                    v[i] = ch
+                v = "".join(v)
+                if v in listed_isins() and _check_digit_ok(v):
+                    found.add(v)
         if found:
             break  # fewer swaps is the likelier misread
     return found.pop() if len(found) == 1 else isin

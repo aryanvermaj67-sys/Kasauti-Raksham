@@ -1,7 +1,7 @@
 {
   "_meta": {
     "language": "hi",
-    "note": "Hindi reason-code messages reviewed by a fluent Hindi reader on 25 Oct 2026 (corrections applied; 'असली' was not taken because it can read as 'genuine'). The ui strings below have not been reviewed yet (ui._needs_native_review)."
+    "note": "Hindi reason-code messages reviewed by a fluent Hindi reader on 25 Oct 2026 (corrections applied; 'असली' was not taken because it can read as a claim that the video is authentic). The ui strings below have not been reviewed yet (ui._needs_native_review)."
   },
   "reason_codes": {
     "HOLDINGS_TOTAL_NONE_FOUND": {
