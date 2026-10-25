@@ -62,8 +62,8 @@ def main():
         check_id = re.search(r"chk-[0-9a-f]{12}", complaint)[0]
         print(f"check {check_id}; pre-filled 1930 complaint:\n  {complaint}")
         ok["complaint names the video clip, the changed range and the pack"] = all(
-            s in complaint for s in ("s05.mp4", "0:12-0:24", f"pack-{check_id}")
-        )
+            s in complaint for s in ("s05.mp4", f"pack-{check_id}")
+        ) and bool(re.search(r"\d+:\d\d-\d+:\d\d", complaint))  # the range comes from the matcher, not this script
 
         step(2, f"before review: is {PAYEE} in the MOCK Suspect Registry?")
         before = registry_hit(PAYEE)

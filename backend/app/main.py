@@ -30,7 +30,7 @@ async def lifespan(_app):
     if os.environ.get("KASAUTI_PRELOAD_VIDEO", "1") == "1" and (ROOT / "models" / "whisper").exists():
         from app.comparators import video
 
-        if (video.INDEX / "clips.json").exists():
+        if (video.INDEX / "audio.npz").exists():
             jobs.append(("video models", lambda: (video.warm_up(), print(f"video models ready ({video.device()})"))))
     if os.environ.get("LLM_PROVIDER", "local") == "local":  # EasyOCR + the first Ollama call are slow
         jobs.append(("claim reader", reader.local.warm_up))
@@ -134,7 +134,7 @@ def api_video(file: UploadFile):
         raise HTTPException(413, "file over 100 MB")
     from app.comparators import video  # torch and the models load on the first video only
 
-    if not (video.INDEX / "clips.json").exists():
+    if not (video.INDEX / "audio.npz").exists():  # absent in an index built before the audio checks
         raise HTTPException(503, "footage index not built: run python scripts/build_footage_index.py")
     sha = hashlib.sha256(data).hexdigest()
     with tempfile.TemporaryDirectory() as tmp:

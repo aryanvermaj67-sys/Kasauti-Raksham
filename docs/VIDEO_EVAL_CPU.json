@@ -13,44 +13,56 @@
     30.4
    ],
    "span_got_s": [
-    2,
-    35
+    13.74,
+    30.4
    ],
    "changed_ranges": [
-    "0:02-0:03",
-    "0:06-0:06",
-    "0:11-0:35"
+    "0:13-0:30"
    ],
    "verdict": "CONTRADICTS",
    "reason_code": "ENDORSEMENT_WORDS_CHANGED",
    "share": 1.0,
    "language": "hi",
-   "search_s": 4.06,
-   "total_s": 48.81,
+   "search_s": 4.29,
+   "total_s": 45.7,
+   "signal": [
+    "visual",
+    "audio_fingerprint"
+   ],
+   "fingerprint_hits": 1818,
    "source_ok": true,
-   "span_ok": false
+   "span_ok": true
   },
   {
    "file": "s02_words_lowq.mp4",
    "type": "words_lowq",
    "source_expected": "s02.mp4",
-   "source_got": null,
+   "source_got": "s02.mp4",
    "words_changed_expected": true,
-   "words_changed_got": false,
+   "words_changed_got": true,
    "span_expected_s": [
     13.78,
     30.4
    ],
-   "span_got_s": null,
-   "changed_ranges": [],
-   "verdict": "NO_RECORD",
-   "reason_code": "ENDORSEMENT_NO_SOURCE",
+   "span_got_s": [
+    13.74,
+    30.4
+   ],
+   "changed_ranges": [
+    "0:13-0:30"
+   ],
+   "verdict": "CONTRADICTS",
+   "reason_code": "ENDORSEMENT_WORDS_CHANGED",
    "share": 0.0,
    "language": "hi",
-   "search_s": 3.45,
-   "total_s": 55.5,
-   "source_ok": false,
-   "span_ok": false
+   "search_s": 3.5,
+   "total_s": 48.04,
+   "signal": [
+    "audio_fingerprint"
+   ],
+   "fingerprint_hits": 932,
+   "source_ok": true,
+   "span_ok": true
   },
   {
    "file": "s05_reupload.mp4",
@@ -66,8 +78,13 @@
    "reason_code": "ENDORSEMENT_SOURCE_SAME",
    "share": 1.0,
    "language": "en",
-   "search_s": 3.35,
-   "total_s": 13.47,
+   "search_s": 3.31,
+   "total_s": 12.47,
+   "signal": [
+    "visual",
+    "audio_fingerprint"
+   ],
+   "fingerprint_hits": 2912,
    "source_ok": true,
    "span_ok": false
   },
@@ -75,19 +92,23 @@
    "file": "s05_lowq.mp4",
    "type": "lowq",
    "source_expected": "s05.mp4",
-   "source_got": null,
+   "source_got": "s05.mp4",
    "words_changed_expected": false,
    "words_changed_got": false,
    "span_expected_s": null,
    "span_got_s": null,
    "changed_ranges": [],
-   "verdict": "NO_RECORD",
-   "reason_code": "ENDORSEMENT_NO_SOURCE",
+   "verdict": "MATCHES",
+   "reason_code": "ENDORSEMENT_SOURCE_SAME",
    "share": 0.0,
    "language": "en",
-   "search_s": 3.01,
-   "total_s": 16.67,
-   "source_ok": false,
+   "search_s": 3.16,
+   "total_s": 12.61,
+   "signal": [
+    "audio_fingerprint"
+   ],
+   "fingerprint_hits": 1607,
+   "source_ok": true,
    "span_ok": false
   },
   {
@@ -104,8 +125,13 @@
    "reason_code": "ENDORSEMENT_SOURCE_SAME",
    "share": 0.75,
    "language": "en",
-   "search_s": 3.35,
-   "total_s": 14.24,
+   "search_s": 3.43,
+   "total_s": 12.79,
+   "signal": [
+    "visual",
+    "audio_fingerprint"
+   ],
+   "fingerprint_hits": 2912,
    "source_ok": true,
    "span_ok": false
   },
@@ -113,19 +139,23 @@
    "file": "s05_banner.mp4",
    "type": "banner",
    "source_expected": "s05.mp4",
-   "source_got": null,
+   "source_got": "s05.mp4",
    "words_changed_expected": false,
    "words_changed_got": false,
    "span_expected_s": null,
    "span_got_s": null,
    "changed_ranges": [],
-   "verdict": "NO_RECORD",
-   "reason_code": "ENDORSEMENT_NO_SOURCE",
+   "verdict": "MATCHES",
+   "reason_code": "ENDORSEMENT_SOURCE_SAME",
    "share": 0.0,
    "language": "en",
-   "search_s": 3.44,
-   "total_s": 16.25,
-   "source_ok": false,
+   "search_s": 3.41,
+   "total_s": 12.77,
+   "signal": [
+    "audio_fingerprint"
+   ],
+   "fingerprint_hits": 2912,
+   "source_ok": true,
    "span_ok": false
   },
   {
@@ -142,8 +172,13 @@
    "reason_code": "ENDORSEMENT_SOURCE_SAME",
    "share": 1.0,
    "language": "en",
-   "search_s": 2.82,
-   "total_s": 9.38,
+   "search_s": 3.08,
+   "total_s": 9.11,
+   "signal": [
+    "visual",
+    "audio_fingerprint"
+   ],
+   "fingerprint_hits": 2450,
    "source_ok": true,
    "span_ok": false
   },
@@ -159,18 +194,23 @@
     24.87
    ],
    "span_got_s": [
-    12,
-    24
+    11.78,
+    26.6
    ],
    "changed_ranges": [
-    "0:12-0:24"
+    "0:11-0:26"
    ],
    "verdict": "CONTRADICTS",
    "reason_code": "ENDORSEMENT_WORDS_CHANGED",
    "share": 1.0,
    "language": "en",
-   "search_s": 3.44,
-   "total_s": 13.84,
+   "search_s": 3.53,
+   "total_s": 12.49,
+   "signal": [
+    "visual",
+    "audio_fingerprint"
+   ],
+   "fingerprint_hits": 1513,
    "source_ok": true,
    "span_ok": true
   },
@@ -178,22 +218,96 @@
    "file": "s05_words_lowq.mp4",
    "type": "words_lowq",
    "source_expected": "s05.mp4",
-   "source_got": null,
+   "source_got": "s05.mp4",
    "words_changed_expected": true,
-   "words_changed_got": false,
+   "words_changed_got": true,
    "span_expected_s": [
     11.82,
     24.87
    ],
-   "span_got_s": null,
-   "changed_ranges": [],
-   "verdict": "NO_RECORD",
-   "reason_code": "ENDORSEMENT_NO_SOURCE",
+   "span_got_s": [
+    11.78,
+    26.58
+   ],
+   "changed_ranges": [
+    "0:11-0:26"
+   ],
+   "verdict": "CONTRADICTS",
+   "reason_code": "ENDORSEMENT_WORDS_CHANGED",
    "share": 0.0,
    "language": "en",
-   "search_s": 2.92,
-   "total_s": 15.36,
-   "source_ok": false,
+   "search_s": 3.22,
+   "total_s": 12.12,
+   "signal": [
+    "audio_fingerprint"
+   ],
+   "fingerprint_hits": 754,
+   "source_ok": true,
+   "span_ok": true
+  },
+  {
+   "file": "s08_words.mp4",
+   "type": "words",
+   "source_expected": "s08.mp4",
+   "source_got": "s08.mp4",
+   "words_changed_expected": true,
+   "words_changed_got": true,
+   "span_expected_s": [
+    15.92,
+    34.51
+   ],
+   "span_got_s": [
+    15.88,
+    36.84
+   ],
+   "changed_ranges": [
+    "0:15-0:34",
+    "0:35-0:36"
+   ],
+   "verdict": "CONTRADICTS",
+   "reason_code": "ENDORSEMENT_WORDS_CHANGED",
+   "share": 1.0,
+   "language": "hi",
+   "search_s": 4.6,
+   "total_s": 41.45,
+   "signal": [
+    "visual",
+    "audio_fingerprint"
+   ],
+   "fingerprint_hits": 1634,
+   "source_ok": true,
+   "span_ok": false
+  },
+  {
+   "file": "s08_words_lowq.mp4",
+   "type": "words_lowq",
+   "source_expected": "s08.mp4",
+   "source_got": "s08.mp4",
+   "words_changed_expected": true,
+   "words_changed_got": true,
+   "span_expected_s": [
+    15.92,
+    34.51
+   ],
+   "span_got_s": [
+    15.88,
+    36.84
+   ],
+   "changed_ranges": [
+    "0:15-0:34",
+    "0:35-0:36"
+   ],
+   "verdict": "CONTRADICTS",
+   "reason_code": "ENDORSEMENT_WORDS_CHANGED",
+   "share": 0.023,
+   "language": "hi",
+   "search_s": 4.23,
+   "total_s": 24.27,
+   "signal": [
+    "audio_fingerprint"
+   ],
+   "fingerprint_hits": 866,
+   "source_ok": true,
    "span_ok": false
   },
   {
@@ -210,8 +324,10 @@
    "reason_code": "ENDORSEMENT_NO_SOURCE",
    "share": 0.0,
    "language": "en",
-   "search_s": 4.05,
-   "total_s": 15.81,
+   "search_s": 4.69,
+   "total_s": 16.93,
+   "signal": [],
+   "fingerprint_hits": 2,
    "source_ok": true,
    "span_ok": false
   }

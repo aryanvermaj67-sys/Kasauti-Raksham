@@ -23,7 +23,7 @@ WEIGHTS = {
     "EasyOCR Hindi/English": EASYOCR / "devanagari.pth",
     "CLIP ViT-B/32": ROOT / "models" / "open_clip" / "models--laion--CLIP-ViT-B-32-laion2B-s34B-b79K",
     "Whisper small": ROOT / "models" / "whisper" / "models--Systran--faster-whisper-small",
-    "footage index": ROOT / "data" / "footage_index" / "clips.json",
+    "footage index": ROOT / "data" / "footage_index" / "audio.npz",  # with the audio fingerprints
 }
 FONT = ROOT / "frontend" / "node_modules" / "@fontsource" / "noto-sans-devanagari" / "files"
 
