@@ -86,3 +86,26 @@ The same names exist for s01 to s08 (`_reupload`, `_trimmed`, `_cropped`, `_lowq
 2. Click **Run demo-001**, **Run demo-002**, **Run demo-003**: the console counters become matches, contradicts and no-record together.
 3. On the phone, `?customer=SYN-C0028`: upload `demo-002.png`, confirm, consent with `123456`: matches. Then restart, type Reliance Industries 5000: contradicts.
 4. Upload `s05_words.mp4` as the video: changed words found. Open the console, approve the new check: the account joins the mock Suspect Registry and other customers who paid it are listed.
+
+## Same screenshot, three runs (all three counters from one image)
+
+Image: `data/media/fake_apps_gemini/gm10.png` (the file `Gemini_Generated_Image_1id7qf1id7qf1id7.png` in Downloads is the same picture). Open `http://localhost:5173/app?customer=SYN-C0028`. Click **Reset demo** on `/present` first so the counters start at 0. Every row was run through the real rules.
+
+**Do not click any of the three sample scenarios for your own image.** A sample scenario replaces your picture with its own demo screenshot (and demo-001 also attaches its own video, which is why an unrelated quote appeared in your confirm screen). Use **Gallery** for the image and **Video** for the clip. The three sample scenarios are only a shortcut to the three counters: demo-001 gives **contradicts**, demo-002 gives **matches**, demo-003 gives **no record**.
+
+| Step | Run 1: NO RECORD | Run 2: CONTRADICTS | Run 3: MATCHES |
+|---|---|---|---|
+| 1. Pay | Beneficiary `gains.pay@mockupi` (the handle printed in the image). Amount `25000` | same | same |
+| 2. Upload | Gallery: `gm10.png`. Video: `nosrc_01.mp4` | Gallery: `gm10.png`. Video: `s05_words.mp4` | Gallery: `gm10.png`. Video: `s05_reupload.mp4` |
+| 3. Confirm: Broker card | delete it (the reader took the app name as a broker) | delete it | edit: name `ZERODHA BROKING LIMITED`, SEBI no. `INZ000031633`, tick "Says it is SEBI registered" |
+| 3. Platform card | keep: `Bitora Exchange`, category `crypto` | edit: name `OctaFX`, category `forex` | delete it |
+| 3. Payee card | keep: UPI `gains.pay@mockupi`, described as `other` | edit: UPI `trade0278.desk@mockupi`, described as `other` | edit: UPI `zerodha.brk@validbank`, described as `broker` |
+| 3. Holdings | none | none | **Add Another Statement**, Holding: `Nahar Spinning Mills Limited`, quantity `3006`; again: `Cravatex Ltd`, quantity `3242` |
+| 3. Video card | keep (person: `Teammate speaker`) | keep (person: `Teammate speaker`) | keep (person: `Teammate speaker`) |
+| 4. Consent | OTP `123456`, **Authorize & Check Records** | same | same |
+| Result | platform no record, payee no record, video no record (no source found) | platform contradicts (RBI Alert List), payee contradicts (Suspect Registry), video contradicts (words changed at 0:11 to 0:26) | broker matches, payee matches, both holdings match, video matches (same words) |
+| Counters added | NO RECORD +3 | CONTRADICTS +3 | MATCHES +5 |
+
+After the three runs the console reads "Verdicts in 3 stored checks": **MATCHES 5, CONTRADICTS 3, NO RECORD 3**. Run them in any order; the reviewer queue then holds three checks to approve or reject. The video outcomes were checked on the same clips; the holdings, broker, payee and platform outcomes were checked on exactly these inputs.
+
+If you leave the stray "Broker: Bitora Exchange" card in Run 1 with "Says it is SEBI registered" ticked, it adds one **contradicts** ("not on the SEBI list"); unticked, it adds one **no record**. Delete it to keep the story clean.
