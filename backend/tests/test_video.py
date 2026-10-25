@@ -94,12 +94,18 @@ def test_identical_audio_reused_over_another_picture_is_found_by_sound_and_never
     # "unindexed" clip really contains about 20 s of an indexed clip's recording: the fingerprint finds it
     body, v = upload_and_check(MEDIA / "unindexed" / "dev_new_1.mp4")
     assert body["match"]["source_found"] is True and body["match"]["source_signal"] == ["audio_fingerprint"]
-    assert v["outcome"] != "MATCHES"
+    assert v["outcome"] != "MATCHES" and v["reason_code"].startswith("ENDORSEMENT_SOUND_ONLY"), v
 
 
 def test_endorsement_messages_never_call_a_video_fake_genuine_or_real():
     for lang, msgs in TEMPLATES.items():
-        for code in ("ENDORSEMENT_SOURCE_SAME", "ENDORSEMENT_WORDS_CHANGED", "ENDORSEMENT_NO_SOURCE"):
+        for code in (
+            "ENDORSEMENT_SOURCE_SAME",
+            "ENDORSEMENT_WORDS_CHANGED",
+            "ENDORSEMENT_NO_SOURCE",
+            "ENDORSEMENT_SOUND_ONLY_SAME",
+            "ENDORSEMENT_SOUND_ONLY_CHANGED",
+        ):
             text = json.dumps(msgs[code], ensure_ascii=False).lower()
             assert not re.search(r"\b(fake|genuine|real)\b|नकली|असली|फर्जी", text), (lang, code)
 

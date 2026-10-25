@@ -193,6 +193,43 @@ def test_endorsement_contradicts():
     check(rules.endorsement(endorse(), rec), "CONTRADICTS", "ENDORSEMENT_WORDS_CHANGED")
 
 
+def test_source_found_by_sound_only_never_matches_and_says_so():
+    # the sound is an official recording, the picture matches no official footage (a real voice under another picture)
+    same = footage(source_found=True, transcript_same=True, source_signal=["audio_fingerprint"])
+    check(rules.endorsement(endorse(), same), "NO_RECORD", "ENDORSEMENT_SOUND_ONLY_SAME")
+    changed = footage(
+        source_found=True,
+        transcript_same=False,
+        source_signal=["audio_fingerprint"],
+        changed_ranges=["0:12-0:19"],
+        original_quote="Never invest via chat groups",
+    )
+    check(rules.endorsement(endorse(), changed), "CONTRADICTS", "ENDORSEMENT_SOUND_ONLY_CHANGED")
+    # the picture found it, or both did: the existing results are unchanged
+    for sig in (["visual"], ["visual", "audio_fingerprint"]):
+        ok = footage(source_found=True, transcript_same=True, source_signal=sig)
+        check(rules.endorsement(endorse(), ok), "MATCHES", "ENDORSEMENT_SOURCE_SAME")
+
+
+def test_sound_only_messages_say_audio_matches_and_picture_does_not_and_claim_nothing_more():
+    from tests.helpers import TEMPLATES
+
+    for lang, needle in (
+        ("en", "audio matches an official recording"),
+        ("hi", "ऑडियो एक आधिकारिक रिकॉर्डिंग से मेल खाता है"),
+    ):
+        for code in ("ENDORSEMENT_SOUND_ONLY_SAME", "ENDORSEMENT_SOUND_ONLY_CHANGED"):
+            text = TEMPLATES[lang][code]["record"]
+            assert needle in text, (lang, code)
+            assert ("picture does not match any official footage" in text) or (
+                "तस्वीर किसी आधिकारिक फ़ुटेज से मेल नहीं खाती" in text
+            )
+            assert not re.search(r"original video|source video|मूल वीडियो", text, re.I), (lang, code)
+        # "words differ" appears only where the changed-span logic found a span
+        assert "{time_ranges}" not in TEMPLATES[lang]["ENDORSEMENT_SOUND_ONLY_SAME"]["record"]
+        assert "{time_ranges}" in TEMPLATES[lang]["ENDORSEMENT_SOUND_ONLY_CHANGED"]["record"]
+
+
 def test_missing_video_source_never_matches():
     for rec in (
         None,

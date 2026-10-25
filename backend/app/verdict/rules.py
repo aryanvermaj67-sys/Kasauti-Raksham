@@ -138,10 +138,16 @@ def endorsement(claim, footage_record=None):
     if not m.get("source_found"):  # missing source is not proof: never MATCHES, never "real"
         return _v(claim, "NO_RECORD", "ENDORSEMENT_NO_SOURCE", params, [footage_record])
     params |= {"source_clip": m.get("source_clip")}
+    # found by sound alone: the picture matches no official footage, so a same-words result is never MATCHES (a real
+    # voice under a made-up picture is the classic fake) and the message must not say the source video exists
+    sound_only = m.get("source_signal") == ["audio_fingerprint"]
     if m["transcript_same"]:
+        if sound_only:
+            return _v(claim, "NO_RECORD", "ENDORSEMENT_SOUND_ONLY_SAME", params, [footage_record])
         return _v(claim, "MATCHES", "ENDORSEMENT_SOURCE_SAME", params, [footage_record])
     params |= {"time_ranges": m["changed_ranges"], "original_quote": m["original_quote"]}
-    return _v(claim, "CONTRADICTS", "ENDORSEMENT_WORDS_CHANGED", params, [footage_record])
+    code = "ENDORSEMENT_SOUND_ONLY_CHANGED" if sound_only else "ENDORSEMENT_WORDS_CHANGED"
+    return _v(claim, "CONTRADICTS", code, params, [footage_record])
 
 
 def platform(claim, rbi_record):

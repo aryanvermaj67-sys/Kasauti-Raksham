@@ -114,6 +114,16 @@
       "record": "मूल वीडियो मौजूद है, पर {time_ranges} पर शब्द बदले गए हैं। मूल शब्द: \"{original_quote}\"।",
       "needs_native_review": false
     },
+    "ENDORSEMENT_SOUND_ONLY_SAME": {
+      "app": "{person}: \"{quote}\"",
+      "record": "ऑडियो एक आधिकारिक रिकॉर्डिंग से मेल खाता है, पर तस्वीर किसी आधिकारिक फ़ुटेज से मेल नहीं खाती। हम इसकी पुष्टि नहीं कर सके।",
+      "needs_native_review": true
+    },
+    "ENDORSEMENT_SOUND_ONLY_CHANGED": {
+      "app": "{person}: \"{quote}\"",
+      "record": "ऑडियो एक आधिकारिक रिकॉर्डिंग से मेल खाता है, पर तस्वीर किसी आधिकारिक फ़ुटेज से मेल नहीं खाती। उस रिकॉर्डिंग से {time_ranges} पर शब्द अलग हैं। मूल शब्द: \"{original_quote}\"।",
+      "needs_native_review": true
+    },
     "ENDORSEMENT_NO_SOURCE": {
       "app": "{person}: \"{quote}\"",
       "record": "हमें मिलान करने के लिए मूल वीडियो नहीं मिला। हम इसकी पुष्टि नहीं कर सके। मूल वीडियो न मिलने से कुछ भी साबित नहीं होता।",

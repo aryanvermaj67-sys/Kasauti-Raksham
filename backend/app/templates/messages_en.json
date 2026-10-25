@@ -92,6 +92,14 @@
       "app": "{person}: \"{quote}\"",
       "record": "The original video exists, but the words were changed at {time_ranges}. Original words: \"{original_quote}\"."
     },
+    "ENDORSEMENT_SOUND_ONLY_SAME": {
+      "app": "{person}: \"{quote}\"",
+      "record": "The audio matches an official recording, but the picture does not match any official footage. We could not verify this."
+    },
+    "ENDORSEMENT_SOUND_ONLY_CHANGED": {
+      "app": "{person}: \"{quote}\"",
+      "record": "The audio matches an official recording, but the picture does not match any official footage. The words differ from that recording at {time_ranges}. Original words: \"{original_quote}\"."
+    },
     "ENDORSEMENT_NO_SOURCE": {
       "app": "{person}: \"{quote}\"",
       "record": "We found no original video to compare it with. We could not verify this. A missing source proves nothing either way."
